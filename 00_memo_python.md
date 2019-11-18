@@ -18,9 +18,9 @@
 	* Sortie en 2000
 	* Il est encore très utilisé, notamment sur les tutoriels sur Internet et quelques projets qui tardent a se mettre à jour
 	* Une adoption massive (QGIS 2)
-	* Dernière version le 1 janvier 2020
+	* Dernière version le 1 janvier 2020!
 * Python 3
-	* Sortie en 2008, mais il s'agit d'une adoption très très lente.
+	* Sortie en 2008, mais il s'agit d'une adoption très très lente, tellement Python 2 a été massivement adopté.
 	* Version 3.8.0 du 14 octobre 2019
 	* QGIS 3 requière Python 3.5 minimum
 
@@ -29,7 +29,7 @@
 ### Les types de données:
 
 Une variable peut contenir un entier, un booléen (`True` ou `False`), chaîne de caractères, nombre décimale, un objet...
-Il n'y a pas de typage des variables, c'est à dire qu'une variable peut changer de type au cours de l'exécution.
+Il n'y a un faible typage des variables, c'est à dire qu'une variable peut changer de type au cours de l'exécution.
 
 ```python
 mon_compteur = 0
@@ -56,7 +56,7 @@ type(mon_compteur)
 ### Les structures de données
 
 Il existe quatre types de structure de données:
-* les variables simples
+* les variables simples (ci-dessus)
 * les tuples (non modifiables)
 
 ```python
@@ -94,6 +94,9 @@ nombres
 
 * les dictionaires
 
+*Attention*, les dictionaires ne sont pas ordonnés!
+Si vraiment il y a besoin, il existe une classe `OrderedDict`, mais ce n'est pas natif dans Python.
+
 ```python
 personne = {}
 type(personne)
@@ -108,17 +111,20 @@ personne['age'] = 30
 
 ```python
 # Ceci est un commentaire sur une ligne
-"""
+/*
 Ceci est
 un commentaire
 sur plusieurs lignes
-"""
+*/
+
+/*
+"""Ces lignes sont réservés pour la documentation de l'API et ne doient pas être des lignes de commentaires."""
 
 ```
 
 ### Arithmétique
 
-```
+```python
 a = 10
 a += 1
 a -= 1
@@ -132,7 +138,7 @@ g = a ** 2  # 100
 
 ### Opérateurs logiques
 
-```
+```python
 a > b
 a >= b
 a < b
@@ -235,7 +241,7 @@ while x < 100:
     x += 1
 ```
 
-* En Python, il n'y a pas de boucle do ... while
+* En Python, il n'y a pas de boucle do ... while, à la place, on peut faire ainsi :
 
 ```python
 executer_une_fonction()
@@ -244,6 +250,8 @@ while not conditon_echec:
 ```
 
 ### List Comprehensions
+
+Créer une liste des nombres impaires entre 1 et 9:
 
 ```python
 # Non pythonique
@@ -276,7 +284,9 @@ alphabet[:6]  # ABCDEF
 ### Fonctions
 
 * Voici des exemples de fonction Python.
-```
+*Encore une fois*, attention à l'indentation.
+
+```python
 def ajouter(x , y):
     """Ajouter deux nombres."""
     return x + y
@@ -284,7 +294,7 @@ def ajouter(x , y):
 def crier(phrase='bonjour'):
     print(phrase.upper())
 
-def discuter(texte, personnage='Moi'):
+def discuter(texte, personnage='Charles'):
     """Un personnage discute."""
     print('{}: "{}".format(personnage, texte))
 ```

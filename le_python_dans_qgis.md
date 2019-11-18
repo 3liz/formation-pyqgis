@@ -14,7 +14,7 @@ L'éditeur de script Python est accessible depuis l'icône dedié dans la consol
 
 ## Script Processing
 
-Le menu Traitement dans QGIS donne accès a plusieurs algorithmes d'analyse. 
+Le menu Traitement dans QGIS donne accès a plusieurs algorithmes d'analyse.
 La boîte à outils de traitements ainsi que le modeleur graohique utilisent le framework Processing propre à QGIS.
 Il permet de définir les entrées, les sorties d'un algorithme. Le framework peut aussi générer automatiquement 
 l'interface graphique de l'algorithme.
@@ -25,13 +25,24 @@ Il existe un modèle par défaut, depuis la barre d'outil traitements, `Créer u
 
 ![Script template](./media/script_template.png)
 
-## Fournisseur Processing
+## Plugin
+
+* Extension côté bureautique et même côté QGIS Serveur.
+* Utilisation du Plugin Builder
+* Squelette minimum : https://github.com/wonder-sk/qgis-minimal-plugin
+* Documentation plugin QGIS Serveur : https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/server.html
+
+## Fournisseur Processing dans un plugin
 
 Similaire au script Processing, une extension QGIS peut aussi avoir son propre fournisseur d'algorithme.
 
 ![Processing provider](./media/processing_provider.png)
 
 On peut remarquer les plugins `DataPlotly`, `QuickOSM` etc.
+
+Ajout de Processing à un plugin QGIS :
+* soit lors du plugin builder
+* suivre la documentation pour l'ajout à un plugin existant: https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html 
 
 ## Expressions
 

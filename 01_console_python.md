@@ -1,13 +1,5 @@
 # Introduction à la console Python dans QGIS
 
-## Pré-requis
-
-* Avoir QGIS 3.4 minimum
-* Avoir des bases en Python
-* Avoir un jeu de données, par exemple:
-	* Données OSM à l'aide du plugin QuickOSM
-	* Données [OSM2Igeo](https://github.com/igeofr/osm2igeo) (utilisation de ce jeu de données ci-après)
-
 ## La documentation et les liens utiles:
 
 * QGIS est composé de plusieurs centaines de classes écrites en C++. La plupart de ces classes (et donc des fonctions) sont accessibles à travers un API en Python. Comme il n'est pas possible de mémoriser entièrement l'API de QGIS, il est nécessaire de connaître la documentation et comment rechercher des informations.
@@ -93,8 +85,8 @@ QgsProject.instance().addMapLayer(communes)
 
 ## Code
 
-Petit récapitulatif, avec la gestion des messages d'erreurs, à tester pour voir si ca marche!
-*Appuyez sur entrée jusqu'à l'apparition de `>>>` et non pas `...`*
+Petit récapitulatif à tester pour voir si cela fonctionne correctement!
+*Appuyer sur entrée jusqu'à l'apparition de `>>>` et non pas `...`*
 
 ```python
 from os.path import join, isfile, isdir

@@ -40,7 +40,7 @@ else:
 * Une des solutions:
 
 
-```
+```python
 from os.path import join, isfile, isdir
 
 def charger_couche(thematique, shapefile):
