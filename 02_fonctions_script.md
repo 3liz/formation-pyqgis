@@ -1,6 +1,7 @@
 # Écriture de fonction Python
 
-La console c'est bien, mais très limitant. Passons à l'écriture d'un script qui va nous faciliter l'organisation du code en passant par l'ajout de fonction.
+La console c'est bien, mais très limitant. Passons à l'écriture d'un script qui va nous faciliter 
+l'organisation du code en passant par l'ajout de fonction.
 
 Voici le dernier script du fichier précédent, mais avec la gestion des erreurs:
 * Redémarrer QGIS
@@ -37,6 +38,7 @@ else:
 		* la thématique
 		* le nom du shapefile
 	* La fonction se chargera de faire le nécessaire, par exemple: `charger_couche('H_OSM_ADMINISTRATIF', 'COMMUNE')`
+	* La fonction peut également retourner `False` si la couche n'est pas chargée ou sinon l'objet couche.
 * Une des solutions:
 
 
