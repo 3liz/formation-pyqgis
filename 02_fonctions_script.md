@@ -1,5 +1,7 @@
 # Écriture de fonction Python
 
+## Charger automatiquement plusieurs couches et organiser son code
+
 La console c'est bien, mais très limitant. Passons à l'écriture d'un script qui va nous faciliter 
 l'organisation du code en passant par l'ajout de fonction.
 
@@ -88,4 +90,82 @@ def liste_shapefiles(thematique):
 
 shapes = liste_shapefiles('H_OSM_ADMINISTRATIF')
 print(shapes)
+```
+
+## Extraction des informations sous forme d'un fichier CSV.
+
+On souhaite désormais réaliser une fonction d'export des métadonnées de nos couches au format CSV, avec son CSVT.
+Il existe déjà un module CSV dans Python pour nous aider à écrire un fichier, mais nous n'allons pas l'utiliser.
+Nous allons plutôt utiliser l'API QGIS pour créer une nouvelle couche en mémoire comportant les différentes informations que l'on souhaite exporter.
+Puis nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS du menu `Exporter la couche`).
+
+Les différents champs qui devront être exportés sont:
+* son nom
+* son type de géométrie (format humain, lisible)
+* la projection
+* le nombre d'entité
+* encodage
+* si le seuil de visibilité est activé
+* la source
+
+Pour créer une couche en mémoire :
+```python
+layer_info = QgsVectorLayer('None', 'info', 'memory')
+```
+
+La liste des couches :
+```python
+layers = QgsProject.instance().mapLayers()
+```
+
+Pour enregistrer in fichier : `QgsVectorFileWriter`
+
+Solution
+```python
+from os.path import join
+
+layers = QgsProject.instance().mapLayers()
+layers = [layer for layer in layers.values()]
+
+layer_info = QgsVectorLayer('None', 'info', 'memory')
+
+fields = []
+fields.append(QgsField('nom', QVariant.String))
+fields.append(QgsField('type', QVariant.String))
+fields.append(QgsField('projection', QVariant.String))
+fields.append(QgsField('nombre_entite', QVariant.Int))
+fields.append(QgsField('encodage', QVariant.String))
+fields.append(QgsField('source', QVariant.String))
+fields.append(QgsField('seuil_de_visibilite', QVariant.String))
+
+with edit(layer_info):
+    for field in fields:
+        layer_info.addAttribute(field)
+
+QgsProject.instance().addMapLayer(layer_info)
+
+with edit(layer_info):
+    for layer in layers:
+        feature = QgsFeature()
+        attributes = [
+            layer.name(),
+            QgsWkbTypes.geometryDisplayString(layer.geometryType()),
+            layer.crs().authid(),
+            layer.featureCount(),
+            layer.dataProvider().encoding(),
+            layer.source(),
+            str(layer.hasScaleBasedVisibility())
+        ]
+        feature.setAttributes(attributes)
+        layer_info.addFeature(feature)
+
+QgsVectorFileWriter.writeAsVectorFormat(
+    layer_info,
+    join(QgsProject.instance().homePath(), 'test.csv'),
+    'utf-8',
+    QgsCoordinateReferenceSystem(),
+    'CSV',
+    layerOptions=['CREATE_CSVT=YES']
+)
+
 ```

@@ -108,3 +108,34 @@ layer.setMaximumScale(1)
 layer.setMinimumScale(2000000)
 layer.triggerRepaint()
 ```
+
+* Ajouter également la couche `ARRONDISSEMENT` et sélectionner la.
+
+## Parcourir les entités
+
+Un raccourci a savoir, dans la console:
+```python
+iface.activeLayer()
+```
+retourne la couche `QgsMapLayer` active dans la légende.
+
+On souhaite désormais itérer sur les polygones et les faire clignoter depuis la console.
+Nous allons donc avoir besoin de `getFeatures`.
+
+Bonus:
+```python
+layer = iface.activeLayer()
+features = layer.getFeatures()
+features
+feature = QgsFeature()
+features.nextFeature(feature)
+iface.mapCanvas().flashFeatureIds(layer, [feature.id()])
+```
+
+On souhaite désormais afficher le nom des arrondissements à l'aide d'une boucle `for`.
+
+```python
+layer = iface.activeLayer()
+for feature in layer.getFeatures():
+    # On peut traiter l'entité courante.    
+```

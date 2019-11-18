@@ -29,6 +29,7 @@ et le code est optimisé.
 Il existe un modèle par défaut que l'on peut utiliser pour démarrer l'écriture d'un script Processing.
 Depuis la barre d'outil traitements, `Créer un nouveau script depuis un modèle.` Ce modèle utilise la Programmation Orientée Objet. 
 Depuis QGIS 3.6, on peut également utiliser la syntaxe par décorateur `@alg`.
+Voir la documentation https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator
 
 ![Script template](./media/script_template.png)
 
