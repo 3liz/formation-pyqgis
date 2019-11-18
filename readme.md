@@ -12,6 +12,7 @@ Cette formation concerne des utilisateurs de QGIS, géomaticiens, qui souhaitent
 ## Sommaire
 
 * [Memo Python](./memo_python.md)
+* [Aperçu de l'utilisation de Python dans QGIS](./le_python_dans_qgis.md)
 * [Découverte de la console Python dans QGIS](./00_memo_python.md)
  * La documentation et l'API
  * Initiation à Programmation Orienté Objet (POO)
