@@ -122,7 +122,6 @@ retourne la couche `QgsMapLayer` active dans la légende.
 On souhaite désormais itérer sur les polygones et les faire clignoter depuis la console.
 Nous allons donc avoir besoin de `getFeatures`.
 
-Bonus:
 ```python
 layer = iface.activeLayer()
 features = layer.getFeatures()
@@ -131,6 +130,7 @@ feature = QgsFeature()
 features.nextFeature(feature)
 iface.mapCanvas().flashFeatureIds(layer, [feature.id()])
 ```
+*Note*, nous pouvons concaténer les deux dernières lignes à l'aide du caractère `;` pour que cela soit plus pratique.
 
 On souhaite désormais afficher le nom des arrondissements à l'aide d'une boucle `for`.
 

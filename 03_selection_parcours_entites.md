@@ -72,8 +72,8 @@ Corrigeons ce problème d'export afin d'obtenir les géométries et les attribut
 request.setFlags(QgsFeatureRequest.NoFlags)
 ```
 
-Dernier exercice, afficher une liste des communes dont la population est inférieur
-à 1000 habitants en incluant la densité de population.résultats
+Avant dernier exercice, afficher une liste des communes dont la population est inférieur
+à 1000 habitants en incluant la densité de population.
 
 ```python
 layer = iface.activeLayer()
@@ -89,4 +89,60 @@ for feature in layer.getFeatures(request):
     except ValueError:
         population = 0
     print('{commune} : {densite} habitants/km²'.format(commune=feature['NOM'], densite=population/area))
+```
+
+Nous souhaitons enregistrer ces informations dans un table séparé avec un nouveau champ `densite`.
+```python
+layer = iface.activeLayer()
+
+request = QgsFeatureRequest()
+request.setFilterExpression('to_int( "POPUL" ) < 1000')
+petites_communes = layer.materialize(request)
+
+with edit(petites_communes):
+    field = QgsField('densite', QVariant.Double)
+    petites_communes.addAttribute(field)
+
+request = QgsFeatureRequest()
+request.setSubsetOfAttributes([4])
+with edit(petites_communes):
+    for feature in petites_communes.getFeatures(request):
+        area = feature.geometry().area() / 1000000
+        population = int(feature['POPUL'])
+        densite=population/area
+        petites_communes.changeAttributeValue(feature.id(), 5, densite)
+
+QgsProject.instance().addMapLayer(petites_communes)
+```
+
+Manipulons désormais la géométrie en ajoutant le centroïde de la commune dans une colonne `latitude` et `longitude` en degrées.
+
+```python
+layer = iface.activeLayer()
+
+request = QgsFeatureRequest()
+request.setFilterExpression('to_int( "POPUL" ) < 1000')
+petites_communes = layer.materialize(request)
+
+with edit(petites_communes):
+    petites_communes.addAttribute(QgsField('densite', QVariant.Double))
+    petites_communes.addAttribute(QgsField('longitude', QVariant.Double))
+    petites_communes.addAttribute(QgsField('latitude', QVariant.Double))
+
+request = QgsFeatureRequest()
+request.setSubsetOfAttributes([4])
+transform = QgsCoordinateTransform(QgsCoordinateReferenceSystem(2154), QgsCoordinateReferenceSystem(4326), QgsProject.instance())
+with edit(petites_communes):
+    for feature in petites_communes.getFeatures(request):
+        area = feature.geometry().area() / 1000000
+        population = int(feature['POPUL'])
+        densite=population/area
+        petites_communes.changeAttributeValue(feature.id(), 5, densite)
+        geom = feature.geometry()
+        geom.transform(transform)
+        centroid = geom.centroid().asPoint()
+        petites_communes.changeAttributeValue(feature.id(), 6, centroid.x())
+        petites_communes.changeAttributeValue(feature.id(), 7, centroid.y())
+
+QgsProject.instance().addMapLayer(petites_communes)
 ```

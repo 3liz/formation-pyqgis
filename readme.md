@@ -18,7 +18,7 @@ Pour suivre la formation, il faut:
 
 ## Sommaire
 
-* [Aperçu de l'utilisation de Python dans QGIS](./le_python_dans_qgis.md)
+* [Où utiliser du Python dans QGIS](./le_python_dans_qgis.md)
 * [Memo Python](./00_memo_python.md)
 * [Découverte de la console Python dans QGIS](./01_console_python.md)
     * La documentation et l'API
@@ -26,23 +26,23 @@ Pour suivre la formation, il faut:
     * Accèder aux propriétés du projet
     * Ajouter une couche
     * Accèder aux propriétés de la couche
-    * Itération sur la couche vecteur
+    * Itération sur une couche vecteur
 * [Initiation au script Python](./02_fonctions_script.md)
     * Organiser son code en fonction
     * Manipulation des structures de données
+    * Exporter des informations sur les couches au format CSV
     * Communication avec l'utilisateur
-* [Utiliser les expressions](./03_expressions_extraction.md)
+* [Sélection et parcours des entités](./03_selection_parcours_entites.md)
     * Sélection
     * Filtrage
+    * Optimisation
     * Parcours sur une table attributaire
     * Matérialisation
-
-* Ajouter un index spatial
-* Transformation géométrique
-* Ouverture formulaire d'édition
-* Actions
-* Création d'une structure de couche vecteur à partir d'un CSV
-* Processing
-    * Script
-    * Provider (plugin)
-* Plugin
+    * Ajout d'un champ et calcul d'un indicateur pour chaque entité
+    * Manipulation de la géométrie
+* [Actions](./04_actions.md)
+    * Les actions par défaut
+    * Créer sa propre action pour inverser une ligne
+* [Script Processing](./05_script_processing.md)
+    * Le modèle de script existant
+    * Création d'une structure de couche vecteur à partir d'un CSV
