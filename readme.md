@@ -13,8 +13,8 @@ Pour suivre la formation, il faut:
 * Avoir QGIS 3.4 minimum
 * Avoir des bases en programmation
 * Avoir un jeu de données, par exemple:
-	* Données OSM à l'aide du plugin QuickOSM
-	* Données [OSM2Igeo](https://github.com/igeofr/osm2igeo) (utilisation de ce jeu de données ci-après)
+    * Données OSM à l'aide du plugin QuickOSM
+    * Données [OSM2Igeo](https://github.com/igeofr/osm2igeo) (utilisation de ce jeu de données ci-après)
 
 ## Sommaire
 
@@ -26,22 +26,23 @@ Pour suivre la formation, il faut:
     * Accèder aux propriétés du projet
     * Ajouter une couche
     * Accèder aux propriétés de la couche
+    * Itération sur la couche vecteur
 * [Initiation au script Python](./02_fonctions_script.md)
     * Organiser son code en fonction
     * Manipulation des structures de données
+    * Communication avec l'utilisateur
+* [Utiliser les expressions](./03_expressions_extraction.md)
+    * Sélection
+    * Filtrage
+    * Parcours sur une table attributaire
+    * Matérialisation
 
 * Ajouter un index spatial
-* Parcours sur une table attributaire
 * Transformation géométrique
 * Ouverture formulaire d'édition
-* Expression QGIS
-    * Séléction
-    * Filtrage (materialization)
 * Actions
 * Création d'une structure de couche vecteur à partir d'un CSV
 * Processing
     * Script
     * Provider (plugin)
 * Plugin
-* Communication avec l'utilisateur
-

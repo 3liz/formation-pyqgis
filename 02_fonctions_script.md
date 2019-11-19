@@ -169,3 +169,21 @@ QgsVectorFileWriter.writeAsVectorFormat(
 )
 
 ```
+
+## Communication avec l'utilisateur des erreurs et des logs
+
+Nous avons déjà vu ci-dessus comment générer des messages vers l'utilisateur:
+```Python
+iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.Critical)
+iface.messageBar().pushMessage('Avertissement','ou un avertissement', Qgis.Warning)
+iface.messageBar().pushMessage('Information','ou une information', Qgis.Info)
+iface.messageBar().pushMessage('Succès','ou un succès', Qgis.Success)
+```
+
+On peut aussi écrire des logs comme ci:
+```Python
+QgsMessageLog.logMessage('Une erreur est survenue','Notre outil', Qgis.Critical)
+QgsMessageLog.logMessage('Un avertissement','Notre outil', Qgis.Warning)
+QgsMessageLog.logMessage('Une information','Notre outil', Qgis.Info)
+QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.Success)
+```
