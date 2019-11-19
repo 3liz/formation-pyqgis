@@ -33,6 +33,13 @@ Voir la documentation https://docs.qgis.org/testing/en/docs/user_manual/processi
 
 ![Script template](./media/script_template.png)
 
+## Un modèle Processing en Python
+
+Depuis QGIS 3.6, on peut désormais exporter un modèle de traitement Processing en Python.
+Il faut faire un clic droit sur un modèle dans la boîte à outils puis choisir "Exporter le modèle comme un algorithme Python".
+
+![Modèle Processing vers Python](./media/model_to_python.png)
+
 ## Extension (plugin)
 
 * Extension côté bureautique et même côté QGIS Serveur.
@@ -103,7 +110,7 @@ Par exemple, on peut ouvrir un lien WEB ou un PDF en fonction d'un attribut d'un
 ## Formulaire
 
 On peut personnaliser un formulaire par l'ajout de logique Python. Cependant, dans QGIS 3, 
-l'utilisation de Python n'est plus forcément nécessaire, on peut désormais utiliser des expressions.
+l'utilisation de Python n'est plus forcément nécessaire, on peut désormais utiliser des expressions **(recommandé)**.
 
 ![Formulaire avec logique Python](./media/formulaire_python.png)
 
@@ -114,7 +121,7 @@ Sans lancer QGIS graphiquement, on peut utiliser la librairie QGIS dans nos scri
 application graphique ou notre propre exécutable et ainsi utiliser les fonctions de QGIS. On donc faire un programme en 
 ligne de commande qui effectue une certaine opération sur un répertoire donné.
 
-## startup.py
+## le fichier "startup.py"
 
 Si l'on place un fichier nommé `startup.py` dans le dossier Python du profil de l'utilisateur, QGIS va le lancer 
 automatiquement à chaque ouverture de QGIS.

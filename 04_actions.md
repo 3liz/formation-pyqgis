@@ -1,13 +1,28 @@
 # Les actions
 
-* Pour connaître les actions dasn QGIS, il faut se référer au manuel de QGIS :
+* Pour connaître le principe des actions dans QGIS, il faut se référer au manuel de QGIS :
     * https://docs.qgis.org/3.4/fr/docs/user_manual/working_with_vector/vector_properties.html#actions-properties
+* Ajouter la couche `D_OSM_HYDROGRAPHIE`, `CANALISATION_EAU.shp`.
+* Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une `Ligne de symbole`.
     
-## Manipulation
+## Les actions par défaut
 
-* Ajouter la couche `canalisation`.
+* Dans la fenêtre des propriétés d'une couche vecteur, aller dans l'onglet `Actions`.
+* Cliquer sur le bouton `Créer les actions par défaut`.
+* Observons quelques actions pour comprendre le fonctionnement.
+
+## Notre propre action
+
+* Commencons par un script Python classique, laissons de côté les actions pour le moment.
 * Écrire une fonction qui se charge *d'inverser* une ligne. Cette fonction prend en paramètre la couche vecteur et une liste d'ID.
 
+```python
+def reverse_geom(layer, ids):
+    continue
+
+```
+
+* Solution:
 ```python
 def reverse_geom(layer, ids):
     with edit(layer):
@@ -43,3 +58,5 @@ def reverse_geom(layer, ids):
 layer = QgsProject.instance().mapLayer('[% @layer_id %]')
 reverse_geom(layer, '[% $id%]')
 ```
+
+On peut désormais cliquer sur une ligne pour automatiquement inverser une ligne.
