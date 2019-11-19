@@ -1,0 +1,479 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   00-Mémo-Python
+  </title>
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   body,table tr{background-color:#fff}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}hr,pre code{background:0 0}body{font:16px Helvetica,Arial,sans-serif;line-height:1.4;color:#333;word-wrap:break-word;padding:10px 15px}strong,table tr th{font-weight:700}h1{font-size:2em;margin:.67em 0;text-align:center}h2{font-size:1.75em}h3{font-size:1.5em}h4{font-size:1.25em}h1,h2,h3,h4,h5,h6{font-weight:700;position:relative;margin-top:15px;margin-bottom:15px;line-height:1.1}h1,h2{border-bottom:1px solid #eee}hr{height:0;margin:15px 0;overflow:hidden;border:0;border-bottom:1px solid #ddd}a{color:#4183C4}a.absent{color:#c00}ol,ul{padding-left:15px;margin-left:5px}ol{list-style-type:lower-roman}table tr{border-top:1px solid #ccc;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}img{max-width:100%}blockquote{padding:0 15px;border-left:4px solid #ccc}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h1>
+   Introduction au language Python
+  </h1>
+  <h2>
+   Qu'est ce que Python?
+  </h2>
+  <ul>
+   <li>
+    Multi-usage (WEB, application graphique, script, serveur etc)
+   </li>
+   <li>
+    Programmation Orientée Objet (POO)
+    <ul>
+     <li>
+      Tout est objet
+     </li>
+    </ul>
+   </li>
+   <li>
+    Interpreté
+   </li>
+   <li>
+    Centré sur la lecture et la productivité
+    <ul>
+     <li>
+      Syntaxe du code simple
+     </li>
+    </ul>
+   </li>
+   <li>
+    Grosse communauté
+    <ul>
+     <li>
+      De nombreux packages disponibles sur internet
+     </li>
+     <li>
+      https://pypi.org/
+     </li>
+    </ul>
+   </li>
+  </ul>
+  <h2>
+   Versions
+  </h2>
+  <ul>
+   <li>
+    Python 2
+    <ul>
+     <li>
+      Sortie en 2000
+     </li>
+     <li>
+      Il est encore très utilisé, notamment sur les tutoriels sur internet et quelques projets qui tardent a se mettre à jour
+     </li>
+     <li>
+      Une adoption massive (QGIS 2)
+     </li>
+     <li>
+      Dernière version le 1 janvier 2020 !
+     </li>
+    </ul>
+   </li>
+   <li>
+    Python 3
+    <ul>
+     <li>
+      Sortie en 2008, mais il s'agit d'une adoption très très lente, tellement Python 2 a été massivement adopté.
+     </li>
+     <li>
+      Dernière version 3.8.0 du 14 octobre 2019
+     </li>
+     <li>
+      QGIS 3 requière Python 3.5 minimum
+     </li>
+    </ul>
+   </li>
+  </ul>
+  <h2>
+   Rappel de base sur Python
+  </h2>
+  <h3>
+   Les types de données:
+  </h3>
+  <p>
+   Une variable peut contenir un entier, un booléen (
+   <code>
+    True
+   </code>
+   ou
+   <code>
+    False
+   </code>
+   ), chaîne de caractères, nombre décimal, un objet...
+   <br/>
+   Il y a un faible typage des variables, c'est à dire qu'une variable peut changer de type au cours de l'exécution du programme.
+  </p>
+  <pre><code class="python">mon_compteur = 0
+type(mon_compteur)
+&lt;class 'int'&gt;
+mon_compteur = False
+type(mon_compteur)
+&lt;class 'bool'&gt;
+mon_compteur = 'oui'
+type(mon_compteur)
+&lt;class 'str'&gt;
+mon_compteur = "non"
+type(mon_compteur)
+&lt;class 'str'&gt;
+mon_compteur = 3.5
+type(mon_compteur)
+&lt;class 'float'&gt;
+mon_compteur = None
+type(mon_compteur)
+&lt;class 'NoneType'&gt;
+
+</code></pre>
+  <h3>
+   Les structures de données
+  </h3>
+  <p>
+   Il existe quatre types de structure de données:
+   <br/>
+   <em>
+    les variables simples (ci-dessus)
+    <br/>
+   </em>
+   les tuples (non modifiables)
+  </p>
+  <pre><code class="python">liste_vide = ()
+liste = (1 , 2, 3, 'bonjour')
+type(liste)
+&lt;class 'tuple'&gt;
+len(liste)
+4
+liste[0]
+1
+liste[0:2]
+(1, 2)
+liste[2:]
+(3, 'bonjour')
+liste[5]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/code.py", line 90, in runcode
+    exec(code, self.locals)
+  File "&lt;input&gt;", line 1, in &lt;module&gt;
+IndexError: tuple index out of range
+
+</code></pre>
+  <ul>
+   <li>
+    les listes (modifiables)
+   </li>
+  </ul>
+  <pre><code class="python">nombres = []
+type(nombres)
+&lt;class 'list'&gt;
+nombres.append(1)
+nombres.extend([2, 3, 4])
+nombres
+[1, 2, 3, 4]
+
+</code></pre>
+  <ul>
+   <li>
+    les dictionnaires
+   </li>
+  </ul>
+  <p>
+   <em>
+    Attention
+   </em>
+   , les dictionnaires ne sont pas ordonnés!
+   <br/>
+   Si vraiment il y a besoin, il existe une classe
+   <code>
+    OrderedDict
+   </code>
+   , mais ce n'est pas un structure de données natif dans Python.
+   <br/>
+   C'est un objet.
+  </p>
+  <pre><code class="python">personne = {}
+type(personne)
+# &lt;class 'dict'&gt;
+personne['prenom'] = 'etienne'
+personne['nom'] = 'trimaille'
+personne['est_majeur'] = True
+personne['age'] = 30
+</code></pre>
+  <h3>
+   Les commentaires
+  </h3>
+  <pre><code class="python"># Ceci est un commentaire sur une ligne
+/*
+Ceci est
+un commentaire
+sur plusieurs lignes
+*/
+
+"""Ces lignes sont réservés pour la documentation de l'API et ne doient pas être des lignes de commentaires."""
+
+</code></pre>
+  <h3>
+   Arithmétique
+  </h3>
+  <pre><code class="python">a = 10
+a += 1
+a -= 1
+b = a + 1
+c = a - 1
+d = a * 2
+e = a / 2
+f = a % 3  # 1
+g = a ** 2  # 100
+</code></pre>
+  <h3>
+   Opérateurs logiques
+  </h3>
+  <pre><code class="python">a &gt; b
+a &gt;= b
+a &lt; b
+a &lt;= b
+a == b
+a != b
+a is b
+a is not b
+a in b
+0 &lt; a &lt; 10
+</code></pre>
+  <h3>
+   Condition
+  </h3>
+  <p>
+   <strong>
+    Important
+   </strong>
+   , Python oblige l'indentation sinon il y a une erreur. Par convention, il s'agit de 4 espaces.
+  </p>
+  <pre><code class="python">note = 13
+if note &gt;= 16:
+    if note == 20:
+        print('Toutes mes félicitations')
+    else:
+        print('Félicitations')
+elif 14 &lt;= note &lt; 16:
+    print('Très bien')
+elif 12 &lt;= note &lt; 14:
+    print('Bien')
+else:
+    print('Peu mieux faire')
+</code></pre>
+  <h3>
+   Boucle for
+  </h3>
+  <pre><code class="python">for x in range(10):
+    print(x)
+
+countries = ['Allemagne', 'Espagne', 'France']
+for country in countries:
+    print('Pays : {}'.format(country))
+
+regions = {
+    'Auvergne-Rhône-Alpes': 'Lyon',
+    'Bourgogne-Franche-Comté': 'Dijon',
+    'Bretagne': 'Rennes',
+    'Centre-Val de Loire': 'Orléans',
+}
+
+for region in regions:
+    print(region)
+
+for region in regions.keys():
+    print(region)
+
+for city in regions.values():
+    print(city)
+
+for region, city in regions.items():
+    print('Région {} dont le chef lieu est {}'.format(region, city))
+</code></pre>
+  <h3>
+   Recherche d'un élément
+  </h3>
+  <pre><code class="python">countries = ['Allemagne', 'Espagne', 'France']
+
+# Solution simple
+if 'Allemagne' in countries:
+    print('Présent')
+else:
+    print('Non présent')
+
+# Plus complexe, avec une fonction pour les minuscules
+present = False
+for country in countries:
+    if country.lower() == 'allemagne'
+        present = True
+if present:
+    print('Présent')
+else:
+    print('Non présent')
+
+# Le plus pythonique
+for country in countries:
+    if country.lower() == 'allemagne'
+        print('Présent')
+        break
+else:
+    print('Non présent')
+
+</code></pre>
+  <h3>
+   Boucle while
+  </h3>
+  <pre><code class="python">x = 0
+while x &lt; 10:
+    print(x)
+    x += 1
+</code></pre>
+  <ul>
+   <li>
+    En Python, il n'y a pas de boucle
+    <code>
+     do ... while
+    </code>
+    , à la place, on peut faire ainsi :
+   </li>
+  </ul>
+  <pre><code class="python">executer_une_fonction()
+while not conditon_echec:
+    executer_une_fonction()
+</code></pre>
+  <h3>
+   List Comprehensions
+  </h3>
+  <p>
+   C'est une façon très pythonique et très utilisée de créer des listes.
+   <br/>
+   Par exemple, créer une liste des nombres impaires entre 1 et 9:
+  </p>
+  <pre><code class="python"># Non pythonique
+impair = []
+for x in range(10):
+    if x % 2:
+        impair.append(x)
+
+# Pythonique
+impair = [x for x in range(10) if x % 2]
+</code></pre>
+  <ul>
+   <li>
+    Il existe aussi les Dict Comprehensions (moins utilisé)
+   </li>
+  </ul>
+  <h3>
+   Manipulation sur les chaînes de caractères
+  </h3>
+  <ul>
+   <li>
+    Pour information, les chaînes de caractères sont des listes.
+   </li>
+  </ul>
+  <pre><code class="python">alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+len(alphabet)
+','.join(alphabet)
+alphabet.lower()
+alphabet[1]  # B
+alphabet[1:3]  # BC
+alphabet[-1]  # Z
+alphabet[-3:]  # XYZ
+alphabet[:6]  # ABCDEF
+</code></pre>
+  <h3>
+   Fonctions
+  </h3>
+  <ul>
+   <li>
+    Voici des exemples de fonction Python.
+    <br/>
+    <em>
+     Encore une fois
+    </em>
+    , attention à l'indentation.
+   </li>
+  </ul>
+  <pre><code class="python">def ajouter(x, y):
+    """Ajouter deux nombres."""
+    return x + y
+
+def crier(phrase='bonjour'):
+    print(phrase.upper())
+
+def discuter(texte, personnage='Charles'):
+    """Un personnage discute."""
+    print('{}: "{}"'.format(personnage, texte))
+</code></pre>
+  <ul>
+   <li>
+    Une fonction peut retourner plusieurs valeurs:
+   </li>
+  </ul>
+  <pre><code class="python">def decomposer(entier, diviser_par):
+    """Retourne la partie entière et le reste d'une division."""
+    partie_entiere = entier / diviser_par
+    reste = entier % diviser_par
+    return partie_entiere, reste
+</code></pre>
+  <ul>
+   <li>
+    Il se peut que l'on ne connaisse pas à l'avance le nombre précis d'arguments dans une fonction.
+    <ul>
+     <li>
+      <code>
+       args
+      </code>
+      est utilisé pour passer un nombre inderterminé d'argument à la fonction
+     </li>
+     <li>
+      <code>
+       kwargs
+      </code>
+      est utilisé pour un nombre indeterminé d'arguments nommés
+     </li>
+    </ul>
+   </li>
+  </ul>
+  <pre><code class="python">def une_fonction(*args, **kwargs):
+    print('Les arguments')
+    for arg in args:
+        print(arg)
+    print('Les arguments non nommés')
+    for key, value in kwargs.items():
+        print('{} -&gt; {}'.format(key, value))
+
+une_fonction(1,2,3, text='Ma phrase')
+</code></pre>
+  <h3>
+   Truc et astuces
+  </h3>
+  <p>
+   Attention au passage par référence:
+  </p>
+  <pre><code class="python">ma_liste_1 = [1, 2, 3]
+ma_liste_2 = ma_liste_1
+ma_liste_2.append(4)
+print(ma_liste_2)
+print(ma_liste_1)
+</code></pre>
+  <p>
+   Avoir un compteur lors de l'itération d'une liste:
+  </p>
+  <pre><code class="python">users = ['Tom', 'James', 'John']
+for i, user in enumerate(users):
+    print('{} -&gt; {}'.format(i + 1, user))
+</code></pre>
+  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>

@@ -18,7 +18,7 @@ Pour suivre la formation, il faut:
 ## Sommaire
 
 * [Où utiliser du Python dans QGIS ?](./le_python_dans_qgis.md)
-* [Memo Python](./00_memo_python.md)
+* [Mémo Python](./00_memo_python.md)
 * [Découverte de la console Python dans QGIS](./01_console_python.md)
     * La documentation et l'API
     * Initiation à la Programmation Orientée Objet (POO)
