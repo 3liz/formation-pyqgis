@@ -1,6 +1,7 @@
 # Utilisation des expressions QGIS
 
-Nous partons de la couche des `COMMUNES` uniquement chargé dans QGIS.
+* Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en Python.
+* Nous partons de la couche des `COMMUNES` uniquement chargé dans QGIS.
 
 ## Sélection d'entité
 
@@ -20,11 +21,11 @@ layer.invertSelection()
 layer.removeSelection()
 ```
 
-## Boucler sur une expression
+## Boucler sur les entités à l'aide d'une expression
 
 L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas `NC`.
 
-L'exemple à ne pas faire :
+L'exemple à **ne pas** faire, même si cela fonctionne :
 ```python
 layer = iface.activeLayer()
 for feature in layer.getFeatures():
@@ -32,18 +33,16 @@ for feature in layer.getFeatures():
         print(feature['NOM'])
 ```
 
-Utilisons une expression pour limiter les résultats et ordonner les résultats.
 Observez bien la signature de la fonction `getFeatures`. Que remarquez-vous?
+Utilisons donc une expression pour limiter les résultats.
 
 ```python
-request = QgsFeatureRequest()
-request.setFilterExpression('"POPUL" != \'NC\'')
-request.addOrderBy('NOM')
+request = QgsFeatureRequest('"POPUL" != \'NC\''))
 for feature in layer.getFeatures(request):
     print('{commune} : {nombre} habitants pour'.format(commune=feature['NOM'], nombre=feature['POPUL']))
 ```
 
-Nous pouvons encore optimiser la requête :
+Nous pouvons encore optimiser la requête et accessoirement ordonner les résultats :
 ```python
 request = QgsFeatureRequest()
 request.setFilterExpression('"POPUL" != \'NC\'')
@@ -83,7 +82,6 @@ request.addOrderBy('NOM')
 request.setSubsetOfAttributes([1, 4])
 for feature in layer.getFeatures(request):
     area = feature.geometry().area() / 1000000
-    print(area)
     try:
         population = int(feature['POPUL'])
     except ValueError:
@@ -91,7 +89,8 @@ for feature in layer.getFeatures(request):
     print('{commune} : {densite} habitants/km²'.format(commune=feature['NOM'], densite=population/area))
 ```
 
-Nous souhaitons enregistrer ces informations dans un table séparé avec un nouveau champ `densite`.
+Nous souhaitons enregistrer ces informations dans une vraie table avec un nouveau champ `densite_population`.
+
 ```python
 layer = iface.activeLayer()
 
@@ -100,7 +99,7 @@ request.setFilterExpression('to_int( "POPUL" ) < 1000')
 petites_communes = layer.materialize(request)
 
 with edit(petites_communes):
-    field = QgsField('densite', QVariant.Double)
+    field = QgsField('densite_population', QVariant.Double)
     petites_communes.addAttribute(field)
 
 request = QgsFeatureRequest()
@@ -125,19 +124,27 @@ request.setFilterExpression('to_int( "POPUL" ) < 1000')
 petites_communes = layer.materialize(request)
 
 with edit(petites_communes):
-    petites_communes.addAttribute(QgsField('densite', QVariant.Double))
+    petites_communes.addAttribute(QgsField('densite_population', QVariant.Double))
+
+    # /!\ Ajouter les 2 lignes ci-dessous
     petites_communes.addAttribute(QgsField('longitude', QVariant.Double))
     petites_communes.addAttribute(QgsField('latitude', QVariant.Double))
 
 request = QgsFeatureRequest()
 request.setSubsetOfAttributes([4])
-transform = QgsCoordinateTransform(QgsCoordinateReferenceSystem(2154), QgsCoordinateReferenceSystem(4326), QgsProject.instance())
+
+# /!\ Ajouter les 2 lignes ci-dessous à propos de la transformation
+transform = QgsCoordinateTransform(
+    QgsCoordinateReferenceSystem(2154), QgsCoordinateReferenceSystem(4326), QgsProject.instance())
+
 with edit(petites_communes):
     for feature in petites_communes.getFeatures(request):
         area = feature.geometry().area() / 1000000
         population = int(feature['POPUL'])
         densite=population/area
         petites_communes.changeAttributeValue(feature.id(), 5, densite)
+        
+        # /!\ Ajouter les lignes ci-dessous
         geom = feature.geometry()
         geom.transform(transform)
         centroid = geom.centroid().asPoint()

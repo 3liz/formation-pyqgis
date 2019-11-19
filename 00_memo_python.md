@@ -16,20 +16,20 @@
 
 * Python 2
 	* Sortie en 2000
-	* Il est encore très utilisé, notamment sur les tutoriels sur Internet et quelques projets qui tardent a se mettre à jour
+	* Il est encore très utilisé, notamment sur les tutoriels sur internet et quelques projets qui tardent a se mettre à jour
 	* Une adoption massive (QGIS 2)
-	* Dernière version le 1 janvier 2020!
+	* Dernière version le 1 janvier 2020 !
 * Python 3
 	* Sortie en 2008, mais il s'agit d'une adoption très très lente, tellement Python 2 a été massivement adopté.
-	* Version 3.8.0 du 14 octobre 2019
+	* Dernière version 3.8.0 du 14 octobre 2019
 	* QGIS 3 requière Python 3.5 minimum
 
 ## Rappel de base sur Python
 
 ### Les types de données:
 
-Une variable peut contenir un entier, un booléen (`True` ou `False`), chaîne de caractères, nombre décimale, un objet...
-Il n'y a un faible typage des variables, c'est à dire qu'une variable peut changer de type au cours de l'exécution.
+Une variable peut contenir un entier, un booléen (`True` ou `False`), chaîne de caractères, nombre décimal, un objet...
+Il y a un faible typage des variables, c'est à dire qu'une variable peut changer de type au cours de l'exécution du programme.
 
 ```python
 mon_compteur = 0
@@ -92,10 +92,11 @@ nombres
 
 ```
 
-* les dictionaires
+* les dictionnaires
 
-*Attention*, les dictionaires ne sont pas ordonnés!
-Si vraiment il y a besoin, il existe une classe `OrderedDict`, mais ce n'est pas natif dans Python.
+*Attention*, les dictionnaires ne sont pas ordonnés!
+Si vraiment il y a besoin, il existe une classe `OrderedDict`, mais ce n'est pas un structure de données natif dans Python.
+C'est un objet.
 
 ```python
 personne = {}
@@ -117,7 +118,6 @@ un commentaire
 sur plusieurs lignes
 */
 
-/*
 """Ces lignes sont réservés pour la documentation de l'API et ne doient pas être des lignes de commentaires."""
 
 ```
@@ -225,7 +225,7 @@ else:
 # Le plus pythonique
 for country in countries:
     if country.lower() == 'allemagne'
-        present = True
+        print('Présent')
         break
 else:
     print('Non présent')
@@ -236,12 +236,12 @@ else:
 
 ```python
 x = 0
-while x < 100:
+while x < 10:
     print(x)
     x += 1
 ```
 
-* En Python, il n'y a pas de boucle do ... while, à la place, on peut faire ainsi :
+* En Python, il n'y a pas de boucle `do ... while`, à la place, on peut faire ainsi :
 
 ```python
 executer_une_fonction()
@@ -251,7 +251,8 @@ while not conditon_echec:
 
 ### List Comprehensions
 
-Créer une liste des nombres impaires entre 1 et 9:
+C'est une façon très pythonique et très utilisée de créer des listes.
+Par exemple, créer une liste des nombres impaires entre 1 et 9:
 
 ```python
 # Non pythonique
@@ -261,10 +262,10 @@ for x in range(10):
         impair.append(x)
 
 # Pythonique
-impair = [ x for x in range(10) if x % 2]
+impair = [x for x in range(10) if x % 2]
 ```
 
-* Il existe aussi les Dict Comprehensions
+* Il existe aussi les Dict Comprehensions (moins utilisé)
 
 ### Manipulation sur les chaînes de caractères
 
@@ -287,7 +288,7 @@ alphabet[:6]  # ABCDEF
 *Encore une fois*, attention à l'indentation.
 
 ```python
-def ajouter(x , y):
+def ajouter(x, y):
     """Ajouter deux nombres."""
     return x + y
 
@@ -296,7 +297,7 @@ def crier(phrase='bonjour'):
 
 def discuter(texte, personnage='Charles'):
     """Un personnage discute."""
-    print('{}: "{}".format(personnage, texte))
+    print('{}: "{}"'.format(personnage, texte))
 ```
 
 * Une fonction peut retourner plusieurs valeurs:
@@ -304,14 +305,14 @@ def discuter(texte, personnage='Charles'):
 ```python
 def decomposer(entier, diviser_par):
     """Retourne la partie entière et le reste d'une division."""
-    partie_entiere = entier / divise_par
-    reste = entier % divise_par
+    partie_entiere = entier / diviser_par
+    reste = entier % diviser_par
     return partie_entiere, reste
 ```
 
 * Il se peut que l'on ne connaisse pas à l'avance le nombre précis d'arguments dans une fonction.
 	* `args` est utilisé pour passer un nombre inderterminé d'argument à la fonction
-	* `kwargs` est utilisé pour un nombre indeterminé de d'arguments nommés
+	* `kwargs` est utilisé pour un nombre indeterminé d'arguments nommés
 
 ```python
 def une_fonction(*args, **kwargs):
@@ -329,11 +330,11 @@ une_fonction(1,2,3, text='Ma phrase')
 
 Attention au passage par référence:
 ```python
-ma_liste1 = [1, 2, 3]
-ma_liste2 = ma_liste1
-ma_liste2.append(4)
-print(ma_liste2)
-print(ma_liste1)
+ma_liste_1 = [1, 2, 3]
+ma_liste_2 = ma_liste_1
+ma_liste_2.append(4)
+print(ma_liste_2)
+print(ma_liste_1)
 ```
 
 Avoir un compteur lors de l'itération d'une liste:

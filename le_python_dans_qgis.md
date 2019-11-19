@@ -1,7 +1,7 @@
 # Le python dans QGIS
 
-QGIS permet d'utiliser du Python dans divers emplacements. Python possède de très nombreux packages/modules disponibles sur internet.
-On peut les appeler dans tous ces emplacements. Voici une description de ces emplacements:
+QGIS permet d'utiliser du Python dans divers emplacement que nous allons voir ci-dessous.
+Python possède de très nombreux packages/modules disponibles sur internet qui fournissent des fonctions déjà écrites.
 
 ## Console
 
@@ -20,15 +20,17 @@ des librairies ou des classes.
 
 Le menu Traitement dans QGIS donne accès a plusieurs algorithmes d'analyse. 
 Ces algorithms proviennent soient de QGIS, GDAL ou encore de plugins.
-La boîte à outils de traitements ainsi que le modeleur graohique utilisent le "framework" Processing propre à QGIS.
-Ce framework permet de définir les entrées, les sorties d'un algorithme. Les algorithms sont donc normalisés en suivant tous le même modèle.
-Écrire un script *compatible* QGIS Processing permet l'intégration dans ce menu, permet l'utilisation de ce-dernier dans un modèle 
-ou encore l'utilisation en mode traitement par lot. Le framework peut aussi générer automatiquement l'interface graphique de l'algorithme 
-et le code est optimisé.
+La boîte à outils de traitements ainsi que le modeleur graphique utilisent le "framework" Processing propre à QGIS.
+Ce framework permet de définir les entrées et les sorties d'un algorithme. Les algorithms sont donc normalisés en 
+suivant tous le même modèle. Processing impose la façon d'écrire les scripts.
+
+Écrire un script *compatible* QGIS Processing permet l'intégration dans ce menu, permet également l'utilisation de ce-dernier 
+dans un modèle ou encore l'utilisation en mode traitement par lot. Le framework peut aussi générer automatiquement 
+l'interface graphique de l'algorithme et le code est optimisé.
 
 Il existe un modèle par défaut que l'on peut utiliser pour démarrer l'écriture d'un script Processing.
-Depuis la barre d'outil traitements, `Créer un nouveau script depuis un modèle.` Ce modèle utilise la Programmation Orientée Objet. 
-Depuis QGIS 3.6, on peut également utiliser la syntaxe par décorateur `@alg`.
+Depuis la barre d'outil traitements, `Créer un nouveau script depuis un modèle.` Ce modèle utilise la syntaxe Programmation 
+Orientée Objet. Depuis QGIS 3.6, on peut également utiliser la syntaxe par décorateur `@alg`.
 Voir la documentation https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator
 
 ![Script template](./media/script_template.png)
@@ -37,6 +39,7 @@ Voir la documentation https://docs.qgis.org/testing/en/docs/user_manual/processi
 
 Depuis QGIS 3.6, on peut désormais exporter un modèle de traitement Processing en Python.
 Il faut faire un clic droit sur un modèle dans la boîte à outils puis choisir "Exporter le modèle comme un algorithme Python".
+On peut donc modifier ensuite ce fichier Python afin de rajouter de la logique suplémentaire.
 
 ![Modèle Processing vers Python](./media/model_to_python.png)
 
@@ -48,7 +51,7 @@ ou sinon ils peuvent être installés par un dosssier ZIP.
 * Afin de développer un plugin:
     * Utilisation du Plugin Builder
     * ou squelette minimum : https://github.com/wonder-sk/qgis-minimal-plugin
-* Plugin Reloader permet de simplifier le développement
+* Plugin Reloader permet de simplifier le développement en évitant de recharger QGIS
 * Documentation plugin QGIS Serveur : https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/server.html
 
 ## Fournisseur Processing dans une extension (Processing Provider)
@@ -61,17 +64,17 @@ On peut remarquer les plugins `DataPlotly`, `QuickOSM` etc.
 
 Ajout de Processing à un plugin QGIS :
 * soit lors du plugin builder
-* suivre la documentation pour l'ajout à un plugin existant: https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html 
+* ou manuellement en suivant la documentation pour l'ajout à un plugin existant: https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html 
 
 Il se peut que certaines extensions ne soient *que* des fournisseurs Processing.
 
 ## Expressions
 
-Les expressions sont souvent au coeur de QGIS. On peut les utiliser dans nombreux endroits, pour faire des sélection, des conditions.
+Les expressions sont souvent présentes dans QGIS. On peut les utiliser dans nombreux endroits, pour faire des sélection, des conditions etc.
 On peut également les utiliser à chaque fois que vous pouvez voir ce symbole:
 ![Data defined](./media/data_defined.png)
 
-Un plugin peut par exemple, ou même simplement un utilisateur, peut enregistrer ses propres expressions. Ci-dessous, le plugin `InaSAFE`:
+Un plugin, ou même simplement un utilisateur, peut enregistrer ses propres expressions. Ci-dessous, le plugin `InaSAFE`:
 ![Plugin expression](./media/plugin_expression.png)
 
 ![Processing provider](./media/editeur_expression.png)
@@ -103,7 +106,8 @@ Accessible depuis les propriétés du projet, dans l'onglet `Macros`. On peut la
 ## Actions
 
 Les actions sont des petits traitements que l'on peut lancer soit depuis la table attributaire ou depuis le canevas.
-Par exemple, on peut ouvrir un lien WEB ou un PDF en fonction d'un attribut d'une entité.
+Par exemple, on peut ouvrir un lien WEB ou un PDF en fonction d'un attribut d'une entité. Il est possible 
+d'écrire les actions en Python.
 
 ![Action sur une couche](./media/action.png)
 
@@ -118,8 +122,8 @@ l'utilisation de Python n'est plus forcément nécessaire, on peut désormais ut
 ## Application/script indépendant
 
 Sans lancer QGIS graphiquement, on peut utiliser la librairie QGIS dans nos scripts Python. On peut donc créer notre propre 
-application graphique ou notre propre exécutable et ainsi utiliser les fonctions de QGIS. On donc faire un programme en 
-ligne de commande qui effectue une certaine opération sur un répertoire donné.
+application graphique ou notre propre exécutable et ainsi utiliser les fonctions de QGIS.
+On peut donc faire un programme en ligne de commande qui effectue une certaine opération dans un répertoire donné.
 
 ## le fichier "startup.py"
 

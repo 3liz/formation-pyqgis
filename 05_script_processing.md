@@ -1,10 +1,11 @@
 # Créer un script Processing
 
-Processing est un framework pour faire des algorithms dans QGIS.
+Processing est un framework pour faire des algorithmes dans QGIS.
 
-*Note*, depuis QGIS 3.6, il existe désormais une autre syntaxe pour écrire script Processing.
+*Note*, depuis QGIS 3.6, il existe désormais une autre syntaxe pour 
+écrire script Processing à l'aide des décorateurs Python.
 
-## Le modèle de script par défaut.
+## Le modèle de script par défaut
 
 * Menu `Traitement`, `Boîte à outils`. Cliquer sur le logo Python, puis sur
 `Créer un nouveau script depuis un modèle.`
@@ -13,15 +14,19 @@ Processing est un framework pour faire des algorithms dans QGIS.
 
 ## Notre propre script
 
+* Nous souhaitons pouvoir créer plusieurs tables vides assez facilement à l'aide de fichier CSV.
 * Nous avons un dossier avec plusieurs fichier CSV représentant chacun une table.
+* Le nom du fichier CSV représente le nom de la table.
 * La première ligne représente l'entête des colonnes.
 * La deuxième ligne, si elle s'appelle `geom`, représente le type de géométrie et sa projection.
+
+Exemple de fichier csv `canalisation.csv` : 
 
 | name |   type   | length | precision | alias    |
 |------|----------|--------|-----------|----------|
 | geom | polygon  | 2154   |           |          |
 | id   | 2        | 3      | 0         | ID       |
-| n    | 2        | 3      | 0         | Nom      |
+| n    | 10       | 10     | 0         | Nom      |
 | d    | 2        | 3      | 0         | Diamètre |
 | l    | 2        | 3      | 0         | Longueur |
 
@@ -34,7 +39,14 @@ d,2,3,0,Diamètre
 l,2,3,0,Longueur
 ```
 
-Commençons par ecrire le script en console : 
+* Commençons par écrire le script en console : 
+* Il nous faut une fonction qui liste les CSV dans un dossier.
+
+```python
+def liste_csv(folder):
+    pass
+```
+
 ```python
 import os
 import csv

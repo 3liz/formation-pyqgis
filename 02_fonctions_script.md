@@ -1,9 +1,9 @@
-# Écriture de fonction Python
+# Organisation du code dans un script avec des fonctions
 
-## Charger automatiquement plusieurs couches et organiser son code
+## Charger automatiquement plusieurs couches à l'aide d'un script
 
-La console c'est bien, mais très limitant. Passons à l'écriture d'un script qui va nous faciliter 
-l'organisation du code en passant par l'ajout de fonction.
+La console c'est bien, mais c'est très limitant. Passons à l'écriture d'un script qui va nous faciliter 
+l'organisation du code.
 
 Voici le dernier script du fichier précédent, mais avec la gestion des erreurs:
 * Redémarrer QGIS
@@ -37,12 +37,17 @@ else:
 * Corriger les erreurs ;-)
 * À l'aide du mémo Python:
 	* Essayons de faire une fonction qui prend 2 paramètres
-		* la thématique
+		* la thématique (le dossier)
 		* le nom du shapefile
 	* La fonction se chargera de faire le nécessaire, par exemple: `charger_couche('H_OSM_ADMINISTRATIF', 'COMMUNE')`
-	* La fonction peut également retourner `False` si la couche n'est pas chargée ou sinon l'objet couche.
-* Une des solutions:
+	* La fonction peut également retourner `False` si la couche n'est pas chargée (une erreur) ou sinon l'objet couche.
 
+```python
+def charger_couche(thematique, shapefile):
+    pass
+```
+	
+* Une des solutions:
 
 ```python
 from os.path import join, isfile, isdir
@@ -77,12 +82,14 @@ charger_couche('H_OSM_ADMINISTRATIF', 'ARRONDISSEMENT')
 * Essayons de faire une fonction qui liste les shapefiles d'une certaine thématique. `os.walk(path)` permet de parcourir un chemin.
 
 ```python
+import os
+
 def liste_shapefiles(thematique):
     """Liste les shapefiles d'une thématique."""
     dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
     racine = QgsProject.instance().homePath()
     shapes = []
-    for root, directories, files in os.walk(join(racine, dossier, thematique)):
+    for root, directories, files in os.walk(os.path.join(racine, dossier, thematique)):
         for file in files:
             if file.lower().endswith('.shp'):
                 shapes.append(file.replace('.shp', ''))
@@ -92,23 +99,25 @@ shapes = liste_shapefiles('H_OSM_ADMINISTRATIF')
 print(shapes)
 ```
 
+* Permettre le chargement automatique de toute un thématique.
+
 ## Extraction des informations sous forme d'un fichier CSV.
 
 On souhaite désormais réaliser une fonction d'export des métadonnées de nos couches au format CSV, avec son CSVT.
-Il existe déjà un module CSV dans Python pour nous aider à écrire un fichier, mais nous n'allons pas l'utiliser.
+Il existe déjà un module CSV dans Python pour nous aider à écrire un fichier de type CSV, mais nous n'allons pas l'utiliser.
 Nous allons plutôt utiliser l'API QGIS pour créer une nouvelle couche en mémoire comportant les différentes informations que l'on souhaite exporter.
-Puis nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS du menu `Exporter la couche`).
+Puis nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de l'action `Exporter la couche`).
 
 Les différents champs qui devront être exportés sont:
 * son nom
 * son type de géométrie (format humain, lisible)
 * la projection
 * le nombre d'entité
-* encodage
+* l'encodage
 * si le seuil de visibilité est activé
-* la source
+* la source (le chemin) de la donnée
 
-Pour créer une couche en mémoire :
+Pour créer une couche tabulaire en mémoire :
 ```python
 layer_info = QgsVectorLayer('None', 'info', 'memory')
 ```
@@ -118,13 +127,17 @@ La liste des couches :
 layers = QgsProject.instance().mapLayers()
 ```
 
-Pour enregistrer in fichier : `QgsVectorFileWriter`
+Pour enregistrer un fichier : la classe `QgsVectorFileWriter`
 
-Solution
+Solution :
+
 ```python
 from os.path import join
 
 layers = QgsProject.instance().mapLayers()
+if not layers:
+    iface.messageBar().pushMessage('Pas de couche','Attention, il n\'a pas de couche', Qgis.Warning)
+
 layers = [layer for layer in layers.values()]
 
 layer_info = QgsVectorLayer('None', 'info', 'memory')
@@ -172,7 +185,7 @@ QgsVectorFileWriter.writeAsVectorFormat(
 
 ## Communication avec l'utilisateur des erreurs et des logs
 
-Nous avons déjà vu ci-dessus comment générer des messages vers l'utilisateur:
+Nous avons déjà vu ci-dessus comment générer des messages vers l'utilisateur avec l'utilisation de la `messageBar` :
 ```Python
 iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.Critical)
 iface.messageBar().pushMessage('Avertissement','ou un avertissement', Qgis.Warning)
