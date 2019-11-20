@@ -14,7 +14,7 @@ Voici le dernier script du fichier précédent, mais avec la gestion des erreurs
 
 ```python
 from os.path import join, isfile, isdir
-dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_3857'
+dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
 thematique = 'H_OSM_ADMINISTRATIF'
 couche = 'COMMUNE'
 
@@ -34,7 +34,7 @@ else:
             iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
 
 ```
-* Corriger les erreurs ;-)
+* Corriger le erreur ;-)
 * À l'aide du mémo Python:
 	* Essayons de faire une fonction qui prend 2 paramètres
 		* la thématique (le dossier)
@@ -43,7 +43,7 @@ else:
 	* La fonction peut également retourner `False` si la couche n'est pas chargée (une erreur) ou sinon l'objet couche.
 
 ```python
-def charger_couche(thematique, shapefile):
+def charger_couche(thematique, couche):
     pass
 ```
 	
@@ -52,7 +52,7 @@ def charger_couche(thematique, shapefile):
 ```python
 from os.path import join, isfile, isdir
 
-def charger_couche(thematique, shapefile):
+def charger_couche(thematique, couche):
     """Fonction qui charge une couche shapefile dans une thématique."""
     dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
 
@@ -61,7 +61,7 @@ def charger_couche(thematique, shapefile):
         iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
         return False
         
-    fichier_shape = join(racine, dossier, thematique, '{}.shp'.format(shapefile))
+    fichier_shape = join(racine, dossier, thematique, '{}.shp'.format(couche))
     if not isfile(fichier_shape):
         iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{}"'.format(fichier_shape), Qgis.Critical)
         return False
