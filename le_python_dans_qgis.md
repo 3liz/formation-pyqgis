@@ -77,7 +77,7 @@ On peut également les utiliser à chaque fois que vous pouvez voir ce symbole:
 Un plugin, ou même simplement un utilisateur, peut enregistrer ses propres expressions. Ci-dessous, le plugin `InaSAFE`:
 ![Plugin expression](./media/plugin_expression.png)
 
-![Processing provider](./media/editeur_expression.png)
+<!-- ![Processing provider](./media/editeur_expression.png) -->
 
 Exemple de code d'une expression:
 ```python
