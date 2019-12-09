@@ -34,7 +34,6 @@ else:
             iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
 
 ```
-* Corriger le erreur ;-)
 * À l'aide du mémo Python:
 	* Essayons de faire une fonction qui prend 2 paramètres
 		* la thématique (le dossier)
