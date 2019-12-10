@@ -21,6 +21,7 @@ Voici une liste non exhaustive de blog-post utiles pour manipuler PyQGIS:
 * [Optimisation des couches vecteurs](https://nyalldawson.net/2016/10/speeding-up-your-pyqgis-scripts/)
 * [Parcourir la légende en 3 parties](https://www.lutraconsulting.co.uk/blog/2014/07/06/qgis-layer-tree-api-part-1/)
 * [Plugin Processing](http://www.qgistutorials.com/en/docs/3/processing_python_plugin.html)
+* [Workshop sur les expressions en Python](https://madmanwoo.gitlab.io/foss4g-python-workshop/)
 
 Autre lien pour l'apprentissage de Python (sans QGIS):
 * [https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python](https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python)
