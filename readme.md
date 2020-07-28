@@ -7,8 +7,8 @@ Favicon: logo.png
 
 # Formation PyQGIS
 
-Format HTML : https://3liz.github.io/formation-pyqgis/
-Format Markdown : https://github.com/3liz/formation-pyqgis/blob/master/readme.md
+* Format HTML : https://3liz.github.io/formation-pyqgis/
+* Format Markdown : https://github.com/3liz/formation-pyqgis/blob/master/readme.md
 
 ## Pré-requis
 
