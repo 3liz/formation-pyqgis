@@ -1,3 +1,11 @@
+---
+Title: Rappel Python
+Favicon: logo.png
+Sibling: yes
+...
+
+[TOC]
+
 # Introduction au language Python
 
 ## Qu'est ce que Python?
@@ -343,3 +351,5 @@ users = ['Tom', 'James', 'John']
 for i, user in enumerate(users):
     print('{} -> {}'.format(i + 1, user))
 ```
+
+[Retour](./index.md)

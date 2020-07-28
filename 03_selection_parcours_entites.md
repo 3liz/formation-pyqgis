@@ -1,3 +1,11 @@
+---
+Title: Sélections, fonctions
+Favicon: logo.png
+Sibling: yes
+...
+
+[TOC]
+
 # Utilisation des expressions QGIS
 
 * Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en Python.
@@ -153,3 +161,5 @@ with edit(petites_communes):
 
 QgsProject.instance().addMapLayer(petites_communes)
 ```
+
+[Retour](./index.md)

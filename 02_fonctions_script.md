@@ -1,3 +1,11 @@
+---
+Title: Fonctions et scripts
+Favicon: logo.png
+Sibling: yes
+...
+
+[TOC]
+
 # Organisation du code dans un script avec des fonctions
 
 ## Charger automatiquement plusieurs couches à l'aide d'un script
@@ -199,3 +207,5 @@ QgsMessageLog.logMessage('Un avertissement','Notre outil', Qgis.Warning)
 QgsMessageLog.logMessage('Une information','Notre outil', Qgis.Info)
 QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.Success)
 ```
+
+[Retour](./index.md)

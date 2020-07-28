@@ -1,134 +1,90 @@
+
 <!DOCTYPE HTML>
 <html>
  <head>
   <meta charset="utf-8"/>
-  <title>
-   03-Sélection-Parcours-Entités
-  </title>
-  <link href="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
-  <style type="text/css">
-   body,table tr{background-color:#fff}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}hr,pre code{background:0 0}body{font:16px Helvetica,Arial,sans-serif;line-height:1.4;color:#333;word-wrap:break-word;padding:10px 15px}strong,table tr th{font-weight:700}h1{font-size:2em;margin:.67em 0;text-align:center}h2{font-size:1.75em}h3{font-size:1.5em}h4{font-size:1.25em}h1,h2,h3,h4,h5,h6{font-weight:700;position:relative;margin-top:15px;margin-bottom:15px;line-height:1.1}h1,h2{border-bottom:1px solid #eee}hr{height:0;margin:15px 0;overflow:hidden;border:0;border-bottom:1px solid #ddd}a{color:#4183C4}a.absent{color:#c00}ol,ul{padding-left:15px;margin-left:5px}ol{list-style-type:lower-roman}table tr{border-top:1px solid #ccc;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}img{max-width:100%}blockquote{padding:0 15px;border-left:4px solid #ccc}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
-  </style>
+  <title>Sélections, fonctions</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <link href="https://3liz.github.io/remarkable.css" rel="stylesheet"/>
+  <link href="logo.png" rel="icon" type="image/png" >
  </head>
  <body>
-  <h1>
-   Utilisation des expressions QGIS
-  </h1>
-  <ul>
-   <li>
-    Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en Python.
-   </li>
-   <li>
-    Nous partons de la couche des
-    <code>
-     COMMUNES
-    </code>
-    uniquement chargé dans QGIS.
-   </li>
-  </ul>
-  <h2>
-   Sélection d'entité
-  </h2>
-  <p>
-   Nous souhaitons sélectionner les entités dont le code INSEE commence par
-   <code>
-    77
-   </code>
-   .
-   <br/>
-   Commençons par faire cela graphiquement dans QGIS Desktop. À l'aide d'une expression QGIS, sélectionner
-   <br/>
-   les codes INSEE qui commencent par
-   <code>
-    77
-   </code>
-   .
-  </p>
-  <p>
-   <img alt="Sélectionner par expression" src="./media/console_editeur.png"/>
-  </p>
-  <p>
-   Nous allons faire la même chose, mais en utilisant Python. Pensez a désélectionner les entités.
-  </p>
-  <pre><code class="python">layer = iface.activeLayer()
+ <header class="header-container" style="">
+    <h1>Sélections, fonctions</h1>
+ </header>
+ <article>
+ <p><a href="../">Up</a></p>
+<p><a href="./index.html">Back</a></p><div class="toc"><span class="toctitle">Table of content</span><ul>
+<li><a href="#utilisation-des-expressions-qgis">Utilisation des expressions QGIS</a><ul>
+<li><a href="#selection-dentite">Sélection d'entité</a></li>
+<li><a href="#boucler-sur-les-entites-a-laide-dune-expression">Boucler sur les entités à l'aide d'une expression</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="utilisation-des-expressions-qgis">Utilisation des expressions QGIS</h1>
+<ul>
+<li>Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en Python.</li>
+<li>Nous partons de la couche des <code>COMMUNES</code> uniquement chargé dans QGIS.</li>
+</ul>
+<h2 id="selection-dentite">Sélection d'entité</h2>
+<p>Nous souhaitons sélectionner les entités dont le code INSEE commence par <code>77</code>.
+Commençons par faire cela graphiquement dans QGIS Desktop. À l'aide d'une expression QGIS, sélectionner
+les codes INSEE qui commencent par <code>77</code>.</p>
+<p><img alt="Sélectionner par expression" src="./media/console_editeur.png"></p>
+<p>Nous allons faire la même chose, mais en utilisant Python. Pensez a désélectionner les entités.</p>
+<pre><code class="python">layer = iface.activeLayer()
 layer.removeSelection()
-layer.selectByExpression("\"CODE_INSEE\" LIKE '{}%'".format(77))
+layer.selectByExpression(&quot;\&quot;CODE_INSEE\&quot; LIKE '{}%'&quot;.format(77))
 layer.invertSelection()
 layer.removeSelection()
 </code></pre>
-  <h2>
-   Boucler sur les entités à l'aide d'une expression
-  </h2>
-  <p>
-   L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas
-   <code>
-    NC
-   </code>
-   .
-  </p>
-  <p>
-   L'exemple à
-   <strong>
-    ne pas
-   </strong>
-   faire, même si cela fonctionne :
-  </p>
-  <pre><code class="python">layer = iface.activeLayer()
+
+<h2 id="boucler-sur-les-entites-a-laide-dune-expression">Boucler sur les entités à l'aide d'une expression</h2>
+<p>L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas <code>NC</code>.</p>
+<p>L'exemple à <strong>ne pas</strong> faire, même si cela fonctionne :</p>
+<pre><code class="python">layer = iface.activeLayer()
 for feature in layer.getFeatures():
     if feature['POPUL'] != 'NC':
         print(feature['NOM'])
 </code></pre>
-  <p>
-   Observez bien la signature de la fonction
-   <code>
-    getFeatures
-   </code>
-   . Que remarquez-vous?
-   <br/>
-   Utilisons donc une expression pour limiter les résultats.
-  </p>
-  <pre><code class="python">request = QgsFeatureRequest('"POPUL" != \'NC\''))
+
+<p>Observez bien la signature de la fonction <code>getFeatures</code>. Que remarquez-vous?
+Utilisons donc une expression pour limiter les résultats.</p>
+<pre><code class="python">request = QgsFeatureRequest('&quot;POPUL&quot; != \'NC\''))
 for feature in layer.getFeatures(request):
     print('{commune} : {nombre} habitants pour'.format(commune=feature['NOM'], nombre=feature['POPUL']))
 </code></pre>
-  <p>
-   Nous pouvons encore optimiser la requête et accessoirement ordonner les résultats :
-  </p>
-  <pre><code class="python">request = QgsFeatureRequest()
-request.setFilterExpression('"POPUL" != \'NC\'')
+
+<p>Nous pouvons encore optimiser la requête et accessoirement ordonner les résultats :</p>
+<pre><code class="python">request = QgsFeatureRequest()
+request.setFilterExpression('&quot;POPUL&quot; != \'NC\'')
 request.addOrderBy('NOM')
 request.setFlags(QgsFeatureRequest.NoGeometry)
 request.setSubsetOfAttributes([1, 4])
 for feature in layer.getFeatures(request):
     print('{commune} : {nombre} habitants'.format(commune=feature['NOM'], nombre=feature['POPUL']))
 </code></pre>
-  <p>
-   Faire le test en affichant un champ qui n'est pas dans la requête.
-  </p>
-  <p>
-   Rajoutons un intersection spatial avec l'emprise suivante:
-  </p>
-  <pre><code class="python">request.setFilterRect(QgsRectangle(662737,6807733,717144,6853979))
+
+<p>Faire le test en affichant un champ qui n'est pas dans la requête.</p>
+<p>Rajoutons un intersection spatial avec l'emprise suivante:</p>
+<pre><code class="python">request.setFilterRect(QgsRectangle(662737,6807733,717144,6853979))
 </code></pre>
-  <p>
-   Mettons ce résultat dans une nouvelle couche :
-  </p>
-  <pre><code class="python">memory_layer = layer.materialize(request)
+
+<p>Mettons ce résultat dans une nouvelle couche :</p>
+<pre><code class="python">memory_layer = layer.materialize(request)
 QgsProject.instance().addMapLayer(memory_layer)
 </code></pre>
-  <p>
-   Corrigeons ce problème d'export afin d'obtenir les géométries et les attributs:
-  </p>
-  <pre><code class="python">request.setFlags(QgsFeatureRequest.NoFlags)
+
+<p>Corrigeons ce problème d'export afin d'obtenir les géométries et les attributs:</p>
+<pre><code class="python">request.setFlags(QgsFeatureRequest.NoFlags)
 </code></pre>
-  <p>
-   Avant dernier exercice, afficher une liste des communes dont la population est inférieur
-   <br/>
-   à 1000 habitants en incluant la densité de population.
-  </p>
-  <pre><code class="python">layer = iface.activeLayer()
+
+<p>Avant dernier exercice, afficher une liste des communes dont la population est inférieur
+à 1000 habitants en incluant la densité de population.</p>
+<pre><code class="python">layer = iface.activeLayer()
 request = QgsFeatureRequest()
-request.setFilterExpression('to_int( "POPUL" ) &lt; 1000')
+request.setFilterExpression('to_int( &quot;POPUL&quot; ) &lt; 1000')
 request.addOrderBy('NOM')
 request.setSubsetOfAttributes([1, 4])
 for feature in layer.getFeatures(request):
@@ -139,17 +95,12 @@ for feature in layer.getFeatures(request):
         population = 0
     print('{commune} : {densite} habitants/km²'.format(commune=feature['NOM'], densite=population/area))
 </code></pre>
-  <p>
-   Nous souhaitons enregistrer ces informations dans une vraie table avec un nouveau champ
-   <code>
-    densite_population
-   </code>
-   .
-  </p>
-  <pre><code class="python">layer = iface.activeLayer()
+
+<p>Nous souhaitons enregistrer ces informations dans une vraie table avec un nouveau champ <code>densite_population</code>.</p>
+<pre><code class="python">layer = iface.activeLayer()
 
 request = QgsFeatureRequest()
-request.setFilterExpression('to_int( "POPUL" ) &lt; 1000')
+request.setFilterExpression('to_int( &quot;POPUL&quot; ) &lt; 1000')
 petites_communes = layer.materialize(request)
 
 with edit(petites_communes):
@@ -167,21 +118,12 @@ with edit(petites_communes):
 
 QgsProject.instance().addMapLayer(petites_communes)
 </code></pre>
-  <p>
-   Manipulons désormais la géométrie en ajoutant le centroïde de la commune dans une colonne
-   <code>
-    latitude
-   </code>
-   et
-   <code>
-    longitude
-   </code>
-   en degrées.
-  </p>
-  <pre><code class="python">layer = iface.activeLayer()
+
+<p>Manipulons désormais la géométrie en ajoutant le centroïde de la commune dans une colonne <code>latitude</code> et <code>longitude</code> en degrées.</p>
+<pre><code class="python">layer = iface.activeLayer()
 
 request = QgsFeatureRequest()
-request.setFilterExpression('to_int( "POPUL" ) &lt; 1000')
+request.setFilterExpression('to_int( &quot;POPUL&quot; ) &lt; 1000')
 petites_communes = layer.materialize(request)
 
 with edit(petites_communes):
@@ -214,7 +156,10 @@ with edit(petites_communes):
 
 QgsProject.instance().addMapLayer(petites_communes)
 </code></pre>
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+
+<p><a href="./index.html">Retour</a></p>
+  </article>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
   </script>
   <script>
    hljs.initHighlightingOnLoad();

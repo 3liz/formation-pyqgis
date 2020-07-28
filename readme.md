@@ -1,14 +1,26 @@
+---
+Title: PyQGIS
+Favicon: logo.png
+...
+
+[TOC]
+
 # Formation PyQGIS
+
+Format HTML : https://3liz.github.io/formation-pyqgis/
+Format Markdown : https://github.com/3liz/formation-pyqgis/blob/master/readme.md
 
 ## Pré-requis
 
 Cette formation concerne des utilisateurs de QGIS, géomaticiens, qui souhaitent apprendre l'API Python de QGIS :
+
 * Ajout de fonctionnalités à QGIS
 * Automatisation de certains traitements
 * Création de script
 * Création d'algorithme Processing
 
 Pour suivre la formation, il faut:
+
 * Avoir QGIS 3.4 minimum
 * Avoir des bases en programmation
 * Avoir un jeu de données, par exemple:

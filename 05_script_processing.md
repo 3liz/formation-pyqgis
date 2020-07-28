@@ -1,3 +1,11 @@
+---
+Title: Processing
+Favicon: logo.png
+Sibling: yes
+...
+
+[TOC]
+
 # Créer un script Processing
 
 Processing est un framework pour faire des algorithmes dans QGIS.
@@ -298,3 +306,5 @@ class CreateLayersFromCsvAlgorithm(QgsProcessingAlgorithm):
         return {self.OUTPUT_LAYERS: output_layers}
 ```
 Nous avons désormais un nouveau algorithme dans la boîte à outils. Plus besoin d'ouvrir un projet avant.
+
+[Retour](./index.md)

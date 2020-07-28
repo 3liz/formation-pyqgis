@@ -1,3 +1,11 @@
+---
+Title: Python et QGIS
+Favicon: logo.png
+Sibling: yes
+...
+
+[TOC]
+
 # Le python dans QGIS
 
 QGIS permet d'utiliser du Python dans divers emplacement que nous allons voir ci-dessous.
@@ -129,3 +137,5 @@ On peut donc faire un programme en ligne de commande qui effectue une certaine o
 
 Si l'on place un fichier nommé `startup.py` dans le dossier Python du profil de l'utilisateur, QGIS va le lancer 
 automatiquement à chaque ouverture de QGIS.
+
+[Retour](./index.md)

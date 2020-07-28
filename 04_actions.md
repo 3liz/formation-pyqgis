@@ -1,3 +1,11 @@
+---
+Title: Actions
+Favicon: logo.png
+Sibling: yes
+...
+
+[TOC]
+
 # Les actions
 
 * Pour connaître le principe des actions dans QGIS, il faut se référer au manuel de QGIS :
@@ -69,3 +77,5 @@ reverse_geom(layer, '[% $id%]')
 ```
 
 On peut désormais cliquer sur une ligne pour automatiquement inverser une ligne.
+
+[Retour](./index.md)
