@@ -4,17 +4,16 @@
  <head>
   <meta charset="utf-8"/>
   <title>Processing</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
-  <link href="https://3liz.github.io/remarkable.css" rel="stylesheet"/>
-  <link href="logo.png" rel="icon" type="image/png" >
+  <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <link type="text/css" href="https://docs.3liz.org/remarkable.css" rel="stylesheet"/>
+  <link type="image/png" href="logo.png" rel="icon" >
  </head>
  <body>
  <header class="header-container" style="">
     <h1>Processing</h1>
  </header>
  <article>
- <p><a href="../">Up</a></p>
-<p><a href="./index.html">Back</a></p><div class="toc"><span class="toctitle">Table of content</span><ul>
+<div class="toc"><span class="toctitle">Table of content</span><ul>
 <li><a href="#creer-un-script-processing">Créer un script Processing</a><ul>
 <li><a href="#le-modele-de-script-par-defaut">Le modèle de script par défaut</a></li>
 <li><a href="#notre-propre-script">Notre propre script</a></li>
@@ -36,19 +35,60 @@
 <h2 id="notre-propre-script">Notre propre script</h2>
 <ul>
 <li>Nous souhaitons pouvoir créer plusieurs tables vides assez facilement à l'aide de fichier CSV.</li>
-<li>Nous avons un dossier avec plusieurs fichier CSV représentant chacun une table.</li>
+<li>Nous avons un dossier avec plusieurs fichiers CSV représentant chacun une table.</li>
 <li>Le nom du fichier CSV représente le nom de la table.</li>
 <li>La première ligne représente l'entête des colonnes.</li>
 <li>La deuxième ligne, si elle s'appelle <code>geom</code>, représente le type de géométrie et sa projection.</li>
 </ul>
 <p>Exemple de fichier csv <code>canalisation.csv</code> : </p>
-<p>| name |   type   | length | precision | alias    |
-|------|----------|--------|-----------|----------|
-| geom | polygon  | 2154   |           |          |
-| id   | 2        | 3      | 0         | ID       |
-| n    | 10       | 10     | 0         | Nom      |
-| d    | 2        | 3      | 0         | Diamètre |
-| l    | 2        | 3      | 0         | Longueur |</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>length</th>
+<th>precision</th>
+<th>alias</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>geom</td>
+<td>polygon</td>
+<td>2154</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>ID</td>
+</tr>
+<tr>
+<td>n</td>
+<td>10</td>
+<td>10</td>
+<td>0</td>
+<td>Nom</td>
+</tr>
+<tr>
+<td>d</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>Diamètre</td>
+</tr>
+<tr>
+<td>l</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>Longueur</td>
+</tr>
+</tbody>
+</table>
 <pre><code class="csv">name,type,length,precision,alias
 geom,polygon,2154,'',''
 id,2,3,0,ID
@@ -112,7 +152,7 @@ for csv_file in csv_files:
     QgsProject.instance().addMapLayer(layer)
 </code></pre>
 
-<p>Nous allons maintenant ajouter et adapter ce code dans un script Processing:</p>
+<p>Nous allons maintenant ajouter et adapter ce code dans un script Processing :</p>
 <pre><code class="python">&quot;&quot;&quot;
 ***************************************************************************
 *                                                                         *
@@ -315,7 +355,7 @@ class CreateLayersFromCsvAlgorithm(QgsProcessingAlgorithm):
 </code></pre>
 
 <p>Nous avons désormais un nouveau algorithme dans la boîte à outils. Plus besoin d'ouvrir un projet avant.</p>
-<p><a href="./index.html">Retour</a></p>
+<p><a href="./readme.html">Retour</a></p>
   </article>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
   </script>

@@ -7,7 +7,7 @@ Favicon: logo.png
 
 # Formation PyQGIS
 
-* Format HTML : https://3liz.github.io/formation-pyqgis/
+* Format HTML : https://docs.3liz.org/formation-pyqgis/
 * Format Markdown : https://github.com/3liz/formation-pyqgis/blob/master/readme.md
 
 ## Pré-requis
@@ -19,13 +19,15 @@ Cette formation concerne des utilisateurs de QGIS, géomaticiens, qui souhaitent
 * Création de script
 * Création d'algorithme Processing
 
-Pour suivre la formation, il faut:
+Pour suivre la formation, il faut :
 
-* Avoir QGIS 3.4 minimum
+* Avoir [QGIS LTR minimum](https://www.qgis.org/en/site/getinvolved/development/roadmap.html#release-schedule)
+* Avoir des connaissances en QGIS Bureautique  
 * Avoir des bases en programmation
-* Avoir un jeu de données, par exemple:
+* Avoir un jeu de données, par exemple :
     * Données OSM à l'aide du plugin QuickOSM
-    * Données [OSM2Igeo](https://github.com/igeofr/osm2igeo) (utilisation de ce jeu de données ci-après dans la formation)
+    * Données [OSM2Igeo](https://github.com/igeofr/osm2igeo) (utilisation de ce jeu de données ci-après dans 
+      la formation)
 
 ## Sommaire
 
@@ -34,9 +36,9 @@ Pour suivre la formation, il faut:
 * [Découverte de la console Python dans QGIS](./01_console_python.md)
     * La documentation et l'API
     * Initiation à la Programmation Orientée Objet (POO)
-    * Accèder aux propriétés du projet
+    * Accéder aux propriétés du projet
     * Ajouter une couche
-    * Accèder aux propriétés de la couche
+    * Accéder aux propriétés de la couche
     * Itération sur une couche vecteur
 * [Initiation au script Python](./02_fonctions_script.md)
     * Organiser son code en fonction

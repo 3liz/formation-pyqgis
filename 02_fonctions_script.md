@@ -1,7 +1,7 @@
 ---
 Title: Fonctions et scripts
 Favicon: logo.png
-Sibling: yes
+Index: yes
 ...
 
 [TOC]
@@ -13,9 +13,9 @@ Sibling: yes
 La console c'est bien, mais c'est très limitant. Passons à l'écriture d'un script qui va nous faciliter 
 l'organisation du code.
 
-Voici le dernier script du fichier précédent, mais avec la gestion des erreurs:
+Voici le dernier script du fichier précédent, mais avec la gestion des erreurs :
 * Redémarrer QGIS
-* N'ouvrer pas le projet précédent
+* N'ouvrez pas le projet précédent
 * Ouvrer la console, puis cliquer sur `Afficher l'éditeur`
 * Copier/coller le script ci-dessous
 * Exécuter le
@@ -42,7 +42,7 @@ else:
             iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
 
 ```
-* À l'aide du mémo Python:
+* À l'aide du mémo Python :
 	* Essayons de faire une fonction qui prend 2 paramètres
 		* la thématique (le dossier)
 		* le nom du shapefile
@@ -54,7 +54,7 @@ def charger_couche(thematique, couche):
     pass
 ```
 	
-* Une des solutions:
+* Une des solutions :
 
 ```python
 from os.path import join, isfile, isdir
@@ -110,12 +110,16 @@ print(shapes)
 
 ## Extraction des informations sous forme d'un fichier CSV.
 
-On souhaite désormais réaliser une fonction d'export des métadonnées de nos couches au format CSV, avec son CSVT.
-Il existe déjà un module CSV dans Python pour nous aider à écrire un fichier de type CSV, mais nous n'allons pas l'utiliser.
-Nous allons plutôt utiliser l'API QGIS pour créer une nouvelle couche en mémoire comportant les différentes informations que l'on souhaite exporter.
-Puis nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de l'action `Exporter la couche`).
+On souhaite désormais réaliser une fonction d'export des métadonnées de nos couches au format CSV, avec son
+CSVT.
+Il existe déjà un module CSV dans Python pour nous aider à écrire un fichier de type CSV, mais nous n'allons
+pas l'utiliser.
+Nous allons plutôt utiliser l'API QGIS pour créer une nouvelle couche en mémoire comportant les différentes
+informations que l'on souhaite exporter.
+Puis nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de
+l'action `Exporter la couche`).
 
-Les différents champs qui devront être exportés sont:
+Les différents champs qui devront être exportés sont :
 * son nom
 * son type de géométrie (format humain, lisible)
 * la projection
@@ -192,7 +196,8 @@ QgsVectorFileWriter.writeAsVectorFormat(
 
 ## Communication avec l'utilisateur des erreurs et des logs
 
-Nous avons déjà vu ci-dessus comment générer des messages vers l'utilisateur avec l'utilisation de la `messageBar` :
+Nous avons déjà vu ci-dessus comment générer des messages vers l'utilisateur avec l'utilisation de la
+`messageBar` :
 ```Python
 iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.Critical)
 iface.messageBar().pushMessage('Avertissement','ou un avertissement', Qgis.Warning)
@@ -200,7 +205,7 @@ iface.messageBar().pushMessage('Information','ou une information', Qgis.Info)
 iface.messageBar().pushMessage('Succès','ou un succès', Qgis.Success)
 ```
 
-On peut aussi écrire des logs comme ci:
+On peut aussi écrire des logs comme ceci :
 ```Python
 QgsMessageLog.logMessage('Une erreur est survenue','Notre outil', Qgis.Critical)
 QgsMessageLog.logMessage('Un avertissement','Notre outil', Qgis.Warning)
@@ -208,4 +213,4 @@ QgsMessageLog.logMessage('Une information','Notre outil', Qgis.Info)
 QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.Success)
 ```
 
-[Retour](./index.md)
+[Retour](./readme.md)

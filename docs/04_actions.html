@@ -4,17 +4,16 @@
  <head>
   <meta charset="utf-8"/>
   <title>Actions</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
-  <link href="https://3liz.github.io/remarkable.css" rel="stylesheet"/>
-  <link href="logo.png" rel="icon" type="image/png" >
+  <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <link type="text/css" href="https://docs.3liz.org/remarkable.css" rel="stylesheet"/>
+  <link type="image/png" href="logo.png" rel="icon" >
  </head>
  <body>
  <header class="header-container" style="">
     <h1>Actions</h1>
  </header>
  <article>
- <p><a href="../">Up</a></p>
-<p><a href="./index.html">Back</a></p><div class="toc"><span class="toctitle">Table of content</span><ul>
+<div class="toc"><span class="toctitle">Table of content</span><ul>
 <li><a href="#les-actions">Les actions</a><ul>
 <li><a href="#les-actions-par-defaut">Les actions par défaut</a></li>
 <li><a href="#notre-propre-action">Notre propre action</a></li>
@@ -29,7 +28,8 @@
 </ul>
 </li>
 <li>Ajouter la couche <code>D_OSM_HYDROGRAPHIE/CANALISATION_EAU.shp</code>.</li>
-<li>Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une <code>Ligne de symbole</code> dans l'onglet <code>Symbologie</code>.</li>
+<li>Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une <code>Ligne de symbole</code> dans
+  l'onglet <code>Symbologie</code>.</li>
 </ul>
 <h2 id="les-actions-par-defaut">Les actions par défaut</h2>
 <ul>
@@ -39,12 +39,13 @@
 </ul>
 <h2 id="notre-propre-action">Notre propre action</h2>
 <ul>
-<li>Commencons par un script Python classique, laissons de côté les actions pour le moment.</li>
-<li>Écrire une fonction qui se charge <em>d'inverser</em> une ligne. Cette fonction prend en paramètre la couche vecteur et une liste d'ID des entités.</li>
-<li>Il faut penser à vérifier le type exacte de géométrie de nos lignes, dans les propriétés de la couche.</li>
+<li>Commençons par un script Python classique, laissons de côté les actions pour le moment.</li>
+<li>Écrire une fonction qui se charge <em>d'inverser</em> une ligne. Cette fonction prend en paramètre la couche
+  vecteur et une liste d'ID des entités.</li>
+<li>Il faut penser à vérifier le type exact de géométrie de nos lignes, dans les propriétés de la couche.</li>
 </ul>
 <pre><code class="python">def reverse_geom(layer, ids):
-    &quot;&quot;&quot;Inverser le sens des differentes entités dans la couche layer.
+    &quot;&quot;&quot;Inverser le sens des différentes entités dans la couche layer.
 
     ids est une liste comportant les IDs des entités à inverser.
     &quot;&quot;&quot;
@@ -53,10 +54,10 @@
 </code></pre>
 
 <ul>
-<li>Solution:</li>
+<li>Solution :</li>
 </ul>
 <pre><code class="python">def reverse_geom(layer, ids):
-    &quot;&quot;&quot;Inverser le sens des differentes entités dans la couche layer.
+    &quot;&quot;&quot;Inverser le sens des différentes entités dans la couche layer.
 
     ids est une liste comportant les IDs des entités à inverser.
     &quot;&quot;&quot;
@@ -75,7 +76,7 @@ ids = layer.selectedFeatureIds()
 reverse_geom(layer, ids)
 </code></pre>
 
-<p>Incorporons ce code dans une action et adaptons le un peu:</p>
+<p>Incorporons ce code dans une action et adaptons le un peu :</p>
 <p><img alt="Inverser canalisation" src="./media/action_inverser_ligne.png"></p>
 <pre><code class="python">def reverse_geom(layer, ids):
     with edit(layer):
@@ -84,15 +85,15 @@ reverse_geom(layer, ids)
            lines = geom.asMultiPolyline()
            for line in lines:
                line.reverse() 
-           newgeom = QgsGeometry.fromMultiPolylineXY(lines)
-           layer.changeGeometry(feature.id(),newgeom)
+           new_geom = QgsGeometry.fromMultiPolylineXY(lines)
+           layer.changeGeometry(feature.id(), new_geom)
 
 layer = QgsProject.instance().mapLayer('[% @layer_id %]')
 reverse_geom(layer, '[% $id%]')
 </code></pre>
 
 <p>On peut désormais cliquer sur une ligne pour automatiquement inverser une ligne.</p>
-<p><a href="./index.html">Retour</a></p>
+<p><a href="./readme.html">Retour</a></p>
   </article>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
   </script>

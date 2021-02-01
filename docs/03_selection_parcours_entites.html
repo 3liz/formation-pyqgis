@@ -4,17 +4,16 @@
  <head>
   <meta charset="utf-8"/>
   <title>Sélections, fonctions</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
-  <link href="https://3liz.github.io/remarkable.css" rel="stylesheet"/>
-  <link href="logo.png" rel="icon" type="image/png" >
+  <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <link type="text/css" href="https://docs.3liz.org/remarkable.css" rel="stylesheet"/>
+  <link type="image/png" href="logo.png" rel="icon" >
  </head>
  <body>
  <header class="header-container" style="">
     <h1>Sélections, fonctions</h1>
  </header>
  <article>
- <p><a href="../">Up</a></p>
-<p><a href="./index.html">Back</a></p><div class="toc"><span class="toctitle">Table of content</span><ul>
+<div class="toc"><span class="toctitle">Table of content</span><ul>
 <li><a href="#utilisation-des-expressions-qgis">Utilisation des expressions QGIS</a><ul>
 <li><a href="#selection-dentite">Sélection d'entité</a></li>
 <li><a href="#boucler-sur-les-entites-a-laide-dune-expression">Boucler sur les entités à l'aide d'une expression</a></li>
@@ -24,7 +23,8 @@
 </div>
 <h1 id="utilisation-des-expressions-qgis">Utilisation des expressions QGIS</h1>
 <ul>
-<li>Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en Python.</li>
+<li>Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en
+  Python.</li>
 <li>Nous partons de la couche des <code>COMMUNES</code> uniquement chargé dans QGIS.</li>
 </ul>
 <h2 id="selection-dentite">Sélection d'entité</h2>
@@ -32,7 +32,7 @@
 Commençons par faire cela graphiquement dans QGIS Desktop. À l'aide d'une expression QGIS, sélectionner
 les codes INSEE qui commencent par <code>77</code>.</p>
 <p><img alt="Sélectionner par expression" src="./media/console_editeur.png"></p>
-<p>Nous allons faire la même chose, mais en utilisant Python. Pensez a désélectionner les entités.</p>
+<p>Nous allons faire la même chose, mais en utilisant Python. Pensez à désélectionner les entités.</p>
 <pre><code class="python">layer = iface.activeLayer()
 layer.removeSelection()
 layer.selectByExpression(&quot;\&quot;CODE_INSEE\&quot; LIKE '{}%'&quot;.format(77))
@@ -49,7 +49,7 @@ for feature in layer.getFeatures():
         print(feature['NOM'])
 </code></pre>
 
-<p>Observez bien la signature de la fonction <code>getFeatures</code>. Que remarquez-vous?
+<p>Observez bien la signature de la fonction <code>getFeatures</code>. Que remarquez-vous ?
 Utilisons donc une expression pour limiter les résultats.</p>
 <pre><code class="python">request = QgsFeatureRequest('&quot;POPUL&quot; != \'NC\''))
 for feature in layer.getFeatures(request):
@@ -67,7 +67,7 @@ for feature in layer.getFeatures(request):
 </code></pre>
 
 <p>Faire le test en affichant un champ qui n'est pas dans la requête.</p>
-<p>Rajoutons un intersection spatial avec l'emprise suivante:</p>
+<p>Rajoutons une intersection spatiale avec l'emprise suivante :</p>
 <pre><code class="python">request.setFilterRect(QgsRectangle(662737,6807733,717144,6853979))
 </code></pre>
 
@@ -76,11 +76,11 @@ for feature in layer.getFeatures(request):
 QgsProject.instance().addMapLayer(memory_layer)
 </code></pre>
 
-<p>Corrigeons ce problème d'export afin d'obtenir les géométries et les attributs:</p>
+<p>Corrigeons ce problème d'export afin d'obtenir les géométries et les attributs :</p>
 <pre><code class="python">request.setFlags(QgsFeatureRequest.NoFlags)
 </code></pre>
 
-<p>Avant dernier exercice, afficher une liste des communes dont la population est inférieur
+<p>Avant-dernier exercice, afficher une liste des communes dont la population est inférieur
 à 1000 habitants en incluant la densité de population.</p>
 <pre><code class="python">layer = iface.activeLayer()
 request = QgsFeatureRequest()
@@ -119,7 +119,8 @@ with edit(petites_communes):
 QgsProject.instance().addMapLayer(petites_communes)
 </code></pre>
 
-<p>Manipulons désormais la géométrie en ajoutant le centroïde de la commune dans une colonne <code>latitude</code> et <code>longitude</code> en degrées.</p>
+<p>Manipulons désormais la géométrie en ajoutant le centroïde de la commune dans une colonne <code>latitude</code> et
+<code>longitude</code> en degrées.</p>
 <pre><code class="python">layer = iface.activeLayer()
 
 request = QgsFeatureRequest()
@@ -157,7 +158,7 @@ with edit(petites_communes):
 QgsProject.instance().addMapLayer(petites_communes)
 </code></pre>
 
-<p><a href="./index.html">Retour</a></p>
+<p><a href="./readme.html">Retour</a></p>
   </article>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
   </script>

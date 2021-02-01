@@ -1,14 +1,15 @@
 ---
 Title: Sélections, fonctions
 Favicon: logo.png
-Sibling: yes
+Index: yes
 ...
 
 [TOC]
 
 # Utilisation des expressions QGIS
 
-* Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en Python.
+* Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en
+  Python.
 * Nous partons de la couche des `COMMUNES` uniquement chargé dans QGIS.
 
 ## Sélection d'entité
@@ -19,7 +20,7 @@ les codes INSEE qui commencent par `77`.
 
 ![Sélectionner par expression](./media/console_editeur.png)
 
-Nous allons faire la même chose, mais en utilisant Python. Pensez a désélectionner les entités.
+Nous allons faire la même chose, mais en utilisant Python. Pensez à désélectionner les entités.
 
 ```python
 layer = iface.activeLayer()
@@ -41,7 +42,7 @@ for feature in layer.getFeatures():
         print(feature['NOM'])
 ```
 
-Observez bien la signature de la fonction `getFeatures`. Que remarquez-vous?
+Observez bien la signature de la fonction `getFeatures`. Que remarquez-vous ?
 Utilisons donc une expression pour limiter les résultats.
 
 ```python
@@ -63,7 +64,7 @@ for feature in layer.getFeatures(request):
 
 Faire le test en affichant un champ qui n'est pas dans la requête.
 
-Rajoutons un intersection spatial avec l'emprise suivante:
+Rajoutons une intersection spatiale avec l'emprise suivante :
 ```python
 request.setFilterRect(QgsRectangle(662737,6807733,717144,6853979))
 ```
@@ -74,12 +75,12 @@ memory_layer = layer.materialize(request)
 QgsProject.instance().addMapLayer(memory_layer)
 ```
 
-Corrigeons ce problème d'export afin d'obtenir les géométries et les attributs:
+Corrigeons ce problème d'export afin d'obtenir les géométries et les attributs :
 ```python
 request.setFlags(QgsFeatureRequest.NoFlags)
 ```
 
-Avant dernier exercice, afficher une liste des communes dont la population est inférieur
+Avant-dernier exercice, afficher une liste des communes dont la population est inférieur
 à 1000 habitants en incluant la densité de population.
 
 ```python
@@ -122,7 +123,8 @@ with edit(petites_communes):
 QgsProject.instance().addMapLayer(petites_communes)
 ```
 
-Manipulons désormais la géométrie en ajoutant le centroïde de la commune dans une colonne `latitude` et `longitude` en degrées.
+Manipulons désormais la géométrie en ajoutant le centroïde de la commune dans une colonne `latitude` et
+`longitude` en degrées.
 
 ```python
 layer = iface.activeLayer()
@@ -162,4 +164,4 @@ with edit(petites_communes):
 QgsProject.instance().addMapLayer(petites_communes)
 ```
 
-[Retour](./index.md)
+[Retour](./readme.md)

@@ -4,17 +4,16 @@
  <head>
   <meta charset="utf-8"/>
   <title>Fonctions et scripts</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
-  <link href="https://3liz.github.io/remarkable.css" rel="stylesheet"/>
-  <link href="logo.png" rel="icon" type="image/png" >
+  <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <link type="text/css" href="https://docs.3liz.org/remarkable.css" rel="stylesheet"/>
+  <link type="image/png" href="logo.png" rel="icon" >
  </head>
  <body>
  <header class="header-container" style="">
     <h1>Fonctions et scripts</h1>
  </header>
  <article>
- <p><a href="../">Up</a></p>
-<p><a href="./index.html">Back</a></p><div class="toc"><span class="toctitle">Table of content</span><ul>
+<div class="toc"><span class="toctitle">Table of content</span><ul>
 <li><a href="#organisation-du-code-dans-un-script-avec-des-fonctions">Organisation du code dans un script avec des fonctions</a><ul>
 <li><a href="#charger-automatiquement-plusieurs-couches-a-laide-dun-script">Charger automatiquement plusieurs couches à l'aide d'un script</a></li>
 <li><a href="#extraction-des-informations-sous-forme-dun-fichier-csv">Extraction des informations sous forme d'un fichier CSV.</a></li>
@@ -27,9 +26,9 @@
 <h2 id="charger-automatiquement-plusieurs-couches-a-laide-dun-script">Charger automatiquement plusieurs couches à l'aide d'un script</h2>
 <p>La console c'est bien, mais c'est très limitant. Passons à l'écriture d'un script qui va nous faciliter 
 l'organisation du code.</p>
-<p>Voici le dernier script du fichier précédent, mais avec la gestion des erreurs:
+<p>Voici le dernier script du fichier précédent, mais avec la gestion des erreurs :
 * Redémarrer QGIS
-* N'ouvrer pas le projet précédent
+* N'ouvrez pas le projet précédent
 * Ouvrer la console, puis cliquer sur <code>Afficher l'éditeur</code>
 * Copier/coller le script ci-dessous
 * Exécuter le</p>
@@ -56,7 +55,7 @@ else:
 </code></pre>
 
 <ul>
-<li>À l'aide du mémo Python:<ul>
+<li>À l'aide du mémo Python :<ul>
 <li>Essayons de faire une fonction qui prend 2 paramètres<ul>
 <li>la thématique (le dossier)</li>
 <li>le nom du shapefile</li>
@@ -72,7 +71,7 @@ else:
 </code></pre>
 
 <ul>
-<li>Une des solutions:</li>
+<li>Une des solutions :</li>
 </ul>
 <pre><code class="python">from os.path import join, isfile, isdir
 
@@ -127,11 +126,15 @@ print(shapes)
 <li>Permettre le chargement automatique de toute un thématique.</li>
 </ul>
 <h2 id="extraction-des-informations-sous-forme-dun-fichier-csv">Extraction des informations sous forme d'un fichier CSV.</h2>
-<p>On souhaite désormais réaliser une fonction d'export des métadonnées de nos couches au format CSV, avec son CSVT.
-Il existe déjà un module CSV dans Python pour nous aider à écrire un fichier de type CSV, mais nous n'allons pas l'utiliser.
-Nous allons plutôt utiliser l'API QGIS pour créer une nouvelle couche en mémoire comportant les différentes informations que l'on souhaite exporter.
-Puis nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de l'action <code>Exporter la couche</code>).</p>
-<p>Les différents champs qui devront être exportés sont:
+<p>On souhaite désormais réaliser une fonction d'export des métadonnées de nos couches au format CSV, avec son
+CSVT.
+Il existe déjà un module CSV dans Python pour nous aider à écrire un fichier de type CSV, mais nous n'allons
+pas l'utiliser.
+Nous allons plutôt utiliser l'API QGIS pour créer une nouvelle couche en mémoire comportant les différentes
+informations que l'on souhaite exporter.
+Puis nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de
+l'action <code>Exporter la couche</code>).</p>
+<p>Les différents champs qui devront être exportés sont :
 * son nom
 * son type de géométrie (format humain, lisible)
 * la projection
@@ -201,21 +204,22 @@ QgsVectorFileWriter.writeAsVectorFormat(
 </code></pre>
 
 <h2 id="communication-avec-lutilisateur-des-erreurs-et-des-logs">Communication avec l'utilisateur des erreurs et des logs</h2>
-<p>Nous avons déjà vu ci-dessus comment générer des messages vers l'utilisateur avec l'utilisation de la <code>messageBar</code> :</p>
+<p>Nous avons déjà vu ci-dessus comment générer des messages vers l'utilisateur avec l'utilisation de la
+<code>messageBar</code> :</p>
 <pre><code class="Python">iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.Critical)
 iface.messageBar().pushMessage('Avertissement','ou un avertissement', Qgis.Warning)
 iface.messageBar().pushMessage('Information','ou une information', Qgis.Info)
 iface.messageBar().pushMessage('Succès','ou un succès', Qgis.Success)
 </code></pre>
 
-<p>On peut aussi écrire des logs comme ci:</p>
+<p>On peut aussi écrire des logs comme ceci :</p>
 <pre><code class="Python">QgsMessageLog.logMessage('Une erreur est survenue','Notre outil', Qgis.Critical)
 QgsMessageLog.logMessage('Un avertissement','Notre outil', Qgis.Warning)
 QgsMessageLog.logMessage('Une information','Notre outil', Qgis.Info)
 QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.Success)
 </code></pre>
 
-<p><a href="./index.html">Retour</a></p>
+<p><a href="./readme.html">Retour</a></p>
   </article>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
   </script>

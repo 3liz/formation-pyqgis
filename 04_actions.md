@@ -1,7 +1,7 @@
 ---
 Title: Actions
 Favicon: logo.png
-Sibling: yes
+Index: yes
 ...
 
 [TOC]
@@ -11,7 +11,8 @@ Sibling: yes
 * Pour connaître le principe des actions dans QGIS, il faut se référer au manuel de QGIS :
     * https://docs.qgis.org/3.4/fr/docs/user_manual/working_with_vector/vector_properties.html#actions-properties
 * Ajouter la couche `D_OSM_HYDROGRAPHIE/CANALISATION_EAU.shp`.
-* Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une `Ligne de symbole` dans l'onglet `Symbologie`.
+* Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une `Ligne de symbole` dans
+  l'onglet `Symbologie`.
     
 ## Les actions par défaut
 
@@ -21,13 +22,14 @@ Sibling: yes
 
 ## Notre propre action
 
-* Commencons par un script Python classique, laissons de côté les actions pour le moment.
-* Écrire une fonction qui se charge *d'inverser* une ligne. Cette fonction prend en paramètre la couche vecteur et une liste d'ID des entités.
-* Il faut penser à vérifier le type exacte de géométrie de nos lignes, dans les propriétés de la couche.
+* Commençons par un script Python classique, laissons de côté les actions pour le moment.
+* Écrire une fonction qui se charge *d'inverser* une ligne. Cette fonction prend en paramètre la couche
+  vecteur et une liste d'ID des entités.
+* Il faut penser à vérifier le type exact de géométrie de nos lignes, dans les propriétés de la couche.
 
 ```python
 def reverse_geom(layer, ids):
-    """Inverser le sens des differentes entités dans la couche layer.
+    """Inverser le sens des différentes entités dans la couche layer.
     
     ids est une liste comportant les IDs des entités à inverser.
     """
@@ -35,10 +37,10 @@ def reverse_geom(layer, ids):
 
 ```
 
-* Solution:
+* Solution :
 ```python
 def reverse_geom(layer, ids):
-    """Inverser le sens des differentes entités dans la couche layer.
+    """Inverser le sens des différentes entités dans la couche layer.
     
     ids est une liste comportant les IDs des entités à inverser.
     """
@@ -57,7 +59,7 @@ ids = layer.selectedFeatureIds()
 reverse_geom(layer, ids)
 ```
 
-Incorporons ce code dans une action et adaptons le un peu:
+Incorporons ce code dans une action et adaptons le un peu :
 
 ![Inverser canalisation](./media/action_inverser_ligne.png)
 
@@ -69,8 +71,8 @@ def reverse_geom(layer, ids):
            lines = geom.asMultiPolyline()
            for line in lines:
                line.reverse() 
-           newgeom = QgsGeometry.fromMultiPolylineXY(lines)
-           layer.changeGeometry(feature.id(),newgeom)
+           new_geom = QgsGeometry.fromMultiPolylineXY(lines)
+           layer.changeGeometry(feature.id(), new_geom)
 
 layer = QgsProject.instance().mapLayer('[% @layer_id %]')
 reverse_geom(layer, '[% $id%]')
@@ -78,4 +80,4 @@ reverse_geom(layer, '[% $id%]')
 
 On peut désormais cliquer sur une ligne pour automatiquement inverser une ligne.
 
-[Retour](./index.md)
+[Retour](./readme.md)

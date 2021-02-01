@@ -1,19 +1,19 @@
 ---
 Title: Rappel Python
 Favicon: logo.png
-Sibling: yes
+Index: yes
 ...
 
 [TOC]
 
 # Introduction au language Python
 
-## Qu'est ce que Python?
+## Qu'est-ce que Python ?
 
 * Multi-usage (WEB, application graphique, script, serveur etc)
 * Programmation Orientée Objet (POO)
 	* Tout est objet
-* Interpreté
+* Interprété
 * Centré sur la lecture et la productivité
 	* Syntaxe du code simple
 * Grosse communauté
@@ -24,20 +24,23 @@ Sibling: yes
 
 * Python 2
 	* Sortie en 2000
-	* Il est encore très utilisé, notamment sur les tutoriels sur internet et quelques projets qui tardent a se mettre à jour
+	* Il est encore très utilisé, notamment sur les tutoriels sur internet et quelques projets qui tardent à
+	 se mettre à jour
 	* Une adoption massive (QGIS 2)
 	* Dernière version le 1 janvier 2020 !
 * Python 3
-	* Sortie en 2008, mais il s'agit d'une adoption très très lente, tellement Python 2 a été massivement adopté.
+	* Sortie en 2008, mais il s'agit d'une adoption très lente, tellement Python 2 a été massivement adopté.
 	* Dernière version 3.8.0 du 14 octobre 2019
 	* QGIS 3 requière Python 3.5 minimum
 
 ## Rappel de base sur Python
 
-### Les types de données:
+### Les types de données :
 
-Une variable peut contenir un entier, un booléen (`True` ou `False`), chaîne de caractères, nombre décimal, un objet...
-Il y a un faible typage des variables, c'est à dire qu'une variable peut changer de type au cours de l'exécution du programme.
+Une variable peut contenir un entier, un booléen (`True` ou `False`), chaîne de caractères, nombre décimal, un
+objet...
+Il y a un faible typage des variables, c'est-à-dire qu'une variable peut changer de type au cours de l'exécution
+du programme.
 
 ```python
 mon_compteur = 0
@@ -63,7 +66,7 @@ type(mon_compteur)
 
 ### Les structures de données
 
-Il existe quatre types de structure de données:
+Il existe quatre types de structure de données :
 * les variables simples (ci-dessus)
 * les tuples (non modifiables)
 
@@ -102,8 +105,9 @@ nombres
 
 * les dictionnaires
 
-*Attention*, les dictionnaires ne sont pas ordonnés!
-Si vraiment il y a besoin, il existe une classe `OrderedDict`, mais ce n'est pas un structure de données natif dans Python.
+*Attention*, les dictionnaires ne sont pas ordonnés !
+Si vraiment il y a besoin, il existe une classe `OrderedDict`, mais ce n'est pas un structure de données natif
+dans Python.
 C'est un objet.
 
 ```python
@@ -260,7 +264,7 @@ while not conditon_echec:
 ### List Comprehensions
 
 C'est une façon très pythonique et très utilisée de créer des listes.
-Par exemple, créer une liste des nombres impaires entre 1 et 9:
+Par exemple, créer une liste des nombres impaires entre 1 et 9 :
 
 ```python
 # Non pythonique
@@ -319,8 +323,8 @@ def decomposer(entier, diviser_par):
 ```
 
 * Il se peut que l'on ne connaisse pas à l'avance le nombre précis d'arguments dans une fonction.
-	* `args` est utilisé pour passer un nombre inderterminé d'argument à la fonction
-	* `kwargs` est utilisé pour un nombre indeterminé d'arguments nommés
+	* `args` est utilisé pour passer un nombre indéterminé d'argument à la fonction
+	* `kwargs` est utilisé pour un nombre indéterminé d'arguments nommés
 
 ```python
 def une_fonction(*args, **kwargs):
@@ -336,7 +340,7 @@ une_fonction(1,2,3, text='Ma phrase')
 
 ### Truc et astuces
 
-Attention au passage par référence:
+Attention au passage par référence :
 ```python
 ma_liste_1 = [1, 2, 3]
 ma_liste_2 = ma_liste_1
@@ -345,11 +349,11 @@ print(ma_liste_2)
 print(ma_liste_1)
 ```
 
-Avoir un compteur lors de l'itération d'une liste:
+Avoir un compteur lors de l'itération d'une liste :
 ```python
 users = ['Tom', 'James', 'John']
 for i, user in enumerate(users):
     print('{} -> {}'.format(i + 1, user))
 ```
 
-[Retour](./index.md)
+[Retour](./readme.md)

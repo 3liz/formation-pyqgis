@@ -1,14 +1,14 @@
 ---
 Title: Console Python
 Favicon: logo.png
-Sibling: yes
+Index: yes
 ...
 
 [TOC]
 
 # Introduction à la console Python dans QGIS
 
-## La documentation et les liens utiles:
+## La documentation et les liens utiles :
 
 * QGIS est composé de plusieurs centaines de classes écrites en C++. 
 La plupart de ces classes (et donc des fonctions) sont accessibles à travers un API en Python. 
@@ -37,7 +37,7 @@ Autre lien pour l'apprentissage de Python (sans QGIS):
 ## Configurer le projet
 
 * Commencer un nouveau projet et enregistrer le.
-* À côté du projet, ajouter le dossier provenant de OSM2Igeo, par exemple `201909_11_ILE_DE_FRANCE_SHP_L93_2154`.
+* À côté du projet, ajouter le dossier provenant d’OSM2Igeo, par exemple `201909_11_ILE_DE_FRANCE_SHP_L93_2154`.
 
 ## Manipulation dans la console
 
@@ -58,7 +58,7 @@ Autre lien pour l'apprentissage de Python (sans QGIS):
 QgsProject.instance().fileName()
 ```
 * Ajoutons un titre à notre projet, recherchons donc `title` dans la page : `setTitle`.
-* Objectif, ajouter une couche vecteur contenu dans un dossier fils:
+* Objectif, ajouter une couche vecteur contenu dans un dossier fils :
 	* Recherchons dans l'API le dossier racine du projet. *Indice*, en informatique, on appelle souvent cela le `home`.
 	* Nous allons utiliser le module `os.path` pour manipuler les dossiers.
 	* [https://docs.python.org/3/library/os.path.html](https://docs.python.org/3/library/os.path.html)
@@ -79,7 +79,8 @@ isfile(fichier_shape)
 True
 ```
 
-* Charger la couche vecteur à l'aide de `iface` [QgisInterface](https://qgis.org/api/classQgisInterface.html) (et non pas **Qgs**Interface!)
+* Charger la couche vecteur à l'aide de `iface` [QgisInterface](https://qgis.org/api/classQgisInterface.html)
+  (et non pas **Qgs**Interface!)
 
 ```python
 communes = iface.addVectorLayer(fichier_shape, 'communes', 'ogr')
@@ -92,8 +93,10 @@ communes = QgsVectorLayer(fichier_shape, 'communes', 'ogr')
 communes.isValid()
 QgsProject.instance().addMapLayer(communes)
 ```
-* Explorer l'objet `communes` qui est un `QgsVectorLayer` à l'aide de la documentation pour chercher sa géométrie, le nombre d'entité.
-* Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre (explication dans l'exemple ci-dessous)
+* Explorer l'objet `communes` qui est un `QgsVectorLayer` à l'aide de la documentation pour chercher sa
+  géométrie, le nombre d'entité.
+* Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre (explication dans l'exemple
+  ci-dessous)
 * Essayer d'ouvrir et de clore une session d'édition
 * Essayer désormais de chercher son nom, la projection ou encore les seuils de visibilité de la couche.
 On ne les trouve pas dans la page `QgsVectorLayer` !
@@ -147,7 +150,8 @@ feature = QgsFeature()
 features.nextFeature(feature)
 iface.mapCanvas().flashFeatureIds(layer, [feature.id()])
 ```
-*Note*, nous pouvons concaténer les deux dernières lignes à l'aide du caractère `;` pour que cela soit plus pratique.
+*Note*, nous pouvons concaténer les deux dernières lignes à l'aide du caractère `;` pour que cela soit plus
+pratique.
 
 On souhaite désormais afficher le nom des arrondissements à l'aide d'une boucle `for`.
 
@@ -160,4 +164,4 @@ for feature in layer.getFeatures():
 Noter l'apparition de `...` au lieu de `>>>` après avoir écrit la première ligne du `for`.
 Il faut faire une indentation obligatoire !
 
-[Retour](./index.md)
+[Retour](./readme.md)

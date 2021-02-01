@@ -1,7 +1,7 @@
 ---
 Title: Processing
 Favicon: logo.png
-Sibling: yes
+Index: yes
 ...
 
 [TOC]
@@ -23,7 +23,7 @@ Processing est un framework pour faire des algorithmes dans QGIS.
 ## Notre propre script
 
 * Nous souhaitons pouvoir créer plusieurs tables vides assez facilement à l'aide de fichier CSV.
-* Nous avons un dossier avec plusieurs fichier CSV représentant chacun une table.
+* Nous avons un dossier avec plusieurs fichiers CSV représentant chacun une table.
 * Le nom du fichier CSV représente le nom de la table.
 * La première ligne représente l'entête des colonnes.
 * La deuxième ligne, si elle s'appelle `geom`, représente le type de géométrie et sa projection.
@@ -103,7 +103,7 @@ for csv_file in csv_files:
     QgsProject.instance().addMapLayer(layer)
 ```
 
-Nous allons maintenant ajouter et adapter ce code dans un script Processing:
+Nous allons maintenant ajouter et adapter ce code dans un script Processing :
 ```python
 """
 ***************************************************************************
@@ -307,4 +307,4 @@ class CreateLayersFromCsvAlgorithm(QgsProcessingAlgorithm):
 ```
 Nous avons désormais un nouveau algorithme dans la boîte à outils. Plus besoin d'ouvrir un projet avant.
 
-[Retour](./index.md)
+[Retour](./readme.md)

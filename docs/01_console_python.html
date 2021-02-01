@@ -4,19 +4,18 @@
  <head>
   <meta charset="utf-8"/>
   <title>Console Python</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
-  <link href="https://3liz.github.io/remarkable.css" rel="stylesheet"/>
-  <link href="logo.png" rel="icon" type="image/png" >
+  <link type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <link type="text/css" href="https://docs.3liz.org/remarkable.css" rel="stylesheet"/>
+  <link type="image/png" href="logo.png" rel="icon" >
  </head>
  <body>
  <header class="header-container" style="">
     <h1>Console Python</h1>
  </header>
  <article>
- <p><a href="../">Up</a></p>
-<p><a href="./index.html">Back</a></p><div class="toc"><span class="toctitle">Table of content</span><ul>
+<div class="toc"><span class="toctitle">Table of content</span><ul>
 <li><a href="#introduction-a-la-console-python-dans-qgis">Introduction à la console Python dans QGIS</a><ul>
-<li><a href="#la-documentation-et-les-liens-utiles">La documentation et les liens utiles:</a></li>
+<li><a href="#la-documentation-et-les-liens-utiles">La documentation et les liens utiles :</a></li>
 <li><a href="#configurer-le-projet">Configurer le projet</a></li>
 <li><a href="#manipulation-dans-la-console">Manipulation dans la console</a></li>
 <li><a href="#code">Code</a></li>
@@ -26,7 +25,7 @@
 </ul>
 </div>
 <h1 id="introduction-a-la-console-python-dans-qgis">Introduction à la console Python dans QGIS</h1>
-<h2 id="la-documentation-et-les-liens-utiles">La documentation et les liens utiles:</h2>
+<h2 id="la-documentation-et-les-liens-utiles">La documentation et les liens utiles :</h2>
 <ul>
 <li>QGIS est composé de plusieurs centaines de classes écrites en C++. 
 La plupart de ces classes (et donc des fonctions) sont accessibles à travers un API en Python. 
@@ -56,7 +55,7 @@ documentation et comment rechercher des informations.</li>
 <h2 id="configurer-le-projet">Configurer le projet</h2>
 <ul>
 <li>Commencer un nouveau projet et enregistrer le.</li>
-<li>À côté du projet, ajouter le dossier provenant de OSM2Igeo, par exemple <code>201909_11_ILE_DE_FRANCE_SHP_L93_2154</code>.</li>
+<li>À côté du projet, ajouter le dossier provenant d’OSM2Igeo, par exemple <code>201909_11_ILE_DE_FRANCE_SHP_L93_2154</code>.</li>
 </ul>
 <h2 id="manipulation-dans-la-console">Manipulation dans la console</h2>
 <ul>
@@ -86,7 +85,7 @@ documentation et comment rechercher des informations.</li>
 
 <ul>
 <li>Ajoutons un titre à notre projet, recherchons donc <code>title</code> dans la page : <code>setTitle</code>.</li>
-<li>Objectif, ajouter une couche vecteur contenu dans un dossier fils:<ul>
+<li>Objectif, ajouter une couche vecteur contenu dans un dossier fils :<ul>
 <li>Recherchons dans l'API le dossier racine du projet. <em>Indice</em>, en informatique, on appelle souvent cela le <code>home</code>.</li>
 <li>Nous allons utiliser le module <code>os.path</code> pour manipuler les dossiers.</li>
 <li><a href="https://docs.python.org/3/library/os.path.html">https://docs.python.org/3/library/os.path.html</a></li>
@@ -109,7 +108,8 @@ True
 </code></pre>
 
 <ul>
-<li>Charger la couche vecteur à l'aide de <code>iface</code> <a href="https://qgis.org/api/classQgisInterface.html">QgisInterface</a> (et non pas <strong>Qgs</strong>Interface!)</li>
+<li>Charger la couche vecteur à l'aide de <code>iface</code> <a href="https://qgis.org/api/classQgisInterface.html">QgisInterface</a>
+  (et non pas <strong>Qgs</strong>Interface!)</li>
 </ul>
 <pre><code class="python">communes = iface.addVectorLayer(fichier_shape, 'communes', 'ogr')
 print(communes)
@@ -124,8 +124,10 @@ QgsProject.instance().addMapLayer(communes)
 </code></pre>
 
 <ul>
-<li>Explorer l'objet <code>communes</code> qui est un <code>QgsVectorLayer</code> à l'aide de la documentation pour chercher sa géométrie, le nombre d'entité.</li>
-<li>Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre (explication dans l'exemple ci-dessous)</li>
+<li>Explorer l'objet <code>communes</code> qui est un <code>QgsVectorLayer</code> à l'aide de la documentation pour chercher sa
+  géométrie, le nombre d'entité.</li>
+<li>Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre (explication dans l'exemple
+  ci-dessous)</li>
 <li>Essayer d'ouvrir et de clore une session d'édition</li>
 <li>Essayer désormais de chercher son nom, la projection ou encore les seuils de visibilité de la couche.
 On ne les trouve pas dans la page <code>QgsVectorLayer</code> !
@@ -174,7 +176,8 @@ features.nextFeature(feature)
 iface.mapCanvas().flashFeatureIds(layer, [feature.id()])
 </code></pre>
 
-<p><em>Note</em>, nous pouvons concaténer les deux dernières lignes à l'aide du caractère <code>;</code> pour que cela soit plus pratique.</p>
+<p><em>Note</em>, nous pouvons concaténer les deux dernières lignes à l'aide du caractère <code>;</code> pour que cela soit plus
+pratique.</p>
 <p>On souhaite désormais afficher le nom des arrondissements à l'aide d'une boucle <code>for</code>.</p>
 <pre><code class="python">layer = iface.activeLayer()
 for feature in layer.getFeatures():
@@ -183,7 +186,7 @@ for feature in layer.getFeatures():
 
 <p>Noter l'apparition de <code>...</code> au lieu de <code>&gt;&gt;&gt;</code> après avoir écrit la première ligne du <code>for</code>.
 Il faut faire une indentation obligatoire !</p>
-<p><a href="./index.html">Retour</a></p>
+<p><a href="./readme.html">Retour</a></p>
   </article>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
   </script>
