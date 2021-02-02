@@ -1,7 +1,7 @@
 ---
 Title: Console Python
 Favicon: logo.png
-Index: yes
+Index: True
 ...
 
 [TOC]
@@ -163,5 +163,3 @@ for feature in layer.getFeatures():
 
 Noter l'apparition de `...` au lieu de `>>>` après avoir écrit la première ligne du `for`.
 Il faut faire une indentation obligatoire !
-
-[Retour](./readme.md)

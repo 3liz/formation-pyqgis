@@ -28,6 +28,7 @@ Pour suivre la formation, il faut :
     * Données OSM à l'aide du plugin QuickOSM
     * Données [OSM2Igeo](https://github.com/igeofr/osm2igeo) (utilisation de ce jeu de données ci-après dans 
       la formation)
+* Pour une utilisation avancée, nous recommandons l'usage d'un IDE de développement en Python
 
 ## Sommaire
 

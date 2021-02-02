@@ -1,7 +1,7 @@
 ---
 Title: Actions
 Favicon: logo.png
-Index: yes
+Index: True
 ...
 
 [TOC]
@@ -79,5 +79,3 @@ reverse_geom(layer, '[% $id%]')
 ```
 
 On peut désormais cliquer sur une ligne pour automatiquement inverser une ligne.
-
-[Retour](./readme.md)

@@ -1,7 +1,7 @@
 ---
 Title: Python et QGIS
 Favicon: logo.png
-Index: yes
+Index: True
 ...
 
 [TOC]
@@ -148,5 +148,3 @@ donné.
 
 Si l'on place un fichier nommé `startup.py` dans le dossier Python du profil de l'utilisateur, QGIS va le
 lancer automatiquement à chaque ouverture de QGIS.
-
-[Retour](./readme.md)

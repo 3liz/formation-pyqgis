@@ -1,7 +1,7 @@
 ---
 Title: Processing
 Favicon: logo.png
-Index: yes
+Index: True
 ...
 
 [TOC]
@@ -306,5 +306,3 @@ class CreateLayersFromCsvAlgorithm(QgsProcessingAlgorithm):
         return {self.OUTPUT_LAYERS: output_layers}
 ```
 Nous avons désormais un nouveau algorithme dans la boîte à outils. Plus besoin d'ouvrir un projet avant.
-
-[Retour](./readme.md)

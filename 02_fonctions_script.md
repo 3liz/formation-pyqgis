@@ -1,7 +1,7 @@
 ---
 Title: Fonctions et scripts
 Favicon: logo.png
-Index: yes
+Index: True
 ...
 
 [TOC]
@@ -212,5 +212,3 @@ QgsMessageLog.logMessage('Un avertissement','Notre outil', Qgis.Warning)
 QgsMessageLog.logMessage('Une information','Notre outil', Qgis.Info)
 QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.Success)
 ```
-
-[Retour](./readme.md)

@@ -1,7 +1,7 @@
 ---
 Title: Rappel Python
 Favicon: logo.png
-Index: yes
+Index: True
 ...
 
 [TOC]
@@ -355,5 +355,3 @@ users = ['Tom', 'James', 'John']
 for i, user in enumerate(users):
     print('{} -> {}'.format(i + 1, user))
 ```
-
-[Retour](./readme.md)

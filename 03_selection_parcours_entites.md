@@ -1,7 +1,7 @@
 ---
 Title: Sélections, fonctions
 Favicon: logo.png
-Index: yes
+Index: True
 ...
 
 [TOC]
@@ -163,5 +163,3 @@ with edit(petites_communes):
 
 QgsProject.instance().addMapLayer(petites_communes)
 ```
-
-[Retour](./readme.md)
