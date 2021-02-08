@@ -20,6 +20,17 @@ Index: True
 	* De nombreux packages disponibles sur internet
 	* https://pypi.org/
 
+```python
+# Déclaration d'une variable de type entier
+x = 5
+
+# Déclaration d'une variable chaîne de caractère
+info = 'X est compris entre 0 et 10'
+
+if 0 < x < 10:
+	print(info)
+```
+
 ## Versions
 
 * Python 2
@@ -30,8 +41,10 @@ Index: True
 	* Dernière version le 1 janvier 2020 !
 * Python 3
 	* Sortie en 2008, mais il s'agit d'une adoption très lente, tellement Python 2 a été massivement adopté.
-	* Dernière version 3.8.0 du 14 octobre 2019
-	* QGIS 3 requière Python 3.5 minimum
+	* Dernière version 3.9.0 du 5 octobre 2020
+	* QGIS 3 requière
+		* Python 3.5 minimum for QGIS < 3.18
+		* Python 3.6 >= 3.18
 
 ## Rappel de base sur Python
 
@@ -130,7 +143,7 @@ un commentaire
 sur plusieurs lignes
 */
 
-"""Ces lignes sont réservés pour la documentation de l'API et ne doient pas être des lignes de commentaires."""
+""" Ces lignes sont réservés pour la documentation de l'API et ne doivent pas être des lignes de commentaires. """
 
 ```
 
@@ -227,7 +240,7 @@ else:
 # Plus complexe, avec une fonction pour les minuscules
 present = False
 for country in countries:
-    if country.lower() == 'allemagne'
+    if country.lower() == 'allemagne':
         present = True
 if present:
     print('Présent')
@@ -236,7 +249,7 @@ else:
     
 # Le plus pythonique
 for country in countries:
-    if country.lower() == 'allemagne'
+    if country.lower() == 'allemagne':
         print('Présent')
         break
 else:
@@ -277,6 +290,13 @@ for x in range(10):
 impair = [x for x in range(10) if x % 2]
 ```
 
+Autre exemple en transformant une liste :
+
+```python
+countries = ['Allemagne', 'Espagne', 'France']
+countries = [c.upper() for c in countries]
+```
+
 * Il existe aussi les Dict Comprehensions (moins utilisé)
 
 ### Manipulation sur les chaînes de caractères
@@ -297,7 +317,7 @@ alphabet[:6]  # ABCDEF
 ### Fonctions
 
 * Voici des exemples de fonction Python.
-*Encore une fois*, attention à l'indentation.
+*Encore une fois*, attention à l'indentation !
 
 ```python
 def ajouter(x, y):
@@ -312,7 +332,7 @@ def discuter(texte, personnage='Charles'):
     print('{}: "{}"'.format(personnage, texte))
 ```
 
-* Une fonction peut retourner plusieurs valeurs:
+* Une fonction peut retourner plusieurs valeurs :
 
 ```python
 def decomposer(entier, diviser_par):

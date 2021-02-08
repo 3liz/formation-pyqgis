@@ -58,6 +58,16 @@
 </ul>
 </li>
 </ul>
+<pre><code class="python"># Déclaration d'une variable de type entier
+x = 5
+
+# Déclaration d'une variable chaîne de caractère
+info = 'X est compris entre 0 et 10'
+
+if 0 &lt; x &lt; 10:
+    print(info)
+</code></pre>
+
 <h2 id="versions">Versions</h2>
 <ul>
 <li>Python 2<ul>
@@ -70,8 +80,12 @@
 </li>
 <li>Python 3<ul>
 <li>Sortie en 2008, mais il s'agit d'une adoption très lente, tellement Python 2 a été massivement adopté.</li>
-<li>Dernière version 3.8.0 du 14 octobre 2019</li>
-<li>QGIS 3 requière Python 3.5 minimum</li>
+<li>Dernière version 3.9.0 du 5 octobre 2020</li>
+<li>QGIS 3 requière<ul>
+<li>Python 3.5 minimum for QGIS &lt; 3.18</li>
+<li>Python 3.6 &gt;= 3.18</li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -164,7 +178,7 @@ un commentaire
 sur plusieurs lignes
 */
 
-&quot;&quot;&quot;Ces lignes sont réservés pour la documentation de l'API et ne doient pas être des lignes de commentaires.&quot;&quot;&quot;
+&quot;&quot;&quot; Ces lignes sont réservés pour la documentation de l'API et ne doivent pas être des lignes de commentaires. &quot;&quot;&quot;
 
 </code></pre>
 
@@ -249,7 +263,7 @@ else:
 # Plus complexe, avec une fonction pour les minuscules
 present = False
 for country in countries:
-    if country.lower() == 'allemagne'
+    if country.lower() == 'allemagne':
         present = True
 if present:
     print('Présent')
@@ -258,7 +272,7 @@ else:
 
 # Le plus pythonique
 for country in countries:
-    if country.lower() == 'allemagne'
+    if country.lower() == 'allemagne':
         print('Présent')
         break
 else:
@@ -294,6 +308,11 @@ for x in range(10):
 impair = [x for x in range(10) if x % 2]
 </code></pre>
 
+<p>Autre exemple en transformant une liste :</p>
+<pre><code class="python">countries = ['Allemagne', 'Espagne', 'France']
+countries = [c.upper() for c in countries]
+</code></pre>
+
 <ul>
 <li>Il existe aussi les Dict Comprehensions (moins utilisé)</li>
 </ul>
@@ -315,7 +334,7 @@ alphabet[:6]  # ABCDEF
 <h3 id="fonctions">Fonctions</h3>
 <ul>
 <li>Voici des exemples de fonction Python.
-<em>Encore une fois</em>, attention à l'indentation.</li>
+<em>Encore une fois</em>, attention à l'indentation !</li>
 </ul>
 <pre><code class="python">def ajouter(x, y):
     &quot;&quot;&quot;Ajouter deux nombres.&quot;&quot;&quot;
@@ -330,7 +349,7 @@ def discuter(texte, personnage='Charles'):
 </code></pre>
 
 <ul>
-<li>Une fonction peut retourner plusieurs valeurs:</li>
+<li>Une fonction peut retourner plusieurs valeurs :</li>
 </ul>
 <pre><code class="python">def decomposer(entier, diviser_par):
     &quot;&quot;&quot;Retourne la partie entière et le reste d'une division.&quot;&quot;&quot;

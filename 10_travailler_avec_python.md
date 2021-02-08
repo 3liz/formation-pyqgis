@@ -24,19 +24,22 @@ En IDE gratuit, il existe :
 
 # Utilisation de GIT
 
-Il est vivement recommandé d'utiliser GIT : 
+Il est vivement recommandé d'utiliser GIT :
+
  * sauvegarde de son code sur un server
  * versionner son code et suivre les modifications
  * simplifier le travail d'équipe
 
 La documentation : https://git-scm.com/docs/
 
-Les commandes les plus utiles : 
+Les commandes les plus utiles :
+
  * `git commit` : https://git-scm.com/docs/git-commit/fr
  * `git add` : https://git-scm.com/docs/git-add/fr
  * `git push` : https://git-scm.com/docs/git-push/fr
  * `git pull` : https://git-scm.com/docs/git-pull/fr
 
-Liens vers OpenClassRooms : 
+Liens vers OpenClassRooms :
+
   * https://openclassrooms.com/fr/courses/1233741-gerez-vos-codes-source-avec-git
   * https://openclassrooms.com/fr/courses/5641721-utilisez-git-et-github-pour-vos-projets-de-developpement
