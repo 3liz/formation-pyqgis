@@ -9,7 +9,7 @@ Index: True
 # Les actions
 
 * Pour connaître le principe des actions dans QGIS, il faut se référer au manuel de QGIS :
-    * https://docs.qgis.org/3.4/fr/docs/user_manual/working_with_vector/vector_properties.html#actions-properties
+    * https://docs.qgis.org/3.16/fr/docs/user_manual/working_with_vector/vector_properties.html#actions-properties
 * Ajouter la couche `D_OSM_HYDROGRAPHIE/CANALISATION_EAU.shp`.
 * Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une `Ligne de symbole` dans
   l'onglet `Symbologie`.
@@ -36,6 +36,9 @@ def reverse_geom(layer, ids):
     pass
 
 ```
+
+Le mot-clé `pass` est juste une instruction Python qui ne fait **strictement** rien mais qui permet de rendre
+une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer dès qu'il y a du code.
 
 * Solution :
 ```python

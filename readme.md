@@ -22,31 +22,33 @@ Cette formation concerne des utilisateurs de QGIS, géomaticiens, qui souhaitent
 Pour suivre la formation, il faut :
 
 * Avoir [QGIS LTR minimum](https://www.qgis.org/en/site/getinvolved/development/roadmap.html#release-schedule)
-* Avoir des connaissances en QGIS Bureautique  
+* Avoir des connaissances en QGIS bureautique
 * Avoir des bases en programmation
 * Avoir un jeu de données, par exemple :
     * Données OSM à l'aide du plugin QuickOSM
     * Données [OSM2Igeo](https://github.com/igeofr/osm2igeo) (utilisation de ce jeu de données ci-après dans 
       la formation)
-* Pour une utilisation avancée, nous recommandons l'usage d'un IDE de développement en Python
 
 ## Sommaire
 
-* [Où utiliser du Python dans QGIS ?](./le_python_dans_qgis.md)
-* [Mémo Python](./00_memo_python.md)
-* [Découverte de la console Python dans QGIS](./01_console_python.md)
+* [Où utiliser du Python dans QGIS ?](./00_le_python_dans_qgis.md)
+* [Mémo Python](./05_memo_python.md)
+* [Pour une utilisation sur le long terme](./10_travailler_avec_python.md)
+    * IDE
+    * GIT
+* [Découverte de la console Python dans QGIS](./15_console_python.md)
     * La documentation et l'API
     * Initiation à la Programmation Orientée Objet (POO)
     * Accéder aux propriétés du projet
     * Ajouter une couche
     * Accéder aux propriétés de la couche
     * Itération sur une couche vecteur
-* [Initiation au script Python](./02_fonctions_script.md)
+* [Initiation au script Python](./20_fonctions_script.md)
     * Organiser son code en fonction
     * Manipulation des structures de données
     * Exporter des informations sur les couches au format CSV
     * Communication avec l'utilisateur
-* [Sélection et parcours des entités](./03_selection_parcours_entites.md)
+* [Sélection et parcours des entités](./25_selection_parcours_entites.md)
     * Sélection
     * Filtrage
     * Optimisation
@@ -54,9 +56,25 @@ Pour suivre la formation, il faut :
     * Matérialisation
     * Ajout d'un champ et calcul d'un indicateur pour chaque entité
     * Manipulation de la géométrie
-* [Actions](./04_actions.md)
+* Faire une symbologie
+    * Utiliser PyQGIS pour créer dynamiquement une symbologie
+    * Charger un QML
+* [Actions](./50_actions.md)
     * Les actions par défaut
     * Créer sa propre action pour inverser une ligne
-* [Script Processing](./05_script_processing.md)
+* [Script Processing](./60_script_processing.md)
+    * Transformer un modèle en script Processing
     * Le modèle de script déjà existant
     * Création d'une structure de couche vecteur à partir d'un CSV
+* Faire une extension Processing
+    * Créer un fournisseur Processing
+* Faire une extension avec une UI
+    * Créer une UI avec QtDesigner
+    * Les signaux Qt
+* Déploiement d'une extension QGIS
+    * Interne versus public
+    * plugins.qgis.org
+    * QGIS-Plugin-CI
+* Lancer QGIS sans ouvrir QGIS, en CLI
+    * `qgis_process` pour lancer un script/modèle Processing sans ouvrir QGIS
+    * PyQGIS standalone script

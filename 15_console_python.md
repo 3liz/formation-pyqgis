@@ -17,14 +17,14 @@ documentation et comment rechercher des informations.
 * QGIS repose sur la librairie Qt version 5 pour l'interface graphique et sur Python version 3.
 * Toutes les classes QGIS commencent par `Qgs` et toutes les classes Qt commencent par `Q`.
 
-Voici une liste de liens pour la documentation:
+Voici une liste de liens pour la documentation :
 
-* [https://docs.qgis.org](https://docs.qgis.org) qui regroupe:
-	* [Le Python Cookbook https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook](https://docs.qgis.org/3.4/en/docs/pyqgis_developer_cookbook/) (recette de cuisine)
-	* [L'API C++ https://qgis.org/api/3.4/](https://qgis.org/api/3.4/)
-	* [L'API Python https://qgis.org/pyqgis/3.4/](https://qgis.org/pyqgis/3.4/)
+* [https://docs.qgis.org](https://docs.qgis.org) qui regroupe :
+	* [Le Python Cookbook https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook](https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/) (recette de cuisine)
+	* [L'API C++ https://qgis.org/api/3.16/](https://qgis.org/api/3.16/)
+	* [L'API Python https://qgis.org/pyqgis/3.16/](https://qgis.org/pyqgis/3.16/)
 
-Voici une liste non exhaustive de blog-post utiles pour manipuler PyQGIS:
+Voici une liste non exhaustive de blog-post utiles pour manipuler PyQGIS :
 
 * [Optimisation des couches vecteurs](https://nyalldawson.net/2016/10/speeding-up-your-pyqgis-scripts/)
 * [Parcourir la légende en 3 parties](https://www.lutraconsulting.co.uk/blog/2014/07/06/qgis-layer-tree-api-part-1/)
@@ -44,7 +44,7 @@ Autre lien pour l'apprentissage de Python (sans QGIS):
 * Dans QGIS, `Plugins` -> `Console Python`
 * QGIS nous donne accès au projet actuel via la classe `QgsProject`
 	* [https://qgis.org/api/classQgsProject.html](https://qgis.org/api/classQgsProject.html)
-	* [https://qgis.org/pyqgis/3.4/core/QgsProject.html](https://qgis.org/pyqgis/3.4/core/QgsProject.html)
+	* [https://qgis.org/pyqgis/3.16/core/QgsProject.html](https://qgis.org/pyqgis/3.16/core/QgsProject.html)
 	
 * Dans la documentation (en C++ surtout), on remarque plusieurs sections:
 	* Public types

@@ -144,6 +144,9 @@ notre propre application graphique ou notre propre exécutable et ainsi utiliser
 On peut donc faire un programme en ligne de commande qui effectue une certaine opération dans un répertoire
 donné.
 
+**Depuis QGIS 3.16**, nous pouvons lancer un modèle ou un script Processing depuis la ligne de commande depuis
+l'outil [qgis_process](https://docs.qgis.org/testing/en/docs/user_manual/processing/standalone.html).
+
 ## le fichier "startup.py"
 
 Si l'on place un fichier nommé `startup.py` dans le dossier Python du profil de l'utilisateur, QGIS va le
