@@ -48,6 +48,8 @@ if 0 < x < 10:
 
 ## Rappel de base sur Python
 
+Un mémo Python plus important : https://www.w3schools.com/python/
+
 ### Les types de données :
 
 Une variable peut contenir un entier, un booléen (`True` ou `False`), chaîne de caractères, nombre décimal, un
@@ -159,6 +161,47 @@ d = a * 2
 e = a / 2
 f = a % 3  # 1
 g = a ** 2  # 100
+```
+
+### Concaténer des chaînes et des variables
+
+Concaténer, c'est assembler des assembler des chaînes de caractères dans une seule et même sortie.
+On peut concaténer des variables entre elles ou du textes.
+
+Il existe plein de manières de faire, mais certaines sont plus pratiques que d'autres
+```python
+# Non recommandé
+a = 'bon'
+b = 'jour'
+a + b  # 'bonjour'
+c = 1
+a + c  # Erreur
+a + str(c)  # Marche
+```
+
+À l'ancienne avec "%"
+```python
+prenom = 'Pierre'
+numero_jour = 2
+bienvenue = 'Bonjour %s !' % prenom
+bienvenue = 'Bonjour %s, nous sommes le %s novembre' % (prenom, numero_jour)
+```
+
+Nouveau avec "{}" et "format"
+```python
+prenom = 'Pierre'
+numero_jour = 2
+bienvenue = 'Bonjour {} !'.format(prenom)
+bienvenue = 'Bonjour {}, nous sommes le {} novembre'.format(prenom, numero_jour)
+bienvenue = 'Bonjour {prenom}, nous sommes le {jour} novembre'.format(prenom=prenom, jour=numero_jour)
+```
+
+Encore plus moderne avec Python 3.6 et "fstring"
+```python
+prenom = 'Pierre'
+numero_jour = 2
+bienvenue = f'Bonjour {prenom} !'
+bienvenue = f'Bonjour {prenom}, nous sommes le {numero_jour} novembre'
 ```
 
 ### Opérateurs logiques
@@ -301,7 +344,8 @@ countries = [c.upper() for c in countries]
 
 ### Manipulation sur les chaînes de caractères
 
-* Pour information, les chaînes de caractères sont des listes.
+* Pour information, les chaînes de caractères sont des listes et on peut faire du **slicing** sur des listes :
+
 ```python
 alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 len(alphabet)

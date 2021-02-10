@@ -24,6 +24,7 @@
 <li><a href="#les-structures-de-donnees">Les structures de données</a></li>
 <li><a href="#les-commentaires">Les commentaires</a></li>
 <li><a href="#arithmetique">Arithmétique</a></li>
+<li><a href="#concatener-des-chaines-et-des-variables">Concaténer des chaînes et des variables</a></li>
 <li><a href="#operateurs-logiques">Opérateurs logiques</a></li>
 <li><a href="#condition">Condition</a></li>
 <li><a href="#boucle-for">Boucle for</a></li>
@@ -90,6 +91,7 @@ if 0 &lt; x &lt; 10:
 </li>
 </ul>
 <h2 id="rappel-de-base-sur-python">Rappel de base sur Python</h2>
+<p>Un mémo Python plus important : <a href="https://www.w3schools.com/python/">https://www.w3schools.com/python/</a></p>
 <h3 id="les-types-de-donnees">Les types de données :</h3>
 <p>Une variable peut contenir un entier, un booléen (<code>True</code> ou <code>False</code>), chaîne de caractères, nombre décimal, un
 objet...
@@ -192,6 +194,41 @@ d = a * 2
 e = a / 2
 f = a % 3  # 1
 g = a ** 2  # 100
+</code></pre>
+
+<h3 id="concatener-des-chaines-et-des-variables">Concaténer des chaînes et des variables</h3>
+<p>Concaténer, c'est assembler des assembler des chaînes de caractères dans une seule et même sortie.
+On peut concaténer des variables entre elles ou du textes.</p>
+<p>Il existe plein de manières de faire, mais certaines sont plus pratiques que d'autres</p>
+<pre><code class="python"># Non recommandé
+a = 'bon'
+b = 'jour'
+a + b  # 'bonjour'
+c = 1
+a + c  # Erreur
+a + str(c)  # Marche
+</code></pre>
+
+<p>À l'ancienne avec "%"</p>
+<pre><code class="python">prenom = 'Pierre'
+numero_jour = 2
+bienvenue = 'Bonjour %s !' % prenom
+bienvenue = 'Bonjour %s, nous sommes le %s novembre' % (prenom, numero_jour)
+</code></pre>
+
+<p>Nouveau avec "{}" et "format"</p>
+<pre><code class="python">prenom = 'Pierre'
+numero_jour = 2
+bienvenue = 'Bonjour {} !'.format(prenom)
+bienvenue = 'Bonjour {}, nous sommes le {} novembre'.format(prenom, numero_jour)
+bienvenue = 'Bonjour {prenom}, nous sommes le {jour} novembre'.format(prenom=prenom, jour=numero_jour)
+</code></pre>
+
+<p>Encore plus moderne avec Python 3.6 et "fstring"</p>
+<pre><code class="python">prenom = 'Pierre'
+numero_jour = 2
+bienvenue = f'Bonjour {prenom} !'
+bienvenue = f'Bonjour {prenom}, nous sommes le {numero_jour} novembre'
 </code></pre>
 
 <h3 id="operateurs-logiques">Opérateurs logiques</h3>
@@ -318,7 +355,7 @@ countries = [c.upper() for c in countries]
 </ul>
 <h3 id="manipulation-sur-les-chaines-de-caracteres">Manipulation sur les chaînes de caractères</h3>
 <ul>
-<li>Pour information, les chaînes de caractères sont des listes.</li>
+<li>Pour information, les chaînes de caractères sont des listes et on peut faire du <strong>slicing</strong> sur des listes :</li>
 </ul>
 <pre><code class="python">alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 len(alphabet)
