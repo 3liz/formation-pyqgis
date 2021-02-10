@@ -16,6 +16,7 @@
 <p><a href="./">Index</a></p>
 
 <div class="toc"><span class="toctitle">Table of content</span><ul>
+<li><a href="#boucler-sur-les-entites-dune-couche-sans-expression">Boucler sur les entités d'une couche sans expression</a></li>
 <li><a href="#utilisation-des-expressions-qgis">Utilisation des expressions QGIS</a><ul>
 <li><a href="#selection-dentite">Sélection d'entité</a></li>
 <li><a href="#boucler-sur-les-entites-a-laide-dune-expression">Boucler sur les entités à l'aide d'une expression</a></li>
@@ -23,6 +24,14 @@
 </li>
 </ul>
 </div>
+<h1 id="boucler-sur-les-entites-dune-couche-sans-expression">Boucler sur les entités d'une couche sans expression</h1>
+<p>On peut parcourir les entités d'une couche <code>QgsVectorLayer</code> à l'aide de <code>getFeatures()</code> :</p>
+<pre><code class="python">layer = iface.activeLayer()
+for feature in layer.getFeatures():
+    print(feature)
+    print(feature['NOM'])
+</code></pre>
+
 <h1 id="utilisation-des-expressions-qgis">Utilisation des expressions QGIS</h1>
 <ul>
 <li>Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en
@@ -53,7 +62,7 @@ for feature in layer.getFeatures():
 
 <p>Observez bien la signature de la fonction <code>getFeatures</code>. Que remarquez-vous ?
 Utilisons donc une expression pour limiter les résultats.</p>
-<pre><code class="python">request = QgsFeatureRequest('&quot;POPUL&quot; != \'NC\''))
+<pre><code class="python">request = QgsFeatureRequest('&quot;POPUL&quot; != \'NC\'')
 for feature in layer.getFeatures(request):
     print('{commune} : {nombre} habitants pour'.format(commune=feature['NOM'], nombre=feature['POPUL']))
 </code></pre>

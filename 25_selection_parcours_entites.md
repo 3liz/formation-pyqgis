@@ -6,6 +6,17 @@ Index: True
 
 [TOC]
 
+# Boucler sur les entités d'une couche sans expression
+
+On peut parcourir les entités d'une couche `QgsVectorLayer` à l'aide de `getFeatures()` :
+
+```python
+layer = iface.activeLayer()
+for feature in layer.getFeatures():
+    print(feature)
+    print(feature['NOM'])
+```
+
 # Utilisation des expressions QGIS
 
 * Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en
@@ -46,7 +57,7 @@ Observez bien la signature de la fonction `getFeatures`. Que remarquez-vous ?
 Utilisons donc une expression pour limiter les résultats.
 
 ```python
-request = QgsFeatureRequest('"POPUL" != \'NC\''))
+request = QgsFeatureRequest('"POPUL" != \'NC\'')
 for feature in layer.getFeatures(request):
     print('{commune} : {nombre} habitants pour'.format(commune=feature['NOM'], nombre=feature['POPUL']))
 ```
