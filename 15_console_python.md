@@ -31,7 +31,7 @@ Voici une liste non exhaustive de blog-post utiles pour manipuler PyQGIS :
 * [Plugin Processing](http://www.qgistutorials.com/en/docs/3/processing_python_plugin.html)
 * [Workshop sur les expressions en Python](https://madmanwoo.gitlab.io/foss4g-python-workshop/)
 
-Autre lien pour l'apprentissage de Python (sans QGIS):
+Autre lien pour l'apprentissage de Python (sans QGIS) :
 * [https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python](https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python)
 
 ## Configurer le projet
@@ -46,7 +46,7 @@ Autre lien pour l'apprentissage de Python (sans QGIS):
 	* [https://qgis.org/api/classQgsProject.html](https://qgis.org/api/classQgsProject.html)
 	* [https://qgis.org/pyqgis/3.16/core/QgsProject.html](https://qgis.org/pyqgis/3.16/core/QgsProject.html)
 	
-* Dans la documentation (en C++ surtout), on remarque plusieurs sections:
+* Dans la documentation (en C++ surtout), on remarque plusieurs sections :
 	* Public types
 	* Public slots
 	* Signals
@@ -80,7 +80,7 @@ True
 ```
 
 * Charger la couche vecteur à l'aide de `iface` [QgisInterface](https://qgis.org/api/classQgisInterface.html)
-  (et non pas **Qgs**Interface!)
+  (et non pas **Qgs**Interface !)
 
 ```python
 communes = iface.addVectorLayer(fichier_shape, 'communes', 'ogr')
@@ -94,7 +94,7 @@ communes.isValid()
 QgsProject.instance().addMapLayer(communes)
 ```
 * Explorer l'objet `communes` qui est un `QgsVectorLayer` à l'aide de la documentation pour chercher sa
-  géométrie, le nombre d'entité.
+  géométrie, le nombre d'entités.
 * Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre (explication dans l'exemple
   ci-dessous)
 * Essayer d'ouvrir et de clore une session d'édition
@@ -133,11 +133,11 @@ layer.triggerRepaint()
 
 ## Parcourir les entités
 
-Un raccourci a savoir, dans la console:
+Un raccourci a savoir, dans la console :
 ```python
 iface.activeLayer()
 ```
-retourne la couche `QgsMapLayer` active dans la légende !
+Cela retourne la couche `QgsMapLayer` active dans la légende !
 
 On souhaite désormais itérer sur les polygones et les faire clignoter depuis la console.
 Nous allons donc avoir besoin de `getFeatures`.
@@ -158,7 +158,8 @@ On souhaite désormais afficher le nom des arrondissements à l'aide d'une boucl
 ```python
 layer = iface.activeLayer()
 for feature in layer.getFeatures():
-    # On peut traiter l'entité courante.    
+	# On peut traiter l'entité courante.
+	pass
 ```
 
 Noter l'apparition de `...` au lieu de `>>>` après avoir écrit la première ligne du `for`.
