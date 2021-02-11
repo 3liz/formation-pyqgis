@@ -17,23 +17,42 @@
 
 <div class="toc"><span class="toctitle">Table of content</span><ul>
 <li><a href="#organisation-du-code-dans-un-script-avec-des-fonctions">Organisation du code dans un script avec des fonctions</a><ul>
+<li><a href="#communication-avec-lutilisateur-des-erreurs-et-des-logs">Communication avec l'utilisateur des erreurs et des logs</a></li>
 <li><a href="#charger-automatiquement-plusieurs-couches-a-laide-dun-script">Charger automatiquement plusieurs couches à l'aide d'un script</a></li>
 <li><a href="#extraction-des-informations-sous-forme-dun-fichier-csv">Extraction des informations sous forme d'un fichier CSV.</a></li>
-<li><a href="#communication-avec-lutilisateur-des-erreurs-et-des-logs">Communication avec l'utilisateur des erreurs et des logs</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <h1 id="organisation-du-code-dans-un-script-avec-des-fonctions">Organisation du code dans un script avec des fonctions</h1>
+<h2 id="communication-avec-lutilisateur-des-erreurs-et-des-logs">Communication avec l'utilisateur des erreurs et des logs</h2>
+<p>Avant de commencer à vraiment écrire un script avec des fonctions, regardons comment communiquer des 
+informations à l'utilisateur.</p>
+<p>On peut envoyer des messages vers l'utilisateur avec l'utilisation de la <code>messageBar</code> :</p>
+<pre><code class="Python">iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.Critical)
+iface.messageBar().pushMessage('Avertissement','ou un avertissement', Qgis.Warning)
+iface.messageBar().pushMessage('Information','ou une information', Qgis.Info)
+iface.messageBar().pushMessage('Succès','ou un succès', Qgis.Success)
+</code></pre>
+
+<p>On peut aussi écrire des logs comme ceci (plus discret, mais plus verbeux) :</p>
+<pre><code class="Python">QgsMessageLog.logMessage('Une erreur est survenue','Notre outil', Qgis.Critical)
+QgsMessageLog.logMessage('Un avertissement','Notre outil', Qgis.Warning)
+QgsMessageLog.logMessage('Une information','Notre outil', Qgis.Info)
+QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.Success)
+</code></pre>
+
 <h2 id="charger-automatiquement-plusieurs-couches-a-laide-dun-script">Charger automatiquement plusieurs couches à l'aide d'un script</h2>
 <p>La console c'est bien, mais c'est très limitant. Passons à l'écriture d'un script qui va nous faciliter 
 l'organisation du code.</p>
-<p>Voici le dernier script du fichier précédent, mais avec la gestion des erreurs :
-* Redémarrer QGIS
-* N'ouvrez pas le projet précédent
-* Ouvrer la console, puis cliquer sur <code>Afficher l'éditeur</code>
-* Copier/coller le script ci-dessous
-* Exécuter le</p>
+<p>Voici le dernier script du fichier précédent, mais avec la gestion des erreurs :</p>
+<ul>
+<li>Redémarrer QGIS</li>
+<li>N'ouvrez pas le projet précédent</li>
+<li>Ouvrer la console, puis cliquer sur <code>Afficher l'éditeur</code></li>
+<li>Copier/coller le script ci-dessous</li>
+<li>Exécuter le</li>
+</ul>
 <pre><code class="python">from os.path import join, isfile, isdir
 dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
 thematique = 'H_OSM_ADMINISTRATIF'
@@ -136,14 +155,50 @@ Nous allons plutôt utiliser l'API QGIS pour créer une nouvelle couche en mémo
 informations que l'on souhaite exporter.
 Puis nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de
 l'action <code>Exporter la couche</code>).</p>
-<p>Les différents champs qui devront être exportés sont :
-* son nom
-* son type de géométrie (format humain, lisible)
-* la projection
-* le nombre d'entité
-* l'encodage
-* si le seuil de visibilité est activé
-* la source (le chemin) de la donnée</p>
+<p>Les différents champs qui devront être exportés sont :</p>
+<ul>
+<li>son nom</li>
+<li>son type de géométrie (format humain, lisible)</li>
+<li>la projection</li>
+<li>le nombre d'entité</li>
+<li>l'encodage</li>
+<li>si le seuil de visibilité est activé</li>
+<li>la source (le chemin) de la donnée</li>
+</ul>
+<p>Exemple de sortie : </p>
+<table>
+<thead>
+<tr>
+<th>nom</th>
+<th>type</th>
+<th>projection</th>
+<th>nombre_entite</th>
+<th>encodage</th>
+<th>source</th>
+<th>seuil_de_visibilite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>couche_1</td>
+<td>Line</td>
+<td>EPSG:4326</td>
+<td>5</td>
+<td>UTF-8</td>
+<td>/tmp/...geojson</td>
+<td>False</td>
+</tr>
+<tr>
+<td>couche_2</td>
+<td>Point</td>
+<td>No geometry</td>
+<td>0</td>
+<td></td>
+<td>/tmp/...shp</td>
+<td>True</td>
+</tr>
+</tbody>
+</table>
 <p>Pour créer une couche tabulaire en mémoire :</p>
 <pre><code class="python">layer_info = QgsVectorLayer('None', 'info', 'memory')
 </code></pre>
@@ -152,7 +207,12 @@ l'action <code>Exporter la couche</code>).</p>
 <pre><code class="python">layers = QgsProject.instance().mapLayers()
 </code></pre>
 
-<p>Pour enregistrer un fichier : la classe <code>QgsVectorFileWriter</code></p>
+<p>Nous allons avoir besoin de plusieurs classes dans l'API QGIS : </p>
+<ul>
+<li>Enregistrer un fichier : la classe <code>QgsVectorFileWriter</code></li>
+<li>Un champ : <code>QgsField</code></li>
+<li>Une entité : <code>QgsFeature</code></li>
+</ul>
 <p>Solution :</p>
 <pre><code class="python">from os.path import join
 
@@ -203,22 +263,8 @@ QgsVectorFileWriter.writeAsVectorFormat(
     layerOptions=['CREATE_CSVT=YES']
 )
 
-</code></pre>
+# Afficher une messageBar pour confirmer que c'est OK, en vert ;-)
 
-<h2 id="communication-avec-lutilisateur-des-erreurs-et-des-logs">Communication avec l'utilisateur des erreurs et des logs</h2>
-<p>Nous avons déjà vu ci-dessus comment générer des messages vers l'utilisateur avec l'utilisation de la
-<code>messageBar</code> :</p>
-<pre><code class="Python">iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.Critical)
-iface.messageBar().pushMessage('Avertissement','ou un avertissement', Qgis.Warning)
-iface.messageBar().pushMessage('Information','ou une information', Qgis.Info)
-iface.messageBar().pushMessage('Succès','ou un succès', Qgis.Success)
-</code></pre>
-
-<p>On peut aussi écrire des logs comme ceci :</p>
-<pre><code class="Python">QgsMessageLog.logMessage('Une erreur est survenue','Notre outil', Qgis.Critical)
-QgsMessageLog.logMessage('Un avertissement','Notre outil', Qgis.Warning)
-QgsMessageLog.logMessage('Une information','Notre outil', Qgis.Info)
-QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.Success)
 </code></pre>
 <p><a href="./">Index</a></p>
 

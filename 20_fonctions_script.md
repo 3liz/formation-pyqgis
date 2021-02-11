@@ -8,12 +8,35 @@ Index: True
 
 # Organisation du code dans un script avec des fonctions
 
+## Communication avec l'utilisateur des erreurs et des logs
+
+Avant de commencer à vraiment écrire un script avec des fonctions, regardons comment communiquer des 
+informations à l'utilisateur.
+
+On peut envoyer des messages vers l'utilisateur avec l'utilisation de la `messageBar` :
+
+```Python
+iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.Critical)
+iface.messageBar().pushMessage('Avertissement','ou un avertissement', Qgis.Warning)
+iface.messageBar().pushMessage('Information','ou une information', Qgis.Info)
+iface.messageBar().pushMessage('Succès','ou un succès', Qgis.Success)
+```
+
+On peut aussi écrire des logs comme ceci (plus discret, mais plus verbeux) :
+```Python
+QgsMessageLog.logMessage('Une erreur est survenue','Notre outil', Qgis.Critical)
+QgsMessageLog.logMessage('Un avertissement','Notre outil', Qgis.Warning)
+QgsMessageLog.logMessage('Une information','Notre outil', Qgis.Info)
+QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.Success)
+```
+
 ## Charger automatiquement plusieurs couches à l'aide d'un script
 
 La console c'est bien, mais c'est très limitant. Passons à l'écriture d'un script qui va nous faciliter 
 l'organisation du code.
 
 Voici le dernier script du fichier précédent, mais avec la gestion des erreurs :
+
 * Redémarrer QGIS
 * N'ouvrez pas le projet précédent
 * Ouvrer la console, puis cliquer sur `Afficher l'éditeur`
@@ -42,6 +65,7 @@ else:
             iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
 
 ```
+
 * À l'aide du mémo Python :
 	* Essayons de faire une fonction qui prend 2 paramètres
 		* la thématique (le dossier)
@@ -53,7 +77,7 @@ else:
 def charger_couche(thematique, couche):
     pass
 ```
-	
+
 * Une des solutions :
 
 ```python
@@ -120,6 +144,7 @@ Puis nous allons utiliser l'API pour exporter cette couche mémoire au format CS
 l'action `Exporter la couche`).
 
 Les différents champs qui devront être exportés sont :
+
 * son nom
 * son type de géométrie (format humain, lisible)
 * la projection
@@ -127,6 +152,13 @@ Les différents champs qui devront être exportés sont :
 * l'encodage
 * si le seuil de visibilité est activé
 * la source (le chemin) de la donnée
+
+Exemple de sortie : 
+
+| nom      | type  | projection  | nombre_entite | encodage | source          | seuil_de_visibilite |
+|----------|-------|-------------|---------------|----------|-----------------|---------------------|
+| couche_1 | Line  | EPSG:4326   | 5             | UTF-8    | /tmp/...geojson | False               |
+| couche_2 | Point | No geometry | 0             |          | /tmp/...shp     | True                |
 
 Pour créer une couche tabulaire en mémoire :
 ```python
@@ -138,7 +170,11 @@ La liste des couches :
 layers = QgsProject.instance().mapLayers()
 ```
 
-Pour enregistrer un fichier : la classe `QgsVectorFileWriter`
+Nous allons avoir besoin de plusieurs classes dans l'API QGIS : 
+
+* Enregistrer un fichier : la classe `QgsVectorFileWriter`
+* Un champ : `QgsField`
+* Une entité : `QgsFeature`
 
 Solution :
 
@@ -192,23 +228,6 @@ QgsVectorFileWriter.writeAsVectorFormat(
     layerOptions=['CREATE_CSVT=YES']
 )
 
-```
+# Afficher une messageBar pour confirmer que c'est OK, en vert ;-)
 
-## Communication avec l'utilisateur des erreurs et des logs
-
-Nous avons déjà vu ci-dessus comment générer des messages vers l'utilisateur avec l'utilisation de la
-`messageBar` :
-```Python
-iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.Critical)
-iface.messageBar().pushMessage('Avertissement','ou un avertissement', Qgis.Warning)
-iface.messageBar().pushMessage('Information','ou une information', Qgis.Info)
-iface.messageBar().pushMessage('Succès','ou un succès', Qgis.Success)
-```
-
-On peut aussi écrire des logs comme ceci :
-```Python
-QgsMessageLog.logMessage('Une erreur est survenue','Notre outil', Qgis.Critical)
-QgsMessageLog.logMessage('Un avertissement','Notre outil', Qgis.Warning)
-QgsMessageLog.logMessage('Une information','Notre outil', Qgis.Info)
-QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.Success)
 ```

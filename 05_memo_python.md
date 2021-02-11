@@ -82,6 +82,7 @@ type(mon_compteur)
 ### Les structures de données
 
 Il existe quatre types de structure de données :
+
 * les variables simples (ci-dessus)
 * les tuples (non modifiables)
 
@@ -137,6 +138,8 @@ personne['age'] = 30
 
 ### Les commentaires
 
+Pour commenter le code dans un script, pas dans la console : 
+
 ```python
 # Ceci est un commentaire sur une ligne
 /*
@@ -179,7 +182,7 @@ a + c  # Erreur
 a + str(c)  # Marche
 ```
 
-À l'ancienne avec "%"
+À l'ancienne avec `%`
 ```python
 prenom = 'Pierre'
 numero_jour = 2
@@ -187,7 +190,7 @@ bienvenue = 'Bonjour %s !' % prenom
 bienvenue = 'Bonjour %s, nous sommes le %s novembre' % (prenom, numero_jour)
 ```
 
-Nouveau avec "{}" et "format"
+Nouveau avec `{}` et `format`
 ```python
 prenom = 'Pierre'
 numero_jour = 2
@@ -196,7 +199,7 @@ bienvenue = 'Bonjour {}, nous sommes le {} novembre'.format(prenom, numero_jour)
 bienvenue = 'Bonjour {prenom}, nous sommes le {jour} novembre'.format(prenom=prenom, jour=numero_jour)
 ```
 
-Encore plus moderne avec Python 3.6 et "fstring"
+Encore plus moderne avec Python 3.6 et `fstring`
 ```python
 prenom = 'Pierre'
 numero_jour = 2

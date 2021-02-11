@@ -119,9 +119,11 @@ type(mon_compteur)
 </code></pre>
 
 <h3 id="les-structures-de-donnees">Les structures de données</h3>
-<p>Il existe quatre types de structure de données :
-* les variables simples (ci-dessus)
-* les tuples (non modifiables)</p>
+<p>Il existe quatre types de structure de données :</p>
+<ul>
+<li>les variables simples (ci-dessus)</li>
+<li>les tuples (non modifiables)</li>
+</ul>
 <pre><code class="python">liste_vide = ()
 liste = (1 , 2, 3, 'bonjour')
 type(liste)
@@ -173,6 +175,7 @@ personne['age'] = 30
 </code></pre>
 
 <h3 id="les-commentaires">Les commentaires</h3>
+<p>Pour commenter le code dans un script, pas dans la console : </p>
 <pre><code class="python"># Ceci est un commentaire sur une ligne
 /*
 Ceci est
@@ -209,14 +212,14 @@ a + c  # Erreur
 a + str(c)  # Marche
 </code></pre>
 
-<p>À l'ancienne avec "%"</p>
+<p>À l'ancienne avec <code>%</code></p>
 <pre><code class="python">prenom = 'Pierre'
 numero_jour = 2
 bienvenue = 'Bonjour %s !' % prenom
 bienvenue = 'Bonjour %s, nous sommes le %s novembre' % (prenom, numero_jour)
 </code></pre>
 
-<p>Nouveau avec "{}" et "format"</p>
+<p>Nouveau avec <code>{}</code> et <code>format</code></p>
 <pre><code class="python">prenom = 'Pierre'
 numero_jour = 2
 bienvenue = 'Bonjour {} !'.format(prenom)
@@ -224,7 +227,7 @@ bienvenue = 'Bonjour {}, nous sommes le {} novembre'.format(prenom, numero_jour)
 bienvenue = 'Bonjour {prenom}, nous sommes le {jour} novembre'.format(prenom=prenom, jour=numero_jour)
 </code></pre>
 
-<p>Encore plus moderne avec Python 3.6 et "fstring"</p>
+<p>Encore plus moderne avec Python 3.6 et <code>fstring</code></p>
 <pre><code class="python">prenom = 'Pierre'
 numero_jour = 2
 bienvenue = f'Bonjour {prenom} !'
