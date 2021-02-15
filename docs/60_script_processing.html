@@ -16,27 +16,55 @@
 <p><a href="./">Index</a></p>
 
 <div class="toc"><span class="toctitle">Table of content</span><ul>
-<li><a href="#creer-un-script-processing">Créer un script Processing</a><ul>
-<li><a href="#le-modele-de-script-par-defaut">Le modèle de script par défaut</a></li>
-<li><a href="#notre-propre-script">Notre propre script</a></li>
+<li><a href="#processing">Processing</a><ul>
+<li><a href="#utiliser-processing-en-python-avec-un-algorithme-existant">Utiliser Processing en Python avec un algorithme existant</a></li>
+<li><a href="#notre-propre-script-processing">Notre propre script Processing</a><ul>
+<li><a href="#preparation">Préparation</a></li>
+<li><a href="#creation-du-coeur-de-notre-script">Création du coeur de notre script</a></li>
+</ul>
+</li>
+<li><a href="#convertir-un-modele-processing-en-python">Convertir un modèle Processing en python</a></li>
 </ul>
 </li>
 </ul>
 </div>
-<h1 id="creer-un-script-processing">Créer un script Processing</h1>
+<h1 id="processing">Processing</h1>
 <p>Processing est un framework pour faire des algorithmes dans QGIS.</p>
+<p>Toute la boite à outils Traitement dans QGIS sont des basés sur "Processing".</p>
 <p><em>Note</em>, depuis QGIS 3.6, il existe désormais une autre syntaxe pour 
 écrire script Processing à l'aide des décorateurs Python.</p>
-<h2 id="le-modele-de-script-par-defaut">Le modèle de script par défaut</h2>
+<h2 id="utiliser-processing-en-python-avec-un-algorithme-existant">Utiliser Processing en Python avec un algorithme existant</h2>
+<ol>
+<li>Sur une couche en EPSG:2154, faire un buffer de 10 mètres par exemple.</li>
+<li>Cliquer sur la petite horloge dans le panneau de Processing/Traitement en haut</li>
+<li>Cliquer sur le dernier traitement en haut, puis copier/coller la ligne de Python</li>
+</ol>
+<p>On peut appeler un traitement en ligne de commande Python :</p>
+<pre><code class="python">processing.run(
+    &quot;native:buffer&quot;, 
+    {
+        'INPUT':'/home/etienne/tmp/formation_pyqgis/202101_OSM2IGEO_11_ILE_DE_FRANCE_SHP_L93_2154/D_OSM_HYDROGRAPHIE/CANALISATION_EAU.shp',
+        'DISTANCE':10,
+        'SEGMENTS':5,
+        'END_CAP_STYLE':0,
+        'JOIN_STYLE':0,
+        'MITER_LIMIT':2,
+        'DISSOLVE':False,
+        'OUTPUT':'TEMPORARY_OUTPUT'
+    }
+)
+</code></pre>
+
+<p>**Pour obtenir l'identifiant de l'algorithme, laissez la souris sur le nom de l'algorithme pour avoir son 
+info-bulle dans le panneau traitement.</p>
+<p>Lien vers la documentation : <a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/console.html">https://docs.qgis.org/testing/en/docs/user_manual/processing/console.html</a></p>
+<p>Pour obtenir la description d'un algorithme :</p>
+<pre><code class="python">processing.algorithmHelp(&quot;native:buffer&quot;)
+</code></pre>
+
+<h2 id="notre-propre-script-processing">Notre propre script Processing</h2>
 <ul>
-<li>Menu <code>Traitement</code>, <code>Boîte à outils</code>. Cliquer sur le logo Python, puis sur
-<code>Créer un nouveau script depuis un modèle.</code></li>
-<li>Comprendre la structure.</li>
-<li>Utiliser Processing en ligne de commande Python pour lancer un algorithme</li>
-</ul>
-<h2 id="notre-propre-script">Notre propre script</h2>
-<ul>
-<li>Nous souhaitons pouvoir créer plusieurs tables vides assez facilement à l'aide de fichier CSV.</li>
+<li>Nous souhaitons pouvoir créer plusieurs tables vides assez facilement à l'aide des fichiers CSV.</li>
 <li>Nous avons un dossier avec plusieurs fichiers CSV représentant chacun une table.</li>
 <li>Le nom du fichier CSV représente le nom de la table.</li>
 <li>La première ligne représente l'entête des colonnes.</li>
@@ -91,26 +119,42 @@
 </tr>
 </tbody>
 </table>
+<h3 id="preparation">Préparation</h3>
+<ul>
+<li>Créer un dossier <code>processing_canalisation</code> à côté du projet avec des fichiers CSV à l'intérieur :</li>
+</ul>
+<p><code>canalisation.csv</code></p>
 <pre><code class="csv">name,type,length,precision,alias
-geom,polygon,2154,'',''
+geom,line,2154,'',''
 id,2,3,0,ID
 n,10,10,0,Nom
 d,2,3,0,Diamètre
 l,2,3,0,Longueur
 </code></pre>
 
+<p><code>regard.csv</code> :</p>
+<pre><code class="csv">name,type,length,precision,alias
+geom,point,2154,'',''
+id,2,3,0,ID
+n,10,10,0,Nom rue
+</code></pre>
+
+<h3 id="creation-du-coeur-de-notre-script">Création du coeur de notre script</h3>
 <ul>
-<li>Commençons par écrire le script en console : </li>
+<li>Commençons par écrire le script en console</li>
 <li>Il nous faut une fonction qui liste les CSV dans un dossier.</li>
 </ul>
 <pre><code class="python">def liste_csv(folder):
+    &quot;&quot;&quot; Liste les CSV disponibles dans le dossier. &quot;&quot;&quot;
     pass
 </code></pre>
 
+<p>Correction du script Python (et non la correction du script Processing) :</p>
 <pre><code class="python">import os
 import csv
 
 def liste_csv(folder):
+    &quot;&quot;&quot; Fonction générique pour liste les CSV dans un dossier. &quot;&quot;&quot;
     csvs = []
     for root, directories, files in os.walk(folder):
         for file in files:
@@ -118,18 +162,17 @@ def liste_csv(folder):
                 csvs.append(os.path.join(root, file))
     return csvs
 
-folder = os.path.join(QgsProject.instance().homePath(), 'processing')
-csv_files = liste_csv(folder)
-
-for csv_file in csv_files:
+def lire_csv(csv_file):
+    &quot;&quot;&quot; Fonction générique pour créer une couche vecteur selon la définition d'un CSV. &quot;&quot;&quot;
     geom = 'None'
     crs = None
     fields = []
 
-    with open(csv_file) as csvfile:
+    with open(csv_file) as csv_file:
         reader = csv.reader(csvfile)
         for i, row in enumerate(reader):
             if i == 0:
+                # Header du CSV
                 continue
             elif i == 1 and row[0] == 'geom':
                 geom = row[1]
@@ -151,11 +194,89 @@ for csv_file in csv_files:
         for field in fields:
             layer.addAttribute(field)
 
+    return layer
+
+# Appel des fonctions
+folder = os.path.join(QgsProject.instance().homePath(), 'processing_canalisation')
+csv_files = liste_csv(folder)
+for csv_file in csv_files:
+    layer = lire_csv(csv_file)
     QgsProject.instance().addMapLayer(layer)
+
 </code></pre>
 
-<p>Nous allons maintenant ajouter et adapter ce code dans un script Processing :</p>
-<pre><code class="python">&quot;&quot;&quot;
+<p>Nous avons le coeur de notre algorithme, qui fonctionne dans la console Python. Si l'utilisateur souhaite 
+changer de thématique pour la génération des couches (ne pas utiliser <code>processing_canalisation</code> mais plutôt
+<code>processing_fibre_optique</code> ou <code>processing_plu</code>), il faut qu'il modifie à la main la ligne de Python, ce n'est
+pas très ergonomique.</p>
+<p>Nous allons désormais le transformer en Script Processing afin de rajouter une interface graphique.</p>
+<ol>
+<li>Partons de l'algorithme d'exemple :</li>
+<li>Panneau Traitement </li>
+<li><code>Python</code> en haut</li>
+<li>`Créer un nouveau script depuis un modèle</li>
+<li>Modifions les fonctions une par une : </li>
+<li><code>name()</code></li>
+<li><code>displayName()</code></li>
+<li>...</li>
+</ol>
+<p>Pour le <code>initAlgorithm()</code>, nous devons modifier le paramètre pour afficher un sélecteur de dossier :</p>
+<pre><code class="python">    def initAlgorithm(self, config=None):
+        self.addParameter(
+            QgsProcessingParameterFile(
+                self.INPUT,
+                self.tr('Répertoire'),
+                QgsProcessingParameterFile.Folder,
+                optional=False
+            )
+        )
+
+        self.addOutput(
+            QgsProcessingOutputMultipleLayers(
+                self.OUTPUT_LAYERS,
+                self.tr('Couches de sorties')
+            )
+        )
+</code></pre>
+
+<p>Ajoutons les fonctions <code>liste_csv</code> et <code>lire_csv</code> mais :</p>
+<ul>
+<li>Ajoutons <code>self</code> comme premier paramètre dans la signature de la fonction : <code>def lire_csv(self, ...):</code></li>
+<li>Ajoutons <code>self</code> lors de l'appel à la fonction : <code>self.liste_csv(...)</code></li>
+</ul>
+<p>Pour le <code>processAlgorithm</code>, nous allons incorporer le code que l'on a fait avant</p>
+<pre><code class="python">    def processAlgorithm(self, parameters, context, feedback):
+        &quot;&quot;&quot;
+        Here is where the processing itself takes place.
+        &quot;&quot;&quot;
+        folder = self.parameterAsFile(parameters, self.INPUT, context)
+        csv_files = self.liste_csv(folder)
+
+        results = []
+        for csv_file in csv_files:
+            layer = self.lire_csv(csv_file)
+            results.append(layer.id())
+
+            context.temporaryLayerStore().addMapLayer(layer)
+            context.addLayerToLoadOnCompletion(
+                layer.id(),
+                QgsProcessingContext.LayerDetails(
+                    layer.name(),
+                    context.project(),
+                    self.OUTPUT
+                )
+            )
+
+        return {self.OUTPUT: results}
+</code></pre>
+
+<ul>
+<li>Il faut aussi ajouter les imports manquants.</li>
+</ul>
+<p>Solution finale :</p>
+<pre><code class="python"># -*- coding: utf-8 -*-
+
+&quot;&quot;&quot;
 ***************************************************************************
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -169,23 +290,17 @@ import os
 import csv
 
 from qgis.PyQt.QtCore import QCoreApplication
-from qgis.core import (
-    QgsField,
-    QgsVectorLayer,
-    edit,
-    QgsProcessing,
-    QgsFeatureSink,
-    QgsProcessingException,
-    QgsProcessingContext,
-    QgsProcessingAlgorithm,
-    QgsProcessingParameterFile,
-    QgsProcessingParameterFeatureSource,
-    QgsProcessingOutputMultipleLayers,
+from qgis.core import (edit,
+                       QgsField,
+                       QgsProcessingContext,
+                       QgsProcessingAlgorithm,
+                       QgsProcessingParameterFile,
+                       QgsProcessingOutputMultipleLayers,
+                       QgsVectorLayer,
 )
-import processing
 
 
-class CreateLayersFromCsvAlgorithm(QgsProcessingAlgorithm):
+class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
     &quot;&quot;&quot;
     This is an example algorithm that takes a vector layer and
     creates a new identical one.
@@ -204,8 +319,7 @@ class CreateLayersFromCsvAlgorithm(QgsProcessingAlgorithm):
     # calling from the QGIS console.
 
     INPUT = 'INPUT'
-    OUTPUT_LAYERS = 'OUTPUT_LAYERS'
-
+    OUTPUT = 'OUTPUT'
 
     def tr(self, string):
         &quot;&quot;&quot;
@@ -214,7 +328,7 @@ class CreateLayersFromCsvAlgorithm(QgsProcessingAlgorithm):
         return QCoreApplication.translate('Processing', string)
 
     def createInstance(self):
-        return CreateLayersFromCsvAlgorithm()
+        return ExampleProcessingAlgorithm()
 
     def name(self):
         &quot;&quot;&quot;
@@ -224,21 +338,21 @@ class CreateLayersFromCsvAlgorithm(QgsProcessingAlgorithm):
         lowercase alphanumeric characters only and no spaces or other
         formatting characters.
         &quot;&quot;&quot;
-        return 'createlayersfromcsv'
+        return 'myscript'
 
     def displayName(self):
         &quot;&quot;&quot;
         Returns the translated algorithm name, which should be used for any
         user-visible display of the algorithm name.
         &quot;&quot;&quot;
-        return self.tr('Create layers from CSV')
+        return self.tr('My Script')
 
     def group(self):
         &quot;&quot;&quot;
         Returns the name of the group this algorithm belongs to. This string
         should be localised.
         &quot;&quot;&quot;
-        return self.tr('Formation')
+        return self.tr('Example scripts')
 
     def groupId(self):
         &quot;&quot;&quot;
@@ -248,7 +362,7 @@ class CreateLayersFromCsvAlgorithm(QgsProcessingAlgorithm):
         contain lowercase alphanumeric characters only and no spaces or other
         formatting characters.
         &quot;&quot;&quot;
-        return 'formation'
+        return 'examplescripts'
 
     def shortHelpString(self):
         &quot;&quot;&quot;
@@ -256,16 +370,13 @@ class CreateLayersFromCsvAlgorithm(QgsProcessingAlgorithm):
         should provide a basic description about what the algorithm does and the
         parameters and outputs associated with it..
         &quot;&quot;&quot;
-        return self.tr('Script pour créer des couches à partir de CSV')
+        return self.tr(&quot;Example algorithm short description&quot;)
 
     def initAlgorithm(self, config=None):
         &quot;&quot;&quot;
         Here we define the inputs and output of the algorithm, along
         with some other properties.
         &quot;&quot;&quot;
-
-        # We add the input vector features source. It can have any kind of
-        # geometry.
         self.addParameter(
             QgsProcessingParameterFile(
                 self.INPUT,
@@ -277,86 +388,88 @@ class CreateLayersFromCsvAlgorithm(QgsProcessingAlgorithm):
 
         self.addOutput(
             QgsProcessingOutputMultipleLayers(
-                self.OUTPUT_LAYERS,
+                self.OUTPUT,
                 self.tr('Couches de sorties')
             )
         )
+
+    def liste_csv(self, folder):
+        &quot;&quot;&quot; Fonction générique pour liste les CSV dans un dossier. &quot;&quot;&quot;
+        csvs = []
+        for root, directories, files in os.walk(folder):
+            for file in files:
+                if file.lower().endswith('.csv'):
+                    csvs.append(os.path.join(root, file))
+        return csvs
+
+    def lire_csv(self, csv_file):
+        &quot;&quot;&quot; Fonction générique pour créer une couche vecteur selon la définition d'un CSV. &quot;&quot;&quot;
+        geom = 'None'
+        crs = None
+        fields = []
+
+        with open(csv_file) as csvfile:
+            reader = csv.reader(csvfile)
+            for i, row in enumerate(reader):
+                if i == 0:
+                    # Header du CSV
+                    continue
+                elif i == 1 and row[0] == 'geom':
+                    geom = row[1]
+                    crs = row[2]
+                else:
+                    field = QgsField()
+                    field.setName(row[0])
+                    field.setType(int(row[1]))
+                    field.setLength(int(row[2]))
+                    field.setPrecision(int(row[3]))
+                    field.setAlias(row[4])
+                    fields.append(field)
+
+        name = os.path.splitext(os.path.basename(csv_file))[0]
+        if geom:
+            geom += '?crs=epsg:{}'.format(crs)
+        layer = QgsVectorLayer(geom, name, 'memory')
+        with edit(layer):
+            for field in fields:
+                layer.addAttribute(field)
+
+        return layer
 
     def processAlgorithm(self, parameters, context, feedback):
         &quot;&quot;&quot;
         Here is where the processing itself takes place.
         &quot;&quot;&quot;
+        folder = self.parameterAsFile(parameters, self.INPUT, context)
+        csv_files = self.liste_csv(folder)
 
-        # Retrieve the feature source and sink. The 'dest_id' variable is used
-        # to uniquely identify the feature sink, and must be included in the
-        # dictionary returned by the processAlgorithm function.
-        source = self.parameterAsFile(
-            parameters,
-            self.INPUT,
-            context
-        )
-
-        feedback.pushInfo('Scanning {}'.format(source))
-
-        def liste_csv(folder):
-            csvs = []
-            for root, directories, files in os.walk(folder):
-                for file in files:
-                    if file.lower().endswith('.csv'):
-                        csvs.append(os.path.join(root, file))
-            return csvs
-
-        csv_files = liste_csv(source)
-
-        output_layers = []
+        results = []
         for csv_file in csv_files:
-            feedback.pushInfo('Fichier : {}'.format(csv_file))
-            geom = 'None'
-            crs = None
-            fields = []
+            layer = self.lire_csv(csv_file)
+            results.append(layer.id())
 
-            with open(csv_file) as csvfile:
-                reader = csv.reader(csvfile)
-                for i, row in enumerate(reader):
-                    if i == 0:
-                        continue
-                    elif i == 1 and row[0] == 'geom':
-                        geom = row[1]
-                        crs = row[2]
-                    else:
-                        field = QgsField()
-                        field.setName(row[0])
-                        field.setType(int(row[1]))
-                        field.setLength(int(row[2]))
-                        field.setPrecision(int(row[3]))
-                        field.setAlias(row[4])
-                        fields.append(field)
-
-            name = os.path.splitext(os.path.basename(csv_file))[0]
-            if geom:
-                geom += '?crs=epsg:{}'.format(crs)
-            layer = QgsVectorLayer(geom, name, 'memory')
-            with edit(layer):
-                for field in fields:
-                    layer.addAttribute(field)
-
-            output_layers.append(layer)
-
-            # Ajout de la couche au projet
             context.temporaryLayerStore().addMapLayer(layer)
             context.addLayerToLoadOnCompletion(
                 layer.id(),
                 QgsProcessingContext.LayerDetails(
-                    name,
+                    layer.name(),
                     context.project(),
-                    self.OUTPUT_LAYERS
+                    self.OUTPUT
                 )
             )
 
-        return {self.OUTPUT_LAYERS: output_layers}
+        return {self.OUTPUT: results}
 </code></pre>
 
-<p>Nous avons désormais un nouveau algorithme dans la boîte à outils. Plus besoin d'ouvrir un projet avant.</p>
+<p>Nous avons désormais un nouveau algorithme dans la boîte à outils pour générer un modèle de données suivant 
+une thématique.</p>
+<h2 id="convertir-un-modele-processing-en-python">Convertir un modèle Processing en python</h2>
+<p>Il est possible de convertir un modèle Processing en script Python.
+On peut alors le modifier avec plus de finesse.</p>
+<p><strong>On ne peut pas reconvertir un script Python en modèle</strong>.</p>
+<ol>
+<li>Depuis un modèle, cliquer sur le bouton "Convertir en script Processing".</li>
+</ol>
 <p><a href="./">Index</a></p>
 
   </article>

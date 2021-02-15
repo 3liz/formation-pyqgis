@@ -176,6 +176,14 @@ Nous allons avoir besoin de plusieurs classes dans l'API QGIS :
 * Un champ : `QgsField`
 * Une entité : `QgsFeature`
 
+Il va y avoir plusieurs étapes dans ce script :
+
+1. Créer une couche en mémoire
+1. Ajouter des champs à cette couche en utilisant une session d'édition
+1. Récupérer la liste des couches présentes dans la légende
+1. Itérer sur les couches pour ajouter ligne par ligne les métadonnées dans une session d'édition
+1. Enregistrer en CSV la couche mémoire
+
 Solution :
 
 ```python

@@ -56,6 +56,7 @@ Pour suivre la formation, il faut :
     * Matérialisation
     * Ajout d'un champ et calcul d'un indicateur pour chaque entité
     * Manipulation de la géométrie
+    * Les exceptions (les erreurs) en Python
 * Faire une symbologie
     * Utiliser PyQGIS pour créer dynamiquement une symbologie
     * Charger un QML

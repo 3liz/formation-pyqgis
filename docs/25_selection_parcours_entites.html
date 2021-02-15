@@ -19,7 +19,11 @@
 <li><a href="#boucler-sur-les-entites-dune-couche-sans-expression">Boucler sur les entités d'une couche sans expression</a></li>
 <li><a href="#utilisation-des-expressions-qgis">Utilisation des expressions QGIS</a><ul>
 <li><a href="#selection-dentite">Sélection d'entité</a></li>
-<li><a href="#boucler-sur-les-entites-a-laide-dune-expression">Boucler sur les entités à l'aide d'une expression</a></li>
+<li><a href="#boucler-sur-les-entites-a-laide-dune-expression">Boucler sur les entités à l'aide d'une expression</a><ul>
+<li><a href="#les-exceptions-en-python">Les exceptions en Python</a></li>
+<li><a href="#retour-a-lexercice">Retour à l'exercice</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -41,9 +45,13 @@ for feature in layer.getFeatures():
 <h2 id="selection-dentite">Sélection d'entité</h2>
 <p>Nous souhaitons sélectionner les entités dont le code INSEE commence par <code>77</code>.
 Commençons par faire cela graphiquement dans QGIS Desktop. À l'aide d'une expression QGIS, sélectionner
-les codes INSEE qui commencent par <code>77</code>.</p>
-<p><img alt="Sélectionner par expression" src="./media/console_editeur.png"></p>
-<p>Nous allons faire la même chose, mais en utilisant Python. Pensez à désélectionner les entités.</p>
+les codes INSEE qui commencent par <code>77</code> (à choisir un code INSEE propre au jeu de données).</p>
+<p><img alt="Sélectionner par expression" src="./media/selection_expression.png"></p>
+<p>Solution en mode graphique :</p>
+<pre><code>&quot;CODE_INSEE&quot; LIKE '77%'
+</code></pre>
+
+<p>Nous allons faire la même chose, mais en utilisant Python. Pensez à <strong>désélectionner</strong> les entités.</p>
 <pre><code class="python">layer = iface.activeLayer()
 layer.removeSelection()
 layer.selectByExpression(&quot;\&quot;CODE_INSEE\&quot; LIKE '{}%'&quot;.format(77))
@@ -53,6 +61,8 @@ layer.removeSelection()
 
 <h2 id="boucler-sur-les-entites-a-laide-dune-expression">Boucler sur les entités à l'aide d'une expression</h2>
 <p>L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas <code>NC</code>.</p>
+<p><strong>Note</strong>, en PyQGIS, on peut accéder aux attributs d'une <code>QgsFeature</code> simplement avec l'opérateur <code>[]</code> sur 
+l'objet courant comme s'il s'agissait d'une liste Python :</p>
 <p>L'exemple à <strong>ne pas</strong> faire, même si cela fonctionne :</p>
 <pre><code class="python">layer = iface.activeLayer()
 for feature in layer.getFeatures():
@@ -60,14 +70,18 @@ for feature in layer.getFeatures():
         print(feature['NOM'])
 </code></pre>
 
-<p>Observez bien la signature de la fonction <code>getFeatures</code>. Que remarquez-vous ?
+<p>Dans la documentation, observez bien la signature de la fonction <code>getFeatures</code>. Que remarquez-vous ?
 Utilisons donc une expression pour limiter les résultats.</p>
 <pre><code class="python">request = QgsFeatureRequest('&quot;POPUL&quot; != \'NC\'')
 for feature in layer.getFeatures(request):
     print('{commune} : {nombre} habitants pour'.format(commune=feature['NOM'], nombre=feature['POPUL']))
 </code></pre>
 
-<p>Nous pouvons encore optimiser la requête et accessoirement ordonner les résultats :</p>
+<p>Nous pouvons accessoirement ordonner les résultats et surtout encore optimiser la requête en :</p>
+<ul>
+<li>Ne demandant pas de charger la géométrie</li>
+<li>Ne demandant pas de charger tous les attributs</li>
+</ul>
 <pre><code class="python">request = QgsFeatureRequest()
 request.setFilterExpression('&quot;POPUL&quot; != \'NC\'')
 request.addOrderBy('NOM')
@@ -79,23 +93,88 @@ for feature in layer.getFeatures(request):
 
 <p>Faire le test en affichant un champ qui n'est pas dans la requête.</p>
 <p>Rajoutons une intersection spatiale avec l'emprise suivante :</p>
-<pre><code class="python">request.setFilterRect(QgsRectangle(662737,6807733,717144,6853979))
+<pre><code class="python">request.setFilterRect(QgsRectangle(662737, 6807733, 717144, 6853979))
 </code></pre>
 
-<p>Mettons ce résultat dans une nouvelle couche :</p>
+<p>Si l'on souhaite "enregistrer" le résultat de cette expression QGIS, on peut la <em>matérialiser</em> dans une
+nouvelle couche :</p>
 <pre><code class="python">memory_layer = layer.materialize(request)
 QgsProject.instance().addMapLayer(memory_layer)
 </code></pre>
 
-<p>Corrigeons ce problème d'export afin d'obtenir les géométries et les attributs :</p>
+<p>Regardons le résultat et corrigeons ce problème d'export afin d'obtenir les géométries et les attributs :</p>
 <pre><code class="python">request.setFlags(QgsFeatureRequest.NoFlags)
 </code></pre>
 
 <p>Avant-dernier exercice, afficher une liste des communes dont la population est inférieur
 à 1000 habitants en incluant la densité de population.</p>
+<h3 id="les-exceptions-en-python">Les exceptions en Python</h3>
+<p>Avant de traiter cet exercice, nous devons voir ce qu'est une <strong>exception</strong> en Python.</p>
+<p>À plusieurs reprises depuis le début de la formation, il est fort à parier que nous ayons des messages en
+rouges dans la console de temps en temps. Ce sont des exceptions. C'est une notion de programmation qui existe
+dans beaucoup de languages.</p>
+<p>Dans le language informatique, une exception peut-être :
+* levé (raise en anglais) pour déclencher une erreur
+* attrapé (catch en anglais) pour traiter l'erreur</p>
+<p>Essayons dans la console de faire une l'opération 10 / 2 :</p>
+<pre><code class="python">10 / 2
+</code></pre>
+
+<p>Essayons cette fois-ci 10 / 0, ce qui est mathématiquement impossible :</p>
+<pre><code class="python">10 / 0
+</code></pre>
+
+<p>On peut "attraper" cette erreur Python à l'aide d'un <code>try ... except...</code> :</p>
+<pre><code class="python">try:
+    10 / 2
+except ZeroDivisionError:
+    print('Ceci est une division par zéro !')
+</code></pre>
+
+<p>Le <code>try</code> permet d'essayer le code qui suit. Le <code>except</code> permet d'attraper en filtrant s'il y a des exceptions
+et de traiter l'erreur si besoin.</p>
+<p>Toutes les exceptions héritent de <code>Exception</code> donc le code ci-dessous fonctionne, mais n'est pas
+recommandé car il masque d'autres erreurs :</p>
+<pre><code class="python">try:
+    10 / 2
+except Exception:
+    print('Ceci est une division par zéro !')
+</code></pre>
+
+<p>On peut imaginer faire une fonction qui divise deux nombres et affiche le résultat dans la QgsMessageBar de 
+QGIS, sans tenir compte de la division par zéro :</p>
+<pre><code class="python">def diviser(a, b):
+    result = a / b
+    iface.messageBar().pushMessage('Résulat', f'{a} / {b} = {result}', Qgis.Success)
+
+diviser(10, 0)
+</code></pre>
+
+<p>En tenant compte d'une possible erreur lors de l'opération mathématique :</p>
+<pre><code class="python">def diviser(a, b):
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        iface.messageBar().pushMessage('Division par 0', f'{a} / {b} est impossible', Qgis.Warning)
+    else:
+        iface.messageBar().pushMessage('Résulat', f'{a} / {b} = {result}', Qgis.Success)
+
+diviser(10, 2)
+</code></pre>
+
+<p>Évidement, on peut vérifier la valeur de <code>b</code> en amont si c'est égal à 0. Mais ceci est pour présenter le
+concept des exceptions en Python.</p>
+<h3 id="retour-a-lexercice">Retour à l'exercice</h3>
+<p>On souhaite donc savoir si un nombre est transformable en entier, dans le cas de la
+population (s'il y a <code>NC</code> par exemple) :</p>
+<pre><code class="python">int('10')
+int('NC')
+</code></pre>
+
+<p>Correction possible de l'exercice :</p>
 <pre><code class="python">layer = iface.activeLayer()
 request = QgsFeatureRequest()
-request.setFilterExpression('to_int( &quot;POPUL&quot; ) &lt; 1000')
+# request.setFilterExpression('to_int( &quot;POPUL&quot; ) &lt; 1000')
 request.addOrderBy('NOM')
 request.setSubsetOfAttributes([1, 4])
 for feature in layer.getFeatures(request):
@@ -120,6 +199,7 @@ with edit(petites_communes):
 
 request = QgsFeatureRequest()
 request.setSubsetOfAttributes([4])
+
 with edit(petites_communes):
     for feature in petites_communes.getFeatures(request):
         area = feature.geometry().area() / 1000000
@@ -161,6 +241,7 @@ with edit(petites_communes):
 
         # /!\ Ajouter les lignes ci-dessous
         geom = feature.geometry()
+        # La transformation affecte directement l'objet Python en cours, mais pas l'entité dans la couche
         geom.transform(transform)
         centroid = geom.centroid().asPoint()
         petites_communes.changeAttributeValue(feature.id(), 6, centroid.x())

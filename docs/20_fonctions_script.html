@@ -213,6 +213,14 @@ l'action <code>Exporter la couche</code>).</p>
 <li>Un champ : <code>QgsField</code></li>
 <li>Une entité : <code>QgsFeature</code></li>
 </ul>
+<p>Il va y avoir plusieurs étapes dans ce script :</p>
+<ol>
+<li>Créer une couche en mémoire</li>
+<li>Ajouter des champs à cette couche en utilisant une session d'édition</li>
+<li>Récupérer la liste des couches présentes dans la légende</li>
+<li>Itérer sur les couches pour ajouter ligne par ligne les métadonnées dans une session d'édition</li>
+<li>Enregistrer en CSV la couche mémoire</li>
+</ol>
 <p>Solution :</p>
 <pre><code class="python">from os.path import join
 
