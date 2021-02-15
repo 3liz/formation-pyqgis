@@ -67,7 +67,7 @@ Dans la documentation, observez bien la signature de la fonction `getFeatures`. 
 Utilisons donc une expression pour limiter les résultats.
 
 ```python
-request = QgsFeatureRequest('"POPUL" != \'NC\'')
+request = QgsFeatureRequest(QgsExpression('"POPUL" != \'NC\''))
 for feature in layer.getFeatures(request):
     print('{commune} : {nombre} habitants pour'.format(commune=feature['NOM'], nombre=feature['POPUL']))
 ```
@@ -119,6 +119,7 @@ rouges dans la console de temps en temps. Ce sont des exceptions. C'est une noti
 dans beaucoup de languages.
 
 Dans le language informatique, une exception peut-être :
+
 * levé (raise en anglais) pour déclencher une erreur
 * attrapé (catch en anglais) pour traiter l'erreur
 
