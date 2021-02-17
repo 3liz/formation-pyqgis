@@ -1,0 +1,1765 @@
+
+<!doctype html>
+<html lang="fr" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Formation PyQGIS">
+      
+      
+      
+        <meta name="author" content="3Liz">
+      
+      
+        <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/script-processing/">
+      
+      <link rel="shortcut icon" href="../media/logo-qgis.png">
+      <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-6.2.8">
+    
+    
+      
+        <title>Script Processing - Formation PyQGIS</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.cb6bc1d0.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.39b8e14a.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4cae4f">
+        
+      
+    
+    
+    
+      
+    
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css">
+    
+    
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="preference" data-md-color-primary="green" data-md-color-accent="deep-orange">
+      
+        <script>matchMedia("(prefers-color-scheme: dark)").matches&&document.body.setAttribute("data-md-color-scheme","slate")</script>
+      
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#processing" class="md-skip">
+          Aller au contenu
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid" aria-label="Header">
+    <a href="https://docs.3liz.org/formation-pyqgis/" title="Formation PyQGIS" class="md-header-nav__button md-logo" aria-label="Formation PyQGIS">
+      
+  <img src="../media/logo-qgis.png" alt="logo">
+
+    </a>
+    <label class="md-header-nav__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header-nav__title" data-md-component="header-title">
+      <div class="md-header-nav__ellipsis">
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            Formation PyQGIS
+          </span>
+        </div>
+        <div class="md-header-nav__topic">
+          <span class="md-ellipsis">
+            
+              Script Processing
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <label class="md-header-nav__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0116 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 019.5 16 6.5 6.5 0 013 9.5 6.5 6.5 0 019.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" data-md-component="search-reset" tabindex="-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header-nav__source">
+        
+<a href="https://github.com/3liz/formation-pyqgis/" title="Aller au dépôt" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="https://docs.3liz.org/formation-pyqgis/" title="Formation PyQGIS" class="md-nav__button md-logo" aria-label="Formation PyQGIS">
+      
+  <img src="../media/logo-qgis.png" alt="logo">
+
+    </a>
+    Formation PyQGIS
+  </label>
+  
+    <div class="md-nav__source">
+      
+<a href="https://github.com/3liz/formation-pyqgis/" title="Aller au dépôt" class="md-source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 512"><path d="M186.1 328.7c0 20.9-10.9 55.1-36.7 55.1s-36.7-34.2-36.7-55.1 10.9-55.1 36.7-55.1 36.7 34.2 36.7 55.1zM480 278.2c0 31.9-3.2 65.7-17.5 95-37.9 76.6-142.1 74.8-216.7 74.8-75.8 0-186.2 2.7-225.6-74.8-14.6-29-20.2-63.1-20.2-95 0-41.9 13.9-81.5 41.5-113.6-5.2-15.8-7.7-32.4-7.7-48.8 0-21.5 4.9-32.3 14.6-51.8 45.3 0 74.3 9 108.8 36 29-6.9 58.8-10 88.7-10 27 0 54.2 2.9 80.4 9.2 34-26.7 63-35.2 107.8-35.2 9.8 19.5 14.6 30.3 14.6 51.8 0 16.4-2.6 32.7-7.7 48.2 27.5 32.4 39 72.3 39 114.2zm-64.3 50.5c0-43.9-26.7-82.6-73.5-82.6-18.9 0-37 3.4-56 6-14.9 2.3-29.8 3.2-45.1 3.2-15.2 0-30.1-.9-45.1-3.2-18.7-2.6-37-6-56-6-46.8 0-73.5 38.7-73.5 82.6 0 87.8 80.4 101.3 150.4 101.3h48.2c70.3 0 150.6-13.4 150.6-101.3zm-82.6-55.1c-25.8 0-36.7 34.2-36.7 55.1s10.9 55.1 36.7 55.1 36.7-34.2 36.7-55.1-10.9-55.1-36.7-55.1z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        docs.3liz.org
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Formation PyQGIS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../python-qgis/" class="md-nav__link">
+        Python dans QGIS
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../memo-python/" class="md-nav__link">
+        Mémo Python
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../console/" class="md-nav__link">
+        Console
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fonctions-scripts/" class="md-nav__link">
+        Fonctions & Scripts
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../selection-parcours-entites/" class="md-nav__link">
+        Sélection & Parcours
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../action/" class="md-nav__link">
+        Action
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Script Processing
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Script Processing
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#notion-sur-la-poo-en-python" class="md-nav__link">
+    Notion sur la POO en Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utiliser-processing-en-python-avec-un-algorithme-existant" class="md-nav__link">
+    Utiliser Processing en Python avec un algorithme existant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notre-propre-script-processing" class="md-nav__link">
+    Notre propre script Processing
+  </a>
+  
+    <nav class="md-nav" aria-label="Notre propre script Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparation" class="md-nav__link">
+    Préparation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-coeur-de-notre-script" class="md-nav__link">
+    Création du coeur de notre script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-aux-decorateurs" class="md-nav__link">
+    Introduction aux décorateurs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convertir-un-modele-processing-en-python" class="md-nav__link">
+    Convertir un modèle Processing en python
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extension-generique/" class="md-nav__link">
+        Extension Générique
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extension-processing/" class="md-nav__link">
+        Extension Processing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../extension-graphique/" class="md-nav__link">
+        Extension Graphique
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ide-git/" class="md-nav__link">
+        IDE & Git
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#notion-sur-la-poo-en-python" class="md-nav__link">
+    Notion sur la POO en Python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#documentation" class="md-nav__link">
+    Documentation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utiliser-processing-en-python-avec-un-algorithme-existant" class="md-nav__link">
+    Utiliser Processing en Python avec un algorithme existant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notre-propre-script-processing" class="md-nav__link">
+    Notre propre script Processing
+  </a>
+  
+    <nav class="md-nav" aria-label="Notre propre script Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preparation" class="md-nav__link">
+    Préparation
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#creation-du-coeur-de-notre-script" class="md-nav__link">
+    Création du coeur de notre script
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#introduction-aux-decorateurs" class="md-nav__link">
+    Introduction aux décorateurs
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#convertir-un-modele-processing-en-python" class="md-nav__link">
+    Convertir un modèle Processing en python
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/3liz/formation-pyqgis/edit/master/docs/script-processing.md" title="Editer cette page" class="md-content__button md-icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+                  </a>
+                
+                
+                <h1 id="processing">Processing<a class="headerlink" href="#processing" title="Permanent link">#</a></h1>
+<p>Processing est un framework pour faire des algorithmes dans QGIS.</p>
+<p>Toute la boite à outils Traitement dans QGIS sont des basés sur "Processing".</p>
+<p><em>Note</em>, depuis QGIS 3.6, il existe désormais une autre syntaxe pour 
+écrire script Processing à l'aide des décorateurs Python.</p>
+<h2 id="notion-sur-la-poo-en-python">Notion sur la POO en Python<a class="headerlink" href="#notion-sur-la-poo-en-python" title="Permanent link">#</a></h2>
+<p>Le framework Processing utilise le concept de la <strong>P</strong>rogrammation <strong>O</strong>rientée <strong>O</strong>bjet. Il existe un
+<a href="https://openclassrooms.com/fr/courses/4302126-decouvrez-la-programmation-orientee-objet-avec-python">tutoriel</a>
+sur le site d'OpenClassRooms sur le sujet.</p>
+<p>Mais depuis le début de la formation, nous l'utilisons sans trop le savoir. Les objets <code>Qgs*</code>, comme
+<code>QgsMapLayer</code> utilisent le principe de la POO.</p>
+<p>Nous allons faire un "très" petit exemple rapide. Écrivons notre premier jeu vidéo en console !</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+
+<span class="n">MAX_ENERGIE</span> <span class="o">=</span> <span class="mi">20</span>
+
+
+<span class="k">class</span> <span class="nc">Personnage</span><span class="p">:</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">energie</span><span class="o">=</span><span class="n">MAX_ENERGIE</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">energie</span>
+
+    <span class="k">def</span> <span class="nf">marcher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cout</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&gt;=</span> <span class="n">cout</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> marche.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">-=</span> <span class="n">cout</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas marcher car il n&#39;a pas assez d&#39;énergie.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">courir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">cout</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&gt;=</span> <span class="n">cout</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> court.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">-=</span> <span class="n">cout</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas courir car il n</span><span class="se">\&#39;</span><span class="s2">a pas assez d</span><span class="se">\&#39;</span><span class="s2">énergie.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">dormir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dort et fait le plein d&#39;énergie.&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">MAX_ENERGIE</span>
+
+    <span class="k">def</span> <span class="nf">manger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">energie</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> mange et récupère </span><span class="si">{</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&lt;=</span> <span class="n">MAX_ENERGIE</span> <span class="o">-</span> <span class="n">energie</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">+=</span> <span class="n">energie</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">MAX_ENERGIE</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Je suis </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et j&#39;ai </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie&quot;</span>
+
+
+<span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">courir</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">dormir</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">manger</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h2>
+<p>Pour l'écriture d'un script Processing, tant en utilisant la POO ou la version avec les décorateurs, il y a
+une page sur la 
+<a href="https://docs.qgis.org/3.16/fr/docs/user_manual/processing/scripts.html#writing-new-processing-algorithms-as-python-scripts">documentation</a>.</p>
+<h2 id="utiliser-processing-en-python-avec-un-algorithme-existant">Utiliser Processing en Python avec un algorithme existant<a class="headerlink" href="#utiliser-processing-en-python-avec-un-algorithme-existant" title="Permanent link">#</a></h2>
+<ul>
+<li>Sur une couche en EPSG:2154, faire un buffer de 10 mètres par exemple.</li>
+<li>Cliquer sur la petite horloge dans le panneau de Processing/Traitement en haut</li>
+<li>Cliquer sur le dernier traitement en haut, puis copier/coller la ligne de Python</li>
+</ul>
+<p>On peut appeler un traitement en ligne de commande Python :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span> 
+    <span class="p">{</span>
+        <span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="s1">&#39;/home/etienne/tmp/formation_pyqgis/202101_OSM2IGEO_11_ILE_DE_FRANCE_SHP_L93_2154/D_OSM_HYDROGRAPHIE/CANALISATION_EAU.shp&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;DISTANCE&#39;</span><span class="p">:</span><span class="mi">10</span><span class="p">,</span>
+        <span class="s1">&#39;SEGMENTS&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+        <span class="s1">&#39;END_CAP_STYLE&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+        <span class="s1">&#39;JOIN_STYLE&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+        <span class="s1">&#39;MITER_LIMIT&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;DISSOLVE&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
+        <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span><span class="s1">&#39;TEMPORARY_OUTPUT&#39;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>**Pour obtenir l'identifiant de l'algorithme, laissez la souris sur le nom de l'algorithme pour avoir son 
+info-bulle dans le panneau traitement.</p>
+<p>Lien vers la documentation : <a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/console.html">https://docs.qgis.org/testing/en/docs/user_manual/processing/console.html</a></p>
+<p>Pour obtenir la description d'un algorithme :
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">processing</span><span class="o">.</span><span class="n">algorithmHelp</span><span class="p">(</span><span class="s2">&quot;native:buffer&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table></p>
+<p><strong>Exercice</strong>, faire une 3 tampons sur la même couche vecteur, distance 10, 20 et 30 mètres, avec une fonction.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">tampon</span><span class="p">(</span><span class="n">distance</span><span class="p">):</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+        <span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span> 
+        <span class="p">{</span>
+            <span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="s1">&#39;/home/etienne/tmp/formation_pyqgis/202101_OSM2IGEO_11_ILE_DE_FRANCE_SHP_L93_2154/D_OSM_HYDROGRAPHIE/BARRAGE.shp&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;DISTANCE&#39;</span><span class="p">:</span><span class="n">distance</span><span class="p">,</span>
+            <span class="s1">&#39;SEGMENTS&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+            <span class="s1">&#39;END_CAP_STYLE&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+            <span class="s1">&#39;JOIN_STYLE&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+            <span class="s1">&#39;MITER_LIMIT&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+            <span class="s1">&#39;DISSOLVE&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
+            <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span><span class="s1">&#39;TEMPORARY_OUTPUT&#39;</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
+    <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">])</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]:</span>
+    <span class="n">tampon</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="notre-propre-script-processing">Notre propre script Processing<a class="headerlink" href="#notre-propre-script-processing" title="Permanent link">#</a></h2>
+<ul>
+<li>Nous souhaitons pouvoir créer plusieurs tables vides assez facilement à l'aide des fichiers CSV.</li>
+<li>Nous avons un dossier avec plusieurs fichiers CSV représentant chacun une table.</li>
+<li>Le nom du fichier CSV représente le nom de la table.</li>
+<li>La première ligne représente l'entête des colonnes.</li>
+<li>La deuxième ligne, si elle s'appelle <code>geom</code>, représente le type de géométrie et sa projection.</li>
+</ul>
+<p>Exemple de fichier csv <code>canalisation.csv</code> : </p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>type</th>
+<th>length</th>
+<th>precision</th>
+<th>alias</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>geom</td>
+<td>polygon</td>
+<td>2154</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>id</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>ID</td>
+</tr>
+<tr>
+<td>n</td>
+<td>10</td>
+<td>10</td>
+<td>0</td>
+<td>Nom</td>
+</tr>
+<tr>
+<td>d</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>Diamètre</td>
+</tr>
+<tr>
+<td>l</td>
+<td>2</td>
+<td>3</td>
+<td>0</td>
+<td>Longueur</td>
+</tr>
+</tbody>
+</table>
+<h3 id="preparation">Préparation<a class="headerlink" href="#preparation" title="Permanent link">#</a></h3>
+<ul>
+<li>Créer un dossier <code>processing_canalisation</code> à côté du projet avec des fichiers CSV à l'intérieur :</li>
+</ul>
+<p><code>canalisation.csv</code></p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>name,type,length,precision,alias
+geom,line,2154,&#39;&#39;,&#39;&#39;
+id,2,3,0,ID
+n,10,10,0,Nom
+d,2,3,0,Diamètre
+l,2,3,0,Longueur
+</code></pre></div>
+</td></tr></table>
+<p><code>regard.csv</code> :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>name,type,length,precision,alias
+geom,point,2154,&#39;&#39;,&#39;&#39;
+id,2,3,0,ID
+n,10,10,0,Nom rue
+</code></pre></div>
+</td></tr></table>
+<h3 id="creation-du-coeur-de-notre-script">Création du coeur de notre script<a class="headerlink" href="#creation-du-coeur-de-notre-script" title="Permanent link">#</a></h3>
+<ul>
+<li>Commençons par écrire le script en console</li>
+<li>Il nous faut une fonction qui liste les CSV dans un dossier.</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">liste_csv</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Liste les CSV disponibles dans le dossier. &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</code></pre></div>
+</td></tr></table>
+<p>Correction du script Python (et non la correction du script Processing) :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">def</span> <span class="nf">liste_csv</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Fonction générique pour liste les CSV dans un dossier. &quot;&quot;&quot;</span>
+    <span class="n">csvs</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">):</span>
+                <span class="n">csvs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+    <span class="k">return</span> <span class="n">csvs</span>
+
+<span class="k">def</span> <span class="nf">lire_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Fonction générique pour créer une couche vecteur selon la définition d&#39;un CSV. &quot;&quot;&quot;</span>
+    <span class="n">geom</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
+    <span class="n">crs</span> <span class="o">=</span> <span class="kc">None</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_file</span><span class="p">:</span>
+        <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reader</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="c1"># Header du CSV</span>
+                <span class="k">continue</span>
+            <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;geom&#39;</span><span class="p">:</span>
+                <span class="n">geom</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                <span class="n">crs</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">field</span> <span class="o">=</span> <span class="n">QgsField</span><span class="p">()</span>
+                <span class="n">field</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                <span class="n">field</span><span class="o">.</span><span class="n">setType</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                <span class="n">field</span><span class="o">.</span><span class="n">setLength</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+                <span class="n">field</span><span class="o">.</span><span class="n">setPrecision</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+                <span class="n">field</span><span class="o">.</span><span class="n">setAlias</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+                <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+    <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">csv_file</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">geom</span><span class="p">:</span>
+        <span class="n">geom</span> <span class="o">+=</span> <span class="s1">&#39;?crs=epsg:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+            <span class="n">layer</span><span class="o">.</span><span class="n">addAttribute</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">layer</span>
+
+<span class="c1"># Appel des fonctions</span>
+<span class="n">folder</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">(),</span> <span class="s1">&#39;processing_canalisation&#39;</span><span class="p">)</span>
+<span class="n">csv_files</span> <span class="o">=</span> <span class="n">liste_csv</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">csv_file</span> <span class="ow">in</span> <span class="n">csv_files</span><span class="p">:</span>
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">lire_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+    <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>Nous avons le coeur de notre algorithme, qui fonctionne dans la console Python. Si l'utilisateur souhaite 
+changer de thématique pour la génération des couches (ne pas utiliser <code>processing_canalisation</code> mais plutôt
+<code>processing_fibre_optique</code> ou <code>processing_plu</code>), il faut qu'il modifie à la main la ligne de Python, ce n'est
+pas très ergonomique.</p>
+<p>Nous allons désormais le transformer en Script Processing afin de rajouter une interface graphique.</p>
+<ul>
+<li>Partons de l'algorithme d'exemple :</li>
+<li>Panneau Traitement </li>
+<li><code>Python</code> en haut</li>
+<li><code>Créer un nouveau script depuis un modèle</code></li>
+<li>Modifions les fonctions une par une : </li>
+<li><code>name()</code></li>
+<li><code>displayName()</code></li>
+<li>...</li>
+</ul>
+<p>Pour le <code>initAlgorithm()</code>, nous devons modifier le paramètre pour afficher un sélecteur de dossier :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">initAlgorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">addParameter</span><span class="p">(</span>
+            <span class="n">QgsProcessingParameterFile</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">INPUT</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Répertoire&#39;</span><span class="p">),</span>
+                <span class="n">QgsProcessingParameterFile</span><span class="o">.</span><span class="n">Folder</span><span class="p">,</span>
+                <span class="n">optional</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span>
+            <span class="n">QgsProcessingOutputMultipleLayers</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OUTPUT_LAYERS</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Couches de sorties&#39;</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>Ajoutons les fonctions <code>liste_csv</code> et <code>lire_csv</code> mais :</p>
+<ul>
+<li>Ajoutons <code>self</code> comme premier paramètre dans la signature de la fonction : <code>def lire_csv(self, ...):</code></li>
+<li>Ajoutons <code>self</code> lors de l'appel à la fonction : <code>self.liste_csv(...)</code></li>
+</ul>
+<p>Pour le <code>processAlgorithm</code>, nous allons incorporer le code que l'on a fait avant</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>    <span class="k">def</span> <span class="nf">processAlgorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Here is where the processing itself takes place.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">folder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameterAsFile</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">INPUT</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+        <span class="n">csv_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">liste_csv</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">csv_file</span> <span class="ow">in</span> <span class="n">csv_files</span><span class="p">:</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lire_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+
+            <span class="n">context</span><span class="o">.</span><span class="n">temporaryLayerStore</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">addLayerToLoadOnCompletion</span><span class="p">(</span>
+                <span class="n">layer</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span>
+                <span class="n">QgsProcessingContext</span><span class="o">.</span><span class="n">LayerDetails</span><span class="p">(</span>
+                    <span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">(),</span>
+                    <span class="n">context</span><span class="o">.</span><span class="n">project</span><span class="p">(),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">OUTPUT</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">OUTPUT</span><span class="p">:</span> <span class="n">results</span><span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+<ul>
+<li>Il faut aussi ajouter les imports manquants.</li>
+</ul>
+<p>Solution finale :</p>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">  1</span>
+<span class="normal">  2</span>
+<span class="normal">  3</span>
+<span class="normal">  4</span>
+<span class="normal">  5</span>
+<span class="normal">  6</span>
+<span class="normal">  7</span>
+<span class="normal">  8</span>
+<span class="normal">  9</span>
+<span class="normal"> 10</span>
+<span class="normal"> 11</span>
+<span class="normal"> 12</span>
+<span class="normal"> 13</span>
+<span class="normal"> 14</span>
+<span class="normal"> 15</span>
+<span class="normal"> 16</span>
+<span class="normal"> 17</span>
+<span class="normal"> 18</span>
+<span class="normal"> 19</span>
+<span class="normal"> 20</span>
+<span class="normal"> 21</span>
+<span class="normal"> 22</span>
+<span class="normal"> 23</span>
+<span class="normal"> 24</span>
+<span class="normal"> 25</span>
+<span class="normal"> 26</span>
+<span class="normal"> 27</span>
+<span class="normal"> 28</span>
+<span class="normal"> 29</span>
+<span class="normal"> 30</span>
+<span class="normal"> 31</span>
+<span class="normal"> 32</span>
+<span class="normal"> 33</span>
+<span class="normal"> 34</span>
+<span class="normal"> 35</span>
+<span class="normal"> 36</span>
+<span class="normal"> 37</span>
+<span class="normal"> 38</span>
+<span class="normal"> 39</span>
+<span class="normal"> 40</span>
+<span class="normal"> 41</span>
+<span class="normal"> 42</span>
+<span class="normal"> 43</span>
+<span class="normal"> 44</span>
+<span class="normal"> 45</span>
+<span class="normal"> 46</span>
+<span class="normal"> 47</span>
+<span class="normal"> 48</span>
+<span class="normal"> 49</span>
+<span class="normal"> 50</span>
+<span class="normal"> 51</span>
+<span class="normal"> 52</span>
+<span class="normal"> 53</span>
+<span class="normal"> 54</span>
+<span class="normal"> 55</span>
+<span class="normal"> 56</span>
+<span class="normal"> 57</span>
+<span class="normal"> 58</span>
+<span class="normal"> 59</span>
+<span class="normal"> 60</span>
+<span class="normal"> 61</span>
+<span class="normal"> 62</span>
+<span class="normal"> 63</span>
+<span class="normal"> 64</span>
+<span class="normal"> 65</span>
+<span class="normal"> 66</span>
+<span class="normal"> 67</span>
+<span class="normal"> 68</span>
+<span class="normal"> 69</span>
+<span class="normal"> 70</span>
+<span class="normal"> 71</span>
+<span class="normal"> 72</span>
+<span class="normal"> 73</span>
+<span class="normal"> 74</span>
+<span class="normal"> 75</span>
+<span class="normal"> 76</span>
+<span class="normal"> 77</span>
+<span class="normal"> 78</span>
+<span class="normal"> 79</span>
+<span class="normal"> 80</span>
+<span class="normal"> 81</span>
+<span class="normal"> 82</span>
+<span class="normal"> 83</span>
+<span class="normal"> 84</span>
+<span class="normal"> 85</span>
+<span class="normal"> 86</span>
+<span class="normal"> 87</span>
+<span class="normal"> 88</span>
+<span class="normal"> 89</span>
+<span class="normal"> 90</span>
+<span class="normal"> 91</span>
+<span class="normal"> 92</span>
+<span class="normal"> 93</span>
+<span class="normal"> 94</span>
+<span class="normal"> 95</span>
+<span class="normal"> 96</span>
+<span class="normal"> 97</span>
+<span class="normal"> 98</span>
+<span class="normal"> 99</span>
+<span class="normal">100</span>
+<span class="normal">101</span>
+<span class="normal">102</span>
+<span class="normal">103</span>
+<span class="normal">104</span>
+<span class="normal">105</span>
+<span class="normal">106</span>
+<span class="normal">107</span>
+<span class="normal">108</span>
+<span class="normal">109</span>
+<span class="normal">110</span>
+<span class="normal">111</span>
+<span class="normal">112</span>
+<span class="normal">113</span>
+<span class="normal">114</span>
+<span class="normal">115</span>
+<span class="normal">116</span>
+<span class="normal">117</span>
+<span class="normal">118</span>
+<span class="normal">119</span>
+<span class="normal">120</span>
+<span class="normal">121</span>
+<span class="normal">122</span>
+<span class="normal">123</span>
+<span class="normal">124</span>
+<span class="normal">125</span>
+<span class="normal">126</span>
+<span class="normal">127</span>
+<span class="normal">128</span>
+<span class="normal">129</span>
+<span class="normal">130</span>
+<span class="normal">131</span>
+<span class="normal">132</span>
+<span class="normal">133</span>
+<span class="normal">134</span>
+<span class="normal">135</span>
+<span class="normal">136</span>
+<span class="normal">137</span>
+<span class="normal">138</span>
+<span class="normal">139</span>
+<span class="normal">140</span>
+<span class="normal">141</span>
+<span class="normal">142</span>
+<span class="normal">143</span>
+<span class="normal">144</span>
+<span class="normal">145</span>
+<span class="normal">146</span>
+<span class="normal">147</span>
+<span class="normal">148</span>
+<span class="normal">149</span>
+<span class="normal">150</span>
+<span class="normal">151</span>
+<span class="normal">152</span>
+<span class="normal">153</span>
+<span class="normal">154</span>
+<span class="normal">155</span>
+<span class="normal">156</span>
+<span class="normal">157</span>
+<span class="normal">158</span>
+<span class="normal">159</span>
+<span class="normal">160</span>
+<span class="normal">161</span>
+<span class="normal">162</span>
+<span class="normal">163</span>
+<span class="normal">164</span>
+<span class="normal">165</span>
+<span class="normal">166</span>
+<span class="normal">167</span>
+<span class="normal">168</span>
+<span class="normal">169</span>
+<span class="normal">170</span>
+<span class="normal">171</span>
+<span class="normal">172</span>
+<span class="normal">173</span>
+<span class="normal">174</span>
+<span class="normal">175</span>
+<span class="normal">176</span>
+<span class="normal">177</span>
+<span class="normal">178</span>
+<span class="normal">179</span>
+<span class="normal">180</span>
+<span class="normal">181</span>
+<span class="normal">182</span>
+<span class="normal">183</span>
+<span class="normal">184</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">***************************************************************************</span>
+<span class="sd">*                                                                         *</span>
+<span class="sd">*   This program is free software; you can redistribute it and/or modify  *</span>
+<span class="sd">*   it under the terms of the GNU General Public License as published by  *</span>
+<span class="sd">*   the Free Software Foundation; either version 2 of the License, or     *</span>
+<span class="sd">*   (at your option) any later version.                                   *</span>
+<span class="sd">*                                                                         *</span>
+<span class="sd">***************************************************************************</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">QCoreApplication</span>
+<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span>
+   <span class="n">edit</span><span class="p">,</span>
+   <span class="n">QgsField</span><span class="p">,</span>
+   <span class="n">QgsProcessingContext</span><span class="p">,</span>
+   <span class="n">QgsProcessingAlgorithm</span><span class="p">,</span>
+   <span class="n">QgsProcessingParameterFile</span><span class="p">,</span>
+   <span class="n">QgsProcessingOutputMultipleLayers</span><span class="p">,</span>
+   <span class="n">QgsVectorLayer</span><span class="p">,</span>
+<span class="p">)</span>
+
+
+<span class="k">class</span> <span class="nc">ExampleProcessingAlgorithm</span><span class="p">(</span><span class="n">QgsProcessingAlgorithm</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This is an example algorithm that takes a vector layer and</span>
+<span class="sd">    creates a new identical one.</span>
+
+<span class="sd">    It is meant to be used as an example of how to create your own</span>
+<span class="sd">    algorithms and explain methods and variables used to do it. An</span>
+<span class="sd">    algorithm like this will be available in all elements, and there</span>
+<span class="sd">    is not need for additional work.</span>
+
+<span class="sd">    All Processing algorithms should extend the QgsProcessingAlgorithm</span>
+<span class="sd">    class.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># Constants used to refer to parameters and outputs. They will be</span>
+    <span class="c1"># used when calling the algorithm from another algorithm, or when</span>
+    <span class="c1"># calling from the QGIS console.</span>
+
+    <span class="n">INPUT</span> <span class="o">=</span> <span class="s1">&#39;INPUT&#39;</span>
+    <span class="n">OUTPUT</span> <span class="o">=</span> <span class="s1">&#39;OUTPUT&#39;</span>
+
+    <span class="k">def</span> <span class="nf">tr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a translatable string with the self.tr() function.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">QCoreApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s1">&#39;Processing&#39;</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">createInstance</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">ExampleProcessingAlgorithm</span><span class="p">()</span>
+
+    <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the algorithm name, used for identifying the algorithm. This</span>
+<span class="sd">        string should be fixed for the algorithm, and must not be localised.</span>
+<span class="sd">        The name should be unique within each provider. Names should contain</span>
+<span class="sd">        lowercase alphanumeric characters only and no spaces or other</span>
+<span class="sd">        formatting characters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;myscript&#39;</span>
+
+    <span class="k">def</span> <span class="nf">displayName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the translated algorithm name, which should be used for any</span>
+<span class="sd">        user-visible display of the algorithm name.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;My Script&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">group</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the name of the group this algorithm belongs to. This string</span>
+<span class="sd">        should be localised.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Example scripts&#39;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">groupId</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns the unique ID of the group this algorithm belongs to. This</span>
+<span class="sd">        string should be fixed for the algorithm, and must not be localised.</span>
+<span class="sd">        The group id should be unique within each provider. Group id should</span>
+<span class="sd">        contain lowercase alphanumeric characters only and no spaces or other</span>
+<span class="sd">        formatting characters.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="s1">&#39;examplescripts&#39;</span>
+
+    <span class="k">def</span> <span class="nf">shortHelpString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Returns a localised short helper string for the algorithm. This string</span>
+<span class="sd">        should provide a basic description about what the algorithm does and the</span>
+<span class="sd">        parameters and outputs associated with it..</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s2">&quot;Example algorithm short description&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">initAlgorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Here we define the inputs and output of the algorithm, along</span>
+<span class="sd">        with some other properties.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">addParameter</span><span class="p">(</span>
+            <span class="n">QgsProcessingParameterFile</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">INPUT</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Répertoire&#39;</span><span class="p">),</span>
+                <span class="n">QgsProcessingParameterFile</span><span class="o">.</span><span class="n">Folder</span><span class="p">,</span>
+                <span class="n">optional</span><span class="o">=</span><span class="kc">False</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">addOutput</span><span class="p">(</span>
+            <span class="n">QgsProcessingOutputMultipleLayers</span><span class="p">(</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">OUTPUT</span><span class="p">,</span>
+                <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Couches de sorties&#39;</span><span class="p">)</span>
+            <span class="p">)</span>
+        <span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">liste_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Fonction générique pour liste les CSV dans un dossier. &quot;&quot;&quot;</span>
+        <span class="n">csvs</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.csv&#39;</span><span class="p">):</span>
+                    <span class="n">csvs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="n">file</span><span class="p">))</span>
+        <span class="k">return</span> <span class="n">csvs</span>
+
+    <span class="k">def</span> <span class="nf">lire_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">csv_file</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot; Fonction générique pour créer une couche vecteur selon la définition d&#39;un CSV. &quot;&quot;&quot;</span>
+        <span class="n">geom</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
+        <span class="n">crs</span> <span class="o">=</span> <span class="kc">None</span>
+        <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
+            <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
+            <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reader</span><span class="p">):</span>
+                <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="c1"># Header du CSV</span>
+                    <span class="k">continue</span>
+                <span class="k">elif</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;geom&#39;</span><span class="p">:</span>
+                    <span class="n">geom</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="n">crs</span> <span class="o">=</span> <span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">field</span> <span class="o">=</span> <span class="n">QgsField</span><span class="p">()</span>
+                    <span class="n">field</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+                    <span class="n">field</span><span class="o">.</span><span class="n">setType</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+                    <span class="n">field</span><span class="o">.</span><span class="n">setLength</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]))</span>
+                    <span class="n">field</span><span class="o">.</span><span class="n">setPrecision</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">3</span><span class="p">]))</span>
+                    <span class="n">field</span><span class="o">.</span><span class="n">setAlias</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="mi">4</span><span class="p">])</span>
+                    <span class="n">fields</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+        <span class="n">name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">basename</span><span class="p">(</span><span class="n">csv_file</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">geom</span><span class="p">:</span>
+            <span class="n">geom</span> <span class="o">+=</span> <span class="s1">&#39;?crs=epsg:</span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">geom</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
+            <span class="k">for</span> <span class="n">field</span> <span class="ow">in</span> <span class="n">fields</span><span class="p">:</span>
+                <span class="n">layer</span><span class="o">.</span><span class="n">addAttribute</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">layer</span>
+
+    <span class="k">def</span> <span class="nf">processAlgorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
+        <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Here is where the processing itself takes place.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">folder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameterAsFile</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">INPUT</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+        <span class="n">csv_files</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">liste_csv</span><span class="p">(</span><span class="n">folder</span><span class="p">)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">csv_file</span> <span class="ow">in</span> <span class="n">csv_files</span><span class="p">:</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lire_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">id</span><span class="p">())</span>
+
+            <span class="n">context</span><span class="o">.</span><span class="n">temporaryLayerStore</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+            <span class="n">context</span><span class="o">.</span><span class="n">addLayerToLoadOnCompletion</span><span class="p">(</span>
+                <span class="n">layer</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span>
+                <span class="n">QgsProcessingContext</span><span class="o">.</span><span class="n">LayerDetails</span><span class="p">(</span>
+                    <span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">(),</span>
+                    <span class="n">context</span><span class="o">.</span><span class="n">project</span><span class="p">(),</span>
+                    <span class="bp">self</span><span class="o">.</span><span class="n">OUTPUT</span>
+                <span class="p">)</span>
+            <span class="p">)</span>
+
+        <span class="k">return</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">OUTPUT</span><span class="p">:</span> <span class="n">results</span><span class="p">}</span>
+</code></pre></div>
+</td></tr></table>
+Nous avons désormais un nouveau algorithme dans la boîte à outils pour générer un modèle de données suivant 
+une thématique.</p>
+<h3 id="introduction-aux-decorateurs">Introduction aux décorateurs<a class="headerlink" href="#introduction-aux-decorateurs" title="Permanent link">#</a></h3>
+<p>Comme mentionné au début de ce chapitre, il est possible de ne pas utiliser la POO pour écrire un Script
+Processing mais plutôt les décorateurs. Reprenons l'exemple de la documentation.</p>
+<p>Le code suivant utilise le décorateur @alg pour :</p>
+<ul>
+<li>utiliser une couche vectorielle comme entrée</li>
+<li>compter le nombre d'entités</li>
+<li>faire une opération buffer</li>
+<li>créer une couche raster à partir du résultat de l’opération de tampon</li>
+<li>renvoyer la couche tampon, la couche raster et le nombre d’entités</li>
+</ul>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis</span> <span class="kn">import</span> <span class="n">processing</span>
+<span class="kn">from</span> <span class="nn">qgis.processing</span> <span class="kn">import</span> <span class="n">alg</span>
+
+
+<span class="nd">@alg</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bufferrasteralg&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Buffer and export to raster (alg)&#39;</span><span class="p">,</span>
+     <span class="n">group</span><span class="o">=</span><span class="s1">&#39;examplescripts&#39;</span><span class="p">,</span> <span class="n">group_label</span><span class="o">=</span><span class="s1">&#39;Example scripts&#39;</span><span class="p">)</span>
+<span class="c1"># &#39;INPUT&#39; is the recommended name for the main input parameter</span>
+<span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">SOURCE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;INPUT&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Input vector layer&#39;</span><span class="p">)</span>
+<span class="c1"># &#39;OUTPUT&#39; is the recommended name for the main output parameter</span>
+<span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">RASTER_LAYER_DEST</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Raster output&#39;</span><span class="p">)</span>
+<span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">VECTOR_LAYER_DEST</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;BUFFER_OUTPUT&#39;</span><span class="p">,</span>
+           <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Buffer output&#39;</span><span class="p">)</span>
+<span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">DISTANCE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;BUFFERDIST&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;BUFFER DISTANCE&#39;</span><span class="p">,</span>
+           <span class="n">default</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span>
+<span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">DISTANCE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;CELLSIZE&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;RASTER CELL SIZE&#39;</span><span class="p">,</span>
+           <span class="n">default</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
+<span class="nd">@alg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;NUMBEROFFEATURES&#39;</span><span class="p">,</span>
+            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Number of features processed&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">bufferrasteralg</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">feedback</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+   <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">   Description of the algorithm.</span>
+<span class="sd">   (If there is no comment here, you will get an error)</span>
+<span class="sd">   &quot;&quot;&quot;</span>
+   <span class="n">input_featuresource</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">parameterAsSource</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span>
+                                                    <span class="s1">&#39;INPUT&#39;</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
+   <span class="n">numfeatures</span> <span class="o">=</span> <span class="n">input_featuresource</span><span class="o">.</span><span class="n">featureCount</span><span class="p">()</span>
+   <span class="n">bufferdist</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">parameterAsDouble</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="s1">&#39;BUFFERDIST&#39;</span><span class="p">,</span>
+                                           <span class="n">context</span><span class="p">)</span>
+   <span class="n">rastercellsize</span> <span class="o">=</span> <span class="n">instance</span><span class="o">.</span><span class="n">parameterAsDouble</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="s1">&#39;CELLSIZE&#39;</span><span class="p">,</span>
+                                               <span class="n">context</span><span class="p">)</span>
+
+   <span class="k">if</span> <span class="n">feedback</span><span class="o">.</span><span class="n">isCanceled</span><span class="p">():</span>
+      <span class="k">return</span> <span class="p">{}</span>
+
+   <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;INPUT&#39;</span><span class="p">:</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;INPUT&#39;</span><span class="p">],</span>
+      <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;BUFFER_OUTPUT&#39;</span><span class="p">],</span>
+      <span class="s1">&#39;DISTANCE&#39;</span><span class="p">:</span> <span class="n">bufferdist</span><span class="p">,</span>
+      <span class="s1">&#39;SEGMENTS&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+      <span class="s1">&#39;DISSOLVE&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+      <span class="s1">&#39;END_CAP_STYLE&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s1">&#39;JOIN_STYLE&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+      <span class="s1">&#39;MITER_LIMIT&#39;</span><span class="p">:</span> <span class="mi">10</span>
+   <span class="p">}</span>
+   <span class="n">buffer_result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+      <span class="s1">&#39;native:buffer&#39;</span><span class="p">,</span>
+      <span class="n">params</span><span class="p">,</span>
+      <span class="n">is_child_algorithm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+      <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+      <span class="n">feedback</span><span class="o">=</span><span class="n">feedback</span><span class="p">)</span>
+
+   <span class="k">if</span> <span class="n">feedback</span><span class="o">.</span><span class="n">isCanceled</span><span class="p">():</span>
+      <span class="k">return</span> <span class="p">{}</span>
+
+   <span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;LAYER&#39;</span><span class="p">:</span> <span class="n">buffer_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+      <span class="s1">&#39;EXTENT&#39;</span><span class="p">:</span> <span class="n">buffer_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+      <span class="s1">&#39;MAP_UNITS_PER_PIXEL&#39;</span><span class="p">:</span> <span class="n">rastercellsize</span><span class="p">,</span>
+      <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="n">parameters</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">]</span>
+   <span class="p">}</span>
+   <span class="n">rasterized_result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+      <span class="s1">&#39;qgis:rasterize&#39;</span><span class="p">,</span>
+      <span class="n">params</span><span class="p">,</span>
+      <span class="n">is_child_algorithm</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
+      <span class="n">feedback</span><span class="o">=</span><span class="n">feedback</span><span class="p">)</span>
+
+   <span class="k">if</span> <span class="n">feedback</span><span class="o">.</span><span class="n">isCanceled</span><span class="p">():</span>
+      <span class="k">return</span> <span class="p">{}</span>
+
+   <span class="n">results</span> <span class="o">=</span> <span class="p">{</span>
+      <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="n">rasterized_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+      <span class="s1">&#39;BUFFER_OUTPUT&#39;</span><span class="p">:</span> <span class="n">buffer_result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">],</span>
+      <span class="s1">&#39;NUMBEROFFEATURES&#39;</span><span class="p">:</span> <span class="n">numfeatures</span><span class="p">,</span>
+   <span class="p">}</span>
+   <span class="k">return</span> <span class="n">results</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="convertir-un-modele-processing-en-python">Convertir un modèle Processing en python<a class="headerlink" href="#convertir-un-modele-processing-en-python" title="Permanent link">#</a></h2>
+<p>Il est possible de convertir un modèle Processing en script Python.
+On peut alors le modifier avec plus de finesse.</p>
+<p><strong>On ne peut pas reconvertir un script Python en modèle</strong>.</p>
+<ul>
+<li>Depuis un modèle, cliquer sur le bouton "Convertir en script Processing".</li>
+</ul>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid" aria-label="Footer">
+        
+          <a href="../action/" class="md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+            </div>
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Précédent
+                </span>
+                Action
+              </div>
+            </div>
+          </a>
+        
+        
+          <a href="../extension-generique/" class="md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-footer-nav__title">
+              <div class="md-ellipsis">
+                <span class="md-footer-nav__direction">
+                  Suivant
+                </span>
+                Extension Générique
+              </div>
+            </div>
+            <div class="md-footer-nav__button md-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            <span class="copyleft">&copy;</span> 3Liz
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://twitter.com/3LIZ_news" target="_blank" rel="noopener" title="twitter.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://www.linkedin.com/company/3liz" target="_blank" rel="noopener" title="www.linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/3liz/" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://hub.docker.com/u/3liz" target="_blank" rel="noopener" title="hub.docker.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path d="M349.9 236.3h-66.1v-59.4h66.1v59.4zm0-204.3h-66.1v60.7h66.1V32zm78.2 144.8H362v59.4h66.1v-59.4zm-156.3-72.1h-66.1v60.1h66.1v-60.1zm78.1 0h-66.1v60.1h66.1v-60.1zm276.8 100c-14.4-9.7-47.6-13.2-73.1-8.4-3.3-24-16.7-44.9-41.1-63.7l-14-9.3-9.3 14c-18.4 27.8-23.4 73.6-3.7 103.8-8.7 4.7-25.8 11.1-48.4 10.7H2.4c-8.7 50.8 5.8 116.8 44 162.1 37.1 43.9 92.7 66.2 165.4 66.2 157.4 0 273.9-72.5 328.4-204.2 21.4.4 67.6.1 91.3-45.2 1.5-2.5 6.6-13.2 8.5-17.1l-13.3-8.9zm-511.1-27.9h-66v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm78.1 0h-66.1v59.4h66.1v-59.4zm-78.1-72.1h-66.1v60.1h66.1v-60.1z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/vendor.18f0862e.min.js"></script>
+      <script src="../assets/javascripts/bundle.994580cf.min.js"></script><script id="__lang" type="application/json">{"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}</script>
+      
+      <script>
+        app = initialize({
+          base: "..",
+          features: [],
+          search: Object.assign({
+            worker: "../assets/javascripts/worker/search.9c0e82ba.min.js"
+          }, typeof search !== "undefined" && search)
+        })
+      </script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
+      
+    
+  </body>
+</html>
