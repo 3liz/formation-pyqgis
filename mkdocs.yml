@@ -1,0 +1,68 @@
+site_name: Formation PyQGIS
+site_author: 3Liz
+site_description: Formation PyQGIS
+site_url: https://docs.3liz.org/formation-pyqgis/
+repo_url: https://github.com/3liz/formation-pyqgis/
+copyright: '<span class="copyleft">&copy;</span> 3Liz'
+
+docs_dir: content
+site_dir: build
+
+nav:
+    - docs.3liz.org: '../'
+    - Formation PyQGIS: index.md
+    - Python dans QGIS: python-qgis.md
+    - Mémo Python: memo-python.md
+    - Console: console.md
+    - Fonctions & Scripts: fonctions-scripts.md
+    - Sélection & Parcours: selection-parcours-entites.md
+    - Action: action.md
+    - Script Processing: script-processing.md
+    - Extension Générique: extension-generique.md
+    - Extension Processing: extension-processing.md
+    - Extension Graphique: extension-graphique.md
+    - IDE & Git: ide-git.md
+
+markdown_extensions:
+  # - git-revision-date:
+  - toc:
+      permalink: "#"
+  - meta:
+  - pymdownx.highlight:
+      linenums: true
+      linenums_style: pymdownx.inline
+  - pymdownx.superfences:
+  - pymdownx.tabbed:
+  - pymdownx.magiclink:
+
+extra_javascript:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js
+extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css
+
+theme:
+  name: material
+  font: false
+  icon:
+    repo: fontawesome/brands/github-alt
+  language: 'fr'
+  logo: media/logo-qgis.png
+  favicon: media/logo-qgis.png
+  palette:
+    accent: deep-orange
+    primary: green
+    scheme: preference
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/3LIZ_news
+
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/3liz
+
+    - icon: fontawesome/brands/github
+      link: https://github.com/3liz/
+
+    - icon: fontawesome/brands/docker
+      link: https://hub.docker.com/u/3liz
