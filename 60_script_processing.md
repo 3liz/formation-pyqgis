@@ -64,7 +64,7 @@ class Personnage:
 
     def manger(self):
         energie = 10
-        print(f"{self.nom} mange et récupère f{energie} points d'énergie.")
+        print(f"{self.nom} mange et récupère {energie} points d'énergie.")
         if self.energie <= MAX_ENERGIE - energie:
             self.energie += energie
         else:
@@ -120,6 +120,29 @@ Lien vers la documentation : https://docs.qgis.org/testing/en/docs/user_manual/p
 Pour obtenir la description d'un algorithme :
 ```python
 processing.algorithmHelp("native:buffer")
+```
+
+**Exercice**, faire une 3 tampons sur la même couche vecteur, distance 10, 20 et 30 mètres, avec une fonction.
+
+```python
+def tampon(distance):
+    result = processing.run(
+        "native:buffer", 
+        {
+            'INPUT':'/home/etienne/tmp/formation_pyqgis/202101_OSM2IGEO_11_ILE_DE_FRANCE_SHP_L93_2154/D_OSM_HYDROGRAPHIE/BARRAGE.shp',
+            'DISTANCE':distance,
+            'SEGMENTS':5,
+            'END_CAP_STYLE':0,
+            'JOIN_STYLE':0,
+            'MITER_LIMIT':2,
+            'DISSOLVE':False,
+            'OUTPUT':'TEMPORARY_OUTPUT'
+        }
+    )
+    QgsProject.instance().addMapLayer(result['OUTPUT'])
+    
+for x in [10, 20, 30]:
+    tampon(x)
 ```
 
 ## Notre propre script Processing

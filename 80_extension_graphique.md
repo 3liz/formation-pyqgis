@@ -20,6 +20,8 @@ et y ajouter des "widgets" :
 
 ![QtDesigner](./media/qt_designer_1.jpg)
 
+Ouvrir la page des slots/signaux depuis la barre d'outils et supprimer ceux qui existent.
+
 ## La classe qui accompagne
 
 Créons un fichier `dialog.py` avec le contenu suivant :

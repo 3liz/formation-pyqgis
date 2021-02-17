@@ -24,8 +24,8 @@ Pour créer une extension dans QGIS, il existe deux façons de démarrer :
     * Très léger
     * Besoin de **tout** refaire depuis zéro
 
-Nous pouvons suivre une des deux méthodes. Dans les deux cas, le résultat doit être dans le dossier 
-`python/plugins` du profil courant.
+Nous pouvons suivre une des deux méthodes, mais dans le cadre de la formation, faisons la méthode minimale.
+Dans les deux cas, le résultat doit être dans le dossier `python/plugins` du profil courant.
 
 Pour trouver le profil courant, dans QGIS, `Profils Utilisateurs` -> `Ouvrir le dossier du profil actif`.
 

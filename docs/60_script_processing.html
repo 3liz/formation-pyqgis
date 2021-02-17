@@ -80,7 +80,7 @@ class Personnage:
 
     def manger(self):
         energie = 10
-        print(f&quot;{self.nom} mange et récupère f{energie} points d'énergie.&quot;)
+        print(f&quot;{self.nom} mange et récupère {energie} points d'énergie.&quot;)
         if self.energie &lt;= MAX_ENERGIE - energie:
             self.energie += energie
         else:
@@ -129,6 +129,27 @@ info-bulle dans le panneau traitement.</p>
 <p>Lien vers la documentation : <a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/console.html">https://docs.qgis.org/testing/en/docs/user_manual/processing/console.html</a></p>
 <p>Pour obtenir la description d'un algorithme :</p>
 <pre><code class="python">processing.algorithmHelp(&quot;native:buffer&quot;)
+</code></pre>
+
+<p><strong>Exercice</strong>, faire une 3 tampons sur la même couche vecteur, distance 10, 20 et 30 mètres, avec une fonction.</p>
+<pre><code class="python">def tampon(distance):
+    result = processing.run(
+        &quot;native:buffer&quot;, 
+        {
+            'INPUT':'/home/etienne/tmp/formation_pyqgis/202101_OSM2IGEO_11_ILE_DE_FRANCE_SHP_L93_2154/D_OSM_HYDROGRAPHIE/BARRAGE.shp',
+            'DISTANCE':distance,
+            'SEGMENTS':5,
+            'END_CAP_STYLE':0,
+            'JOIN_STYLE':0,
+            'MITER_LIMIT':2,
+            'DISSOLVE':False,
+            'OUTPUT':'TEMPORARY_OUTPUT'
+        }
+    )
+    QgsProject.instance().addMapLayer(result['OUTPUT'])
+
+for x in [10, 20, 30]:
+    tampon(x)
 </code></pre>
 
 <h2 id="notre-propre-script-processing">Notre propre script Processing</h2>
