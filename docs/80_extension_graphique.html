@@ -1,0 +1,165 @@
+
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>Extension Graphique</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/styles/github.min.css" rel="stylesheet"/>
+  <link href="https://docs.3liz.org/remarkable.css" rel="stylesheet"/>
+  <link href="logo.png" rel="icon" type="image/png" >
+ </head>
+ <body>
+ <header class="header-container" style="">
+    <h1>Extension Graphique</h1>
+ </header>
+ <article>
+<p><a href="./">Index</a></p>
+
+<div class="toc"><span class="toctitle">Table of content</span><ul>
+<li><a href="#creer-une-extension-qgis-avec-une-interface-graphique">Créer une extension QGIS avec une interface graphique</a><ul>
+<li><a href="#qtdesigner">QtDesigner</a></li>
+<li><a href="#la-classe-qui-accompagne">La classe qui accompagne</a></li>
+<li><a href="#les-signaux-et-les-slots">Les signaux et les slots</a></li>
+<li><a href="#solution">Solution</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<h1 id="creer-une-extension-qgis-avec-une-interface-graphique">Créer une extension QGIS avec une interface graphique</h1>
+<p>Pour faire ce chapitre, il faut d'abord avoir une extension de base, à l'aide du chapitre précédent.</p>
+<h2 id="qtdesigner">QtDesigner</h2>
+<p>Créons un fichier QtDesigner comme-ceci : </p>
+<p><img alt="QtDesigner" src="./media/qt_designer_0.png"></p>
+<p>et y ajouter des "widgets" : </p>
+<p><img alt="QtDesigner" src="./media/qt_designer_1.jpg"></p>
+<h2 id="la-classe-qui-accompagne">La classe qui accompagne</h2>
+<p>Créons un fichier <code>dialog.py</code> avec le contenu suivant :</p>
+<pre><code class="python">
+from qgis.core import Qgis
+from qgis.utils import iface
+from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox
+from qgis.PyQt import uic
+from pathlib import Path
+
+folder = Path(__file__).resolve().parent
+ui_file = folder.joinpath('dialog.ui')
+ui_class, _ = uic.loadUiType(ui_file)
+
+
+class MonDialog(ui_class, QDialog):
+
+    def __init__(self):
+        super().__init__()
+        self.setupUi(self)  # Fichier de QtDesigner
+
+</code></pre>
+
+<p>Modifions la méthode la méthode <code>run</code> du fichier <code>__init__.py</code> en </p>
+<pre><code class="python">    def run(self):
+        from .dialog import MonDialog
+        dialog = MonDialog()
+        dialog.exec_()
+</code></pre>
+
+<p>Relançons l'extension à l'aide du "plugin reloader" et cliquons sur le bouton.</p>
+<h2 id="les-signaux-et-les-slots">Les signaux et les slots</h2>
+<p>Connectons le signal <code>clicked</code> du bouton "Annuler" dans le constructeur <code>__init__</code> : </p>
+<pre><code class="python">self.buttonBox.button(QDialogButtonBox.Cancel).clicked.connect(self.close)
+</code></pre>
+
+<p>On dit que <code>clicked</code> est un <strong>signal</strong>, auquel on connecte le <strong>slot</strong> <code>close</code>. </p>
+<p>Connectons-le <strong>signal</strong> <code>clicked</code> du bouton "Accepter" à notre propre <strong>slot</strong> (qui est une fonction) :</p>
+<pre><code class="python">self.buttonBox.button(QDialogButtonBox.Ok).clicked.connect(self.click_ok)
+</code></pre>
+
+<p>et ajoutons notre propre fonction <code>click_ok</code> pour quitter la fenêtre et en affichant la saisie de
+l'utilisateur dans la QgsMessageBar de QGIS.</p>
+<p>Le widget de saisie est un QLineEdit : <a href="https://doc.qt.io/qt-5/qlineedit.html">https://doc.qt.io/qt-5/qlineedit.html</a></p>
+<pre><code class="python">def click_ok(self):
+    message = self.lineEdit.text()
+    iface.messageBar().pushMessage('Notre plugin', message, Qgis.Success)
+</code></pre>
+
+<p>Faire le test dans QGIS avec une saisie de l'utilisateur et fermer la fenêtre.</p>
+<p>Continuons en rendant en lecture seule le gros bloc de texte et affichons à l'intérieur la description de la
+la couche qui est sélectionnée dans le menu déroulant.</p>
+<p>Documentation : </p>
+<ul>
+<li>QPlainTextEdit : <a href="https://doc.qt.io/qt-5/qplaintextedit.html">https://doc.qt.io/qt-5/qplaintextedit.html</a></li>
+<li>QgsMapLayerComboBox : <a href="https://qgis.org/api/classQgsMapLayerComboBox.html">https://qgis.org/api/classQgsMapLayerComboBox.html</a></li>
+</ul>
+<p>Dans le <code>__init__</code> : </p>
+<pre><code class="python">self.plainTextEdit.setReadOnly(True)
+self.mMapLayerComboBox.layerChanged.connect(self.layer_changed)
+</code></pre>
+
+<p>Et la nouvelle fonction qui va se charger de mettre à jour le texte :</p>
+<pre><code class="python">
+def layer_changed(self):
+    self.plainTextEdit.clear()
+    layer = self.mMapLayerComboBox.currentLayer()
+    if layer:
+        self.plainTextEdit.appendPlainText(f&quot;{layer.name()} : {layer.crs().authid()}&quot;)
+    else:
+        self.plainTextEdit.appendPlainText(&quot;Pas de couche&quot;)
+
+</code></pre>
+
+<p>On peut donc désormais cumuler l'ensemble des chapitres précédents pour lancer des algorithmes, manipuler les
+données etc.</p>
+<h2 id="solution">Solution</h2>
+<pre><code class="python">
+from qgis.core import Qgis
+from qgis.utils import iface
+from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox
+from qgis.PyQt import uic
+from pathlib import Path
+
+folder = Path(__file__).resolve().parent
+ui_file = folder.joinpath('dialog.ui')
+ui_class, _ = uic.loadUiType(ui_file)
+
+
+class MonDialog(ui_class, QDialog):
+
+    def __init__(self, parent=None):
+        _ = parent
+        super().__init__()
+        self.setupUi(self)  # Fichier de QtDesigner
+
+        # Connectons les signaux
+        self.buttonBox.button(QDialogButtonBox.Ok).clicked.connect(self.click_ok)
+        self.buttonBox.button(QDialogButtonBox.Cancel).clicked.connect(self.close)
+
+        self.plainTextEdit.setReadOnly(True)
+        self.mMapLayerComboBox.layerChanged.connect(self.layer_changed)
+
+    def click_ok(self):
+        self.close()
+        message = self.lineEdit.text()
+        iface.messageBar().pushMessage('Notre plugin', message, Qgis.Success)
+
+    def layer_changed(self):
+        self.plainTextEdit.clear()
+        layer = self.mMapLayerComboBox.currentLayer()
+        if layer:
+            self.plainTextEdit.appendPlainText(f&quot;{layer.name()} : {layer.crs().authid()}&quot;)
+        else:
+            self.plainTextEdit.appendPlainText(&quot;Pas de couche&quot;)
+
+</code></pre>
+<p><a href="./">Index</a></p>
+
+  </article>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.1/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>

@@ -72,7 +72,7 @@ for feature in layer.getFeatures():
 
 <p>Dans la documentation, observez bien la signature de la fonction <code>getFeatures</code>. Que remarquez-vous ?
 Utilisons donc une expression pour limiter les résultats.</p>
-<pre><code class="python">request = QgsFeatureRequest('&quot;POPUL&quot; != \'NC\'')
+<pre><code class="python">request = QgsFeatureRequest(QgsExpression('&quot;POPUL&quot; != \'NC\''))
 for feature in layer.getFeatures(request):
     print('{commune} : {nombre} habitants pour'.format(commune=feature['NOM'], nombre=feature['POPUL']))
 </code></pre>
@@ -113,9 +113,11 @@ QgsProject.instance().addMapLayer(memory_layer)
 <p>À plusieurs reprises depuis le début de la formation, il est fort à parier que nous ayons des messages en
 rouges dans la console de temps en temps. Ce sont des exceptions. C'est une notion de programmation qui existe
 dans beaucoup de languages.</p>
-<p>Dans le language informatique, une exception peut-être :
-* levé (raise en anglais) pour déclencher une erreur
-* attrapé (catch en anglais) pour traiter l'erreur</p>
+<p>Dans le language informatique, une exception peut-être :</p>
+<ul>
+<li>levé (raise en anglais) pour déclencher une erreur</li>
+<li>attrapé (catch en anglais) pour traiter l'erreur</li>
+</ul>
 <p>Essayons dans la console de faire une l'opération 10 / 2 :</p>
 <pre><code class="python">10 / 2
 </code></pre>

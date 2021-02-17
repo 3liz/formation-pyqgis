@@ -64,12 +64,14 @@ Pour suivre la formation, il faut :
     * Les actions par défaut
     * Créer sa propre action pour inverser une ligne
 * [Script Processing](./60_script_processing.md)
+    * Introduction à la POO
     * Transformer un modèle en script Processing
     * Le modèle de script déjà existant
     * Création d'une structure de couche vecteur à partir d'un CSV
-* Faire une extension Processing
+* [Créer une extension de base](./70_extension.md)
+* [Faire une extension Processing](./75_extension_processing.md)
     * Créer un fournisseur Processing
-* Faire une extension avec une UI
+* [Faire une extension avec une UI](./80_extension_graphique.md)
     * Créer une UI avec QtDesigner
     * Les signaux Qt
 * Déploiement d'une extension QGIS

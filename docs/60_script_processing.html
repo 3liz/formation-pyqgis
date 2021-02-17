@@ -17,10 +17,13 @@
 
 <div class="toc"><span class="toctitle">Table of content</span><ul>
 <li><a href="#processing">Processing</a><ul>
+<li><a href="#notion-sur-la-poo-en-python">Notion sur la POO en Python</a></li>
+<li><a href="#documentation">Documentation</a></li>
 <li><a href="#utiliser-processing-en-python-avec-un-algorithme-existant">Utiliser Processing en Python avec un algorithme existant</a></li>
 <li><a href="#notre-propre-script-processing">Notre propre script Processing</a><ul>
 <li><a href="#preparation">Préparation</a></li>
 <li><a href="#creation-du-coeur-de-notre-script">Création du coeur de notre script</a></li>
+<li><a href="#introduction-aux-decorateurs">Introduction aux décorateurs</a></li>
 </ul>
 </li>
 <li><a href="#convertir-un-modele-processing-en-python">Convertir un modèle Processing en python</a></li>
@@ -33,12 +36,78 @@
 <p>Toute la boite à outils Traitement dans QGIS sont des basés sur "Processing".</p>
 <p><em>Note</em>, depuis QGIS 3.6, il existe désormais une autre syntaxe pour 
 écrire script Processing à l'aide des décorateurs Python.</p>
+<h2 id="notion-sur-la-poo-en-python">Notion sur la POO en Python</h2>
+<p>Le framework Processing utilise le concept de la <strong>P</strong>rogrammation <strong>O</strong>rientée <strong>O</strong>bjet. Il existe un
+<a href="https://openclassrooms.com/fr/courses/4302126-decouvrez-la-programmation-orientee-objet-avec-python">tutoriel</a>
+sur le site d'OpenClassRooms sur le sujet.</p>
+<p>Mais depuis le début de la formation, nous l'utilisons sans trop le savoir. Les objets <code>Qgs*</code>, comme
+<code>QgsMapLayer</code> utilisent le principe de la POO.</p>
+<p>Nous allons faire un "très" petit exemple rapide. Écrivons notre premier jeu vidéo en console !</p>
+<pre><code class="python">
+from time import sleep
+
+MAX_ENERGIE = 20
+
+
+class Personnage:
+
+    def __init__(self, nom, energie=MAX_ENERGIE):
+        self.nom = nom
+        self.energie = energie
+
+    def marcher(self):
+        cout = 5
+        if self.energie &gt;= cout:
+            print(f&quot;{self.nom} marche.&quot;)
+            self.energie -= cout
+        else:
+            print(f&quot;{self.nom} ne peut pas marcher car il n'a pas assez d'énergie.&quot;)
+
+    def courir(self):
+        cout = 10
+        if self.energie &gt;= cout:
+            print(f&quot;{self.nom} court.&quot;)
+            self.energie -= cout
+        else:
+            print(f&quot;{self.nom} ne peut pas courir car il n\'a pas assez d\'énergie.&quot;)
+
+    def dormir(self):
+        print(f&quot;{self.nom} dort et fait le plein d'énergie.&quot;)
+        for i in range(2):
+            print('...')
+            sleep(1)
+        self.energie = MAX_ENERGIE
+
+    def manger(self):
+        energie = 10
+        print(f&quot;{self.nom} mange et récupère f{energie} points d'énergie.&quot;)
+        if self.energie &lt;= MAX_ENERGIE - energie:
+            self.energie += energie
+        else:
+            self.energie = MAX_ENERGIE
+
+    def __str__(self):
+        return f&quot;Je suis {self.nom} et j'ai {self.energie} points d'énergie&quot;
+
+
+a = Personnage('Bob')
+a.courir()
+a.dormir()
+a.manger()
+print(a)
+
+</code></pre>
+
+<h2 id="documentation">Documentation</h2>
+<p>Pour l'écriture d'un script Processing, tant en utilisant la POO ou la version avec les décorateurs, il y a
+une page sur la 
+<a href="https://docs.qgis.org/3.16/fr/docs/user_manual/processing/scripts.html#writing-new-processing-algorithms-as-python-scripts">documentation</a>.</p>
 <h2 id="utiliser-processing-en-python-avec-un-algorithme-existant">Utiliser Processing en Python avec un algorithme existant</h2>
-<ol>
+<ul>
 <li>Sur une couche en EPSG:2154, faire un buffer de 10 mètres par exemple.</li>
 <li>Cliquer sur la petite horloge dans le panneau de Processing/Traitement en haut</li>
 <li>Cliquer sur le dernier traitement en haut, puis copier/coller la ligne de Python</li>
-</ol>
+</ul>
 <p>On peut appeler un traitement en ligne de commande Python :</p>
 <pre><code class="python">processing.run(
     &quot;native:buffer&quot;, 
@@ -210,16 +279,16 @@ changer de thématique pour la génération des couches (ne pas utiliser <code>p
 <code>processing_fibre_optique</code> ou <code>processing_plu</code>), il faut qu'il modifie à la main la ligne de Python, ce n'est
 pas très ergonomique.</p>
 <p>Nous allons désormais le transformer en Script Processing afin de rajouter une interface graphique.</p>
-<ol>
+<ul>
 <li>Partons de l'algorithme d'exemple :</li>
 <li>Panneau Traitement </li>
 <li><code>Python</code> en haut</li>
-<li>`Créer un nouveau script depuis un modèle</li>
+<li><code>Créer un nouveau script depuis un modèle</code></li>
 <li>Modifions les fonctions une par une : </li>
 <li><code>name()</code></li>
 <li><code>displayName()</code></li>
 <li>...</li>
-</ol>
+</ul>
 <p>Pour le <code>initAlgorithm()</code>, nous devons modifier le paramètre pour afficher un sélecteur de dossier :</p>
 <pre><code class="python">    def initAlgorithm(self, config=None):
         self.addParameter(
@@ -274,9 +343,7 @@ pas très ergonomique.</p>
 <li>Il faut aussi ajouter les imports manquants.</li>
 </ul>
 <p>Solution finale :</p>
-<pre><code class="python"># -*- coding: utf-8 -*-
-
-&quot;&quot;&quot;
+<pre><code class="python">&quot;&quot;&quot;
 ***************************************************************************
 *                                                                         *
 *   This program is free software; you can redistribute it and/or modify  *
@@ -290,13 +357,14 @@ import os
 import csv
 
 from qgis.PyQt.QtCore import QCoreApplication
-from qgis.core import (edit,
-                       QgsField,
-                       QgsProcessingContext,
-                       QgsProcessingAlgorithm,
-                       QgsProcessingParameterFile,
-                       QgsProcessingOutputMultipleLayers,
-                       QgsVectorLayer,
+from qgis.core import (
+   edit,
+   QgsField,
+   QgsProcessingContext,
+   QgsProcessingAlgorithm,
+   QgsProcessingParameterFile,
+   QgsProcessingOutputMultipleLayers,
+   QgsVectorLayer,
 )
 
 
@@ -463,13 +531,104 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
 
 <p>Nous avons désormais un nouveau algorithme dans la boîte à outils pour générer un modèle de données suivant 
 une thématique.</p>
+<h3 id="introduction-aux-decorateurs">Introduction aux décorateurs</h3>
+<p>Comme mentionné au début de ce chapitre, il est possible de ne pas utiliser la POO pour écrire un Script
+Processing mais plutôt les décorateurs. Reprenons l'exemple de la documentation.</p>
+<p>Le code suivant utilise le décorateur @alg pour :</p>
+<ul>
+<li>utiliser une couche vectorielle comme entrée</li>
+<li>compter le nombre d'entités</li>
+<li>faire une opération buffer</li>
+<li>créer une couche raster à partir du résultat de l’opération de tampon</li>
+<li>renvoyer la couche tampon, la couche raster et le nombre d’entités</li>
+</ul>
+<pre><code class="python">
+from qgis import processing
+from qgis.processing import alg
+
+
+@alg(name='bufferrasteralg', label='Buffer and export to raster (alg)',
+     group='examplescripts', group_label='Example scripts')
+# 'INPUT' is the recommended name for the main input parameter
+@alg.input(type=alg.SOURCE, name='INPUT', label='Input vector layer')
+# 'OUTPUT' is the recommended name for the main output parameter
+@alg.input(type=alg.RASTER_LAYER_DEST, name='OUTPUT',
+           label='Raster output')
+@alg.input(type=alg.VECTOR_LAYER_DEST, name='BUFFER_OUTPUT',
+           label='Buffer output')
+@alg.input(type=alg.DISTANCE, name='BUFFERDIST', label='BUFFER DISTANCE',
+           default=1.0)
+@alg.input(type=alg.DISTANCE, name='CELLSIZE', label='RASTER CELL SIZE',
+           default=10.0)
+@alg.output(type=alg.NUMBER, name='NUMBEROFFEATURES',
+            label='Number of features processed')
+def bufferrasteralg(instance, parameters, context, feedback, inputs):
+   &quot;&quot;&quot;
+   Description of the algorithm.
+   (If there is no comment here, you will get an error)
+   &quot;&quot;&quot;
+   input_featuresource = instance.parameterAsSource(parameters,
+                                                    'INPUT', context)
+   numfeatures = input_featuresource.featureCount()
+   bufferdist = instance.parameterAsDouble(parameters, 'BUFFERDIST',
+                                           context)
+   rastercellsize = instance.parameterAsDouble(parameters, 'CELLSIZE',
+                                               context)
+
+   if feedback.isCanceled():
+      return {}
+
+   params = {
+      'INPUT': parameters['INPUT'],
+      'OUTPUT': parameters['BUFFER_OUTPUT'],
+      'DISTANCE': bufferdist,
+      'SEGMENTS': 10,
+      'DISSOLVE': True,
+      'END_CAP_STYLE': 0,
+      'JOIN_STYLE': 0,
+      'MITER_LIMIT': 10
+   }
+   buffer_result = processing.run(
+      'native:buffer',
+      params,
+      is_child_algorithm=True,
+      context=context,
+      feedback=feedback)
+
+   if feedback.isCanceled():
+      return {}
+
+   params = {
+      'LAYER': buffer_result['OUTPUT'],
+      'EXTENT': buffer_result['OUTPUT'],
+      'MAP_UNITS_PER_PIXEL': rastercellsize,
+      'OUTPUT': parameters['OUTPUT']
+   }
+   rasterized_result = processing.run(
+      'qgis:rasterize',
+      params,
+      is_child_algorithm=True, context=context,
+      feedback=feedback)
+
+   if feedback.isCanceled():
+      return {}
+
+   results = {
+      'OUTPUT': rasterized_result['OUTPUT'],
+      'BUFFER_OUTPUT': buffer_result['OUTPUT'],
+      'NUMBEROFFEATURES': numfeatures,
+   }
+   return results
+
+</code></pre>
+
 <h2 id="convertir-un-modele-processing-en-python">Convertir un modèle Processing en python</h2>
 <p>Il est possible de convertir un modèle Processing en script Python.
 On peut alors le modifier avec plus de finesse.</p>
 <p><strong>On ne peut pas reconvertir un script Python en modèle</strong>.</p>
-<ol>
+<ul>
 <li>Depuis un modèle, cliquer sur le bouton "Convertir en script Processing".</li>
-</ol>
+</ul>
 <p><a href="./">Index</a></p>
 
   </article>

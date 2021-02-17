@@ -44,27 +44,6 @@ with edit(river):
     feature = QgsVectorLayerUtils.createFeature(river)
     feature.setAttribute('id', 0)
     feature.setAttribute('name', 'Une rivière')
-    geom = QgsGeometry.fromPolyline(
-        [QgsPoint(1, 1), QgsPoint(2, 2), QgsPoint(3, 2), QgsPoint(4, 1)]
-    )
-    feature.setGeometry(geom)
-    river.addFeature(feature)
-
-extent = river.extent()
-canvas = iface.mapCanvas()
-canvas.setExtent(extent)
-canvas.refresh()
-</code></pre>
-
-<pre><code class="python"># Notation pour ajouter des attributs en créant une couche mémoire
-river = QgsVectorLayer('MultiLineString?crs=epsg:2154&amp;field=id:integer&amp;field=name:string(20)&amp;index=yes', 'Rivers', 'memory')
-
-QgsProject.instance().addMapLayer(river)
-
-with edit(river):
-    feature = QgsVectorLayerUtils.createFeature(river)
-    feature.setAttribute('id', 0)
-    feature.setAttribute('name', 'Une rivière')
     geom = QgsGeometry.fromMultiPolylineXY(
     [
         [QgsPointXY(1, 1), QgsPointXY(2, 2), QgsPointXY(3, 2), QgsPointXY(4, 1)]

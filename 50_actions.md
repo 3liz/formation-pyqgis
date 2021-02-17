@@ -15,28 +15,6 @@ Index: True
   commencer sur un cas simple.
 * Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une `Ligne de symbole` dans
   l'onglet `Symbologie`.
-  
-```python
-# Notation pour ajouter des attributs en créant une couche mémoire
-river = QgsVectorLayer('MultiLineString?crs=epsg:2154&field=id:integer&field=name:string(20)&index=yes', 'Rivers', 'memory')
-
-QgsProject.instance().addMapLayer(river)
-
-with edit(river):
-    feature = QgsVectorLayerUtils.createFeature(river)
-    feature.setAttribute('id', 0)
-    feature.setAttribute('name', 'Une rivière')
-    geom = QgsGeometry.fromPolyline(
-        [QgsPoint(1, 1), QgsPoint(2, 2), QgsPoint(3, 2), QgsPoint(4, 1)]
-    )
-    feature.setGeometry(geom)
-    river.addFeature(feature)
-
-extent = river.extent()
-canvas = iface.mapCanvas()
-canvas.setExtent(extent)
-canvas.refresh()
-```
 
 ```python
 # Notation pour ajouter des attributs en créant une couche mémoire

@@ -13,7 +13,8 @@ github-pages:
 	@docker run --rm -w /plugin -v $(shell pwd):/plugin 3liz/pymarkdown 40_proprietes_vecteurs.md docs/40_proprietes_vecteurs.html
 	@docker run --rm -w /plugin -v $(shell pwd):/plugin 3liz/pymarkdown 50_actions.md docs/50_actions.html
 	@docker run --rm -w /plugin -v $(shell pwd):/plugin 3liz/pymarkdown 60_script_processing.md docs/60_script_processing.html
-	@docker run --rm -w /plugin -v $(shell pwd):/plugin 3liz/pymarkdown 70_extension_processing.md docs/70_extension_processing.html
-	@docker run --rm -w /plugin -v $(shell pwd):/plugin 3liz/pymarkdown 80_extension_graphique.md docs/70_extension_graphique.html
+	@docker run --rm -w /plugin -v $(shell pwd):/plugin 3liz/pymarkdown 70_extension.md docs/70_extension.html
+	@docker run --rm -w /plugin -v $(shell pwd):/plugin 3liz/pymarkdown 75_extension_processing.md docs/75_extension_processing.html
+	@docker run --rm -w /plugin -v $(shell pwd):/plugin 3liz/pymarkdown 80_extension_graphique.md docs/80_extension_graphique.html
 	@docker run --rm -w /plugin -v $(shell pwd):/plugin 3liz/pymarkdown 90_deploiement_extension.md docs/90_deploiement_extension.html
 	@docker run --rm -w /plugin -v $(shell pwd):/plugin 3liz/pymarkdown 95_standalone.md docs/95_standalone.html
