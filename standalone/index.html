@@ -13,14 +13,14 @@
         <meta name="author" content="3Liz">
       
       
-        <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/python-qgis/">
+        <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/standalone/">
       
       <link rel="shortcut icon" href="../media/logo-qgis.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.0">
     
     
       
-        <title>Python dans QGIS - Formation PyQGIS</title>
+        <title>Application standalone - Formation PyQGIS</title>
       
     
     
@@ -67,7 +67,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#le-python-dans-qgis" class="md-skip">
+        <a href="#librairie-qgis" class="md-skip">
           Aller au contenu
         </a>
       
@@ -98,7 +98,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Python dans QGIS
+              Application standalone
             
           </span>
         </div>
@@ -234,126 +234,11 @@
 
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Python dans QGIS
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../python-qgis/" class="md-nav__link">
         Python dans QGIS
       </a>
-      
-        
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#console" class="md-nav__link">
-    Console
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#script-python" class="md-nav__link">
-    Script Python
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#script-processing" class="md-nav__link">
-    Script Processing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#un-modele-processing-en-python" class="md-nav__link">
-    Un modèle Processing en Python
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extension-plugin" class="md-nav__link">
-    Extension (plugin)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fournisseur-processing-dans-une-extension-processing-provider" class="md-nav__link">
-    Fournisseur Processing dans une extension (Processing Provider)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#expressions" class="md-nav__link">
-    Expressions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#macros" class="md-nav__link">
-    Macros
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#formulaire" class="md-nav__link">
-    Formulaire
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#actions" class="md-nav__link">
-    Actions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#applicationscript-independant" class="md-nav__link">
-    Application/script indépendant
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#le-fichier-startuppy" class="md-nav__link">
-    Le fichier "startup.py"
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -529,11 +414,56 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../standalone/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Application standalone
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Application standalone
       </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#qgis-process" class="md-nav__link">
+    QGIS Process
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#standalone-application" class="md-nav__link">
+    Standalone application
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -578,85 +508,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#console" class="md-nav__link">
-    Console
+  <a href="#qgis-process" class="md-nav__link">
+    QGIS Process
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#script-python" class="md-nav__link">
-    Script Python
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#script-processing" class="md-nav__link">
-    Script Processing
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#un-modele-processing-en-python" class="md-nav__link">
-    Un modèle Processing en Python
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extension-plugin" class="md-nav__link">
-    Extension (plugin)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#fournisseur-processing-dans-une-extension-processing-provider" class="md-nav__link">
-    Fournisseur Processing dans une extension (Processing Provider)
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#expressions" class="md-nav__link">
-    Expressions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#macros" class="md-nav__link">
-    Macros
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#formulaire" class="md-nav__link">
-    Formulaire
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#actions" class="md-nav__link">
-    Actions
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#applicationscript-independant" class="md-nav__link">
-    Application/script indépendant
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#le-fichier-startuppy" class="md-nav__link">
-    Le fichier "startup.py"
+  <a href="#standalone-application" class="md-nav__link">
+    Standalone application
   </a>
   
 </li>
@@ -673,78 +533,30 @@
             <article class="md-content__inner md-typeset">
               
                 
-                  <a href="https://github.com/3liz/formation-pyqgis/edit/master/docs/python-qgis.md" title="Editer cette page" class="md-content__button md-icon">
+                  <a href="https://github.com/3liz/formation-pyqgis/edit/master/docs/standalone.md" title="Editer cette page" class="md-content__button md-icon">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
                   </a>
                 
                 
-                <h1 id="le-python-dans-qgis">Le python dans QGIS<a class="headerlink" href="#le-python-dans-qgis" title="Permanent link">#</a></h1>
-<p>QGIS permet d'utiliser du Python dans divers emplacement que nous allons voir ci-dessous.
-Python possède de très nombreux packages/modules disponibles sur internet qui fournissent des fonctions déjà
-écrites.</p>
-<h2 id="console">Console<a class="headerlink" href="#console" title="Permanent link">#</a></h2>
-<p>La console est accessible par le menu <code>Extension</code> -&gt; <code>Console Python</code>. Elle permet l'écriture de commande
-simple, une par une. 
-On ne peut pas enregistrer les commandes dans un fichier.</p>
-<h2 id="script-python">Script Python<a class="headerlink" href="#script-python" title="Permanent link">#</a></h2>
-<p>L'éditeur de script Python est accessible depuis l'icône dédiée dans la console Python.
-Il permet un prototypage rapide d'un script. On peut y écrire du code plus complexe en faisant intervenir
-des librairies ou des classes.</p>
-<p><img alt="Console et éditeur de script" src="../media/console_editeur.png" /></p>
-<h2 id="script-processing">Script Processing<a class="headerlink" href="#script-processing" title="Permanent link">#</a></h2>
-<p>Le menu Traitement dans QGIS donne accès a plusieurs algorithmes d'analyse. 
-Ces algorithms proviennent soient de QGIS, GDAL ou encore de plugins.
-La boîte à outils de traitements ainsi que le modeleur graphique utilisent le "framework" Processing propre à 
-QGIS. Ce framework permet de définir les entrées et les sorties d'un algorithme. Les algorithms sont donc 
-normalisés en suivant tous le même modèle. Processing impose la façon d'écrire les scripts.</p>
-<p>Écrire un script <em>compatible</em> QGIS Processing permet l'intégration dans ce menu, permet également 
-l'utilisation de ce-dernier dans un modèle ou encore l'utilisation en mode traitement par lot. Le framework
-peut aussi générer automatiquement l'interface graphique de l'algorithme et le code est optimisé.</p>
-<p>Il existe un modèle par défaut que l'on peut utiliser pour démarrer l'écriture d'un script Processing.
-Depuis la barre d'outils traitements, <code>Créer un nouveau script depuis un modèle.</code> Ce modèle utilise la syntaxe
-Programmation Orientée Objet. Depuis QGIS 3.6, on peut également utiliser la syntaxe par décorateur <code>@alg</code>.
-Voir la documentation <a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator">https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator</a></p>
-<p><img alt="Script template" src="../media/script_template.png" /></p>
-<h2 id="un-modele-processing-en-python">Un modèle Processing en Python<a class="headerlink" href="#un-modele-processing-en-python" title="Permanent link">#</a></h2>
-<p>Depuis QGIS 3.6, on peut désormais exporter un modèle de traitement Processing en Python.
-Il faut faire un clic droit sur un modèle dans la boîte à outils puis choisir "Exporter le modèle comme un 
-algorithme Python".
-On peut donc modifier ensuite ce fichier Python afin de rajouter de la logique supplémentaire.</p>
-<p><img alt="Modèle Processing vers Python" src="../media/model_to_python.png" /></p>
-<h2 id="extension-plugin">Extension (plugin)<a class="headerlink" href="#extension-plugin" title="Permanent link">#</a></h2>
-<ul>
-<li>Extension côté bureautique et même côté QGIS Serveur.</li>
-<li>La plupart des plugins sont disponibles sur <a href="https://plugins.qgis.org">https://plugins.qgis.org</a> pour le 
-  téléchargement, 
-ou sinon ils peuvent être installés par un dossier ZIP.</li>
-<li>Afin de développer une extension :<ul>
-<li>Utilisation du Plugin Builder</li>
-<li>ou squelette minimum : <a href="https://github.com/wonder-sk/qgis-minimal-plugin">https://github.com/wonder-sk/qgis-minimal-plugin</a></li>
-</ul>
-</li>
-<li>Plugin Reloader permet de simplifier le développement en évitant de recharger QGIS</li>
-<li>Documentation plugin QGIS Serveur : <a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/server.html">https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/server.html</a></li>
-</ul>
-<h2 id="fournisseur-processing-dans-une-extension-processing-provider">Fournisseur Processing dans une extension (Processing Provider)<a class="headerlink" href="#fournisseur-processing-dans-une-extension-processing-provider" title="Permanent link">#</a></h2>
-<p>Similaire au script Processing, une extension QGIS peut aussi avoir son propre fournisseur d'algorithme.</p>
-<p><img alt="Processing provider" src="../media/processing_provider.png" /></p>
-<p>On peut remarquer les plugins <code>DataPlotly</code>, <code>QuickOSM</code> etc.</p>
-<p>Ajout de Processing à un plugin QGIS :
-* soit lors du plugin builder
-* ou manuellement en suivant la documentation pour l'ajout à un plugin existant :
-  <a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html">https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html</a> </p>
-<p>Il se peut que certaines extensions ne soient <em>que</em> des fournisseurs Processing.</p>
-<h2 id="expressions">Expressions<a class="headerlink" href="#expressions" title="Permanent link">#</a></h2>
-<p>Les expressions sont souvent présentes dans QGIS. On peut les utiliser dans nombreux endroits, pour faire des
-sélections, des conditions, etc.
-On peut également les utiliser à chaque fois que vous pouvez voir ce symbole :
-<img alt="Data defined" src="../media/data_defined.png" /></p>
-<p>Un plugin, ou même simplement un utilisateur, peut enregistrer ses propres expressions. Ci-dessous, le plugin
-<code>InaSAFE</code>:
-<img alt="Plugin expression" src="../media/plugin_expression.png" /></p>
-<!-- ![Processing provider](./media/editeur_expression.png) -->
-
-<p>Exemple de code d'une expression :
+                <h1 id="librairie-qgis">Librairie QGIS<a class="headerlink" href="#librairie-qgis" title="Permanent link">#</a></h1>
+<h2 id="qgis-process">QGIS Process<a class="headerlink" href="#qgis-process" title="Permanent link">#</a></h2>
+<p>Depuis QGIS 3.16, il existe un outil <a href="https://docs.qgis.org/latest/fr/docs/user_manual/processing/standalone.html">qgis_process</a>
+qui permet de lancer QGIS Processing en ligne de commande.</p>
+<p>Dans le shell OSGEO, taper <code>qgis_process</code>.</p>
+<p>On peut lancer les algorithmes, les modèles, les scripts qui sont dans la version graphique de QGIS Processing.</p>
+<p>On peut donc lancer en ligne de commande, ou alors notre propre icône sur son bureau un exécutable.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>qgis_process run qgis:buffer -- <span class="nv">INPUT</span><span class="o">=</span>source.shp <span class="nv">DISTANCE</span><span class="o">=</span><span class="m">2</span> <span class="nv">OUTPUT</span><span class="o">=</span>buffered.shp
+qgis_process <span class="nb">help</span> qgis:buffer
+</code></pre></div>
+</td></tr></table>
+<p><img alt="QGIS Processing Toolbox" src="../media/processing_provider.png" /></p>
+<h2 id="standalone-application">Standalone application<a class="headerlink" href="#standalone-application" title="Permanent link">#</a></h2>
+<p>Il est possible de faire un programme qui <strong>ne se lance</strong> pas dans QGIS Bureautique mais qui <strong>utilise</strong>
+la librairie QGIS qui se trouve sur l'ordinateur.</p>
+<p>On peut donc créer son propre programme, en ligne de commande ou avec une interface graphique qui utilise le
+<strong>moteur</strong> de QGIS en arrière-plan pour utiliser ce que sait déjà faire QGIS.</p>
+<p>Exemple sur le <a href="https://gist.github.com/ThomasG77/f711853e5fb81c746d2a1af0b2a9ecf5">gist de Thomas Gratier</a></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -755,57 +567,163 @@ On peut également les utiliser à chaque fois que vous pouvez voir ce symbole :
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@qgsfunction</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;Custom&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">my_sum</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculates the sum of the two parameters value1 and value2.</span>
-<span class="sd">    &lt;h2&gt;Example usage:&lt;/h2&gt;</span>
-<span class="sd">    &lt;ul&gt;</span>
-<span class="sd">      &lt;li&gt;my_sum(5, 8) -&gt; 13&lt;/li&gt;</span>
-<span class="sd">      &lt;li&gt;my_sum(&quot;field1&quot;, &quot;field2&quot;) -&gt; 42&lt;/li&gt;</span>
-<span class="sd">    &lt;/ul&gt;</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">value1</span> <span class="o">+</span> <span class="n">value2</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span>
+<span class="normal">58</span>
+<span class="normal">59</span>
+<span class="normal">60</span>
+<span class="normal">61</span>
+<span class="normal">62</span>
+<span class="normal">63</span>
+<span class="normal">64</span>
+<span class="normal">65</span>
+<span class="normal">66</span>
+<span class="normal">67</span>
+<span class="normal">68</span>
+<span class="normal">69</span>
+<span class="normal">70</span>
+<span class="normal">71</span>
+<span class="normal">72</span>
+<span class="normal">73</span>
+<span class="normal">74</span>
+<span class="normal">75</span>
+<span class="normal">76</span>
+<span class="normal">77</span>
+<span class="normal">78</span>
+<span class="normal">79</span>
+<span class="normal">80</span>
+<span class="normal">81</span>
+<span class="normal">82</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Code borrowed from https://subscription.packtpub.com/book/application_development/9781783984985/1/ch01lvl1sec18/creating-a-standalone-application</span>
+<span class="c1"># and upgraded for QGIS 3.0</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">sys</span>
+<span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">tempfile</span>
+<span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
+<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+
+<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QgsApplication</span><span class="p">,</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">,</span> <span class="n">QgsFeature</span><span class="p">,</span>
+                   <span class="n">QgsGeometry</span><span class="p">,</span> <span class="n">QgsProject</span><span class="p">,</span> <span class="n">QgsRasterLayer</span><span class="p">,</span> <span class="n">QgsVectorLayer</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">qgis.gui</span> <span class="kn">import</span> <span class="n">QgsLayerTreeMapCanvasBridge</span><span class="p">,</span> <span class="n">QgsMapCanvas</span>
+<span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span>
+<span class="c1"># Unused so commented</span>
+<span class="c1"># from qgis.PyQt.QtGui import *</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">QgsApplication</span><span class="p">([],</span> <span class="kc">True</span><span class="p">)</span>
+<span class="c1"># On Windows : https://gis.stackexchange.com/questions/334172/creating-standalone-application-in-qgis</span>
+<span class="c1"># On Linux, didn&#39;t need to set it so commented</span>
+<span class="c1"># app.setPrefixPath(&quot;C:/Program Files/QGIS Brighton/apps/qgis&quot;, True)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">initQgis</span><span class="p">()</span>
+<span class="n">canvas</span> <span class="o">=</span> <span class="n">QgsMapCanvas</span><span class="p">()</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">setWindowTitle</span><span class="p">(</span><span class="s2">&quot;PyQGIS Standalone Application Example&quot;</span><span class="p">)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">setCanvasColor</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">white</span><span class="p">)</span>
+<span class="n">crs</span> <span class="o">=</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s1">&#39;3857&#39;</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">setDestinationCrs</span><span class="p">(</span><span class="n">crs</span><span class="p">)</span>
+
+<span class="n">urlWithParams</span> <span class="o">=</span> <span class="s1">&#39;type=xyz&amp;url=https://a.tile.openstreetmap.org/%7Bz%7D/%7Bx%7D/%7By%7D.png&amp;zmax=19&amp;zmin=0&amp;crs=EPSG3857&#39;</span>
+<span class="n">rlayer2</span> <span class="o">=</span> <span class="n">QgsRasterLayer</span><span class="p">(</span><span class="n">urlWithParams</span><span class="p">,</span> <span class="s1">&#39;OpenStreetMap&#39;</span><span class="p">,</span> <span class="s1">&#39;wms&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">rlayer2</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">rlayer2</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;invalid layer&#39;</span><span class="p">)</span>
+
+<span class="c1"># Download shp ne_10m_admin_0_countries.shp and associated files in the same directory</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://www.naturalearthdata.com/http//www.naturalearthdata.com/download/10m/cultural/ne_10m_admin_0_countries.zip&quot;</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">glob</span><span class="p">(</span><span class="s2">&quot;ne_10m_admin_0_countries.*&quot;</span><span class="p">):</span>
+    <span class="k">with</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span> <span class="k">as</span> <span class="n">response</span><span class="p">:</span>
+        <span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">tmp_file</span><span class="p">:</span>
+            <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">response</span><span class="p">,</span> <span class="n">tmp_file</span><span class="p">)</span>
+        <span class="k">with</span> <span class="n">ZipFile</span><span class="p">(</span><span class="n">tmp_file</span><span class="o">.</span><span class="n">name</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">zipObj</span><span class="p">:</span>
+            <span class="c1"># Extract all the contents of zip file in current directory</span>
+            <span class="n">zipObj</span><span class="o">.</span><span class="n">extractall</span><span class="p">()</span>
+
+<span class="n">layer_shp</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="vm">__file__</span><span class="p">),</span> <span class="s2">&quot;ne_10m_admin_0_countries.shp&quot;</span><span class="p">),</span> <span class="s2">&quot;Natural Earth&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="ow">not</span> <span class="n">layer_shp</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+  <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Layer failed to load!&quot;</span><span class="p">)</span>
+
+<span class="n">project</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer_shp</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">layer_shp</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">rlayer2</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">())</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">setExtent</span><span class="p">(</span><span class="n">layer_shp</span><span class="o">.</span><span class="n">extent</span><span class="p">())</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">setLayers</span><span class="p">([</span><span class="n">rlayer2</span><span class="p">,</span> <span class="n">layer_shp</span><span class="p">])</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">zoomToFullExtent</span><span class="p">()</span>
+<span class="c1"># canvas.freeze(True)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">refresh</span><span class="p">()</span>
+<span class="c1"># canvas.freeze(False)</span>
+<span class="n">canvas</span><span class="o">.</span><span class="n">repaint</span><span class="p">()</span>
+<span class="n">bridge</span> <span class="o">=</span> <span class="n">QgsLayerTreeMapCanvasBridge</span><span class="p">(</span>
+    <span class="n">project</span><span class="o">.</span><span class="n">layerTreeRoot</span><span class="p">(),</span>
+    <span class="n">canvas</span>
+<span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">run_when_project_saved</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saved&#39;</span><span class="p">)</span>
+
+<span class="n">project</span><span class="o">.</span><span class="n">projectSaved</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">run_when_project_saved</span><span class="p">)</span>
+
+<span class="n">project</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;my_new_qgis_project.qgz&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">run_when_application_state_changed</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;State changed&#39;</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
+
+<span class="n">app</span><span class="o">.</span><span class="n">applicationStateChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">run_when_application_state_changed</span><span class="p">)</span>
+
+<span class="n">exitcode</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
+<span class="n">QgsApplication</span><span class="o">.</span><span class="n">exitQgis</span><span class="p">()</span>
+<span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table></p>
-<h2 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">#</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Pensez à autoriser les macros dans les 
-Propriétés de QGIS ➡ Général ➡ Fichiers du projet ➡ Activer les macros</p>
-</div>
-<p>Accessible depuis les propriétés du projet, dans l'onglet <code>Macros</code>. On peut lancer du code Python 
-automatiquement soit :
-* à l'ouverture du projet
-* lors de l'enregistrement du projet
-* ou lors de sa fermeture </p>
-<p><img alt="Project macro" src="../media/macros.png" /></p>
-<h2 id="formulaire">Formulaire<a class="headerlink" href="#formulaire" title="Permanent link">#</a></h2>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Pensez à autoriser les macros dans les 
-Propriétés de QGIS ➡ Général ➡ Fichiers du projet ➡ Activer les macros</p>
-</div>
-<p>On peut personnaliser un formulaire par l'ajout de logique Python. Cependant, dans QGIS 3, 
-l'utilisation de Python n'est plus forcément nécessaire, on peut désormais utiliser des expressions 
-<strong>(recommandé)</strong>.</p>
-<p><img alt="Formulaire avec logique Python" src="../media/formulaire_python.png" /></p>
-<h2 id="actions">Actions<a class="headerlink" href="#actions" title="Permanent link">#</a></h2>
-<p>Les actions sont des petits traitements que l'on peut lancer soit depuis la table attributaire ou depuis le
-canevas.
-Par exemple, on peut ouvrir un lien WEB ou un PDF en fonction d'un attribut d'une entité. Il est possible 
-d'écrire les actions en Python.</p>
-<p><img alt="Action sur une couche" src="../media/action.png" /></p>
-<h2 id="applicationscript-independant">Application/script indépendant<a class="headerlink" href="#applicationscript-independant" title="Permanent link">#</a></h2>
-<p>Sans lancer QGIS graphiquement, on peut utiliser la librairie QGIS dans nos scripts Python. On peut donc créer
-notre propre application graphique ou notre propre exécutable et ainsi utiliser les fonctions de QGIS.
-On peut donc faire un programme en ligne de commande qui effectue une certaine opération dans un répertoire
-donné.</p>
-<p><strong>Depuis QGIS 3.16</strong>, nous pouvons lancer un modèle ou un script Processing depuis la ligne de commande depuis
-l'outil <a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/standalone.html">qgis_process</a>.</p>
-<h2 id="le-fichier-startuppy">Le fichier "startup.py"<a class="headerlink" href="#le-fichier-startuppy" title="Permanent link">#</a></h2>
-<p>Si l'on place un fichier nommé <code>startup.py</code> dans le dossier Python du profil de l'utilisateur, QGIS va le
-lancer automatiquement à chaque ouverture de QGIS.</p>
+</td></tr></table>
                 
               
               
@@ -823,7 +741,7 @@ lancer automatiquement à chaque ouverture de QGIS.</p>
   
     <nav class="md-footer__inner md-grid" aria-label="Footer">
       
-        <a href=".." class="md-footer__link md-footer__link--prev" rel="prev">
+        <a href="../extension-deploiement/" class="md-footer__link md-footer__link--prev" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -832,19 +750,19 @@ lancer automatiquement à chaque ouverture de QGIS.</p>
               <span class="md-footer__direction">
                 Précédent
               </span>
-              Accueil
+              Déploiement d'une extension
             </div>
           </div>
         </a>
       
       
-        <a href="../memo-python/" class="md-footer__link md-footer__link--next" rel="next">
+        <a href="../ide-git/" class="md-footer__link md-footer__link--next" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 Suivant
               </span>
-              Mémo Python
+              IDE & Git
             </div>
           </div>
           <div class="md-footer__button md-icon">
