@@ -103,6 +103,10 @@ def my_sum(value1, value2, feature, parent):
 
 ## Macros
 
+!!! warning
+    Pensez à autoriser les macros dans les 
+    Propriétés de QGIS ➡ Général ➡ Fichiers du projet ➡ Activer les macros
+
 Accessible depuis les propriétés du projet, dans l'onglet `Macros`. On peut lancer du code Python 
 automatiquement soit :
 * à l'ouverture du projet
@@ -110,6 +114,18 @@ automatiquement soit :
 * ou lors de sa fermeture 
 
 ![Project macro](media/macros.png)
+
+## Formulaire
+
+!!! warning
+    Pensez à autoriser les macros dans les 
+    Propriétés de QGIS ➡ Général ➡ Fichiers du projet ➡ Activer les macros
+
+On peut personnaliser un formulaire par l'ajout de logique Python. Cependant, dans QGIS 3, 
+l'utilisation de Python n'est plus forcément nécessaire, on peut désormais utiliser des expressions 
+**(recommandé)**.
+
+![Formulaire avec logique Python](media/formulaire_python.png)
 
 ## Actions
 
@@ -119,15 +135,6 @@ Par exemple, on peut ouvrir un lien WEB ou un PDF en fonction d'un attribut d'un
 d'écrire les actions en Python.
 
 ![Action sur une couche](media/action.png)
-
-## Formulaire
-
-On peut personnaliser un formulaire par l'ajout de logique Python. Cependant, dans QGIS 3, 
-l'utilisation de Python n'est plus forcément nécessaire, on peut désormais utiliser des expressions 
-**(recommandé)**.
-
-![Formulaire avec logique Python](media/formulaire_python.png)
-
 
 ## Application/script indépendant
 

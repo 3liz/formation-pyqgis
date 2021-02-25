@@ -1,3 +1,6 @@
 .idea/
 .venv/
 build/
+
+*.gpkg-shm
+*.gpkg-wal

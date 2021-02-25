@@ -1,3 +1,0 @@
-# QGIS Process
-
-# Standalone application

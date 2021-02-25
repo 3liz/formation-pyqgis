@@ -10,17 +10,20 @@ site_dir: build
 
 nav:
     - docs.3liz.org: '../'
-    - Formation PyQGIS: index.md
+    - Accueil: index.md
     - Python dans QGIS: python-qgis.md
     - Mémo Python: memo-python.md
     - Console: console.md
     - Fonctions & Scripts: fonctions-scripts.md
     - Sélection & Parcours: selection-parcours-entites.md
     - Action: action.md
+    - Formulaire: formulaire.md
     - Script Processing: script-processing.md
     - Extension Générique: extension-generique.md
-    - Extension Processing: extension-processing.md
     - Extension Graphique: extension-graphique.md
+    - Extension Processing: extension-processing.md
+    - Déploiement d'une extension: extension-deploiement.md
+    - Application standalone: standalone.md
     - IDE & Git: ide-git.md
 
 markdown_extensions:
@@ -34,6 +37,8 @@ markdown_extensions:
   - pymdownx.superfences:
   - pymdownx.tabbed:
   - pymdownx.magiclink:
+  - pymdownx.details:
+  - admonition:
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js

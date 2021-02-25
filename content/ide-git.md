@@ -1,4 +1,6 @@
-# Utilisation d'un IDE
+# Python avancé
+
+## Utilisation d'un IDE
 
 Pour écrire du code Python, on peut utiliser n'importe quel éditeur de texte brut quelque soit l'OS.
 Cependant, l'utilisation d'un éditeur de texte qui "comprend" le code Python est vivement recommandé car il
@@ -13,8 +15,7 @@ En IDE gratuit, il existe :
 * Visual Studio en ajoutant les extensions Python
 * PyCharm Community, dédié au language Python
 
-
-# Utilisation de GIT
+## Utilisation de GIT
 
 Il est vivement recommandé d'utiliser GIT :
 

@@ -1,4 +1,6 @@
-# Boucler sur les entités d'une couche sans expression
+# Fonctions sur une couche vecteur
+
+## Boucler sur les entités d'une couche sans expression
 
 On peut parcourir les entités d'une couche `QgsVectorLayer` à l'aide de `getFeatures()` :
 
@@ -9,7 +11,7 @@ for feature in layer.getFeatures():
     print(feature['NOM'])
 ```
 
-# Utilisation des expressions QGIS
+## Utilisation des expressions QGIS
 
 * Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en
   Python.
@@ -102,7 +104,7 @@ request.setFlags(QgsFeatureRequest.NoFlags)
 Avant-dernier exercice, afficher une liste des communes dont la population est inférieur
 à 1000 habitants en incluant la densité de population.
 
-### Les exceptions en Python
+## Les exceptions en Python
 
 Avant de traiter cet exercice, nous devons voir ce qu'est une **exception** en Python.
 
@@ -176,7 +178,7 @@ diviser(10, 2)
 Évidement, on peut vérifier la valeur de `b` en amont si c'est égal à 0. Mais ceci est pour présenter le
 concept des exceptions en Python.
 
-### Retour à l'exercice
+## Retour à l'exercice
 
 On souhaite donc savoir si un nombre est transformable en entier, dans le cas de la
 population (s'il y a `NC` par exemple) :

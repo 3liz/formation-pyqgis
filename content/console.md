@@ -1,6 +1,6 @@
-# Introduction à la console Python dans QGIS
+# Introduction à la console Python
 
-## La documentation et les liens utiles :
+## La documentation et les liens utiles
 
 * QGIS est composé de plusieurs centaines de classes écrites en C++. 
 La plupart de ces classes (et donc des fonctions) sont accessibles à travers un API en Python. 

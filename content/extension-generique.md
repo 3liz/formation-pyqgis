@@ -25,3 +25,8 @@ Pour trouver le profil courant, dans QGIS, `Profils Utilisateurs` -> `Ouvrir le 
 
 Le "Plugin Reloader" est une extension indispensable pour développer une extension pour recharger son 
 extension. Elle est disponible dans le gestionnaire des extensions.
+
+## Apprendre d'une autre extension
+
+Comme les extensions sur qgis.org sont disponibles sur internet, on peut regarder le code source pour
+comprendre.
