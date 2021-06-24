@@ -5,29 +5,37 @@ site_url: https://docs.3liz.org/formation-pyqgis/
 repo_url: https://github.com/3liz/formation-pyqgis/
 copyright: '<span class="copyleft">&copy;</span> 3Liz'
 
-docs_dir: content
+docs_dir: docs
 site_dir: build
 
 nav:
     - docs.3liz.org: '../'
     - Accueil: index.md
-    - Python dans QGIS: python-qgis.md
-    - Mémo Python: memo-python.md
-    - Console: console.md
-    - Fonctions & Scripts: fonctions-scripts.md
-    - Sélection & Parcours: selection-parcours-entites.md
-    - Action: action.md
-    - Formulaire: formulaire.md
-    - Script Processing: script-processing.md
-    - Extension Générique: extension-generique.md
-    - Extension Graphique: extension-graphique.md
-    - Extension Processing: extension-processing.md
-    - Déploiement d'une extension: extension-deploiement.md
-    - Application standalone: standalone.md
-    - IDE & Git: ide-git.md
+    - Présentation:
+      - Python dans QGIS: python-qgis.md
+      - Mémo Python: memo-python.md
+    - Premier pas:
+      - Console: console.md
+      - Fonctions & Scripts: fonctions-scripts.md
+      - Sélection & Parcours: selection-parcours-entites.md
+    - Utilisation simple:
+      - Action: action.md
+      - Formulaire: formulaire.md
+    - Utilisation avancé:
+      - Script Processing: script-processing.md
+      - Extension Générique: extension-generique.md
+      - Extension Graphique: extension-graphique.md
+      - Extension Processing: extension-processing.md
+      - Application standalone: standalone.md
+    - Autres:
+      - Déploiement d'une extension: extension-deploiement.md
+      - IDE & Git: ide-git.md
+
+plugins:
+  - search
+  - git-revision-date-localized
 
 markdown_extensions:
-  # - git-revision-date:
   - toc:
       permalink: "#"
   - meta:
@@ -35,13 +43,22 @@ markdown_extensions:
       linenums: true
       linenums_style: pymdownx.inline
   - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_div_format
   - pymdownx.tabbed:
   - pymdownx.magiclink:
-  - pymdownx.details:
+  - pymdownx.tasklist:
+  - pymdownx.snippets:
+  - pymdownx.keys:
+  - attr_list:
   - admonition:
+  - pymdownx.details:
 
 extra_javascript:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js
+  - https://unpkg.com/mermaid@8.6.4/dist/mermaid.min.js
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/default.min.css
 
@@ -56,7 +73,11 @@ theme:
   palette:
     accent: deep-orange
     primary: green
-    scheme: preference
+    scheme: default
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.top
 
 extra:
   social:
@@ -71,3 +92,6 @@ extra:
 
     - icon: fontawesome/brands/docker
       link: https://hub.docker.com/u/3liz
+
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCYYW2CTWR_84kB6pt2zCWbQ

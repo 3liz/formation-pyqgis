@@ -1,6 +1,12 @@
+# IDE
 .idea/
+
+# Python
 .venv/
+
+# MkDocs
 build/
 
+# Data
 *.gpkg-shm
 *.gpkg-wal
