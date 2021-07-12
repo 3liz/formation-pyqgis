@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/python-qgis/">
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.8">
+      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.ca7ac06f.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.1fe995fd.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
@@ -928,8 +928,8 @@ l'utilisation de ce-dernier dans un modèle ou encore l'utilisation en mode trai
 peut aussi générer automatiquement l'interface graphique de l'algorithme et le code est optimisé.</p>
 <p>Il existe un modèle par défaut que l'on peut utiliser pour démarrer l'écriture d'un script Processing.
 Depuis la barre d'outils traitements, <code>Créer un nouveau script depuis un modèle.</code> Ce modèle utilise la syntaxe
-Programmation Orientée Objet. Depuis QGIS 3.6, on peut également utiliser la syntaxe par décorateur <code>@alg</code>.
-Voir la documentation <a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator">https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator</a></p>
+Programmation Orientée Objet. Depuis QGIS 3.6, on peut également utiliser la syntaxe par décorateur <code>@alg</code>.</p>
+<p>Voir la documentation <a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator">https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator</a></p>
 <p><img alt="Script template" src="../media/script_template.png" /></p>
 <h2 id="un-modele-processing-en-python">Un modèle Processing en Python<a class="headerlink" href="#un-modele-processing-en-python" title="Permanent link">#</a></h2>
 <p>Depuis QGIS 3.6, on peut désormais exporter un modèle de traitement Processing en Python.
@@ -955,10 +955,12 @@ ou sinon ils peuvent être installés par un dossier ZIP.</li>
 <p>Similaire au script Processing, une extension QGIS peut aussi avoir son propre fournisseur d'algorithme.</p>
 <p><img alt="Processing provider" src="../media/processing_provider.png" /></p>
 <p>On peut remarquer les plugins <code>DataPlotly</code>, <code>QuickOSM</code> etc.</p>
-<p>Ajout de Processing à un plugin QGIS :
-* soit lors du plugin builder
-* ou manuellement en suivant la documentation pour l'ajout à un plugin existant :
-  <a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html">https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html</a> </p>
+<p>Ajout de Processing à un plugin QGIS :</p>
+<ul>
+<li>soit lors du plugin builder</li>
+<li>ou manuellement en suivant la documentation pour l'ajout à un plugin existant :
+  <a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html">https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html</a> </li>
+</ul>
 <p>Il se peut que certaines extensions ne soient <em>que</em> des fournisseurs Processing.</p>
 <h2 id="expressions">Expressions<a class="headerlink" href="#expressions" title="Permanent link">#</a></h2>
 <p>Les expressions sont souvent présentes dans QGIS. On peut les utiliser dans nombreux endroits, pour faire des
@@ -1001,10 +1003,12 @@ On peut également les utiliser à chaque fois que vous pouvez voir ce symbole :
 Propriétés de QGIS ➡ Général ➡ Fichiers du projet ➡ Activer les macros</p>
 </div>
 <p>Accessible depuis les propriétés du projet, dans l'onglet <code>Macros</code>. On peut lancer du code Python 
-automatiquement soit :
-* à l'ouverture du projet
-* lors de l'enregistrement du projet
-* ou lors de sa fermeture </p>
+automatiquement soit :</p>
+<ul>
+<li>à l'ouverture du projet</li>
+<li>lors de l'enregistrement du projet</li>
+<li>ou lors de sa fermeture </li>
+</ul>
 <p><img alt="Project macro" src="../media/macros.png" /></p>
 <h2 id="formulaire">Formulaire<a class="headerlink" href="#formulaire" title="Permanent link">#</a></h2>
 <div class="admonition warning">
@@ -1040,7 +1044,7 @@ lancer automatiquement à chaque ouverture de QGIS.</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 24, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 12, 2021</span>
       
     
   </small>
@@ -1057,8 +1061,9 @@ lancer automatiquement à chaque ouverture de QGIS.</p>
           </div>
         </div>
         
-          <a href="#" class="md-top md-icon" title="Back to top" data-md-component="top" data-md-state="hidden">
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
           </a>
         
       </main>
@@ -1173,10 +1178,10 @@ lancer automatiquement à chaque ouverture de QGIS.</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.b0710199.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.76f349be.min.js"></script>
+      <script src="../assets/javascripts/bundle.ddd52ceb.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       
