@@ -34,11 +34,54 @@ Autre lien pour l'apprentissage de Python (sans QGIS) :
 
 ## Manipulation dans la console
 
+### Rappel sur la POO
+
+La Programmation Orientée Objet, **POO** :
+
+* la POO permet de mieux modéliser la réalité en concevant des modèles d'objets, les classes
+* les objets sont créés indépendamment les uns des autres, grâce à l'encapsulation, mécanisme qui permet d'embarquer leurs propriétés
+* les classes permettent d'éviter au maximum l'emploi des variables globales
+
+Imaginons le cas d'une voiture.
+
+Une voiture est un objet, on peut en créer une instance.
+Sur cette instance, on a des "propriétés" comme :
+
+* la couleur de la voiture
+* le nombre de chevaux
+* le nombre de portes
+* la marque
+* le propriétaire (qui peut-être un autre objet "Personne")
+
+Sur cette instance, on a des "méthodes" :
+
+* avancer
+* reculer
+* tourner à gauche
+* verrouiller les ports
+* activer les clignotants
+
+```mermaid
+classDiagram
+class Voiture{
+    +Color Couleur
+    +Int NbPuissance
+    +Int NbPortes
+    +String Marque
+    +Personne Proprietaire
+    +avancer() bool
+    +reculer(amount) int
+    +tourner(direction) bool
+}
+```
+
+### Pratique
+
 * Dans QGIS, `Plugins` -> `Console Python`
 * QGIS nous donne accès au projet actuel via la classe `QgsProject`
 	* [https://qgis.org/api/classQgsProject.html](https://qgis.org/api/classQgsProject.html)
 	* [https://qgis.org/pyqgis/3.16/core/QgsProject.html](https://qgis.org/pyqgis/3.16/core/QgsProject.html)
-	
+
 * Dans la documentation (en C++ surtout), on remarque plusieurs sections :
 	* Public types
 	* Public slots
@@ -94,7 +137,33 @@ QgsProject.instance().addMapLayer(communes)
 * Essayer désormais de chercher son nom, la projection ou encore les seuils de visibilité de la couche.
 On ne les trouve pas dans la page `QgsVectorLayer` !
 Pour cela, il faut faire référence à la notion d'héritage en Programmation Orientée Objet.
+
+```mermaid
+classDiagram
+class QgsMapLayer{
+    +name() str
+    +crs() QgsCoordinateReferenceSystem
+    +autreFonctions()
+}
+
+class QgsVectorLayer{
+    +startEditing() bool
+    +commitChanges() bool
+    +autreFonctionsPourUneCoucheVecteur()
+}
+
+class QgsRasterLayer{
+    +int largeur
+    +int hauteur
+    +autreFonctionsPourUneCoucheRaster()
+}
+
+QgsMapLayer <-- QgsVectorLayer
+QgsMapLayer <-- QgsRasterLayer
+```
+
 L'objet `QgsVectorLayer` hérite de `QgsMapLayer` qui est une classe commune avec `QgsMapLayer`.
+
 * Objectif, ne pas afficher la couche commune pour une échelle plus petite que le `1:2 000 000`.
 
 ## Code

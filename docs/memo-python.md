@@ -40,7 +40,8 @@ if 0 < x < 10:
 
 ## Rappel de base sur Python
 
-Un mémo Python plus important : https://www.w3schools.com/python/
+* Un mémo Python plus important : https://www.w3schools.com/python/
+* Un cours Python : https://openclassrooms.com/fr/courses/4262331-demarrez-votre-projet-avec-python
 
 ### Les types de données :
 
@@ -293,6 +294,7 @@ for country in countries:
 else:
     print('Non présent')
 
+# Encore plus pythonique avec une list-comprehension
 ```
 
 ### Boucle while

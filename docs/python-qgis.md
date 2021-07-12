@@ -33,6 +33,7 @@ peut aussi générer automatiquement l'interface graphique de l'algorithme et le
 Il existe un modèle par défaut que l'on peut utiliser pour démarrer l'écriture d'un script Processing.
 Depuis la barre d'outils traitements, `Créer un nouveau script depuis un modèle.` Ce modèle utilise la syntaxe
 Programmation Orientée Objet. Depuis QGIS 3.6, on peut également utiliser la syntaxe par décorateur `@alg`.
+
 Voir la documentation https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator
 
 ![Script template](media/script_template.png)
@@ -67,6 +68,7 @@ Similaire au script Processing, une extension QGIS peut aussi avoir son propre f
 On peut remarquer les plugins `DataPlotly`, `QuickOSM` etc.
 
 Ajout de Processing à un plugin QGIS :
+
 * soit lors du plugin builder
 * ou manuellement en suivant la documentation pour l'ajout à un plugin existant :
   https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html 
@@ -109,6 +111,7 @@ def my_sum(value1, value2, feature, parent):
 
 Accessible depuis les propriétés du projet, dans l'onglet `Macros`. On peut lancer du code Python 
 automatiquement soit :
+
 * à l'ouverture du projet
 * lors de l'enregistrement du projet
 * ou lors de sa fermeture 

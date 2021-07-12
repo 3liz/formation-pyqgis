@@ -12,14 +12,15 @@ l'éditeur de texte ci-dessus mais possède aussi des outils de debugs et d'assi
 comme l'autocomplétion.
 
 En IDE gratuit, il existe : 
-* Visual Studio en ajoutant les extensions Python
-* PyCharm Community, dédié au language Python
+
+* [Visual Studio](https://code.visualstudio.com/) en ajoutant les extensions Python
+* [PyCharm Community](https://www.jetbrains.com/fr-fr/pycharm/), dédié au language Python
 
 ## Utilisation de GIT
 
 Il est vivement recommandé d'utiliser GIT :
 
- * sauvegarde de son code sur un server
+ * sauvegarde de son code sur un serveur
  * versionner son code et suivre les modifications
  * simplifier le travail d'équipe
 
