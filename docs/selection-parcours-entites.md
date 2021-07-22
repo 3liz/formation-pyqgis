@@ -46,7 +46,7 @@ layer.removeSelection()
 L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas `NC`.
 
 **Note**, en PyQGIS, on peut accéder aux attributs d'une `QgsFeature` simplement avec l'opérateur `[]` sur 
-l'objet courant comme s'il s'agissait d'une liste Python :
+l'objet courant comme s'il s'agissait d'un dictionnaire Python :
 
 L'exemple à **ne pas** faire, même si cela fonctionne :
 
@@ -54,7 +54,7 @@ L'exemple à **ne pas** faire, même si cela fonctionne :
 layer = iface.activeLayer()
 for feature in layer.getFeatures():
     if feature['POPUL'] != 'NC':
-        print(feature['NOM'])
+        print(feature['NOM_COM'])
 ```
 
 Dans la documentation, observez bien la signature de la fonction `getFeatures`. Que remarquez-vous ?
@@ -76,7 +76,8 @@ request = QgsFeatureRequest()
 request.setFilterExpression('"POPUL" != \'NC\'')
 request.addOrderBy('NOM')
 request.setFlags(QgsFeatureRequest.NoGeometry)
-request.setSubsetOfAttributes([1, 4])
+# request.setSubsetOfAttributes([1, 4]) autre manière moins pratique
+request.setSubsetOfAttributes(['NOM', 'POPUL'], layer.fields())
 for feature in layer.getFeatures(request):
     print('{commune} : {nombre} habitants'.format(commune=feature['NOM'], nombre=feature['POPUL']))
 ```
@@ -96,13 +97,20 @@ memory_layer = layer.materialize(request)
 QgsProject.instance().addMapLayer(memory_layer)
 ```
 
+!!! warning
+    Attention à la ligne iface.activeLayer() qui peut changer lors de l'ajout
+    d'une nouvelle couche dans la légende.
+
 Regardons le résultat et corrigeons ce problème d'export afin d'obtenir les géométries et les attributs :
 ```python
 request.setFlags(QgsFeatureRequest.NoFlags)
 ```
 
-Avant-dernier exercice, afficher une liste des communes dont la population est inférieur
-à 1000 habitants en incluant la densité de population.
+Avant-dernier exercice, afficher une liste des communes en incluant la densité de population.
+
+Mais regardons avant la gestion des erreurs lors d'un traitement. En effet, nous allons
+vouloir "caster" (transformer le type) de la variable `population` en entier, mais attention,
+il y a des valeurs `NC` dans les valeurs.
 
 ## Les exceptions en Python
 
@@ -114,8 +122,8 @@ dans beaucoup de languages.
 
 Dans le language informatique, une exception peut-être :
 
-* levé (raise en anglais) pour déclencher une erreur
-* attrapé (catch en anglais) pour traiter l'erreur
+* levée ("raise" en anglais) pour déclencher une erreur
+* attrapée ("catch" en anglais) pour traiter l'erreur
 
 Essayons dans la console de faire une l'opération 10 / 2 :
 
@@ -150,8 +158,10 @@ except Exception:
     print('Ceci est une division par zéro !')
 ```
 
-On peut imaginer faire une fonction qui divise deux nombres et affiche le résultat dans la QgsMessageBar de 
-QGIS, sans tenir compte de la division par zéro :
+Il existe d'autres mots-clés en Python pour les exceptions comme `finally:` et `else:`.
+
+On peut imaginer faire une fonction qui divise deux nombres et affiche le résultat 
+dans la `QgsMessageBar` de QGIS, sans tenir compte de la division par zéro :
 
 ```python
 def diviser(a, b):
@@ -195,7 +205,7 @@ layer = iface.activeLayer()
 request = QgsFeatureRequest()
 # request.setFilterExpression('to_int( "POPUL" ) < 1000')
 request.addOrderBy('NOM')
-request.setSubsetOfAttributes([1, 4])
+request.setSubsetOfAttributes(['NOM', 'POPUL'], layer.fields())
 for feature in layer.getFeatures(request):
     area = feature.geometry().area() / 1000000
     try:
@@ -253,7 +263,7 @@ request.setSubsetOfAttributes([4])
 
 # /!\ Ajouter les 2 lignes ci-dessous à propos de la transformation
 transform = QgsCoordinateTransform(
-    QgsCoordinateReferenceSystem(2154), QgsCoordinateReferenceSystem(4326), QgsProject.instance())
+    QgsCoordinateReferenceSystem("EPSG:2154"), QgsCoordinateReferenceSystem("EPSG:4326"), QgsProject.instance())
 
 with edit(petites_communes):
     for feature in petites_communes.getFeatures(request):

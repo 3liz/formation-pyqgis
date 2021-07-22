@@ -54,7 +54,7 @@ app.initQgis()
 canvas = QgsMapCanvas()
 canvas.setWindowTitle("PyQGIS Standalone Application Example")
 canvas.setCanvasColor(Qt.white)
-crs = QgsCoordinateReferenceSystem('3857')
+crs = QgsCoordinateReferenceSystem('EPSG:3857')
 project = QgsProject.instance()
 canvas.setDestinationCrs(crs)
 

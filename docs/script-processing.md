@@ -16,6 +16,9 @@ sur le site d'OpenClassRooms sur le sujet.
 Mais depuis le début de la formation, nous l'utilisons sans trop le savoir. Les objets `Qgs*`, comme
 `QgsMapLayer` utilisent le principe de la POO.
 
+!!! tip
+    Vous pouvez relire le passage sur la POO en début de [formation](./console.md#rappel-sur-la-poo).
+
 Nous allons faire un "très" petit exemple rapide. Écrivons notre premier jeu vidéo en console !
 
 ```python
@@ -104,8 +107,9 @@ processing.run(
 )
 ```
 
-**Pour obtenir l'identifiant de l'algorithme, laissez la souris sur le nom de l'algorithme pour avoir son 
-info-bulle dans le panneau traitement.
+!!! tip
+    Pour obtenir l'identifiant de l'algorithme, laissez la souris sur le nom de
+    l'algorithme pour avoir son info-bulle dans le panneau traitement.
 
 Lien vers la documentation : https://docs.qgis.org/testing/en/docs/user_manual/processing/console.html
 

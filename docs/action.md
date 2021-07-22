@@ -109,3 +109,24 @@ On peut désormais cliquer sur une ligne pour automatiquement inverser une ligne
 
 Le code de l'action est enregistré dans le style QML de la couche vecteur. Il peut donc être partagé avec 
 d'autres utilisateurs qui ne connaissent pas Python
+
+## Astuce pour stocker le code d'une action dans une extension QGIS
+
+Pour éviter d'avoir du code les propriétés de la couche QGIS, on peut réduire le code Python
+au minimum en faisant dans le coeur de l'action uniquement l'import d'une fonction et
+de lancer son éxécution.
+
+Exemple du code d'une action dans l'extension QuickOSM lors de l'éxécution
+d'une requête rapide :
+
+```python
+from QuickOSM.core.actions import Actions
+Actions.run("josm","[% "full_id" %]")
+```
+
+Ou alors l'extension RAEPA :
+
+```python
+from qgis.utils import plugins
+plugins['raepa'].run_action("nom_de_laction", params)
+```

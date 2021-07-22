@@ -16,6 +16,16 @@ En IDE gratuit, il existe :
 * [Visual Studio](https://code.visualstudio.com/) en ajoutant les extensions Python
 * [PyCharm Community](https://www.jetbrains.com/fr-fr/pycharm/), dédié au language Python
 
+## Lancer un script Python dans la console
+
+Si vous utilisez un IDE pour écrire du code Python, vous pouvez lancer le code Python
+dans la console Python à l'aide de cette astuce.
+
+* Ouvrir l'éditeur de script Python (pas juste la console)
+* Tapez `print("bonjour")` dans le panneau de droite
+* Lancer le script avec la flèche verte
+* Copier/coller la ligne qui permet de lancer le script et modifier le chemin pour pointer vers le fichier sur votre disque. Elle ressemble à `exec(open('/chemin/vers/fichier.py'.encode('utf-8')).read())`.
+
 ## Utilisation de GIT
 
 Il est vivement recommandé d'utiliser GIT :

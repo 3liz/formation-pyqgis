@@ -43,7 +43,7 @@ if 0 < x < 10:
 * Un mémo Python plus important : https://www.w3schools.com/python/
 * Un cours Python : https://openclassrooms.com/fr/courses/4262331-demarrez-votre-projet-avec-python
 
-### Les types de données :
+## Les types de données
 
 Une variable peut contenir un entier, un booléen (`True` ou `False`), chaîne de caractères, nombre décimal, un
 objet...
@@ -72,7 +72,7 @@ type(mon_compteur)
 
 ```
 
-### Les structures de données
+## Les structures de données
 
 Il existe quatre types de structure de données :
 
@@ -129,7 +129,7 @@ personne['est_majeur'] = True
 personne['age'] = 30
 ```
 
-### Les commentaires
+## Les commentaires
 
 Pour commenter le code dans un script, pas dans la console : 
 
@@ -145,7 +145,7 @@ sur plusieurs lignes
 
 ```
 
-### Arithmétique
+## Arithmétique
 
 ```python
 a = 10
@@ -159,7 +159,7 @@ f = a % 3  # 1
 g = a ** 2  # 100
 ```
 
-### Concaténer des chaînes et des variables
+## Concaténer des chaînes et des variables
 
 Concaténer, c'est assembler des assembler des chaînes de caractères dans une seule et même sortie.
 On peut concaténer des variables entre elles ou du textes.
@@ -200,7 +200,7 @@ bienvenue = f'Bonjour {prenom} !'
 bienvenue = f'Bonjour {prenom}, nous sommes le {numero_jour} novembre'
 ```
 
-### Opérateurs logiques
+## Opérateurs logiques
 
 ```python
 a > b
@@ -215,7 +215,7 @@ a in b
 0 < a < 10
 ```
 
-### Condition
+## Condition
 
 **Important**, Python oblige l'indentation sinon il y a une erreur. Par convention, il s'agit de 4 espaces. 
 
@@ -235,7 +235,9 @@ else:
     print('Peu mieux faire')
 ```
 
-### Boucle for
+## Boucle for
+
+Utile lors que l'on connait le nombre de répétitions avant l'éxécution de la boucle.
 
 ```python
 for x in range(10):
@@ -265,7 +267,7 @@ for region, city in regions.items():
     print('Région {} dont le chef lieu est {}'.format(region, city))
 ```
 
-### Recherche d'un élément
+## Recherche d'un élément
 
 ```python
 countries = ['Allemagne', 'Espagne', 'France']
@@ -297,7 +299,7 @@ else:
 # Encore plus pythonique avec une list-comprehension
 ```
 
-### Boucle while
+## Boucle while
 
 ```python
 x = 0
@@ -314,7 +316,7 @@ while not conditon_echec:
     executer_une_fonction()
 ```
 
-### List Comprehensions
+## List Comprehensions
 
 C'est une façon très pythonique et très utilisée de créer des listes.
 Par exemple, créer une liste des nombres impaires entre 1 et 9 :
@@ -339,7 +341,7 @@ countries = [c.upper() for c in countries]
 
 * Il existe aussi les Dict Comprehensions (moins utilisé)
 
-### Manipulation sur les chaînes de caractères
+## Manipulation sur les chaînes de caractères
 
 * Pour information, les chaînes de caractères sont des listes et on peut faire du **slicing** sur des listes :
 
@@ -348,6 +350,7 @@ alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 len(alphabet)
 ','.join(alphabet)
 alphabet.lower()
+alphabet.upper()
 alphabet[1]  # B
 alphabet[1:3]  # BC
 alphabet[-1]  # Z
@@ -355,7 +358,7 @@ alphabet[-3:]  # XYZ
 alphabet[:6]  # ABCDEF
 ```
 
-### Fonctions
+## Fonctions
 
 * Voici des exemples de fonction Python.
 *Encore une fois*, attention à l'indentation !
@@ -399,16 +402,17 @@ def une_fonction(*args, **kwargs):
 une_fonction(1,2,3, text='Ma phrase')
 ```
 
-### Truc et astuces
+## Truc et astuces
 
-Attention au passage par référence :
-```python
-ma_liste_1 = [1, 2, 3]
-ma_liste_2 = ma_liste_1
-ma_liste_2.append(4)
-print(ma_liste_2)
-print(ma_liste_1)
-```
+!!! warning
+    Attention au passage par référence :
+	```python
+	ma_liste_1 = [1, 2, 3]
+	ma_liste_2 = ma_liste_1
+	ma_liste_2.append(4)
+	print(ma_liste_2)
+	print(ma_liste_1)
+	```
 
 Avoir un compteur lors de l'itération d'une liste :
 ```python

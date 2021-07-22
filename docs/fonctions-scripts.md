@@ -59,16 +59,20 @@ else:
 ```
 
 * À l'aide du mémo Python :
-	* Essayons de faire une fonction qui prend 2 paramètres
-		* la thématique (le dossier)
-		* le nom du shapefile
-	* La fonction se chargera de faire le nécessaire, par exemple: `charger_couche('H_OSM_ADMINISTRATIF', 'COMMUNE')`
-	* La fonction peut également retourner `False` si la couche n'est pas chargée (une erreur) ou sinon l'objet couche.
+  * Essayons de faire une fonction qui prend 2 paramètres
+    * la thématique (le dossier)
+    * le nom du shapefile
+  * La fonction se chargera de faire le nécessaire, par exemple: `charger_couche('H_OSM_ADMINISTRATIF', 'COMMUNE')`
+  * La fonction peut également retourner `False` si la couche n'est pas chargée (une erreur) ou sinon l'objet couche.
 
 ```python
 def charger_couche(thematique, couche):
     pass
 ```
+
+!!! tip
+    Le mot-clé `pass` ne sert à rien. C'est un mot-clé Python pour rendre un bloc valide mais ne faisant rien.
+    On peut le supprimer le bloc n'est pas vide.
 
 * Une des solutions :
 
@@ -102,7 +106,8 @@ charger_couche('H_OSM_ADMINISTRATIF', 'COMMUNE')
 charger_couche('H_OSM_ADMINISTRATIF', 'ARRONDISSEMENT')
 ```
 
-* Essayons de faire une fonction qui liste les shapefiles d'une certaine thématique. `os.walk(path)` permet de parcourir un chemin.
+* Essayons de faire une fonction qui liste les shapefiles d'une certaine thématique.
+  `os.walk(path)` permet de parcourir un chemin.
 
 ```python
 import os
@@ -122,7 +127,7 @@ shapes = liste_shapefiles('H_OSM_ADMINISTRATIF')
 print(shapes)
 ```
 
-* Permettre le chargement automatique de toute un thématique.
+* Permettre le chargement automatique de toute une thématique.
 
 ## Extraction des informations sous forme d'un fichier CSV.
 
@@ -168,6 +173,12 @@ Nous allons avoir besoin de plusieurs classes dans l'API QGIS :
 * Un champ : `QgsField`
 * Une entité : `QgsFeature`
 
+Pour le type de champ, on va avoir besoin de l'API Qt également :
+
+* https://doc.qt.io/qt-5/qmetatype.html#Type-enum
+* Remplacer `QMetaType` par `QVariant`
+* Par exemple, pour créer un nouveau champ de type entier : `QgsField('nombre_entité', QVariant.Int)`
+
 Il va y avoir plusieurs étapes dans ce script :
 
 1. Créer une couche en mémoire
@@ -206,17 +217,13 @@ QgsProject.instance().addMapLayer(layer_info)
 
 with edit(layer_info):
     for layer in layers:
-        feature = QgsFeature()
-        attributes = [
-            layer.name(),
-            QgsWkbTypes.geometryDisplayString(layer.geometryType()),
-            layer.crs().authid(),
-            layer.featureCount(),
-            layer.dataProvider().encoding(),
-            layer.source(),
-            str(layer.hasScaleBasedVisibility())
-        ]
-        feature.setAttributes(attributes)
+        feature = QgsFeature(layer_info.fields())
+        feature.setAttribute("nom", layer.name())
+        feature.setAttribute("projection", layer.crs().authid())
+        feature.setAttribute("nombre_entite", layer.featureCount())
+        feature.setAttribute("source", layer.source())
+        feature.setAttribute("type", QgsWkbTypes.geometryDisplayString(layer.geometryType()))
+        feature.setAttribute("seuil_visibilite", layer.hasScaleBasedVisibility())
         layer_info.addFeature(feature)
 
 QgsVectorFileWriter.writeAsVectorFormat(
