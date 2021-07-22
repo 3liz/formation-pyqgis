@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/selection-parcours-entites/">
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.0">
     
     
       
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.1fe995fd.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.fe914879.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
         
           
           
@@ -78,7 +78,7 @@
     </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
     <a href=".." title="Formation PyQGIS" class="md-header__button md-logo" aria-label="Formation PyQGIS" data-md-component="logo">
       
   <img src="../media/logo-qgis.png" alt="logo">
@@ -114,20 +114,24 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Initialisation de la recherche
           </div>
           <ol class="md-search-result__list"></ol>
         </div>
@@ -158,7 +162,7 @@
       
         
           
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -862,7 +866,7 @@ les codes INSEE qui commencent par <code>77</code> (à choisir un code INSEE pro
 <h2 id="boucler-sur-les-entites-a-laide-dune-expression">Boucler sur les entités à l'aide d'une expression<a class="headerlink" href="#boucler-sur-les-entites-a-laide-dune-expression" title="Permanent link">#</a></h2>
 <p>L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas <code>NC</code>.</p>
 <p><strong>Note</strong>, en PyQGIS, on peut accéder aux attributs d'une <code>QgsFeature</code> simplement avec l'opérateur <code>[]</code> sur 
-l'objet courant comme s'il s'agissait d'une liste Python :</p>
+l'objet courant comme s'il s'agissait d'un dictionnaire Python :</p>
 <p>L'exemple à <strong>ne pas</strong> faire, même si cela fonctionne :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -870,7 +874,7 @@ l'objet courant comme s'il s'agissait d'une liste Python :</p>
 <span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
     <span class="k">if</span> <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPUL&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;NC&#39;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM_COM&#39;</span><span class="p">])</span>
 </code></pre></div>
 </td></tr></table>
 <p>Dans la documentation, observez bien la signature de la fonction <code>getFeatures</code>. Que remarquez-vous ?
@@ -893,11 +897,13 @@ Utilisons donc une expression pour limiter les résultats.</p>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
 <span class="n">request</span><span class="o">.</span><span class="n">setFilterExpression</span><span class="p">(</span><span class="s1">&#39;&quot;POPUL&quot; != </span><span class="se">\&#39;</span><span class="s1">NC</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">request</span><span class="o">.</span><span class="n">addOrderBy</span><span class="p">(</span><span class="s1">&#39;NOM&#39;</span><span class="p">)</span>
 <span class="n">request</span><span class="o">.</span><span class="n">setFlags</span><span class="p">(</span><span class="n">QgsFeatureRequest</span><span class="o">.</span><span class="n">NoGeometry</span><span class="p">)</span>
-<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="c1"># request.setSubsetOfAttributes([1, 4]) autre manière moins pratique</span>
+<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="s1">&#39;NOM&#39;</span><span class="p">,</span> <span class="s1">&#39;POPUL&#39;</span><span class="p">],</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{commune}</span><span class="s1"> : </span><span class="si">{nombre}</span><span class="s1"> habitants&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">commune</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">],</span> <span class="n">nombre</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPUL&#39;</span><span class="p">]))</span>
 </code></pre></div>
@@ -914,12 +920,19 @@ nouvelle couche :</p>
 <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">memory_layer</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Attention à la ligne iface.activeLayer() qui peut changer lors de l'ajout
+d'une nouvelle couche dans la légende.</p>
+</div>
 <p>Regardons le résultat et corrigeons ce problème d'export afin d'obtenir les géométries et les attributs :
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">request</span><span class="o">.</span><span class="n">setFlags</span><span class="p">(</span><span class="n">QgsFeatureRequest</span><span class="o">.</span><span class="n">NoFlags</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table></p>
-<p>Avant-dernier exercice, afficher une liste des communes dont la population est inférieur
-à 1000 habitants en incluant la densité de population.</p>
+<p>Avant-dernier exercice, afficher une liste des communes en incluant la densité de population.</p>
+<p>Mais regardons avant la gestion des erreurs lors d'un traitement. En effet, nous allons
+vouloir "caster" (transformer le type) de la variable <code>population</code> en entier, mais attention,
+il y a des valeurs <code>NC</code> dans les valeurs.</p>
 <h2 id="les-exceptions-en-python">Les exceptions en Python<a class="headerlink" href="#les-exceptions-en-python" title="Permanent link">#</a></h2>
 <p>Avant de traiter cet exercice, nous devons voir ce qu'est une <strong>exception</strong> en Python.</p>
 <p>À plusieurs reprises depuis le début de la formation, il est fort à parier que nous ayons des messages en
@@ -927,8 +940,8 @@ rouges dans la console de temps en temps. Ce sont des exceptions. C'est une noti
 dans beaucoup de languages.</p>
 <p>Dans le language informatique, une exception peut-être :</p>
 <ul>
-<li>levé (raise en anglais) pour déclencher une erreur</li>
-<li>attrapé (catch en anglais) pour traiter l'erreur</li>
+<li>levée ("raise" en anglais) pour déclencher une erreur</li>
+<li>attrapée ("catch" en anglais) pour traiter l'erreur</li>
 </ul>
 <p>Essayons dans la console de faire une l'opération 10 / 2 :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span>
@@ -961,8 +974,9 @@ recommandé car il masque d'autres erreurs :</p>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ceci est une division par zéro !&#39;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-<p>On peut imaginer faire une fonction qui divise deux nombres et affiche le résultat dans la QgsMessageBar de 
-QGIS, sans tenir compte de la division par zéro :</p>
+<p>Il existe d'autres mots-clés en Python pour les exceptions comme <code>finally:</code> et <code>else:</code>.</p>
+<p>On peut imaginer faire une fonction qui divise deux nombres et affiche le résultat 
+dans la <code>QgsMessageBar</code> de QGIS, sans tenir compte de la division par zéro :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1020,7 +1034,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
 <span class="c1"># request.setFilterExpression(&#39;to_int( &quot;POPUL&quot; ) &lt; 1000&#39;)</span>
 <span class="n">request</span><span class="o">.</span><span class="n">addOrderBy</span><span class="p">(</span><span class="s1">&#39;NOM&#39;</span><span class="p">)</span>
-<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="s1">&#39;NOM&#39;</span><span class="p">,</span> <span class="s1">&#39;POPUL&#39;</span><span class="p">],</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">area</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">area</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
     <span class="k">try</span><span class="p">:</span>
@@ -1129,7 +1143,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 
 <span class="c1"># /!\ Ajouter les 2 lignes ci-dessous à propos de la transformation</span>
 <span class="n">transform</span> <span class="o">=</span> <span class="n">QgsCoordinateTransform</span><span class="p">(</span>
-    <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="mi">2154</span><span class="p">),</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="mi">4326</span><span class="p">),</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">())</span>
+    <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s2">&quot;EPSG:2154&quot;</span><span class="p">),</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(</span><span class="s2">&quot;EPSG:4326&quot;</span><span class="p">),</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">())</span>
 
 <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">petites_communes</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">petites_communes</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -1157,7 +1171,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 24, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 22, 2021</span>
       
     
   </small>
@@ -1176,7 +1190,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
         
           <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
-            Back to top
+            Retour en haut de la page
           </a>
         
       </main>
@@ -1184,7 +1198,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
         
 <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    <nav class="md-footer__inner md-grid" aria-label="Pied de page">
       
         
         <a href="../fonctions-scripts/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Fonctions &amp; Scripts" rel="prev">
@@ -1291,10 +1305,10 @@ population (s'il y a <code>NC</code> par exemple) :</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.term.missing": "Non trouv\u00e9", "select.version.title": "S\u00e9lectionner la version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

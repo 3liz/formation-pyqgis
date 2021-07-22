@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/memo-python/">
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.0">
     
     
       
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.1fe995fd.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.fe914879.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
         
           
           
@@ -78,7 +78,7 @@
     </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
     <a href=".." title="Formation PyQGIS" class="md-header__button md-logo" aria-label="Formation PyQGIS" data-md-component="logo">
       
   <img src="../media/logo-qgis.png" alt="logo">
@@ -114,20 +114,24 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Initialisation de la recherche
           </div>
           <ol class="md-search-result__list"></ol>
         </div>
@@ -158,7 +162,7 @@
       
         
           
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -435,109 +439,103 @@
     Rappel de base sur Python
   </a>
   
-    <nav class="md-nav" aria-label="Rappel de base sur Python">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#les-types-de-donnees" class="md-nav__link">
-    Les types de données :
+    Les types de données
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#les-structures-de-donnees" class="md-nav__link">
     Les structures de données
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#les-commentaires" class="md-nav__link">
     Les commentaires
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#arithmetique" class="md-nav__link">
     Arithmétique
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#concatener-des-chaines-et-des-variables" class="md-nav__link">
     Concaténer des chaînes et des variables
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#operateurs-logiques" class="md-nav__link">
     Opérateurs logiques
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#condition" class="md-nav__link">
     Condition
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#boucle-for" class="md-nav__link">
     Boucle for
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#recherche-dun-element" class="md-nav__link">
     Recherche d'un élément
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#boucle-while" class="md-nav__link">
     Boucle while
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#list-comprehensions" class="md-nav__link">
     List Comprehensions
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#manipulation-sur-les-chaines-de-caracteres" class="md-nav__link">
     Manipulation sur les chaînes de caractères
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#fonctions" class="md-nav__link">
     Fonctions
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#truc-et-astuces" class="md-nav__link">
     Truc et astuces
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -863,109 +861,103 @@
     Rappel de base sur Python
   </a>
   
-    <nav class="md-nav" aria-label="Rappel de base sur Python">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
   <a href="#les-types-de-donnees" class="md-nav__link">
-    Les types de données :
+    Les types de données
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#les-structures-de-donnees" class="md-nav__link">
     Les structures de données
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#les-commentaires" class="md-nav__link">
     Les commentaires
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#arithmetique" class="md-nav__link">
     Arithmétique
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#concatener-des-chaines-et-des-variables" class="md-nav__link">
     Concaténer des chaînes et des variables
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#operateurs-logiques" class="md-nav__link">
     Opérateurs logiques
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#condition" class="md-nav__link">
     Condition
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#boucle-for" class="md-nav__link">
     Boucle for
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#recherche-dun-element" class="md-nav__link">
     Recherche d'un élément
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#boucle-while" class="md-nav__link">
     Boucle while
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#list-comprehensions" class="md-nav__link">
     List Comprehensions
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#manipulation-sur-les-chaines-de-caracteres" class="md-nav__link">
     Manipulation sur les chaînes de caractères
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#fonctions" class="md-nav__link">
     Fonctions
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#truc-et-astuces" class="md-nav__link">
     Truc et astuces
   </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1048,7 +1040,7 @@
 <li>Un mémo Python plus important : <a href="https://www.w3schools.com/python/">https://www.w3schools.com/python/</a></li>
 <li>Un cours Python : <a href="https://openclassrooms.com/fr/courses/4262331-demarrez-votre-projet-avec-python">https://openclassrooms.com/fr/courses/4262331-demarrez-votre-projet-avec-python</a></li>
 </ul>
-<h3 id="les-types-de-donnees">Les types de données :<a class="headerlink" href="#les-types-de-donnees" title="Permanent link">#</a></h3>
+<h2 id="les-types-de-donnees">Les types de données<a class="headerlink" href="#les-types-de-donnees" title="Permanent link">#</a></h2>
 <p>Une variable peut contenir un entier, un booléen (<code>True</code> ou <code>False</code>), chaîne de caractères, nombre décimal, un
 objet...
 Il y a un faible typage des variables, c'est-à-dire qu'une variable peut changer de type au cours de l'exécution
@@ -1090,7 +1082,7 @@ du programme.</p>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">NoneType</span><span class="s1">&#39;&gt;</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="les-structures-de-donnees">Les structures de données<a class="headerlink" href="#les-structures-de-donnees" title="Permanent link">#</a></h3>
+<h2 id="les-structures-de-donnees">Les structures de données<a class="headerlink" href="#les-structures-de-donnees" title="Permanent link">#</a></h2>
 <p>Il existe quatre types de structure de données :</p>
 <ul>
 <li>les variables simples (ci-dessus)</li>
@@ -1171,7 +1163,7 @@ C'est un objet.</p>
 <span class="n">personne</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="les-commentaires">Les commentaires<a class="headerlink" href="#les-commentaires" title="Permanent link">#</a></h3>
+<h2 id="les-commentaires">Les commentaires<a class="headerlink" href="#les-commentaires" title="Permanent link">#</a></h2>
 <p>Pour commenter le code dans un script, pas dans la console : </p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1190,7 +1182,7 @@ C'est un objet.</p>
 <span class="sd">&quot;&quot;&quot; Ces lignes sont réservés pour la documentation de l&#39;API et ne doivent pas être des lignes de commentaires. &quot;&quot;&quot;</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="arithmetique">Arithmétique<a class="headerlink" href="#arithmetique" title="Permanent link">#</a></h3>
+<h2 id="arithmetique">Arithmétique<a class="headerlink" href="#arithmetique" title="Permanent link">#</a></h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1210,7 +1202,7 @@ C'est un objet.</p>
 <span class="n">g</span> <span class="o">=</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># 100</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="concatener-des-chaines-et-des-variables">Concaténer des chaînes et des variables<a class="headerlink" href="#concatener-des-chaines-et-des-variables" title="Permanent link">#</a></h3>
+<h2 id="concatener-des-chaines-et-des-variables">Concaténer des chaînes et des variables<a class="headerlink" href="#concatener-des-chaines-et-des-variables" title="Permanent link">#</a></h2>
 <p>Concaténer, c'est assembler des assembler des chaînes de caractères dans une seule et même sortie.
 On peut concaténer des variables entre elles ou du textes.</p>
 <p>Il existe plein de manières de faire, mais certaines sont plus pratiques que d'autres
@@ -1261,7 +1253,7 @@ On peut concaténer des variables entre elles ou du textes.</p>
 <span class="n">bienvenue</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Bonjour </span><span class="si">{</span><span class="n">prenom</span><span class="si">}</span><span class="s1">, nous sommes le </span><span class="si">{</span><span class="n">numero_jour</span><span class="si">}</span><span class="s1"> novembre&#39;</span>
 </code></pre></div>
 </td></tr></table></p>
-<h3 id="operateurs-logiques">Opérateurs logiques<a class="headerlink" href="#operateurs-logiques" title="Permanent link">#</a></h3>
+<h2 id="operateurs-logiques">Opérateurs logiques<a class="headerlink" href="#operateurs-logiques" title="Permanent link">#</a></h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1283,7 +1275,7 @@ On peut concaténer des variables entre elles ou du textes.</p>
 <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">10</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="condition">Condition<a class="headerlink" href="#condition" title="Permanent link">#</a></h3>
+<h2 id="condition">Condition<a class="headerlink" href="#condition" title="Permanent link">#</a></h2>
 <p><strong>Important</strong>, Python oblige l'indentation sinon il y a une erreur. Par convention, il s'agit de 4 espaces. </p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1310,7 +1302,8 @@ On peut concaténer des variables entre elles ou du textes.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Peu mieux faire&#39;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="boucle-for">Boucle for<a class="headerlink" href="#boucle-for" title="Permanent link">#</a></h3>
+<h2 id="boucle-for">Boucle for<a class="headerlink" href="#boucle-for" title="Permanent link">#</a></h2>
+<p>Utile lors que l'on connait le nombre de répétitions avant l'éxécution de la boucle.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1362,7 +1355,7 @@ On peut concaténer des variables entre elles ou du textes.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Région </span><span class="si">{}</span><span class="s1"> dont le chef lieu est </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">city</span><span class="p">))</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="recherche-dun-element">Recherche d'un élément<a class="headerlink" href="#recherche-dun-element" title="Permanent link">#</a></h3>
+<h2 id="recherche-dun-element">Recherche d'un élément<a class="headerlink" href="#recherche-dun-element" title="Permanent link">#</a></h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1418,7 +1411,7 @@ On peut concaténer des variables entre elles ou du textes.</p>
 <span class="c1"># Encore plus pythonique avec une list-comprehension</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="boucle-while">Boucle while<a class="headerlink" href="#boucle-while" title="Permanent link">#</a></h3>
+<h2 id="boucle-while">Boucle while<a class="headerlink" href="#boucle-while" title="Permanent link">#</a></h2>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1438,7 +1431,7 @@ On peut concaténer des variables entre elles ou du textes.</p>
     <span class="n">executer_une_fonction</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="list-comprehensions">List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permanent link">#</a></h3>
+<h2 id="list-comprehensions">List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permanent link">#</a></h2>
 <p>C'est une façon très pythonique et très utilisée de créer des listes.
 Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1467,22 +1460,24 @@ Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
 <ul>
 <li>Il existe aussi les Dict Comprehensions (moins utilisé)</li>
 </ul>
-<h3 id="manipulation-sur-les-chaines-de-caracteres">Manipulation sur les chaînes de caractères<a class="headerlink" href="#manipulation-sur-les-chaines-de-caracteres" title="Permanent link">#</a></h3>
+<h2 id="manipulation-sur-les-chaines-de-caracteres">Manipulation sur les chaînes de caractères<a class="headerlink" href="#manipulation-sur-les-chaines-de-caracteres" title="Permanent link">#</a></h2>
 <ul>
 <li>Pour information, les chaînes de caractères sont des listes et on peut faire du <strong>slicing</strong> sur des listes :</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">alphabet</span> <span class="o">=</span> <span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">alphabet</span> <span class="o">=</span> <span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
 <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
 <span class="n">alphabet</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">alphabet</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
 <span class="n">alphabet</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># B</span>
 <span class="n">alphabet</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># BC</span>
 <span class="n">alphabet</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Z</span>
@@ -1490,7 +1485,7 @@ Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
 <span class="n">alphabet</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>  <span class="c1"># ABCDEF</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="fonctions">Fonctions<a class="headerlink" href="#fonctions" title="Permanent link">#</a></h3>
+<h2 id="fonctions">Fonctions<a class="headerlink" href="#fonctions" title="Permanent link">#</a></h2>
 <ul>
 <li>Voici des exemples de fonction Python.
 <em>Encore une fois</em>, attention à l'indentation !</li>
@@ -1556,7 +1551,9 @@ Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
 <span class="n">une_fonction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Ma phrase&#39;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-<h3 id="truc-et-astuces">Truc et astuces<a class="headerlink" href="#truc-et-astuces" title="Permanent link">#</a></h3>
+<h2 id="truc-et-astuces">Truc et astuces<a class="headerlink" href="#truc-et-astuces" title="Permanent link">#</a></h2>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
 <p>Attention au passage par référence :
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1569,6 +1566,7 @@ Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">ma_liste_1</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table></p>
+</div>
 <p>Avoir un compteur lors de l'itération d'une liste :
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1585,7 +1583,7 @@ Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 12, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 22, 2021</span>
       
     
   </small>
@@ -1604,7 +1602,7 @@ Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
         
           <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
-            Back to top
+            Retour en haut de la page
           </a>
         
       </main>
@@ -1612,7 +1610,7 @@ Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
         
 <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    <nav class="md-footer__inner md-grid" aria-label="Pied de page">
       
         
         <a href="../python-qgis/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Python dans QGIS" rel="prev">
@@ -1719,10 +1717,10 @@ Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.term.missing": "Non trouv\u00e9", "select.version.title": "S\u00e9lectionner la version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

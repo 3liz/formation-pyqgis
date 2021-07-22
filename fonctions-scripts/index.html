@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/fonctions-scripts/">
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.2.1, mkdocs-material-7.1.10">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.0">
     
     
       
@@ -24,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.1fe995fd.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.fe914879.min.css">
       
         
-        <link rel="stylesheet" href="../assets/stylesheets/palette.f1a3b89f.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
         
           
           
@@ -78,7 +78,7 @@
     </div>
     
       <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
+  <nav class="md-header__inner md-grid" aria-label="En-tête">
     <a href=".." title="Formation PyQGIS" class="md-header__button md-logo" aria-label="Formation PyQGIS" data-md-component="logo">
       
   <img src="../media/logo-qgis.png" alt="logo">
@@ -114,20 +114,24 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" data-md-state="active" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Rechercher" placeholder="Rechercher" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
       </label>
-      <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-      </button>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Effacer" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
     </form>
     <div class="md-search__output">
       <div class="md-search__scrollwrap" data-md-scrollfix>
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
-            Initializing search
+            Initialisation de la recherche
           </div>
           <ol class="md-search-result__list"></ol>
         </div>
@@ -158,7 +162,7 @@
       
         
           
-<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+<nav class="md-tabs" aria-label="Onglets" data-md-component="tabs">
   <div class="md-tabs__inner md-grid">
     <ul class="md-tabs__list">
       
@@ -853,7 +857,7 @@ l'organisation du code.</p>
 </code></pre></div>
 </td></tr></table>
 <ul>
-<li>À l'aide du mémo Python :<ul>
+<li>À l'aide du mémo Python :</li>
 <li>Essayons de faire une fonction qui prend 2 paramètres<ul>
 <li>la thématique (le dossier)</li>
 <li>le nom du shapefile</li>
@@ -862,13 +866,16 @@ l'organisation du code.</p>
 <li>La fonction se chargera de faire le nécessaire, par exemple: <code>charger_couche('H_OSM_ADMINISTRATIF', 'COMMUNE')</code></li>
 <li>La fonction peut également retourner <code>False</code> si la couche n'est pas chargée (une erreur) ou sinon l'objet couche.</li>
 </ul>
-</li>
-</ul>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">charger_couche</span><span class="p">(</span><span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">):</span>
     <span class="k">pass</span>
 </code></pre></div>
 </td></tr></table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Le mot-clé <code>pass</code> ne sert à rien. C'est un mot-clé Python pour rendre un bloc valide mais ne faisant rien.
+On peut le supprimer le bloc n'est pas vide.</p>
+</div>
 <ul>
 <li>Une des solutions :</li>
 </ul>
@@ -928,7 +935,8 @@ l'organisation du code.</p>
 </code></pre></div>
 </td></tr></table>
 <ul>
-<li>Essayons de faire une fonction qui liste les shapefiles d'une certaine thématique. <code>os.walk(path)</code> permet de parcourir un chemin.</li>
+<li>Essayons de faire une fonction qui liste les shapefiles d'une certaine thématique.
+  <code>os.walk(path)</code> permet de parcourir un chemin.</li>
 </ul>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -962,7 +970,7 @@ l'organisation du code.</p>
 </code></pre></div>
 </td></tr></table>
 <ul>
-<li>Permettre le chargement automatique de toute un thématique.</li>
+<li>Permettre le chargement automatique de toute une thématique.</li>
 </ul>
 <h2 id="extraction-des-informations-sous-forme-dun-fichier-csv">Extraction des informations sous forme d'un fichier CSV.<a class="headerlink" href="#extraction-des-informations-sous-forme-dun-fichier-csv" title="Permanent link">#</a></h2>
 <p>On souhaite désormais réaliser une fonction d'export des métadonnées de nos couches au format CSV, avec son
@@ -1031,6 +1039,12 @@ l'action <code>Exporter la couche</code>).</p>
 <li>Un champ : <code>QgsField</code></li>
 <li>Une entité : <code>QgsFeature</code></li>
 </ul>
+<p>Pour le type de champ, on va avoir besoin de l'API Qt également :</p>
+<ul>
+<li><a href="https://doc.qt.io/qt-5/qmetatype.html#Type-enum">https://doc.qt.io/qt-5/qmetatype.html#Type-enum</a></li>
+<li>Remplacer <code>QMetaType</code> par <code>QVariant</code></li>
+<li>Par exemple, pour créer un nouveau champ de type entier : <code>QgsField('nombre_entité', QVariant.Int)</code></li>
+</ul>
 <p>Il va y avoir plusieurs étapes dans ce script :</p>
 <ol>
 <li>Créer une couche en mémoire</li>
@@ -1085,11 +1099,7 @@ l'action <code>Exporter la couche</code>).</p>
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="normal">46</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
 
 <span class="n">layers</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">layers</span><span class="p">:</span>
@@ -1116,17 +1126,13 @@ l'action <code>Exporter la couche</code>).</p>
 
 <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer_info</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">layer</span> <span class="ow">in</span> <span class="n">layers</span><span class="p">:</span>
-        <span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
-        <span class="n">attributes</span> <span class="o">=</span> <span class="p">[</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">(),</span>
-            <span class="n">QgsWkbTypes</span><span class="o">.</span><span class="n">geometryDisplayString</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">geometryType</span><span class="p">()),</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">(),</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">featureCount</span><span class="p">(),</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span><span class="o">.</span><span class="n">encoding</span><span class="p">(),</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">source</span><span class="p">(),</span>
-            <span class="nb">str</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">hasScaleBasedVisibility</span><span class="p">())</span>
-        <span class="p">]</span>
-        <span class="n">feature</span><span class="o">.</span><span class="n">setAttributes</span><span class="p">(</span><span class="n">attributes</span><span class="p">)</span>
+        <span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">(</span><span class="n">layer_info</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
+        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;nom&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
+        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;projection&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">())</span>
+        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;nombre_entite&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">featureCount</span><span class="p">())</span>
+        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">source</span><span class="p">())</span>
+        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">QgsWkbTypes</span><span class="o">.</span><span class="n">geometryDisplayString</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">geometryType</span><span class="p">()))</span>
+        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;seuil_visibilite&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">hasScaleBasedVisibility</span><span class="p">())</span>
         <span class="n">layer_info</span><span class="o">.</span><span class="n">addFeature</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
 
 <span class="n">QgsVectorFileWriter</span><span class="o">.</span><span class="n">writeAsVectorFormat</span><span class="p">(</span>
@@ -1149,7 +1155,7 @@ l'action <code>Exporter la couche</code>).</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 24, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 22, 2021</span>
       
     
   </small>
@@ -1168,7 +1174,7 @@ l'action <code>Exporter la couche</code>).</p>
         
           <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
-            Back to top
+            Retour en haut de la page
           </a>
         
       </main>
@@ -1176,7 +1182,7 @@ l'action <code>Exporter la couche</code>).</p>
         
 <footer class="md-footer">
   
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
+    <nav class="md-footer__inner md-grid" aria-label="Pied de page">
       
         
         <a href="../console/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Console" rel="prev">
@@ -1283,10 +1289,10 @@ l'action <code>Exporter la couche</code>).</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.477d984a.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.term.missing": "Non trouv\u00e9", "select.version.title": "S\u00e9lectionner la version"}, "search": "../assets/javascripts/workers/search.53c85856.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.ddd52ceb.min.js"></script>
+      <script src="../assets/javascripts/bundle.716f8af4.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       
