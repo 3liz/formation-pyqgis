@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/extension-graphique/">
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.0">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.fe914879.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
@@ -611,6 +611,19 @@
     QtDesigner
   </a>
   
+    <nav class="md-nav" aria-label="QtDesigner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#astuces" class="md-nav__link">
+    Astuces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -763,6 +776,19 @@
     QtDesigner
   </a>
   
+    <nav class="md-nav" aria-label="QtDesigner">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#astuces" class="md-nav__link">
+    Astuces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -815,13 +841,22 @@
 <h2 id="qtdesigner">QtDesigner<a class="headerlink" href="#qtdesigner" title="Permanent link">#</a></h2>
 <p>Créons un fichier QtDesigner comme-ceci : </p>
 <p><img alt="QtDesigner" src="../media/qt_designer_0.png" /></p>
-<p>et y ajouter des "widgets" : </p>
+<p>et y ajouter des "widgets" :</p>
 <p><img alt="QtDesigner" src="../media/qt_designer_1.jpg" /></p>
-<p>Ouvrir la page des slots/signaux depuis la barre d'outils et supprimer ceux qui existent.</p>
+<h3 id="astuces">Astuces<a class="headerlink" href="#astuces" title="Permanent link">#</a></h3>
+<ul>
+<li>
+<p>Ouvrir la page des "slots/signaux" depuis la barre d'outils et supprimer ceux qui existent.</p>
+</li>
+<li>
+<p>Faire un clic droit sur "QDialog" à droite et faire une mise en page "vertical".</p>
+</li>
+</ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Ne pas changer la propriété <code>objectName</code> pour le moment.</p>
 </div>
+<p>On peut <a href="../solution/dialog.ui">télécharger</a> la solution si besoin.</p>
 <h2 id="la-classe-qui-accompagne">La classe qui accompagne<a class="headerlink" href="#la-classe-qui-accompagne" title="Permanent link">#</a></h2>
 <p>Créons un fichier <code>dialog.py</code> avec le contenu suivant :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1030,7 +1065,7 @@ deux fichiers.</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">June 24, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2021</span>
       
     
   </small>

@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/script-processing/">
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.0">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.1">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.fe914879.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.1118c9be.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.ba0d045b.min.css">
@@ -604,6 +604,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lancer-linterface-graphique-de-notre-algorithme" class="md-nav__link">
+    Lancer l'interface graphique de notre algorithme
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#notre-propre-script-processing" class="md-nav__link">
     Notre propre script Processing
   </a>
@@ -802,6 +809,13 @@
         <li class="md-nav__item">
   <a href="#utiliser-processing-en-python-avec-un-algorithme-existant" class="md-nav__link">
     Utiliser Processing en Python avec un algorithme existant
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lancer-linterface-graphique-de-notre-algorithme" class="md-nav__link">
+    Lancer l'interface graphique de notre algorithme
   </a>
   
 </li>
@@ -1067,6 +1081,65 @@ l'algorithme pour avoir son info-bulle dans le panneau traitement.</p>
 
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]:</span>
     <span class="n">tampon</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<h2 id="lancer-linterface-graphique-de-notre-algorithme">Lancer l'interface graphique de notre algorithme<a class="headerlink" href="#lancer-linterface-graphique-de-notre-algorithme" title="Permanent link">#</a></h2>
+<p>Au lieu de <code>processing.run</code>, on peut créer <strong>uniquement</strong> le dialogue. Il faut alors l'afficher manuellement.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">dialog</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">createAlgorithmDialog</span><span class="p">(</span>
+    <span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;INPUT&#39;</span><span class="p">:</span> <span class="s1">&#39;/data/lines.shp&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;DISTANCE&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+        <span class="s1">&#39;SEGMENTS&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">&#39;DISSOLVE&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;END_CAP_STYLE&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s1">&#39;JOIN_STYLE&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s1">&#39;MITER_LIMIT&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="s1">&#39;/data/buffers.shp&#39;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>Ou alors directement lancer exécution du dialogue :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">processing</span><span class="o">.</span><span class="n">execAlgorithmDialog</span><span class="p">(</span>
+    <span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;INPUT&#39;</span><span class="p">:</span> <span class="s1">&#39;/data/lines.shp&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;DISTANCE&#39;</span><span class="p">:</span> <span class="mf">100.0</span><span class="p">,</span>
+        <span class="s1">&#39;SEGMENTS&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">&#39;DISSOLVE&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">,</span>
+        <span class="s1">&#39;END_CAP_STYLE&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s1">&#39;JOIN_STYLE&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s1">&#39;MITER_LIMIT&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+        <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="s1">&#39;/data/buffers.shp&#39;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
 <h2 id="notre-propre-script-processing">Notre propre script Processing<a class="headerlink" href="#notre-propre-script-processing" title="Permanent link">#</a></h2>
@@ -1760,6 +1833,9 @@ Processing mais plutôt les décorateurs. Reprenons l'exemple de la documentatio
 <li>créer une couche raster à partir du résultat de l’opération de tampon</li>
 <li>renvoyer la couche tampon, la couche raster et le nombre d’entités</li>
 </ul>
+<p>Dans la documentation QGIS, on trouve
+<a href="https://docs.qgis.org/latest/fr/docs/user_manual/processing/scripts.html#input-types">la correspondance</a>
+des décorateurs avec la classe Processing.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1928,7 +2004,7 @@ On peut alors le modifier avec plus de finesse.</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 22, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2021</span>
       
     
   </small>
