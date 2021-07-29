@@ -282,3 +282,18 @@ with edit(petites_communes):
 
 QgsProject.instance().addMapLayer(petites_communes)
 ```
+
+## Valeur NULL
+
+En PyQGIS, il existe la valeur `NULL` qui peut-être présente dans la table attributaire d'une couche vecteur.
+
+```python
+from qgis.PyQt.QtCore import NULL
+
+if feature['nom_attribut'] == NULL:
+    # Traiter la valeur NULL
+    pass
+else:
+    # Continuer
+    pass
+```

@@ -141,6 +141,45 @@ for x in [10, 20, 30]:
     tampon(x)
 ```
 
+## Lancer l'interface graphique de notre algorithme
+
+Au lieu de `processing.run`, on peut créer **uniquement** le dialogue. Il faut alors l'afficher manuellement.
+
+```python
+dialog = processing.createAlgorithmDialog(
+    "native:buffer",
+    {
+        'INPUT': '/data/lines.shp',
+        'DISTANCE': 100.0,
+        'SEGMENTS': 10,
+        'DISSOLVE': True,
+        'END_CAP_STYLE': 0,
+        'JOIN_STYLE': 0,
+        'MITER_LIMIT': 10,
+        'OUTPUT': '/data/buffers.shp'
+    }
+)
+dialog.show()
+```
+
+Ou alors directement lancer exécution du dialogue :
+
+```python
+processing.execAlgorithmDialog(
+    "native:buffer",
+    {
+        'INPUT': '/data/lines.shp',
+        'DISTANCE': 100.0,
+        'SEGMENTS': 10,
+        'DISSOLVE': True,
+        'END_CAP_STYLE': 0,
+        'JOIN_STYLE': 0,
+        'MITER_LIMIT': 10,
+        'OUTPUT': '/data/buffers.shp'
+    }
+)
+```
+
 ## Notre propre script Processing
 
 * Nous souhaitons pouvoir créer plusieurs tables vides assez facilement à l'aide des fichiers CSV.
@@ -527,6 +566,10 @@ Le code suivant utilise le décorateur @alg pour :
 * faire une opération buffer
 * créer une couche raster à partir du résultat de l’opération de tampon
 * renvoyer la couche tampon, la couche raster et le nombre d’entités
+
+Dans la documentation QGIS, on trouve
+[la correspondance](https://docs.qgis.org/latest/fr/docs/user_manual/processing/scripts.html#input-types)
+des décorateurs avec la classe Processing.
 
 ```python
 

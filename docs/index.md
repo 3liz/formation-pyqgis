@@ -24,6 +24,11 @@ Pour suivre la formation, il faut :
     * Données [OSM2Igeo](https://github.com/igeofr/osm2igeo) (utilisation de ce jeu de données ci-après dans 
       la formation)
 
+Si nécessaire, il peut-être utile d'avoir en plus :
+
+* [qgis_process](./standalone.md#qgis-process)
+* QtDesigner pour la partie sur les formulaires ou une extension graphique
+
 ## Plan
 
 * Présentation

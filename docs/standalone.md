@@ -5,7 +5,14 @@
 Depuis QGIS 3.16, il existe un outil [qgis_process](https://docs.qgis.org/latest/fr/docs/user_manual/processing/standalone.html)
 qui permet de lancer QGIS Processing en ligne de commande.
 
-Dans le shell OSGEO, taper `qgis_process`.
+Dans le shell OSGEO, taper :
+
+```bash
+cd C:\OSGeo4W\apps\qgis-ltr\bin\
+qgis_process
+````
+
+`cd` pour Change Directory. Il peut s'agir d'un chemin différent, comme `C:/Program Files/QGIS 3.14/bin/`
 
 On peut lancer les algorithmes, les modèles, les scripts qui sont dans la version graphique de QGIS Processing.
 

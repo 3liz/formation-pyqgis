@@ -19,7 +19,12 @@ Pour créer une extension dans QGIS, il existe deux façons de démarrer :
 Nous pouvons suivre une des deux méthodes, mais dans le cadre de la formation, faisons la méthode minimale.
 Dans les deux cas, le résultat doit être dans le dossier `python/plugins` du profil courant.
 
-Pour trouver le profil courant, dans QGIS, `Profils Utilisateurs` -> `Ouvrir le dossier du profil actif`.
+!!! tip
+    Pour trouver le profil courant, dans QGIS, `Préférences` -> `Profils Utilisateurs` -> `Ouvrir le dossier du profil actif`.
+
+!!! tip
+    Pour installer le Minimal Plugin, vous pouvez utiliser le gestionnaire des extensions pour installer
+    depuis un zip.
 
 ## Plugin reloader
 
@@ -30,3 +35,5 @@ extension. Elle est disponible dans le gestionnaire des extensions.
 
 Comme les extensions sur qgis.org sont disponibles sur internet, on peut regarder le code source pour
 comprendre.
+
+Pensez à ouvrir le dossier de votre profil QGIS en suivant l'astuce ci-dessus puis dans `python/plugins`.

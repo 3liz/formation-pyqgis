@@ -16,6 +16,10 @@ En IDE gratuit, il existe :
 * [Visual Studio](https://code.visualstudio.com/) en ajoutant les extensions Python
 * [PyCharm Community](https://www.jetbrains.com/fr-fr/pycharm/), dédié au language Python
 
+Un IDE est outil très complet pour développement. Il est possible de coder en Python avec un éditeur de texte,
+mais si possible qui sait quand même faire de la coloration syntaxique du code Python est vraiment un plus
+([NotePad++](https://notepad-plus-plus.org/)…).
+
 ## Lancer un script Python dans la console
 
 Si vous utilisez un IDE pour écrire du code Python, vous pouvez lancer le code Python

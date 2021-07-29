@@ -3,7 +3,7 @@
 * Pour connaître le principe des actions dans QGIS, il faut se référer au manuel de QGIS :
     * https://docs.qgis.org/3.16/fr/docs/user_manual/working_with_vector/vector_properties.html#actions-properties
 * On souhaite pouvoir faire notre propre action pour inverser le sens d'une ligne, par exemple une rivière. 
-* Ajouter la couche `D_OSM_HYDROGRAPHIE/CANALISATION_EAU.shp`, mais utilisons le script ci-dessous pour
+* Ajouter la couche `D_OSM_HYDROGRAPHIE/TRONCON_COURS_EAU.shp`, mais utilisons le script ci-dessous pour
   commencer sur un cas simple.
 * Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une `Ligne de symbole` dans
   l'onglet `Symbologie`.

@@ -8,14 +8,20 @@ Créons un fichier QtDesigner comme-ceci :
 
 ![QtDesigner](media/qt_designer_0.png)
 
-et y ajouter des "widgets" : 
+et y ajouter des "widgets" :
 
 ![QtDesigner](media/qt_designer_1.jpg)
 
-Ouvrir la page des slots/signaux depuis la barre d'outils et supprimer ceux qui existent.
+### Astuces
+
+* Ouvrir la page des "slots/signaux" depuis la barre d'outils et supprimer ceux qui existent.
+
+* Faire un clic droit sur "QDialog" à droite et faire une mise en page "vertical".
 
 !!! tip
     Ne pas changer la propriété `objectName` pour le moment.
+
+On peut [télécharger](./solution/dialog.ui) la solution si besoin.
 
 ## La classe qui accompagne
 

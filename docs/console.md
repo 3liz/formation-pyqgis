@@ -58,7 +58,7 @@ Sur cette instance, on a des "méthodes" :
 * avancer
 * reculer
 * tourner à gauche
-* verrouiller les ports
+* verrouiller les portes
 * activer les clignotants
 
 ```mermaid
