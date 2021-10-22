@@ -30,13 +30,14 @@ if 0 < x < 10:
 	* Il est encore très utilisé, notamment sur les tutoriels sur internet et quelques projets qui tardent à
 	 se mettre à jour
 	* Une adoption massive (QGIS 2)
-	* Dernière version le 1 janvier 2020 !
+	* Dernière version le 1 janvier 2020
 * Python 3
-	* Sortie en 2008, mais il s'agit d'une adoption très lente, tellement Python 2 a été massivement adopté.
-	* Dernière version 3.9.0 du 5 octobre 2020
-	* QGIS 3 requière
-		* Python 3.5 minimum for QGIS < 3.18
-		* Python 3.6 >= 3.18
+    * Sortie en 2008, mais il s'agit d'une adoption très lente, tellement Python 2 a été massivement adopté.
+    * Dernière version 3.10.0 du 4 octobre 2020
+    * QGIS 3 requière :
+        * Python 3.5 minimum for QGIS < 3.18
+        * Python 3.6 ≥ 3.18
+        * Python 3.7 ≥ 3.20
 
 ## Rappel de base sur Python
 

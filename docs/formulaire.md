@@ -8,15 +8,16 @@
 
 On peut personnaliser un formulaire avec :
 
-* un fichier QtDesigner, même si je recommande l'utilisation du mode Drag&Drop qui permet de créer des onglets
+* un fichier QtDesigner, même si on recommande l'utilisation du mode Drag&Drop qui permet de créer des onglets
   et des catégories.
 * un fichier Python afin de modifier le comportement du formulaire, ajouter des boutons, modifier la CSS etc
 
 !!! tip
     Le blog de [Nathan](https://woostuff.wordpress.com/2011/09/05/qgis-tips-custom-feature-forms-with-python-logic/)
-    est une bonne ressource concernant les formulaires et QtDesigner pour cette partie la.
+    est une bonne ressource concernant les formulaires et QtDesigner pour cette partie la, mais cela
+    commence à être vieux.
 
-Sur la couche [Geopackage](./media/formulaire.gpkg), dans les propriétés de la couche ➡ Formulaire d'attributs,
+Sur la couche [Geopackage](./solution/formulaire.gpkg), dans les propriétés de la couche ➡ Formulaire d'attributs,
 cliquer sur le petit logo Python en haut bleu et jaune. Choisir l'option **Fournir le code dans cette boîte de
 dialogue**.
 
