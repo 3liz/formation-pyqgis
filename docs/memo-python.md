@@ -33,11 +33,12 @@ if 0 < x < 10:
 	* Dernière version le 1 janvier 2020
 * Python 3
     * Sortie en 2008, mais il s'agit d'une adoption très lente, tellement Python 2 a été massivement adopté.
-    * Dernière version 3.10.0 du 4 octobre 2020
+    * Dernière version 3.10.0 du 4 octobre 2021
+    * 1 version majeure par an, en octobre
     * QGIS 3 requière :
-        * Python 3.5 minimum for QGIS < 3.18
-        * Python 3.6 ≥ 3.18
-        * Python 3.7 ≥ 3.20
+        * Python 3.5 minimum for QGIS 3.4
+        * Python 3.6 minimum for QGIS 3.18
+        * Python 3.7 minimum for QGIS 3.20
 
 ## Rappel de base sur Python
 
@@ -316,6 +317,12 @@ executer_une_fonction()
 while not conditon_echec:
     executer_une_fonction()
 ```
+
+## Switch
+
+**Python 3.10** uniquement
+
+
 
 ## List Comprehensions
 
