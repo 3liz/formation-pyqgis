@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/memo-python/">
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.4">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
     
     
       
@@ -24,7 +24,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.db9e7362.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.a57b2b03.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
@@ -421,6 +421,8 @@
       </a>
       
         
+
+
 <nav class="md-nav md-nav--secondary" aria-label="Table des matières">
   
   
@@ -521,6 +523,13 @@
         <li class="md-nav__item">
   <a href="#boucle-while" class="md-nav__link">
     Boucle while
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    Switch
   </a>
   
 </li>
@@ -884,6 +893,8 @@
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
+
+
 <nav class="md-nav md-nav--secondary" aria-label="Table des matières">
   
   
@@ -989,6 +1000,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#switch" class="md-nav__link">
+    Switch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#list-comprehensions" class="md-nav__link">
     List Comprehensions
   </a>
@@ -1081,11 +1099,12 @@
 </li>
 <li>Python 3<ul>
 <li>Sortie en 2008, mais il s'agit d'une adoption très lente, tellement Python 2 a été massivement adopté.</li>
-<li>Dernière version 3.10.0 du 4 octobre 2020</li>
+<li>Dernière version 3.10.0 du 4 octobre 2021</li>
+<li>1 version majeure par an, en octobre</li>
 <li>QGIS 3 requière :<ul>
-<li>Python 3.5 minimum for QGIS &lt; 3.18</li>
-<li>Python 3.6 ≥ 3.18</li>
-<li>Python 3.7 ≥ 3.20</li>
+<li>Python 3.5 minimum for QGIS 3.4</li>
+<li>Python 3.6 minimum for QGIS 3.18</li>
+<li>Python 3.7 minimum for QGIS 3.20</li>
 </ul>
 </li>
 </ul>
@@ -1487,6 +1506,8 @@ On peut concaténer des variables entre elles ou du textes.</p>
     <span class="n">executer_une_fonction</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
+<h2 id="switch">Switch<a class="headerlink" href="#switch" title="Permanent link">#</a></h2>
+<p><strong>Python 3.10</strong> uniquement</p>
 <h2 id="list-comprehensions">List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permanent link">#</a></h2>
 <p>C'est une façon très pythonique et très utilisée de créer des listes.
 Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
@@ -1639,7 +1660,7 @@ Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 22, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 25, 2021</span>
       
     
   </small>
@@ -1775,10 +1796,10 @@ Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.term.missing": "Non trouv\u00e9", "select.version.title": "S\u00e9lectionner la version"}, "search": "../assets/javascripts/workers/search.8397ff9e.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.term.missing": "Non trouv\u00e9", "select.version.title": "S\u00e9lectionner la version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.1e84347e.min.js"></script>
+      <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       
