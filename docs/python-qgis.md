@@ -137,7 +137,13 @@ canevas.
 Par exemple, on peut ouvrir un lien WEB ou un PDF en fonction d'un attribut d'une entité. Il est possible 
 d'écrire les actions en Python.
 
+Pour la création :
+
 ![Action sur une couche](media/action.png)
+
+Pour l'utilisation côté utilisateur :
+
+![Action sur une couche](media/action-canvas.png)
 
 ## Application/script indépendant
 
