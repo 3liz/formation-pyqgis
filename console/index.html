@@ -1003,7 +1003,9 @@ class Voiture{
 </li>
 <li>Nous verrons progressivement ces différentes sections.</li>
 <li>Recherchons <code>filename</code>.
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">fileName</span><span class="p">()</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="n">project</span><span class="o">.</span><span class="n">fileName</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table></li>
 <li>Ajoutons un titre à notre projet, recherchons donc <code>title</code> dans la page : <code>setTitle</code>.</li>
@@ -1058,6 +1060,32 @@ class Voiture{
 <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">communes</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table></li>
+</ul>
+<details>
+<summary>Afficher la solution complète</summary>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
+
+<span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+
+<span class="n">racine</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
+<span class="n">chemin</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="s1">&#39;202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154&#39;</span><span class="p">,</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span><span class="p">)</span>
+<span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">chemin</span><span class="p">,</span> <span class="s1">&#39;COMMUNE.shp&#39;</span><span class="p">)</span>
+<span class="n">communes</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
+<span class="n">communes</span><span class="o">.</span><span class="n">isValid</span><span class="p">()</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">communes</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</details>
+<ul>
 <li>Explorer l'objet <code>communes</code> qui est un <code>QgsVectorLayer</code> à l'aide de la documentation pour chercher sa
   géométrie, le nombre d'entités.</li>
 <li>Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre (explication dans l'exemple
@@ -1177,7 +1205,7 @@ Il faut faire une indentation obligatoire !</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 17, 2021</span>
       
     
   </small>
