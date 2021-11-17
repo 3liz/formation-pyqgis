@@ -91,7 +91,8 @@ class Voiture{
 * Nous verrons progressivement ces différentes sections.
 * Recherchons `filename`.
 ```python
-QgsProject.instance().fileName()
+project = QgsProject.instance()
+project.fileName()
 ```
 * Ajoutons un titre à notre projet, recherchons donc `title` dans la page : `setTitle`.
 * Objectif, ajouter une couche vecteur contenu dans un dossier fils :
@@ -129,6 +130,21 @@ communes = QgsVectorLayer(fichier_shape, 'communes', 'ogr')
 communes.isValid()
 QgsProject.instance().addMapLayer(communes)
 ```
+
+??? "Afficher la solution complète"
+	```python
+	from os.path import join, isfile, isdir
+
+	project = QgsProject.instance()
+
+	racine = project.homePath()
+	chemin = join(racine, '202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154', 'H_OSM_ADMINISTRATIF')
+	fichier_shape = join(chemin, 'COMMUNE.shp')
+	communes = QgsVectorLayer(fichier_shape, 'communes', 'ogr')
+	communes.isValid()
+	QgsProject.instance().addMapLayer(communes)
+	```
+
 * Explorer l'objet `communes` qui est un `QgsVectorLayer` à l'aide de la documentation pour chercher sa
   géométrie, le nombre d'entités.
 * Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre (explication dans l'exemple
