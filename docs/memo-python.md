@@ -117,8 +117,8 @@ nombres
 * les dictionnaires
 
 *Attention*, les dictionnaires ne sont pas ordonnés !
-Si vraiment il y a besoin, il existe une classe `OrderedDict`, mais ce n'est pas un structure de données natif
-dans Python.
+Si vraiment il y a besoin, il existe une classe `OrderedDict`, mais ce n'est pas une structure de données
+native dans Python.
 C'est un objet.
 
 ```python
@@ -409,6 +409,11 @@ def une_fonction(*args, **kwargs):
 
 une_fonction(1,2,3, text='Ma phrase')
 ```
+
+## POO : Programmation Orientée Objet
+
+Pour cette partie-là, il faut lire le chapitre suivant sur [la console](./console.md#rappel-sur-la-poo)
+ou encore la partie sur l'écriture d'un [script Processing](./script-processing.md).
 
 ## Truc et astuces
 

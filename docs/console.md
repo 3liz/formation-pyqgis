@@ -100,6 +100,12 @@ project.fileName()
 ```
 * Ajoutons un titre à notre projet, recherchons donc `title` dans la page : `setTitle` dans la classe
   [QgsProject](https://qgis.org/api/classQgsProject.html).
+
+!!! warning
+    Il est important de bien pouvoir lire la signature des **méthodes**.
+    La méthode `title` retourne une **QString** et **ne prend pas** de paramètre.
+    La méthode `setTitle` retourne **rien**, (**void**) mais elle prend un paramètre, une **QString**.
+
 * Objectif, ajouter une couche vecteur contenu dans un dossier fils :
     * Recherchons dans l'API le dossier racine du projet. *Indice*, en informatique, on appelle souvent cela le `home`.
     * Nous allons utiliser le module `os.path` pour manipuler les dossiers.
@@ -152,6 +158,7 @@ QgsProject.instance().addMapLayer(communes)
 
 * Explorer l'objet `communes` qui est un `QgsVectorLayer` à l'aide de la documentation pour chercher sa
   géométrie, le nombre d'entités.
+  [API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.16/core/QgsVectorLayer.html)
 * Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre (explication dans l'exemple
   ci-dessous)
 * Essayer d'ouvrir et de clore une session d'édition
@@ -184,6 +191,19 @@ QgsMapLayer <-- QgsRasterLayer
 ```
 
 L'objet `QgsVectorLayer` hérite de `QgsMapLayer` qui est une classe commune avec `QgsMapLayer`.
+
+[API QgsMapLayer C++](https://qgis.org/api/classQgsMapLayer.html), [API QgsMapLayer Python](https://qgis.org/pyqgis/3.16/core/QgsMapLayer.html)
+
+Regardons la fonction `isinstance` qui permet de tester si un objet est une instance d'une classe :
+
+```python
+isinstance(communes, QgsVectorLayer)
+True
+isinstance(communes, QgsRasterLayer)
+False
+isinstance(communes, QgsMapLayer)
+True
+```
 
 * Objectif, ne pas afficher la couche commune pour une échelle plus petite que le `1:2 000 000`.
 
