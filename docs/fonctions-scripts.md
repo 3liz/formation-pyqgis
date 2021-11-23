@@ -5,7 +5,8 @@
 Avant de commencer à vraiment écrire un script avec des fonctions, regardons comment communiquer des 
 informations à l'utilisateur.
 
-On peut envoyer des messages vers l'utilisateur avec l'utilisation de la `messageBar` :
+On peut envoyer des messages vers l'utilisateur avec l'utilisation de la `messageBar` de la classe
+[QgisInterface](https://qgis.org/api/classQgisInterface.html) :
 
 ```Python
 iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.Critical)
@@ -13,6 +14,12 @@ iface.messageBar().pushMessage('Avertissement','ou un avertissement', Qgis.Warni
 iface.messageBar().pushMessage('Information','ou une information', Qgis.Info)
 iface.messageBar().pushMessage('Succès','ou un succès', Qgis.Success)
 ```
+
+Cette fonction prend 3 paramètres :
+
+- un titre
+- un message
+- un niveau d'alerte
 
 On peut aussi écrire des logs comme ceci (plus discret, mais plus verbeux) :
 ```Python
@@ -22,12 +29,18 @@ QgsMessageLog.logMessage('Une information','Notre outil', Qgis.Info)
 QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.Success)
 ```
 
+Cette fonction prend 3 paramètres :
+
+- un message
+- une catégorie, souvent le nom de l'extension ou de l'outil en question
+- un niveau d'alerte
+
 ## Charger automatiquement plusieurs couches à l'aide d'un script
 
-La console c'est bien, mais c'est très limitant. Passons à l'écriture d'un script qui va nous faciliter 
+La console, c'est bien, mais c'est très limitant. Passons à l'écriture d'un script qui va nous faciliter 
 l'organisation du code.
 
-Voici le dernier script du fichier précédent, mais avec la gestion des erreurs :
+Ci-dessous, voici le dernier script du chapitre précédent, mais avec la gestion des erreurs ci-dessus :
 
 * Redémarrer QGIS
 * N'ouvrez pas le projet précédent
@@ -74,40 +87,78 @@ def charger_couche(thematique, couche):
     Le mot-clé `pass` ne sert à rien. C'est un mot-clé Python pour rendre un bloc valide mais ne faisant rien.
     On peut le supprimer le bloc n'est pas vide.
 
-* Une des solutions :
-
-```python
-from os.path import join, isfile, isdir
-
-def charger_couche(thematique, couche):
-    """Fonction qui charge une couche shapefile dans une thématique."""
+??? "Afficher la solution intermédiaire"
+    ```python
+    from os.path import join, isfile, isdir
     dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
+    
+    
+    def charger_couche(thematique, couche):
+        """Fonction qui charge une couche shapefile dans une thématique."""
+        racine = QgsProject.instance().homePath()
+        if not racine:
+            iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
+        else:
+            fichier_shape = join(racine, dossier, thematique, '{}.shp'.format(couche))
+            if not isfile(fichier_shape):
+                iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{}"'.format(fichier_shape), Qgis.Critical)
+            else:
+                layer = QgsVectorLayer(fichier_shape, couche, 'ogr')
+                if not layer.isValid():
+                    iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
+                else:
+                    QgsProject.instance().addMapLayer(layer)
+                    iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
+    
+    thematique = 'H_OSM_ADMINISTRATIF'
+    couche = 'COMMUNE'
+    charger_couche(thematique, couche)
+    ```
 
-    racine = QgsProject.instance().homePath()
-    if not racine:
-        iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
-        return False
-        
-    fichier_shape = join(racine, dossier, thematique, '{}.shp'.format(couche))
-    if not isfile(fichier_shape):
-        iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{}"'.format(fichier_shape), Qgis.Critical)
-        return False
-        
-    layer = QgsVectorLayer(fichier_shape, shapefile, 'ogr')
-    if not layer.isValid():
-        iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
-        return False
+Améliorons encore cette solution intermédiaire avec la gestion des erreurs et aussi en gardant le code le
+plus à gauche possible grâce à l'instruction `return` qui ordonne la sortie de la fonction.
 
-    QgsProject.instance().addMapLayer(layer)
-    iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
-    return layer
-
-charger_couche('H_OSM_ADMINISTRATIF', 'COMMUNE')
-charger_couche('H_OSM_ADMINISTRATIF', 'ARRONDISSEMENT')
-```
+??? "Afficher une des solutions finales"
+    ```python
+    from os.path import join, isfile, isdir
+    
+    def charger_couche(thematique, couche):
+        """Fonction qui charge une couche shapefile dans une thématique."""
+        dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
+    
+        racine = QgsProject.instance().homePath()
+        if not racine:
+            iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
+            return False
+            
+        fichier_shape = join(racine, dossier, thematique, '{}.shp'.format(couche))
+        if not isfile(fichier_shape):
+            iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{}"'.format(fichier_shape), Qgis.Critical)
+            return False
+            
+        layer = QgsVectorLayer(fichier_shape, shapefile, 'ogr')
+        if not layer.isValid():
+            iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
+            return False
+    
+        QgsProject.instance().addMapLayer(layer)
+        iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
+        return layer
+    
+    charger_couche('H_OSM_ADMINISTRATIF', 'COMMUNE')
+    charger_couche('H_OSM_ADMINISTRATIF', 'ARRONDISSEMENT')
+    ```
 
 * Essayons de faire une fonction qui liste les shapefiles d'une certaine thématique.
-  `os.walk(path)` permet de parcourir un chemin.
+
+On peut utiliser la méthode [os.walk(path)](https://docs.python.org/3/library/os.html#os.walk) permet de
+parcourir un chemin et de lister les répertoires et les fichiers.
+
+Ou alors on peut utiliser une autre méthode, un peu plus à la mode en utilisant le mode
+[pathlib](https://docs.python.org/3/library/pathlib.html#module-pathlib) qui comporte également les fonctions
+`isfile`, `isdir` etc.
+
+En utilisant le module `os.walk`, un peu historique :
 
 ```python
 import os
@@ -127,7 +178,84 @@ shapes = liste_shapefiles('H_OSM_ADMINISTRATIF')
 print(shapes)
 ```
 
+En utilisant le "nouveau" module `pathlib`:
+
+```python
+from pathlib import Path
+
+def liste_shapefiles(thematique):
+    """Liste les shapefiles d'une thématique."""
+    racine = QgsProject.instance().homePath()
+    dossier = Path(racine).joinpath('202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154', thematique)
+    shapes = []
+    for file in dossier.iterdir():
+        if file.suffix.lower() == '.shp':
+            shapes.append(file.stem)
+    return shapes
+
+shapes = liste_shapefiles('H_OSM_ADMINISTRATIF')
+print(shapes)
+```
+
+!!! tip
+    Il faut se référer à la documentation du module [pathlib](https://docs.python.org/3/library/pathlib.html)
+    pour comprendre le fonctionnement de cette classe.
+
 * Permettre le chargement automatique de toute une thématique.
+
+??? "Afficher la solution complète"
+    ```python
+    import os
+    from os.path import join, isfile, isdir
+    dossier = '202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154'
+    # couche = 'COMMUNE'
+    
+    def liste_shapesfiles(thematique):
+        """Liste les shapes d'une thématique"""
+        racine = QgsProject.instance().homePath()
+        if not racine:
+            iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
+            return False
+        
+        shapes = []
+        for root, directories, files in os.walk(os.path.join(racine, dossier, thematique)):
+            # print(files)
+            for file in files:
+                # print(file)
+                if file.lower().endswith('.shp'):
+                    # print(file)
+                    shapes.append(file.replace(".shp", ""))
+        
+        return shapes
+    
+    def charger_couche(thematique, couche):
+        
+        """Fonction qui charge des couches suivant une thématique."""
+        racine = QgsProject.instance().homePath()
+        if not racine:
+            iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
+            return False
+    
+        fichier_shape = join(racine, dossier, thematique, '{}.shp'.format(couche))
+        if not isfile(fichier_shape):
+            iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{}"'.format(fichier_shape), Qgis.Critical)
+            return False
+    
+        layer = QgsVectorLayer(fichier_shape, couche, 'ogr')
+        if not layer.isValid():
+            iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
+            return False
+            
+        QgsProject.instance().addMapLayer(layer)
+        iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
+        return layer
+    
+    
+    thematique = 'H_OSM_ADMINISTRATIF'
+    shapes = liste_shapesfiles(thematique)
+    for shape in shapes:
+        charger_couche(thematique, shape)
+    ```
 
 ## Extraction des informations sous forme d'un fichier CSV.
 
@@ -150,12 +278,14 @@ Les différents champs qui devront être exportés sont :
 * si le seuil de visibilité est activé
 * la source (le chemin) de la donnée
 
-Exemple de sortie : 
+### Exemple de sortie 
 
 | nom      | type  | projection  | nombre_entite | encodage | source          | seuil_de_visibilite |
 |----------|-------|-------------|---------------|----------|-----------------|---------------------|
 | couche_1 | Line  | EPSG:4326   | 5             | UTF-8    | /tmp/...geojson | False               |
-| couche_2 | Point | No geometry | 0             |          | /tmp/...shp     | True                |
+| couche_2 | Tab   | No geometry | 0             |          | /tmp/...shp     | True                |
+
+### Petit mémo
 
 Pour créer une couche tabulaire en mémoire :
 ```python
@@ -165,6 +295,25 @@ layer_info = QgsVectorLayer('None', 'info', 'memory')
 La liste des couches :
 ```python
 layers = QgsProject.instance().mapLayers()
+```
+
+Pour utiliser une session d'édition, on peut faire :
+```python
+layer.startEditing()  # Début de la session
+layer.commitChanges()  # Fin de la session en enregistrant
+layer.rollback()  # Fin de la session en annulant les modifications
+```
+
+On peut également faire une session d'édition avec un "contexte":
+
+```python
+from qgis.core import edit
+
+with edit(layer):
+    # Faire une édition sur la couche
+    pass
+
+# À la fin du bloc d'indentation, la session d'édition est automatiquement close.
 ```
 
 Nous allons avoir besoin de plusieurs classes dans l'API QGIS : 
@@ -181,13 +330,17 @@ Pour le type de champ, on va avoir besoin de l'API Qt également :
 
 Il va y avoir plusieurs étapes dans ce script :
 
+1. Récupérer la liste des couches présentes dans la légende
 1. Créer une couche en mémoire
 1. Ajouter des champs à cette couche en utilisant une session d'édition
-1. Récupérer la liste des couches présentes dans la légende
 1. Itérer sur les couches pour ajouter ligne par ligne les métadonnées dans une session d'édition
 1. Enregistrer en CSV la couche mémoire
 
-Solution :
+
+!!! tip
+    Pour déboguer, on peut afficher la couche mémoire en question avec `QgsProject.instance().addMapLayer()`
+    
+### Solution
 
 ```python
 from os.path import join

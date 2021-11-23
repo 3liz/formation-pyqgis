@@ -12,9 +12,13 @@ documentation et comment rechercher des informations.
 Voici une liste de liens pour la documentation :
 
 * [https://docs.qgis.org](https://docs.qgis.org) qui regroupe :
-	* [Le Python Cookbook https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook](https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/) (recette de cuisine)
-	* [L'API C++ https://qgis.org/api/3.16/](https://qgis.org/api/3.16/)
-	* [L'API Python https://qgis.org/pyqgis/3.16/](https://qgis.org/pyqgis/3.16/)
+    * [Le Python Cookbook https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook](https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/) (recette de cuisine)
+    * [L'API C++ https://qgis.org/api/3.16/](https://qgis.org/api/3.16/)
+    * [L'API Python https://qgis.org/pyqgis/3.16/](https://qgis.org/pyqgis/3.16/)
+* [Documentation de l'API Qt](https://doc.qt.io/qt-5/classes.html)
+* [Documentation de Python](https://docs.python.org/3/library/)
+    * [Le module os.path par exemple](https://docs.python.org/3/library/os.path.html#module-os.path), module historique pour manipuler des chemins
+    * [Le module Pathlib](https://docs.python.org/3/library/pathlib.html#module-pathlib)
 
 Voici une liste non exhaustive de blog-post utiles pour manipuler PyQGIS :
 
@@ -94,12 +98,13 @@ class Voiture{
 project = QgsProject.instance()
 project.fileName()
 ```
-* Ajoutons un titre à notre projet, recherchons donc `title` dans la page : `setTitle`.
+* Ajoutons un titre à notre projet, recherchons donc `title` dans la page : `setTitle` dans la classe
+  [QgsProject](https://qgis.org/api/classQgsProject.html).
 * Objectif, ajouter une couche vecteur contenu dans un dossier fils :
-	* Recherchons dans l'API le dossier racine du projet. *Indice*, en informatique, on appelle souvent cela le `home`.
-	* Nous allons utiliser le module `os.path` pour manipuler les dossiers.
-	* [https://docs.python.org/3/library/os.path.html](https://docs.python.org/3/library/os.path.html)
-	* `join`, `isfile`, `isdir`
+    * Recherchons dans l'API le dossier racine du projet. *Indice*, en informatique, on appelle souvent cela le `home`.
+    * Nous allons utiliser le module `os.path` pour manipuler les dossiers.
+    * [https://docs.python.org/3/library/os.path.html](https://docs.python.org/3/library/os.path.html)
+    * `join`, `isfile`, `isdir`
 
 ```python
 from os.path import join, isfile, isdir
@@ -207,7 +212,7 @@ layer.setMinimumScale(2000000)
 layer.triggerRepaint()
 ```
 
-* Ajouter également la couche `ARRONDISSEMENT` et sélectionner la.
+* Ajouter également la couche `ARRONDISSEMENT` et sélectionner là.
 
 ## Parcourir les entités
 
@@ -218,7 +223,7 @@ iface.activeLayer()
 Cela retourne la couche `QgsMapLayer` active dans la légende !
 
 On souhaite désormais itérer sur les polygones et les faire clignoter depuis la console.
-Nous allons donc avoir besoin de `getFeatures`.
+Nous allons donc avoir besoin de la méthode `getFeatures()` qui fait partie de `QgsVectorLayer`.
 
 ```python
 layer = iface.activeLayer()
@@ -232,14 +237,22 @@ iface.mapCanvas().flashFeatureIds(layer, [feature.id()])
 *Note*, nous pouvons concaténer les deux dernières lignes à l'aide du caractère `;` pour que cela soit plus
 pratique.
 
-On souhaite désormais afficher le nom des arrondissements à l'aide d'une boucle `for`.
+Ce code est plus pour la partie "amusante" pour montrer les limites de la console. Nous allons désormais
+utiliser un script Python dans le prochain chapitre.
+
+Petite chose supplémentaire avant de passer aux scripts, on souhaite désormais afficher le nom des
+arrondissements à l'aide d'une boucle `for`.
 
 ```python
 layer = iface.activeLayer()
 for feature in layer.getFeatures():
-	# On peut traiter l'entité courante.
+	# On peut traiter l'entité courante grâce à la variable "feature".
+	# Pour accéder à un attribut en particulier, on peut y accéder avec des crochets.
 	pass
 ```
 
 Noter l'apparition de `...` au lieu de `>>>` après avoir écrit la première ligne du `for`.
 Il faut faire une indentation obligatoire !
+
+Pour afficher un attribut, on peut faire `print(feature['NOM_ARR']` pour afficher le contenu de l'attribut
+`NOM_ARR`.
