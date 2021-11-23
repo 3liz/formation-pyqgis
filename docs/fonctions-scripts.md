@@ -319,7 +319,7 @@ with edit(layer):
 Nous allons avoir besoin de plusieurs classes dans l'API QGIS : 
 
 * Enregistrer un fichier : la classe `QgsVectorFileWriter`
-* Un champ : `QgsField`
+* Un champ : `QgsField`, attention à ne pas confondre avec `QgsFields` qui lui représente un ensemble de champs.
 * Une entité : `QgsFeature`
 
 Pour le type de champ, on va avoir besoin de l'API Qt également :

@@ -415,6 +415,10 @@ une_fonction(1,2,3, text='Ma phrase')
 Pour cette partie-là, il faut lire le chapitre suivant sur [la console](./console.md#rappel-sur-la-poo)
 ou encore la partie sur l'écriture d'un [script Processing](./script-processing.md).
 
+## Exceptions
+
+Lire le chapitre sur le [parcours des entités](./selection-parcours-entites.md#les-exceptions-en-python).
+
 ## Truc et astuces
 
 !!! warning

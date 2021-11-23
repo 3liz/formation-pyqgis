@@ -45,10 +45,16 @@ layer.removeSelection()
 
 L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas `NC`.
 
-**Note**, en PyQGIS, on peut accéder aux attributs d'une `QgsFeature` simplement avec l'opérateur `[]` sur 
-l'objet courant comme s'il s'agissait d'un dictionnaire Python :
+!!! info
+    Avec PyQGIS, on peut accéder aux attributs d'une `QgsFeature` simplement avec l'opérateur `[]` sur
+    l'objet courant comme s'il s'agissait d'un dictionnaire Python :
 
-L'exemple à **ne pas** faire, même si cela fonctionne :
+    ```python
+    # Pour accéder au champ "NOM_COM" de l'entité "feature" :
+    print(feature['NOM_COM'])
+    ```
+
+L'exemple à **ne pas** faire, même si cela fonctionne (car on peut l'optimiser très facilement) :
 
 ```python
 layer = iface.activeLayer()
@@ -56,6 +62,13 @@ for feature in layer.getFeatures():
     if feature['POPUL'] != 'NC':
         print(feature['NOM_COM'])
 ```
+
+!!! tip
+    Ce qui prend du temps lors de l'exécution, c'est surtout le `print` en lui-même.
+    Si vous n'utilisez pas `print`, mais un autre traitement, cela sera plus rapide.
+    Un simple print ralenti l'exécution d'un script.
+
+### Optimisation de la requête
 
 Dans la documentation, observez bien la signature de la fonction `getFeatures`. Que remarquez-vous ?
 Utilisons donc une expression pour limiter les résultats.
@@ -71,23 +84,25 @@ Nous pouvons accessoirement ordonner les résultats et surtout encore optimiser 
   * Ne demandant pas de charger la géométrie
   * Ne demandant pas de charger tous les attributs
 
-```python
-request = QgsFeatureRequest()
-request.setFilterExpression('"POPUL" != \'NC\'')
-request.addOrderBy('NOM')
-request.setFlags(QgsFeatureRequest.NoGeometry)
-# request.setSubsetOfAttributes([1, 4]) autre manière moins pratique
-request.setSubsetOfAttributes(['NOM', 'POPUL'], layer.fields())
-for feature in layer.getFeatures(request):
-    print('{commune} : {nombre} habitants'.format(commune=feature['NOM'], nombre=feature['POPUL']))
-```
+??? "La solution pour les experts"
+    ```python
+    request = QgsFeatureRequest()
+    request.setFilterExpression('"POPUL" != \'NC\'')
+    request.addOrderBy('NOM')
+    request.setFlags(QgsFeatureRequest.NoGeometry)
+    # request.setSubsetOfAttributes([1, 4]) autre manière moins pratique
+    request.setSubsetOfAttributes(['NOM', 'POPUL'], layer.fields())
+    for feature in layer.getFeatures(request):
+        print('{commune} : {nombre} habitants'.format(commune=feature['NOM'], nombre=feature['POPUL']))
+    ```
 
-Faire le test en affichant un champ qui n'est pas dans la requête.
+    * Faire le test en affichant un champ qui n'est pas dans la requête.
 
-Rajoutons une intersection spatiale avec l'emprise suivante :
-```python
-request.setFilterRect(QgsRectangle(662737, 6807733, 717144, 6853979))
-```
+    * Rajoutons une intersection spatiale avec l'emprise suivante :
+
+    ```python
+    request.setFilterRect(QgsRectangle(662737, 6807733, 717144, 6853979))
+    ```
 
 Si l'on souhaite "enregistrer" le résultat de cette expression QGIS, on peut la *matérialiser* dans une
 nouvelle couche :
@@ -101,10 +116,10 @@ QgsProject.instance().addMapLayer(memory_layer)
     Attention à la ligne iface.activeLayer() qui peut changer lors de l'ajout
     d'une nouvelle couche dans la légende.
 
-Regardons le résultat et corrigeons ce problème d'export afin d'obtenir les géométries et les attributs :
-```python
-request.setFlags(QgsFeatureRequest.NoFlags)
-```
+Regardons le résultat et corrigeons ce problème d'export afin d'obtenir les géométries et les attributs,
+il faut **supprimer** la ligne `NoGeometry` si vous l'avez.
+
+## Calculer un champ
 
 Avant-dernier exercice, afficher une liste des communes en incluant la densité de population.
 
@@ -120,10 +135,10 @@ Avant de traiter cet exercice, nous devons voir ce qu'est une **exception** en P
 rouges dans la console de temps en temps. Ce sont des exceptions. C'est une notion de programmation qui existe
 dans beaucoup de languages.
 
-Dans le language informatique, une exception peut-être :
+Dans le langage informatique, une exception peut-être :
 
 * levée ("raise" en anglais) pour déclencher une erreur
-* attrapée ("catch" en anglais) pour traiter l'erreur
+* attrapée ("catch" en anglais, ou plutôt "except" en Python) pour traiter l'erreur
 
 Essayons dans la console de faire une l'opération 10 / 2 :
 
