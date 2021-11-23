@@ -1016,6 +1016,14 @@ class Voiture{
 </td></tr></table></li>
 <li>Ajoutons un titre à notre projet, recherchons donc <code>title</code> dans la page : <code>setTitle</code> dans la classe
   <a href="https://qgis.org/api/classQgsProject.html">QgsProject</a>.</li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Il est important de bien pouvoir lire la signature des <strong>méthodes</strong>.
+La méthode <code>title</code> retourne une <strong>QString</strong> et <strong>ne prend pas</strong> de paramètre.
+La méthode <code>setTitle</code> retourne <strong>rien</strong>, (<strong>void</strong>) mais elle prend un paramètre, une <strong>QString</strong>.</p>
+</div>
+<ul>
 <li>Objectif, ajouter une couche vecteur contenu dans un dossier fils :<ul>
 <li>Recherchons dans l'API le dossier racine du projet. <em>Indice</em>, en informatique, on appelle souvent cela le <code>home</code>.</li>
 <li>Nous allons utiliser le module <code>os.path</code> pour manipuler les dossiers.</li>
@@ -1094,7 +1102,8 @@ class Voiture{
 </details>
 <ul>
 <li>Explorer l'objet <code>communes</code> qui est un <code>QgsVectorLayer</code> à l'aide de la documentation pour chercher sa
-  géométrie, le nombre d'entités.</li>
+  géométrie, le nombre d'entités.
+  <a href="https://qgis.org/api/classQgsVectorLayer.html">API QgsVectorLayer C++</a>, <a href="https://qgis.org/pyqgis/3.16/core/QgsVectorLayer.html">API QgsVectorLayer Python</a></li>
 <li>Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre (explication dans l'exemple
   ci-dessous)</li>
 <li>Essayer d'ouvrir et de clore une session d'édition</li>
@@ -1124,6 +1133,21 @@ class QgsRasterLayer{
 QgsMapLayer &lt;-- QgsVectorLayer
 QgsMapLayer &lt;-- QgsRasterLayer</div>
 <p>L'objet <code>QgsVectorLayer</code> hérite de <code>QgsMapLayer</code> qui est une classe commune avec <code>QgsMapLayer</code>.</p>
+<p><a href="https://qgis.org/api/classQgsMapLayer.html">API QgsMapLayer C++</a>, <a href="https://qgis.org/pyqgis/3.16/core/QgsMapLayer.html">API QgsMapLayer Python</a></p>
+<p>Regardons la fonction <code>isinstance</code> qui permet de tester si un objet est une instance d'une classe :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">isinstance</span><span class="p">(</span><span class="n">communes</span><span class="p">,</span> <span class="n">QgsVectorLayer</span><span class="p">)</span>
+<span class="kc">True</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">communes</span><span class="p">,</span> <span class="n">QgsRasterLayer</span><span class="p">)</span>
+<span class="kc">False</span>
+<span class="nb">isinstance</span><span class="p">(</span><span class="n">communes</span><span class="p">,</span> <span class="n">QgsMapLayer</span><span class="p">)</span>
+<span class="kc">True</span>
+</code></pre></div>
+</td></tr></table>
 <ul>
 <li>Objectif, ne pas afficher la couche commune pour une échelle plus petite que le <code>1:2 000 000</code>.</li>
 </ul>

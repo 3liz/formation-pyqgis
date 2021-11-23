@@ -844,14 +844,16 @@
                 <h1 id="les-actions">Les actions<a class="headerlink" href="#les-actions" title="Permanent link">#</a></h1>
 <ul>
 <li>Pour connaître le principe des actions dans QGIS, il faut se référer au manuel de QGIS :<ul>
-<li><a href="https://docs.qgis.org/3.16/fr/docs/user_manual/working_with_vector/vector_properties.html#actions-properties">https://docs.qgis.org/3.16/fr/docs/user_manual/working_with_vector/vector_properties.html#actions-properties</a></li>
+<li><a href="https://docs.qgis.org/latest/fr/docs/user_manual/working_with_vector/vector_properties.html#actions-properties">https://docs.qgis.org/latest/fr/docs/user_manual/working_with_vector/vector_properties.html#actions-properties</a></li>
 </ul>
 </li>
-<li>On souhaite pouvoir faire notre propre action pour inverser le sens d'une ligne, par exemple une rivière. </li>
-<li>Ajouter la couche <code>D_OSM_HYDROGRAPHIE/TRONCON_COURS_EAU.shp</code>, mais utilisons le script ci-dessous pour
-  commencer sur un cas simple.</li>
+<li>On souhaite pouvoir faire notre propre action pour inverser le sens d'une ligne, par exemple une rivière.</li>
+<li>Pour la couche linéaire :</li>
+<li>Nous allons utiliser le script ci-dessous pour créer une couche <strong>très</strong> simple, mais qui permet de voir la construction d'une ligne en partant de zéro</li>
+<li>Sinon, pour aller <strong>beaucoup</strong> plus vite, ajouter la couche <code>D_OSM_HYDROGRAPHIE/TRONCON_COURS_EAU.shp</code>
+    mais on ne voit pas comment construire la géométrie en partant de rien.</li>
 <li>Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une <code>Ligne de symbole</code> dans
-  l'onglet <code>Symbologie</code>.</li>
+  l'onglet <code>Symbologie</code> de la couche en question.</li>
 </ul>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -872,7 +874,9 @@
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Notation pour ajouter des attributs en créant une couche mémoire</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Notation pour ajouter des attributs en créant une couche mémoire</span>
+<span class="c1"># https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/vector.html#from-an-instance-of-qgsvectorlayer</span>
 <span class="n">river</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s1">&#39;MultiLineString?crs=epsg:2154&amp;field=id:integer&amp;field=name:string(20)&amp;index=yes&#39;</span><span class="p">,</span> <span class="s1">&#39;Rivers&#39;</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">)</span>
 
 <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">river</span><span class="p">)</span>
@@ -898,11 +902,16 @@
 <ul>
 <li>Dans la fenêtre des propriétés d'une couche vecteur, aller dans l'onglet <code>Actions</code>.</li>
 <li>Cliquer sur le bouton <code>Créer les actions par défaut</code>.</li>
-<li>Observons quelques actions pour comprendre le fonctionnement.</li>
+<li>Observons quelques actions pour comprendre le fonctionnement ainsi que les <strong>scopes/champs d'application</strong>
+  des actions.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Selon le champ d'application de l'action, il y a plus ou moins de <strong>variables</strong>.</p>
+</div>
 <h2 id="notre-propre-action">Notre propre action<a class="headerlink" href="#notre-propre-action" title="Permanent link">#</a></h2>
 <ul>
-<li>Commençons un nouveau par un script Python classique, laissons de côté les actions pour le moment.</li>
+<li>Commençons un nouveau par un script Python classique, laissons de côté le concept des actions pour le moment.</li>
 <li>Écrire une fonction qui se charge <em>d'inverser</em> une ligne. Cette fonction prend en paramètre la couche
   vecteur et une liste d'ID des entités.</li>
 <li>Il faut penser à vérifier le type exact de géométrie de nos lignes, dans les propriétés de la couche.</li>
@@ -920,18 +929,17 @@
     <span class="k">pass</span>
 </code></pre></div>
 </td></tr></table>
-<p>Le mot-clé <code>pass</code> est juste une instruction Python qui ne fait <strong>strictement</strong> rien mais qui permet de rendre
+<p>Le mot-clé <code>pass</code> est juste une instruction Python qui ne fait <strong>strictement</strong> rien, mais qui permet de rendre
 une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer dès qu'il y a du code.</p>
-<p>Il faut : </p>
+<p>Il faut :</p>
 <ul>
 <li>Utiliser une session d'édition</li>
 <li>Récupérer la géométrie, tenir compte qu'il s'agit d'une multi-ligne</li>
 <li>Appliquer la fonction <code>reverse</code> en Python</li>
-<li>
-<p>Utiliser <code>QgsVectorLayer.changeGeometry()</code> pour changer la géométrie d'un objet</p>
-</li>
-<li>
-<p>Solution :
+<li>Utiliser <code>QgsVectorLayer.changeGeometry()</code> pour changer la géométrie d'un objet</li>
+</ul>
+<details>
+<summary>Afficher la solution</summary>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -968,10 +976,9 @@ une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer d
 
 <span class="n">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
 </code></pre></div>
-</td></tr></table></p>
-</li>
-</ul>
-<p>Incorporons ce code dans une action et adaptons le un peu :</p>
+</td></tr></table>
+</details>
+<p>Incorporons ce code dans une action et adaptons-le légèrement :</p>
 <p><img alt="Inverser canalisation" src="../media/action_inverser_ligne.png" /></p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1000,12 +1007,17 @@ une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer d
 </td></tr></table>
 <p>On peut désormais cliquer sur une ligne pour automatiquement inverser une ligne.</p>
 <p>Le code de l'action est enregistré dans le style QML de la couche vecteur. Il peut donc être partagé avec 
-d'autres utilisateurs qui ne connaissent pas Python</p>
+d'autres utilisateurs qui ne connaissent pas Python.</p>
 <h2 id="astuce-pour-stocker-le-code-dune-action-dans-une-extension-qgis">Astuce pour stocker le code d'une action dans une extension QGIS<a class="headerlink" href="#astuce-pour-stocker-le-code-dune-action-dans-une-extension-qgis" title="Permanent link">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Pour suivre cette partie, il faut la plupart du temps une extension par exemple, voir
+<a href="../extension-generique/">l'autre chapitre</a>, afin de stocker le code Python.</p>
+</div>
 <p>Pour éviter d'avoir du code les propriétés de la couche QGIS, on peut réduire le code Python
-au minimum en faisant dans le coeur de l'action uniquement l'import d'une fonction et
-de lancer son éxécution.</p>
-<p>Exemple du code d'une action dans l'extension QuickOSM lors de l'éxécution
+au minimum en faisant dans le cœur de l'action uniquement l'import d'une fonction et
+de lancer son exécution.</p>
+<p>Exemple du code d'une action dans l'extension QuickOSM lors de l'exécution
 d'une requête rapide :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">QuickOSM.core.actions</span> <span class="kn">import</span> <span class="n">Actions</span>
@@ -1026,7 +1038,7 @@ d'une requête rapide :</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 23, 2021</span>
       
     
   </small>
