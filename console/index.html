@@ -927,6 +927,12 @@ documentation et comment rechercher des informations.</li>
 <li><a href="https://qgis.org/pyqgis/3.16/">L'API Python https://qgis.org/pyqgis/3.16/</a></li>
 </ul>
 </li>
+<li><a href="https://doc.qt.io/qt-5/classes.html">Documentation de l'API Qt</a></li>
+<li><a href="https://docs.python.org/3/library/">Documentation de Python</a><ul>
+<li><a href="https://docs.python.org/3/library/os.path.html#module-os.path">Le module os.path par exemple</a>, module historique pour manipuler des chemins</li>
+<li><a href="https://docs.python.org/3/library/pathlib.html#module-pathlib">Le module Pathlib</a></li>
+</ul>
+</li>
 </ul>
 <p>Voici une liste non exhaustive de blog-post utiles pour manipuler PyQGIS :</p>
 <ul>
@@ -1008,7 +1014,8 @@ class Voiture{
 <span class="n">project</span><span class="o">.</span><span class="n">fileName</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table></li>
-<li>Ajoutons un titre à notre projet, recherchons donc <code>title</code> dans la page : <code>setTitle</code>.</li>
+<li>Ajoutons un titre à notre projet, recherchons donc <code>title</code> dans la page : <code>setTitle</code> dans la classe
+  <a href="https://qgis.org/api/classQgsProject.html">QgsProject</a>.</li>
 <li>Objectif, ajouter une couche vecteur contenu dans un dossier fils :<ul>
 <li>Recherchons dans l'API le dossier racine du projet. <em>Indice</em>, en informatique, on appelle souvent cela le <code>home</code>.</li>
 <li>Nous allons utiliser le module <code>os.path</code> pour manipuler les dossiers.</li>
@@ -1160,7 +1167,7 @@ QgsMapLayer &lt;-- QgsRasterLayer</div>
 </code></pre></div>
 </td></tr></table>
 <ul>
-<li>Ajouter également la couche <code>ARRONDISSEMENT</code> et sélectionner la.</li>
+<li>Ajouter également la couche <code>ARRONDISSEMENT</code> et sélectionner là.</li>
 </ul>
 <h2 id="parcourir-les-entites">Parcourir les entités<a class="headerlink" href="#parcourir-les-entites" title="Permanent link">#</a></h2>
 <p>Un raccourci a savoir, dans la console :
@@ -1169,7 +1176,7 @@ QgsMapLayer &lt;-- QgsRasterLayer</div>
 </td></tr></table>
 Cela retourne la couche <code>QgsMapLayer</code> active dans la légende !</p>
 <p>On souhaite désormais itérer sur les polygones et les faire clignoter depuis la console.
-Nous allons donc avoir besoin de <code>getFeatures</code>.</p>
+Nous allons donc avoir besoin de la méthode <code>getFeatures()</code> qui fait partie de <code>QgsVectorLayer</code>.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1185,18 +1192,25 @@ Nous allons donc avoir besoin de <code>getFeatures</code>.</p>
 </td></tr></table>
 <p><em>Note</em>, nous pouvons concaténer les deux dernières lignes à l'aide du caractère <code>;</code> pour que cela soit plus
 pratique.</p>
-<p>On souhaite désormais afficher le nom des arrondissements à l'aide d'une boucle <code>for</code>.</p>
+<p>Ce code est plus pour la partie "amusante" pour montrer les limites de la console. Nous allons désormais
+utiliser un script Python dans le prochain chapitre.</p>
+<p>Petite chose supplémentaire avant de passer aux scripts, on souhaite désormais afficher le nom des
+arrondissements à l'aide d'une boucle <code>for</code>.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
-    <span class="c1"># On peut traiter l&#39;entité courante.</span>
+    <span class="c1"># On peut traiter l&#39;entité courante grâce à la variable &quot;feature&quot;.</span>
+    <span class="c1"># Pour accéder à un attribut en particulier, on peut y accéder avec des crochets.</span>
     <span class="k">pass</span>
 </code></pre></div>
 </td></tr></table>
 <p>Noter l'apparition de <code>...</code> au lieu de <code>&gt;&gt;&gt;</code> après avoir écrit la première ligne du <code>for</code>.
 Il faut faire une indentation obligatoire !</p>
+<p>Pour afficher un attribut, on peut faire <code>print(feature['NOM_ARR']</code> pour afficher le contenu de l'attribut
+<code>NOM_ARR</code>.</p>
                 
                   
                     
@@ -1205,7 +1219,7 @@ Il faut faire une indentation obligatoire !</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 17, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 23, 2021</span>
       
     
   </small>

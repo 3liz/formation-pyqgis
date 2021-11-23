@@ -517,6 +517,33 @@
     Extraction des informations sous forme d'un fichier CSV.
   </a>
   
+    <nav class="md-nav" aria-label="Extraction des informations sous forme d'un fichier CSV.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-de-sortie" class="md-nav__link">
+    Exemple de sortie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#petit-memo" class="md-nav__link">
+    Petit mémo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    Solution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -822,6 +849,33 @@
     Extraction des informations sous forme d'un fichier CSV.
   </a>
   
+    <nav class="md-nav" aria-label="Extraction des informations sous forme d'un fichier CSV.">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple-de-sortie" class="md-nav__link">
+    Exemple de sortie
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#petit-memo" class="md-nav__link">
+    Petit mémo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    Solution
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
     </ul>
@@ -845,7 +899,8 @@
 <h2 id="communication-avec-lutilisateur-des-erreurs-et-des-logs">Communication avec l'utilisateur des erreurs et des logs<a class="headerlink" href="#communication-avec-lutilisateur-des-erreurs-et-des-logs" title="Permanent link">#</a></h2>
 <p>Avant de commencer à vraiment écrire un script avec des fonctions, regardons comment communiquer des 
 informations à l'utilisateur.</p>
-<p>On peut envoyer des messages vers l'utilisateur avec l'utilisation de la <code>messageBar</code> :</p>
+<p>On peut envoyer des messages vers l'utilisateur avec l'utilisation de la <code>messageBar</code> de la classe
+<a href="https://qgis.org/api/classQgisInterface.html">QgisInterface</a> :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -855,6 +910,12 @@ informations à l'utilisateur.</p>
 <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Succès&#39;</span><span class="p">,</span><span class="s1">&#39;ou un succès&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
+<p>Cette fonction prend 3 paramètres :</p>
+<ul>
+<li>un titre</li>
+<li>un message</li>
+<li>un niveau d'alerte</li>
+</ul>
 <p>On peut aussi écrire des logs comme ceci (plus discret, mais plus verbeux) :
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -865,10 +926,16 @@ informations à l'utilisateur.</p>
 <span class="n">QgsMessageLog</span><span class="o">.</span><span class="n">logMessage</span><span class="p">(</span><span class="s1">&#39;Un succès&#39;</span><span class="p">,</span><span class="s1">&#39;Notre outil&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table></p>
+<p>Cette fonction prend 3 paramètres :</p>
+<ul>
+<li>un message</li>
+<li>une catégorie, souvent le nom de l'extension ou de l'outil en question</li>
+<li>un niveau d'alerte</li>
+</ul>
 <h2 id="charger-automatiquement-plusieurs-couches-a-laide-dun-script">Charger automatiquement plusieurs couches à l'aide d'un script<a class="headerlink" href="#charger-automatiquement-plusieurs-couches-a-laide-dun-script" title="Permanent link">#</a></h2>
-<p>La console c'est bien, mais c'est très limitant. Passons à l'écriture d'un script qui va nous faciliter 
+<p>La console, c'est bien, mais c'est très limitant. Passons à l'écriture d'un script qui va nous faciliter 
 l'organisation du code.</p>
-<p>Voici le dernier script du fichier précédent, mais avec la gestion des erreurs :</p>
+<p>Ci-dessous, voici le dernier script du chapitre précédent, mais avec la gestion des erreurs ci-dessus :</p>
 <ul>
 <li>Redémarrer QGIS</li>
 <li>N'ouvrez pas le projet précédent</li>
@@ -935,9 +1002,62 @@ l'organisation du code.</p>
 <p>Le mot-clé <code>pass</code> ne sert à rien. C'est un mot-clé Python pour rendre un bloc valide mais ne faisant rien.
 On peut le supprimer le bloc n'est pas vide.</p>
 </div>
-<ul>
-<li>Une des solutions :</li>
-</ul>
+<details>
+<summary>Afficher la solution intermédiaire</summary>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
+<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;201909_11_ILE_DE_FRANCE_SHP_L93_2154&#39;</span>
+
+
+<span class="k">def</span> <span class="nf">charger_couche</span><span class="p">(</span><span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Fonction qui charge une couche shapefile dans une thématique.&quot;&quot;&quot;</span>
+    <span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">racine</span><span class="p">:</span>
+        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Erreur de chargement&#39;</span><span class="p">,</span><span class="s1">&#39;Le projet n</span><span class="se">\&#39;</span><span class="s1">est pas enregistré&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="n">dossier</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.shp&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">couche</span><span class="p">))</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">isfile</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">):</span>
+            <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Erreur de chargement&#39;</span><span class="p">,</span><span class="s1">&#39;Le chemin n</span><span class="se">\&#39;</span><span class="s1">existe pas: &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">),</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="n">couche</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">layer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+                <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Erreur de chargement&#39;</span><span class="p">,</span><span class="s1">&#39;La couche n</span><span class="se">\&#39;</span><span class="s1">est pas valide&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+                <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Bravo&#39;</span><span class="p">,</span><span class="s1">&#39;Well done!&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+
+<span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span>
+<span class="n">couche</span> <span class="o">=</span> <span class="s1">&#39;COMMUNE&#39;</span>
+<span class="n">charger_couche</span><span class="p">(</span><span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</details>
+<p>Améliorons encore cette solution intermédiaire avec la gestion des erreurs et aussi en gardant le code le
+plus à gauche possible grâce à l'instruction <code>return</code> qui ordonne la sortie de la fonction.</p>
+<details>
+<summary>Afficher une des solutions finales</summary>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -993,10 +1113,16 @@ On peut le supprimer le bloc n'est pas vide.</p>
 <span class="n">charger_couche</span><span class="p">(</span><span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span><span class="p">,</span> <span class="s1">&#39;ARRONDISSEMENT&#39;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
+</details>
 <ul>
-<li>Essayons de faire une fonction qui liste les shapefiles d'une certaine thématique.
-  <code>os.walk(path)</code> permet de parcourir un chemin.</li>
+<li>Essayons de faire une fonction qui liste les shapefiles d'une certaine thématique.</li>
 </ul>
+<p>On peut utiliser la méthode <a href="https://docs.python.org/3/library/os.html#os.walk">os.walk(path)</a> permet de
+parcourir un chemin et de lister les répertoires et les fichiers.</p>
+<p>Ou alors on peut utiliser une autre méthode, un peu plus à la mode en utilisant le mode
+<a href="https://docs.python.org/3/library/pathlib.html#module-pathlib">pathlib</a> qui comporte également les fonctions
+<code>isfile</code>, <code>isdir</code> etc.</p>
+<p>En utilisant le module <code>os.walk</code>, un peu historique :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1028,9 +1154,148 @@ On peut le supprimer le bloc n'est pas vide.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">shapes</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
+<p>En utilisant le "nouveau" module <code>pathlib</code>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="k">def</span> <span class="nf">liste_shapefiles</span><span class="p">(</span><span class="n">thematique</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Liste les shapefiles d&#39;une thématique.&quot;&quot;&quot;</span>
+    <span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
+    <span class="n">dossier</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">racine</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154&#39;</span><span class="p">,</span> <span class="n">thematique</span><span class="p">)</span>
+    <span class="n">shapes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">dossier</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;.shp&#39;</span><span class="p">:</span>
+            <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">shapes</span>
+
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">liste_shapefiles</span><span class="p">(</span><span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">shapes</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Il faut se référer à la documentation du module <a href="https://docs.python.org/3/library/pathlib.html">pathlib</a>
+pour comprendre le fonctionnement de cette classe.</p>
+</div>
 <ul>
 <li>Permettre le chargement automatique de toute une thématique.</li>
 </ul>
+<details>
+<summary>Afficher la solution complète</summary>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
+<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154&#39;</span>
+<span class="c1"># couche = &#39;COMMUNE&#39;</span>
+
+<span class="k">def</span> <span class="nf">liste_shapesfiles</span><span class="p">(</span><span class="n">thematique</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Liste les shapes d&#39;une thématique&quot;&quot;&quot;</span>
+    <span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">racine</span><span class="p">:</span>
+        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Erreur de chargement&#39;</span><span class="p">,</span><span class="s1">&#39;Le projet n</span><span class="se">\&#39;</span><span class="s1">est pas enregistré&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">shapes</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="n">dossier</span><span class="p">,</span> <span class="n">thematique</span><span class="p">)):</span>
+        <span class="c1"># print(files)</span>
+        <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
+            <span class="c1"># print(file)</span>
+            <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">endswith</span><span class="p">(</span><span class="s1">&#39;.shp&#39;</span><span class="p">):</span>
+                <span class="c1"># print(file)</span>
+                <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;.shp&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">shapes</span>
+
+<span class="k">def</span> <span class="nf">charger_couche</span><span class="p">(</span><span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">):</span>
+
+    <span class="sd">&quot;&quot;&quot;Fonction qui charge des couches suivant une thématique.&quot;&quot;&quot;</span>
+    <span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">racine</span><span class="p">:</span>
+        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Erreur de chargement&#39;</span><span class="p">,</span><span class="s1">&#39;Le projet n</span><span class="se">\&#39;</span><span class="s1">est pas enregistré&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="n">dossier</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.shp&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">couche</span><span class="p">))</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">isfile</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">):</span>
+        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Erreur de chargement&#39;</span><span class="p">,</span><span class="s1">&#39;Le chemin n</span><span class="se">\&#39;</span><span class="s1">existe pas: &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">),</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="n">couche</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">layer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
+        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Erreur de chargement&#39;</span><span class="p">,</span><span class="s1">&#39;La couche n</span><span class="se">\&#39;</span><span class="s1">est pas valide&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Bravo&#39;</span><span class="p">,</span><span class="s1">&#39;Well done!&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">layer</span>
+
+
+<span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">liste_shapesfiles</span><span class="p">(</span><span class="n">thematique</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">:</span>
+    <span class="n">charger_couche</span><span class="p">(</span><span class="n">thematique</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</details>
 <h2 id="extraction-des-informations-sous-forme-dun-fichier-csv">Extraction des informations sous forme d'un fichier CSV.<a class="headerlink" href="#extraction-des-informations-sous-forme-dun-fichier-csv" title="Permanent link">#</a></h2>
 <p>On souhaite désormais réaliser une fonction d'export des métadonnées de nos couches au format CSV, avec son
 CSVT.
@@ -1050,7 +1315,7 @@ l'action <code>Exporter la couche</code>).</p>
 <li>si le seuil de visibilité est activé</li>
 <li>la source (le chemin) de la donnée</li>
 </ul>
-<p>Exemple de sortie : </p>
+<h3 id="exemple-de-sortie">Exemple de sortie<a class="headerlink" href="#exemple-de-sortie" title="Permanent link">#</a></h3>
 <table>
 <thead>
 <tr>
@@ -1075,7 +1340,7 @@ l'action <code>Exporter la couche</code>).</p>
 </tr>
 <tr>
 <td>couche_2</td>
-<td>Point</td>
+<td>Tab</td>
 <td>No geometry</td>
 <td>0</td>
 <td></td>
@@ -1084,6 +1349,7 @@ l'action <code>Exporter la couche</code>).</p>
 </tr>
 </tbody>
 </table>
+<h3 id="petit-memo">Petit mémo<a class="headerlink" href="#petit-memo" title="Permanent link">#</a></h3>
 <p>Pour créer une couche tabulaire en mémoire :
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer_info</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">)</span>
 </code></pre></div>
@@ -1092,6 +1358,30 @@ l'action <code>Exporter la couche</code>).</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layers</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table></p>
+<p>Pour utiliser une session d'édition, on peut faire :
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span><span class="o">.</span><span class="n">startEditing</span><span class="p">()</span>  <span class="c1"># Début de la session</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>  <span class="c1"># Fin de la session en enregistrant</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>  <span class="c1"># Fin de la session en annulant les modifications</span>
+</code></pre></div>
+</td></tr></table></p>
+<p>On peut également faire une session d'édition avec un "contexte":</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">edit</span>
+
+<span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
+    <span class="c1"># Faire une édition sur la couche</span>
+    <span class="k">pass</span>
+
+<span class="c1"># À la fin du bloc d&#39;indentation, la session d&#39;édition est automatiquement close.</span>
+</code></pre></div>
+</td></tr></table>
 <p>Nous allons avoir besoin de plusieurs classes dans l'API QGIS : </p>
 <ul>
 <li>Enregistrer un fichier : la classe <code>QgsVectorFileWriter</code></li>
@@ -1106,13 +1396,17 @@ l'action <code>Exporter la couche</code>).</p>
 </ul>
 <p>Il va y avoir plusieurs étapes dans ce script :</p>
 <ol>
+<li>Récupérer la liste des couches présentes dans la légende</li>
 <li>Créer une couche en mémoire</li>
 <li>Ajouter des champs à cette couche en utilisant une session d'édition</li>
-<li>Récupérer la liste des couches présentes dans la légende</li>
 <li>Itérer sur les couches pour ajouter ligne par ligne les métadonnées dans une session d'édition</li>
 <li>Enregistrer en CSV la couche mémoire</li>
 </ol>
-<p>Solution :</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Pour déboguer, on peut afficher la couche mémoire en question avec <code>QgsProject.instance().addMapLayer()</code></p>
+</div>
+<h3 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h3>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1214,7 +1508,7 @@ l'action <code>Exporter la couche</code>).</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 22, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 23, 2021</span>
       
     
   </small>
