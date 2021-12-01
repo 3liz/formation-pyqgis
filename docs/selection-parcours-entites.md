@@ -243,15 +243,19 @@ with edit(petites_communes):
     field = QgsField('densite_population', QVariant.Double)
     petites_communes.addAttribute(field)
 
+# On utilise les indes des champs automatiquement en récupérant ces valeurs.
+index_population = petites_communes.fields().indexFromName('POPUL')
+index_densite = petites_communes.fields().indexFromName('densite_population')
+
 request = QgsFeatureRequest()
-request.setSubsetOfAttributes([4])
+request.setSubsetOfAttributes([index_population])
 
 with edit(petites_communes):
     for feature in petites_communes.getFeatures(request):
         area = feature.geometry().area() / 1000000
         population = int(feature['POPUL'])
         densite=population/area
-        petites_communes.changeAttributeValue(feature.id(), 5, densite)
+        petites_communes.changeAttributeValue(feature.id(), index_densite, densite)
 
 QgsProject.instance().addMapLayer(petites_communes)
 ```

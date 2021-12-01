@@ -10,7 +10,7 @@ Dans le shell OSGEO, taper :
 ```bash
 cd C:\OSGeo4W\apps\qgis-ltr\bin\
 qgis_process
-````
+```
 
 `cd` pour Change Directory. Il peut s'agir d'un chemin différent, comme `C:/Program Files/QGIS 3.14/bin/`
 

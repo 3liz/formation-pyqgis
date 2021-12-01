@@ -37,7 +37,8 @@ Dans l'objet `dialog` :
 
 Pour information :
 
-* `QWidget::findChild(CLASSE)` retourne un objet de la CLASSE spécifié dans le widget courant
+* `QWidget::findChild(NOM_CLASSE)` retourne un objet de la NOM_CLASSE spécifié dans le widget courant. Ce n'est pas une chaîne de caractère bien une classe qu'il faut donner.
+* `QWidget::findChild(NOM_CLASSE, "nom_objet")`, idem que ci-dessus, mais permet de filtrer avec le nom de l'objet, très utile sur les champs.
 * La barre des boutons est une `QDialogButtonBox`
 * Pour ouvrir une URL : `QDesktopServices`
 
@@ -63,5 +64,26 @@ Pour information :
 type_field = dialog.findChild(QLineEdit, "type")
 type_field.setStyleSheet("background-color: rgba(255, 107, 107, 150);")
 ```
+* On souhaite rendre le champ en rouge seulement s'il y a une condition :
+
+```python
+type_field = dialog.findChild(QLineEdit, "type")
+type_field.textChanged.connect(type_field_changed)
+
+def type_field_changed():
+    type_field = dialog.findChild(QLineEdit, "type")
+    if type_field.text() not in ('studio', 'appartement', 'maison'):
+        type_field.setStyleSheet("background-color: rgba(255, 107, 107, 150);")
+        type_field.setToolTip("La valeur doit être 'studio', 'appartement' ou 'maison'.")
+    else:
+        type_field.setStyleSheet("")
+        type_field.setToolTip()
+```
+
+
 
 * Cherchons le champ `surface` et calculons la surface avec la géométrie.
+
+!!! info
+    Notons que ce ne sont que des exemples des fonctionnalités Python. On peut faire ces masques de saisie à
+    l'aide des expressions QGIS ou simplement en changeant le type de widget pour un champ en particulier.
