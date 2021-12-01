@@ -803,7 +803,8 @@ y a trois paramètres qui sont donnés :</p>
 </ul>
 <p>Pour information :</p>
 <ul>
-<li><code>QWidget::findChild(CLASSE)</code> retourne un objet de la CLASSE spécifié dans le widget courant</li>
+<li><code>QWidget::findChild(NOM_CLASSE)</code> retourne un objet de la NOM_CLASSE spécifié dans le widget courant. Ce n'est pas une chaîne de caractère bien une classe qu'il faut donner.</li>
+<li><code>QWidget::findChild(NOM_CLASSE, "nom_objet")</code>, idem que ci-dessus, mais permet de filtrer avec le nom de l'objet, très utile sur les champs.</li>
 <li>La barre des boutons est une <code>QDialogButtonBox</code></li>
 <li>Pour ouvrir une URL : <code>QDesktopServices</code></li>
 </ul>
@@ -838,14 +839,43 @@ y a trois paramètres qui sont donnés :</p>
 <ul>
 <li>Appliquons une CSS sur le champ <code>type</code> pour mettre un fond rouge :</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">type_field</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">findChild</span><span class="p">(</span><span class="n">QLineEdit</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">)</span>
 <span class="n">type_field</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="s2">&quot;background-color: rgba(255, 107, 107, 150);&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+* On souhaite rendre le champ en rouge seulement s'il y a une condition :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">type_field</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">findChild</span><span class="p">(</span><span class="n">QLineEdit</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">)</span>
+<span class="n">type_field</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">type_field_changed</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">type_field_changed</span><span class="p">():</span>
+    <span class="n">type_field</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">findChild</span><span class="p">(</span><span class="n">QLineEdit</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">type_field</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;studio&#39;</span><span class="p">,</span> <span class="s1">&#39;appartement&#39;</span><span class="p">,</span> <span class="s1">&#39;maison&#39;</span><span class="p">):</span>
+        <span class="n">type_field</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="s2">&quot;background-color: rgba(255, 107, 107, 150);&quot;</span><span class="p">)</span>
+        <span class="n">type_field</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">(</span><span class="s2">&quot;La valeur doit être &#39;studio&#39;, &#39;appartement&#39; ou &#39;maison&#39;.&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">type_field</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+        <span class="n">type_field</span><span class="o">.</span><span class="n">setToolTip</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
 <ul>
 <li>Cherchons le champ <code>surface</code> et calculons la surface avec la géométrie.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Notons que ce ne sont que des exemples des fonctionnalités Python. On peut faire ces masques de saisie à
+l'aide des expressions QGIS ou simplement en changeant le type de widget pour un champ en particulier.</p>
+</div>
                 
                   
                     
@@ -854,7 +884,7 @@ y a trois paramètres qui sont donnés :</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 22, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 1, 2021</span>
       
     
   </small>

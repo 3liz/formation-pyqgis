@@ -1201,7 +1201,11 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
 <span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
 <span class="n">request</span><span class="o">.</span><span class="n">setFilterExpression</span><span class="p">(</span><span class="s1">&#39;to_int( &quot;POPUL&quot; ) &lt; 1000&#39;</span><span class="p">)</span>
@@ -1211,15 +1215,19 @@ population (s'il y a <code>NC</code> par exemple) :</p>
     <span class="n">field</span> <span class="o">=</span> <span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;densite_population&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Double</span><span class="p">)</span>
     <span class="n">petites_communes</span><span class="o">.</span><span class="n">addAttribute</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
 
+<span class="c1"># On utilise les indes des champs automatiquement en récupérant ces valeurs.</span>
+<span class="n">index_population</span> <span class="o">=</span> <span class="n">petites_communes</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">indexFromName</span><span class="p">(</span><span class="s1">&#39;POPUL&#39;</span><span class="p">)</span>
+<span class="n">index_densite</span> <span class="o">=</span> <span class="n">petites_communes</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">indexFromName</span><span class="p">(</span><span class="s1">&#39;densite_population&#39;</span><span class="p">)</span>
+
 <span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
-<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="mi">4</span><span class="p">])</span>
+<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="n">index_population</span><span class="p">])</span>
 
 <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">petites_communes</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">petites_communes</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
         <span class="n">area</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">area</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
         <span class="n">population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPUL&#39;</span><span class="p">])</span>
         <span class="n">densite</span><span class="o">=</span><span class="n">population</span><span class="o">/</span><span class="n">area</span>
-        <span class="n">petites_communes</span><span class="o">.</span><span class="n">changeAttributeValue</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="mi">5</span><span class="p">,</span> <span class="n">densite</span><span class="p">)</span>
+        <span class="n">petites_communes</span><span class="o">.</span><span class="n">changeAttributeValue</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">index_densite</span><span class="p">,</span> <span class="n">densite</span><span class="p">)</span>
 
 <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">petites_communes</span><span class="p">)</span>
 </code></pre></div>
@@ -1326,7 +1334,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 23, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 1, 2021</span>
       
     
   </small>

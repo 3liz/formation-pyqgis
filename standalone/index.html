@@ -832,30 +832,16 @@
 <p>Depuis QGIS 3.16, il existe un outil <a href="https://docs.qgis.org/latest/fr/docs/user_manual/processing/standalone.html">qgis_process</a>
 qui permet de lancer QGIS Processing en ligne de commande.</p>
 <p>Dans le shell OSGEO, taper :</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">cd</span> C:<span class="se">\O</span>SGeo4W<span class="se">\a</span>pps<span class="se">\q</span>gis-ltr<span class="se">\b</span>in<span class="se">\</span>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">cd</span> C:<span class="se">\O</span>SGeo4W<span class="se">\a</span>pps<span class="se">\q</span>gis-ltr<span class="se">\b</span>in<span class="se">\</span>
 qgis_process
-<span class="sb">````</span>
-
-<span class="sb">`</span><span class="nb">cd</span><span class="sb">`</span> pour Change Directory. Il peut s<span class="s1">&#39;agir d&#39;</span>un chemin différent, comme <span class="sb">`</span>C:/Program Files/QGIS <span class="m">3</span>.14/bin/<span class="sb">`</span>
-
-On peut lancer les algorithmes, les modèles, les scripts qui sont dans la version graphique de QGIS Processing.
-
-On peut donc lancer en ligne de commande, ou alors notre propre icône sur son bureau un exécutable.
-
-<span class="sb">```</span>bash
-qgis_process run qgis:buffer -- <span class="nv">INPUT</span><span class="o">=</span>source.shp <span class="nv">DISTANCE</span><span class="o">=</span><span class="m">2</span> <span class="nv">OUTPUT</span><span class="o">=</span>buffered.shp
+</code></pre></div>
+</td></tr></table>
+<p><code>cd</code> pour Change Directory. Il peut s'agir d'un chemin différent, comme <code>C:/Program Files/QGIS 3.14/bin/</code></p>
+<p>On peut lancer les algorithmes, les modèles, les scripts qui sont dans la version graphique de QGIS Processing.</p>
+<p>On peut donc lancer en ligne de commande, ou alors notre propre icône sur son bureau un exécutable.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>qgis_process run qgis:buffer -- <span class="nv">INPUT</span><span class="o">=</span>source.shp <span class="nv">DISTANCE</span><span class="o">=</span><span class="m">2</span> <span class="nv">OUTPUT</span><span class="o">=</span>buffered.shp
 qgis_process <span class="nb">help</span> qgis:buffer
 </code></pre></div>
 </td></tr></table>
@@ -1041,7 +1027,7 @@ la librairie QGIS qui se trouve sur l'ordinateur.</p>
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">December 1, 2021</span>
       
     
   </small>
