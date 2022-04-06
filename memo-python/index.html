@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/memo-python/">
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-7.3.6">
+      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-7.3.6">
     
     
       
@@ -1306,8 +1306,8 @@ C'est un objet.</p>
 </code></pre></div>
 </td></tr></table>
 <h2 id="concatener-des-chaines-et-des-variables">Concaténer des chaînes et des variables<a class="headerlink" href="#concatener-des-chaines-et-des-variables" title="Permanent link">#</a></h2>
-<p>Concaténer, c'est assembler des assembler des chaînes de caractères dans une seule et même sortie.
-On peut concaténer des variables entre elles ou du textes.</p>
+<p>Concaténer, c'est assembler des chaînes de caractères dans une seule et même sortie.
+On peut concaténer des variables entre elles ou du texte.</p>
 <p>Il existe plein de manières de faire, mais certaines sont plus pratiques que d'autres
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1406,7 +1406,7 @@ On peut concaténer des variables entre elles ou du textes.</p>
 </code></pre></div>
 </td></tr></table>
 <h2 id="boucle-for">Boucle for<a class="headerlink" href="#boucle-for" title="Permanent link">#</a></h2>
-<p>Utile lors que l'on connait le nombre de répétitions avant l'éxécution de la boucle.</p>
+<p>Utile lors que l'on connait le nombre de répétitions avant l'exécution de la boucle.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1538,7 +1538,7 @@ On peut concaténer des variables entre elles ou du textes.</p>
 <p><strong>Python 3.10</strong> uniquement</p>
 <h2 id="list-comprehensions">List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permanent link">#</a></h2>
 <p>C'est une façon très pythonique et très utilisée de créer des listes.
-Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
+Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1657,7 +1657,45 @@ Par exemple, créer une liste des nombres impaires entre 1 et 9 :</p>
 </code></pre></div>
 </td></tr></table>
 <h2 id="poo-programmation-orientee-objet">POO : Programmation Orientée Objet<a class="headerlink" href="#poo-programmation-orientee-objet" title="Permanent link">#</a></h2>
-<p>Pour cette partie-là, il faut lire le chapitre suivant sur <a href="../console/#rappel-sur-la-poo">la console</a>
+<p>On peut introduire l'utilisation de la POO à l'aide de l'objet <code>Path</code>. La documentation de cette classe se trouve
+<a href="https://docs.python.org/3/library/pathlib.html">en ligne</a>.</p>
+<p>La librairie <code>Path</code> est installé de base avec Python.</p>
+<p>La programmation orientée objet permet de <strong>créer</strong> un objet (on parle plus précisément d'instancier) puis on
+peut <strong>appeler des méthodes</strong> sur cet objet.</p>
+<p>Imaginons que l'on crée un objet <strong>voiture</strong></p>
+<p>Dans une console QGIS :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="c1"># Appel du &quot;constructeur&quot;</span>
+<span class="n">chemin</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
+<span class="c1"># La notation . est une chaîne de caractère particulière pour un OS demandant le dossier courant de l&#39;exécution.</span>
+<span class="c1"># On peut utiliser .. pour faire référence au dossier parent</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chemin</span><span class="o">.</span><span class="n">absolute</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chemin</span><span class="o">.</span><span class="n">is_dir</span><span class="p">())</span>
+<span class="n">un_fichier</span> <span class="o">=</span> <span class="n">chemin</span> <span class="o">/</span> <span class="s1">&#39;mon_projet.qgs&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">un_fichier</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">un_fichier</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">un_fichier</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">chemin</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;mon_projet.qgs&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
+</code></pre></div>
+</td></tr></table>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Quand l'instruction se termine par des <code>()</code>, on dit que c'est une <strong>méthode</strong> de cet objet. Il s'agit d'une <strong>fonction</strong>,
+qui peut prendre ou non des paramètres et qui peut renvoyer ou non des résultats en sortie. 
+Quand l'instruction ne se termine pas par <code>()</code>, on accède à une <strong>propriété</strong> de l'objet.</p>
+</div>
+<p>Pour une application avec des objets QGIS, il faut lire le chapitre suivant sur <a href="../console/#rappel-sur-la-poo">la console</a>
 ou encore la partie sur l'écriture d'un <a href="../script-processing/">script Processing</a>.</p>
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">#</a></h2>
 <p>Lire le chapitre sur le <a href="../selection-parcours-entites/#les-exceptions-en-python">parcours des entités</a>.</p>
@@ -1693,7 +1731,7 @@ ou encore la partie sur l'écriture d'un <a href="../script-processing/">script 
 <div class="md-source-date">
   <small>
     
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 23, 2021</span>
+      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 6, 2022</span>
       
     
   </small>
@@ -1829,7 +1867,7 @@ ou encore la partie sur l'écriture d'un <a href="../script-processing/">script 
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "translations": {"clipboard.copy": "Copier dans le presse-papier", "clipboard.copied": "Copi\u00e9 dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.term.missing": "Non trouv\u00e9", "select.version.title": "S\u00e9lectionner la version"}, "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../assets/javascripts/workers/search.fcfe8b6d.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.config.lang": "fr", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Rechercher", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version.title": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
       <script src="../assets/javascripts/bundle.b1047164.min.js"></script>
