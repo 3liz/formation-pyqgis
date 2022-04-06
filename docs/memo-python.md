@@ -163,8 +163,8 @@ g = a ** 2  # 100
 
 ## Concaténer des chaînes et des variables
 
-Concaténer, c'est assembler des assembler des chaînes de caractères dans une seule et même sortie.
-On peut concaténer des variables entre elles ou du textes.
+Concaténer, c'est assembler des chaînes de caractères dans une seule et même sortie.
+On peut concaténer des variables entre elles ou du texte.
 
 Il existe plein de manières de faire, mais certaines sont plus pratiques que d'autres
 ```python
@@ -239,7 +239,7 @@ else:
 
 ## Boucle for
 
-Utile lors que l'on connait le nombre de répétitions avant l'éxécution de la boucle.
+Utile lors que l'on connait le nombre de répétitions avant l'exécution de la boucle.
 
 ```python
 for x in range(10):
@@ -322,12 +322,10 @@ while not conditon_echec:
 
 **Python 3.10** uniquement
 
-
-
 ## List Comprehensions
 
 C'est une façon très pythonique et très utilisée de créer des listes.
-Par exemple, créer une liste des nombres impaires entre 1 et 9 :
+Par exemple, créer une liste des nombres impairs entre 1 et 9 :
 
 ```python
 # Non pythonique
@@ -412,7 +410,40 @@ une_fonction(1,2,3, text='Ma phrase')
 
 ## POO : Programmation Orientée Objet
 
-Pour cette partie-là, il faut lire le chapitre suivant sur [la console](./console.md#rappel-sur-la-poo)
+On peut introduire l'utilisation de la POO à l'aide de l'objet `Path`. La documentation de cette classe se trouve
+[en ligne](https://docs.python.org/3/library/pathlib.html).
+
+La librairie `Path` est installé de base avec Python.
+
+La programmation orientée objet permet de **créer** un objet (on parle plus précisément d'instancier) puis on
+peut **appeler des méthodes** sur cet objet.
+
+Imaginons que l'on crée un objet **voiture**
+
+Dans une console QGIS :
+
+```python
+from pathlib import Path
+# Appel du "constructeur"
+chemin = Path('.')
+# La notation . est une chaîne de caractère particulière pour un OS demandant le dossier courant de l'exécution.
+# On peut utiliser .. pour faire référence au dossier parent
+print(chemin.absolute())
+print(chemin.is_dir())
+un_fichier = chemin / 'mon_projet.qgs'
+print(un_fichier.exists())
+print(un_fichier.name)
+print(un_fichier.name)
+print(chemin.joinpath('mon_projet.qgs').exists())
+```
+
+!!! tip
+	Quand l'instruction se termine par des `()`, on dit que c'est une **méthode** de cet objet. Il s'agit d'une **fonction**,
+	qui peut prendre ou non des paramètres et qui peut renvoyer ou non des résultats en sortie. 
+	Quand l'instruction ne se termine pas par `()`, on accède à une **propriété** de l'objet.
+
+
+Pour une application avec des objets QGIS, il faut lire le chapitre suivant sur [la console](./console.md#rappel-sur-la-poo)
 ou encore la partie sur l'écriture d'un [script Processing](./script-processing.md).
 
 ## Exceptions
