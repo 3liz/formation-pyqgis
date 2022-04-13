@@ -4,11 +4,16 @@
     * https://docs.qgis.org/latest/fr/docs/user_manual/working_with_vector/vector_properties.html#actions-properties
 * On souhaite pouvoir faire notre propre action pour inverser le sens d'une ligne, par exemple une rivière.
 * Pour la couche linéaire :
-  * Nous allons utiliser le script ci-dessous pour créer une couche **très** simple, mais qui permet de voir la construction d'une ligne en partant de zéro
+  * Nous allons utiliser le script ci-dessous pour créer une couche **très** simple, mais qui permet de voir la construction
+    d'une ligne en partant de zéro
   * Sinon, pour aller **beaucoup** plus vite, ajouter la couche `D_OSM_HYDROGRAPHIE/TRONCON_COURS_EAU.shp`
     mais on ne voit pas comment construire la géométrie en partant de rien.
 * Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une `Ligne de symbole` dans
   l'onglet `Symbologie` de la couche en question.
+
+!!! info
+    La couche `D_OSM_HYDROGRAPHIE/TRONCON_COURS_EAU.shp` est de type multilinestring. Nous allons donc prendre en compte
+    ce cas par défaut dans la suite de ce tutoriel.
 
 ```python
 # Notation pour ajouter des attributs en créant une couche mémoire
@@ -18,6 +23,7 @@ river = QgsVectorLayer('MultiLineString?crs=epsg:2154&field=id:integer&field=nam
 QgsProject.instance().addMapLayer(river)
 
 with edit(river):
+    # Cette fonction permet de faire des vérifications sur les contraintes si nécessaires contrairement à QgsFeature(fields)
     feature = QgsVectorLayerUtils.createFeature(river)
     feature.setAttribute('id', 0)
     feature.setAttribute('name', 'Une rivière')
@@ -141,3 +147,8 @@ Ou alors l'extension RAEPA :
 from qgis.utils import plugins
 plugins['raepa'].run_action("nom_de_laction", params)
 ```
+
+## Avec Processing
+
+Dans le chapitre Processing, nous verrons comment intégrer un
+[algorithme Processing](script-processing.md#utiliser-un-script-processing-dans-une-action) dans une action.
