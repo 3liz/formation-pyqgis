@@ -389,7 +389,7 @@ def decomposer(entier, diviser_par):
     """Retourne la partie entière et le reste d'une division."""
     partie_entiere = entier / diviser_par
     reste = entier % diviser_par
-    return partie_entiere, reste
+    return int(partie_entiere), reste
 ```
 
 * Il se peut que l'on ne connaisse pas à l'avance le nombre précis d'arguments dans une fonction.
@@ -467,4 +467,18 @@ Avoir un compteur lors de l'itération d'une liste :
 users = ['Tom', 'James', 'John']
 for i, user in enumerate(users):
     print('{} -> {}'.format(i + 1, user))
+```
+
+## Annotations
+
+Dans la suite de la formation, il est possible de voir des **annotations Python**.
+Cela permet de spécifier le type des variables dans les paramètres des fonctions et/ou de définir le type de retour.
+
+```python
+from typing import Tuple
+def decomposer(entier: int, diviser_par: int) -> Tuple[int, int]:
+    """Retourne la partie entière et le reste d'une division."""
+    partie_entiere = entier / diviser_par
+    reste = entier % diviser_par
+    return int(partie_entiere), reste
 ```
