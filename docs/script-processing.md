@@ -733,6 +733,22 @@ On peut alors le modifier avec plus de finesse.
 On peut utiliser `processing.run()` dans le code d'une action, pour faire une zone tampon sur un point en particulier
 par exemple.
 
+On peut lancer, graphiquement depuis la boîte à outil Processing, une zone tampon, **avec** une sélection. Regardons 
+ensuite dans l'historique Processing pour voir comment QGIS a pu spécifier la sélection dans son appel PyQGIS.
+
+On souhaite donc pouvoir faire une zone tampon personnalisée en cliquant sur un point à l'aide d'une action.
+
+Il faut donc revoir le code dans le chapitre [actions](./action.md) pour voir comment créer une action.
+Pour utiliser la sélection, nous allons faire :
+
+```python
+layer = QgsProject.instance().mapLayer('[% @layer_id %]')
+layer.selectByIds([int('[% $id %]')])
+layer.removeSelection()
+```
+
+On peut compléter l'action avec un `processing.run` en utilisant uniquement l'entité en sélection.
+
 ## Solution
 
 Sur la classe Personnage ci-dessus :
