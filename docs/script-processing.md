@@ -14,12 +14,27 @@ Le framework Processing utilise le concept de la **P**rogrammation **O**rientée
 sur le site d'OpenClassRooms sur le sujet.
 
 Mais depuis le début de la formation, nous l'utilisons sans trop le savoir. Les objets `Qgs*`, comme
-`QgsMapLayer` utilisent le principe de la POO.
+`QgsVectorLayer` utilisent le principe de la POO.
+
+On a pu créer des objets QgsVectorLayer en appelant son **constructeur** :
+
+```python
+layer = QgsVectorLayer("C:/chemin/vers/un/fichier.gpkg|layername=communes", "communes", "ogr")
+```
+
+et ensuite on a pu appeler des **méthodes** sur cet objet, comme :
+
+```python
+layer.setName("Communes")
+layer.name()  # Retourne "Communes"
+```
 
 !!! tip
     Vous pouvez relire le passage sur la POO en début de [formation](./console.md#rappel-sur-la-poo).
 
-Nous allons faire un "très" petit exemple rapide. Écrivons notre premier jeu vidéo en console !
+### Exemple
+
+Nous allons faire un "très" petit exemple rapide. Écrivons notre premier jeu vidéo en console ! 🎮
 
 ```python
 
@@ -64,24 +79,75 @@ class Personnage:
             self.energie += energie
         else:
             self.energie = MAX_ENERGIE
-
+     
     def __str__(self):
         return f"Je suis {self.nom} et j'ai {self.energie} points d'énergie"
 
-
-a = Personnage('Bob')
-a.courir()
-a.dormir()
-a.manger()
-print(a)
-
 ```
+
+### Utilisation de notre classe
+
+`dir` est une méthode qui prend une variable en paramètre et qui indique les propriétés/méthodes de notre variable.
+On peut aussi utiliser `help` qui est plus présentable.
+
+```python    
+a = Personnage('Bob')
+dir(a)
+help(a)
+```
+
+Que remarquons-nous ?
+
+??? "Solution"
+    ```python
+    a = Personnage('Bob')
+    a.courir()
+    a.dormir()
+    a.manger()
+    print(a)
+    ```
+
+Afficher le nom du personnage (et juste son nom, pas la phrase de présentation)
+
+### Ajouter d'autres méthodes
+
+Ajoutons une méthode `dialoguer` pour discuter avec un **autre** personnage.
+
+Nous pouvons désormais utiliser le constructeur afin de créer deux **instances** de notre **classe**.
+
+??? "Solution pour la méthode `dialoguer()`"
+
+    ```python
+    def dialoguer(self, autre_personnage):
+        if self.energie <= 0:
+            print(f"{self.nom} ne peut pas dialoguer car il n'a pas assez d'énergie.")
+            return
+        
+        print(f"{self.nom} dialogue avec {autre_personnage.nom} et ils échangent des informations secrètes")
+    ```
+
+Continuons notre classe pour la gestion de son inventaire. Admettons que notre personnage puisse ramasser des objets
+afin de les mettre dans son sac à dos.
+
+1. Il va falloir ajouter une nouvelle **propriété** à notre classe de type `list` que l'on peut nommer `inventaire`. Par
+   défaut, son inventaire sera vide.
+2. Ajoutons 3 méthodes : `ramasser`, `deposer` et `utiliser`. Pour le moment, pour faciliter l'exercice, utilisons une
+   chaîne de caractère pour désigner l'objet. Ces méthodes vont interagir avec notre `inventaire` à l'aide des méthodes
+   `remove()`, `append()` que l'on trouve sur une liste.
+3. Pour les méthodes `deposer` et `utiliser`, nous pouvons avoir à créer une autre méthode **privée** afin de vérifier
+   l'existence de l'objet dans l'inventaire. Par convention, nous préfixons la méthode par `_` comme `_est_dans_inventaire`
+   afin de signaler que c'est une méthode dite **privée**.
+4. Ajoutons des **commentaires** et/ou des **docstrings**, CF mémo Python. On peut utiliser la méthode `help`
+
+!!! info
+    Il est important de comprendre que la POO permet de construire une sorte de boîte opaque du point de vue de
+    l'utilisateur de la classe. Un peu comme une voiture. Elles ont toutes un capot et une pédale de frein.
 
 ## Documentation
 
-Pour l'écriture d'un script Processing, tant en utilisant la POO ou la version avec les décorateurs, il y a
+Pour l'écriture d'un script Processing, tant en utilisant la **POO** ou la version avec les décorateurs, il y a
 une page sur la 
-[documentation](https://docs.qgis.org/3.16/fr/docs/user_manual/processing/scripts.html#writing-new-processing-algorithms-as-python-scripts).
+[documentation](https://docs.qgis.org/latest/fr/docs/user_manual/processing/scripts.html#writing-new-processing-algorithms-as-python-scripts).
 
 ## Utiliser Processing en Python avec un algorithme existant
 
@@ -222,7 +288,7 @@ id,2,3,0,ID
 n,10,10,0,Nom rue
 ```
 
-### Création du coeur de notre script
+### Création du cœur de notre script
 
 * Commençons par écrire le script en console
 * Il nous faut une fonction qui liste les CSV dans un dossier.
@@ -254,7 +320,7 @@ def lire_csv(csv_file):
     crs = None
     fields = []
     
-    with open(csv_file) as csv_file:
+    with open(csv_file) as csvfile:
         reader = csv.reader(csvfile)
         for i, row in enumerate(reader):
             if i == 0:
@@ -291,7 +357,7 @@ for csv_file in csv_files:
 
 ```
 
-Nous avons le coeur de notre algorithme, qui fonctionne dans la console Python. Si l'utilisateur souhaite 
+Nous avons le cœur de notre algorithme, qui fonctionne dans la console Python. Si l'utilisateur souhaite 
 changer de thématique pour la génération des couches (ne pas utiliser `processing_canalisation` mais plutôt
 `processing_fibre_optique` ou `processing_plu`), il faut qu'il modifie à la main la ligne de Python, ce n'est
 pas très ergonomique.
@@ -459,7 +525,7 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
         """
         Returns a localised short helper string for the algorithm. This string
         should provide a basic description about what the algorithm does and the
-        parameters and outputs associated with it..
+        parameters and outputs associated with it.
         """
         return self.tr("Example algorithm short description")
 
@@ -551,7 +617,7 @@ class ExampleProcessingAlgorithm(QgsProcessingAlgorithm):
             
         return {self.OUTPUT: results}
 ```
-Nous avons désormais un nouveau algorithme dans la boîte à outils pour générer un modèle de données suivant 
+Nous avons désormais un nouvel algorithme dans la boîte à outils pour générer un modèle de données suivant 
 une thématique.
 
 ### Introduction aux décorateurs
@@ -660,3 +726,37 @@ On peut alors le modifier avec plus de finesse.
 **On ne peut pas reconvertir un script Python en modèle**.
 
 * Depuis un modèle, cliquer sur le bouton "Convertir en script Processing".
+
+
+## Utiliser un script Processing dans une action
+
+On peut utiliser `processing.run()` dans le code d'une action, pour faire une zone tampon sur un point en particulier
+par exemple.
+
+## Solution
+
+Sur la classe Personnage ci-dessus :
+
+```python
+def ramasser(self, un_objet):
+    print(f"{self.nom} ramasse {un_objet} et le met dans son inventaire.")
+    self.inventaire.append(un_objet)
+
+def utiliser(self, un_objet):
+    if self._est_dans_inventaire(un_objet):
+        print(f"{self.nom} utilise {un_objet}")
+    else:
+        print(f"{self.nom} ne possède pas {un_objet}")
+
+def deposer(self, un_objet):
+    if self._est_dans_inventaire(un_objet):
+        print(f"{self.nom} dépose {un_objet}")
+        self.inventaire.remove(un_objet)
+
+def _est_dans_inventaire(self, un_objet) -> bool:
+    return un_objet in self.inventaire
+
+def donner(self, autre_personnage, un_objet):
+    self.inventaire.remove(un_objet)
+    autre_personnage.inventaire.append(un_objet)
+```

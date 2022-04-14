@@ -10,3 +10,6 @@ build/
 # Data
 *.gpkg-shm
 *.gpkg-wal
+
+# Temp
+.~*

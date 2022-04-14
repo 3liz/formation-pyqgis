@@ -14,9 +14,9 @@ qgis_process
 
 `cd` pour Change Directory. Il peut s'agir d'un chemin différent, comme `C:/Program Files/QGIS 3.14/bin/`
 
-On peut lancer les algorithmes, les modèles, les scripts qui sont dans la version graphique de QGIS Processing.
+On peut lancer les algorithmes, les modèles, les scripts Python qui sont dans la version graphique de QGIS Processing.
 
-On peut donc lancer en ligne de commande, ou alors notre propre icône sur son bureau un exécutable.
+On peut donc lancer en ligne de commande, ou alors avec notre propre icône sur son bureau un exécutable.
 
 ```bash
 qgis_process run qgis:buffer -- INPUT=source.shp DISTANCE=2 OUTPUT=buffered.shp

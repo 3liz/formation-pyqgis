@@ -33,15 +33,16 @@ Si nécessaire, il peut-être utile d'avoir en plus :
 
 * Présentation
     * [Python dans QGIS](python-qgis.md)
-    * [Mémo Python](memo-python.md)
-* Premier pas
+    * [Mémo Python](memo-python.md), sans PyQGIS
+* Premier pas avec l'API PyQGIS
     * [Console](console.md)
     * [Fonctions & Scripts](fonctions-scripts.md)
     * [Sélection & Parcours](selection-parcours-entites.md)
 * Utilisation simple
     * [Action](action.md)
     * [Formulaire](formulaire.md)
-* Utilisation avancé
+    <!-- * [Manipuler la légende et une jointure](legende.md) -->
+* Utilisation avancée
     * [Script Processing](script-processing.md)
     * [Extension générique](extension-generique.md)
     * [Extension graphique](extension-graphique.md)
