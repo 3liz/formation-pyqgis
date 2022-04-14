@@ -2200,19 +2200,72 @@ On peut alors le modifier avec plus de finesse.</p>
 <h2 id="utiliser-un-script-processing-dans-une-action">Utiliser un script Processing dans une action<a class="headerlink" href="#utiliser-un-script-processing-dans-une-action" title="Permanent link">#</a></h2>
 <p>On peut utiliser <code>processing.run()</code> dans le code d'une action, pour faire une zone tampon sur un point en particulier
 par exemple.</p>
-<p>On peut lancer, graphiquement depuis la boîte à outil Processing, une zone tampon, <strong>avec</strong> une sélection. Regardons 
-ensuite dans l'historique Processing pour voir comment QGIS a pu spécifier la sélection dans son appel PyQGIS.</p>
+<p>On peut lancer, graphiquement depuis la boîte à outil Processing, une zone tampon, <strong>avec</strong> une <strong>sélection</strong>.
+Regardons ensuite dans l'historique Processing pour voir comment QGIS a pu spécifier la sélection dans son appel PyQGIS.</p>
+<p>On note l'usage d'une nouvelle classe <code>QgsProcessingFeatureSourceDefinition</code>.</p>
 <p>On souhaite donc pouvoir faire une zone tampon personnalisée en cliquant sur un point à l'aide d'une action.</p>
 <p>Il faut donc revoir le code dans le chapitre <a href="../action/">actions</a> pour voir comment créer une action.
-Pour utiliser la sélection, nous allons faire :</p>
+Pour utiliser la sélection, nous allons faire dans l'action :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayer</span><span class="p">(</span><span class="s1">&#39;[% @layer_id %]&#39;</span><span class="p">)</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayer</span><span class="p">(</span><span class="s1">&#39;[% @layer_id %]&#39;</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">selectByIds</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;[% $id %]&#39;</span><span class="p">)])</span>
+<span class="c1"># Ajouter ici le code procesing.run avec une sélection</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
 <p>On peut compléter l'action avec un <code>processing.run</code> en utilisant uniquement l'entité en sélection.</p>
+<details>
+<summary>Solution</summary>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">processing</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayer</span><span class="p">(</span><span class="s1">&#39;[% @layer_id %]&#39;</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">selectByIds</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;[% $id %]&#39;</span><span class="p">)])</span>
+
+<span class="n">result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
+    <span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span>
+    <span class="p">{</span>
+        <span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="n">QgsProcessingFeatureSourceDefinition</span><span class="p">(</span>
+            <span class="s1">&#39;/home/etienne/tmp/formation_py_qgis/202201_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154/I_OSM_ZONE_ACTIVITE/PAI_ADMINISTRATIF_MILITAIRE.shp&#39;</span><span class="p">,</span>
+            <span class="n">selectedFeaturesOnly</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="s1">&#39;DISTANCE&#39;</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span>
+        <span class="s1">&#39;SEGMENTS&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
+        <span class="s1">&#39;END_CAP_STYLE&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+        <span class="s1">&#39;JOIN_STYLE&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
+        <span class="s1">&#39;MITER_LIMIT&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span>
+        <span class="s1">&#39;DISSOLVE&#39;</span><span class="p">:</span><span class="kc">False</span><span class="p">,</span>
+        <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span><span class="s1">&#39;TEMPORARY_OUTPUT&#39;</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">])</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+</details>
 <h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
 <p>Sur la classe Personnage ci-dessus :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
