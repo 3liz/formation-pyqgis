@@ -576,6 +576,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    Annotations
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1058,6 +1065,13 @@
         <li class="md-nav__item">
   <a href="#truc-et-astuces" class="md-nav__link">
     Truc et astuces
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#annotations" class="md-nav__link">
+    Annotations
   </a>
   
 </li>
@@ -1627,7 +1641,7 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
     <span class="sd">&quot;&quot;&quot;Retourne la partie entière et le reste d&#39;une division.&quot;&quot;&quot;</span>
     <span class="n">partie_entiere</span> <span class="o">=</span> <span class="n">entier</span> <span class="o">/</span> <span class="n">diviser_par</span>
     <span class="n">reste</span> <span class="o">=</span> <span class="n">entier</span> <span class="o">%</span> <span class="n">diviser_par</span>
-    <span class="k">return</span> <span class="n">partie_entiere</span><span class="p">,</span> <span class="n">reste</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">partie_entiere</span><span class="p">),</span> <span class="n">reste</span>
 </code></pre></div>
 </td></tr></table>
 <ul>
@@ -1723,20 +1737,22 @@ ou encore la partie sur l'écriture d'un <a href="../script-processing/">script 
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> -&gt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">user</span><span class="p">))</span>
 </code></pre></div>
 </td></tr></table></p>
-                
-                  
-                    
-
-<hr>
-<div class="md-source-date">
-  <small>
-    
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">April 6, 2022</span>
-      
-    
-  </small>
-</div>
-                  
+<h2 id="annotations">Annotations<a class="headerlink" href="#annotations" title="Permanent link">#</a></h2>
+<p>Dans la suite de la formation, il est possible de voir des <strong>annotations Python</strong>.
+Cela permet de spécifier le type des variables dans les paramètres des fonctions et/ou de définir le type de retour.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+<span class="k">def</span> <span class="nf">decomposer</span><span class="p">(</span><span class="n">entier</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">diviser_par</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
+    <span class="sd">&quot;&quot;&quot;Retourne la partie entière et le reste d&#39;une division.&quot;&quot;&quot;</span>
+    <span class="n">partie_entiere</span> <span class="o">=</span> <span class="n">entier</span> <span class="o">/</span> <span class="n">diviser_par</span>
+    <span class="n">reste</span> <span class="o">=</span> <span class="n">entier</span> <span class="o">%</span> <span class="n">diviser_par</span>
+    <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">partie_entiere</span><span class="p">),</span> <span class="n">reste</span>
+</code></pre></div>
+</td></tr></table>
                 
               
               

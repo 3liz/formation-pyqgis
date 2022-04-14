@@ -581,6 +581,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#avec-processing" class="md-nav__link">
+    Avec Processing
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -824,6 +831,13 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#avec-processing" class="md-nav__link">
+    Avec Processing
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -849,12 +863,18 @@
 </li>
 <li>On souhaite pouvoir faire notre propre action pour inverser le sens d'une ligne, par exemple une rivière.</li>
 <li>Pour la couche linéaire :</li>
-<li>Nous allons utiliser le script ci-dessous pour créer une couche <strong>très</strong> simple, mais qui permet de voir la construction d'une ligne en partant de zéro</li>
+<li>Nous allons utiliser le script ci-dessous pour créer une couche <strong>très</strong> simple, mais qui permet de voir la construction
+    d'une ligne en partant de zéro</li>
 <li>Sinon, pour aller <strong>beaucoup</strong> plus vite, ajouter la couche <code>D_OSM_HYDROGRAPHIE/TRONCON_COURS_EAU.shp</code>
     mais on ne voit pas comment construire la géométrie en partant de rien.</li>
 <li>Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une <code>Ligne de symbole</code> dans
   l'onglet <code>Symbologie</code> de la couche en question.</li>
 </ul>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>La couche <code>D_OSM_HYDROGRAPHIE/TRONCON_COURS_EAU.shp</code> est de type multilinestring. Nous allons donc prendre en compte
+ce cas par défaut dans la suite de ce tutoriel.</p>
+</div>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -875,13 +895,15 @@
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Notation pour ajouter des attributs en créant une couche mémoire</span>
+<span class="normal">21</span>
+<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Notation pour ajouter des attributs en créant une couche mémoire</span>
 <span class="c1"># https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/vector.html#from-an-instance-of-qgsvectorlayer</span>
 <span class="n">river</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s1">&#39;MultiLineString?crs=epsg:2154&amp;field=id:integer&amp;field=name:string(20)&amp;index=yes&#39;</span><span class="p">,</span> <span class="s1">&#39;Rivers&#39;</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">)</span>
 
 <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">river</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">river</span><span class="p">):</span>
+    <span class="c1"># Cette fonction permet de faire des vérifications sur les contraintes si nécessaires contrairement à QgsFeature(fields)</span>
     <span class="n">feature</span> <span class="o">=</span> <span class="n">QgsVectorLayerUtils</span><span class="o">.</span><span class="n">createFeature</span><span class="p">(</span><span class="n">river</span><span class="p">)</span>
     <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
     <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;Une rivière&#39;</span><span class="p">)</span>
@@ -1030,20 +1052,9 @@ d'une requête rapide :</p>
 <span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;raepa&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">run_action</span><span class="p">(</span><span class="s2">&quot;nom_de_laction&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-                
-                  
-                    
-
-<hr>
-<div class="md-source-date">
-  <small>
-    
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">November 23, 2021</span>
-      
-    
-  </small>
-</div>
-                  
+<h2 id="avec-processing">Avec Processing<a class="headerlink" href="#avec-processing" title="Permanent link">#</a></h2>
+<p>Dans le chapitre Processing, nous verrons comment intégrer un
+<a href="../script-processing/#utiliser-un-script-processing-dans-une-action">algorithme Processing</a> dans une action.</p>
                 
               
               

@@ -627,6 +627,33 @@
     Notion sur la POO en Python
   </a>
   
+    <nav class="md-nav" aria-label="Notion sur la POO en Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    Exemple
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilisation-de-notre-classe" class="md-nav__link">
+    Utilisation de notre classe
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajouter-dautres-methodes" class="md-nav__link">
+    Ajouter d'autres méthodes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -666,8 +693,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#creation-du-coeur-de-notre-script" class="md-nav__link">
-    Création du coeur de notre script
+  <a href="#creation-du-cur-de-notre-script" class="md-nav__link">
+    Création du cœur de notre script
   </a>
   
 </li>
@@ -687,6 +714,20 @@
         <li class="md-nav__item">
   <a href="#convertir-un-modele-processing-en-python" class="md-nav__link">
     Convertir un modèle Processing en python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utiliser-un-script-processing-dans-une-action" class="md-nav__link">
+    Utiliser un script Processing dans une action
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    Solution
   </a>
   
 </li>
@@ -856,6 +897,33 @@
     Notion sur la POO en Python
   </a>
   
+    <nav class="md-nav" aria-label="Notion sur la POO en Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    Exemple
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilisation-de-notre-classe" class="md-nav__link">
+    Utilisation de notre classe
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajouter-dautres-methodes" class="md-nav__link">
+    Ajouter d'autres méthodes
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -895,8 +963,8 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#creation-du-coeur-de-notre-script" class="md-nav__link">
-    Création du coeur de notre script
+  <a href="#creation-du-cur-de-notre-script" class="md-nav__link">
+    Création du cœur de notre script
   </a>
   
 </li>
@@ -916,6 +984,20 @@
         <li class="md-nav__item">
   <a href="#convertir-un-modele-processing-en-python" class="md-nav__link">
     Convertir un modèle Processing en python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#utiliser-un-script-processing-dans-une-action" class="md-nav__link">
+    Utiliser un script Processing dans une action
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    Solution
   </a>
   
 </li>
@@ -947,12 +1029,23 @@
 <a href="https://openclassrooms.com/fr/courses/4302126-decouvrez-la-programmation-orientee-objet-avec-python">tutoriel</a>
 sur le site d'OpenClassRooms sur le sujet.</p>
 <p>Mais depuis le début de la formation, nous l'utilisons sans trop le savoir. Les objets <code>Qgs*</code>, comme
-<code>QgsMapLayer</code> utilisent le principe de la POO.</p>
+<code>QgsVectorLayer</code> utilisent le principe de la POO.</p>
+<p>On a pu créer des objets QgsVectorLayer en appelant son <strong>constructeur</strong> :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;C:/chemin/vers/un/fichier.gpkg|layername=communes&quot;</span><span class="p">,</span> <span class="s2">&quot;communes&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>et ensuite on a pu appeler des <strong>méthodes</strong> sur cet objet, comme :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Communes&quot;</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>  <span class="c1"># Retourne &quot;Communes&quot;</span>
+</code></pre></div>
+</td></tr></table>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Vous pouvez relire le passage sur la POO en début de <a href="../console/#rappel-sur-la-poo">formation</a>.</p>
 </div>
-<p>Nous allons faire un "très" petit exemple rapide. Écrivons notre premier jeu vidéo en console !</p>
+<h3 id="exemple">Exemple<a class="headerlink" href="#exemple" title="Permanent link">#</a></h3>
+<p>Nous allons faire un "très" petit exemple rapide. Écrivons notre premier jeu vidéo en console ! 🎮</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -996,14 +1089,7 @@ sur le site d'OpenClassRooms sur le sujet.</p>
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="n">MAX_ENERGIE</span> <span class="o">=</span> <span class="mi">20</span>
 
@@ -1047,19 +1133,75 @@ sur le site d'OpenClassRooms sur le sujet.</p>
 
     <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Je suis </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et j&#39;ai </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie&quot;</span>
-
-
-<span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<h3 id="utilisation-de-notre-classe">Utilisation de notre classe<a class="headerlink" href="#utilisation-de-notre-classe" title="Permanent link">#</a></h3>
+<p><code>dir</code> est une méthode qui prend une variable en paramètre et qui indique les propriétés/méthodes de notre variable.
+On peut aussi utiliser <code>help</code> qui est plus présentable.</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">help</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+<p>Que remarquons-nous ?</p>
+<details>
+<summary>Solution</summary>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
 <span class="n">a</span><span class="o">.</span><span class="n">courir</span><span class="p">()</span>
 <span class="n">a</span><span class="o">.</span><span class="n">dormir</span><span class="p">()</span>
 <span class="n">a</span><span class="o">.</span><span class="n">manger</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
+</details>
+<p>Afficher le nom du personnage (et juste son nom, pas la phrase de présentation)</p>
+<h3 id="ajouter-dautres-methodes">Ajouter d'autres méthodes<a class="headerlink" href="#ajouter-dautres-methodes" title="Permanent link">#</a></h3>
+<p>Ajoutons une méthode <code>dialoguer</code> pour discuter avec un <strong>autre</strong> personnage.</p>
+<p>Nous pouvons désormais utiliser le constructeur afin de créer deux <strong>instances</strong> de notre <strong>classe</strong>.</p>
+<details>
+<summary>Solution pour la méthode <code>dialoguer()</code></summary>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">dialoguer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas dialoguer car il n&#39;a pas assez d&#39;énergie.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dialogue avec </span><span class="si">{</span><span class="n">autre_personnage</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et ils échangent des informations secrètes&quot;</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
+</details>
+<p>Continuons notre classe pour la gestion de son inventaire. Admettons que notre personnage puisse ramasser des objets
+afin de les mettre dans son sac à dos.</p>
+<ol>
+<li>Il va falloir ajouter une nouvelle <strong>propriété</strong> à notre classe de type <code>list</code> que l'on peut nommer <code>inventaire</code>. Par
+   défaut, son inventaire sera vide.</li>
+<li>Ajoutons 3 méthodes : <code>ramasser</code>, <code>deposer</code> et <code>utiliser</code>. Pour le moment, pour faciliter l'exercice, utilisons une
+   chaîne de caractère pour désigner l'objet. Ces méthodes vont interagir avec notre <code>inventaire</code> à l'aide des méthodes
+   <code>remove()</code>, <code>append()</code> que l'on trouve sur une liste.</li>
+<li>Pour les méthodes <code>deposer</code> et <code>utiliser</code>, nous pouvons avoir à créer une autre méthode <strong>privée</strong> afin de vérifier
+   l'existence de l'objet dans l'inventaire. Par convention, nous préfixons la méthode par <code>_</code> comme <code>_est_dans_inventaire</code>
+   afin de signaler que c'est une méthode dite <strong>privée</strong>.</li>
+<li>Ajoutons des <strong>commentaires</strong> et/ou des <strong>docstrings</strong>, CF mémo Python. On peut utiliser la méthode <code>help</code></li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Il est important de comprendre que la POO permet de construire une sorte de boîte opaque du point de vue de
+l'utilisateur de la classe. Un peu comme une voiture. Elles ont toutes un capot et une pédale de frein.</p>
+</div>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h2>
-<p>Pour l'écriture d'un script Processing, tant en utilisant la POO ou la version avec les décorateurs, il y a
+<p>Pour l'écriture d'un script Processing, tant en utilisant la <strong>POO</strong> ou la version avec les décorateurs, il y a
 une page sur la 
-<a href="https://docs.qgis.org/3.16/fr/docs/user_manual/processing/scripts.html#writing-new-processing-algorithms-as-python-scripts">documentation</a>.</p>
+<a href="https://docs.qgis.org/latest/fr/docs/user_manual/processing/scripts.html#writing-new-processing-algorithms-as-python-scripts">documentation</a>.</p>
 <h2 id="utiliser-processing-en-python-avec-un-algorithme-existant">Utiliser Processing en Python avec un algorithme existant<a class="headerlink" href="#utiliser-processing-en-python-avec-un-algorithme-existant" title="Permanent link">#</a></h2>
 <ul>
 <li>Sur une couche en EPSG:2154, faire un buffer de 10 mètres par exemple.</li>
@@ -1286,7 +1428,7 @@ id,2,3,0,ID
 n,10,10,0,Nom rue
 </code></pre></div>
 </td></tr></table>
-<h3 id="creation-du-coeur-de-notre-script">Création du coeur de notre script<a class="headerlink" href="#creation-du-coeur-de-notre-script" title="Permanent link">#</a></h3>
+<h3 id="creation-du-cur-de-notre-script">Création du cœur de notre script<a class="headerlink" href="#creation-du-cur-de-notre-script" title="Permanent link">#</a></h3>
 <ul>
 <li>Commençons par écrire le script en console</li>
 <li>Il nous faut une fonction qui liste les CSV dans un dossier.</li>
@@ -1368,7 +1510,7 @@ n,10,10,0,Nom rue
     <span class="n">crs</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
 
-    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">csv_file</span><span class="p">:</span>
+    <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">csv_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">csvfile</span><span class="p">:</span>
         <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">csvfile</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">reader</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
@@ -1404,7 +1546,7 @@ n,10,10,0,Nom rue
     <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
-<p>Nous avons le coeur de notre algorithme, qui fonctionne dans la console Python. Si l'utilisateur souhaite 
+<p>Nous avons le cœur de notre algorithme, qui fonctionne dans la console Python. Si l'utilisateur souhaite 
 changer de thématique pour la génération des couches (ne pas utiliser <code>processing_canalisation</code> mais plutôt
 <code>processing_fibre_optique</code> ou <code>processing_plu</code>), il faut qu'il modifie à la main la ligne de Python, ce n'est
 pas très ergonomique.</p>
@@ -1786,7 +1928,7 @@ pas très ergonomique.</p>
         <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a localised short helper string for the algorithm. This string</span>
 <span class="sd">        should provide a basic description about what the algorithm does and the</span>
-<span class="sd">        parameters and outputs associated with it..</span>
+<span class="sd">        parameters and outputs associated with it.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s2">&quot;Example algorithm short description&quot;</span><span class="p">)</span>
 
@@ -1879,7 +2021,7 @@ pas très ergonomique.</p>
         <span class="k">return</span> <span class="p">{</span><span class="bp">self</span><span class="o">.</span><span class="n">OUTPUT</span><span class="p">:</span> <span class="n">results</span><span class="p">}</span>
 </code></pre></div>
 </td></tr></table>
-Nous avons désormais un nouveau algorithme dans la boîte à outils pour générer un modèle de données suivant 
+Nous avons désormais un nouvel algorithme dans la boîte à outils pour générer un modèle de données suivant 
 une thématique.</p>
 <h3 id="introduction-aux-decorateurs">Introduction aux décorateurs<a class="headerlink" href="#introduction-aux-decorateurs" title="Permanent link">#</a></h3>
 <p>Comme mentionné au début de ce chapitre, il est possible de ne pas utiliser la POO pour écrire un Script
@@ -2055,20 +2197,54 @@ On peut alors le modifier avec plus de finesse.</p>
 <ul>
 <li>Depuis un modèle, cliquer sur le bouton "Convertir en script Processing".</li>
 </ul>
-                
-                  
-                    
+<h2 id="utiliser-un-script-processing-dans-une-action">Utiliser un script Processing dans une action<a class="headerlink" href="#utiliser-un-script-processing-dans-une-action" title="Permanent link">#</a></h2>
+<p>On peut utiliser <code>processing.run()</code> dans le code d'une action, pour faire une zone tampon sur un point en particulier
+par exemple.</p>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
+<p>Sur la classe Personnage ci-dessus :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ramasser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ramasse </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2"> et le met dans son inventaire.&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
 
-<hr>
-<div class="md-source-date">
-  <small>
-    
-      Dernière mise à jour: <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">July 29, 2021</span>
-      
-    
-  </small>
-</div>
-                  
+<span class="k">def</span> <span class="nf">utiliser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> utilise </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne possède pas </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">deposer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dépose </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">_est_dans_inventaire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">un_objet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span>
+
+<span class="k">def</span> <span class="nf">donner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+    <span class="n">autre_personnage</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+</code></pre></div>
+</td></tr></table>
                 
               
               
