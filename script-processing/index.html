@@ -2200,6 +2200,19 @@ On peut alors le modifier avec plus de finesse.</p>
 <h2 id="utiliser-un-script-processing-dans-une-action">Utiliser un script Processing dans une action<a class="headerlink" href="#utiliser-un-script-processing-dans-une-action" title="Permanent link">#</a></h2>
 <p>On peut utiliser <code>processing.run()</code> dans le code d'une action, pour faire une zone tampon sur un point en particulier
 par exemple.</p>
+<p>On peut lancer, graphiquement depuis la boîte à outil Processing, une zone tampon, <strong>avec</strong> une sélection. Regardons 
+ensuite dans l'historique Processing pour voir comment QGIS a pu spécifier la sélection dans son appel PyQGIS.</p>
+<p>On souhaite donc pouvoir faire une zone tampon personnalisée en cliquant sur un point à l'aide d'une action.</p>
+<p>Il faut donc revoir le code dans le chapitre <a href="../action/">actions</a> pour voir comment créer une action.
+Pour utiliser la sélection, nous allons faire :</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayer</span><span class="p">(</span><span class="s1">&#39;[% @layer_id %]&#39;</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">selectByIds</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;[% $id %]&#39;</span><span class="p">)])</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
+</code></pre></div>
+</td></tr></table>
+<p>On peut compléter l'action avec un <code>processing.run</code> en utilisant uniquement l'entité en sélection.</p>
 <h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
 <p>Sur la classe Personnage ci-dessus :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
