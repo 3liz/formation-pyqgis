@@ -5,23 +5,37 @@
 Depuis QGIS 3.16, il existe un outil [qgis_process](https://docs.qgis.org/latest/fr/docs/user_manual/processing/standalone.html)
 qui permet de lancer QGIS Processing en ligne de commande.
 
-Dans le shell OSGEO, taper :
+Quelques rappels pour utiliser la ligne de commande sous Windows :
+
+* `cd` pour *C**hange **D**irectory. Par exemple `cd C:/Program Files/QGIS 3.16/bin/`
+* `dir` pour lister les fichiers/dossiers d'un répertoire
+
+Dans le **shell OSGEO**, taper :
 
 ```bash
+cd C:/Program Files/QGIS 3.14/bin/
+# Il peut s'agit du chemin ci-dessous
 cd C:\OSGeo4W\apps\qgis-ltr\bin\
-qgis_process
 ```
 
-`cd` pour Change Directory. Il peut s'agir d'un chemin différent, comme `C:/Program Files/QGIS 3.14/bin/`
+On doit avoir désormais un exécutable `qgis_process-qgis-ltr.bat`
+
+```bash
+qgis_process-qgis-ltr.bat
+qgis_process-qgis-ltr.bat --help
+qgis_process-qgis-ltr.bat list
+```
 
 On peut lancer les algorithmes, les modèles, les scripts Python qui sont dans la version graphique de QGIS Processing.
 
 On peut donc lancer en ligne de commande, ou alors avec notre propre icône sur son bureau un exécutable.
 
 ```bash
-qgis_process run qgis:buffer -- INPUT=source.shp DISTANCE=2 OUTPUT=buffered.shp
 qgis_process help qgis:buffer
+qgis_process run qgis:buffer -- INPUT=/home/etienne/source.shp DISTANCE=2 OUTPUT=/tmp/sortie.gpkg
 ```
+
+L'idée de QGIS Process est soit de faire un petit exécutable ou alors de lancer le programme à intervalle de temps régulier.
 
 ![QGIS Processing Toolbox](./media/processing_provider.png)
 
@@ -29,6 +43,11 @@ qgis_process help qgis:buffer
 
 Il est possible de faire un programme qui **ne se lance** pas dans QGIS Bureautique mais qui **utilise**
 la librairie QGIS qui se trouve sur l'ordinateur.
+
+!!! warning
+    Grâce à `qgis_process`, c'est exemple d'application **standalone** perd la plupart de son intérêt.
+    Pour lancer QGIS en ligne de commande pour faire des traitements, il est **désormais fortement** conseillé
+    d'utiliser `qgis_process`.
 
 On peut donc créer son propre programme, en ligne de commande ou avec une interface graphique qui utilise le
 **moteur** de QGIS en arrière-plan pour utiliser ce que sait déjà faire QGIS.
