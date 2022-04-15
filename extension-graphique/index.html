@@ -1165,7 +1165,7 @@ correctement. Un bon <a href="../ide-git/#utilisation-dun-ide">IDE</a> peut sign
 <p>Créer un fichier <code>plugin.py</code> et ajouter le contenu en collant. Il est bien de vérifier les imports dans les
 deux fichiers.</p>
 <h2 id="un-dossier-resources">Un dossier resources<a class="headerlink" href="#un-dossier-resources" title="Permanent link">#</a></h2>
-<p>On peut créer un fichier <code>qgis_plugin_tools.py</code> afin d'y ajouter des <strong>outils</strong> :</p>
+<p>On peut créer un fichier <code>qgis_plugin_tools.py</code> à la racine de notre extension afin d'y ajouter des <strong>outils</strong> :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1185,11 +1185,7 @@ deux fichiers.</p>
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Tools to work with resource files.&quot;&quot;&quot;</span>
-
-<span class="sd">&quot;&quot;&quot;Tools to work with resources files.&quot;&quot;&quot;</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="sd">&quot;&quot;&quot;Tools to work with resources files.&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
@@ -1224,12 +1220,14 @@ deux fichiers.</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># En haut du fichier</span>
-<span class="kn">from</span> <span class="nn">votre_dossier_extension.qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># En haut du fichier</span>
+<span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="n">QIcon</span>
+<span class="kn">from</span> <span class="nn">.qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
 
 <span class="c1"># Quand nécessaire</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span>
-    <span class="n">QIcon</span><span class="p">(</span><span class="n">resources_path</span><span class="p">(</span><span class="s1">&#39;icons&#39;</span><span class="p">,</span> <span class="s1">&#39;icon.svg&#39;</span><span class="p">)),</span>
+    <span class="n">QIcon</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">resources_path</span><span class="p">(</span><span class="s1">&#39;icons&#39;</span><span class="p">,</span> <span class="s1">&#39;icon.svg&#39;</span><span class="p">))),</span>
     <span class="s1">&#39;Go!&#39;</span><span class="p">,</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">())</span>
 </code></pre></div>
