@@ -546,6 +546,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../expression/" class="md-nav__link">
+        Expression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgis/" class="md-nav__link">
+        PostGIS
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -1198,6 +1226,7 @@ afin de les mettre dans son sac à dos.</p>
 <p>Il est important de comprendre que la POO permet de construire une sorte de boîte opaque du point de vue de
 l'utilisateur de la classe. Un peu comme une voiture. Elles ont toutes un capot et une pédale de frein.</p>
 </div>
+<p><em>Il y a des corrections sur les dernières méthodes <a href="./#solution">à la fin</a></em></p>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h2>
 <p>Pour l'écriture d'un script Processing, tant en utilisant la <strong>POO</strong> ou la version avec les décorateurs, il y a
 une page sur la 
@@ -1241,7 +1270,7 @@ une page sur la
 <p>Pour obtenir l'identifiant de l'algorithme, laissez la souris sur le nom de
 l'algorithme pour avoir son info-bulle dans le panneau traitement.</p>
 </div>
-<p>Lien vers la documentation : <a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/console.html">https://docs.qgis.org/testing/en/docs/user_manual/processing/console.html</a></p>
+<p>Lien vers la documentation : <a href="https://docs.qgis.org/latest/fr/docs/user_manual/processing/console.html">https://docs.qgis.org/latest/fr/docs/user_manual/processing/console.html</a></p>
 <p>Pour obtenir la description d'un algorithme :
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">processing</span><span class="o">.</span><span class="n">algorithmHelp</span><span class="p">(</span><span class="s2">&quot;native:buffer&quot;</span><span class="p">)</span>
 </code></pre></div>
@@ -2211,7 +2240,7 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayer</span><span class="p">(</span><span class="s1">&#39;[% @layer_id %]&#39;</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">selectByIds</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;[% $id %]&#39;</span><span class="p">)])</span>
-<span class="c1"># Ajouter ici le code procesing.run avec une sélection</span>
+<span class="c1"># Ajouter ici le code processing.run avec une sélection</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
 </code></pre></div>
 </td></tr></table>
@@ -2238,9 +2267,7 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">processing</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">processing</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayer</span><span class="p">(</span><span class="s1">&#39;[% @layer_id %]&#39;</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">selectByIds</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;[% $id %]&#39;</span><span class="p">)])</span>
@@ -2248,9 +2275,7 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
 <span class="n">result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span>
     <span class="p">{</span>
-        <span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="n">QgsProcessingFeatureSourceDefinition</span><span class="p">(</span>
-            <span class="s1">&#39;/home/etienne/tmp/formation_py_qgis/202201_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154/I_OSM_ZONE_ACTIVITE/PAI_ADMINISTRATIF_MILITAIRE.shp&#39;</span><span class="p">,</span>
-            <span class="n">selectedFeaturesOnly</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
+        <span class="s1">&#39;INPUT&#39;</span><span class="p">:</span><span class="n">QgsProcessingFeatureSourceDefinition</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">source</span><span class="p">(),</span> <span class="n">selectedFeaturesOnly</span><span class="o">=</span><span class="kc">True</span><span class="p">),</span>
         <span class="s1">&#39;DISTANCE&#39;</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span>
         <span class="s1">&#39;SEGMENTS&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span>
         <span class="s1">&#39;END_CAP_STYLE&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span>
@@ -2335,7 +2360,7 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
     <nav class="md-footer__inner md-grid" aria-label="Pied de page">
       
         
-        <a href="../formulaire/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: Formulaire" rel="prev">
+        <a href="../postgis/" class="md-footer__link md-footer__link--prev" aria-label="Précédent: PostGIS" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -2344,7 +2369,7 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
               <span class="md-footer__direction">
                 Précédent
               </span>
-              Formulaire
+              PostGIS
             </div>
           </div>
         </a>

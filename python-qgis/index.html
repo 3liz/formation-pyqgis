@@ -667,6 +667,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../expression/" class="md-nav__link">
+        Expression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgis/" class="md-nav__link">
+        PostGIS
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -992,7 +1020,7 @@ peut aussi générer automatiquement l'interface graphique de l'algorithme et le
 <p>Il existe un modèle par défaut que l'on peut utiliser pour démarrer l'écriture d'un script Processing.
 Depuis la barre d'outils traitements, <code>Créer un nouveau script depuis un modèle.</code> Ce modèle utilise la syntaxe
 Programmation Orientée Objet. Depuis QGIS 3.6, on peut également utiliser la syntaxe par décorateur <code>@alg</code>.</p>
-<p>Voir la documentation <a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator">https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator</a></p>
+<p>Voir la documentation <a href="https://docs.qgis.org/latest/fr/docs/user_manual/processing/scripts.html#the-alg-decorator">https://docs.qgis.org/latest/fr/docs/user_manual/processing/scripts.html#the-alg-decorator</a></p>
 <p><img alt="Script template" src="../media/script_template.png" /></p>
 <h2 id="un-modele-processing-en-python">Un modèle Processing en Python<a class="headerlink" href="#un-modele-processing-en-python" title="Permanent link">#</a></h2>
 <p>Depuis QGIS 3.6, on peut désormais exporter un modèle de traitement Processing en Python.
@@ -1012,7 +1040,7 @@ ou sinon ils peuvent être installés par un dossier ZIP.</li>
 </ul>
 </li>
 <li>Plugin Reloader permet de simplifier le développement en évitant de recharger QGIS</li>
-<li>Documentation plugin QGIS Serveur : <a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/server.html">https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/server.html</a></li>
+<li>Documentation plugin QGIS Serveur : <a href="https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/server.html">https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/server.html</a></li>
 </ul>
 <h2 id="fournisseur-processing-dans-une-extension-processing-provider">Fournisseur Processing dans une extension (Processing Provider)<a class="headerlink" href="#fournisseur-processing-dans-une-extension-processing-provider" title="Permanent link">#</a></h2>
 <p>Similaire au script Processing, une extension QGIS peut aussi avoir son propre fournisseur d'algorithme.</p>
@@ -1022,7 +1050,7 @@ ou sinon ils peuvent être installés par un dossier ZIP.</li>
 <ul>
 <li>soit lors du plugin builder</li>
 <li>ou manuellement en suivant la documentation pour l'ajout à un plugin existant :
-  <a href="https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html">https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html</a> </li>
+  <a href="https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/processing.html">https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/processing.html</a> </li>
 </ul>
 <p>Il se peut que certaines extensions ne soient <em>que</em> des fournisseurs Processing.</p>
 <h2 id="expressions">Expressions<a class="headerlink" href="#expressions" title="Permanent link">#</a></h2>
@@ -1035,30 +1063,10 @@ On peut également les utiliser à chaque fois que vous pouvez voir ce symbole :
 <img alt="Plugin expression" src="../media/plugin_expression.png" /></p>
 <!-- ![Processing provider](./media/editeur_expression.png) -->
 
-<p>Exemple de code d'une expression :
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nd">@qgsfunction</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;Custom&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">my_sum</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">feature</span><span class="p">,</span> <span class="n">parent</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Calculates the sum of the two parameters value1 and value2.</span>
-<span class="sd">    &lt;h2&gt;Example usage:&lt;/h2&gt;</span>
-<span class="sd">    &lt;ul&gt;</span>
-<span class="sd">      &lt;li&gt;my_sum(5, 8) -&gt; 13&lt;/li&gt;</span>
-<span class="sd">      &lt;li&gt;my_sum(&quot;field1&quot;, &quot;field2&quot;) -&gt; 42&lt;/li&gt;</span>
-<span class="sd">    &lt;/ul&gt;</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">value1</span> <span class="o">+</span> <span class="n">value2</span>
-</code></pre></div>
-</td></tr></table></p>
+<ul>
+<li>Utilisation de l'API Wikipédia pour récupérer la <strong>description</strong> d'un terme :</li>
+</ul>
+<p><img alt="API Wikipédia dans QGIS" src="../media/editeur_expression_wikipedia.png" /></p>
 <h2 id="macros">Macros<a class="headerlink" href="#macros" title="Permanent link">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1098,7 +1106,7 @@ notre propre application graphique ou notre propre exécutable et ainsi utiliser
 On peut donc faire un programme en ligne de commande qui effectue une certaine opération dans un répertoire
 donné.</p>
 <p><strong>Depuis QGIS 3.16</strong>, nous pouvons lancer un modèle ou un script Processing depuis la ligne de commande depuis
-l'outil <a href="https://docs.qgis.org/testing/en/docs/user_manual/processing/standalone.html">qgis_process</a>.</p>
+l'outil <a href="https://docs.qgis.org/latest/fr/docs/user_manual/processing/standalone.html">qgis_process</a>.</p>
 <h2 id="le-fichier-startuppy">Le fichier "startup.py"<a class="headerlink" href="#le-fichier-startuppy" title="Permanent link">#</a></h2>
 <p>Si l'on place un fichier nommé <code>startup.py</code> dans le dossier Python du profil de l'utilisateur, QGIS va le
 lancer automatiquement à chaque ouverture de QGIS.</p>

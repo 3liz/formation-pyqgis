@@ -611,6 +611,34 @@
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../expression/" class="md-nav__link">
+        Expression
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../postgis/" class="md-nav__link">
+        PostGIS
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -897,7 +925,7 @@ ce cas par défaut dans la suite de ce tutoriel.</p>
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Notation pour ajouter des attributs en créant une couche mémoire</span>
-<span class="c1"># https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/vector.html#from-an-instance-of-qgsvectorlayer</span>
+<span class="c1"># https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/vector.html#from-an-instance-of-qgsvectorlayer</span>
 <span class="n">river</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s1">&#39;MultiLineString?crs=epsg:2154&amp;field=id:integer&amp;field=name:string(20)&amp;index=yes&#39;</span><span class="p">,</span> <span class="s1">&#39;Rivers&#39;</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">)</span>
 
 <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">river</span><span class="p">)</span>
