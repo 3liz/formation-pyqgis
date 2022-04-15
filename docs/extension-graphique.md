@@ -235,7 +235,7 @@ Dans une extension graphique pour les icônes :
 from qgis.PyQt.QtGui import QIcon
 from .qgis_plugin_tools import resources_path
 
-# Quand nécessaire
+# Quand nécessaire, à remplacer la QAction existante. Il s'agit du premier paramètre avec QIcon
 self.action = QAction(
     QIcon(str(resources_path('icons', 'icon.svg'))),
     'Go!',
@@ -246,7 +246,7 @@ Dans une extension Processing, dans le **provider** et les **algorithmes** :
 
 ```python
 # En haut du fichier
-from votre_dossier_extension.qgis_plugin_tools import resources_path
+from .qgis_plugin_tools import resources_path
 
 # Dans la classe
 def icon(self):
