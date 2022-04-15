@@ -195,3 +195,54 @@ En faisant un couper/coller, enlever la classe `MinimalPlugin` du fichier `__ini
 
 Créer un fichier `plugin.py` et ajouter le contenu en collant. Il est bien de vérifier les imports dans les
 deux fichiers.
+
+## Un dossier resources
+
+On peut créer un fichier `qgis_plugin_tools.py` afin d'y ajouter des **outils** :
+
+```python
+"""Tools to work with resource files."""
+
+"""Tools to work with resources files."""
+
+from pathlib import Path
+
+
+def plugin_path(*args) -> Path:
+    """Return the path to the plugin root folder."""
+    path = Path(__file__).resolve().parent
+    for item in args:
+        path = path.joinpath(item)
+
+    return path
+
+
+def resources_path(*args) -> Path:
+    """Return the path to the plugin resources folder."""
+    return plugin_path("resources", *args)
+
+# On peut ajouter ici une méthode qui charge un fichier UI qui se trouve dans le dossier "UI"
+# et retourne la classe directement
+```
+
+On peut ensuite créer un dossier `resources` puis `icons` afin d'y déplacer un fichier PNG, JPG, SVG.
+
+!!! warning
+    Attention à la taille de vos fichiers pour un petit icône
+
+Dans une extension graphique pour les icônes :
+
+```python
+self.action = QAction(
+    QIcon(resources_path('icons', 'icon.svg')),
+    'Go!',
+    self.iface.mainWindow())
+```
+
+Dans une extension Processing, dans le **provider** et les **algorithmes** :
+
+```python
+def icon(self):
+    return QIcon(str(resources_path("icons", "icon.png")))
+
+```
