@@ -233,6 +233,10 @@ On peut ensuite créer un dossier `resources` puis `icons` afin d'y déplacer un
 Dans une extension graphique pour les icônes :
 
 ```python
+# En haut du fichier
+from votre_dossier_extension.qgis_plugin_tools import resources_path
+
+# Quand nécessaire
 self.action = QAction(
     QIcon(resources_path('icons', 'icon.svg')),
     'Go!',
@@ -242,7 +246,10 @@ self.action = QAction(
 Dans une extension Processing, dans le **provider** et les **algorithmes** :
 
 ```python
+# En haut du fichier
+from votre_dossier_extension.qgis_plugin_tools import resources_path
+
+# Dans la classe
 def icon(self):
     return QIcon(str(resources_path("icons", "icon.png")))
-
 ```
