@@ -1225,7 +1225,7 @@ deux fichiers.</p>
 <span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="n">QIcon</span>
 <span class="kn">from</span> <span class="nn">.qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
 
-<span class="c1"># Quand nécessaire</span>
+<span class="c1"># Quand nécessaire, à remplacer la QAction existante. Il s&#39;agit du premier paramètre avec QIcon</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span>
     <span class="n">QIcon</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">resources_path</span><span class="p">(</span><span class="s1">&#39;icons&#39;</span><span class="p">,</span> <span class="s1">&#39;icon.svg&#39;</span><span class="p">))),</span>
     <span class="s1">&#39;Go!&#39;</span><span class="p">,</span>
@@ -1239,7 +1239,7 @@ deux fichiers.</p>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># En haut du fichier</span>
-<span class="kn">from</span> <span class="nn">votre_dossier_extension.qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
+<span class="kn">from</span> <span class="nn">.qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
 
 <span class="c1"># Dans la classe</span>
 <span class="k">def</span> <span class="nf">icon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
