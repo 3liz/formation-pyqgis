@@ -34,7 +34,7 @@ Il existe un modèle par défaut que l'on peut utiliser pour démarrer l'écritu
 Depuis la barre d'outils traitements, `Créer un nouveau script depuis un modèle.` Ce modèle utilise la syntaxe
 Programmation Orientée Objet. Depuis QGIS 3.6, on peut également utiliser la syntaxe par décorateur `@alg`.
 
-Voir la documentation https://docs.qgis.org/testing/en/docs/user_manual/processing/scripts.html#the-alg-decorator
+Voir la documentation https://docs.qgis.org/latest/fr/docs/user_manual/processing/scripts.html#the-alg-decorator
 
 ![Script template](media/script_template.png)
 
@@ -57,7 +57,7 @@ ou sinon ils peuvent être installés par un dossier ZIP.
     * Utilisation du Plugin Builder
     * ou squelette minimum : https://github.com/wonder-sk/qgis-minimal-plugin
 * Plugin Reloader permet de simplifier le développement en évitant de recharger QGIS
-* Documentation plugin QGIS Serveur : https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/server.html
+* Documentation plugin QGIS Serveur : https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/server.html
 
 ## Fournisseur Processing dans une extension (Processing Provider)
 
@@ -71,7 +71,7 @@ Ajout de Processing à un plugin QGIS :
 
 * soit lors du plugin builder
 * ou manuellement en suivant la documentation pour l'ajout à un plugin existant :
-  https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/processing.html 
+  https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/processing.html 
 
 Il se peut que certaines extensions ne soient *que* des fournisseurs Processing.
 
@@ -88,20 +88,9 @@ Un plugin, ou même simplement un utilisateur, peut enregistrer ses propres expr
 
 <!-- ![Processing provider](./media/editeur_expression.png) -->
 
-Exemple de code d'une expression :
-```python
-@qgsfunction(args='auto', group='Custom')
-def my_sum(value1, value2, feature, parent):
-    """
-    Calculates the sum of the two parameters value1 and value2.
-    <h2>Example usage:</h2>
-    <ul>
-      <li>my_sum(5, 8) -> 13</li>
-      <li>my_sum("field1", "field2") -> 42</li>
-    </ul>
-    """
-    return value1 + value2
-```
+* Utilisation de l'API Wikipédia pour récupérer la **description** d'un terme :
+
+![API Wikipédia dans QGIS](media/editeur_expression_wikipedia.png)
 
 ## Macros
 
@@ -153,7 +142,7 @@ On peut donc faire un programme en ligne de commande qui effectue une certaine o
 donné.
 
 **Depuis QGIS 3.16**, nous pouvons lancer un modèle ou un script Processing depuis la ligne de commande depuis
-l'outil [qgis_process](https://docs.qgis.org/testing/en/docs/user_manual/processing/standalone.html).
+l'outil [qgis_process](https://docs.qgis.org/latest/fr/docs/user_manual/processing/standalone.html).
 
 ## Le fichier "startup.py"
 

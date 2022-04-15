@@ -143,6 +143,8 @@ afin de les mettre dans son sac à dos.
     Il est important de comprendre que la POO permet de construire une sorte de boîte opaque du point de vue de
     l'utilisateur de la classe. Un peu comme une voiture. Elles ont toutes un capot et une pédale de frein.
 
+*Il y a des corrections sur les dernières méthodes [à la fin](./script-processing.md#solution)*
+
 ## Documentation
 
 Pour l'écriture d'un script Processing, tant en utilisant la **POO** ou la version avec les décorateurs, il y a
@@ -177,7 +179,7 @@ processing.run(
     Pour obtenir l'identifiant de l'algorithme, laissez la souris sur le nom de
     l'algorithme pour avoir son info-bulle dans le panneau traitement.
 
-Lien vers la documentation : https://docs.qgis.org/testing/en/docs/user_manual/processing/console.html
+Lien vers la documentation : https://docs.qgis.org/latest/fr/docs/user_manual/processing/console.html
 
 Pour obtenir la description d'un algorithme :
 ```python
@@ -746,7 +748,7 @@ Pour utiliser la sélection, nous allons faire dans l'action :
 ```python
 layer = QgsProject.instance().mapLayer('[% @layer_id %]')
 layer.selectByIds([int('[% $id %]')])
-# Ajouter ici le code procesing.run avec une sélection
+# Ajouter ici le code processing.run avec une sélection
 layer.removeSelection()
 ```
 
@@ -762,9 +764,7 @@ On peut compléter l'action avec un `processing.run` en utilisant uniquement l'e
     result = processing.run(
         "native:buffer",
         {
-            'INPUT':QgsProcessingFeatureSourceDefinition(
-                '/home/etienne/tmp/formation_py_qgis/202201_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154/I_OSM_ZONE_ACTIVITE/PAI_ADMINISTRATIF_MILITAIRE.shp',
-                selectedFeaturesOnly=True),
+            'INPUT':QgsProcessingFeatureSourceDefinition(layer.source(), selectedFeaturesOnly=True),
             'DISTANCE':1000,
             'SEGMENTS':5,
             'END_CAP_STYLE':0,

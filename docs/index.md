@@ -41,6 +41,8 @@ Si nécessaire, il peut-être utile d'avoir en plus :
 * Utilisation simple
     * [Action](action.md)
     * [Formulaire](formulaire.md)
+    * [Expression](expression.md)
+    * [Interroger une base PostGIS](postgis.md)
     <!-- * [Manipuler la légende et une jointure](legende.md) -->
 * Utilisation avancée
     * [Script Processing](script-processing.md)

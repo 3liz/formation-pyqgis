@@ -21,6 +21,8 @@ nav:
     - Utilisation simple:
       - Action: action.md
       - Formulaire: formulaire.md
+      - Expression: expression.md
+      - PostGIS: postgis.md
     - Utilisation avancé:
       - Script Processing: script-processing.md
       - Extension Générique: extension-generique.md

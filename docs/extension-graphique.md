@@ -36,7 +36,7 @@ from qgis.PyQt import uic
 from pathlib import Path
 
 folder = Path(__file__).resolve().parent
-ui_file = folder.joinpath('dialog.ui')
+ui_file = folder / 'dialog.ui'
 ui_class, _ = uic.loadUiType(ui_file)
 
 
@@ -120,6 +120,9 @@ def layer_changed(self):
 On peut donc désormais cumuler l'ensemble des chapitres précédents pour lancer des algorithmes, manipuler les
 données, etc.
 
+!!! tip "Bonus"
+    Ajouter un nouveau bouton pour ouvrir une fenêtre d'un dialogue Processing 🚀
+
 ## Solution
 
 ??? Afficher
@@ -132,7 +135,7 @@ données, etc.
     from pathlib import Path
     
     folder = Path(__file__).resolve().parent
-    ui_file = folder.joinpath('dialog.ui')
+    ui_file = folder / 'dialog.ui'
     ui_class, _ = uic.loadUiType(ui_file)
     
     

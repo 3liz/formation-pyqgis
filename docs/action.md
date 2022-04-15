@@ -17,7 +17,7 @@
 
 ```python
 # Notation pour ajouter des attributs en créant une couche mémoire
-# https://docs.qgis.org/testing/en/docs/pyqgis_developer_cookbook/vector.html#from-an-instance-of-qgsvectorlayer
+# https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/vector.html#from-an-instance-of-qgsvectorlayer
 river = QgsVectorLayer('MultiLineString?crs=epsg:2154&field=id:integer&field=name:string(20)&index=yes', 'Rivers', 'memory')
 
 QgsProject.instance().addMapLayer(river)

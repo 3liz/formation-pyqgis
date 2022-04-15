@@ -12,7 +12,7 @@ documentation et comment rechercher des informations.
 Voici une liste de liens pour la documentation :
 
 * [https://docs.qgis.org](https://docs.qgis.org) qui regroupe :
-    * [Le Python Cookbook https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook](https://docs.qgis.org/3.16/en/docs/pyqgis_developer_cookbook/) (recette de cuisine)
+    * [Le Python Cookbook https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook](https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/) (recette de cuisine)
     * [L'API C++ https://qgis.org/api/3.16/](https://qgis.org/api/3.16/)
     * [L'API Python https://qgis.org/pyqgis/3.16/](https://qgis.org/pyqgis/3.16/)
 * [Documentation de l'API Qt](https://doc.qt.io/qt-5/classes.html)
