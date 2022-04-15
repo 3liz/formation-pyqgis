@@ -916,7 +916,11 @@ pour interagir avec une base de données PostGIS.</p>
 <span class="normal">25</span>
 <span class="normal">26</span>
 <span class="normal">27</span>
-<span class="normal">28</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProviderRegistry</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProviderRegistry</span>
 
 <span class="n">metadata</span> <span class="o">=</span> <span class="n">QgsProviderRegistry</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">providerMetadata</span><span class="p">(</span><span class="s1">&#39;postgres&#39;</span><span class="p">)</span>
 <span class="n">connection</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">findConnection</span><span class="p">(</span><span class="s2">&quot;nom de la connexion PG dans votre panneau&quot;</span><span class="p">)</span>
@@ -943,6 +947,10 @@ pour interagir avec une base de données PostGIS.</p>
 <span class="n">uri</span> <span class="o">=</span> <span class="n">QgsDataSourceUri</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">uri</span><span class="p">())</span>
 <span class="n">uri</span><span class="o">.</span><span class="n">setTable</span><span class="p">(</span><span class="s1">&#39;(SELECT * FROM schema.table)&#39;</span><span class="p">)</span>
 <span class="n">uri</span><span class="o">.</span><span class="n">setKeyColumn</span><span class="p">(</span><span class="s1">&#39;uid&#39;</span><span class="p">)</span>
+
+<span class="c1"># Avec une geom</span>
+<span class="n">uri</span><span class="o">.</span><span class="n">setGeomColumn</span><span class="p">(</span><span class="s1">&#39;geom&#39;</span><span class="p">)</span>
+
 <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">uri</span><span class="p">(),</span> <span class="s1">&#39;Requête SELECT&#39;</span><span class="p">,</span> <span class="s1">&#39;postgres&#39;</span><span class="p">)</span>
 </code></pre></div>
 </td></tr></table>
