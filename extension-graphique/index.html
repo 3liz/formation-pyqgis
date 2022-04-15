@@ -1220,7 +1220,15 @@ deux fichiers.</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># En haut du fichier</span>
+<span class="kn">from</span> <span class="nn">votre_dossier_extension.qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
+
+<span class="c1"># Quand nécessaire</span>
+<span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span>
     <span class="n">QIcon</span><span class="p">(</span><span class="n">resources_path</span><span class="p">(</span><span class="s1">&#39;icons&#39;</span><span class="p">,</span> <span class="s1">&#39;icon.svg&#39;</span><span class="p">)),</span>
     <span class="s1">&#39;Go!&#39;</span><span class="p">,</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">())</span>
@@ -1228,7 +1236,15 @@ deux fichiers.</p>
 </td></tr></table>
 <p>Dans une extension Processing, dans le <strong>provider</strong> et les <strong>algorithmes</strong> :</p>
 <table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">icon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># En haut du fichier</span>
+<span class="kn">from</span> <span class="nn">votre_dossier_extension.qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
+
+<span class="c1"># Dans la classe</span>
+<span class="k">def</span> <span class="nf">icon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">QIcon</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">resources_path</span><span class="p">(</span><span class="s2">&quot;icons&quot;</span><span class="p">,</span> <span class="s2">&quot;icon.png&quot;</span><span class="p">)))</span>
 </code></pre></div>
 </td></tr></table>
