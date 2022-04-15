@@ -198,11 +198,9 @@ deux fichiers.
 
 ## Un dossier resources
 
-On peut créer un fichier `qgis_plugin_tools.py` afin d'y ajouter des **outils** :
+On peut créer un fichier `qgis_plugin_tools.py` à la racine de notre extension afin d'y ajouter des **outils** :
 
 ```python
-"""Tools to work with resource files."""
-
 """Tools to work with resources files."""
 
 from pathlib import Path
@@ -234,11 +232,12 @@ Dans une extension graphique pour les icônes :
 
 ```python
 # En haut du fichier
-from votre_dossier_extension.qgis_plugin_tools import resources_path
+from qgis.PyQt.QtGui import QIcon
+from .qgis_plugin_tools import resources_path
 
 # Quand nécessaire
 self.action = QAction(
-    QIcon(resources_path('icons', 'icon.svg')),
+    QIcon(str(resources_path('icons', 'icon.svg'))),
     'Go!',
     self.iface.mainWindow())
 ```
