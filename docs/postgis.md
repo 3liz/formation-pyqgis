@@ -56,6 +56,10 @@ QgsProject.instance().addMapLayer(layer)
 uri = QgsDataSourceUri(connection.uri())
 uri.setTable('(SELECT * FROM schema.table)')
 uri.setKeyColumn('uid')
+
+# Avec une geom
+uri.setGeomColumn('geom')
+
 layer = QgsVectorLayer(uri.uri(), 'Requête SELECT', 'postgres')
 ```
 
