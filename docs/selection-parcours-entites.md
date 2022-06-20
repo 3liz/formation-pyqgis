@@ -41,6 +41,51 @@ layer.invertSelection()
 layer.removeSelection()
 ```
 
+Le raccourci `iface.activeLayer()` est très pratique, mais de temps en temps on a besoin de **plusieurs** couches qui
+sont déjà dans la légende. Il existe dans `QgsProject` plusieurs méthodes pour récupérer des couches dans la légende :
+
+```python
+projet = QgsProject.instance()
+communes = projet.mapLayersByName('communes')
+insee = projet.mapLayersByName('tableau INSEE')
+```
+
+Notons le **s** dans `mapLayersByName`. Il peut y avoir plusieurs couches avec ce même nom de couche. La fonction retourne
+donc une liste de couches. Il convient alors de regarder si la liste est vide ou si elle contient plusieurs couches avec
+`len(communes)` par exemple.
+
+```python
+if len(communes) == 0:
+    print("Pas de couches dans la légende qui se nomme 'communes'")
+    layer = None
+else len(communes) >= 1:
+    layer = communes[0]
+```
+
+### Exemple d'une sélection avec un export
+
+On souhaite pouvoir exporter les communes par département.
+On peut créer une variable `depts = ['34', '30']` puis boucler dessus pour exporter les entités sélectionnées dans
+un nouveau fichier.
+
+
+```python
+layer = iface.activeLayer()
+
+depts = ['34', '30']
+for dept in depts:
+    layer.selectByExpression(f"\"INSEE_DEP\"  =  '{dept}'")
+    result = QgsVectorFileWriter.writeAsVectorFormat(
+        layer,
+        join(QgsProject.instance().homePath(), f'{dept}.shp'),
+        'utf-8',
+        layer.crs(),
+        'ESRI Shapefile',
+        onlySelected=True,  # Nouvelle option pour la sélection
+    )
+    print(result)
+```
+
 ## Boucler sur les entités à l'aide d'une expression
 
 L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas `NC`.
@@ -118,6 +163,21 @@ QgsProject.instance().addMapLayer(memory_layer)
 
 Regardons le résultat et corrigeons ce problème d'export afin d'obtenir les géométries et les attributs,
 il faut **supprimer** la ligne `NoGeometry` si vous l'avez.
+
+## Valeur NULL
+
+En PyQGIS, il existe la valeur `NULL` qui peut-être présente dans la table attributaire d'une couche vecteur.
+
+```python
+from qgis.PyQt.QtCore import NULL
+
+if feature['nom_attribut'] == NULL:
+    # Traiter la valeur NULL
+    pass
+else:
+    # Continuer
+    pass
+```
 
 ## Calculer un champ
 
@@ -232,6 +292,39 @@ for feature in layer.getFeatures(request):
 
 Nous souhaitons enregistrer ces informations dans une vraie table avec un nouveau champ `densite_population`.
 
+Solution plus simple :
+
+```python
+layer = iface.activeLayer()
+
+if 'densite' not in layer.fields().names():
+    with edit(layer):
+        field = QgsField('densite', QVariant.Double, prec=2, len=2)
+        layer.addAttribute(field)
+
+index = layer.fields().indexFromName('densite')
+layer.startEditing()
+request = QgsFeatureRequest()
+# request.setFilterExpression('to_int( "POPUL" ) > 10000')
+request.addOrderBy('NOM_COM')
+request.setSubsetOfAttributes(['NOM_COM', 'POPUL'], layer.fields())
+for feature in layer.getFeatures(request):
+    area = feature.geometry().area() / 1000000
+    try:
+        population = int(feature['POPUL'])
+    except ValueError:
+        population = 0
+    
+    densite = population/area
+    layer.changeAttributeValue(feature.id(), index, densite)
+    feature['densite'] = densite
+    # print('{commune} : {densite} habitants/km²'.format(commune=feature['NOM_COM'], densite=round(population/area,2)))
+
+layer.commitChanges()
+```
+
+Solution un peu plus complexe :
+
 ```python
 layer = iface.activeLayer()
 
@@ -300,19 +393,4 @@ with edit(petites_communes):
         petites_communes.changeAttributeValue(feature.id(), 7, centroid.y())
 
 QgsProject.instance().addMapLayer(petites_communes)
-```
-
-## Valeur NULL
-
-En PyQGIS, il existe la valeur `NULL` qui peut-être présente dans la table attributaire d'une couche vecteur.
-
-```python
-from qgis.PyQt.QtCore import NULL
-
-if feature['nom_attribut'] == NULL:
-    # Traiter la valeur NULL
-    pass
-else:
-    # Continuer
-    pass
 ```

@@ -267,6 +267,10 @@ for city in regions.values():
 
 for region, city in regions.items():
     print('Région {} dont le chef lieu est {}'.format(region, city))
+
+# Non recommandé, mais on peut le rencontrer
+for region in regions:
+  print(f"Région {region} dont le chef lieu est {regions[region]}")
 ```
 
 ## Recherche d'un élément
@@ -409,6 +413,8 @@ une_fonction(1,2,3, text='Ma phrase')
 ```
 
 ## POO : Programmation Orientée Objet
+
+Pour l'explication théorique, lire l'introduction dans le chapitre de [la console](console.md##rappel-sur-la-poo).
 
 On peut introduire l'utilisation de la POO à l'aide de l'objet `Path`. La documentation de cette classe se trouve
 [en ligne](https://docs.python.org/3/library/pathlib.html).

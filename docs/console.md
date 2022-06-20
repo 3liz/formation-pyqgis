@@ -142,7 +142,20 @@ communes.isValid()
 QgsProject.instance().addMapLayer(communes)
 ```
 
-??? "Afficher la solution complète"
+??? "Afficher la solution complète avec `pathlib`"
+    ```python
+    from pathlib import Path
+    project = QgsProject.instance()
+    racine = Path(project.homePath())
+    chemin = racine.joinpath('202201_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154', 'H_OSM_ADMINISTRATIF')
+    fichier_shape = chemin.joinpath('COMMUNE.shp')
+    # fichier_shape.is_file()
+    communes = QgsVectorLayer(str(fichier_shape), 'communes', 'ogr')
+    # communes.isValid()
+    QgsProject.instance().addMapLayer(communes)
+    ```
+
+??? "Afficher la solution complète avec `os.path`"
 	```python
 	from os.path import join, isfile, isdir
 
@@ -159,8 +172,13 @@ QgsProject.instance().addMapLayer(communes)
 * Explorer l'objet `communes` qui est un `QgsVectorLayer` à l'aide de la documentation pour chercher sa
   géométrie, le nombre d'entités.
   [API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.16/core/QgsVectorLayer.html)
-* Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre (explication dans l'exemple
-  ci-dessous)
+* Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre
+
+```python
+communes.geometryType() == QgsWkbTypes.PolygonGeometry
+communes.geometryType() == QgsWkbTypes.PointGeometry
+```
+
 * Essayer d'ouvrir et de clore une session d'édition
 * Essayer désormais de chercher son nom, la projection ou encore les seuils de visibilité de la couche.
 On ne les trouve pas dans la page `QgsVectorLayer` !
@@ -212,7 +230,7 @@ True
 Petit récapitulatif à tester pour voir si cela fonctionne correctement !
 
 ```python
-from os.path import join, isfile, isdir
+from os.path import join
 dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
 thematique = 'H_OSM_ADMINISTRATIF'
 couche = 'COMMUNE'
@@ -274,5 +292,5 @@ for feature in layer.getFeatures():
 Noter l'apparition de `...` au lieu de `>>>` après avoir écrit la première ligne du `for`.
 Il faut faire une indentation obligatoire !
 
-Pour afficher un attribut, on peut faire `print(feature['NOM_ARR']` pour afficher le contenu de l'attribut
+Pour afficher un attribut, on peut faire `print(feature['NOM_ARR'])` pour afficher le contenu de l'attribut
 `NOM_ARR`.
