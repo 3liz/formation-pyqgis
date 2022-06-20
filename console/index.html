@@ -1037,11 +1037,10 @@ class Voiture{
 </li>
 <li>Nous verrons progressivement ces différentes sections.</li>
 <li>Recherchons <code>filename</code>.
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
 <span class="n">project</span><span class="o">.</span><span class="n">fileName</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table></li>
+</code></pre></div></td></tr></table></div></li>
 <li>Ajoutons un titre à notre projet, recherchons donc <code>title</code> dans la page : <code>setTitle</code> dans la classe
   <a href="https://qgis.org/api/classQgsProject.html">QgsProject</a>.</li>
 </ul>
@@ -1060,7 +1059,7 @@ La méthode <code>setTitle</code> retourne <strong>rien</strong>, (<strong>void<
 </ul>
 </li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1071,7 +1070,7 @@ La méthode <code>setTitle</code> retourne <strong>rien</strong>, (<strong>void<
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
 <span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
 <span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="s1">&#39;nexistepas&#39;</span><span class="p">)</span>
 <span class="s1">&#39;/home/etienne/Documents/3liz/formation/nexistepas&#39;</span>
@@ -1083,30 +1082,48 @@ La méthode <code>setTitle</code> retourne <strong>rien</strong>, (<strong>void<
 <span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">chemin</span><span class="p">,</span> <span class="s1">&#39;COMMUNE.shp&#39;</span><span class="p">)</span>
 <span class="n">isfile</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">)</span>
 <span class="kc">True</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <ul>
 <li>Charger la couche vecteur à l'aide de <code>iface</code> <a href="https://qgis.org/api/classQgisInterface.html">QgisInterface</a>
   (et non pas <strong>Qgs</strong>Interface !)</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">communes</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">addVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">communes</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">addVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">communes</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <ul>
 <li>Charger la couche autrement (conseillé)
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">communes</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">communes</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
 <span class="n">communes</span><span class="o">.</span><span class="n">isValid</span><span class="p">()</span>
 <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">communes</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table></li>
+</code></pre></div></td></tr></table></div></li>
 </ul>
 <details>
-<summary>Afficher la solution complète</summary>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<summary>Afficher la solution complète avec <code>pathlib</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="n">racine</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">homePath</span><span class="p">())</span>
+<span class="n">chemin</span> <span class="o">=</span> <span class="n">racine</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;202201_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154&#39;</span><span class="p">,</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span><span class="p">)</span>
+<span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">chemin</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;COMMUNE.shp&#39;</span><span class="p">)</span>
+<span class="c1"># fichier_shape.is_file()</span>
+<span class="n">communes</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">),</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
+<span class="c1"># communes.isValid()</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">communes</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<details>
+<summary>Afficher la solution complète avec <code>os.path</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1115,7 +1132,7 @@ La méthode <code>setTitle</code> retourne <strong>rien</strong>, (<strong>void<
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
 
 <span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
 
@@ -1125,15 +1142,19 @@ La méthode <code>setTitle</code> retourne <strong>rien</strong>, (<strong>void<
 <span class="n">communes</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
 <span class="n">communes</span><span class="o">.</span><span class="n">isValid</span><span class="p">()</span>
 <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">communes</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </details>
 <ul>
 <li>Explorer l'objet <code>communes</code> qui est un <code>QgsVectorLayer</code> à l'aide de la documentation pour chercher sa
   géométrie, le nombre d'entités.
   <a href="https://qgis.org/api/classQgsVectorLayer.html">API QgsVectorLayer C++</a>, <a href="https://qgis.org/pyqgis/3.16/core/QgsVectorLayer.html">API QgsVectorLayer Python</a></li>
-<li>Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre (explication dans l'exemple
-  ci-dessous)</li>
+<li>Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">communes</span><span class="o">.</span><span class="n">geometryType</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsWkbTypes</span><span class="o">.</span><span class="n">PolygonGeometry</span>
+<span class="n">communes</span><span class="o">.</span><span class="n">geometryType</span><span class="p">()</span> <span class="o">==</span> <span class="n">QgsWkbTypes</span><span class="o">.</span><span class="n">PointGeometry</span>
+</code></pre></div></td></tr></table></div>
+<ul>
 <li>Essayer d'ouvrir et de clore une session d'édition</li>
 <li>Essayer désormais de chercher son nom, la projection ou encore les seuils de visibilité de la couche.
 On ne les trouve pas dans la page <code>QgsVectorLayer</code> !
@@ -1163,25 +1184,24 @@ QgsMapLayer &lt;-- QgsRasterLayer</div>
 <p>L'objet <code>QgsVectorLayer</code> hérite de <code>QgsMapLayer</code> qui est une classe commune avec <code>QgsMapLayer</code>.</p>
 <p><a href="https://qgis.org/api/classQgsMapLayer.html">API QgsMapLayer C++</a>, <a href="https://qgis.org/pyqgis/3.16/core/QgsMapLayer.html">API QgsMapLayer Python</a></p>
 <p>Regardons la fonction <code>isinstance</code> qui permet de tester si un objet est une instance d'une classe :</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">isinstance</span><span class="p">(</span><span class="n">communes</span><span class="p">,</span> <span class="n">QgsVectorLayer</span><span class="p">)</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">isinstance</span><span class="p">(</span><span class="n">communes</span><span class="p">,</span> <span class="n">QgsVectorLayer</span><span class="p">)</span>
 <span class="kc">True</span>
 <span class="nb">isinstance</span><span class="p">(</span><span class="n">communes</span><span class="p">,</span> <span class="n">QgsRasterLayer</span><span class="p">)</span>
 <span class="kc">False</span>
 <span class="nb">isinstance</span><span class="p">(</span><span class="n">communes</span><span class="p">,</span> <span class="n">QgsMapLayer</span><span class="p">)</span>
 <span class="kc">True</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <ul>
 <li>Objectif, ne pas afficher la couche commune pour une échelle plus petite que le <code>1:2 000 000</code>.</li>
 </ul>
 <h2 id="code">Code<a class="headerlink" href="#code" title="Permanent link">#</a></h2>
 <p>Petit récapitulatif à tester pour voir si cela fonctionne correctement !</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1198,7 +1218,7 @@ QgsMapLayer &lt;-- QgsRasterLayer</div>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
 <span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;201909_11_ILE_DE_FRANCE_SHP_L93_2154&#39;</span>
 <span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span>
 <span class="n">couche</span> <span class="o">=</span> <span class="s1">&#39;COMMUNE&#39;</span>
@@ -1216,52 +1236,48 @@ QgsMapLayer &lt;-- QgsRasterLayer</div>
 <span class="n">layer</span><span class="o">.</span><span class="n">setMaximumScale</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">setMinimumScale</span><span class="p">(</span><span class="mi">2000000</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">triggerRepaint</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <ul>
 <li>Ajouter également la couche <code>ARRONDISSEMENT</code> et sélectionner là.</li>
 </ul>
 <h2 id="parcourir-les-entites">Parcourir les entités<a class="headerlink" href="#parcourir-les-entites" title="Permanent link">#</a></h2>
 <p>Un raccourci a savoir, dans la console :
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
 Cela retourne la couche <code>QgsMapLayer</code> active dans la légende !</p>
 <p>On souhaite désormais itérer sur les polygones et les faire clignoter depuis la console.
 Nous allons donc avoir besoin de la méthode <code>getFeatures()</code> qui fait partie de <code>QgsVectorLayer</code>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="n">features</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">()</span>
 <span class="n">features</span>
 <span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">()</span>
 <span class="n">features</span><span class="o">.</span><span class="n">nextFeature</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
 <span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">flashFeatureIds</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="p">[</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">()])</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p><em>Note</em>, nous pouvons concaténer les deux dernières lignes à l'aide du caractère <code>;</code> pour que cela soit plus
 pratique.</p>
 <p>Ce code est plus pour la partie "amusante" pour montrer les limites de la console. Nous allons désormais
 utiliser un script Python dans le prochain chapitre.</p>
 <p>Petite chose supplémentaire avant de passer aux scripts, on souhaite désormais afficher le nom des
 arrondissements à l'aide d'une boucle <code>for</code>.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
     <span class="c1"># On peut traiter l&#39;entité courante grâce à la variable &quot;feature&quot;.</span>
     <span class="c1"># Pour accéder à un attribut en particulier, on peut y accéder avec des crochets.</span>
     <span class="k">pass</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Noter l'apparition de <code>...</code> au lieu de <code>&gt;&gt;&gt;</code> après avoir écrit la première ligne du <code>for</code>.
 Il faut faire une indentation obligatoire !</p>
-<p>Pour afficher un attribut, on peut faire <code>print(feature['NOM_ARR']</code> pour afficher le contenu de l'attribut
+<p>Pour afficher un attribut, on peut faire <code>print(feature['NOM_ARR'])</code> pour afficher le contenu de l'attribut
 <code>NOM_ARR</code>.</p>
                 
               

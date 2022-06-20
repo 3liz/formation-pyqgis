@@ -861,14 +861,14 @@ le mot-clé, il assigne l'objet correspondant :</p>
 <p><a href="https://fr.wikipedia.org/w/api.php?action=query&amp;titles=Montpellier&amp;prop=description&amp;format=json">https://fr.wikipedia.org/w/api.php?action=query&amp;titles=Montpellier&amp;prop=description&amp;format=json</a></p>
 <p>Il existe plusieurs moyens de faire des requêtes HTTP en Python et/ou PyQGIS. Utilisons la technique Processing
 avec l'algorithme "Téléchargeur de fichier" (graphiquement, il n'est disponible que dans le modeleur) :</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">search</span> <span class="o">=</span> <span class="s2">&quot;montpellier&quot;</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">search</span> <span class="o">=</span> <span class="s2">&quot;montpellier&quot;</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
     <span class="s2">&quot;native:filedownloader&quot;</span><span class="p">,</span>
     <span class="p">{</span>
@@ -876,15 +876,14 @@ avec l'algorithme "Téléchargeur de fichier" (graphiquement, il n'est disponibl
         <span class="s2">&quot;OUTPUT&quot;</span><span class="p">:</span> <span class="s2">&quot;TEMPORARY_OUTPUT&quot;</span>
     <span class="p">}</span>
 <span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>On peut afficher le panneau de débogage et développement de QGIS afin de voir les requêtes HTTP.
 Il se trouve dans le menu <strong>Vue</strong> ▶ <strong>Panneau</strong>  ▶ <strong>Débogage et développement</strong></p>
 </div>
 <p>On va désormais <strong>parser</strong> le fichier JSON que l'on obtient avec la libraire <code>json</code> afin de récupérer la <code>description</code> :</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -892,7 +891,7 @@ Il se trouve dans le menu <strong>Vue</strong> ▶ <strong>Panneau</strong>  ▶
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/mon/fichier.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
@@ -901,11 +900,10 @@ Il se trouve dans le menu <strong>Vue</strong> ▶ <strong>Panneau</strong>  ▶
 <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">description</span> <span class="o">=</span> <span class="n">pages</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;description&quot;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <details>
 <summary>Solution complète pour l'expression QGIS</summary>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -928,7 +926,7 @@ Il se trouve dans le menu <strong>Vue</strong> ▶ <strong>Panneau</strong>  ▶
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">processing</span>
 
 <span class="nd">@qgsfunction</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;Formation PyQGIS&#39;</span><span class="p">)</span>
@@ -952,8 +950,7 @@ Il se trouve dans le menu <strong>Vue</strong> ▶ <strong>Panneau</strong>  ▶
     <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
     <span class="n">description</span> <span class="o">=</span> <span class="n">pages</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
     <span class="k">return</span> <span class="n">description</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 </details>
                 
               

@@ -860,7 +860,7 @@
 <p>En Python, il existe un package dédié à PostgreSQL, il s'agit de <a href="https://www.psycopg.org/">Psycopg</a>.
 Il s'agit d'un package totalement indépendant de QGIS.</p>
 <p>Exemple pour récupérer les tables présentes dans une base de données à l'aide de SQL</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -871,7 +871,7 @@ Il s'agit d'un package totalement indépendant de QGIS.</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">psycopg2</span>
 
 <span class="n">inspect_schema</span> <span class="o">=</span> <span class="s2">&quot;mon_schema&quot;</span>
 <span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
@@ -883,13 +883,12 @@ Il s'agit d'un package totalement indépendant de QGIS.</p>
 <span class="p">)</span>
 <span class="n">records</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">records</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="pyqgis">PyQGIS<a class="headerlink" href="#pyqgis" title="Permanent link">#</a></h2>
 <p>Depuis QGIS 3.16, il existe de plus en plus de méthodes dans la classe
 <a href="https://api.qgis.org/api/classQgsAbstractDatabaseProviderConnection.html">QgsAbstractDatabaseProviderConnection</a>
 pour interagir avec une base de données PostGIS.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -920,7 +919,7 @@ pour interagir avec une base de données PostGIS.</p>
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProviderRegistry</span>
+<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProviderRegistry</span>
 
 <span class="n">metadata</span> <span class="o">=</span> <span class="n">QgsProviderRegistry</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">providerMetadata</span><span class="p">(</span><span class="s1">&#39;postgres&#39;</span><span class="p">)</span>
 <span class="n">connection</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">findConnection</span><span class="p">(</span><span class="s2">&quot;nom de la connexion PG dans votre panneau&quot;</span><span class="p">)</span>
@@ -952,8 +951,7 @@ pour interagir avec une base de données PostGIS.</p>
 <span class="n">uri</span><span class="o">.</span><span class="n">setGeomColumn</span><span class="p">(</span><span class="s1">&#39;geom&#39;</span><span class="p">)</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">uri</span><span class="p">(),</span> <span class="s1">&#39;Requête SELECT&#39;</span><span class="p">,</span> <span class="s1">&#39;postgres&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition tip">
 <p class="admonition-title">Exemple d'extension</p>
 <p>Si besoin, l'extension <a href="https://github.com/3liz/qgis-pgmetadata-plugin">PgMetadata</a> utilise exclusivement

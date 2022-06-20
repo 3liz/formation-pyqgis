@@ -865,28 +865,25 @@ qui permet de lancer QGIS Processing en ligne de commande.</p>
 <li><code>dir</code> pour lister les fichiers/dossiers d'un répertoire</li>
 </ul>
 <p>Dans le <strong>shell OSGEO</strong>, taper :</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="nb">cd</span> C:/Program Files/QGIS <span class="m">3</span>.14/bin/
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">cd</span> C:/Program Files/QGIS <span class="m">3</span>.14/bin/
 <span class="c1"># Il peut s&#39;agit du chemin ci-dessous</span>
 <span class="nb">cd</span> C:<span class="se">\O</span>SGeo4W<span class="se">\a</span>pps<span class="se">\q</span>gis-ltr<span class="se">\b</span>in<span class="se">\</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>On doit avoir désormais un exécutable <code>qgis_process-qgis-ltr.bat</code></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>qgis_process-qgis-ltr.bat
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>qgis_process-qgis-ltr.bat
 qgis_process-qgis-ltr.bat --help
 qgis_process-qgis-ltr.bat list
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>On peut lancer les algorithmes, les modèles, les scripts Python qui sont dans la version graphique de QGIS Processing.</p>
 <p>On peut donc lancer en ligne de commande, ou alors avec notre propre icône sur son bureau un exécutable.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code>qgis_process <span class="nb">help</span> qgis:buffer
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>qgis_process <span class="nb">help</span> qgis:buffer
 qgis_process run qgis:buffer -- <span class="nv">INPUT</span><span class="o">=</span>/home/etienne/source.shp <span class="nv">DISTANCE</span><span class="o">=</span><span class="m">2</span> <span class="nv">OUTPUT</span><span class="o">=</span>/tmp/sortie.gpkg
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>L'idée de QGIS Process est soit de faire un petit exécutable ou alors de lancer le programme à intervalle de temps régulier.</p>
 <p><img alt="QGIS Processing Toolbox" src="../media/processing_provider.png" /></p>
 <h2 id="standalone-application">Standalone application<a class="headerlink" href="#standalone-application" title="Permanent link">#</a></h2>
@@ -901,7 +898,7 @@ d'utiliser <code>qgis_process</code>.</p>
 <p>On peut donc créer son propre programme, en ligne de commande ou avec une interface graphique qui utilise le
 <strong>moteur</strong> de QGIS en arrière-plan pour utiliser ce que sait déjà faire QGIS.</p>
 <p>Exemple sur le <a href="https://gist.github.com/ThomasG77/f711853e5fb81c746d2a1af0b2a9ecf5">gist de Thomas Gratier</a></p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -983,7 +980,7 @@ d'utiliser <code>qgis_process</code>.</p>
 <span class="normal">80</span>
 <span class="normal">81</span>
 <span class="normal">82</span>
-<span class="normal">83</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Code borrowed from https://subscription.packtpub.com/book/application_development/9781783984985/1/ch01lvl1sec18/creating-a-standalone-application</span>
+<span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Code borrowed from https://subscription.packtpub.com/book/application_development/9781783984985/1/ch01lvl1sec18/creating-a-standalone-application</span>
 <span class="c1"># and upgraded for QGIS 3.0</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">sys</span>
@@ -1066,8 +1063,7 @@ d'utiliser <code>qgis_process</code>.</p>
 <span class="n">exitcode</span> <span class="o">=</span> <span class="n">app</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
 <span class="n">QgsApplication</span><span class="o">.</span><span class="n">exitQgis</span><span class="p">()</span>
 <span class="n">sys</span><span class="o">.</span><span class="n">exit</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
                 
               
               

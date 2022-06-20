@@ -1140,14 +1140,14 @@
 </ul>
 </li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Déclaration d&#39;une variable de type entier</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Déclaration d&#39;une variable de type entier</span>
 <span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
 
 <span class="c1"># Déclaration d&#39;une variable chaîne de caractère</span>
@@ -1155,8 +1155,7 @@
 
 <span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">#</a></h2>
 <ul>
 <li>Python 2<ul>
@@ -1190,7 +1189,7 @@
 objet...
 Il y a un faible typage des variables, c'est-à-dire qu'une variable peut changer de type au cours de l'exécution
 du programme.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1207,7 +1206,7 @@ du programme.</p>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">mon_compteur</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">mon_compteur</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">int</span><span class="s1">&#39;&gt;</span>
 <span class="n">mon_compteur</span> <span class="o">=</span> <span class="kc">False</span>
@@ -1225,15 +1224,14 @@ du programme.</p>
 <span class="n">mon_compteur</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">NoneType</span><span class="s1">&#39;&gt;</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="les-structures-de-donnees">Les structures de données<a class="headerlink" href="#les-structures-de-donnees" title="Permanent link">#</a></h2>
 <p>Il existe quatre types de structure de données :</p>
 <ul>
 <li>les variables simples (ci-dessus)</li>
 <li>les tuples (non modifiables)</li>
 </ul>
-<p><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1250,7 +1248,7 @@ du programme.</p>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">liste_vide</span> <span class="o">=</span> <span class="p">()</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">liste_vide</span> <span class="o">=</span> <span class="p">()</span>
 <span class="n">liste</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;bonjour&#39;</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">tuple</span><span class="s1">&#39;&gt;</span>
@@ -1268,24 +1266,22 @@ du programme.</p>
     <span class="n">exec</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">locals</span><span class="p">)</span>
   <span class="n">File</span> <span class="s2">&quot;&lt;input&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">IndexError</span><span class="p">:</span> <span class="nb">tuple</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 * les listes (modifiables)
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">nombres</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">nombres</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">nombres</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">list</span><span class="s1">&#39;&gt;</span>
 <span class="n">nombres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">nombres</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">nombres</span>
 <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-</code></pre></div>
-</td></tr></table></p>
+</code></pre></div></td></tr></table></div></p>
 <ul>
 <li>les dictionnaires</li>
 </ul>
@@ -1293,31 +1289,30 @@ du programme.</p>
 Si vraiment il y a besoin, il existe une classe <code>OrderedDict</code>, mais ce n'est pas une structure de données
 native dans Python.
 C'est un objet.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">personne</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">personne</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">personne</span><span class="p">)</span>
 <span class="c1"># &lt;class &#39;dict&#39;&gt;</span>
 <span class="n">personne</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;etienne&#39;</span>
 <span class="n">personne</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;trimaille&#39;</span>
 <span class="n">personne</span><span class="p">[</span><span class="s1">&#39;est_majeur&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 <span class="n">personne</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="les-commentaires">Les commentaires<a class="headerlink" href="#les-commentaires" title="Permanent link">#</a></h2>
 <p>Pour commenter le code dans un script, pas dans la console : </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Ceci est un commentaire sur une ligne</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Ceci est un commentaire sur une ligne</span>
 <span class="o">/*</span>
 <span class="n">Ceci</span> <span class="n">est</span>
 <span class="n">un</span> <span class="n">commentaire</span>
@@ -1325,10 +1320,9 @@ C'est un objet.</p>
 <span class="o">*/</span>
 
 <span class="sd">&quot;&quot;&quot; Ces lignes sont réservés pour la documentation de l&#39;API et ne doivent pas être des lignes de commentaires. &quot;&quot;&quot;</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="arithmetique">Arithmétique<a class="headerlink" href="#arithmetique" title="Permanent link">#</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1336,7 +1330,7 @@ C'est un objet.</p>
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="n">a</span> <span class="o">-=</span> <span class="mi">1</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
@@ -1345,61 +1339,56 @@ C'est un objet.</p>
 <span class="n">e</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">3</span>  <span class="c1"># 1</span>
 <span class="n">g</span> <span class="o">=</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># 100</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="concatener-des-chaines-et-des-variables">Concaténer des chaînes et des variables<a class="headerlink" href="#concatener-des-chaines-et-des-variables" title="Permanent link">#</a></h2>
 <p>Concaténer, c'est assembler des chaînes de caractères dans une seule et même sortie.
 On peut concaténer des variables entre elles ou du texte.</p>
 <p>Il existe plein de manières de faire, mais certaines sont plus pratiques que d'autres
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Non recommandé</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Non recommandé</span>
 <span class="n">a</span> <span class="o">=</span> <span class="s1">&#39;bon&#39;</span>
 <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;jour&#39;</span>
 <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>  <span class="c1"># &#39;bonjour&#39;</span>
 <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">a</span> <span class="o">+</span> <span class="n">c</span>  <span class="c1"># Erreur</span>
 <span class="n">a</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>  <span class="c1"># Marche</span>
-</code></pre></div>
-</td></tr></table></p>
+</code></pre></div></td></tr></table></div></p>
 <p>À l'ancienne avec <code>%</code>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prenom</span> <span class="o">=</span> <span class="s1">&#39;Pierre&#39;</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">prenom</span> <span class="o">=</span> <span class="s1">&#39;Pierre&#39;</span>
 <span class="n">numero_jour</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">bienvenue</span> <span class="o">=</span> <span class="s1">&#39;Bonjour </span><span class="si">%s</span><span class="s1"> !&#39;</span> <span class="o">%</span> <span class="n">prenom</span>
 <span class="n">bienvenue</span> <span class="o">=</span> <span class="s1">&#39;Bonjour </span><span class="si">%s</span><span class="s1">, nous sommes le </span><span class="si">%s</span><span class="s1"> novembre&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">prenom</span><span class="p">,</span> <span class="n">numero_jour</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table></p>
+</code></pre></div></td></tr></table></div></p>
 <p>Nouveau avec <code>{}</code> et <code>format</code>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prenom</span> <span class="o">=</span> <span class="s1">&#39;Pierre&#39;</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">prenom</span> <span class="o">=</span> <span class="s1">&#39;Pierre&#39;</span>
 <span class="n">numero_jour</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">bienvenue</span> <span class="o">=</span> <span class="s1">&#39;Bonjour </span><span class="si">{}</span><span class="s1"> !&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prenom</span><span class="p">)</span>
 <span class="n">bienvenue</span> <span class="o">=</span> <span class="s1">&#39;Bonjour </span><span class="si">{}</span><span class="s1">, nous sommes le </span><span class="si">{}</span><span class="s1"> novembre&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prenom</span><span class="p">,</span> <span class="n">numero_jour</span><span class="p">)</span>
 <span class="n">bienvenue</span> <span class="o">=</span> <span class="s1">&#39;Bonjour </span><span class="si">{prenom}</span><span class="s1">, nous sommes le </span><span class="si">{jour}</span><span class="s1"> novembre&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prenom</span><span class="o">=</span><span class="n">prenom</span><span class="p">,</span> <span class="n">jour</span><span class="o">=</span><span class="n">numero_jour</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table></p>
+</code></pre></div></td></tr></table></div></p>
 <p>Encore plus moderne avec Python 3.6 et <code>fstring</code>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">prenom</span> <span class="o">=</span> <span class="s1">&#39;Pierre&#39;</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">prenom</span> <span class="o">=</span> <span class="s1">&#39;Pierre&#39;</span>
 <span class="n">numero_jour</span> <span class="o">=</span> <span class="mi">2</span>
 <span class="n">bienvenue</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Bonjour </span><span class="si">{</span><span class="n">prenom</span><span class="si">}</span><span class="s1"> !&#39;</span>
 <span class="n">bienvenue</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Bonjour </span><span class="si">{</span><span class="n">prenom</span><span class="si">}</span><span class="s1">, nous sommes le </span><span class="si">{</span><span class="n">numero_jour</span><span class="si">}</span><span class="s1"> novembre&#39;</span>
-</code></pre></div>
-</td></tr></table></p>
+</code></pre></div></td></tr></table></div></p>
 <h2 id="operateurs-logiques">Opérateurs logiques<a class="headerlink" href="#operateurs-logiques" title="Permanent link">#</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1408,7 +1397,7 @@ On peut concaténer des variables entre elles ou du texte.</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span>
 <span class="n">a</span> <span class="o">&gt;=</span> <span class="n">b</span>
 <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>
 <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">b</span>
@@ -1418,11 +1407,10 @@ On peut concaténer des variables entre elles ou du texte.</p>
 <span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">b</span>
 <span class="n">a</span> <span class="ow">in</span> <span class="n">b</span>
 <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">10</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="condition">Condition<a class="headerlink" href="#condition" title="Permanent link">#</a></h2>
 <p><strong>Important</strong>, Python oblige l'indentation sinon il y a une erreur. Par convention, il s'agit de 4 espaces. </p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1433,7 +1421,7 @@ On peut concaténer des variables entre elles ou du texte.</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">note</span> <span class="o">=</span> <span class="mi">13</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">note</span> <span class="o">=</span> <span class="mi">13</span>
 <span class="k">if</span> <span class="n">note</span> <span class="o">&gt;=</span> <span class="mi">16</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">note</span> <span class="o">==</span> <span class="mi">20</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Toutes mes félicitations&#39;</span><span class="p">)</span>
@@ -1445,63 +1433,10 @@ On peut concaténer des variables entre elles ou du texte.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Bien&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Peu mieux faire&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="boucle-for">Boucle for<a class="headerlink" href="#boucle-for" title="Permanent link">#</a></h2>
 <p>Utile lors que l'on connait le nombre de répétitions avant l'exécution de la boucle.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Allemagne&#39;</span><span class="p">,</span> <span class="s1">&#39;Espagne&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">]</span>
-<span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pays : </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">country</span><span class="p">))</span>
-
-<span class="n">regions</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;Auvergne-Rhône-Alpes&#39;</span><span class="p">:</span> <span class="s1">&#39;Lyon&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Bourgogne-Franche-Comté&#39;</span><span class="p">:</span> <span class="s1">&#39;Dijon&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Bretagne&#39;</span><span class="p">:</span> <span class="s1">&#39;Rennes&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;Centre-Val de Loire&#39;</span><span class="p">:</span> <span class="s1">&#39;Orléans&#39;</span><span class="p">,</span>
-<span class="p">}</span>
-
-<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">regions</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">regions</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">regions</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">region</span><span class="p">,</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">regions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Région </span><span class="si">{}</span><span class="s1"> dont le chef lieu est </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">city</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
-<h2 id="recherche-dun-element">Recherche d'un élément<a class="headerlink" href="#recherche-dun-element" title="Permanent link">#</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1527,7 +1462,66 @@ On peut concaténer des variables entre elles ou du texte.</p>
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Allemagne&#39;</span><span class="p">,</span> <span class="s1">&#39;Espagne&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">]</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Allemagne&#39;</span><span class="p">,</span> <span class="s1">&#39;Espagne&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pays : </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">country</span><span class="p">))</span>
+
+<span class="n">regions</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Auvergne-Rhône-Alpes&#39;</span><span class="p">:</span> <span class="s1">&#39;Lyon&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Bourgogne-Franche-Comté&#39;</span><span class="p">:</span> <span class="s1">&#39;Dijon&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Bretagne&#39;</span><span class="p">:</span> <span class="s1">&#39;Rennes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;Centre-Val de Loire&#39;</span><span class="p">:</span> <span class="s1">&#39;Orléans&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">regions</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">regions</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">region</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">regions</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">city</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">region</span><span class="p">,</span> <span class="n">city</span> <span class="ow">in</span> <span class="n">regions</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Région </span><span class="si">{}</span><span class="s1"> dont le chef lieu est </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">region</span><span class="p">,</span> <span class="n">city</span><span class="p">))</span>
+
+<span class="c1"># Non recommandé, mais on peut le rencontrer</span>
+<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">regions</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Région </span><span class="si">{</span><span class="n">region</span><span class="si">}</span><span class="s2"> dont le chef lieu est </span><span class="si">{</span><span class="n">regions</span><span class="p">[</span><span class="n">region</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="recherche-dun-element">Recherche d'un élément<a class="headerlink" href="#recherche-dun-element" title="Permanent link">#</a></h2>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Allemagne&#39;</span><span class="p">,</span> <span class="s1">&#39;Espagne&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">]</span>
 
 <span class="c1"># Solution simple</span>
 <span class="k">if</span> <span class="s1">&#39;Allemagne&#39;</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">:</span>
@@ -1554,41 +1548,38 @@ On peut concaténer des variables entre elles ou du texte.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Non présent&#39;</span><span class="p">)</span>
 
 <span class="c1"># Encore plus pythonique avec une list-comprehension</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="boucle-while">Boucle while<a class="headerlink" href="#boucle-while" title="Permanent link">#</a></h2>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">x</span> <span class="o">+=</span> <span class="mi">1</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <ul>
 <li>En Python, il n'y a pas de boucle <code>do ... while</code>, à la place, on peut faire ainsi :</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">executer_une_fonction</span><span class="p">()</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">executer_une_fonction</span><span class="p">()</span>
 <span class="k">while</span> <span class="ow">not</span> <span class="n">conditon_echec</span><span class="p">:</span>
     <span class="n">executer_une_fonction</span><span class="p">()</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="switch">Switch<a class="headerlink" href="#switch" title="Permanent link">#</a></h2>
 <p><strong>Python 3.10</strong> uniquement</p>
 <h2 id="list-comprehensions">List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permanent link">#</a></h2>
 <p>C'est une façon très pythonique et très utilisée de créer des listes.
 Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="c1"># Non pythonique</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Non pythonique</span>
 <span class="n">impair</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
     <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">:</span>
@@ -1596,14 +1587,12 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 
 <span class="c1"># Pythonique</span>
 <span class="n">impair</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <p>Autre exemple en transformant une liste :</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Allemagne&#39;</span><span class="p">,</span> <span class="s1">&#39;Espagne&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">]</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Allemagne&#39;</span><span class="p">,</span> <span class="s1">&#39;Espagne&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">]</span>
 <span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="n">c</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">]</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <ul>
 <li>Il existe aussi les Dict Comprehensions (moins utilisé)</li>
 </ul>
@@ -1611,7 +1600,7 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 <ul>
 <li>Pour information, les chaînes de caractères sont des listes et on peut faire du <strong>slicing</strong> sur des listes :</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1620,7 +1609,7 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">alphabet</span> <span class="o">=</span> <span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">alphabet</span> <span class="o">=</span> <span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
 <span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
 <span class="n">alphabet</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -1630,14 +1619,13 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 <span class="n">alphabet</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Z</span>
 <span class="n">alphabet</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>  <span class="c1"># XYZ</span>
 <span class="n">alphabet</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>  <span class="c1"># ABCDEF</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="fonctions">Fonctions<a class="headerlink" href="#fonctions" title="Permanent link">#</a></h2>
 <ul>
 <li>Voici des exemples de fonction Python.
 <em>Encore une fois</em>, attention à l'indentation !</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1646,7 +1634,7 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">ajouter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ajouter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Ajouter deux nombres.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
@@ -1656,22 +1644,20 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 <span class="k">def</span> <span class="nf">discuter</span><span class="p">(</span><span class="n">texte</span><span class="p">,</span> <span class="n">personnage</span><span class="o">=</span><span class="s1">&#39;Charles&#39;</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Un personnage discute.&quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">personnage</span><span class="p">,</span> <span class="n">texte</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <ul>
 <li>Une fonction peut retourner plusieurs valeurs :</li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">decomposer</span><span class="p">(</span><span class="n">entier</span><span class="p">,</span> <span class="n">diviser_par</span><span class="p">):</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">decomposer</span><span class="p">(</span><span class="n">entier</span><span class="p">,</span> <span class="n">diviser_par</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;Retourne la partie entière et le reste d&#39;une division.&quot;&quot;&quot;</span>
     <span class="n">partie_entiere</span> <span class="o">=</span> <span class="n">entier</span> <span class="o">/</span> <span class="n">diviser_par</span>
     <span class="n">reste</span> <span class="o">=</span> <span class="n">entier</span> <span class="o">%</span> <span class="n">diviser_par</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">partie_entiere</span><span class="p">),</span> <span class="n">reste</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <ul>
 <li>Il se peut que l'on ne connaisse pas à l'avance le nombre précis d'arguments dans une fonction.<ul>
 <li><code>args</code> est utilisé pour passer un nombre indéterminé d'argument à la fonction</li>
@@ -1679,7 +1665,7 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 </ul>
 </li>
 </ul>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
@@ -1687,7 +1673,7 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="k">def</span> <span class="nf">une_fonction</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">une_fonction</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Les arguments&#39;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">arg</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
@@ -1696,9 +1682,9 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
         <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> -&gt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
 
 <span class="n">une_fonction</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span> <span class="n">text</span><span class="o">=</span><span class="s1">&#39;Ma phrase&#39;</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <h2 id="poo-programmation-orientee-objet">POO : Programmation Orientée Objet<a class="headerlink" href="#poo-programmation-orientee-objet" title="Permanent link">#</a></h2>
+<p>Pour l'explication théorique, lire l'introduction dans le chapitre de <a href="../console/##rappel-sur-la-poo">la console</a>.</p>
 <p>On peut introduire l'utilisation de la POO à l'aide de l'objet <code>Path</code>. La documentation de cette classe se trouve
 <a href="https://docs.python.org/3/library/pathlib.html">en ligne</a>.</p>
 <p>La librairie <code>Path</code> est installé de base avec Python.</p>
@@ -1706,7 +1692,7 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 peut <strong>appeler des méthodes</strong> sur cet objet.</p>
 <p>Imaginons que l'on crée un objet <strong>voiture</strong></p>
 <p>Dans une console QGIS :</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1717,7 +1703,7 @@ peut <strong>appeler des méthodes</strong> sur cet objet.</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="c1"># Appel du &quot;constructeur&quot;</span>
 <span class="n">chemin</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s1">&#39;.&#39;</span><span class="p">)</span>
 <span class="c1"># La notation . est une chaîne de caractère particulière pour un OS demandant le dossier courant de l&#39;exécution.</span>
@@ -1729,8 +1715,7 @@ peut <strong>appeler des méthodes</strong> sur cet objet.</p>
 <span class="nb">print</span><span class="p">(</span><span class="n">un_fichier</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">un_fichier</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">chemin</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;mon_projet.qgs&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">exists</span><span class="p">())</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>Quand l'instruction se termine par des <code>()</code>, on dit que c'est une <strong>méthode</strong> de cet objet. Il s'agit d'une <strong>fonction</strong>,
@@ -1745,42 +1730,39 @@ ou encore la partie sur l'écriture d'un <a href="../script-processing/">script 
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Attention au passage par référence :
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">ma_liste_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">ma_liste_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="n">ma_liste_2</span> <span class="o">=</span> <span class="n">ma_liste_1</span>
 <span class="n">ma_liste_2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ma_liste_2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">ma_liste_1</span><span class="p">)</span>
-</code></pre></div>
-</td></tr></table></p>
+</code></pre></div></td></tr></table></div></p>
 </div>
 <p>Avoir un compteur lors de l'itération d'une liste :
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;James&#39;</span><span class="p">,</span> <span class="s1">&#39;John&#39;</span><span class="p">]</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">users</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Tom&#39;</span><span class="p">,</span> <span class="s1">&#39;James&#39;</span><span class="p">,</span> <span class="s1">&#39;John&#39;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">user</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">users</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1"> -&gt; </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">user</span><span class="p">))</span>
-</code></pre></div>
-</td></tr></table></p>
+</code></pre></div></td></tr></table></div></p>
 <h2 id="annotations">Annotations<a class="headerlink" href="#annotations" title="Permanent link">#</a></h2>
 <p>Dans la suite de la formation, il est possible de voir des <strong>annotations Python</strong>.
 Cela permet de spécifier le type des variables dans les paramètres des fonctions et/ou de définir le type de retour.</p>
-<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">typing</span> <span class="kn">import</span> <span class="n">Tuple</span>
 <span class="k">def</span> <span class="nf">decomposer</span><span class="p">(</span><span class="n">entier</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">diviser_par</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">int</span><span class="p">]:</span>
     <span class="sd">&quot;&quot;&quot;Retourne la partie entière et le reste d&#39;une division.&quot;&quot;&quot;</span>
     <span class="n">partie_entiere</span> <span class="o">=</span> <span class="n">entier</span> <span class="o">/</span> <span class="n">diviser_par</span>
     <span class="n">reste</span> <span class="o">=</span> <span class="n">entier</span> <span class="o">%</span> <span class="n">diviser_par</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">partie_entiere</span><span class="p">),</span> <span class="n">reste</span>
-</code></pre></div>
-</td></tr></table>
+</code></pre></div></td></tr></table></div>
                 
               
               
