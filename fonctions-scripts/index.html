@@ -1369,7 +1369,7 @@ l'action <code>Exporter la couche</code>).</p>
 </tbody>
 </table>
 <h3 id="petit-memo">Petit mémo<a class="headerlink" href="#petit-memo" title="Permanent link">#</a></h3>
-<p>Pour créer une couche tabulaire en mémoire :
+<p>Pour créer une couche tabulaire en mémoire, <a href="https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/vector.html">code qui vient du cookbook</a> :
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer_info</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div></p>
 <p>La liste des couches :
@@ -1399,14 +1399,16 @@ l'action <code>Exporter la couche</code>).</p>
 </code></pre></div></td></tr></table></div>
 <p>Nous allons avoir besoin de plusieurs classes dans l'API QGIS : </p>
 <ul>
-<li>Enregistrer un fichier : la classe <code>QgsVectorFileWriter</code></li>
-<li>Un champ : <code>QgsField</code>, attention à ne pas confondre avec <code>QgsFields</code> qui lui représente un ensemble de champs.</li>
-<li>Une entité : <code>QgsFeature</code></li>
+<li>Enregistrer un fichier : la classe <a href="https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html">QgsVectorFileWriter</a></li>
+<li>Un champ : <a href="https://qgis.org/pyqgis/master/core/QgsField.html">QgsField</a>,
+  attention à ne pas confondre avec <a href="https://qgis.org/pyqgis/master/core/QgsFields.html">QgsFields</a>
+  qui lui représente un ensemble de champs.</li>
+<li>Une entité : <a href="https://qgis.org/pyqgis/master/core/QgsFeature.html">QgsFeature</a></li>
 </ul>
 <p>Pour le type de champ, on va avoir besoin de l'API Qt également :</p>
 <ul>
 <li><a href="https://doc.qt.io/qt-5/qmetatype.html#Type-enum">https://doc.qt.io/qt-5/qmetatype.html#Type-enum</a></li>
-<li>Remplacer <code>QMetaType</code> par <code>QVariant</code></li>
+<li>Remplacer <code>QMetaType</code> par <code>QVariant</code> et aussi exception <code>QString</code> par <code>String</code></li>
 <li>Par exemple, pour créer un nouveau champ de type entier : <code>QgsField('nombre_entité', QVariant.Int)</code></li>
 </ul>
 <p>Il va y avoir plusieurs étapes dans ce script :</p>
@@ -1467,7 +1469,9 @@ l'action <code>Exporter la couche</code>).</p>
 <span class="normal">43</span>
 <span class="normal">44</span>
 <span class="normal">45</span>
-<span class="normal">46</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
 
 <span class="n">layers</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">layers</span><span class="p">:</span>
@@ -1498,14 +1502,16 @@ l'action <code>Exporter la couche</code>).</p>
         <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;nom&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
         <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;projection&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">())</span>
         <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;nombre_entite&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">featureCount</span><span class="p">())</span>
+        <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;encodage&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">dataProvider</span><span class="p">()</span><span class="o">.</span><span class="n">encoding</span><span class="p">())</span>
         <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;source&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">source</span><span class="p">())</span>
         <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;type&quot;</span><span class="p">,</span> <span class="n">QgsWkbTypes</span><span class="o">.</span><span class="n">geometryDisplayString</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">geometryType</span><span class="p">()))</span>
         <span class="n">feature</span><span class="o">.</span><span class="n">setAttribute</span><span class="p">(</span><span class="s2">&quot;seuil_visibilite&quot;</span><span class="p">,</span> <span class="n">layer</span><span class="o">.</span><span class="n">hasScaleBasedVisibility</span><span class="p">())</span>
         <span class="n">layer_info</span><span class="o">.</span><span class="n">addFeature</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
 
+<span class="n">base_name</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">baseName</span><span class="p">()</span>
 <span class="n">QgsVectorFileWriter</span><span class="o">.</span><span class="n">writeAsVectorFormat</span><span class="p">(</span>
     <span class="n">layer_info</span><span class="p">,</span>
-    <span class="n">join</span><span class="p">(</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">(),</span> <span class="s1">&#39;test.csv&#39;</span><span class="p">),</span>
+    <span class="n">join</span><span class="p">(</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">(),</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">base_name</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">),</span>
     <span class="s1">&#39;utf-8&#39;</span><span class="p">,</span>
     <span class="n">QgsCoordinateReferenceSystem</span><span class="p">(),</span>
     <span class="s1">&#39;CSV&#39;</span><span class="p">,</span>
@@ -1514,6 +1520,19 @@ l'action <code>Exporter la couche</code>).</p>
 
 <span class="c1"># Afficher une messageBar pour confirmer que c&#39;est OK, en vert ;-)</span>
 </code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Ajouter une couche raster et retester le script ... surprise 🎁</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Pour obtenir en Python la liste des fournisseurs GDAL/OGR :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">ogr</span>
+<span class="p">[</span><span class="n">ogr</span><span class="o">.</span><span class="n">GetDriver</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">GetDescription</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ogr</span><span class="o">.</span><span class="n">GetDriverCount</span><span class="p">())]</span>    
+</code></pre></div></td></tr></table></div>
+ou dans le menu Préférences ➡ Options ➡ GDAL ➡ Pilotes vecteurs</p>
+</div>
                 
               
               
