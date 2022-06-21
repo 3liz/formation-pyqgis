@@ -287,7 +287,7 @@ Les différents champs qui devront être exportés sont :
 
 ### Petit mémo
 
-Pour créer une couche tabulaire en mémoire :
+Pour créer une couche tabulaire en mémoire, [code qui vient du cookbook](https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/vector.html) :
 ```python
 layer_info = QgsVectorLayer('None', 'info', 'memory')
 ```
@@ -318,14 +318,16 @@ with edit(layer):
 
 Nous allons avoir besoin de plusieurs classes dans l'API QGIS : 
 
-* Enregistrer un fichier : la classe `QgsVectorFileWriter`
-* Un champ : `QgsField`, attention à ne pas confondre avec `QgsFields` qui lui représente un ensemble de champs.
-* Une entité : `QgsFeature`
+* Enregistrer un fichier : la classe [QgsVectorFileWriter](https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html)
+* Un champ : [QgsField](https://qgis.org/pyqgis/master/core/QgsField.html),
+  attention à ne pas confondre avec [QgsFields](https://qgis.org/pyqgis/master/core/QgsFields.html)
+  qui lui représente un ensemble de champs.
+* Une entité : [QgsFeature](https://qgis.org/pyqgis/master/core/QgsFeature.html)
 
 Pour le type de champ, on va avoir besoin de l'API Qt également :
 
 * https://doc.qt.io/qt-5/qmetatype.html#Type-enum
-* Remplacer `QMetaType` par `QVariant`
+* Remplacer `QMetaType` par `QVariant` et aussi exception `QString` par `String`
 * Par exemple, pour créer un nouveau champ de type entier : `QgsField('nombre_entité', QVariant.Int)`
 
 Il va y avoir plusieurs étapes dans ce script :
@@ -374,14 +376,16 @@ with edit(layer_info):
         feature.setAttribute("nom", layer.name())
         feature.setAttribute("projection", layer.crs().authid())
         feature.setAttribute("nombre_entite", layer.featureCount())
+        feature.setAttribute("encodage", layer.dataProvider().encoding())
         feature.setAttribute("source", layer.source())
         feature.setAttribute("type", QgsWkbTypes.geometryDisplayString(layer.geometryType()))
         feature.setAttribute("seuil_visibilite", layer.hasScaleBasedVisibility())
         layer_info.addFeature(feature)
 
+base_name = QgsProject.instance().baseName()
 QgsVectorFileWriter.writeAsVectorFormat(
     layer_info,
-    join(QgsProject.instance().homePath(), 'test.csv'),
+    join(QgsProject.instance().homePath(), f'{base_name}.csv'),
     'utf-8',
     QgsCoordinateReferenceSystem(),
     'CSV',
@@ -391,3 +395,14 @@ QgsVectorFileWriter.writeAsVectorFormat(
 # Afficher une messageBar pour confirmer que c'est OK, en vert ;-)
 
 ```
+
+!!! warning
+    Ajouter une couche raster et retester le script ... surprise 🎁
+
+!!! tip
+    Pour obtenir en Python la liste des fournisseurs GDAL/OGR :
+    ```python
+    from osgeo import ogr
+    [ogr.GetDriver(i).GetDescription() for i in range(ogr.GetDriverCount())]    
+    ```
+    ou dans le menu Préférences ➡ Options ➡ GDAL ➡ Pilotes vecteurs
