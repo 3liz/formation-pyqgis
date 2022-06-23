@@ -956,7 +956,7 @@ ce cas par défaut dans la suite de ce tutoriel.</p>
 </ul>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
-<p>Selon le champ d'application de l'action, il y a plus ou moins de <strong>variables</strong>.</p>
+<p>Selon le champ d'application de l'action, il y a plus ou moins de <strong>variables</strong>. Il faut regarder les infobulles.</p>
 </div>
 <h2 id="notre-propre-action">Notre propre action<a class="headerlink" href="#notre-propre-action" title="Permanent link">#</a></h2>
 <ul>
@@ -970,10 +970,10 @@ ce cas par défaut dans la suite de ce tutoriel.</p>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">:</span> <span class="n">QgsVectorLayer</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">:</span> <span class="n">QgsVectorLayer</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot; Inverser le sens des différentes entités dans la couche layer.</span>
 
-<span class="sd">    ids est une liste comportant les IDs des entités à inverser.</span>
+<span class="sd">    ids est l&#39;identifiant d&#39;une entité qu&#39;il faut inverser.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">pass</span>
 </code></pre></div></td></tr></table></div>
@@ -981,11 +981,22 @@ ce cas par défaut dans la suite de ce tutoriel.</p>
 une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer dès qu'il y a du code.</p>
 <p>Il faut :</p>
 <ul>
-<li>Utiliser une session d'édition</li>
 <li>Récupérer la géométrie, tenir compte qu'il s'agit d'une multi-ligne</li>
-<li>Appliquer la fonction <code>reverse</code> en Python</li>
+<li>Appliquer la fonction <code>reverse</code> en Python pour inverser une liste</li>
+<li>Utiliser une session d'édition</li>
 <li>Utiliser <code>QgsVectorLayer.changeGeometry()</code> pour changer la géométrie d'un objet</li>
 </ul>
+<p>On peut appeler notre nouvelle fonction à l'aide du code suivant :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="c1"># Une action ne s&#39;effectuant que sur une seule entité, on peut utiliser [0]</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">selectedFeatureIds</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="n">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <details>
 <summary>Afficher la solution</summary>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1005,22 +1016,22 @@ une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer d
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">:</span> <span class="n">QgsVectorLayer</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Inverser le sens des différentes entités dans la couche layer.</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Inverser le sens d&#39;une entité dans la couche layer.</span>
 
 <span class="sd">    ids est une liste comportant les IDs des entités à inverser.</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeature</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+    <span class="n">geom</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">asMultiPolyline</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="n">new_geom</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromMultiPolylineXY</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">ids</span><span class="p">):</span>
-            <span class="n">geom</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
-            <span class="n">lines</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">asMultiPolyline</span><span class="p">()</span>
-            <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-                <span class="n">line</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
-            <span class="n">new_geom</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromMultiPolylineXY</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
-            <span class="n">layer</span><span class="o">.</span><span class="n">changeGeometry</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span><span class="n">new_geom</span><span class="p">)</span>
+    <span class="n">layer</span><span class="o">.</span><span class="n">changeGeometry</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">new_geom</span><span class="p">)</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
-<span class="n">ids</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">selectedFeatureIds</span><span class="p">()</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">selectedFeatureIds</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
 
 <span class="n">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">ids</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1038,15 +1049,23 @@ une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer d
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Inverser le sens d&#39;une entité dans la couche layer.</span>
+
+<span class="sd">    ids est une liste comportant les IDs des entités à inverser.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">feature</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeature</span><span class="p">(</span><span class="n">ids</span><span class="p">)</span>
+    <span class="n">geom</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
+    <span class="n">lines</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">asMultiPolyline</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+        <span class="n">line</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
+    <span class="n">new_geom</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromMultiPolylineXY</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
-        <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">ids</span><span class="p">):</span>
-           <span class="n">geom</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span>
-           <span class="n">lines</span> <span class="o">=</span> <span class="n">geom</span><span class="o">.</span><span class="n">asMultiPolyline</span><span class="p">()</span>
-           <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-               <span class="n">line</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span> 
-           <span class="n">new_geom</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromMultiPolylineXY</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
-           <span class="n">layer</span><span class="o">.</span><span class="n">changeGeometry</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">new_geom</span><span class="p">)</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">changeGeometry</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">new_geom</span><span class="p">)</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayer</span><span class="p">(</span><span class="s1">&#39;[% @layer_id %]&#39;</span><span class="p">)</span>
 <span class="n">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;[% $id %]&#39;</span><span class="p">)</span>
