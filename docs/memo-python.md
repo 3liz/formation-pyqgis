@@ -45,6 +45,20 @@ if 0 < x < 10:
 * Un mémo Python plus important : https://www.w3schools.com/python/
 * Un cours Python : https://openclassrooms.com/fr/courses/4262331-demarrez-votre-projet-avec-python
 
+## La console
+
+Pour la suite de la formation, nous allons utiliser la console Python de QGIS.
+
+Dans le menu Extensions ➡ Console Python.
+
+!!! tip
+	Souvent, avec Windows, il y a un conflit avec un raccourci clavier pour taper le caractère `{` ou `}`
+	dans la console.
+
+	Ces caractères sont utilisés en Python. Il est donc conseillé de supprimer ce raccourci clavier.
+	Il peut s'agit du zoom + dans le menu Préférences ➡ Raccourcis clavier.
+
+
 ## Les types de données
 
 Une variable peut contenir un entier, un booléen (`True` ou `False`), chaîne de caractères, nombre décimal, un

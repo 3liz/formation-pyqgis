@@ -48,7 +48,7 @@ canvas.refresh()
   des actions.
 
 !!! info
-    Selon le champ d'application de l'action, il y a plus ou moins de **variables**.
+    Selon le champ d'application de l'action, il y a plus ou moins de **variables**. Il faut regarder les infobulles.
 
 ## Notre propre action
 
@@ -58,10 +58,10 @@ canvas.refresh()
 * Il faut penser à vérifier le type exact de géométrie de nos lignes, dans les propriétés de la couche.
 
 ```python
-def reverse_geom(layer: QgsVectorLayer, ids: list):
+def reverse_geom(layer: QgsVectorLayer, ids: int):
     """ Inverser le sens des différentes entités dans la couche layer.
-    
-    ids est une liste comportant les IDs des entités à inverser.
+
+    ids est l'identifiant d'une entité qu'il faut inverser.
     """
     pass
 
@@ -72,30 +72,40 @@ une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer d
 
 Il faut :
 
-* Utiliser une session d'édition
 * Récupérer la géométrie, tenir compte qu'il s'agit d'une multi-ligne
-* Appliquer la fonction `reverse` en Python
+* Appliquer la fonction `reverse` en Python pour inverser une liste
+* Utiliser une session d'édition
 * Utiliser `QgsVectorLayer.changeGeometry()` pour changer la géométrie d'un objet
+
+On peut appeler notre nouvelle fonction à l'aide du code suivant :
+
+```python
+layer = iface.activeLayer()
+# Une action ne s'effectuant que sur une seule entité, on peut utiliser [0]
+ids = layer.selectedFeatureIds()[0]
+
+reverse_geom(layer, ids)
+```
 
 ??? "Afficher la solution"
     ```python
-    def reverse_geom(layer: QgsVectorLayer, ids: list):
-        """ Inverser le sens des différentes entités dans la couche layer.
-        
+    def reverse_geom(layer, ids):
+        """ Inverser le sens d'une entité dans la couche layer.
+
         ids est une liste comportant les IDs des entités à inverser.
         """
+        feature = layer.getFeature(ids)
+        geom = feature.geometry()
+        lines = geom.asMultiPolyline()
+        for line in lines:
+            line.reverse()
+        new_geom = QgsGeometry.fromMultiPolylineXY(lines)
         with edit(layer):
-            for feature in layer.getFeatures(ids):
-                geom = feature.geometry()
-                lines = geom.asMultiPolyline()
-                for line in lines:
-                    line.reverse()
-                new_geom = QgsGeometry.fromMultiPolylineXY(lines)
-                layer.changeGeometry(feature.id(),new_geom)
-    
+	    layer.changeGeometry(feature.id(), new_geom)
+
     layer = iface.activeLayer()
-    ids = layer.selectedFeatureIds()
-    
+    ids = layer.selectedFeatureIds()[0]
+
     reverse_geom(layer, ids)
     ```
 
@@ -105,14 +115,18 @@ Incorporons ce code dans une action et adaptons-le légèrement :
 
 ```python
 def reverse_geom(layer, ids):
+    """ Inverser le sens d'une entité dans la couche layer.
+
+    ids est une liste comportant les IDs des entités à inverser.
+    """
+    feature = layer.getFeature(ids)
+    geom = feature.geometry()
+    lines = geom.asMultiPolyline()
+    for line in lines:
+        line.reverse()
+    new_geom = QgsGeometry.fromMultiPolylineXY(lines)
     with edit(layer):
-        for feature in layer.getFeatures(ids):
-           geom = feature.geometry()
-           lines = geom.asMultiPolyline()
-           for line in lines:
-               line.reverse() 
-           new_geom = QgsGeometry.fromMultiPolylineXY(lines)
-           layer.changeGeometry(feature.id(), new_geom)
+        layer.changeGeometry(feature.id(), new_geom)
 
 layer = QgsProject.instance().mapLayer('[% @layer_id %]')
 reverse_geom(layer, '[% $id %]')
