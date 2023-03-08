@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/standalone/">
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-7.3.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
     
     
       
@@ -867,22 +867,22 @@ qui permet de lancer QGIS Processing en ligne de commande.</p>
 <p>Dans le <strong>shell OSGEO</strong>, taper :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">cd</span> C:/Program Files/QGIS <span class="m">3</span>.14/bin/
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>C:/Program<span class="w"> </span>Files/QGIS<span class="w"> </span><span class="m">3</span>.14/bin/
 <span class="c1"># Il peut s&#39;agit du chemin ci-dessous</span>
-<span class="nb">cd</span> C:<span class="se">\O</span>SGeo4W<span class="se">\a</span>pps<span class="se">\q</span>gis-ltr<span class="se">\b</span>in<span class="se">\</span>
+<span class="nb">cd</span><span class="w"> </span>C:<span class="se">\O</span>SGeo4W<span class="se">\a</span>pps<span class="se">\q</span>gis-ltr<span class="se">\b</span>in<span class="se">\</span>
 </code></pre></div></td></tr></table></div>
 <p>On doit avoir désormais un exécutable <code>qgis_process-qgis-ltr.bat</code></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>qgis_process-qgis-ltr.bat
-qgis_process-qgis-ltr.bat --help
-qgis_process-qgis-ltr.bat list
+qgis_process-qgis-ltr.bat<span class="w"> </span>--help
+qgis_process-qgis-ltr.bat<span class="w"> </span>list
 </code></pre></div></td></tr></table></div>
 <p>On peut lancer les algorithmes, les modèles, les scripts Python qui sont dans la version graphique de QGIS Processing.</p>
 <p>On peut donc lancer en ligne de commande, ou alors avec notre propre icône sur son bureau un exécutable.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>qgis_process <span class="nb">help</span> qgis:buffer
-qgis_process run qgis:buffer -- <span class="nv">INPUT</span><span class="o">=</span>/home/etienne/source.shp <span class="nv">DISTANCE</span><span class="o">=</span><span class="m">2</span> <span class="nv">OUTPUT</span><span class="o">=</span>/tmp/sortie.gpkg
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>qgis_process<span class="w"> </span><span class="nb">help</span><span class="w"> </span>qgis:buffer
+qgis_process<span class="w"> </span>run<span class="w"> </span>qgis:buffer<span class="w"> </span>--<span class="w"> </span><span class="nv">INPUT</span><span class="o">=</span>/home/etienne/source.shp<span class="w"> </span><span class="nv">DISTANCE</span><span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="nv">OUTPUT</span><span class="o">=</span>/tmp/sortie.gpkg
 </code></pre></div></td></tr></table></div>
 <p>L'idée de QGIS Process est soit de faire un petit exécutable ou alors de lancer le programme à intervalle de temps régulier.</p>
 <p><img alt="QGIS Processing Toolbox" src="../media/processing_provider.png" /></p>

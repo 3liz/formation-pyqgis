@@ -16,7 +16,7 @@
         <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/script-processing/">
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.3.0, mkdocs-material-7.3.6">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-7.3.6">
     
     
       
@@ -1452,7 +1452,7 @@ n,10,10,0,Nom rue
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">liste_csv</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Liste les CSV disponibles dans le dossier. &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Liste les CSV disponibles dans le dossier. &quot;&quot;&quot;</span>
     <span class="k">pass</span>
 </code></pre></div></td></tr></table></div>
 <p>Correction du script Python (et non la correction du script Processing) :</p>
@@ -1511,7 +1511,7 @@ n,10,10,0,Nom rue
 <span class="kn">import</span> <span class="nn">csv</span>
 
 <span class="k">def</span> <span class="nf">liste_csv</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Fonction générique pour liste les CSV dans un dossier. &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Fonction générique pour liste les CSV dans un dossier. &quot;&quot;&quot;</span>
     <span class="n">csvs</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
         <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
@@ -1520,7 +1520,7 @@ n,10,10,0,Nom rue
     <span class="k">return</span> <span class="n">csvs</span>
 
 <span class="k">def</span> <span class="nf">lire_csv</span><span class="p">(</span><span class="n">csv_file</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot; Fonction générique pour créer une couche vecteur selon la définition d&#39;un CSV. &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Fonction générique pour créer une couche vecteur selon la définition d&#39;un CSV. &quot;&quot;&quot;</span>
     <span class="n">geom</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
     <span class="n">crs</span> <span class="o">=</span> <span class="kc">None</span>
     <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1637,7 +1637,7 @@ pas très ergonomique.</p>
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">processAlgorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Here is where the processing itself takes place.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">folder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameterAsFile</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">INPUT</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
@@ -1873,7 +1873,7 @@ pas très ergonomique.</p>
 
 
 <span class="k">class</span> <span class="nc">ExampleProcessingAlgorithm</span><span class="p">(</span><span class="n">QgsProcessingAlgorithm</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This is an example algorithm that takes a vector layer and</span>
 <span class="sd">    creates a new identical one.</span>
 
@@ -1894,7 +1894,7 @@ pas très ergonomique.</p>
     <span class="n">OUTPUT</span> <span class="o">=</span> <span class="s1">&#39;OUTPUT&#39;</span>
 
     <span class="k">def</span> <span class="nf">tr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">string</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a translatable string with the self.tr() function.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="n">QCoreApplication</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="s1">&#39;Processing&#39;</span><span class="p">,</span> <span class="n">string</span><span class="p">)</span>
@@ -1903,7 +1903,7 @@ pas très ergonomique.</p>
         <span class="k">return</span> <span class="n">ExampleProcessingAlgorithm</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">name</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the algorithm name, used for identifying the algorithm. This</span>
 <span class="sd">        string should be fixed for the algorithm, and must not be localised.</span>
 <span class="sd">        The name should be unique within each provider. Names should contain</span>
@@ -1913,21 +1913,21 @@ pas très ergonomique.</p>
         <span class="k">return</span> <span class="s1">&#39;myscript&#39;</span>
 
     <span class="k">def</span> <span class="nf">displayName</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the translated algorithm name, which should be used for any</span>
 <span class="sd">        user-visible display of the algorithm name.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;My Script&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">group</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the name of the group this algorithm belongs to. This string</span>
 <span class="sd">        should be localised.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s1">&#39;Example scripts&#39;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">groupId</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns the unique ID of the group this algorithm belongs to. This</span>
 <span class="sd">        string should be fixed for the algorithm, and must not be localised.</span>
 <span class="sd">        The group id should be unique within each provider. Group id should</span>
@@ -1937,7 +1937,7 @@ pas très ergonomique.</p>
         <span class="k">return</span> <span class="s1">&#39;examplescripts&#39;</span>
 
     <span class="k">def</span> <span class="nf">shortHelpString</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Returns a localised short helper string for the algorithm. This string</span>
 <span class="sd">        should provide a basic description about what the algorithm does and the</span>
 <span class="sd">        parameters and outputs associated with it.</span>
@@ -1945,7 +1945,7 @@ pas très ergonomique.</p>
         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">tr</span><span class="p">(</span><span class="s2">&quot;Example algorithm short description&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">initAlgorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Here we define the inputs and output of the algorithm, along</span>
 <span class="sd">        with some other properties.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
@@ -1966,7 +1966,7 @@ pas très ergonomique.</p>
         <span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">liste_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">folder</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Fonction générique pour liste les CSV dans un dossier. &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Fonction générique pour liste les CSV dans un dossier. &quot;&quot;&quot;</span>
         <span class="n">csvs</span> <span class="o">=</span> <span class="p">[]</span>
         <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">folder</span><span class="p">):</span>
             <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">files</span><span class="p">:</span>
@@ -1975,7 +1975,7 @@ pas très ergonomique.</p>
         <span class="k">return</span> <span class="n">csvs</span>
 
     <span class="k">def</span> <span class="nf">lire_csv</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">csv_file</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot; Fonction générique pour créer une couche vecteur selon la définition d&#39;un CSV. &quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Fonction générique pour créer une couche vecteur selon la définition d&#39;un CSV. &quot;&quot;&quot;</span>
         <span class="n">geom</span> <span class="o">=</span> <span class="s1">&#39;None&#39;</span>
         <span class="n">crs</span> <span class="o">=</span> <span class="kc">None</span>
         <span class="n">fields</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2009,7 +2009,7 @@ pas très ergonomique.</p>
         <span class="k">return</span> <span class="n">layer</span>
 
     <span class="k">def</span> <span class="nf">processAlgorithm</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">feedback</span><span class="p">):</span>
-        <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">        Here is where the processing itself takes place.</span>
 <span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">folder</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parameterAsFile</span><span class="p">(</span><span class="n">parameters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">INPUT</span><span class="p">,</span> <span class="n">context</span><span class="p">)</span>
@@ -2143,7 +2143,7 @@ des décorateurs avec la classe Processing.</p>
 <span class="nd">@alg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;NUMBEROFFEATURES&#39;</span><span class="p">,</span>
             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Number of features processed&#39;</span><span class="p">)</span>
 <span class="k">def</span> <span class="nf">bufferrasteralg</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">feedback</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
-   <span class="sd">&quot;&quot;&quot;</span>
+<span class="w">   </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">   Description of the algorithm.</span>
 <span class="sd">   (If there is no comment here, you will get an error)</span>
 <span class="sd">   &quot;&quot;&quot;</span>
