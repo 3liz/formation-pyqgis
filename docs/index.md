@@ -24,7 +24,7 @@ Pour suivre la formation, il faut :
     * Données [OSM2Igeo](https://github.com/igeofr/osm2igeo) (utilisation de ce jeu de données ci-après dans 
       la formation)
 
-Si nécessaire, il peut-être utile d'avoir en plus :
+Si nécessaire, il peut être utile d'avoir en plus :
 
 * [qgis_process](./standalone.md#qgis-process)
 * QtDesigner pour la partie sur les formulaires ou une extension graphique
@@ -42,7 +42,6 @@ Si nécessaire, il peut-être utile d'avoir en plus :
     * [Action](action.md)
     * [Formulaire](formulaire.md)
     * [Expression](expression.md)
-    * [Interroger une base PostGIS](postgis.md)
     <!-- * [Manipuler la légende et une jointure](legende.md) -->
 * Utilisation avancée
     * [Script Processing](script-processing.md)
@@ -50,6 +49,8 @@ Si nécessaire, il peut-être utile d'avoir en plus :
     * [Extension graphique](extension-graphique.md)
     * [Extension Processing](extension-processing.md)
     * [Application standalone](standalone.md)
-* Autres
+* Sujet PyGIS thématique
+    * [Interroger une base PostGIS](postgis.md)
+* Outils annexes
     * [Déploiement d'une extension](extension-deploiement.md)
     * [IDE Python & Git](ide-git.md)

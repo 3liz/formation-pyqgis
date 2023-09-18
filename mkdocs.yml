@@ -22,14 +22,15 @@ nav:
       - Action: action.md
       - Formulaire: formulaire.md
       - Expression: expression.md
-      - PostGIS: postgis.md
     - Utilisation avancé:
       - Script Processing: script-processing.md
       - Extension Générique: extension-generique.md
       - Extension Graphique: extension-graphique.md
       - Extension Processing: extension-processing.md
       - Application standalone: standalone.md
-    - Autres:
+    - Sujet PyGIS thématique:
+      - PostGIS: postgis.md
+    - Outils annexes:
       - Déploiement d'une extension: extension-deploiement.md
       - IDE & Git: ide-git.md
 
