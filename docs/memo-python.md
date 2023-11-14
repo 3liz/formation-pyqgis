@@ -33,9 +33,9 @@ if 0 < x < 10:
 	* Dernière version le 1 janvier 2020
 * Python 3
     * Sortie en 2008, mais il s'agit d'une adoption très lente, tellement Python 2 a été massivement adopté.
-    * Dernière version 3.10.0 du 4 octobre 2021
+    * Dernière version 3.12.0 du 2 octobre 2023
     * 1 version majeure par an, en octobre
-    * QGIS 3 requière :
+    * QGIS 3 requiert :
         * Python 3.5 minimum for QGIS 3.4
         * Python 3.6 minimum for QGIS 3.18
         * Python 3.7 minimum for QGIS 3.20
@@ -131,7 +131,7 @@ nombres
 * les dictionnaires
 
 *Attention*, les dictionnaires ne sont pas ordonnés !
-Si vraiment il y a besoin, il existe une classe `OrderedDict`, mais ce n'est pas une structure de données
+Si vraiment, il y a besoin, il existe une classe `OrderedDict`, mais ce n'est pas une structure de données
 native dans Python.
 C'est un objet.
 
@@ -171,8 +171,10 @@ b = a + 1
 c = a - 1
 d = a * 2
 e = a / 2
-f = a % 3  # 1
-g = a ** 2  # 100
+
+a = 10
+f = a % 3  # Fonction "modulo", résultat 1
+g = a ** 2  # Fonction puissance, résultat 100
 ```
 
 ## Concaténer des chaînes et des variables
