@@ -56,7 +56,7 @@ Dans le menu Extensions ➡ Console Python.
 	dans la console.
 
 	Ces caractères sont utilisés en Python. Il est donc conseillé de supprimer ce raccourci clavier.
-	Il peut s'agit du zoom + dans le menu Préférences ➡ Raccourcis clavier.
+	Il s'agit du "zoom + secondaire" dans QGIS → menu Préférences ➡ Raccourcis clavier.
 
 
 ## Les types de données
