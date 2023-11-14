@@ -1446,9 +1446,9 @@
 </li>
 <li>Python 3<ul>
 <li>Sortie en 2008, mais il s'agit d'une adoption très lente, tellement Python 2 a été massivement adopté.</li>
-<li>Dernière version 3.10.0 du 4 octobre 2021</li>
+<li>Dernière version 3.12.0 du 2 octobre 2023</li>
 <li>1 version majeure par an, en octobre</li>
-<li>QGIS 3 requière :<ul>
+<li>QGIS 3 requiert :<ul>
 <li>Python 3.5 minimum for QGIS 3.4</li>
 <li>Python 3.6 minimum for QGIS 3.18</li>
 <li>Python 3.7 minimum for QGIS 3.20</li>
@@ -1574,7 +1574,7 @@ du programme.</p>
 <li>les dictionnaires</li>
 </ul>
 <p><em>Attention</em>, les dictionnaires ne sont pas ordonnés !
-Si vraiment il y a besoin, il existe une classe <code>OrderedDict</code>, mais ce n'est pas une structure de données
+Si vraiment, il y a besoin, il existe une classe <code>OrderedDict</code>, mais ce n'est pas une structure de données
 native dans Python.
 C'est un objet.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1610,23 +1610,27 @@ C'est un objet.</p>
 <span class="sd">&quot;&quot;&quot; Ces lignes sont réservés pour la documentation de l&#39;API et ne doivent pas être des lignes de commentaires. &quot;&quot;&quot;</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="arithmetique">Arithmétique<a class="headerlink" href="#arithmetique" title="Permanent link">#</a></h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
 <span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>
 <span class="n">a</span> <span class="o">-=</span> <span class="mi">1</span>
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>
 <span class="n">e</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="n">f</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">3</span>  <span class="c1"># 1</span>
-<span class="n">g</span> <span class="o">=</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># 100</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">f</span> <span class="o">=</span> <span class="n">a</span> <span class="o">%</span> <span class="mi">3</span>  <span class="c1"># Fonction &quot;modulo&quot;, résultat 1</span>
+<span class="n">g</span> <span class="o">=</span> <span class="n">a</span> <span class="o">**</span> <span class="mi">2</span>  <span class="c1"># Fonction puissance, résultat 100</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="concatener-des-chaines-et-des-variables">Concaténer des chaînes et des variables<a class="headerlink" href="#concatener-des-chaines-et-des-variables" title="Permanent link">#</a></h2>
 <p>Concaténer, c'est assembler des chaînes de caractères dans une seule et même sortie.
