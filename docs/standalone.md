@@ -7,7 +7,7 @@ qui permet de lancer QGIS Processing en ligne de commande.
 
 Quelques rappels pour utiliser la ligne de commande sous Windows :
 
-* `cd` pour *C**hange **D**irectory. Par exemple `cd C:/Program Files/QGIS 3.16/bin/`
+* `cd` pour *C**hange **D**irectory. Par exemple `cd C:/Program Files/QGIS 3.28/bin/`
 * `dir` pour lister les fichiers/dossiers d'un répertoire
 
 Dans le **shell OSGEO**, taper :

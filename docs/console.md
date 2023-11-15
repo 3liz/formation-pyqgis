@@ -13,8 +13,8 @@ Voici une liste de liens pour la documentation :
 
 * [https://docs.qgis.org](https://docs.qgis.org) qui regroupe :
     * [Le Python Cookbook https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook](https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/) (recette de cuisine)
-    * [L'API C++ https://qgis.org/api/3.16/](https://qgis.org/api/3.16/)
-    * [L'API Python https://qgis.org/pyqgis/3.16/](https://qgis.org/pyqgis/3.16/)
+    * [L'API C++ https://qgis.org/api/3.28/](https://qgis.org/api/3.28/)
+    * [L'API Python https://qgis.org/pyqgis/3.28/](https://qgis.org/pyqgis/3.28/)
 * [Documentation de l'API Qt](https://doc.qt.io/qt-5/classes.html)
 * [Documentation de Python](https://docs.python.org/3/library/)
     * [Le module os.path par exemple](https://docs.python.org/3/library/os.path.html#module-os.path), module historique pour manipuler des chemins
@@ -84,7 +84,7 @@ class Voiture{
 * Dans QGIS, `Plugins` -> `Console Python`
 * QGIS nous donne accès au projet actuel via la classe `QgsProject`
 	* [https://qgis.org/api/classQgsProject.html](https://qgis.org/api/classQgsProject.html)
-	* [https://qgis.org/pyqgis/3.16/core/QgsProject.html](https://qgis.org/pyqgis/3.16/core/QgsProject.html)
+	* [https://qgis.org/pyqgis/3.28/core/QgsProject.html](https://qgis.org/pyqgis/3.28/core/QgsProject.html)
 
 * Dans la documentation (en C++ surtout), on remarque plusieurs sections :
 	* Public types
@@ -171,7 +171,7 @@ QgsProject.instance().addMapLayer(communes)
 
 * Explorer l'objet `communes` qui est un `QgsVectorLayer` à l'aide de la documentation pour chercher sa
   géométrie, le nombre d'entités.
-  [API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.16/core/QgsVectorLayer.html)
+  [API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.28/core/QgsVectorLayer.html)
 * Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre
 
 ```python
@@ -210,7 +210,7 @@ QgsMapLayer <-- QgsRasterLayer
 
 L'objet `QgsVectorLayer` hérite de `QgsMapLayer` qui est une classe commune avec `QgsMapLayer`.
 
-[API QgsMapLayer C++](https://qgis.org/api/classQgsMapLayer.html), [API QgsMapLayer Python](https://qgis.org/pyqgis/3.16/core/QgsMapLayer.html)
+[API QgsMapLayer C++](https://qgis.org/api/classQgsMapLayer.html), [API QgsMapLayer Python](https://qgis.org/pyqgis/3.28/core/QgsMapLayer.html)
 
 Regardons la fonction `isinstance` qui permet de tester si un objet est une instance d'une classe :
 
