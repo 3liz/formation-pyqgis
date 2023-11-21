@@ -396,6 +396,27 @@ QgsVectorFileWriter.writeAsVectorFormat(
 
 ```
 
+??? "Pour la version avec `writeAsVectorFormatV3`"
+    Il faut désormais donner le contexte pour une éventuelle reprojection que l'on trouve dans la classe
+    **QgsProject** : `QgsProject.instance().transformContext()`.
+
+    L'ensemble des options se donne via une nouvelle variable `QgsVectorFileWriter.SaveVectorOptions()`.
+
+    ```python
+    options = QgsVectorFileWriter.SaveVectorOptions()
+    options.driverName = 'CSV'
+    options.fileEncoding = 'UTF-8'
+    options.layerOptions = ['CREATE_CSVT=YES', 'SEPARATOR=TAB']
+
+    base_name = QgsProject.instance().baseName()
+    QgsVectorFileWriter.writeAsVectorFormatV3(
+        layer_info,
+        join(QgsProject.instance().homePath(), f'{base_name}.csv'),
+        QgsProject.instance().transformContext(),
+        options,
+    )
+    ```
+
 !!! warning
     Ajouter une couche raster et retester le script ... surprise 🎁
 
