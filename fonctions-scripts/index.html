@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.10">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.4b4a2bd9.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.fad675c6.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
@@ -609,21 +609,27 @@
       
         <li class="md-nav__item">
   <a href="#communication-avec-lutilisateur-des-erreurs-et-des-logs" class="md-nav__link">
-    Communication avec l'utilisateur des erreurs et des logs
+    <span class="md-ellipsis">
+      Communication avec l'utilisateur des erreurs et des logs
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#charger-automatiquement-plusieurs-couches-a-laide-dun-script" class="md-nav__link">
-    Charger automatiquement plusieurs couches à l'aide d'un script
+    <span class="md-ellipsis">
+      Charger automatiquement plusieurs couches à l'aide d'un script
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#extraction-des-informations-sous-forme-dun-fichier-csv" class="md-nav__link">
-    Extraction des informations sous forme d'un fichier CSV.
+    <span class="md-ellipsis">
+      Extraction des informations sous forme d'un fichier CSV.
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Extraction des informations sous forme d'un fichier CSV.">
@@ -631,21 +637,27 @@
         
           <li class="md-nav__item">
   <a href="#exemple-de-sortie" class="md-nav__link">
-    Exemple de sortie
+    <span class="md-ellipsis">
+      Exemple de sortie
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#petit-memo" class="md-nav__link">
-    Petit mémo
+    <span class="md-ellipsis">
+      Petit mémo
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#solution" class="md-nav__link">
-    Solution
+    <span class="md-ellipsis">
+      Solution
+    </span>
   </a>
   
 </li>
@@ -1123,21 +1135,27 @@
       
         <li class="md-nav__item">
   <a href="#communication-avec-lutilisateur-des-erreurs-et-des-logs" class="md-nav__link">
-    Communication avec l'utilisateur des erreurs et des logs
+    <span class="md-ellipsis">
+      Communication avec l'utilisateur des erreurs et des logs
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#charger-automatiquement-plusieurs-couches-a-laide-dun-script" class="md-nav__link">
-    Charger automatiquement plusieurs couches à l'aide d'un script
+    <span class="md-ellipsis">
+      Charger automatiquement plusieurs couches à l'aide d'un script
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#extraction-des-informations-sous-forme-dun-fichier-csv" class="md-nav__link">
-    Extraction des informations sous forme d'un fichier CSV.
+    <span class="md-ellipsis">
+      Extraction des informations sous forme d'un fichier CSV.
+    </span>
   </a>
   
     <nav class="md-nav" aria-label="Extraction des informations sous forme d'un fichier CSV.">
@@ -1145,21 +1163,27 @@
         
           <li class="md-nav__item">
   <a href="#exemple-de-sortie" class="md-nav__link">
-    Exemple de sortie
+    <span class="md-ellipsis">
+      Exemple de sortie
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#petit-memo" class="md-nav__link">
-    Petit mémo
+    <span class="md-ellipsis">
+      Petit mémo
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#solution" class="md-nav__link">
-    Solution
+    <span class="md-ellipsis">
+      Solution
+    </span>
   </a>
   
 </li>
@@ -1784,6 +1808,36 @@ l'action <code>Exporter la couche</code>).</p>
 
 <span class="c1"># Afficher une messageBar pour confirmer que c&#39;est OK, en vert ;-)</span>
 </code></pre></div></td></tr></table></div>
+<details>
+<summary>Pour la version avec <code>writeAsVectorFormatV3</code></summary>
+<p>Il faut désormais donner le contexte pour une éventuelle reprojection que l'on trouve dans la classe
+<strong>QgsProject</strong> : <code>QgsProject.instance().transformContext()</code>.</p>
+<p>L'ensemble des options se donne via une nouvelle variable <code>QgsVectorFileWriter.SaveVectorOptions()</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">options</span> <span class="o">=</span> <span class="n">QgsVectorFileWriter</span><span class="o">.</span><span class="n">SaveVectorOptions</span><span class="p">()</span>
+<span class="n">options</span><span class="o">.</span><span class="n">driverName</span> <span class="o">=</span> <span class="s1">&#39;CSV&#39;</span>
+<span class="n">options</span><span class="o">.</span><span class="n">fileEncoding</span> <span class="o">=</span> <span class="s1">&#39;UTF-8&#39;</span>
+<span class="n">options</span><span class="o">.</span><span class="n">layerOptions</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;CREATE_CSVT=YES&#39;</span><span class="p">,</span> <span class="s1">&#39;SEPARATOR=TAB&#39;</span><span class="p">]</span>
+
+<span class="n">base_name</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">baseName</span><span class="p">()</span>
+<span class="n">QgsVectorFileWriter</span><span class="o">.</span><span class="n">writeAsVectorFormatV3</span><span class="p">(</span>
+    <span class="n">layer_info</span><span class="p">,</span>
+    <span class="n">join</span><span class="p">(</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">(),</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">base_name</span><span class="si">}</span><span class="s1">.csv&#39;</span><span class="p">),</span>
+    <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">transformContext</span><span class="p">(),</span>
+    <span class="n">options</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Ajouter une couche raster et retester le script ... surprise 🎁</p>
@@ -1907,7 +1961,7 @@ ou dans le menu Préférences ➡ Options ➡ GDAL ➡ Pilotes vecteurs</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      <script src="../assets/javascripts/bundle.6c14ae12.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       
