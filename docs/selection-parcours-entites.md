@@ -70,20 +70,28 @@ un nouveau fichier.
 
 
 ```python
+from pathlib import Path
+
 layer = iface.activeLayer()
+
+options = QgsVectorFileWriter.SaveVectorOptions()
+options.driverName = 'ESRI Shapefile'
+options.fileEncoding = 'UTF-8'
+options.onlySelectedFeatures = True  # Nouvelle option pour la sélection
 
 depts = ['34', '30']
 for dept in depts:
+    print(f"Dept {dept}")
     layer.selectByExpression(f"\"INSEE_DEP\"  =  '{dept}'")
-    result = QgsVectorFileWriter.writeAsVectorFormat(
+    result = QgsVectorFileWriter.writeAsVectorFormatV3(
         layer,
-        join(QgsProject.instance().homePath(), f'{dept}.shp'),
-        'utf-8',
-        layer.crs(),
-        'ESRI Shapefile',
-        onlySelected=True,  # Nouvelle option pour la sélection
+        str(Path(QgsProject.instance().homePath()).joinpath(f'{dept}.shp')),
+        QgsProject.instance().transformContext(),
+        options
     )
     print(result)
+    if result[0] == QgsVectorFileWriter.NoError:
+        print(" → OK")
 ```
 
 ## Boucler sur les entités à l'aide d'une expression

@@ -101,7 +101,7 @@ reverse_geom(layer, ids)
             line.reverse()
         new_geom = QgsGeometry.fromMultiPolylineXY(lines)
         with edit(layer):
-	    layer.changeGeometry(feature.id(), new_geom)
+	        layer.changeGeometry(feature.id(), new_geom)
 
     layer = iface.activeLayer()
     ids = layer.selectedFeatureIds()[0]
@@ -136,6 +136,19 @@ On peut désormais cliquer sur une ligne pour automatiquement inverser une ligne
 
 Le code de l'action est enregistré dans le style QML de la couche vecteur. Il peut donc être partagé avec 
 d'autres utilisateurs qui ne connaissent pas Python.
+
+## Informer l'utilisateur
+
+Si on souhaite informer l'utilisateur que cela s'est bien passé, on peut utiliser la "message bar" :
+
+```python
+from qgis.utils import iface
+
+iface.messageBar().pushMessage('Inversion', 'La rivière est inversée', Qgis.Success)
+```
+
+_Note_, contrairement à la console où QGIS importait pour nous directement la variable `iface`, dans ce contexte, il
+faut le faire manuellement.
 
 ## Astuce pour stocker le code d'une action dans une extension QGIS
 
