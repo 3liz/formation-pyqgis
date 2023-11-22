@@ -712,6 +712,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#informer-lutilisateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Informer l'utilisateur
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#astuce-pour-stocker-le-code-dune-action-dans-une-extension-qgis" class="md-nav__link">
     <span class="md-ellipsis">
       Astuce pour stocker le code d'une action dans une extension QGIS
@@ -1128,6 +1137,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#informer-lutilisateur" class="md-nav__link">
+    <span class="md-ellipsis">
+      Informer l'utilisateur
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#astuce-pour-stocker-le-code-dune-action-dans-une-extension-qgis" class="md-nav__link">
     <span class="md-ellipsis">
       Astuce pour stocker le code d'une action dans une extension QGIS
@@ -1308,7 +1326,7 @@ une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer d
         <span class="n">line</span><span class="o">.</span><span class="n">reverse</span><span class="p">()</span>
     <span class="n">new_geom</span> <span class="o">=</span> <span class="n">QgsGeometry</span><span class="o">.</span><span class="n">fromMultiPolylineXY</span><span class="p">(</span><span class="n">lines</span><span class="p">)</span>
     <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
-    <span class="n">layer</span><span class="o">.</span><span class="n">changeGeometry</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">new_geom</span><span class="p">)</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">changeGeometry</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">new_geom</span><span class="p">)</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="n">ids</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">selectedFeatureIds</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
@@ -1353,6 +1371,16 @@ une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer d
 <p>On peut désormais cliquer sur une ligne pour automatiquement inverser une ligne.</p>
 <p>Le code de l'action est enregistré dans le style QML de la couche vecteur. Il peut donc être partagé avec 
 d'autres utilisateurs qui ne connaissent pas Python.</p>
+<h2 id="informer-lutilisateur">Informer l'utilisateur<a class="headerlink" href="#informer-lutilisateur" title="Permanent link">#</a></h2>
+<p>Si on souhaite informer l'utilisateur que cela s'est bien passé, on peut utiliser la "message bar" :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+
+<span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Inversion&#39;</span><span class="p">,</span> <span class="s1">&#39;La rivière est inversée&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p><em>Note</em>, contrairement à la console où QGIS importait pour nous directement la variable <code>iface</code>, dans ce contexte, il
+faut le faire manuellement.</p>
 <h2 id="astuce-pour-stocker-le-code-dune-action-dans-une-extension-qgis">Astuce pour stocker le code d'une action dans une extension QGIS<a class="headerlink" href="#astuce-pour-stocker-le-code-dune-action-dans-une-extension-qgis" title="Permanent link">#</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
