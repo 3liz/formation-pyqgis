@@ -18,11 +18,10 @@ Pour suivre la formation, il faut :
 
 * Avoir [QGIS LTR minimum](https://www.qgis.org/en/site/getinvolved/development/roadmap.html#release-schedule)
 * Avoir des connaissances en QGIS bureautique
-* Avoir des bases en programmation
+* Avoir quelques bases en programmation
 * Avoir un jeu de données, par exemple :
-    * Données OSM à l'aide du plugin QuickOSM
-    * Données [OSM2Igeo](https://github.com/igeofr/osm2igeo) (utilisation de ce jeu de données ci-après dans 
-      la formation)
+    * BD Topo du département 
+    * Données [OSM2Igeo](https://github.com/igeofr/osm2igeo)
 
 Si nécessaire, il peut être utile d'avoir en plus :
 

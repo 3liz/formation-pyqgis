@@ -46,7 +46,7 @@ sont déjà dans la légende. Il existe dans `QgsProject` plusieurs méthodes po
 
 ```python
 projet = QgsProject.instance()
-communes = projet.mapLayersByName('communes')
+communes = projet.mapLayersByName('communes')[0]
 insee = projet.mapLayersByName('tableau INSEE')
 ```
 
@@ -59,6 +59,7 @@ if len(communes) == 0:
     print("Pas de couches dans la légende qui se nomme 'communes'")
     layer = None
 else len(communes) >= 1:
+    # TODO FIX ME
     layer = communes[0]
 ```
 

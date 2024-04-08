@@ -53,7 +53,7 @@ with open("/mon/fichier.json") as f:
 pages = data['query']['pages']
 key = list(pages.keys())[0]
 description = pages[key]['description']
-print("description")
+print(description)
 ```
 
 ??? "Solution complète pour l'expression QGIS"
