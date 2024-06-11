@@ -427,3 +427,23 @@ QgsVectorFileWriter.writeAsVectorFormat(
     [ogr.GetDriver(i).GetDescription() for i in range(ogr.GetDriverCount())]    
     ```
     ou dans le menu Préférences ➡ Options ➡ GDAL ➡ Pilotes vecteurs
+
+### Finalisation
+
+Idéalement, il faut vérifier le résultat de l'enregistrement du fichier. Les différentes méthodes `writeAsVectorFormat`
+retournent systématiquement un tuple avec un code d'erreur et un message si nécessaire, voir la
+[documentation](https://api.qgis.org/api/classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade).
+
+En cas de succès, il est pratique d'avertir l'utilisateur. On peut aussi fournir un lien pour ouvrir l'explorateur de fichier :
+
+```python
+base_name = QgsProject.instance().baseName()
+output_file = Path(QgsProject.instance().homePath()).joinpath(f'{base_name}.csv')
+iface.messageBar().pushSuccess(
+    "Export OK des couches 👍",
+    (
+        "Le fichier CSV a été enregistré dans "
+        "<a href=\"{}\">{}</a>"
+    ).format(output_file.parent, output_file)
+)
+```
