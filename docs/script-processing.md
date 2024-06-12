@@ -37,7 +37,6 @@ layer.name()  # Retourne "Communes"
 Nous allons faire un "très" petit exemple rapide. Écrivons notre premier jeu vidéo en console ! 🎮
 
 ```python
-
 from time import sleep
 
 MAX_ENERGIE = 20
@@ -45,11 +44,18 @@ MAX_ENERGIE = 20
 
 class Personnage:
 
-    def __init__(self, nom, energie=MAX_ENERGIE):
-        self.nom = nom
+    """ Classe représentant un personnage du jeu vidéo. """
+
+    def __init__(self, un_nom, energie=MAX_ENERGIE):
+        """ Constructeur. """
+        self.nom = un_nom
         self.energie = energie
 
     def marcher(self):
+        """ Permet au personnage de marcher.
+
+        Cela dépense de l'énergie.
+        """
         cout = 5
         if self.energie >= cout:
             print(f"{self.nom} marche.")
@@ -58,6 +64,10 @@ class Personnage:
             print(f"{self.nom} ne peut pas marcher car il n'a pas assez d'énergie.")
 
     def courir(self):
+        """ Permet au personnage de courir.
+
+        Cela dépense de l'énergie.
+        """
         cout = 10
         if self.energie >= cout:
             print(f"{self.nom} court.")
@@ -66,6 +76,7 @@ class Personnage:
             print(f"{self.nom} ne peut pas courir car il n\'a pas assez d\'énergie.")
 
     def dormir(self):
+        """ Permet au personnage de dormir et restaurer le niveau maximum d'énergie."""
         print(f"{self.nom} dort et fait le plein d'énergie.")
         for i in range(2):
             print('...')
@@ -73,6 +84,7 @@ class Personnage:
         self.energie = MAX_ENERGIE
 
     def manger(self):
+        """ Permet au personnage de manger et d'augmenter de 10 points le niveau d'énergie."""
         energie = 10
         print(f"{self.nom} mange et récupère {energie} points d'énergie.")
         if self.energie <= MAX_ENERGIE - energie:
@@ -91,7 +103,7 @@ class Personnage:
 On peut aussi utiliser `help` qui est plus présentable.
 
 ```python    
-a = Personnage('Bob')
+a = Personnage('Dark Vador')
 dir(a)
 help(a)
 ```
@@ -100,7 +112,7 @@ Que remarquons-nous ?
 
 ??? "Solution"
     ```python
-    a = Personnage('Bob')
+    a = Personnage('Dark Vador')
     a.courir()
     a.dormir()
     a.manger()
@@ -113,7 +125,23 @@ Afficher le nom du personnage (et juste son nom, pas la phrase de présentation)
 
 Ajoutons une méthode `dialoguer` pour discuter avec un **autre** personnage.
 
+!!! tip Exemple de la définition de la fonction
+    ```python
+    def dialoguer(self, autre_personnage):
+        """ Permet de dialoguer avec un autre personnage. """
+        pass
+    ```
+
+1. Écrire le code la fonction à l'aide d'un `print` pour commencer disant que `X dialogue avec Y`.
+2. Vérifier le niveau d'énergie, on ne peut pas parler si on est décédé !
+3. Garder son code à gauche, on peut utiliser une instruction `return`
+
 Nous pouvons désormais utiliser le constructeur afin de créer deux **instances** de notre **classe**.
+
+```python
+b = Personnage('Luke')
+b.dialoguer(a)
+```
 
 ??? "Solution pour la méthode `dialoguer()`"
 
@@ -136,14 +164,23 @@ afin de les mettre dans son sac à dos.
    `remove()`, `append()` que l'on trouve sur une liste.
 3. Pour les méthodes `deposer` et `utiliser`, nous pouvons avoir à créer une autre méthode **privée** afin de vérifier
    l'existence de l'objet dans l'inventaire. Par convention, nous préfixons la méthode par `_` comme `_est_dans_inventaire`
-   afin de signaler que c'est une méthode dite **privée**.
-4. Ajoutons des **commentaires** et/ou des **docstrings**, CF mémo Python. On peut utiliser la méthode `help`
+   afin de signaler que c'est une méthode dite **privée**. L'utilisation de cette méthode privée est uniquement à titre
+   pédagogique, on peut vouloir exposer la méthode `est_dans_inventaire`. Cette méthode doit renvoyer un **booléen**.
+4. Ajoutons des **commentaires** et/ou des **docstrings**, CF mémo Python. On peut utiliser la méthode `help`.
+5. Pensons aussi **annotations Python**
 
 !!! info
     Il est important de comprendre que la POO permet de construire une sorte de boîte opaque du point de vue de
-    l'utilisateur de la classe. Un peu comme une voiture. Elles ont toutes un capot et une pédale de frein.
+    l'utilisateur de la classe. Un peu comme une voiture, elles ont toutes un capot et une pédale d'accélération.
+    L'appui sur l'accélérateur déclenche plusieurs mécanismes à l'intérieur de la voiture, mais du point de vue
+    utilisateur, c'est plutôt simple.
 
-*Il y a des corrections sur les dernières méthodes [à la fin](./script-processing.md#solution)*
+*Il y a des corrections sur les dernières méthodes [en bas de ce TP](./script-processing.md#solution)*
+
+!!! tip
+    On peut vite imaginer d'autres classes, comme `Arme`, car ramasser un bout de bois ou un sabre laser n'a pas le même
+    impact lors de son utilisation dans un combat. Le dégât qu'inflige une arme sur le niveau d'énergie de l'autre
+    personnage est une propriété de l'arme en question **et** du niveau du personnage.
 
 ## Documentation
 
@@ -208,6 +245,10 @@ def tampon(distance):
 for x in [10, 20, 30]:
     tampon(x)
 ```
+
+!!! warning
+    Attention si utilisation de `iface.activeLayer()` qui va être modifié si utilisation de `QgsProject.instance().addMapLayer()`.
+    Il peut être nécessaire d'extraire la sélection de la couche hors de la boucle.
 
 ## Lancer l'interface graphique de notre algorithme
 
@@ -784,6 +825,9 @@ On peut compléter l'action avec un `processing.run` en utilisant uniquement l'e
 Sur la classe Personnage ci-dessus :
 
 ```python
+def _est_dans_inventaire(self, un_objet: str) -> bool:
+    return un_objet in self.inventaire
+
 def ramasser(self, un_objet):
     print(f"{self.nom} ramasse {un_objet} et le met dans son inventaire.")
     self.inventaire.append(un_objet)
@@ -799,10 +843,9 @@ def deposer(self, un_objet):
         print(f"{self.nom} dépose {un_objet}")
         self.inventaire.remove(un_objet)
 
-def _est_dans_inventaire(self, un_objet) -> bool:
-    return un_objet in self.inventaire
-
 def donner(self, autre_personnage, un_objet):
-    self.inventaire.remove(un_objet)
-    autre_personnage.inventaire.append(un_objet)
+    if self._est_dans_inventaire(un_objet):
+        self.inventaire.remove(un_objet)
+        autre_personnage.inventaire.append(un_objet)
+        print(f"{autre_personnage.nom} reçoit {un_objet} de la part de {self.nom} et le remercie 👍")
 ```
