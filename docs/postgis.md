@@ -50,20 +50,43 @@ print(connection.tables("un_schema"))
 # permettant de faire une source de données pour une QgsVectorLayer
 print(connection.tableUri("schema", "table"))
 
+```
+
+Afficher une table sans géométrie :
+
+```python
 layer = QgsVectorLayer(connection.tableUri("schema", "table"), "Ma table", "postgres")
 layer.loadDefaultStyle()  # Si un style par défaut existe dans votre base PostgreSQL, avec la table layer_styles
 QgsProject.instance().addMapLayer(layer)
+```
 
-# Charger le résultat d'un SELECT
+Afficher une table avec géométrie en partant de `QgsDataSourceUri` :
+```python
+uri = QgsDataSourceUri(connection.uri())
+uri.setSchema('schema')
+uri.setTable('table')
+uri.setKeyColumn('uid')
+
+# Avec une geom si besoin
+uri.setGeometryColumn('geom')
+
+layer = QgsVectorLayer(uri.uri(), 'Ma table', 'postgres')
+QgsProject.instance().addMapLayer(layer)
+```
+
+Afficher le résultat d'un `SELECT` :
+
+```python
 # Notons l'usage des parenthèses autour du SELECT
 uri = QgsDataSourceUri(connection.uri())
 uri.setTable('(SELECT * FROM schema.table)')
 uri.setKeyColumn('uid')
 
 # Avec une geom si besoin
-uri.setGeomColumn('geom')
+uri.setGeometryColumn('geom')
 
 layer = QgsVectorLayer(uri.uri(), 'Requête SELECT', 'postgres')
+QgsProject.instance().addMapLayer(layer)
 ```
 
 !!! tip "Exemple d'extension"
