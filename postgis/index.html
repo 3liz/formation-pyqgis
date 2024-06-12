@@ -1195,22 +1195,7 @@ pour interagir avec une base de données PostGIS.</p>
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span>
-<span class="normal">27</span>
-<span class="normal">28</span>
-<span class="normal">29</span>
-<span class="normal">30</span>
-<span class="normal">31</span>
-<span class="normal">32</span>
-<span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProviderRegistry</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProviderRegistry</span>
 
 <span class="n">metadata</span> <span class="o">=</span> <span class="n">QgsProviderRegistry</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">providerMetadata</span><span class="p">(</span><span class="s1">&#39;postgres&#39;</span><span class="p">)</span>
 <span class="n">connection</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">findConnection</span><span class="p">(</span><span class="s2">&quot;nom de la connexion PG dans votre panneau&quot;</span><span class="p">)</span>
@@ -1229,21 +1214,55 @@ pour interagir avec une base de données PostGIS.</p>
 <span class="c1"># Afficher une table dans QGIS, cela retourne une chaîne de caractère</span>
 <span class="c1"># permettant de faire une source de données pour une QgsVectorLayer</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">tableUri</span><span class="p">(</span><span class="s2">&quot;schema&quot;</span><span class="p">,</span> <span class="s2">&quot;table&quot;</span><span class="p">))</span>
-
-<span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">tableUri</span><span class="p">(</span><span class="s2">&quot;schema&quot;</span><span class="p">,</span> <span class="s2">&quot;table&quot;</span><span class="p">),</span> <span class="s2">&quot;Ma table&quot;</span><span class="p">,</span> <span class="s2">&quot;postgres&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Afficher une table sans géométrie :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">tableUri</span><span class="p">(</span><span class="s2">&quot;schema&quot;</span><span class="p">,</span> <span class="s2">&quot;table&quot;</span><span class="p">),</span> <span class="s2">&quot;Ma table&quot;</span><span class="p">,</span> <span class="s2">&quot;postgres&quot;</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">loadDefaultStyle</span><span class="p">()</span>  <span class="c1"># Si un style par défaut existe dans votre base PostgreSQL, avec la table layer_styles</span>
 <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Afficher une table avec géométrie en partant de <code>QgsDataSourceUri</code> :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">uri</span> <span class="o">=</span> <span class="n">QgsDataSourceUri</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">uri</span><span class="p">())</span>
+<span class="n">uri</span><span class="o">.</span><span class="n">setSchema</span><span class="p">(</span><span class="s1">&#39;schema&#39;</span><span class="p">)</span>
+<span class="n">uri</span><span class="o">.</span><span class="n">setTable</span><span class="p">(</span><span class="s1">&#39;table&#39;</span><span class="p">)</span>
+<span class="n">uri</span><span class="o">.</span><span class="n">setKeyColumn</span><span class="p">(</span><span class="s1">&#39;uid&#39;</span><span class="p">)</span>
 
-<span class="c1"># Charger le résultat d&#39;un SELECT</span>
-<span class="c1"># Notons l&#39;usage des parenthèses autour du SELECT</span>
+<span class="c1"># Avec une geom si besoin</span>
+<span class="n">uri</span><span class="o">.</span><span class="n">setGeometryColumn</span><span class="p">(</span><span class="s1">&#39;geom&#39;</span><span class="p">)</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">uri</span><span class="p">(),</span> <span class="s1">&#39;Ma table&#39;</span><span class="p">,</span> <span class="s1">&#39;postgres&#39;</span><span class="p">)</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div></p>
+<p>Afficher le résultat d'un <code>SELECT</code> :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Notons l&#39;usage des parenthèses autour du SELECT</span>
 <span class="n">uri</span> <span class="o">=</span> <span class="n">QgsDataSourceUri</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">uri</span><span class="p">())</span>
 <span class="n">uri</span><span class="o">.</span><span class="n">setTable</span><span class="p">(</span><span class="s1">&#39;(SELECT * FROM schema.table)&#39;</span><span class="p">)</span>
 <span class="n">uri</span><span class="o">.</span><span class="n">setKeyColumn</span><span class="p">(</span><span class="s1">&#39;uid&#39;</span><span class="p">)</span>
 
 <span class="c1"># Avec une geom si besoin</span>
-<span class="n">uri</span><span class="o">.</span><span class="n">setGeomColumn</span><span class="p">(</span><span class="s1">&#39;geom&#39;</span><span class="p">)</span>
+<span class="n">uri</span><span class="o">.</span><span class="n">setGeometryColumn</span><span class="p">(</span><span class="s1">&#39;geom&#39;</span><span class="p">)</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">uri</span><span class="p">(),</span> <span class="s1">&#39;Requête SELECT&#39;</span><span class="p">,</span> <span class="s1">&#39;postgres&#39;</span><span class="p">)</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition tip">
 <p class="admonition-title">Exemple d'extension</p>
