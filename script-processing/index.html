@@ -1450,18 +1450,38 @@ sur le site d'OpenClassRooms sur le sujet.</p>
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="n">MAX_ENERGIE</span> <span class="o">=</span> <span class="mi">20</span>
 
 
 <span class="k">class</span> <span class="nc">Personnage</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">nom</span><span class="p">,</span> <span class="n">energie</span><span class="o">=</span><span class="n">MAX_ENERGIE</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">nom</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Classe représentant un personnage du jeu vidéo. &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_nom</span><span class="p">,</span> <span class="n">energie</span><span class="o">=</span><span class="n">MAX_ENERGIE</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Constructeur. &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">un_nom</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">energie</span>
 
     <span class="k">def</span> <span class="nf">marcher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de marcher.</span>
+
+<span class="sd">        Cela dépense de l&#39;énergie.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cout</span> <span class="o">=</span> <span class="mi">5</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&gt;=</span> <span class="n">cout</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> marche.&quot;</span><span class="p">)</span>
@@ -1470,6 +1490,10 @@ sur le site d'OpenClassRooms sur le sujet.</p>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas marcher car il n&#39;a pas assez d&#39;énergie.&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">courir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de courir.</span>
+
+<span class="sd">        Cela dépense de l&#39;énergie.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
         <span class="n">cout</span> <span class="o">=</span> <span class="mi">10</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&gt;=</span> <span class="n">cout</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> court.&quot;</span><span class="p">)</span>
@@ -1478,6 +1502,7 @@ sur le site d'OpenClassRooms sur le sujet.</p>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas courir car il n</span><span class="se">\&#39;</span><span class="s2">a pas assez d</span><span class="se">\&#39;</span><span class="s2">énergie.&quot;</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">dormir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de dormir et restaurer le niveau maximum d&#39;énergie.&quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dort et fait le plein d&#39;énergie.&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
             <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
@@ -1485,6 +1510,7 @@ sur le site d'OpenClassRooms sur le sujet.</p>
         <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">MAX_ENERGIE</span>
 
     <span class="k">def</span> <span class="nf">manger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de manger et d&#39;augmenter de 10 points le niveau d&#39;énergie.&quot;&quot;&quot;</span>
         <span class="n">energie</span> <span class="o">=</span> <span class="mi">10</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> mange et récupère </span><span class="si">{</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie.&quot;</span><span class="p">)</span>
         <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&lt;=</span> <span class="n">MAX_ENERGIE</span> <span class="o">-</span> <span class="n">energie</span><span class="p">:</span>
@@ -1500,7 +1526,7 @@ sur le site d'OpenClassRooms sur le sujet.</p>
 On peut aussi utiliser <code>help</code> qui est plus présentable.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Dark Vador&#39;</span><span class="p">)</span>
 <span class="nb">dir</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="n">help</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1511,7 +1537,7 @@ On peut aussi utiliser <code>help</code> qui est plus présentable.</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Bob&#39;</span><span class="p">)</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Dark Vador&#39;</span><span class="p">)</span>
 <span class="n">a</span><span class="o">.</span><span class="n">courir</span><span class="p">()</span>
 <span class="n">a</span><span class="o">.</span><span class="n">dormir</span><span class="p">()</span>
 <span class="n">a</span><span class="o">.</span><span class="n">manger</span><span class="p">()</span>
@@ -1521,7 +1547,25 @@ On peut aussi utiliser <code>help</code> qui est plus présentable.</p>
 <p>Afficher le nom du personnage (et juste son nom, pas la phrase de présentation)</p>
 <h3 id="ajouter-dautres-methodes">Ajouter d'autres méthodes<a class="headerlink" href="#ajouter-dautres-methodes" title="Permanent link">#</a></h3>
 <p>Ajoutons une méthode <code>dialoguer</code> pour discuter avec un <strong>autre</strong> personnage.</p>
+<div class="admonition tip exemple de la définition de la fonction">
+<p class="admonition-title">Tip</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dialoguer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Permet de dialoguer avec un autre personnage. &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<ol>
+<li>Écrire le code la fonction à l'aide d'un <code>print</code> pour commencer disant que <code>X dialogue avec Y</code>.</li>
+<li>Vérifier le niveau d'énergie, on ne peut pas parler si on est décédé !</li>
+<li>Garder son code à gauche, on peut utiliser une instruction <code>return</code></li>
+</ol>
 <p>Nous pouvons désormais utiliser le constructeur afin de créer deux <strong>instances</strong> de notre <strong>classe</strong>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">dialoguer</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <details>
 <summary>Solution pour la méthode <code>dialoguer()</code></summary>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1547,15 +1591,25 @@ afin de les mettre dans son sac à dos.</p>
    <code>remove()</code>, <code>append()</code> que l'on trouve sur une liste.</li>
 <li>Pour les méthodes <code>deposer</code> et <code>utiliser</code>, nous pouvons avoir à créer une autre méthode <strong>privée</strong> afin de vérifier
    l'existence de l'objet dans l'inventaire. Par convention, nous préfixons la méthode par <code>_</code> comme <code>_est_dans_inventaire</code>
-   afin de signaler que c'est une méthode dite <strong>privée</strong>.</li>
-<li>Ajoutons des <strong>commentaires</strong> et/ou des <strong>docstrings</strong>, CF mémo Python. On peut utiliser la méthode <code>help</code></li>
+   afin de signaler que c'est une méthode dite <strong>privée</strong>. L'utilisation de cette méthode privée est uniquement à titre
+   pédagogique, on peut vouloir exposer la méthode <code>est_dans_inventaire</code>. Cette méthode doit renvoyer un <strong>booléen</strong>.</li>
+<li>Ajoutons des <strong>commentaires</strong> et/ou des <strong>docstrings</strong>, CF mémo Python. On peut utiliser la méthode <code>help</code>.</li>
+<li>Pensons aussi <strong>annotations Python</strong></li>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
 <p>Il est important de comprendre que la POO permet de construire une sorte de boîte opaque du point de vue de
-l'utilisateur de la classe. Un peu comme une voiture. Elles ont toutes un capot et une pédale de frein.</p>
+l'utilisateur de la classe. Un peu comme une voiture, elles ont toutes un capot et une pédale d'accélération.
+L'appui sur l'accélérateur déclenche plusieurs mécanismes à l'intérieur de la voiture, mais du point de vue
+utilisateur, c'est plutôt simple.</p>
 </div>
-<p><em>Il y a des corrections sur les dernières méthodes <a href="./#solution">à la fin</a></em></p>
+<p><em>Il y a des corrections sur les dernières méthodes <a href="./#solution">en bas de ce TP</a></em></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>On peut vite imaginer d'autres classes, comme <code>Arme</code>, car ramasser un bout de bois ou un sabre laser n'a pas le même
+impact lors de son utilisation dans un combat. Le dégât qu'inflige une arme sur le niveau d'énergie de l'autre
+personnage est une propriété de l'arme en question <strong>et</strong> du niveau du personnage.</p>
+</div>
 <h2 id="documentation">Documentation<a class="headerlink" href="#documentation" title="Permanent link">#</a></h2>
 <p>Pour l'écriture d'un script Processing, tant en utilisant la <strong>POO</strong> ou la version avec les décorateurs, il y a
 une page sur la 
@@ -1639,6 +1693,11 @@ l'algorithme pour avoir son info-bulle dans le panneau traitement.</p>
 <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]:</span>
     <span class="n">tampon</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Attention si utilisation de <code>iface.activeLayer()</code> qui va être modifié si utilisation de <code>QgsProject.instance().addMapLayer()</code>.
+Il peut être nécessaire d'extraire la sélection de la couche hors de la boucle.</p>
+</div>
 <h2 id="lancer-linterface-graphique-de-notre-algorithme">Lancer l'interface graphique de notre algorithme<a class="headerlink" href="#lancer-linterface-graphique-de-notre-algorithme" title="Permanent link">#</a></h2>
 <p>Au lieu de <code>processing.run</code>, on peut créer <strong>uniquement</strong> le dialogue. Il faut alors l'afficher manuellement.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2627,7 +2686,12 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ramasser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_est_dans_inventaire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">un_objet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span>
+
+<span class="k">def</span> <span class="nf">ramasser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ramasse </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2"> et le met dans son inventaire.&quot;</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
 
@@ -2642,12 +2706,11 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dépose </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">_est_dans_inventaire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">un_objet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span>
-
 <span class="k">def</span> <span class="nf">donner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
-    <span class="n">autre_personnage</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+        <span class="n">autre_personnage</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">autre_personnage</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> reçoit </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2"> de la part de </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et le remercie 👍&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 
 
