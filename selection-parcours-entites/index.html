@@ -1417,6 +1417,12 @@ un nouveau fichier.</p>
     <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">QgsVectorFileWriter</span><span class="o">.</span><span class="n">NoError</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; → OK&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<p>Si l'on souhaite parcourir automatiquement les départements existants, on peut récupérer les valeurs uniques. Pour cela,
+il faut modifier deux lignes :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">indexFromName</span><span class="p">(</span><span class="s2">&quot;INSEE_DEP&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">dept</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">uniqueValues</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
+</code></pre></div></td></tr></table></div>
 <h2 id="boucler-sur-les-entites-a-laide-dune-expression">Boucler sur les entités à l'aide d'une expression<a class="headerlink" href="#boucler-sur-les-entites-a-laide-dune-expression" title="Permanent link">#</a></h2>
 <p>L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas <code>NC</code>.</p>
 <div class="admonition info">
@@ -1557,7 +1563,19 @@ recommandé car il masque d'autres erreurs :</p>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
     <span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span>
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ceci est une division par zéro !&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erreur inconnue&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erreur, division par 0&#39;</span><span class="p">)</span>
+<span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erreur inconnue&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Il existe d'autres mots-clés en Python pour les exceptions comme <code>finally:</code> et <code>else:</code>.</p>
 <p>On peut imaginer faire une fonction qui divise deux nombres et affiche le résultat 

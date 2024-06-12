@@ -1158,10 +1158,12 @@ Il s'agit d'un package totalement indépendant de QGIS.</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">psycopg2</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">psycopg</span>
 
 <span class="n">inspect_schema</span> <span class="o">=</span> <span class="s2">&quot;mon_schema&quot;</span>
-<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg2</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
+
+<span class="n">connection</span> <span class="o">=</span> <span class="n">psycopg</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span>
     <span class="n">user</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span> <span class="n">password</span><span class="o">=</span><span class="s2">&quot;docker&quot;</span><span class="p">,</span> <span class="n">host</span><span class="o">=</span><span class="s2">&quot;db&quot;</span><span class="p">,</span> <span class="n">port</span><span class="o">=</span><span class="s2">&quot;5432&quot;</span><span class="p">,</span> <span class="n">database</span><span class="o">=</span><span class="s2">&quot;gis&quot;</span>
 <span class="p">)</span>
 <span class="n">cursor</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
@@ -1206,26 +1208,30 @@ pour interagir avec une base de données PostGIS.</p>
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span>
-<span class="normal">32</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProviderRegistry</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProviderRegistry</span>
 
 <span class="n">metadata</span> <span class="o">=</span> <span class="n">QgsProviderRegistry</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">providerMetadata</span><span class="p">(</span><span class="s1">&#39;postgres&#39;</span><span class="p">)</span>
 <span class="n">connection</span> <span class="o">=</span> <span class="n">metadata</span><span class="o">.</span><span class="n">findConnection</span><span class="p">(</span><span class="s2">&quot;nom de la connexion PG dans votre panneau&quot;</span><span class="p">)</span>
 
 <span class="c1"># Faire une requête SQL (ou plusieurs)</span>
-<span class="n">results</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">executeSql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM schema.table;&quot;</span><span class="p">)</span>
+<span class="c1"># Besoin d&#39;échapper en utilisant &quot;&quot; si votre schéma ou table comporte des majuscules</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">connection</span><span class="o">.</span><span class="n">executeSql</span><span class="p">(</span><span class="s2">&quot;SELECT * FROM </span><span class="se">\&quot;</span><span class="s2">schema</span><span class="se">\&quot;</span><span class="s2">.</span><span class="se">\&quot;</span><span class="s2">table</span><span class="se">\&quot;</span><span class="s2">;&quot;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">results</span><span class="p">)</span>
 
 <span class="c1"># Créer un schéma</span>
 <span class="n">connection</span><span class="o">.</span><span class="n">createSchema</span><span class="p">(</span><span class="s2">&quot;mon_nouveau_schema&quot;</span><span class="p">)</span>
 
 <span class="c1"># Lister les tables</span>
-<span class="n">connection</span><span class="o">.</span><span class="n">tables</span><span class="p">(</span><span class="s2">&quot;un_schema&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">tables</span><span class="p">(</span><span class="s2">&quot;un_schema&quot;</span><span class="p">))</span>
 
-<span class="c1"># Afficher une table dans QGIS</span>
-<span class="n">connection</span><span class="o">.</span><span class="n">tableUri</span><span class="p">(</span><span class="s2">&quot;schema&quot;</span><span class="p">,</span> <span class="s2">&quot;table&quot;</span><span class="p">)</span>
+<span class="c1"># Afficher une table dans QGIS, cela retourne une chaîne de caractère</span>
+<span class="c1"># permettant de faire une source de données pour une QgsVectorLayer</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">tableUri</span><span class="p">(</span><span class="s2">&quot;schema&quot;</span><span class="p">,</span> <span class="s2">&quot;table&quot;</span><span class="p">))</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">connection</span><span class="o">.</span><span class="n">tableUri</span><span class="p">(</span><span class="s2">&quot;schema&quot;</span><span class="p">,</span> <span class="s2">&quot;table&quot;</span><span class="p">),</span> <span class="s2">&quot;Ma table&quot;</span><span class="p">,</span> <span class="s2">&quot;postgres&quot;</span><span class="p">)</span>
-<span class="n">layer</span><span class="o">.</span><span class="n">loadDefaultStyle</span><span class="p">()</span>  <span class="c1"># Si un style par défaut existe dans votre base PG</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">loadDefaultStyle</span><span class="p">()</span>  <span class="c1"># Si un style par défaut existe dans votre base PostgreSQL, avec la table layer_styles</span>
 <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
 
 <span class="c1"># Charger le résultat d&#39;un SELECT</span>
@@ -1234,7 +1240,7 @@ pour interagir avec une base de données PostGIS.</p>
 <span class="n">uri</span><span class="o">.</span><span class="n">setTable</span><span class="p">(</span><span class="s1">&#39;(SELECT * FROM schema.table)&#39;</span><span class="p">)</span>
 <span class="n">uri</span><span class="o">.</span><span class="n">setKeyColumn</span><span class="p">(</span><span class="s1">&#39;uid&#39;</span><span class="p">)</span>
 
-<span class="c1"># Avec une geom</span>
+<span class="c1"># Avec une geom si besoin</span>
 <span class="n">uri</span><span class="o">.</span><span class="n">setGeomColumn</span><span class="p">(</span><span class="s1">&#39;geom&#39;</span><span class="p">)</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">uri</span><span class="o">.</span><span class="n">uri</span><span class="p">(),</span> <span class="s1">&#39;Requête SELECT&#39;</span><span class="p">,</span> <span class="s1">&#39;postgres&#39;</span><span class="p">)</span>
