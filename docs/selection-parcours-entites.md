@@ -95,6 +95,14 @@ for dept in depts:
         print(" → OK")
 ```
 
+Si l'on souhaite parcourir automatiquement les départements existants, on peut récupérer les valeurs uniques. Pour cela,
+il faut modifier deux lignes :
+
+```python
+index = layer.fields().indexFromName("INSEE_DEP")
+for dept in layer.uniqueValues(index):
+```
+
 ## Boucler sur les entités à l'aide d'une expression
 
 L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas `NC`.
@@ -239,7 +247,16 @@ recommandé car il masque d'autres erreurs :
 try:
     10 / 2
 except Exception:
-    print('Ceci est une division par zéro !')
+    print('Erreur inconnue')
+```
+
+```python
+try:
+    10 / 0
+except ZeroDivisionError:
+    print('Erreur, division par 0')
+except Exception:
+    print('Erreur inconnue')
 ```
 
 Il existe d'autres mots-clés en Python pour les exceptions comme `finally:` et `else:`.

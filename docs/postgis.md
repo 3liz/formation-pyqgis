@@ -8,10 +8,11 @@ Il s'agit d'un package totalement indépendant de QGIS.
 Exemple pour récupérer les tables présentes dans une base de données à l'aide de SQL
 
 ```python
-import psycopg2
+import psycopg
 
 inspect_schema = "mon_schema"
-connection = psycopg2.connect(
+
+connection = psycopg.connect(
     user="docker", password="docker", host="db", port="5432", database="gis"
 )
 cursor = connection.cursor()
@@ -35,20 +36,22 @@ metadata = QgsProviderRegistry.instance().providerMetadata('postgres')
 connection = metadata.findConnection("nom de la connexion PG dans votre panneau")
 
 # Faire une requête SQL (ou plusieurs)
-results = connection.executeSql("SELECT * FROM schema.table;")
+# Besoin d'échapper en utilisant "" si votre schéma ou table comporte des majuscules
+results = connection.executeSql("SELECT * FROM \"schema\".\"table\";")
 print(results)
 
 # Créer un schéma
 connection.createSchema("mon_nouveau_schema")
 
 # Lister les tables
-connection.tables("un_schema")
+print(connection.tables("un_schema"))
 
-# Afficher une table dans QGIS
-connection.tableUri("schema", "table")
+# Afficher une table dans QGIS, cela retourne une chaîne de caractère
+# permettant de faire une source de données pour une QgsVectorLayer
+print(connection.tableUri("schema", "table"))
 
 layer = QgsVectorLayer(connection.tableUri("schema", "table"), "Ma table", "postgres")
-layer.loadDefaultStyle()  # Si un style par défaut existe dans votre base PG
+layer.loadDefaultStyle()  # Si un style par défaut existe dans votre base PostgreSQL, avec la table layer_styles
 QgsProject.instance().addMapLayer(layer)
 
 # Charger le résultat d'un SELECT
@@ -57,7 +60,7 @@ uri = QgsDataSourceUri(connection.uri())
 uri.setTable('(SELECT * FROM schema.table)')
 uri.setKeyColumn('uid')
 
-# Avec une geom
+# Avec une geom si besoin
 uri.setGeomColumn('geom')
 
 layer = QgsVectorLayer(uri.uri(), 'Requête SELECT', 'postgres')
