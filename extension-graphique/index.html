@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
     
     
       
@@ -1265,6 +1265,9 @@
 <p>Ne pas changer la propriété <code>objectName</code> pour le moment.</p>
 </div>
 <p>On peut <a href="../solution/dialog.ui">télécharger</a> la solution si besoin.</p>
+<ul>
+<li>Enregistrer le fichier en <code>dialog.ui</code></li>
+</ul>
 <h2 id="la-classe-qui-accompagne">La classe qui accompagne<a class="headerlink" href="#la-classe-qui-accompagne" title="Permanent link">#</a></h2>
 <p>Créons un fichier <code>dialog.py</code> avec le contenu suivant :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1296,17 +1299,17 @@
 <span class="k">class</span> <span class="nc">MonDialog</span><span class="p">(</span><span class="n">ui_class</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">):</span>
 
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>  <span class="c1"># Appel du constructeur parent</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># Fichier de QtDesigner</span>
 </code></pre></div></td></tr></table></div>
-<p>Modifions la méthode la méthode <code>run</code> du fichier <code>__init__.py</code> en </p>
+<p>Modifions la méthode <code>run</code> du fichier <code>__init__.py</code> en</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="kn">from</span> <span class="nn">.dialog</span> <span class="kn">import</span> <span class="n">MonDialog</span>
         <span class="n">dialog</span> <span class="o">=</span> <span class="n">MonDialog</span><span class="p">()</span>
-        <span class="n">dialog</span><span class="o">.</span><span class="n">exec_</span><span class="p">()</span>
+        <span class="n">dialog</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <p>Relançons l'extension à l'aide du "plugin reloader" et cliquons sur le bouton.</p>
 <h2 id="les-signaux-et-les-slots">Les signaux et les slots<a class="headerlink" href="#les-signaux-et-les-slots" title="Permanent link">#</a></h2>
@@ -1659,7 +1662,7 @@ deux fichiers.</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.ad660dcc.min.js"></script>
+      <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       
