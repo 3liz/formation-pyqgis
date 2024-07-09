@@ -23,6 +23,8 @@ et y ajouter des "widgets" :
 
 On peut [télécharger](./solution/dialog.ui) la solution si besoin.
 
+* Enregistrer le fichier en `dialog.ui`
+
 ## La classe qui accompagne
 
 Créons un fichier `dialog.py` avec le contenu suivant :
@@ -43,18 +45,18 @@ ui_class, _ = uic.loadUiType(ui_file)
 class MonDialog(ui_class, QDialog):
 
     def __init__(self):
-        super().__init__()
+        super().__init__()  # Appel du constructeur parent
         self.setupUi(self)  # Fichier de QtDesigner
 
 ```
 
-Modifions la méthode la méthode `run` du fichier `__init__.py` en 
+Modifions la méthode `run` du fichier `__init__.py` en
 
 ```python
     def run(self):
         from .dialog import MonDialog
         dialog = MonDialog()
-        dialog.exec_()
+        dialog.exec()
 ```
 
 Relançons l'extension à l'aide du "plugin reloader" et cliquons sur le bouton.

@@ -1,5 +1,7 @@
 # La base pour créer une extension
 
+## Modèle de base
+
 Pour créer une extension dans QGIS, il existe deux façons de démarrer : 
 
 * Utilisation de l'extension "Plugin Builder" :
@@ -26,10 +28,26 @@ Dans les deux cas, le résultat doit être dans le dossier `python/plugins` du p
     Pour installer le Minimal Plugin, vous pouvez utiliser le gestionnaire des extensions pour installer
     depuis un zip.
 
-## Plugin reloader
+## Extensions utiles
+
+### Plugin reloader
+
+**Indispensable**
 
 Le "Plugin Reloader" est une extension indispensable pour développer une extension pour recharger son 
 extension. Elle est disponible dans le gestionnaire des extensions.
+
+### PyQGIS Resource Browser
+
+**Utile pour l'ergonomie**
+
+Permet d'aller chercher des icônes déjà existantes dans la libraire QGIS et Qt
+
+### First aid
+
+**Utile pour aller plus loin**
+
+Extension pour débugger en cas d'une erreur Python
 
 ## Apprendre d'une autre extension
 
