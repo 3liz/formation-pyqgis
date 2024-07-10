@@ -15,7 +15,7 @@
         <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/memo-python/">
       
       
-        <link rel="prev" href="../python-qgis/">
+        <link rel="prev" href="../documentation/">
       
       
         <link rel="next" href="../console/">
@@ -479,6 +479,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -713,6 +734,30 @@
       Truc et astuces
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="Truc et astuces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passage-par-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passage par référence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumerate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1473,6 +1518,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Truc et astuces">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#passage-par-reference" class="md-nav__link">
+    <span class="md-ellipsis">
+      Passage par référence
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#enumerate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Enumerate
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1516,8 +1585,7 @@
 </ul>
 </li>
 <li>Grosse communauté<ul>
-<li>De nombreux packages disponibles sur internet</li>
-<li><a href="https://pypi.org/">https://pypi.org/</a></li>
+<li>De nombreux packages disponibles sur internet sur <a href="https://pypi.org/">PyPi.org</a></li>
 </ul>
 </li>
 </ul>
@@ -1541,7 +1609,7 @@
 <ul>
 <li>Python 2<ul>
 <li>Sortie en 2000</li>
-<li>Il est encore très utilisé, notamment sur les tutoriels sur internet et quelques projets qui tardent à
+<li><strong>Il a été très</strong> utilisé, notamment sur les tutoriels sur internet et quelques projets qui tardent à
  se mettre à jour</li>
 <li>Une adoption massive (QGIS 2)</li>
 <li>Dernière version le 1 janvier 2020</li>
@@ -1555,7 +1623,7 @@
 <li>Python 3.5 minimum for QGIS 3.4</li>
 <li>Python 3.6 minimum for QGIS 3.18</li>
 <li>Python 3.7 minimum for QGIS 3.20</li>
-<li>Python 3.10 minimum for QGIS 3.38</li>
+<li>Python 3.10 minimum for QGIS 3.40 ?</li>
 </ul>
 </li>
 </ul>
@@ -1563,8 +1631,8 @@
 </ul>
 <h2 id="rappel-de-base-sur-python">Rappel de base sur Python<a class="headerlink" href="#rappel-de-base-sur-python" title="Permanent link">#</a></h2>
 <ul>
-<li>Un mémo Python plus important : <a href="https://www.w3schools.com/python/">https://www.w3schools.com/python/</a></li>
-<li>Un cours Python : <a href="https://openclassrooms.com/fr/courses/4262331-demarrez-votre-projet-avec-python">https://openclassrooms.com/fr/courses/4262331-demarrez-votre-projet-avec-python</a></li>
+<li>Un mémo Python plus important sur <a href="https://www.w3schools.com/python/">W3Schools</a></li>
+<li>Un cours Python sur <a href="https://openclassrooms.com/fr/courses/4262331-demarrez-votre-projet-avec-python">OpenClassRooms</a></li>
 </ul>
 <h2 id="la-console">La console<a class="headerlink" href="#la-console" title="Permanent link">#</a></h2>
 <p>Pour la suite de la formation, nous allons utiliser la console Python de QGIS.</p>
@@ -1598,21 +1666,31 @@ du programme.</p>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">mon_compteur</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">mon_compteur</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">int</span><span class="s1">&#39;&gt;</span>
+
 <span class="n">mon_compteur</span> <span class="o">=</span> <span class="kc">False</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">bool</span><span class="s1">&#39;&gt;</span>
+
 <span class="n">mon_compteur</span> <span class="o">=</span> <span class="s1">&#39;oui&#39;</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">str</span><span class="s1">&#39;&gt;</span>
+
 <span class="n">mon_compteur</span> <span class="o">=</span> <span class="s2">&quot;non&quot;</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">str</span><span class="s1">&#39;&gt;</span>
+
 <span class="n">mon_compteur</span> <span class="o">=</span> <span class="mf">3.5</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">float</span><span class="s1">&#39;&gt;</span>
+
 <span class="n">mon_compteur</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">NoneType</span><span class="s1">&#39;&gt;</span>
@@ -1620,10 +1698,59 @@ du programme.</p>
 <h2 id="les-structures-de-donnees">Les structures de données<a class="headerlink" href="#les-structures-de-donnees" title="Permanent link">#</a></h2>
 <p>Il existe quatre types de structure de données :</p>
 <ul>
-<li>les variables simples (ci-dessus)</li>
-<li>les tuples (non modifiables)</li>
+<li>
+<p>les variables simples (ci-dessus)</p>
+</li>
+<li>
+<p>les listes (modifiables)
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">nombres</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">nombres</span><span class="p">)</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">list</span><span class="s1">&#39;&gt;</span>
+
+<span class="n">nombres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">nombres</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<span class="n">nombres</span>
+<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+
+
+<span class="c1"># Autre exemple</span>
+<span class="n">mois</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;janvier&#39;</span><span class="p">,</span> <span class="s1">&#39;février&#39;</span><span class="p">,</span> <span class="s1">&#39;mars&#39;</span><span class="p">,</span> <span class="s1">&#39;avril&#39;</span><span class="p">]</span>
+<span class="n">mois</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">mars</span>
+
+<span class="n">mois</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;/usr/lib/python3.7/code.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">90</span><span class="p">,</span> <span class="ow">in</span> <span class="n">runcode</span>
+    <span class="n">exec</span><span class="p">(</span><span class="n">code</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">locals</span><span class="p">)</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;input&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="ne">IndexError</span><span class="p">:</span> <span class="nb">tuple</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span>
+</code></pre></div></td></tr></table></div></p>
+</li>
+<li>
+<p>les tuples (non modifiables)</p>
+</li>
 </ul>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
 <span class="normal"> 4</span>
@@ -1659,25 +1786,10 @@ du programme.</p>
   <span class="n">File</span> <span class="s2">&quot;&lt;input&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
 <span class="ne">IndexError</span><span class="p">:</span> <span class="nb">tuple</span> <span class="n">index</span> <span class="n">out</span> <span class="n">of</span> <span class="nb">range</span>
 </code></pre></div></td></tr></table></div>
-* les listes (modifiables)
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">nombres</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">nombres</span><span class="p">)</span>
-<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">list</span><span class="s1">&#39;&gt;</span>
-<span class="n">nombres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">nombres</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">nombres</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
-</code></pre></div></td></tr></table></div></p>
 <ul>
 <li>les dictionnaires</li>
 </ul>
-<p><em>Attention</em>, les dictionnaires ne sont pas ordonnés !
+<p><em>Attention</em>, les dictionnaires ne sont pas ordonnés, de façon native, même depuis Python 3.9.
 Si vraiment, il y a besoin, il existe une classe <code>OrderedDict</code>, mais ce n'est pas une structure de données
 native dans Python.
 C'est un objet.</p>
@@ -1693,7 +1805,7 @@ C'est un objet.</p>
 <span class="n">personne</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;etienne&#39;</span>
 <span class="n">personne</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;trimaille&#39;</span>
 <span class="n">personne</span><span class="p">[</span><span class="s1">&#39;est_majeur&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">personne</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">personne</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">35</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="les-commentaires">Les commentaires<a class="headerlink" href="#les-commentaires" title="Permanent link">#</a></h2>
 <p>Pour commenter le code dans un script, pas dans la console : </p>
@@ -1724,9 +1836,17 @@ C'est un objet.</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
-<span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="n">a</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">a</span> <span class="o">+=</span> <span class="mi">1</span> <span class="c1"># Augmenter de 1 à la variable a</span>
+<span class="c1"># équivalent à</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="n">a</span> <span class="o">-=</span> <span class="mi">1</span> <span class="c1"># Diminuer de 1</span>
+<span class="n">a</span> <span class="o">+=</span> <span class="mi">5</span> <span class="c1"># Incrémenter de 5</span>
+
 <span class="n">b</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="n">c</span> <span class="o">=</span> <span class="n">a</span> <span class="o">-</span> <span class="mi">1</span>
 <span class="n">d</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="mi">2</span>
@@ -1774,7 +1894,7 @@ On peut concaténer des variables entre elles ou du texte.</p>
 <span class="n">bienvenue</span> <span class="o">=</span> <span class="s1">&#39;Bonjour </span><span class="si">{}</span><span class="s1">, nous sommes le </span><span class="si">{}</span><span class="s1"> novembre&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prenom</span><span class="p">,</span> <span class="n">numero_jour</span><span class="p">)</span>
 <span class="n">bienvenue</span> <span class="o">=</span> <span class="s1">&#39;Bonjour </span><span class="si">{prenom}</span><span class="s1">, nous sommes le </span><span class="si">{jour}</span><span class="s1"> novembre&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">prenom</span><span class="o">=</span><span class="n">prenom</span><span class="p">,</span> <span class="n">jour</span><span class="o">=</span><span class="n">numero_jour</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div></p>
-<p>Encore plus moderne avec Python 3.6 et <code>fstring</code>
+<p>Encore plus moderne avec <code>fstring</code>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1917,7 +2037,8 @@ On peut concaténer des variables entre elles ou du texte.</p>
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span>
-<span class="normal">27</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Allemagne&#39;</span><span class="p">,</span> <span class="s1">&#39;Espagne&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">]</span>
+<span class="normal">27</span>
+<span class="normal">28</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Allemagne&#39;</span><span class="p">,</span> <span class="s1">&#39;Espagne&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">]</span>
 
 <span class="c1"># Solution simple</span>
 <span class="k">if</span> <span class="s1">&#39;Allemagne&#39;</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">:</span>
@@ -1934,6 +2055,7 @@ On peut concaténer des variables entre elles ou du texte.</p>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Présent&#39;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Non présent&#39;</span><span class="p">)</span>
+
 
 <span class="c1"># Le plus pythonique</span>
 <span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">:</span>
@@ -1964,7 +2086,45 @@ On peut concaténer des variables entre elles ou du texte.</p>
     <span class="n">executer_une_fonction</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="switch">Switch<a class="headerlink" href="#switch" title="Permanent link">#</a></h2>
-<p><strong>Python 3.10</strong> uniquement</p>
+<p><strong>Python 3.10</strong> <strong>minimum</strong></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">numero_jour</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">match</span> <span class="n">numero_jour</span><span class="p">:</span>
+  <span class="k">case</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;Lundi&#39;</span>
+  <span class="k">case</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;Mardi&#39;</span>
+  <span class="k">case</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;Mercredi&#39;</span>
+  <span class="k">case</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;Jeudi&#39;</span>
+  <span class="k">case</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;Vendredi&#39;</span>
+  <span class="k">case</span> <span class="mi">6</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;Samedi&#39;</span>
+  <span class="k">case</span> <span class="mi">7</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;Dimanche&#39;</span>
+  <span class="k">case</span><span class="w"> </span><span class="k">_</span><span class="p">:</span>
+    <span class="k">return</span> <span class="s1">&#39;Pas un jour de la semaine&#39;</span>
+</code></pre></div></td></tr></table></div>
 <h2 id="list-comprehensions">List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permanent link">#</a></h2>
 <p>C'est une façon très pythonique et très utilisée de créer des listes.
 Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
@@ -2016,10 +2176,47 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 <span class="n">alphabet</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>  <span class="c1"># XYZ</span>
 <span class="n">alphabet</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>  <span class="c1"># ABCDEF</span>
 </code></pre></div></td></tr></table></div>
+<p>Slicing sur les mois de l'année :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">mois</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Janvier&#39;</span><span class="p">,</span> <span class="s1">&#39;Février&#39;</span><span class="p">,</span> <span class="s1">&#39;Mars&#39;</span><span class="p">,</span> <span class="s1">&#39;Avril&#39;</span><span class="p">,</span> <span class="s1">&#39;Mai&#39;</span><span class="p">,</span> <span class="s1">&#39;Juin&#39;</span><span class="p">,</span> <span class="s1">&#39;Octobre&#39;</span><span class="p">,</span> <span class="s1">&#39;Novembre&#39;</span><span class="p">,</span> <span class="s1">&#39;Décembre&#39;</span><span class="p">]</span>
+
+<span class="n">mois</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;Janvier&#39;</span><span class="p">,</span> <span class="s1">&#39;Février&#39;</span><span class="p">]</span>
+
+<span class="n">mois</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
+<span class="p">[</span><span class="s1">&#39;Mars&#39;</span><span class="p">,</span> <span class="s1">&#39;Avril&#39;</span><span class="p">,</span> <span class="s1">&#39;Mai&#39;</span><span class="p">,</span> <span class="s1">&#39;Juin&#39;</span><span class="p">,</span> <span class="s1">&#39;Octobre&#39;</span><span class="p">,</span> <span class="s1">&#39;Novembre&#39;</span><span class="p">,</span> <span class="s1">&#39;Décembre&#39;</span><span class="p">]</span>
+
+<span class="n">mois</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+<span class="p">[</span><span class="s1">&#39;Janvier&#39;</span><span class="p">,</span> <span class="s1">&#39;Février&#39;</span><span class="p">,</span> <span class="s1">&#39;Mars&#39;</span><span class="p">,</span> <span class="s1">&#39;Avril&#39;</span><span class="p">,</span> <span class="s1">&#39;Mai&#39;</span><span class="p">,</span> <span class="s1">&#39;Juin&#39;</span><span class="p">,</span> <span class="s1">&#39;Octobre&#39;</span><span class="p">]</span>
+
+<span class="n">mois</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
+<span class="p">[</span><span class="s1">&#39;Novembre&#39;</span><span class="p">,</span> <span class="s1">&#39;Décembre&#39;</span><span class="p">]</span>
+</code></pre></div></td></tr></table></div>
 <h2 id="fonctions">Fonctions<a class="headerlink" href="#fonctions" title="Permanent link">#</a></h2>
+<p>Une fonction permet de factoriser son code. Elle peut :</p>
 <ul>
-<li>Voici des exemples de fonction Python.
-<em>Encore une fois</em>, attention à l'indentation !</li>
+<li>ne pas prendre de paramètre en <strong>entrée</strong></li>
+<li>prendre un ou plusieurs paramètres en <strong>entrée</strong></li>
+<li>ces entrées peuvent avoir des valeurs par défaut, on n'est donc pas obligé de les fournir de lors <strong>l'appel</strong> de la fonction</li>
+<li>une fonction peut ne <strong>rien</strong> retourner, (pas d'instructions <code>return</code> ou alors <code>return None</code>)</li>
+<li>
+<p>ou alors retourner une ou plusieurs valeurs (cela sera implicitement une liste)</p>
+</li>
+<li>
+<p>Voici des exemples de fonction Python.
+<em>Encore une fois</em>, attention à l'indentation !</p>
+</li>
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2030,7 +2227,11 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 <span class="normal"> 7</span>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ajouter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">ajouter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Ajouter deux nombres.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">x</span> <span class="o">+</span> <span class="n">y</span>
 
@@ -2040,6 +2241,10 @@ Par exemple, créer une liste des nombres impairs entre 1 et 9 :</p>
 <span class="k">def</span> <span class="nf">discuter</span><span class="p">(</span><span class="n">texte</span><span class="p">,</span> <span class="n">personnage</span><span class="o">=</span><span class="s1">&#39;Charles&#39;</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Un personnage discute.&quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{}</span><span class="s1">: &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">personnage</span><span class="p">,</span> <span class="n">texte</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">discuter</span><span class="p">(</span><span class="n">texte</span><span class="p">,</span> <span class="n">personnage</span><span class="o">=</span><span class="s1">&#39;Charles&#39;</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Un personnage discute.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">personnage</span><span class="si">}</span><span class="s1">: &quot;</span><span class="si">{</span><span class="n">texte</span><span class="si">}</span><span class="s1">&quot;&#39;</span>
 </code></pre></div></td></tr></table></div>
 <ul>
 <li>Une fonction peut retourner plusieurs valeurs :</li>
@@ -2123,6 +2328,7 @@ ou encore la partie sur l'écriture d'un <a href="../script-processing/">script 
 <h2 id="exceptions">Exceptions<a class="headerlink" href="#exceptions" title="Permanent link">#</a></h2>
 <p>Lire le chapitre sur le <a href="../selection-parcours-entites/#les-exceptions-en-python">parcours des entités</a>.</p>
 <h2 id="truc-et-astuces">Truc et astuces<a class="headerlink" href="#truc-et-astuces" title="Permanent link">#</a></h2>
+<h3 id="passage-par-reference">Passage par référence<a class="headerlink" href="#passage-par-reference" title="Permanent link">#</a></h3>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Attention au passage par référence :
@@ -2137,6 +2343,7 @@ ou encore la partie sur l'écriture d'un <a href="../script-processing/">script 
 <span class="nb">print</span><span class="p">(</span><span class="n">ma_liste_1</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div></p>
 </div>
+<h3 id="enumerate">Enumerate<a class="headerlink" href="#enumerate" title="Permanent link">#</a></h3>
 <p>Avoir un compteur lors de l'itération d'une liste :
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -2159,6 +2366,8 @@ Cela permet de spécifier le type des variables dans les paramètres des fonctio
     <span class="n">reste</span> <span class="o">=</span> <span class="n">entier</span> <span class="o">%</span> <span class="n">diviser_par</span>
     <span class="k">return</span> <span class="nb">int</span><span class="p">(</span><span class="n">partie_entiere</span><span class="p">),</span> <span class="n">reste</span>
 </code></pre></div></td></tr></table></div>
+<p>Il faut lire la documentation des <a href="https://docs.python.org/3/library/typing.html">annotations</a> pour voir les différentes
+possibilités.</p>
 
 
 

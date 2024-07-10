@@ -475,6 +475,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../memo-python/" class="md-nav__link">
         
   
@@ -1161,16 +1182,16 @@
 <h1 id="python-avance">Python avancé<a class="headerlink" href="#python-avance" title="Permanent link">#</a></h1>
 <h2 id="utilisation-dun-ide">Utilisation d'un IDE<a class="headerlink" href="#utilisation-dun-ide" title="Permanent link">#</a></h2>
 <p>Pour écrire du code Python, on peut utiliser n'importe quel éditeur de texte brut quelque soit l'OS.
-Cependant, l'utilisation d'un éditeur de texte qui "comprend" le code Python est vivement recommandé car il
-peut vous signaler quelques erreurs facilement détectables, tel que les imports manquants.
+Cependant, l'utilisation d'un éditeur de texte qui "comprend" le code Python est vivement recommandé, car il
+peut vous signaler quelques erreurs facilement détectables, telles que les imports manquants.
 Comme éditeur de texte, il en existe plusieurs.</p>
 <p>Si vous souhaitez faire plus de programmation, nous vous recommandons l'utilisation d'un IDE. Il embarque
-l'éditeur de texte ci-dessus mais possède aussi des outils de debugs et d'assistance dans l'écriture du code
+l'éditeur de texte ci-dessus, mais possède aussi des outils de debugs et d'assistance dans l'écriture du code
 comme l'autocomplétion.</p>
 <p>En IDE gratuit, il existe : </p>
 <ul>
 <li><a href="https://code.visualstudio.com/">Visual Studio</a> en ajoutant les extensions Python</li>
-<li><a href="https://www.jetbrains.com/fr-fr/pycharm/">PyCharm Community</a>, dédié au language Python</li>
+<li><a href="https://www.jetbrains.com/fr-fr/pycharm/">PyCharm Community</a>, dédié au langage Python</li>
 </ul>
 <p>Un IDE est outil très complet pour développement. Il est possible de coder en Python avec un éditeur de texte,
 mais si possible qui sait quand même faire de la coloration syntaxique du code Python est vraiment un plus
@@ -1182,12 +1203,13 @@ dans la console Python à l'aide de cette astuce.</p>
 <li>Ouvrir l'éditeur de script Python (pas juste la console)</li>
 <li>Tapez <code>print("bonjour")</code> dans le panneau de droite</li>
 <li>Lancer le script avec la flèche verte</li>
-<li>Copier/coller la ligne qui permet de lancer le script et modifier le chemin pour pointer vers le fichier sur votre disque. Elle ressemble à <code>exec(open('/chemin/vers/fichier.py'.encode('utf-8')).read())</code>.</li>
+<li>Copier/coller la ligne qui permet de lancer le script et modifier le chemin pour pointer vers le fichier sur votre disque.
+  Elle ressemble à <code>exec(Path('/chemin/vers/fichier.py').read_text())</code>.</li>
 </ul>
 <h2 id="utilisation-de-git">Utilisation de GIT<a class="headerlink" href="#utilisation-de-git" title="Permanent link">#</a></h2>
 <p>Il est vivement recommandé d'utiliser GIT :</p>
 <ul>
-<li>sauvegarde de son code sur un serveur</li>
+<li>sauvegarde de son code sur un serveur (public ou privé)</li>
 <li>versionner son code et suivre les modifications</li>
 <li>simplifier le travail d'équipe</li>
 </ul>

@@ -477,6 +477,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../memo-python/" class="md-nav__link">
         
   
@@ -592,15 +613,6 @@
       Table des matières
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#la-documentation-et-les-liens-utiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      La documentation et les liens utiles
-    </span>
-  </a>
-  
-</li>
       
         <li class="md-nav__item">
   <a href="#configurer-le-projet" class="md-nav__link">
@@ -1158,15 +1170,6 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#la-documentation-et-les-liens-utiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      La documentation et les liens utiles
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#configurer-le-projet" class="md-nav__link">
     <span class="md-ellipsis">
       Configurer le projet
@@ -1245,45 +1248,10 @@
 
 
 <h1 id="introduction-a-la-console-python">Introduction à la console Python<a class="headerlink" href="#introduction-a-la-console-python" title="Permanent link">#</a></h1>
-<h2 id="la-documentation-et-les-liens-utiles">La documentation et les liens utiles<a class="headerlink" href="#la-documentation-et-les-liens-utiles" title="Permanent link">#</a></h2>
-<ul>
-<li>QGIS est composé de plusieurs centaines de classes écrites en C++. 
-La plupart de ces classes (et donc des fonctions) sont accessibles à travers un API en Python. 
-Comme il n'est pas possible de mémoriser entièrement l'API de QGIS, il est nécessaire de connaître la 
-documentation et comment rechercher des informations.</li>
-<li>QGIS repose sur la librairie Qt version 5 pour l'interface graphique et sur Python version 3.</li>
-<li>Toutes les classes QGIS commencent par <code>Qgs</code> et toutes les classes Qt commencent par <code>Q</code>.</li>
-</ul>
-<p>Voici une liste de liens pour la documentation :</p>
-<ul>
-<li><a href="https://docs.qgis.org">https://docs.qgis.org</a> qui regroupe :<ul>
-<li><a href="https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/">Le Python Cookbook https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook</a> (recette de cuisine)</li>
-<li><a href="https://qgis.org/api/3.28/">L'API C++ https://qgis.org/api/3.28/</a></li>
-<li><a href="https://qgis.org/pyqgis/3.28/">L'API Python https://qgis.org/pyqgis/3.28/</a></li>
-</ul>
-</li>
-<li><a href="https://doc.qt.io/qt-5/classes.html">Documentation de l'API Qt</a></li>
-<li><a href="https://docs.python.org/3/library/">Documentation de Python</a><ul>
-<li><a href="https://docs.python.org/3/library/os.path.html#module-os.path">Le module os.path par exemple</a>, module historique pour manipuler des chemins</li>
-<li><a href="https://docs.python.org/3/library/pathlib.html#module-pathlib">Le module Pathlib</a></li>
-</ul>
-</li>
-</ul>
-<p>Voici une liste non exhaustive de blog-post utiles pour manipuler PyQGIS :</p>
-<ul>
-<li><a href="https://nyalldawson.net/2016/10/speeding-up-your-pyqgis-scripts/">Optimisation des couches vecteurs</a></li>
-<li><a href="https://www.lutraconsulting.co.uk/blog/2014/07/06/qgis-layer-tree-api-part-1/">Parcourir la légende en 3 parties</a></li>
-<li><a href="http://www.qgistutorials.com/en/docs/3/processing_python_plugin.html">Plugin Processing</a></li>
-<li><a href="https://madmanwoo.gitlab.io/foss4g-python-workshop/">Workshop sur les expressions en Python</a></li>
-</ul>
-<p>Autre lien pour l'apprentissage de Python (sans QGIS) :</p>
-<ul>
-<li><a href="https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python">https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python</a></li>
-</ul>
 <h2 id="configurer-le-projet">Configurer le projet<a class="headerlink" href="#configurer-le-projet" title="Permanent link">#</a></h2>
 <ul>
 <li>Commencer un nouveau projet et enregistrer le.</li>
-<li>À côté du projet, ajouter le dossier provenant d’OSM2Igeo, par exemple <code>201909_11_ILE_DE_FRANCE_SHP_L93_2154</code>.</li>
+<li>À côté du projet, ajouter le dossier provenant de la BDTopo, par exemple <code>BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD</code>.</li>
 </ul>
 <h2 id="manipulation-dans-la-console">Manipulation dans la console<a class="headerlink" href="#manipulation-dans-la-console" title="Permanent link">#</a></h2>
 <h3 id="rappel-sur-la-poo">Rappel sur la POO<a class="headerlink" href="#rappel-sur-la-poo" title="Permanent link">#</a></h3>
@@ -1322,6 +1290,14 @@ class Voiture{
     +reculer(amount) int
     +tourner(direction) bool
 }</div>
+<p>On peut continuer en écrivant une classe qui va contenir une <strong>Personne</strong> :</p>
+<div class="mermaid">classDiagram
+class Personne{
+    +String Nom
+    +String Prenom
+    +Date DateNaissance
+    +Date DatePermisB
+}</div>
 <h3 id="pratique">Pratique<a class="headerlink" href="#pratique" title="Permanent link">#</a></h3>
 <ul>
 <li>Dans QGIS, <code>Plugins</code> -&gt; <code>Console Python</code></li>
@@ -1329,7 +1305,7 @@ class Voiture{
 <p>QGIS nous donne accès au projet actuel via la classe <code>QgsProject</code></p>
 <ul>
 <li><a href="https://qgis.org/api/classQgsProject.html">https://qgis.org/api/classQgsProject.html</a></li>
-<li><a href="https://qgis.org/pyqgis/3.28/core/QgsProject.html">https://qgis.org/pyqgis/3.28/core/QgsProject.html</a></li>
+<li><a href="https://qgis.org/pyqgis/3.34/core/QgsProject.html">https://qgis.org/pyqgis/3.34/core/QgsProject.html</a></li>
 </ul>
 </li>
 <li>
@@ -1343,12 +1319,15 @@ class Voiture{
 </ul>
 </li>
 <li>Nous verrons progressivement ces différentes sections.</li>
+<li>En haut de la documentation, il y a une explication sur le cas particulier de <code>QgsProject.instance()</code>.</li>
 <li>Recherchons <code>filename</code>.
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
 <span class="n">project</span><span class="o">.</span><span class="n">fileName</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div></li>
-<li>Ajoutons un titre à notre projet, recherchons donc <code>title</code> dans la page : <code>setTitle</code> dans la classe
+<li>Ajoutons un titre à notre projet. Dans l'interface graphique, cela se passe dans les propriétés de notre projet.
+  Il y a donc des chances que cela soit aussi dans la classe <strong>QgsProject</strong></li>
+<li>Recherchons donc <code>title</code> dans la page : <code>setTitle</code> dans la classe
   <a href="https://qgis.org/api/classQgsProject.html">QgsProject</a>.</li>
 </ul>
 <div class="admonition warning">
@@ -1357,6 +1336,20 @@ class Voiture{
 La méthode <code>title</code> retourne une <strong>QString</strong> et <strong>ne prend pas</strong> de paramètre.
 La méthode <code>setTitle</code> retourne <strong>rien</strong>, (<strong>void</strong>) mais elle prend un paramètre, une <strong>QString</strong>.</p>
 </div>
+<ul>
+<li>Nous souhaitons désormais changer la couleur de fond du projet.<ul>
+<li>Recherchons <code>background</code></li>
+<li>Nous allons devoir utiliser aussi la classe <a href="https://doc.qt.io/qt-5/qcolor.html">QColor</a></li>
+</ul>
+</li>
+</ul>
+<details>
+<summary>Afficher la solution</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">color</span> <span class="o">=</span> <span class="n">QColor</span><span class="p">(</span><span class="s2">&quot;#00A2FF&quot;</span><span class="p">)</span>
+<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">setBackgroundColor</span><span class="p">(</span><span class="n">color</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
 <ul>
 <li>Objectif, ajouter une couche vecteur contenu dans un dossier fils :<ul>
 <li>Recherchons dans l'API le dossier racine du projet. <em>Indice</em>, en informatique, on appelle souvent cela le <code>home</code>.</li>
@@ -1379,13 +1372,13 @@ La méthode <code>setTitle</code> retourne <strong>rien</strong>, (<strong>void<
 <span class="normal">11</span>
 <span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
 <span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
-<span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="s1">&#39;nexistepas&#39;</span><span class="p">)</span>
-<span class="s1">&#39;/home/etienne/Documents/3liz/formation/nexistepas&#39;</span>
-<span class="n">isfile</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span><span class="s1">&#39;nexistepas&#39;</span><span class="p">))</span>
+<span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="s1">&#39;nexiste_pas&#39;</span><span class="p">)</span>
+<span class="s1">&#39;/home/etienne/Documents/3liz/formation/nexiste_pas&#39;</span>
+<span class="n">isfile</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span><span class="s1">&#39;nexiste_pas&#39;</span><span class="p">))</span>
 <span class="kc">False</span>
-<span class="n">isdir</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span><span class="s1">&#39;nexistepas&#39;</span><span class="p">))</span>
+<span class="n">isdir</span><span class="p">(</span><span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span><span class="s1">&#39;nexiste_pas&#39;</span><span class="p">))</span>
 <span class="kc">False</span>
-<span class="n">chemin</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="s1">&#39;201909_11_ILE_DE_FRANCE_SHP_L93_2154&#39;</span><span class="p">,</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span><span class="p">)</span>
+<span class="n">chemin</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span><span class="p">,</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">)</span>
 <span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">chemin</span><span class="p">,</span> <span class="s1">&#39;COMMUNE.shp&#39;</span><span class="p">)</span>
 <span class="n">isfile</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">)</span>
 <span class="kc">True</span>
@@ -1420,7 +1413,7 @@ La méthode <code>setTitle</code> retourne <strong>rien</strong>, (<strong>void<
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
 <span class="n">racine</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">homePath</span><span class="p">())</span>
-<span class="n">chemin</span> <span class="o">=</span> <span class="n">racine</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;202201_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154&#39;</span><span class="p">,</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span><span class="p">)</span>
+<span class="n">chemin</span> <span class="o">=</span> <span class="n">racine</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span><span class="p">,</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">)</span>
 <span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">chemin</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;COMMUNE.shp&#39;</span><span class="p">)</span>
 <span class="c1"># fichier_shape.is_file()</span>
 <span class="n">communes</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">),</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
@@ -1444,7 +1437,7 @@ La méthode <code>setTitle</code> retourne <strong>rien</strong>, (<strong>void<
 <span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
 
 <span class="n">racine</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
-<span class="n">chemin</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="s1">&#39;202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154&#39;</span><span class="p">,</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span><span class="p">)</span>
+<span class="n">chemin</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span><span class="p">,</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">)</span>
 <span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">chemin</span><span class="p">,</span> <span class="s1">&#39;COMMUNE.shp&#39;</span><span class="p">)</span>
 <span class="n">communes</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
 <span class="n">communes</span><span class="o">.</span><span class="n">isValid</span><span class="p">()</span>
@@ -1454,7 +1447,7 @@ La méthode <code>setTitle</code> retourne <strong>rien</strong>, (<strong>void<
 <ul>
 <li>Explorer l'objet <code>communes</code> qui est un <code>QgsVectorLayer</code> à l'aide de la documentation pour chercher sa
   géométrie, le nombre d'entités.
-  <a href="https://qgis.org/api/classQgsVectorLayer.html">API QgsVectorLayer C++</a>, <a href="https://qgis.org/pyqgis/3.28/core/QgsVectorLayer.html">API QgsVectorLayer Python</a></li>
+  <a href="https://qgis.org/api/classQgsVectorLayer.html">API QgsVectorLayer C++</a>, <a href="https://qgis.org/pyqgis/3.34/core/QgsVectorLayer.html">API QgsVectorLayer Python</a></li>
 <li>Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre</li>
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1489,7 +1482,7 @@ class QgsRasterLayer{
 QgsMapLayer &lt;-- QgsVectorLayer
 QgsMapLayer &lt;-- QgsRasterLayer</div>
 <p>L'objet <code>QgsVectorLayer</code> hérite de <code>QgsMapLayer</code> qui est une classe commune avec <code>QgsMapLayer</code>.</p>
-<p><a href="https://qgis.org/api/classQgsMapLayer.html">API QgsMapLayer C++</a>, <a href="https://qgis.org/pyqgis/3.28/core/QgsMapLayer.html">API QgsMapLayer Python</a></p>
+<p><a href="https://qgis.org/api/classQgsMapLayer.html">API QgsMapLayer C++</a>, <a href="https://qgis.org/pyqgis/3.34/core/QgsMapLayer.html">API QgsMapLayer Python</a></p>
 <p>Regardons la fonction <code>isinstance</code> qui permet de tester si un objet est une instance d'une classe :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1526,8 +1519,8 @@ QgsMapLayer &lt;-- QgsRasterLayer</div>
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span>
-<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;201909_11_ILE_DE_FRANCE_SHP_L93_2154&#39;</span>
-<span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span>
+<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span>
+<span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span>
 <span class="n">couche</span> <span class="o">=</span> <span class="s1">&#39;COMMUNE&#39;</span>
 
 <span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>

@@ -477,6 +477,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../documentation/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Documentation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../memo-python/" class="md-nav__link">
         
   
@@ -680,6 +701,15 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connection-dun-signal-a-une-fonction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection d'un signal à une fonction
+    </span>
+  </a>
   
 </li>
       
@@ -1226,6 +1256,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#connection-dun-signal-a-une-fonction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Connection d'un signal à une fonction
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1309,8 +1348,8 @@ l'organisation du code.</p>
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
-<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;201909_11_ILE_DE_FRANCE_SHP_L93_2154&#39;</span>
-<span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span>
+<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span>
+<span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span>
 <span class="n">couche</span> <span class="o">=</span> <span class="s1">&#39;COMMUNE&#39;</span>
 
 <span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
@@ -1335,7 +1374,7 @@ l'organisation du code.</p>
 <li>le nom du shapefile</li>
 </ul>
 </li>
-<li>La fonction se chargera de faire le nécessaire, par exemple: <code>charger_couche('H_OSM_ADMINISTRATIF', 'COMMUNE')</code></li>
+<li>La fonction se chargera de faire le nécessaire, par exemple: <code>charger_couche('ADMINISTRATIF', 'COMMUNE')</code></li>
 <li>La fonction peut également retourner <code>False</code> si la couche n'est pas chargée (une erreur) ou sinon l'objet couche.</li>
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1373,7 +1412,7 @@ On peut le supprimer le bloc n'est pas vide.</p>
 <span class="normal">22</span>
 <span class="normal">23</span>
 <span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
-<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;201909_11_ILE_DE_FRANCE_SHP_L93_2154&#39;</span>
+<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span>
 
 
 <span class="k">def</span> <span class="nf">charger_couche</span><span class="p">(</span><span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">):</span>
@@ -1393,7 +1432,7 @@ On peut le supprimer le bloc n'est pas vide.</p>
                 <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
                 <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Bravo&#39;</span><span class="p">,</span><span class="s1">&#39;Well done!&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 
-<span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span>
+<span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span>
 <span class="n">couche</span> <span class="o">=</span> <span class="s1">&#39;COMMUNE&#39;</span>
 <span class="n">charger_couche</span><span class="p">(</span><span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1432,7 +1471,7 @@ plus à gauche possible grâce à l'instruction <code>return</code> qui ordonne 
 
 <span class="k">def</span> <span class="nf">charger_couche</span><span class="p">(</span><span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Fonction qui charge une couche shapefile dans une thématique.&quot;&quot;&quot;</span>
-    <span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;201909_11_ILE_DE_FRANCE_SHP_L93_2154&#39;</span>
+    <span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span>
 
     <span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">racine</span><span class="p">:</span>
@@ -1453,8 +1492,8 @@ plus à gauche possible grâce à l'instruction <code>return</code> qui ordonne 
     <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Bravo&#39;</span><span class="p">,</span><span class="s1">&#39;Well done!&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">layer</span>
 
-<span class="n">charger_couche</span><span class="p">(</span><span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span><span class="p">,</span> <span class="s1">&#39;COMMUNE&#39;</span><span class="p">)</span>
-<span class="n">charger_couche</span><span class="p">(</span><span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span><span class="p">,</span> <span class="s1">&#39;ARRONDISSEMENT&#39;</span><span class="p">)</span>
+<span class="n">charger_couche</span><span class="p">(</span><span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">,</span> <span class="s1">&#39;COMMUNE&#39;</span><span class="p">)</span>
+<span class="n">charger_couche</span><span class="p">(</span><span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">,</span> <span class="s1">&#39;ARRONDISSEMENT&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 </details>
 <ul>
@@ -1484,7 +1523,7 @@ parcourir un chemin et de lister les répertoires et les fichiers.</p>
 
 <span class="k">def</span> <span class="nf">liste_shapefiles</span><span class="p">(</span><span class="n">thematique</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Liste les shapefiles d&#39;une thématique.&quot;&quot;&quot;</span>
-    <span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;201909_11_ILE_DE_FRANCE_SHP_L93_2154&#39;</span>
+    <span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span>
     <span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
     <span class="n">shapes</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">root</span><span class="p">,</span> <span class="n">directories</span><span class="p">,</span> <span class="n">files</span> <span class="ow">in</span> <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="n">dossier</span><span class="p">,</span> <span class="n">thematique</span><span class="p">)):</span>
@@ -1493,7 +1532,7 @@ parcourir un chemin et de lister les répertoires et les fichiers.</p>
                 <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39;.shp&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
     <span class="k">return</span> <span class="n">shapes</span>
 
-<span class="n">shapes</span> <span class="o">=</span> <span class="n">liste_shapefiles</span><span class="p">(</span><span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span><span class="p">)</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">liste_shapefiles</span><span class="p">(</span><span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">shapes</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>En utilisant le "nouveau" module <code>pathlib</code>:</p>
@@ -1515,14 +1554,14 @@ parcourir un chemin et de lister les répertoires et les fichiers.</p>
 <span class="k">def</span> <span class="nf">liste_shapefiles</span><span class="p">(</span><span class="n">thematique</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Liste les shapefiles d&#39;une thématique.&quot;&quot;&quot;</span>
     <span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
-    <span class="n">dossier</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">racine</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154&#39;</span><span class="p">,</span> <span class="n">thematique</span><span class="p">)</span>
+    <span class="n">dossier</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">racine</span><span class="p">)</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span><span class="p">,</span> <span class="n">thematique</span><span class="p">)</span>
     <span class="n">shapes</span> <span class="o">=</span> <span class="p">[]</span>
     <span class="k">for</span> <span class="n">file</span> <span class="ow">in</span> <span class="n">dossier</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
         <span class="k">if</span> <span class="n">file</span><span class="o">.</span><span class="n">suffix</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s1">&#39;.shp&#39;</span><span class="p">:</span>
             <span class="n">shapes</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">file</span><span class="o">.</span><span class="n">stem</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">shapes</span>
 
-<span class="n">shapes</span> <span class="o">=</span> <span class="n">liste_shapefiles</span><span class="p">(</span><span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span><span class="p">)</span>
+<span class="n">shapes</span> <span class="o">=</span> <span class="n">liste_shapefiles</span><span class="p">(</span><span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">shapes</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition tip">
@@ -1586,7 +1625,7 @@ pour comprendre le fonctionnement de cette classe.</p>
 <span class="normal">49</span>
 <span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">from</span> <span class="nn">os.path</span> <span class="kn">import</span> <span class="n">join</span><span class="p">,</span> <span class="n">isfile</span><span class="p">,</span> <span class="n">isdir</span>
-<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154&#39;</span>
+<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span>
 <span class="c1"># couche = &#39;COMMUNE&#39;</span>
 
 <span class="k">def</span> <span class="nf">liste_shapesfiles</span><span class="p">(</span><span class="n">thematique</span><span class="p">):</span>
@@ -1630,7 +1669,7 @@ pour comprendre le fonctionnement de cette classe.</p>
     <span class="k">return</span> <span class="n">layer</span>
 
 
-<span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;H_OSM_ADMINISTRATIF&#39;</span>
+<span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span>
 <span class="n">shapes</span> <span class="o">=</span> <span class="n">liste_shapesfiles</span><span class="p">(</span><span class="n">thematique</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">shape</span> <span class="ow">in</span> <span class="n">shapes</span><span class="p">:</span>
     <span class="n">charger_couche</span><span class="p">(</span><span class="n">thematique</span><span class="p">,</span> <span class="n">shape</span><span class="p">)</span>
@@ -1907,6 +1946,14 @@ retournent systématiquement un tuple avec un code d'erreur et un message si né
     <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_file</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<h2 id="connection-dun-signal-a-une-fonction">Connection d'un signal à une fonction<a class="headerlink" href="#connection-dun-signal-a-une-fonction" title="Permanent link">#</a></h2>
+<p>Nous avons pu voir que dans la documentation des librairies <strong>Qt</strong> et <strong>QGIS</strong>, il y a une section <strong>Signals</strong>.</p>
+<p>Cela sert à déclencher du code Python lorsqu'un signal est émis.</p>
+<p>Par exemple, dans la classe <code>QgsMapLayer</code>, cherchons un signal qui est émis <strong>après</strong> (before) que la session d'édition
+commence.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">variable_de_lobjet</span><span class="o">.</span><span class="n">nom_du_signal</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">nom_de_la_fonction</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Note, il ne faut pas écrire <code>nom_de_la_fonction()</code> car on ne souhaite pas <strong>appeler</strong> la fonction, juste <strong>connecter</strong>.</p>
 
 
 
