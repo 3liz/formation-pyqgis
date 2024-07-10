@@ -50,8 +50,8 @@ Ci-dessous, voici le dernier script du chapitre précédent, mais avec la gestio
 
 ```python
 from os.path import join, isfile, isdir
-dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
-thematique = 'H_OSM_ADMINISTRATIF'
+dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
+thematique = 'ADMINISTRATIF'
 couche = 'COMMUNE'
 
 racine = QgsProject.instance().homePath()
@@ -75,7 +75,7 @@ else:
   * Essayons de faire une fonction qui prend 2 paramètres
     * la thématique (le dossier)
     * le nom du shapefile
-  * La fonction se chargera de faire le nécessaire, par exemple: `charger_couche('H_OSM_ADMINISTRATIF', 'COMMUNE')`
+  * La fonction se chargera de faire le nécessaire, par exemple: `charger_couche('ADMINISTRATIF', 'COMMUNE')`
   * La fonction peut également retourner `False` si la couche n'est pas chargée (une erreur) ou sinon l'objet couche.
 
 ```python
@@ -90,7 +90,7 @@ def charger_couche(thematique, couche):
 ??? "Afficher la solution intermédiaire"
     ```python
     from os.path import join, isfile, isdir
-    dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
+    dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
     
     
     def charger_couche(thematique, couche):
@@ -110,7 +110,7 @@ def charger_couche(thematique, couche):
                     QgsProject.instance().addMapLayer(layer)
                     iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
     
-    thematique = 'H_OSM_ADMINISTRATIF'
+    thematique = 'ADMINISTRATIF'
     couche = 'COMMUNE'
     charger_couche(thematique, couche)
     ```
@@ -124,7 +124,7 @@ plus à gauche possible grâce à l'instruction `return` qui ordonne la sortie d
     
     def charger_couche(thematique, couche):
         """Fonction qui charge une couche shapefile dans une thématique."""
-        dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
+        dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
     
         racine = QgsProject.instance().homePath()
         if not racine:
@@ -145,8 +145,8 @@ plus à gauche possible grâce à l'instruction `return` qui ordonne la sortie d
         iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
         return layer
     
-    charger_couche('H_OSM_ADMINISTRATIF', 'COMMUNE')
-    charger_couche('H_OSM_ADMINISTRATIF', 'ARRONDISSEMENT')
+    charger_couche('ADMINISTRATIF', 'COMMUNE')
+    charger_couche('ADMINISTRATIF', 'ARRONDISSEMENT')
     ```
 
 * Essayons de faire une fonction qui liste les shapefiles d'une certaine thématique.
@@ -165,7 +165,7 @@ import os
 
 def liste_shapefiles(thematique):
     """Liste les shapefiles d'une thématique."""
-    dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
+    dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
     racine = QgsProject.instance().homePath()
     shapes = []
     for root, directories, files in os.walk(os.path.join(racine, dossier, thematique)):
@@ -174,7 +174,7 @@ def liste_shapefiles(thematique):
                 shapes.append(file.replace('.shp', ''))
     return shapes
 
-shapes = liste_shapefiles('H_OSM_ADMINISTRATIF')
+shapes = liste_shapefiles('ADMINISTRATIF')
 print(shapes)
 ```
 
@@ -186,14 +186,14 @@ from pathlib import Path
 def liste_shapefiles(thematique):
     """Liste les shapefiles d'une thématique."""
     racine = QgsProject.instance().homePath()
-    dossier = Path(racine).joinpath('202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154', thematique)
+    dossier = Path(racine).joinpath('BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD', thematique)
     shapes = []
     for file in dossier.iterdir():
         if file.suffix.lower() == '.shp':
             shapes.append(file.stem)
     return shapes
 
-shapes = liste_shapefiles('H_OSM_ADMINISTRATIF')
+shapes = liste_shapefiles('ADMINISTRATIF')
 print(shapes)
 ```
 
@@ -207,7 +207,7 @@ print(shapes)
     ```python
     import os
     from os.path import join, isfile, isdir
-    dossier = '202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154'
+    dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
     # couche = 'COMMUNE'
     
     def liste_shapesfiles(thematique):
@@ -251,7 +251,7 @@ print(shapes)
         return layer
     
     
-    thematique = 'H_OSM_ADMINISTRATIF'
+    thematique = 'ADMINISTRATIF'
     shapes = liste_shapesfiles(thematique)
     for shape in shapes:
         charger_couche(thematique, shape)
@@ -447,3 +447,18 @@ iface.messageBar().pushSuccess(
     ).format(output_file.parent, output_file)
 )
 ```
+
+## Connection d'un signal à une fonction
+
+Nous avons pu voir que dans la documentation des librairies **Qt** et **QGIS**, il y a une section **Signals**.
+
+Cela sert à déclencher du code Python lorsqu'un signal est émis.
+
+Par exemple, dans la classe `QgsMapLayer`, cherchons un signal qui est émis **après** (before) que la session d'édition
+commence.
+
+```python
+variable_de_lobjet.nom_du_signal.connect(nom_de_la_fonction)
+```
+
+Note, il ne faut pas écrire `nom_de_la_fonction()` car on ne souhaite pas **appeler** la fonction, juste **connecter**.

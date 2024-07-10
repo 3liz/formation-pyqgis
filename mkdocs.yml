@@ -13,6 +13,7 @@ nav:
     - Accueil: index.md
     - Présentation:
       - Python dans QGIS: python-qgis.md
+      - Documentation: documentation.md
       - Mémo Python: memo-python.md
     - Premier pas:
       - Console: console.md

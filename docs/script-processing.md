@@ -200,7 +200,7 @@ On peut appeler un traitement en ligne de commande Python :
 processing.run(
     "native:buffer", 
     {
-        'INPUT':'/home/etienne/tmp/formation_pyqgis/202101_OSM2IGEO_11_ILE_DE_FRANCE_SHP_L93_2154/D_OSM_HYDROGRAPHIE/CANALISATION_EAU.shp',
+        'INPUT':'/chemin/vers/HYDROGRAPHIE/CANALISATION_EAU.shp',
         'DISTANCE':10,
         'SEGMENTS':5,
         'END_CAP_STYLE':0,
@@ -230,7 +230,7 @@ def tampon(distance):
     result = processing.run(
         "native:buffer", 
         {
-            'INPUT':'/home/etienne/tmp/formation_pyqgis/202101_OSM2IGEO_11_ILE_DE_FRANCE_SHP_L93_2154/D_OSM_HYDROGRAPHIE/BARRAGE.shp',
+            'INPUT':'/chemin/vers/HYDROGRAPHIE/BARRAGE.shp',
             'DISTANCE':distance,
             'SEGMENTS':5,
             'END_CAP_STYLE':0,

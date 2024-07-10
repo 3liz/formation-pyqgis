@@ -21,7 +21,6 @@ Pour suivre la formation, il faut :
 * Avoir quelques bases en programmation
 * Avoir un jeu de données, par exemple :
     * BD Topo du département 
-    * Données [OSM2Igeo](https://github.com/igeofr/osm2igeo)
 
 Si nécessaire, il peut être utile d'avoir en plus :
 

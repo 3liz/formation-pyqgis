@@ -6,13 +6,13 @@
 * Pour la couche linéaire :
   * Nous allons utiliser le script ci-dessous pour créer une couche **très** simple, mais qui permet de voir la construction
     d'une ligne en partant de zéro
-  * Sinon, pour aller **beaucoup** plus vite, ajouter la couche `D_OSM_HYDROGRAPHIE/TRONCON_COURS_EAU.shp`
+  * Sinon, pour aller **beaucoup** plus vite, ajouter la couche `HYDROGRAPHIE/COURS_D_EAU.shp`
     mais on ne voit pas comment construire la géométrie en partant de rien.
 * Faire un style rapide pour mettre en évidence le sens de la ligne à l'aide d'une `Ligne de symbole` dans
   l'onglet `Symbologie` de la couche en question.
 
 !!! info
-    La couche `D_OSM_HYDROGRAPHIE/TRONCON_COURS_EAU.shp` est de type multilinestring. Nous allons donc prendre en compte
+    La couche `HYDROGRAPHIE/COURS_D_EAU.shp` est de type multilinestring. Nous allons donc prendre en compte
     ce cas par défaut dans la suite de ce tutoriel.
 
 ```python

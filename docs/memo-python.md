@@ -9,8 +9,7 @@
 * Centré sur la lecture et la productivité
 	* Syntaxe du code simple
 * Grosse communauté
-	* De nombreux packages disponibles sur internet
-	* https://pypi.org/
+	* De nombreux packages disponibles sur internet sur [PyPi.org](https://pypi.org/)
 
 ```python
 # Déclaration d'une variable de type entier
@@ -27,7 +26,7 @@ if 0 < x < 10:
 
 * Python 2
 	* Sortie en 2000
-	* Il est encore très utilisé, notamment sur les tutoriels sur internet et quelques projets qui tardent à
+	* **Il a été très** utilisé, notamment sur les tutoriels sur internet et quelques projets qui tardent à
 	 se mettre à jour
 	* Une adoption massive (QGIS 2)
 	* Dernière version le 1 janvier 2020
@@ -39,12 +38,12 @@ if 0 < x < 10:
         * Python 3.5 minimum for QGIS 3.4
         * Python 3.6 minimum for QGIS 3.18
         * Python 3.7 minimum for QGIS 3.20
-        * Python 3.10 minimum for QGIS 3.38
+        * Python 3.10 minimum for QGIS 3.40 ?
 
 ## Rappel de base sur Python
 
-* Un mémo Python plus important : https://www.w3schools.com/python/
-* Un cours Python : https://openclassrooms.com/fr/courses/4262331-demarrez-votre-projet-avec-python
+* Un mémo Python plus important sur [W3Schools](https://www.w3schools.com/python/)
+* Un cours Python sur [OpenClassRooms](https://openclassrooms.com/fr/courses/4262331-demarrez-votre-projet-avec-python)
 
 ## La console
 
@@ -71,18 +70,23 @@ du programme.
 mon_compteur = 0
 type(mon_compteur)
 <class 'int'>
+
 mon_compteur = False
 type(mon_compteur)
 <class 'bool'>
+
 mon_compteur = 'oui'
 type(mon_compteur)
 <class 'str'>
+
 mon_compteur = "non"
 type(mon_compteur)
 <class 'str'>
+
 mon_compteur = 3.5
 type(mon_compteur)
 <class 'float'>
+
 mon_compteur = None
 type(mon_compteur)
 <class 'NoneType'>
@@ -94,6 +98,32 @@ type(mon_compteur)
 Il existe quatre types de structure de données :
 
 * les variables simples (ci-dessus)
+
+* les listes (modifiables)
+```python
+nombres = []
+type(nombres)
+<class 'list'>
+
+nombres.append(1)
+nombres.extend([2, 3, 4])
+nombres
+[1, 2, 3, 4]
+
+
+# Autre exemple
+mois = ['janvier', 'février', 'mars', 'avril']
+mois[2]
+mars
+
+mois[12]
+Traceback (most recent call last):
+  File "/usr/lib/python3.7/code.py", line 90, in runcode
+    exec(code, self.locals)
+  File "<input>", line 1, in <module>
+IndexError: tuple index out of range
+```
+
 * les tuples (non modifiables)
 
 ```python
@@ -117,21 +147,10 @@ Traceback (most recent call last):
 IndexError: tuple index out of range
 
 ```
-* les listes (modifiables)
-```python
-nombres = []
-type(nombres)
-<class 'list'>
-nombres.append(1)
-nombres.extend([2, 3, 4])
-nombres
-[1, 2, 3, 4]
-
-```
 
 * les dictionnaires
 
-*Attention*, les dictionnaires ne sont pas ordonnés !
+*Attention*, les dictionnaires ne sont pas ordonnés, de façon native, même depuis Python 3.9.
 Si vraiment, il y a besoin, il existe une classe `OrderedDict`, mais ce n'est pas une structure de données
 native dans Python.
 C'est un objet.
@@ -143,7 +162,7 @@ type(personne)
 personne['prenom'] = 'etienne'
 personne['nom'] = 'trimaille'
 personne['est_majeur'] = True
-personne['age'] = 30
+personne['age'] = 35
 ```
 
 ## Les commentaires
@@ -166,8 +185,12 @@ sur plusieurs lignes
 
 ```python
 a = 10
-a += 1
-a -= 1
+a += 1 # Augmenter de 1 à la variable a
+# équivalent à
+a = a + 1
+a -= 1 # Diminuer de 1
+a += 5 # Incrémenter de 5
+
 b = a + 1
 c = a - 1
 d = a * 2
@@ -211,7 +234,7 @@ bienvenue = 'Bonjour {}, nous sommes le {} novembre'.format(prenom, numero_jour)
 bienvenue = 'Bonjour {prenom}, nous sommes le {jour} novembre'.format(prenom=prenom, jour=numero_jour)
 ```
 
-Encore plus moderne avec Python 3.6 et `fstring`
+Encore plus moderne avec `fstring`
 ```python
 prenom = 'Pierre'
 numero_jour = 2
@@ -310,7 +333,8 @@ if present:
     print('Présent')
 else:
     print('Non présent')
-    
+
+
 # Le plus pythonique
 for country in countries:
     if country.lower() == 'allemagne':
@@ -341,7 +365,30 @@ while not conditon_echec:
 
 ## Switch
 
-**Python 3.10** uniquement
+**Python 3.10** **minimum**
+
+```python
+numero_jour = 2
+
+match numero_jour:
+  case 1:
+    return 'Lundi'
+  case 2:
+    return 'Mardi'
+  case 3:
+    return 'Mercredi'
+  case 4:
+    return 'Jeudi'
+  case 5:
+    return 'Vendredi'
+  case 6:
+    return 'Samedi'
+  case 7:
+    return 'Dimanche'
+  case _:
+    return 'Pas un jour de la semaine'
+
+```
 
 ## List Comprehensions
 
@@ -385,7 +432,33 @@ alphabet[-3:]  # XYZ
 alphabet[:6]  # ABCDEF
 ```
 
+Slicing sur les mois de l'année :
+
+```python
+mois = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Octobre', 'Novembre', 'Décembre']
+
+mois[0:2]
+['Janvier', 'Février']
+
+mois[2:]
+['Mars', 'Avril', 'Mai', 'Juin', 'Octobre', 'Novembre', 'Décembre']
+
+mois[:-2]
+['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Octobre']
+
+mois[-2:]
+['Novembre', 'Décembre']
+```
+
 ## Fonctions
+
+Une fonction permet de factoriser son code. Elle peut :
+
+* ne pas prendre de paramètre en **entrée**
+* prendre un ou plusieurs paramètres en **entrée**
+* ces entrées peuvent avoir des valeurs par défaut, on n'est donc pas obligé de les fournir de lors **l'appel** de la fonction
+* une fonction peut ne **rien** retourner, (pas d'instructions `return` ou alors `return None`)
+* ou alors retourner une ou plusieurs valeurs (cela sera implicitement une liste)
 
 * Voici des exemples de fonction Python.
 *Encore une fois*, attention à l'indentation !
@@ -401,6 +474,10 @@ def crier(phrase='bonjour'):
 def discuter(texte, personnage='Charles'):
     """Un personnage discute."""
     print('{}: "{}"'.format(personnage, texte))
+
+def discuter(texte, personnage='Charles'):
+    """Un personnage discute."""
+    return f'{personnage}: "{texte}"'
 ```
 
 * Une fonction peut retourner plusieurs valeurs :
@@ -475,6 +552,8 @@ Lire le chapitre sur le [parcours des entités](./selection-parcours-entites.md#
 
 ## Truc et astuces
 
+### Passage par référence
+
 !!! warning
     Attention au passage par référence :
 	```python
@@ -484,6 +563,8 @@ Lire le chapitre sur le [parcours des entités](./selection-parcours-entites.md#
 	print(ma_liste_2)
 	print(ma_liste_1)
 	```
+
+### Enumerate
 
 Avoir un compteur lors de l'itération d'une liste :
 ```python
@@ -505,3 +586,6 @@ def decomposer(entier: int, diviser_par: int) -> Tuple[int, int]:
     reste = entier % diviser_par
     return int(partie_entiere), reste
 ```
+
+Il faut lire la documentation des [annotations](https://docs.python.org/3/library/typing.html) pour voir les différentes
+possibilités.

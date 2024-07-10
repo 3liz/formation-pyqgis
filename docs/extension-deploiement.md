@@ -36,3 +36,8 @@ Lire [les recommandations](https://plugins.qgis.org/publish/) pour la publicatio
 
 * Code source disponible
 * `metadata.txt` avec les bonnes informations et des liens HTTP valides
+
+## Tutoriel pour installer un dépôt
+
+Notre [tutoriel](https://docs.3liz.org/tutorial/qgis-repository-fr/) pour l'installation d'un dépôt, avec ou sans
+mot de passe.

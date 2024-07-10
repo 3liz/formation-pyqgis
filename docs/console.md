@@ -1,40 +1,9 @@
 # Introduction à la console Python
 
-## La documentation et les liens utiles
-
-* QGIS est composé de plusieurs centaines de classes écrites en C++. 
-La plupart de ces classes (et donc des fonctions) sont accessibles à travers un API en Python. 
-Comme il n'est pas possible de mémoriser entièrement l'API de QGIS, il est nécessaire de connaître la 
-documentation et comment rechercher des informations.
-* QGIS repose sur la librairie Qt version 5 pour l'interface graphique et sur Python version 3.
-* Toutes les classes QGIS commencent par `Qgs` et toutes les classes Qt commencent par `Q`.
-
-Voici une liste de liens pour la documentation :
-
-* [https://docs.qgis.org](https://docs.qgis.org) qui regroupe :
-    * [Le Python Cookbook https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook](https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/) (recette de cuisine)
-    * [L'API C++ https://qgis.org/api/3.28/](https://qgis.org/api/3.28/)
-    * [L'API Python https://qgis.org/pyqgis/3.28/](https://qgis.org/pyqgis/3.28/)
-* [Documentation de l'API Qt](https://doc.qt.io/qt-5/classes.html)
-* [Documentation de Python](https://docs.python.org/3/library/)
-    * [Le module os.path par exemple](https://docs.python.org/3/library/os.path.html#module-os.path), module historique pour manipuler des chemins
-    * [Le module Pathlib](https://docs.python.org/3/library/pathlib.html#module-pathlib)
-
-Voici une liste non exhaustive de blog-post utiles pour manipuler PyQGIS :
-
-* [Optimisation des couches vecteurs](https://nyalldawson.net/2016/10/speeding-up-your-pyqgis-scripts/)
-* [Parcourir la légende en 3 parties](https://www.lutraconsulting.co.uk/blog/2014/07/06/qgis-layer-tree-api-part-1/)
-* [Plugin Processing](http://www.qgistutorials.com/en/docs/3/processing_python_plugin.html)
-* [Workshop sur les expressions en Python](https://madmanwoo.gitlab.io/foss4g-python-workshop/)
-
-Autre lien pour l'apprentissage de Python (sans QGIS) :
-
-* [https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python](https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python)
-
 ## Configurer le projet
 
 * Commencer un nouveau projet et enregistrer le.
-* À côté du projet, ajouter le dossier provenant d’OSM2Igeo, par exemple `201909_11_ILE_DE_FRANCE_SHP_L93_2154`.
+* À côté du projet, ajouter le dossier provenant de la BDTopo, par exemple `BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD`.
 
 ## Manipulation dans la console
 
@@ -79,12 +48,24 @@ class Voiture{
 }
 ```
 
+On peut continuer en écrivant une classe qui va contenir une **Personne** :
+
+```mermaid
+classDiagram
+class Personne{
+    +String Nom
+    +String Prenom
+    +Date DateNaissance
+    +Date DatePermisB
+}
+```
+
 ### Pratique
 
 * Dans QGIS, `Plugins` -> `Console Python`
 * QGIS nous donne accès au projet actuel via la classe `QgsProject`
 	* [https://qgis.org/api/classQgsProject.html](https://qgis.org/api/classQgsProject.html)
-	* [https://qgis.org/pyqgis/3.28/core/QgsProject.html](https://qgis.org/pyqgis/3.28/core/QgsProject.html)
+	* [https://qgis.org/pyqgis/3.34/core/QgsProject.html](https://qgis.org/pyqgis/3.34/core/QgsProject.html)
 
 * Dans la documentation (en C++ surtout), on remarque plusieurs sections :
 	* Public types
@@ -93,18 +74,31 @@ class Voiture{
 	* Public Member Functions
 	* Static Public Member Functions
 * Nous verrons progressivement ces différentes sections.
+* En haut de la documentation, il y a une explication sur le cas particulier de `QgsProject.instance()`.
 * Recherchons `filename`.
 ```python
 project = QgsProject.instance()
 project.fileName()
 ```
-* Ajoutons un titre à notre projet, recherchons donc `title` dans la page : `setTitle` dans la classe
+* Ajoutons un titre à notre projet. Dans l'interface graphique, cela se passe dans les propriétés de notre projet.
+  Il y a donc des chances que cela soit aussi dans la classe **QgsProject**
+* Recherchons donc `title` dans la page : `setTitle` dans la classe
   [QgsProject](https://qgis.org/api/classQgsProject.html).
 
 !!! warning
     Il est important de bien pouvoir lire la signature des **méthodes**.
     La méthode `title` retourne une **QString** et **ne prend pas** de paramètre.
     La méthode `setTitle` retourne **rien**, (**void**) mais elle prend un paramètre, une **QString**.
+
+* Nous souhaitons désormais changer la couleur de fond du projet.
+    * Recherchons `background`
+    * Nous allons devoir utiliser aussi la classe [QColor](https://doc.qt.io/qt-5/qcolor.html)
+
+??? "Afficher la solution"
+    ```python
+    color = QColor("#00A2FF")
+    QgsProject.instance().setBackgroundColor(color)
+    ```
 
 * Objectif, ajouter une couche vecteur contenu dans un dossier fils :
     * Recherchons dans l'API le dossier racine du projet. *Indice*, en informatique, on appelle souvent cela le `home`.
@@ -115,13 +109,13 @@ project.fileName()
 ```python
 from os.path import join, isfile, isdir
 racine = QgsProject.instance().homePath()
-join(racine, 'nexistepas')
-'/home/etienne/Documents/3liz/formation/nexistepas'
-isfile(join(racine,'nexistepas'))
+join(racine, 'nexiste_pas')
+'/home/etienne/Documents/3liz/formation/nexiste_pas'
+isfile(join(racine,'nexiste_pas'))
 False
-isdir(join(racine,'nexistepas'))
+isdir(join(racine,'nexiste_pas'))
 False
-chemin = join(racine, '201909_11_ILE_DE_FRANCE_SHP_L93_2154', 'H_OSM_ADMINISTRATIF')
+chemin = join(racine, 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD', 'ADMINISTRATIF')
 fichier_shape = join(chemin, 'COMMUNE.shp')
 isfile(fichier_shape)
 True
@@ -147,7 +141,7 @@ QgsProject.instance().addMapLayer(communes)
     from pathlib import Path
     project = QgsProject.instance()
     racine = Path(project.homePath())
-    chemin = racine.joinpath('202201_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154', 'H_OSM_ADMINISTRATIF')
+    chemin = racine.joinpath('BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD', 'ADMINISTRATIF')
     fichier_shape = chemin.joinpath('COMMUNE.shp')
     # fichier_shape.is_file()
     communes = QgsVectorLayer(str(fichier_shape), 'communes', 'ogr')
@@ -162,7 +156,7 @@ QgsProject.instance().addMapLayer(communes)
 	project = QgsProject.instance()
 
 	racine = project.homePath()
-	chemin = join(racine, '202103_OSM2IGEO_91_LANGUEDOC_ROUSSILLON_SHP_L93_2154', 'H_OSM_ADMINISTRATIF')
+	chemin = join(racine, 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD', 'ADMINISTRATIF')
 	fichier_shape = join(chemin, 'COMMUNE.shp')
 	communes = QgsVectorLayer(fichier_shape, 'communes', 'ogr')
 	communes.isValid()
@@ -171,7 +165,7 @@ QgsProject.instance().addMapLayer(communes)
 
 * Explorer l'objet `communes` qui est un `QgsVectorLayer` à l'aide de la documentation pour chercher sa
   géométrie, le nombre d'entités.
-  [API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.28/core/QgsVectorLayer.html)
+  [API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.34/core/QgsVectorLayer.html)
 * Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre
 
 ```python
@@ -210,7 +204,7 @@ QgsMapLayer <-- QgsRasterLayer
 
 L'objet `QgsVectorLayer` hérite de `QgsMapLayer` qui est une classe commune avec `QgsMapLayer`.
 
-[API QgsMapLayer C++](https://qgis.org/api/classQgsMapLayer.html), [API QgsMapLayer Python](https://qgis.org/pyqgis/3.28/core/QgsMapLayer.html)
+[API QgsMapLayer C++](https://qgis.org/api/classQgsMapLayer.html), [API QgsMapLayer Python](https://qgis.org/pyqgis/3.34/core/QgsMapLayer.html)
 
 Regardons la fonction `isinstance` qui permet de tester si un objet est une instance d'une classe :
 
@@ -231,8 +225,8 @@ Petit récapitulatif à tester pour voir si cela fonctionne correctement !
 
 ```python
 from os.path import join
-dossier = '201909_11_ILE_DE_FRANCE_SHP_L93_2154'
-thematique = 'H_OSM_ADMINISTRATIF'
+dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
+thematique = 'ADMINISTRATIF'
 couche = 'COMMUNE'
 
 racine = QgsProject.instance().homePath()
