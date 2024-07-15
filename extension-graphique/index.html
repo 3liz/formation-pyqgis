@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -1343,7 +1343,7 @@
 </code></pre></div></td></tr></table></div>
 <p>et ajoutons notre propre fonction <code>click_ok</code> pour quitter la fenêtre et en affichant la saisie de
 l'utilisateur dans la QgsMessageBar de QGIS.</p>
-<p>Le widget de saisie est un QLineEdit : <a href="https://doc.qt.io/qt-5/qlineedit.html">https://doc.qt.io/qt-5/qlineedit.html</a></p>
+<p>Le widget de saisie est un QLineEdit : <a href="https://doc.qt.io/qt-5/qlineedit.html">documentation</a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1351,14 +1351,14 @@ l'utilisateur dans la QgsMessageBar de QGIS.</p>
     <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre plugin&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Faire le test dans QGIS avec une saisie de l'utilisateur et fermer la fenêtre.</p>
-<p>Continuons en rendant en lecture seule le gros bloc de texte et affichons à l'intérieur la description de la
+<p>Continuons en rendant en lecture seule le gros bloc de texte et affichons à l'intérieur la description de
 la couche qui est sélectionnée dans le menu déroulant.</p>
 <p>Documentation :</p>
 <ul>
-<li>QPlainTextEdit : <a href="https://doc.qt.io/qt-5/qplaintextedit.html">https://doc.qt.io/qt-5/qplaintextedit.html</a></li>
-<li>QgsMapLayerComboBox : <a href="https://qgis.org/api/classQgsMapLayerComboBox.html">https://qgis.org/api/classQgsMapLayerComboBox.html</a></li>
+<li><a href="https://doc.qt.io/qt-5/qplaintextedit.html">QPlainTextEdit</a></li>
+<li><a href="https://qgis.org/api/classQgsMapLayerComboBox.html">QgsMapLayerComboBox</a></li>
 </ul>
-<p>Dans le <code>__init__</code> :</p>
+<p>Dans la fonction <code>__init__</code> du fichier <code>dialog.py</code> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">setReadOnly</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
 <span class="bp">self</span><span class="o">.</span><span class="n">mMapLayerComboBox</span><span class="o">.</span><span class="n">layerChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_changed</span><span class="p">)</span>
@@ -1531,7 +1531,7 @@ deux fichiers.</p>
 <p>On peut ensuite créer un dossier <code>resources</code> puis <code>icons</code> afin d'y déplacer un fichier PNG, JPG, SVG.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Attention à la taille de vos fichiers pour un petit icône</p>
+<p>Attention à la taille de vos fichiers pour une petite icône</p>
 </div>
 <p>Dans une extension graphique pour les icônes :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1559,7 +1559,7 @@ deux fichiers.</p>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># En haut du fichier</span>
-<span class="kn">from</span> <span class="nn">.qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
+<span class="kn">from</span> <span class="nn">..qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
 
 <span class="c1"># Dans la classe</span>
 <span class="k">def</span> <span class="nf">icon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>

@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.28">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
     
     
       
@@ -30,7 +30,7 @@
       
     
     
-      <link rel="stylesheet" href="../assets/stylesheets/main.6543a935.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.76a95c52.min.css">
       
         
         <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
@@ -1318,7 +1318,7 @@ une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer d
 <li>Récupérer la géométrie, tenir compte qu'il s'agit d'une multi-ligne</li>
 <li>Appliquer la fonction <code>reverse</code> en Python pour inverser une liste</li>
 <li>Utiliser une session d'édition</li>
-<li>Utiliser <code>QgsVectorLayer.changeGeometry()</code> pour changer la géométrie d'un objet</li>
+<li>Utiliser <code>QgsVectorLayer.changeGeometry()</code> pour changer la géométrie d'un objet <strong>existant</strong> !</li>
 </ul>
 <p>On peut appeler notre nouvelle fonction à l'aide du code suivant :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1402,7 +1402,7 @@ une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer d
         <span class="n">layer</span><span class="o">.</span><span class="n">changeGeometry</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">new_geom</span><span class="p">)</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayer</span><span class="p">(</span><span class="s1">&#39;[% @layer_id %]&#39;</span><span class="p">)</span>
-<span class="n">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="s1">&#39;[% $id %]&#39;</span><span class="p">)</span>
+<span class="n">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="p">[</span><span class="o">%</span> <span class="nd">@id</span> <span class="o">%</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
 <p>On peut désormais cliquer sur une ligne pour automatiquement inverser une ligne.</p>
 <p>Le code de l'action est enregistré dans le style QML de la couche vecteur. Il peut donc être partagé avec 
