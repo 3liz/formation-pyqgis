@@ -80,7 +80,7 @@ self.buttonBox.button(QDialogButtonBox.Ok).clicked.connect(self.click_ok)
 et ajoutons notre propre fonction `click_ok` pour quitter la fenêtre et en affichant la saisie de
 l'utilisateur dans la QgsMessageBar de QGIS.
 
-Le widget de saisie est un QLineEdit : https://doc.qt.io/qt-5/qlineedit.html
+Le widget de saisie est un QLineEdit : [documentation](https://doc.qt.io/qt-5/qlineedit.html)
 
 ```python
 def click_ok(self):
@@ -90,15 +90,15 @@ def click_ok(self):
 
 Faire le test dans QGIS avec une saisie de l'utilisateur et fermer la fenêtre.
 
-Continuons en rendant en lecture seule le gros bloc de texte et affichons à l'intérieur la description de la
+Continuons en rendant en lecture seule le gros bloc de texte et affichons à l'intérieur la description de
 la couche qui est sélectionnée dans le menu déroulant.
 
 Documentation :
 
-* QPlainTextEdit : https://doc.qt.io/qt-5/qplaintextedit.html
-* QgsMapLayerComboBox : https://qgis.org/api/classQgsMapLayerComboBox.html
+* [QPlainTextEdit](https://doc.qt.io/qt-5/qplaintextedit.html)
+* [QgsMapLayerComboBox](https://qgis.org/api/classQgsMapLayerComboBox.html)
 
-Dans le `__init__` :
+Dans la fonction `__init__` du fichier `dialog.py` :
 
 ```python
 self.plainTextEdit.setReadOnly(True)
@@ -228,7 +228,7 @@ def resources_path(*args) -> Path:
 On peut ensuite créer un dossier `resources` puis `icons` afin d'y déplacer un fichier PNG, JPG, SVG.
 
 !!! warning
-    Attention à la taille de vos fichiers pour un petit icône
+    Attention à la taille de vos fichiers pour une petite icône
 
 Dans une extension graphique pour les icônes :
 
@@ -248,7 +248,7 @@ Dans une extension Processing, dans le **provider** et les **algorithmes** :
 
 ```python
 # En haut du fichier
-from .qgis_plugin_tools import resources_path
+from ..qgis_plugin_tools import resources_path
 
 # Dans la classe
 def icon(self):

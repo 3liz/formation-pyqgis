@@ -171,11 +171,6 @@ Pour commenter le code dans un script, pas dans la console :
 
 ```python
 # Ceci est un commentaire sur une ligne
-/*
-Ceci est
-un commentaire
-sur plusieurs lignes
-*/
 
 """ Ces lignes sont réservés pour la documentation de l'API et ne doivent pas être des lignes de commentaires. """
 

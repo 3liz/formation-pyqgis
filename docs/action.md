@@ -75,7 +75,7 @@ Il faut :
 * Récupérer la géométrie, tenir compte qu'il s'agit d'une multi-ligne
 * Appliquer la fonction `reverse` en Python pour inverser une liste
 * Utiliser une session d'édition
-* Utiliser `QgsVectorLayer.changeGeometry()` pour changer la géométrie d'un objet
+* Utiliser `QgsVectorLayer.changeGeometry()` pour changer la géométrie d'un objet **existant** !
 
 On peut appeler notre nouvelle fonction à l'aide du code suivant :
 
@@ -129,7 +129,7 @@ def reverse_geom(layer, ids):
         layer.changeGeometry(feature.id(), new_geom)
 
 layer = QgsProject.instance().mapLayer('[% @layer_id %]')
-reverse_geom(layer, '[% $id %]')
+reverse_geom(layer, [% @id %])
 ```
 
 On peut désormais cliquer sur une ligne pour automatiquement inverser une ligne.
