@@ -38,7 +38,7 @@ if 0 < x < 10:
         * Python 3.5 minimum for QGIS 3.4
         * Python 3.6 minimum for QGIS 3.18
         * Python 3.7 minimum for QGIS 3.20
-        * Python 3.10 minimum for QGIS 3.40 ?
+        * Python 3.9 minimum for QGIS 3.40
 
 ## Rappel de base sur Python
 
