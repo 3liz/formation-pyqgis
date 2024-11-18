@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
     
     
       
@@ -1154,6 +1154,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration-majeure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migration majeur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1742,7 +1763,8 @@ l'action <code>Exporter la couche</code>).</p>
 <span class="n">layer</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>  <span class="c1"># Fin de la session en enregistrant</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>  <span class="c1"># Fin de la session en annulant les modifications</span>
 </code></pre></div></td></tr></table></div></p>
-<p>On peut également faire une session d'édition avec un "contexte":</p>
+<p>On peut également faire une session d'édition avec un
+"<a href="https://www.pythoniste.fr/python/les-gestionnaires-de-contexte-et-linstruction-with-en-python/">contexte Python</a>" :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1755,8 +1777,40 @@ l'action <code>Exporter la couche</code>).</p>
     <span class="c1"># Faire une édition sur la couche</span>
     <span class="k">pass</span>
 
-<span class="c1"># À la fin du bloc d&#39;indentation, la session d&#39;édition est automatiquement close.</span>
+<span class="c1"># À la fin du bloc d&#39;indentation, la session d&#39;édition est automatiquement close, même en cas d&#39;erreur Python</span>
 </code></pre></div></td></tr></table></div>
+<details>
+<summary>Exemple de l'utilisation d'un contexte Python avec la session d'édition</summary>
+<p>Sans contexte, la couche reste en mode édition en cas d'erreur fatale Python</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">startEditing</span><span class="p">()</span>
+
+<span class="c1"># Code inutile, mais qui va volontairement faire une erreur Python</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>Mais utilisons désormais un contexte Python à l'aide de<code>with</code>, sur une couche qui n'est pas en édition :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
+    <span class="c1"># Code inutile, mais qui va volontairement faire une erreur Python</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p>On peut lire le code comme <code>En éditant la couche "layer", faire :</code>.</p>
+</details>
 <p>Nous allons avoir besoin de plusieurs classes dans l'API QGIS : </p>
 <ul>
 <li>Enregistrer un fichier : la classe <a href="https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html">QgsVectorFileWriter</a></li>
