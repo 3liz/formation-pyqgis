@@ -52,3 +52,4 @@ Si nécessaire, il peut être utile d'avoir en plus :
 * Outils annexes
     * [Déploiement d'une extension](extension-deploiement.md)
     * [IDE Python & Git](ide-git.md)
+    * [Migration majeure au sein d'un code Python](migration-majeure.md)

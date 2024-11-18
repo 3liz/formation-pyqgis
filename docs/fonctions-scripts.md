@@ -304,7 +304,8 @@ layer.commitChanges()  # Fin de la session en enregistrant
 layer.rollback()  # Fin de la session en annulant les modifications
 ```
 
-On peut également faire une session d'édition avec un "contexte":
+On peut également faire une session d'édition avec un
+"[contexte Python](https://www.pythoniste.fr/python/les-gestionnaires-de-contexte-et-linstruction-with-en-python/)" :
 
 ```python
 from qgis.core import edit
@@ -313,8 +314,35 @@ with edit(layer):
     # Faire une édition sur la couche
     pass
 
-# À la fin du bloc d'indentation, la session d'édition est automatiquement close.
+# À la fin du bloc d'indentation, la session d'édition est automatiquement close, même en cas d'erreur Python
 ```
+
+??? "Exemple de l'utilisation d'un contexte Python avec la session d'édition"
+    Sans contexte, la couche reste en mode édition en cas d'erreur fatale Python
+
+    ```python
+    layer = iface.activeLayer()
+
+    layer.startEditing()
+
+    # Code inutile, mais qui va volontairement faire une erreur Python
+    a = 10 / 0
+
+    layer.commitChanges()
+    ```
+
+    Mais utilisons désormais un contexte Python à l'aide de`with`, sur une couche qui n'est pas en édition :
+
+    ```python
+    layer = iface.activeLayer()
+
+    with edit(layer):
+        # Code inutile, mais qui va volontairement faire une erreur Python
+        a = 10 / 0
+    ```
+
+    On peut lire le code comme `En éditant la couche "layer", faire :`.
+
 
 Nous allons avoir besoin de plusieurs classes dans l'API QGIS : 
 

@@ -4,12 +4,13 @@
 La plupart de ces classes (et donc des fonctions) sont accessibles à travers un API en Python.
 Comme il n'est pas possible de mémoriser entièrement l'API de QGIS, il est nécessaire de connaître la
 documentation et comment rechercher des informations.
-* QGIS repose sur la librairie **Qt version 5** pour l'interface graphique et sur **Python version 3**.
+* QGIS 3 repose sur la librairie **Qt version 5** pour l'interface graphique et sur **Python version 3**.
 * Toutes les classes QGIS commencent par `Qgs` et toutes les classes Qt commencent par `Q`.
 
 !!! tip
-    QGIS est en train de migrer vers la librairie Qt version 6. QGIS 3.40 va _certainement_ avoir un support pour Qt6
-    et pouvoir faire des premiers tests PyQGIS.
+    QGIS est en train de migrer vers la librairie Qt version 6. QGIS 3.42 va _certainement_ avoir un support pour Qt6
+    et pouvoir faire des premiers tests PyQGIS. Lire le
+    [chapitre sur les migrations majeures de PyQGIS](./migration-majeure.md).
 
 Voici une liste de liens pour la documentation, tous en anglais, sauf le cookbook :
 
@@ -33,3 +34,7 @@ Voici une liste non exhaustive de blog-post utiles pour manipuler PyQGIS, tous e
 Autre lien pour l'apprentissage de Python (sans QGIS) en français :
 
 * [https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python](https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python)
+
+!!! tip
+    QGIS 3.42 va intégrer un outil pour avoir l'aide d'une classe directement depuis une variable.
+    Voir la [démo](https://github.com/qgis/QGIS/pull/58962) de QGIS 3.42.

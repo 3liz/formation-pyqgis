@@ -34,6 +34,7 @@ nav:
     - Outils annexes:
       - Déploiement d'une extension: extension-deploiement.md
       - IDE & Git: ide-git.md
+      - Migration majeur: migration-majeure.md
 
 plugins:
   - search

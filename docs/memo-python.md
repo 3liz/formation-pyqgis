@@ -32,13 +32,14 @@ if 0 < x < 10:
 	* Dernière version le 1 janvier 2020
 * Python 3
     * Sortie en 2008, mais il s'agit d'une adoption très lente, tellement Python 2 a été massivement adopté.
-    * Dernière version 3.12.X du 2 octobre 2023
+    * Dernière version 3.13.X du 7 octobre 2024
     * 1 version majeure par an, en octobre
     * QGIS 3 requiert :
         * Python 3.5 minimum for QGIS 3.4
         * Python 3.6 minimum for QGIS 3.18
         * Python 3.7 minimum for QGIS 3.20
         * Python 3.9 minimum for QGIS 3.40
+	* Version de Python souvent supérieure à la version minimum, sauf sur MacOS… 😑
 
 ## Rappel de base sur Python
 
@@ -584,3 +585,11 @@ def decomposer(entier: int, diviser_par: int) -> Tuple[int, int]:
 
 Il faut lire la documentation des [annotations](https://docs.python.org/3/library/typing.html) pour voir les différentes
 possibilités.
+
+## Terminologie
+
+* Package
+* Module
+* Classe
+* Instance / Objet
+* Variable
