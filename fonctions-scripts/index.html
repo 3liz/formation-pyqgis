@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.44">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
     
     
       
@@ -1504,7 +1504,7 @@ plus à gauche possible grâce à l'instruction <code>return</code> qui ordonne 
         <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Erreur de chargement&#39;</span><span class="p">,</span><span class="s1">&#39;Le chemin n</span><span class="se">\&#39;</span><span class="s1">existe pas: &quot;</span><span class="si">{}</span><span class="s1">&quot;&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">),</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
 
-    <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="n">shapefile</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
+    <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="n">couche</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">layer</span><span class="o">.</span><span class="n">isValid</span><span class="p">():</span>
         <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Erreur de chargement&#39;</span><span class="p">,</span><span class="s1">&#39;La couche n</span><span class="se">\&#39;</span><span class="s1">est pas valide&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Critical</span><span class="p">)</span>
         <span class="k">return</span> <span class="kc">False</span>
@@ -1703,7 +1703,7 @@ Il existe déjà un module CSV dans Python pour nous aider à écrire un fichier
 pas l'utiliser.
 Nous allons plutôt utiliser l'API QGIS pour créer une nouvelle couche en mémoire comportant les différentes
 informations que l'on souhaite exporter.
-Puis nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de
+Puis, nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de
 l'action <code>Exporter la couche</code>).</p>
 <p>Les différents champs qui devront être exportés sont :</p>
 <ul>
@@ -1756,6 +1756,11 @@ l'action <code>Exporter la couche</code>).</p>
 <p>La liste des couches :
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layers</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayers</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div></p>
+<p>Créer une entité ayant déjà les champs préconfigurés d'une couche vecteur, et y affecter des valeurs :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">(</span><span class="n">objet_qgsvectorlayer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
+<span class="n">feature</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;NOM&quot;</span>
+</code></pre></div></td></tr></table></div></p>
 <p>Pour utiliser une session d'édition, on peut faire :
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1789,47 +1794,59 @@ l'action <code>Exporter la couche</code>).</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
 <span class="n">layer</span><span class="o">.</span><span class="n">startEditing</span><span class="p">()</span>
 
-<span class="c1"># Code inutile, mais qui va volontairement faire une erreur Python</span>
+<span class="c1"># Code inutile, mais qui va volontairement faire une exception Python</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
 
 <span class="n">layer</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin du script&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Mais utilisons désormais un contexte Python à l'aide de<code>with</code>, sur une couche qui n'est pas en édition :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
 <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
-    <span class="c1"># Code inutile, mais qui va volontairement faire une erreur Python</span>
+    <span class="c1"># Code inutile, mais qui va volontairement faire une exception Python</span>
     <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin du script&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>On peut lire le code comme <code>En éditant la couche "layer", faire :</code>.</p>
 </details>
 <p>Nous allons avoir besoin de plusieurs classes dans l'API QGIS : </p>
 <ul>
-<li>Enregistrer un fichier : la classe <a href="https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html">QgsVectorFileWriter</a></li>
-<li>Un champ : <a href="https://qgis.org/pyqgis/master/core/QgsField.html">QgsField</a>,
-  attention à ne pas confondre avec <a href="https://qgis.org/pyqgis/master/core/QgsFields.html">QgsFields</a>
+<li><code>QgsProject</code> : <a href="https://qgis.org/pyqgis/master/core/QgsProject.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsProject.html">CPP</a></li>
+<li>Enregistrer un fichier avec <code>QgsVectorFileWriter</code> : <a href="https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsVectorFileWriter.html">CPP</a></li>
+<li>Un champ : <code>QgsField</code> (<a href="https://qgis.org/pyqgis/master/core/QgsField.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsField.html">CPP</a>),
+  attention à ne pas confondre avec <code>QgsFields</code> (<a href="https://qgis.org/pyqgis/master/core/QgsFields.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsFields.html">CPP</a>)
   qui lui représente un ensemble de champs.</li>
-<li>Une entité : <a href="https://qgis.org/pyqgis/master/core/QgsFeature.html">QgsFeature</a></li>
+<li>Une entité <code>QgsFeature</code> <a href="https://qgis.org/pyqgis/master/core/QgsFeature.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsFeature.html">CPP</a></li>
+<li>Pour le type de géométrie : Utiliser <code>QgsVectorLayer::geometryType()</code> et également la méthode <code>QgsWkbTypes::geometryDisplayString()</code> pour sa conversion en chaîne "lisible"</li>
 </ul>
 <p>Pour le type de champ, on va avoir besoin de l'API Qt également :</p>
 <ul>
-<li><a href="https://doc.qt.io/qt-5/qmetatype.html#Type-enum">https://doc.qt.io/qt-5/qmetatype.html#Type-enum</a></li>
+<li><a href="https://doc.qt.io/qt-5/qmetatype.html#Type-enum">Documentation Qt5 sur QMetaType</a></li>
 <li>Remplacer <code>QMetaType</code> par <code>QVariant</code> et aussi exception <code>QString</code> par <code>String</code></li>
-<li>Par exemple, pour créer un nouveau champ de type entier : <code>QgsField('nombre_entité', QVariant.Int)</code></li>
+<li>Par exemple :<ul>
+<li>Pour créer un nouveau champ de type string : <code>QgsField('nom', QVariant.String)</code></li>
+<li>Pour créer un nouveau champ de type entier : <code>QgsField('nombre_entité', QVariant.Int)</code></li>
+</ul>
+</li>
 </ul>
 <p>Il va y avoir plusieurs étapes dans ce script :</p>
 <ol>
-<li>Récupérer la liste des couches présentes dans la légende</li>
 <li>Créer une couche en mémoire</li>
 <li>Ajouter des champs à cette couche en utilisant une session d'édition</li>
+<li>Récupérer la liste des couches présentes dans la légende</li>
 <li>Itérer sur les couches pour ajouter ligne par ligne les métadonnées dans une session d'édition</li>
 <li>Enregistrer en CSV la couche mémoire</li>
 </ol>
