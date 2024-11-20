@@ -673,9 +673,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#petit-memo" class="md-nav__link">
+  <a href="#petit-memo-avec-des-exemples" class="md-nav__link">
     <span class="md-ellipsis">
-      Petit mémo
+      Petit mémo avec des exemples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-contextes-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les contextes Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#petit-memo-des-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Petit mémo des classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étapes
     </span>
   </a>
   
@@ -1246,9 +1273,36 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#petit-memo" class="md-nav__link">
+  <a href="#petit-memo-avec-des-exemples" class="md-nav__link">
     <span class="md-ellipsis">
-      Petit mémo
+      Petit mémo avec des exemples
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#les-contextes-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Les contextes Python
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#petit-memo-des-classes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Petit mémo des classes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#etapes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Étapes
     </span>
   </a>
   
@@ -1749,7 +1803,7 @@ l'action <code>Exporter la couche</code>).</p>
 </tr>
 </tbody>
 </table>
-<h3 id="petit-memo">Petit mémo<a class="headerlink" href="#petit-memo" title="Permanent link">#</a></h3>
+<h3 id="petit-memo-avec-des-exemples">Petit mémo avec des exemples<a class="headerlink" href="#petit-memo-avec-des-exemples" title="Permanent link">#</a></h3>
 <p>Pour créer une couche tabulaire en mémoire, <a href="https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/vector.html">code qui vient du cookbook</a> :
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer_info</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div></p>
@@ -1761,6 +1815,11 @@ l'action <code>Exporter la couche</code>).</p>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">feature</span> <span class="o">=</span> <span class="n">QgsFeature</span><span class="p">(</span><span class="n">objet_qgsvectorlayer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
 <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;NOM&quot;</span>
 </code></pre></div></td></tr></table></div></p>
+<p>Obtenir le dossier du project actuel :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">projet_qgis</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">fileName</span><span class="p">())</span>
+<span class="n">dossier_qgis</span> <span class="o">=</span> <span class="n">projet_qgis</span><span class="o">.</span><span class="n">parent</span>
+</code></pre></div></td></tr></table></div></p>
 <p>Pour utiliser une session d'édition, on peut faire :
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1768,6 +1827,7 @@ l'action <code>Exporter la couche</code>).</p>
 <span class="n">layer</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>  <span class="c1"># Fin de la session en enregistrant</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">rollback</span><span class="p">()</span>  <span class="c1"># Fin de la session en annulant les modifications</span>
 </code></pre></div></td></tr></table></div></p>
+<h3 id="les-contextes-python">Les contextes Python<a class="headerlink" href="#les-contextes-python" title="Permanent link">#</a></h3>
 <p>On peut également faire une session d'édition avec un
 "<a href="https://www.pythoniste.fr/python/les-gestionnaires-de-contexte-et-linstruction-with-en-python/">contexte Python</a>" :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1822,6 +1882,7 @@ l'action <code>Exporter la couche</code>).</p>
 </code></pre></div></td></tr></table></div>
 <p>On peut lire le code comme <code>En éditant la couche "layer", faire :</code>.</p>
 </details>
+<h3 id="petit-memo-des-classes">Petit mémo des classes<a class="headerlink" href="#petit-memo-des-classes" title="Permanent link">#</a></h3>
 <p>Nous allons avoir besoin de plusieurs classes dans l'API QGIS : </p>
 <ul>
 <li><code>QgsProject</code> : <a href="https://qgis.org/pyqgis/master/core/QgsProject.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsProject.html">CPP</a></li>
@@ -1841,7 +1902,14 @@ l'action <code>Exporter la couche</code>).</p>
 <li>Pour créer un nouveau champ de type entier : <code>QgsField('nombre_entité', QVariant.Int)</code></li>
 </ul>
 </li>
+<li></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note perso, je pense qu'avec la migration vers <a href="../migration-majeure/">Qt6</a>, cela va pouvoir se simplifier un peu
+pour les <code>QVariant</code>...</p>
+</div>
+<h3 id="etapes">Étapes<a class="headerlink" href="#etapes" title="Permanent link">#</a></h3>
 <p>Il va y avoir plusieurs étapes dans ce script :</p>
 <ol>
 <li>Créer une couche en mémoire</li>
