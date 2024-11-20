@@ -31,6 +31,7 @@ Si nécessaire, il peut être utile d'avoir en plus :
 
 * Présentation
     * [Python dans QGIS](python-qgis.md)
+    * [Documentation](./documentation.md)
     * [Mémo Python](memo-python.md), sans PyQGIS
 * Premier pas avec l'API PyQGIS
     * [Console](console.md)

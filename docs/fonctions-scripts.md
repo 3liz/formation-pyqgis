@@ -136,7 +136,7 @@ plus à gauche possible grâce à l'instruction `return` qui ordonne la sortie d
             iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{}"'.format(fichier_shape), Qgis.Critical)
             return False
             
-        layer = QgsVectorLayer(fichier_shape, shapefile, 'ogr')
+        layer = QgsVectorLayer(fichier_shape, couche, 'ogr')
         if not layer.isValid():
             iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
             return False
@@ -265,7 +265,7 @@ Il existe déjà un module CSV dans Python pour nous aider à écrire un fichier
 pas l'utiliser.
 Nous allons plutôt utiliser l'API QGIS pour créer une nouvelle couche en mémoire comportant les différentes
 informations que l'on souhaite exporter.
-Puis nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de
+Puis, nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de
 l'action `Exporter la couche`).
 
 Les différents champs qui devront être exportés sont :
@@ -297,6 +297,12 @@ La liste des couches :
 layers = QgsProject.instance().mapLayers()
 ```
 
+Créer une entité ayant déjà les champs préconfigurés d'une couche vecteur, et y affecter des valeurs :
+```python
+feature = QgsFeature(objet_qgsvectorlayer.fields())
+feature['nom'] = "NOM"
+```
+
 Pour utiliser une session d'édition, on peut faire :
 ```python
 layer.startEditing()  # Début de la session
@@ -325,10 +331,11 @@ with edit(layer):
 
     layer.startEditing()
 
-    # Code inutile, mais qui va volontairement faire une erreur Python
+    # Code inutile, mais qui va volontairement faire une exception Python
     a = 10 / 0
 
     layer.commitChanges()
+    print("Fin du script")
     ```
 
     Mais utilisons désormais un contexte Python à l'aide de`with`, sur une couche qui n'est pas en édition :
@@ -337,8 +344,10 @@ with edit(layer):
     layer = iface.activeLayer()
 
     with edit(layer):
-        # Code inutile, mais qui va volontairement faire une erreur Python
+        # Code inutile, mais qui va volontairement faire une exception Python
         a = 10 / 0
+
+    print("Fin du script")
     ```
 
     On peut lire le code comme `En éditant la couche "layer", faire :`.
@@ -346,23 +355,27 @@ with edit(layer):
 
 Nous allons avoir besoin de plusieurs classes dans l'API QGIS : 
 
-* Enregistrer un fichier : la classe [QgsVectorFileWriter](https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html)
-* Un champ : [QgsField](https://qgis.org/pyqgis/master/core/QgsField.html),
-  attention à ne pas confondre avec [QgsFields](https://qgis.org/pyqgis/master/core/QgsFields.html)
+* `QgsProject` : [PyQGIS](https://qgis.org/pyqgis/master/core/QgsProject.html) / [CPP](https://api.qgis.org/api/classQgsProject.html)
+* Enregistrer un fichier avec `QgsVectorFileWriter` : [PyQGIS](https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html) / [CPP](https://api.qgis.org/api/classQgsVectorFileWriter.html)
+* Un champ : `QgsField` ([PyQGIS](https://qgis.org/pyqgis/master/core/QgsField.html) / [CPP](https://api.qgis.org/api/classQgsField.html)),
+  attention à ne pas confondre avec `QgsFields` ([PyQGIS](https://qgis.org/pyqgis/master/core/QgsFields.html) / [CPP](https://api.qgis.org/api/classQgsFields.html))
   qui lui représente un ensemble de champs.
-* Une entité : [QgsFeature](https://qgis.org/pyqgis/master/core/QgsFeature.html)
+* Une entité `QgsFeature` [PyQGIS](https://qgis.org/pyqgis/master/core/QgsFeature.html) / [CPP](https://api.qgis.org/api/classQgsFeature.html)
+* Pour le type de géométrie : Utiliser `QgsVectorLayer::geometryType()` et également la méthode `QgsWkbTypes::geometryDisplayString()` pour sa conversion en chaîne "lisible"
 
 Pour le type de champ, on va avoir besoin de l'API Qt également :
 
-* https://doc.qt.io/qt-5/qmetatype.html#Type-enum
+* [Documentation Qt5 sur QMetaType](https://doc.qt.io/qt-5/qmetatype.html#Type-enum)
 * Remplacer `QMetaType` par `QVariant` et aussi exception `QString` par `String`
-* Par exemple, pour créer un nouveau champ de type entier : `QgsField('nombre_entité', QVariant.Int)`
+* Par exemple :
+    * Pour créer un nouveau champ de type string : `QgsField('nom', QVariant.String)`
+    * Pour créer un nouveau champ de type entier : `QgsField('nombre_entité', QVariant.Int)`
 
 Il va y avoir plusieurs étapes dans ce script :
 
-1. Récupérer la liste des couches présentes dans la légende
 1. Créer une couche en mémoire
 1. Ajouter des champs à cette couche en utilisant une session d'édition
+1. Récupérer la liste des couches présentes dans la légende
 1. Itérer sur les couches pour ajouter ligne par ligne les métadonnées dans une session d'édition
 1. Enregistrer en CSV la couche mémoire
 
