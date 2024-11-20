@@ -12,10 +12,11 @@ Lire la page recensant les ["breaking changes" de QGIS](https://api.qgis.org/api
 
 ## Qt 5 → Qt 6
 
-QGIS tente de passer de la version Qt 5 vers Qt 6, sans passer par la case QGIS 4.0.
+QGIS tente de passer de la version Qt 5 vers Qt 6, sans passer par la case QGIS 4.0 (et donc non "cassage" de l'API
+QGIS 3.X).
 
 Le travail de migration a commencé depuis QGIS 3.34. Mais à l'heure actuelle, fin 2024, il n'existe qu'un binaire de
-QGIS pour tester Qt 6.
+QGIS pour tester Qt 6. C'est pour le moment, "sous le capot" de QGIS que cela se passe. 
 
 Contrairement au passage Qt 4 vers Qt 5, il est possible de rendre une extension compatible pour les deux versions à
 l'aide d'un script que l'on peut trouver dans

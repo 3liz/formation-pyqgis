@@ -285,7 +285,7 @@ Les différents champs qui devront être exportés sont :
 | couche_1 | Line  | EPSG:4326   | 5             | UTF-8    | /tmp/...geojson | False               |
 | couche_2 | Tab   | No geometry | 0             |          | /tmp/...shp     | True                |
 
-### Petit mémo
+### Petit mémo avec des exemples
 
 Pour créer une couche tabulaire en mémoire, [code qui vient du cookbook](https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/vector.html) :
 ```python
@@ -303,12 +303,20 @@ feature = QgsFeature(objet_qgsvectorlayer.fields())
 feature['nom'] = "NOM"
 ```
 
+Obtenir le dossier du project actuel :
+```python
+projet_qgis = Path(QgsProject.instance().fileName())
+dossier_qgis = projet_qgis.parent
+```
+
 Pour utiliser une session d'édition, on peut faire :
 ```python
 layer.startEditing()  # Début de la session
 layer.commitChanges()  # Fin de la session en enregistrant
 layer.rollback()  # Fin de la session en annulant les modifications
 ```
+
+### Les contextes Python
 
 On peut également faire une session d'édition avec un
 "[contexte Python](https://www.pythoniste.fr/python/les-gestionnaires-de-contexte-et-linstruction-with-en-python/)" :
@@ -352,6 +360,7 @@ with edit(layer):
 
     On peut lire le code comme `En éditant la couche "layer", faire :`.
 
+### Petit mémo des classes
 
 Nous allons avoir besoin de plusieurs classes dans l'API QGIS : 
 
@@ -370,6 +379,13 @@ Pour le type de champ, on va avoir besoin de l'API Qt également :
 * Par exemple :
     * Pour créer un nouveau champ de type string : `QgsField('nom', QVariant.String)`
     * Pour créer un nouveau champ de type entier : `QgsField('nombre_entité', QVariant.Int)`
+* 
+
+!!! note
+    Note perso, je pense qu'avec la migration vers [Qt6](./migration-majeure.md), cela va pouvoir se simplifier un peu
+    pour les `QVariant`...
+
+### Étapes
 
 Il va y avoir plusieurs étapes dans ce script :
 
@@ -378,7 +394,6 @@ Il va y avoir plusieurs étapes dans ce script :
 1. Récupérer la liste des couches présentes dans la légende
 1. Itérer sur les couches pour ajouter ligne par ligne les métadonnées dans une session d'édition
 1. Enregistrer en CSV la couche mémoire
-
 
 !!! tip
     Pour déboguer, on peut afficher la couche mémoire en question avec `QgsProject.instance().addMapLayer()`
