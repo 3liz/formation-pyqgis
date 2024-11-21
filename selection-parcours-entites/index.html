@@ -1518,7 +1518,7 @@ Utilisons donc une expression pour limiter les résultats.</p>
 <span class="n">request</span><span class="o">.</span><span class="n">setFilterExpression</span><span class="p">(</span><span class="s1">&#39;&quot;POPUL&quot; != </span><span class="se">\&#39;</span><span class="s1">NC</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">request</span><span class="o">.</span><span class="n">addOrderBy</span><span class="p">(</span><span class="s1">&#39;NOM&#39;</span><span class="p">)</span>
 <span class="n">request</span><span class="o">.</span><span class="n">setFlags</span><span class="p">(</span><span class="n">QgsFeatureRequest</span><span class="o">.</span><span class="n">NoGeometry</span><span class="p">)</span>
-<span class="c1"># request.setSubsetOfAttributes([1, 4]) autre manière moins pratique</span>
+<span class="c1"># request.setSubsetOfAttributes([1, 4]) autre manière moins pratique, historique</span>
 <span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="s1">&#39;NOM&#39;</span><span class="p">,</span> <span class="s1">&#39;POPUL&#39;</span><span class="p">],</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{commune}</span><span class="s1"> : </span><span class="si">{nombre}</span><span class="s1"> habitants&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">commune</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">],</span> <span class="n">nombre</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPUL&#39;</span><span class="p">]))</span>
@@ -1548,7 +1548,7 @@ d'une nouvelle couche dans la légende.</p>
 <p>Regardons le résultat et corrigeons ce problème d'export afin d'obtenir les géométries et les attributs,
 il faut <strong>supprimer</strong> la ligne <code>NoGeometry</code> si vous l'avez.</p>
 <h2 id="valeur-null">Valeur NULL<a class="headerlink" href="#valeur-null" title="Permanent link">#</a></h2>
-<p>En PyQGIS, il existe la valeur <code>NULL</code> qui peut-être présente dans la table attributaire d'une couche vecteur.</p>
+<p>En PyQGIS, il existe la valeur <code>NULL</code> qui peut être présente dans la table attributaire d'une couche vecteur.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1580,7 +1580,7 @@ dans beaucoup de languages.</p>
 <li>levée ("raise" en anglais) pour déclencher une erreur</li>
 <li>attrapée ("catch" en anglais, ou plutôt "except" en Python) pour traiter l'erreur</li>
 </ul>
-<p>Essayons dans la console de faire une l'opération 10 / 2 :</p>
+<p>Essayons dans la console de faire une opération 10 / 2 :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span>
 </code></pre></div></td></tr></table></div>
 <p>Essayons cette fois-ci 10 / 0, ce qui est mathématiquement impossible :
@@ -1598,7 +1598,7 @@ dans beaucoup de languages.</p>
 <p>Le <code>try</code> permet d'essayer le code qui suit. Le <code>except</code> permet d'attraper en filtrant s'il y a des exceptions
 et de traiter l'erreur si besoin.</p>
 <p>Toutes les exceptions héritent de <code>Exception</code> donc le code ci-dessous fonctionne, mais n'est pas
-recommandé car il masque d'autres erreurs :</p>
+recommandé, car il masque d'autres erreurs :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1619,14 +1619,17 @@ recommandé car il masque d'autres erreurs :</p>
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erreur inconnue&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>Il existe d'autres mots-clés en Python pour les exceptions comme <code>finally:</code> et <code>else:</code>.</p>
+<p>Il existe d'autres mots-clés en Python pour les exceptions comme <code>finally:</code> et <code>else:</code>.
+Voir <a href="https://fr.python-3.com/?p=3141">un autre tutoriel</a>.</p>
 <p>On peut imaginer faire une fonction qui divise deux nombres et affiche le résultat 
 dans la <code>QgsMessageBar</code> de QGIS, sans tenir compte de la division par zéro :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">diviser</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">diviser</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Divise 2 nombres et affiche le résultat dans la message bar de QGIS. &quot;&quot;&quot;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
     <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Résulat&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 
