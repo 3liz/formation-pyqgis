@@ -152,7 +152,7 @@ Nous pouvons accessoirement ordonner les résultats et surtout encore optimiser 
     request.setFilterExpression('"POPUL" != \'NC\'')
     request.addOrderBy('NOM')
     request.setFlags(QgsFeatureRequest.NoGeometry)
-    # request.setSubsetOfAttributes([1, 4]) autre manière moins pratique
+    # request.setSubsetOfAttributes([1, 4]) autre manière moins pratique, historique
     request.setSubsetOfAttributes(['NOM', 'POPUL'], layer.fields())
     for feature in layer.getFeatures(request):
         print('{commune} : {nombre} habitants'.format(commune=feature['NOM'], nombre=feature['POPUL']))
@@ -183,7 +183,7 @@ il faut **supprimer** la ligne `NoGeometry` si vous l'avez.
 
 ## Valeur NULL
 
-En PyQGIS, il existe la valeur `NULL` qui peut-être présente dans la table attributaire d'une couche vecteur.
+En PyQGIS, il existe la valeur `NULL` qui peut être présente dans la table attributaire d'une couche vecteur.
 
 ```python
 from qgis.PyQt.QtCore import NULL
@@ -217,7 +217,7 @@ Dans le langage informatique, une exception peut-être :
 * levée ("raise" en anglais) pour déclencher une erreur
 * attrapée ("catch" en anglais, ou plutôt "except" en Python) pour traiter l'erreur
 
-Essayons dans la console de faire une l'opération 10 / 2 :
+Essayons dans la console de faire une opération 10 / 2 :
 
 ```python
 10 / 2
@@ -241,7 +241,7 @@ Le `try` permet d'essayer le code qui suit. Le `except` permet d'attraper en fil
 et de traiter l'erreur si besoin.
 
 Toutes les exceptions héritent de `Exception` donc le code ci-dessous fonctionne, mais n'est pas
-recommandé car il masque d'autres erreurs :
+recommandé, car il masque d'autres erreurs :
 
 ```python
 try:
@@ -260,12 +260,14 @@ except Exception:
 ```
 
 Il existe d'autres mots-clés en Python pour les exceptions comme `finally:` et `else:`.
+Voir [un autre tutoriel](https://fr.python-3.com/?p=3141).
 
 On peut imaginer faire une fonction qui divise deux nombres et affiche le résultat 
 dans la `QgsMessageBar` de QGIS, sans tenir compte de la division par zéro :
 
 ```python
-def diviser(a, b):
+def diviser(a: int, b: int):
+    """ Divise 2 nombres et affiche le résultat dans la message bar de QGIS. """
     result = a / b
     iface.messageBar().pushMessage('Résulat', f'{a} / {b} = {result}', Qgis.Success)
     
