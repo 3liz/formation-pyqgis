@@ -365,12 +365,14 @@ with edit(layer):
 Nous allons avoir besoin de plusieurs classes dans l'API QGIS : 
 
 * `QgsProject` : [PyQGIS](https://qgis.org/pyqgis/master/core/QgsProject.html) / [CPP](https://api.qgis.org/api/classQgsProject.html)
+* `QgsVectorLayer` : [PyQGIS](https://qgis.org/pyqgis/master/core/QgsVectorLayer.html) / [CPP](https://api.qgis.org/api/classQgsVectorLayer.html)
 * Enregistrer un fichier avec `QgsVectorFileWriter` : [PyQGIS](https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html) / [CPP](https://api.qgis.org/api/classQgsVectorFileWriter.html)
-* Un champ : `QgsField` ([PyQGIS](https://qgis.org/pyqgis/master/core/QgsField.html) / [CPP](https://api.qgis.org/api/classQgsField.html)),
+* Un champ dans une couche vecteur : `QgsField` ([PyQGIS](https://qgis.org/pyqgis/master/core/QgsField.html) / [CPP](https://api.qgis.org/api/classQgsField.html)),
   attention à ne pas confondre avec `QgsFields` ([PyQGIS](https://qgis.org/pyqgis/master/core/QgsFields.html) / [CPP](https://api.qgis.org/api/classQgsFields.html))
   qui lui représente un ensemble de champs.
 * Une entité `QgsFeature` [PyQGIS](https://qgis.org/pyqgis/master/core/QgsFeature.html) / [CPP](https://api.qgis.org/api/classQgsFeature.html)
-* Pour le type de géométrie : Utiliser `QgsVectorLayer::geometryType()` et également la méthode `QgsWkbTypes::geometryDisplayString()` pour sa conversion en chaîne "lisible"
+* Pour le type de géométrie : Utiliser `QgsVectorLayer` `geometryType()` et également la méthode `QgsWkbTypes.geometryDisplayString()` pour sa conversion en chaîne "lisible"
+   * [PyQGIS](https://qgis.org/pyqgis/master/core/QgsWkbTypes.html) / [CPP](https://api.qgis.org/api/classQgsWkbTypes.html)
 
 Pour le type de champ, on va avoir besoin de l'API Qt également :
 
@@ -396,8 +398,14 @@ Il va y avoir plusieurs étapes dans ce script :
 1. Enregistrer en CSV la couche mémoire
 
 !!! tip
-    Pour déboguer, on peut afficher la couche mémoire en question avec `QgsProject.instance().addMapLayer()`
-    
+    Pour déboguer, on peut afficher la couche mémoire en question avec `QgsProject.instance().addMapLayer(layer_info)`
+
+
+# QgsvectorLayer pyqgis ne cntient pas Addfeature
+
+AJouter indice QgsWkbTypês
+V4 fileName
+
 ### Solution
 
 ```python

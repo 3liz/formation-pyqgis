@@ -21,8 +21,8 @@ nav:
       - Sélection & Parcours: selection-parcours-entites.md
     - Utilisation simple:
       - Action: action.md
-      - Formulaire: formulaire.md
       - Expression: expression.md
+      - Formulaire: formulaire.md
     - Utilisation avancé:
       - Script Processing: script-processing.md
       - Extension Générique: extension-generique.md
@@ -31,10 +31,10 @@ nav:
       - Application standalone: standalone.md
     - Sujet PyGIS thématique:
       - PostGIS: postgis.md
+      - Migration majeur: migration-majeure.md
     - Outils annexes:
       - Déploiement d'une extension: extension-deploiement.md
       - IDE & Git: ide-git.md
-      - Migration majeur: migration-majeure.md
 
 plugins:
   - search

@@ -41,7 +41,7 @@ layer.invertSelection()
 layer.removeSelection()
 ```
 
-Le raccourci `iface.activeLayer()` est très pratique, mais de temps en temps on a besoin de **plusieurs** couches qui
+Le raccourci `iface.activeLayer()` est très pratique, mais de temps en temps, on a besoin de **plusieurs** couches qui
 sont déjà dans la légende. Il existe dans `QgsProject` plusieurs méthodes pour récupérer des couches dans la légende :
 
 ```python
@@ -217,7 +217,7 @@ Dans le langage informatique, une exception peut-être :
 * levée ("raise" en anglais) pour déclencher une erreur
 * attrapée ("catch" en anglais, ou plutôt "except" en Python) pour traiter l'erreur
 
-Essayons dans la console de faire une opération 10 / 2 :
+Essayons dans la **console** de faire une opération 10 / 2 :
 
 ```python
 10 / 2
@@ -228,31 +228,76 @@ Essayons cette fois-ci 10 / 0, ce qui est mathématiquement impossible :
 10 / 0
 ```
 
+Passons cette fois-ci dans un **script** pour que cela soit plus simple, et voir que le script s'arrête brutalement 😉
+
+```python
+print('Début')
+print(10 / 0)
+print('Fin')
+```
+
 On peut "attraper" cette erreur Python à l'aide d'un `try ... except...` :
 
 ```python
+print('Début')
 try:
-    10 / 2
+    print(10 / 2)
 except ZeroDivisionError:
     print('Ceci est une division par zéro !')
+print('Fin')
 ```
 
 Le `try` permet d'essayer le code qui suit. Le `except` permet d'attraper en filtrant s'il y a des exceptions
 et de traiter l'erreur si besoin.
+
+!!! tip
+    On peut avoir une ou plusieurs lignes de code dans chacun de ces blocs. On peut appeler des fonctions, etc.
+
+### Une exception remonte le fil d'exécution du programme
+
+**Important**, une exception **remonte** tant qu'elle n'est pas **attrapée** : 
+
+```python
+def function_3():
+    print("Début fonction 3")
+    a = 10
+    b = 0
+    print(f"→ {a} / {b} = {a/b}")
+    print("Fin fonction 3")
+
+def function_2():
+    print("Début fonction 2")
+    function_3()
+    print("Fin fonction 2")
+
+def function_1():
+    print("Début fonction 1")
+    function_2()
+    print("Fin fonction 1")
+    
+function_1()
+```
+
+On voit que Python, quand il peut, nous indique la "stacktrace" ou encore "traceback",
+c'est-à-dire une sorte de fil d'ariane.
+
+### Héritage des exceptions
 
 Toutes les exceptions héritent de `Exception` donc le code ci-dessous fonctionne, mais n'est pas
 recommandé, car il masque d'autres erreurs :
 
 ```python
 try:
-    10 / 2
+    print(10 / 2)
 except Exception:
     print('Erreur inconnue')
 ```
 
+On peut par contre "enchaîner" les exceptions, afin de filtrer progressivement les exceptions.
+
 ```python
 try:
-    10 / 0
+    print(10 / 0)
 except ZeroDivisionError:
     print('Erreur, division par 0')
 except Exception:
@@ -267,9 +312,9 @@ dans la `QgsMessageBar` de QGIS, sans tenir compte de la division par zéro :
 
 ```python
 def diviser(a: int, b: int):
-    """ Divise 2 nombres et affiche le résultat dans la message bar de QGIS. """
+    """ Divise 2 nombres et affiche le résultat dans la "message bar" de QGIS. """
     result = a / b
-    iface.messageBar().pushMessage('Résulat', f'{a} / {b} = {result}', Qgis.Success)
+    iface.messageBar().pushMessage('Résultat', f'{a} / {b} = {result}', Qgis.Success)
     
 diviser(10, 0)
 ```
@@ -277,13 +322,13 @@ diviser(10, 0)
 En tenant compte d'une possible erreur lors de l'opération mathématique :
 
 ```python
-def diviser(a, b):
+def diviser(a: int, b: int):
     try:
         result = a / b
     except ZeroDivisionError:
         iface.messageBar().pushMessage('Division par 0', f'{a} / {b} est impossible', Qgis.Warning)
     else:
-        iface.messageBar().pushMessage('Résulat', f'{a} / {b} = {result}', Qgis.Success)
+        iface.messageBar().pushMessage('Résultat', f'{a} / {b} = {result}', Qgis.Success)
     
 diviser(10, 2)
 ```
@@ -306,7 +351,7 @@ Correction possible de l'exercice :
 ```python
 layer = iface.activeLayer()
 request = QgsFeatureRequest()
-# request.setFilterExpression('to_int( "POPUL" ) < 1000')
+# request.setLimit(5)  # Pour aller plus vite si-besoin
 request.addOrderBy('NOM')
 request.setSubsetOfAttributes(['NOM', 'POPUL'], layer.fields())
 for feature in layer.getFeatures(request):
@@ -333,7 +378,7 @@ if 'densite' not in layer.fields().names():
 index = layer.fields().indexFromName('densite')
 layer.startEditing()
 request = QgsFeatureRequest()
-# request.setFilterExpression('to_int( "POPUL" ) > 10000')
+# request.setLimit(5)  # Pour aller plus vite si-besoin
 request.addOrderBy('NOM_COM')
 request.setSubsetOfAttributes(['NOM_COM', 'POPUL'], layer.fields())
 for feature in layer.getFeatures(request):

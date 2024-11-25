@@ -11,14 +11,16 @@
 * Grosse communauté
 	* De nombreux packages disponibles sur internet sur [PyPi.org](https://pypi.org/)
 
+Exemple d'un code qui déclare une variable et compare si sa valeur est supérieur à 5 afin d'afficher un message :
+
 ```python
 # Déclaration d'une variable de type entier
-x = 5
+x = 10
 
 # Déclaration d'une variable chaîne de caractère
-info = 'X est compris entre 0 et 10'
+info = 'X est supérieur à 5'
 
-if 0 < x < 10:
+if x > 5:
 	print(info)
 ```
 
@@ -40,6 +42,7 @@ if 0 < x < 10:
         * Python 3.7 minimum for QGIS 3.20
         * Python 3.9 minimum for QGIS 3.40
 	* Version de Python souvent supérieure à la version minimum, sauf sur MacOS… 😑
+    * [Python release cycle](https://devguide.python.org/versions/#versions)
 
 ## Rappel de base sur Python
 
@@ -68,28 +71,35 @@ Il y a un faible typage des variables, c'est-à-dire qu'une variable peut change
 du programme.
 
 ```python
+# Pour créer une variable, on déclare juste le nom de la variable ainsi que sa valeur :
+compteur = 0
+```
+
+Nous allons par la suite utiliser `type(variable` pour vérifier le **type** de la variable.
+
+```python
 mon_compteur = 0
 type(mon_compteur)
 <class 'int'>
 
-mon_compteur = False
-type(mon_compteur)
+est_valide = False
+type(est_valide)
 <class 'bool'>
 
-mon_compteur = 'oui'
-type(mon_compteur)
+nom_couche = 'oui'
+type(nom_couche)
 <class 'str'>
 
-mon_compteur = "non"
-type(mon_compteur)
+nom_couche = "non"
+type(nom_couche)
 <class 'str'>
 
-mon_compteur = 3.5
-type(mon_compteur)
+densite = 3.5
+type(densite)
 <class 'float'>
 
-mon_compteur = None
-type(mon_compteur)
+unknown = None
+type(unknown)
 <class 'NoneType'>
 
 ```
@@ -102,21 +112,26 @@ Il existe quatre types de structure de données :
 
 * les listes (modifiables)
 ```python
+# Créer une liste vide
 nombres = []
 type(nombres)
 <class 'list'>
 
-nombres.append(1)
-nombres.extend([2, 3, 4])
-nombres
-[1, 2, 3, 4]
+# Créer une liste avec des éléments à l'intérieur
+mois = ['janvier', 'février', 'mars']
 
+# Ajouter un élément
+mois.append('avril')
+# Ajouter une autre liste
+mois.extend(['mai', 'juin'])
 
-# Autre exemple
-mois = ['janvier', 'février', 'mars', 'avril']
+# Nombre de mois
+len(mois)
+
+# On peut accéder à un élément avec un "index" à l'aide de []
 mois[2]
-mars
 
+# Attention à l'index maximum
 mois[12]
 Traceback (most recent call last):
   File "/usr/lib/python3.7/code.py", line 90, in runcode
@@ -128,18 +143,13 @@ IndexError: tuple index out of range
 * les tuples (non modifiables)
 
 ```python
-liste_vide = ()
-liste = (1 , 2, 3, 'bonjour')
+liste = ('oui', 'non')
 type(liste)
 <class 'tuple'>
 len(liste)
-4
+2
 liste[0]
-1
-liste[0:2]
-(1, 2)
-liste[2:]
-(3, 'bonjour')
+
 liste[5]
 Traceback (most recent call last):
   File "/usr/lib/python3.7/code.py", line 90, in runcode
@@ -152,18 +162,17 @@ IndexError: tuple index out of range
 * les dictionnaires
 
 *Attention*, les dictionnaires ne sont pas ordonnés, de façon native, même depuis Python 3.9.
-Si vraiment, il y a besoin, il existe une classe `OrderedDict`, mais ce n'est pas une structure de données
-native dans Python.
-C'est un objet.
+Si vraiment, il y a besoin, il existe une classe [OrderedDict](https://docs.python.org/3/library/collections.html),
+mais ce n'est pas une structure de données native dans Python.
+C'est un objet qu'il faut importer.
 
 ```python
-personne = {}
-type(personne)
+commune = {}
+type(commune)
 # <class 'dict'>
-personne['prenom'] = 'etienne'
-personne['nom'] = 'trimaille'
-personne['est_majeur'] = True
-personne['age'] = 35
+commune['nom'] = 'Besançon'
+commune['code_insee'] = 25056
+commune['est_prefecture'] = True
 ```
 
 ## Les commentaires
