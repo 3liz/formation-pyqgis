@@ -969,11 +969,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../formulaire/" class="md-nav__link">
+      <a href="../expression/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Formulaire
+    Expression
   </span>
   
 
@@ -990,11 +990,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../expression/" class="md-nav__link">
+      <a href="../formulaire/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Expression
+    Formulaire
   </span>
   
 
@@ -1220,6 +1220,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration-majeure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migration majeur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1298,27 +1319,6 @@
   
   <span class="md-ellipsis">
     IDE & Git
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../migration-majeure/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Migration majeur
   </span>
   
 
@@ -1628,6 +1628,7 @@
 </ul>
 </li>
 </ul>
+<p>Exemple d'un code qui déclare une variable et compare si sa valeur est supérieur à 5 afin d'afficher un message :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1636,12 +1637,12 @@
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Déclaration d&#39;une variable de type entier</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">10</span>
 
 <span class="c1"># Déclaration d&#39;une variable chaîne de caractère</span>
-<span class="n">info</span> <span class="o">=</span> <span class="s1">&#39;X est compris entre 0 et 10&#39;</span>
+<span class="n">info</span> <span class="o">=</span> <span class="s1">&#39;X est supérieur à 5&#39;</span>
 
-<span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">5</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">info</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="versions">Versions<a class="headerlink" href="#versions" title="Permanent link">#</a></h2>
@@ -1666,6 +1667,7 @@
 </ul>
 </li>
 <li>Version de Python souvent supérieure à la version minimum, sauf sur MacOS… 😑</li>
+<li><a href="https://devguide.python.org/versions/#versions">Python release cycle</a></li>
 </ul>
 </li>
 </ul>
@@ -1689,6 +1691,11 @@ Il s'agit du "zoom + secondaire" dans QGIS → menu Préférences ➡ Raccourcis
 objet...
 Il y a un faible typage des variables, c'est-à-dire qu'une variable peut changer de type au cours de l'exécution
 du programme.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Pour créer une variable, on déclare juste le nom de la variable ainsi que sa valeur :</span>
+<span class="n">compteur</span> <span class="o">=</span> <span class="mi">0</span>
+</code></pre></div></td></tr></table></div>
+<p>Nous allons par la suite utiliser <code>type(variable</code> pour vérifier le <strong>type</strong> de la variable.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1715,24 +1722,24 @@ du programme.</p>
 <span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">int</span><span class="s1">&#39;&gt;</span>
 
-<span class="n">mon_compteur</span> <span class="o">=</span> <span class="kc">False</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
+<span class="n">est_valide</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">est_valide</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">bool</span><span class="s1">&#39;&gt;</span>
 
-<span class="n">mon_compteur</span> <span class="o">=</span> <span class="s1">&#39;oui&#39;</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
+<span class="n">nom_couche</span> <span class="o">=</span> <span class="s1">&#39;oui&#39;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">nom_couche</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">str</span><span class="s1">&#39;&gt;</span>
 
-<span class="n">mon_compteur</span> <span class="o">=</span> <span class="s2">&quot;non&quot;</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
+<span class="n">nom_couche</span> <span class="o">=</span> <span class="s2">&quot;non&quot;</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">nom_couche</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">str</span><span class="s1">&#39;&gt;</span>
 
-<span class="n">mon_compteur</span> <span class="o">=</span> <span class="mf">3.5</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
+<span class="n">densite</span> <span class="o">=</span> <span class="mf">3.5</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">densite</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">float</span><span class="s1">&#39;&gt;</span>
 
-<span class="n">mon_compteur</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">mon_compteur</span><span class="p">)</span>
+<span class="n">unknown</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">unknown</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">NoneType</span><span class="s1">&#39;&gt;</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="les-structures-de-donnees">Les structures de données<a class="headerlink" href="#les-structures-de-donnees" title="Permanent link">#</a></h2>
@@ -1763,21 +1770,31 @@ du programme.</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">nombres</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Créer une liste vide</span>
+<span class="n">nombres</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">nombres</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">list</span><span class="s1">&#39;&gt;</span>
 
-<span class="n">nombres</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">nombres</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
-<span class="n">nombres</span>
-<span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="c1"># Créer une liste avec des éléments à l&#39;intérieur</span>
+<span class="n">mois</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;janvier&#39;</span><span class="p">,</span> <span class="s1">&#39;février&#39;</span><span class="p">,</span> <span class="s1">&#39;mars&#39;</span><span class="p">]</span>
 
+<span class="c1"># Ajouter un élément</span>
+<span class="n">mois</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;avril&#39;</span><span class="p">)</span>
+<span class="c1"># Ajouter une autre liste</span>
+<span class="n">mois</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;mai&#39;</span><span class="p">,</span> <span class="s1">&#39;juin&#39;</span><span class="p">])</span>
 
-<span class="c1"># Autre exemple</span>
-<span class="n">mois</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;janvier&#39;</span><span class="p">,</span> <span class="s1">&#39;février&#39;</span><span class="p">,</span> <span class="s1">&#39;mars&#39;</span><span class="p">,</span> <span class="s1">&#39;avril&#39;</span><span class="p">]</span>
+<span class="c1"># Nombre de mois</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">mois</span><span class="p">)</span>
+
+<span class="c1"># On peut accéder à un élément avec un &quot;index&quot; à l&#39;aide de []</span>
 <span class="n">mois</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
-<span class="n">mars</span>
 
+<span class="c1"># Attention à l&#39;index maximum</span>
 <span class="n">mois</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;/usr/lib/python3.7/code.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">90</span><span class="p">,</span> <span class="ow">in</span> <span class="n">runcode</span>
@@ -1802,23 +1819,13 @@ du programme.</p>
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">liste_vide</span> <span class="o">=</span> <span class="p">()</span>
-<span class="n">liste</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;bonjour&#39;</span><span class="p">)</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">liste</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;oui&#39;</span><span class="p">,</span> <span class="s1">&#39;non&#39;</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">tuple</span><span class="s1">&#39;&gt;</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">liste</span><span class="p">)</span>
-<span class="mi">4</span>
+<span class="mi">2</span>
 <span class="n">liste</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-<span class="mi">1</span>
-<span class="n">liste</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>
-<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">liste</span><span class="p">[</span><span class="mi">2</span><span class="p">:]</span>
-<span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;bonjour&#39;</span><span class="p">)</span>
+
 <span class="n">liste</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
 <span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
   <span class="n">File</span> <span class="s2">&quot;/usr/lib/python3.7/code.py&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">90</span><span class="p">,</span> <span class="ow">in</span> <span class="n">runcode</span>
@@ -1830,22 +1837,20 @@ du programme.</p>
 <li>les dictionnaires</li>
 </ul>
 <p><em>Attention</em>, les dictionnaires ne sont pas ordonnés, de façon native, même depuis Python 3.9.
-Si vraiment, il y a besoin, il existe une classe <code>OrderedDict</code>, mais ce n'est pas une structure de données
-native dans Python.
-C'est un objet.</p>
+Si vraiment, il y a besoin, il existe une classe <a href="https://docs.python.org/3/library/collections.html">OrderedDict</a>,
+mais ce n'est pas une structure de données native dans Python.
+C'est un objet qu'il faut importer.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">personne</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">personne</span><span class="p">)</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">commune</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">commune</span><span class="p">)</span>
 <span class="c1"># &lt;class &#39;dict&#39;&gt;</span>
-<span class="n">personne</span><span class="p">[</span><span class="s1">&#39;prenom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;etienne&#39;</span>
-<span class="n">personne</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;trimaille&#39;</span>
-<span class="n">personne</span><span class="p">[</span><span class="s1">&#39;est_majeur&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
-<span class="n">personne</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">35</span>
+<span class="n">commune</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Besançon&#39;</span>
+<span class="n">commune</span><span class="p">[</span><span class="s1">&#39;code_insee&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">25056</span>
+<span class="n">commune</span><span class="p">[</span><span class="s1">&#39;est_prefecture&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="les-commentaires">Les commentaires<a class="headerlink" href="#les-commentaires" title="Permanent link">#</a></h2>
 <p>Pour commenter le code dans un script, pas dans la console : </p>

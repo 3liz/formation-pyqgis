@@ -708,35 +708,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Solution
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#finalisation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Finalisation
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connection-dun-signal-a-une-fonction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connection d'un signal à une fonction
-    </span>
-  </a>
   
 </li>
       
@@ -843,11 +816,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../formulaire/" class="md-nav__link">
+      <a href="../expression/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Formulaire
+    Expression
   </span>
   
 
@@ -864,11 +837,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../expression/" class="md-nav__link">
+      <a href="../formulaire/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Expression
+    Formulaire
   </span>
   
 
@@ -1094,6 +1067,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration-majeure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migration majeur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1172,27 +1166,6 @@
   
   <span class="md-ellipsis">
     IDE & Git
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../migration-majeure/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Migration majeur
   </span>
   
 
@@ -1308,35 +1281,8 @@
   
 </li>
         
-          <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Solution
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#finalisation" class="md-nav__link">
-    <span class="md-ellipsis">
-      Finalisation
-    </span>
-  </a>
-  
-</li>
-        
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#connection-dun-signal-a-une-fonction" class="md-nav__link">
-    <span class="md-ellipsis">
-      Connection d'un signal à une fonction
-    </span>
-  </a>
   
 </li>
       
@@ -1886,12 +1832,14 @@ l'action <code>Exporter la couche</code>).</p>
 <p>Nous allons avoir besoin de plusieurs classes dans l'API QGIS : </p>
 <ul>
 <li><code>QgsProject</code> : <a href="https://qgis.org/pyqgis/master/core/QgsProject.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsProject.html">CPP</a></li>
+<li><code>QgsVectorLayer</code> : <a href="https://qgis.org/pyqgis/master/core/QgsVectorLayer.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsVectorLayer.html">CPP</a></li>
 <li>Enregistrer un fichier avec <code>QgsVectorFileWriter</code> : <a href="https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsVectorFileWriter.html">CPP</a></li>
-<li>Un champ : <code>QgsField</code> (<a href="https://qgis.org/pyqgis/master/core/QgsField.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsField.html">CPP</a>),
+<li>Un champ dans une couche vecteur : <code>QgsField</code> (<a href="https://qgis.org/pyqgis/master/core/QgsField.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsField.html">CPP</a>),
   attention à ne pas confondre avec <code>QgsFields</code> (<a href="https://qgis.org/pyqgis/master/core/QgsFields.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsFields.html">CPP</a>)
   qui lui représente un ensemble de champs.</li>
 <li>Une entité <code>QgsFeature</code> <a href="https://qgis.org/pyqgis/master/core/QgsFeature.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsFeature.html">CPP</a></li>
-<li>Pour le type de géométrie : Utiliser <code>QgsVectorLayer::geometryType()</code> et également la méthode <code>QgsWkbTypes::geometryDisplayString()</code> pour sa conversion en chaîne "lisible"</li>
+<li>Pour le type de géométrie : Utiliser <code>QgsVectorLayer</code> <code>geometryType()</code> et également la méthode <code>QgsWkbTypes.geometryDisplayString()</code> pour sa conversion en chaîne "lisible"</li>
+<li><a href="https://qgis.org/pyqgis/master/core/QgsWkbTypes.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsWkbTypes.html">CPP</a></li>
 </ul>
 <p>Pour le type de champ, on va avoir besoin de l'API Qt également :</p>
 <ul>
@@ -1920,8 +1868,11 @@ pour les <code>QVariant</code>...</p>
 </ol>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Pour déboguer, on peut afficher la couche mémoire en question avec <code>QgsProject.instance().addMapLayer()</code></p>
+<p>Pour déboguer, on peut afficher la couche mémoire en question avec <code>QgsProject.instance().addMapLayer(layer_info)</code></p>
 </div>
+<h1 id="qgsvectorlayer-pyqgis-ne-cntient-pas-addfeature">QgsvectorLayer pyqgis ne cntient pas Addfeature<a class="headerlink" href="#qgsvectorlayer-pyqgis-ne-cntient-pas-addfeature" title="Permanent link">#</a></h1>
+<p>AJouter indice QgsWkbTypês
+V4 fileName</p>
 <h3 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>

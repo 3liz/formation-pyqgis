@@ -747,6 +747,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Les exceptions en Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#une-exception-remonte-le-fil-dexecution-du-programme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Une exception remonte le fil d'exécution du programme
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heritage-des-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Héritage des exceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -840,11 +864,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../formulaire/" class="md-nav__link">
+      <a href="../expression/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Formulaire
+    Expression
   </span>
   
 
@@ -861,11 +885,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../expression/" class="md-nav__link">
+      <a href="../formulaire/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Expression
+    Formulaire
   </span>
   
 
@@ -1091,6 +1115,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migration-majeure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migration majeur
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -1169,27 +1214,6 @@
   
   <span class="md-ellipsis">
     IDE & Git
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../migration-majeure/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Migration majeur
   </span>
   
 
@@ -1323,6 +1347,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Les exceptions en Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#une-exception-remonte-le-fil-dexecution-du-programme" class="md-nav__link">
+    <span class="md-ellipsis">
+      Une exception remonte le fil d'exécution du programme
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#heritage-des-exceptions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Héritage des exceptions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1388,7 +1436,7 @@ les codes INSEE qui commencent par <code>77</code> (à choisir un code INSEE pro
 <span class="n">layer</span><span class="o">.</span><span class="n">invertSelection</span><span class="p">()</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
-<p>Le raccourci <code>iface.activeLayer()</code> est très pratique, mais de temps en temps on a besoin de <strong>plusieurs</strong> couches qui
+<p>Le raccourci <code>iface.activeLayer()</code> est très pratique, mais de temps en temps, on a besoin de <strong>plusieurs</strong> couches qui
 sont déjà dans la légende. Il existe dans <code>QgsProject</code> plusieurs méthodes pour récupérer des couches dans la légende :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1580,40 +1628,97 @@ dans beaucoup de languages.</p>
 <li>levée ("raise" en anglais) pour déclencher une erreur</li>
 <li>attrapée ("catch" en anglais, ou plutôt "except" en Python) pour traiter l'erreur</li>
 </ul>
-<p>Essayons dans la console de faire une opération 10 / 2 :</p>
+<p>Essayons dans la <strong>console</strong> de faire une opération 10 / 2 :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span>
 </code></pre></div></td></tr></table></div>
 <p>Essayons cette fois-ci 10 / 0, ce qui est mathématiquement impossible :
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
 </code></pre></div></td></tr></table></div></p>
+<p>Passons cette fois-ci dans un <strong>script</strong> pour que cela soit plus simple, et voir que le script s'arrête brutalement 😉</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Début&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fin&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <p>On peut "attraper" cette erreur Python à l'aide d'un <code>try ... except...</code> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Début&#39;</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Ceci est une division par zéro !&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fin&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Le <code>try</code> permet d'essayer le code qui suit. Le <code>except</code> permet d'attraper en filtrant s'il y a des exceptions
 et de traiter l'erreur si besoin.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>On peut avoir une ou plusieurs lignes de code dans chacun de ces blocs. On peut appeler des fonctions, etc.</p>
+</div>
+<h3 id="une-exception-remonte-le-fil-dexecution-du-programme">Une exception remonte le fil d'exécution du programme<a class="headerlink" href="#une-exception-remonte-le-fil-dexecution-du-programme" title="Permanent link">#</a></h3>
+<p><strong>Important</strong>, une exception <strong>remonte</strong> tant qu'elle n'est pas <strong>attrapée</strong> : </p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">function_3</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Début fonction 3&quot;</span><span class="p">)</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;→ </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin fonction 3&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">function_2</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Début fonction 2&quot;</span><span class="p">)</span>
+    <span class="n">function_3</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin fonction 2&quot;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">function_1</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Début fonction 1&quot;</span><span class="p">)</span>
+    <span class="n">function_2</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin fonction 1&quot;</span><span class="p">)</span>
+
+<span class="n">function_1</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<p>On voit que Python, quand il peut, nous indique la "stacktrace" ou encore "traceback",
+c'est-à-dire une sorte de fil d'ariane.</p>
+<h3 id="heritage-des-exceptions">Héritage des exceptions<a class="headerlink" href="#heritage-des-exceptions" title="Permanent link">#</a></h3>
 <p>Toutes les exceptions héritent de <code>Exception</code> donc le code ci-dessous fonctionne, mais n'est pas
 recommandé, car il masque d'autres erreurs :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erreur inconnue&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<p>On peut par contre "enchaîner" les exceptions, afin de filtrer progressivement les exceptions.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erreur, division par 0&#39;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
@@ -1629,9 +1734,9 @@ dans la <code>QgsMessageBar</code> de QGIS, sans tenir compte de la division par
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">diviser</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Divise 2 nombres et affiche le résultat dans la message bar de QGIS. &quot;&quot;&quot;</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Divise 2 nombres et affiche le résultat dans la &quot;message bar&quot; de QGIS. &quot;&quot;&quot;</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
-    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Résulat&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Résultat&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 
 <span class="n">diviser</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1644,13 +1749,13 @@ dans la <code>QgsMessageBar</code> de QGIS, sans tenir compte de la division par
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">diviser</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">diviser</span><span class="p">(</span><span class="n">a</span><span class="p">:</span> <span class="nb">int</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">result</span> <span class="o">=</span> <span class="n">a</span> <span class="o">/</span> <span class="n">b</span>
     <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
         <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Division par 0&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1"> est impossible&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Warning</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Résulat&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Résultat&#39;</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s1"> / </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s1"> = </span><span class="si">{</span><span class="n">result</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 
 <span class="n">diviser</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1677,7 +1782,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="normal">11</span>
 <span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
-<span class="c1"># request.setFilterExpression(&#39;to_int( &quot;POPUL&quot; ) &lt; 1000&#39;)</span>
+<span class="c1"># request.setLimit(5)  # Pour aller plus vite si-besoin</span>
 <span class="n">request</span><span class="o">.</span><span class="n">addOrderBy</span><span class="p">(</span><span class="s1">&#39;NOM&#39;</span><span class="p">)</span>
 <span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="s1">&#39;NOM&#39;</span><span class="p">,</span> <span class="s1">&#39;POPUL&#39;</span><span class="p">],</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
@@ -1725,7 +1830,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="n">index</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">indexFromName</span><span class="p">(</span><span class="s1">&#39;densite&#39;</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">startEditing</span><span class="p">()</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
-<span class="c1"># request.setFilterExpression(&#39;to_int( &quot;POPUL&quot; ) &gt; 10000&#39;)</span>
+<span class="c1"># request.setLimit(5)  # Pour aller plus vite si-besoin</span>
 <span class="n">request</span><span class="o">.</span><span class="n">addOrderBy</span><span class="p">(</span><span class="s1">&#39;NOM_COM&#39;</span><span class="p">)</span>
 <span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="s1">&#39;NOM_COM&#39;</span><span class="p">,</span> <span class="s1">&#39;POPUL&#39;</span><span class="p">],</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
