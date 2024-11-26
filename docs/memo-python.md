@@ -47,6 +47,7 @@ if x > 5:
 ## Rappel de base sur Python
 
 * Un mémo Python plus important sur [W3Schools](https://www.w3schools.com/python/)
+* [Docteur Python](https://python.doctor/) et son mémo
 * Un cours Python sur [OpenClassRooms](https://openclassrooms.com/fr/courses/4262331-demarrez-votre-projet-avec-python)
 
 ## La console
@@ -86,20 +87,24 @@ est_valide = False
 type(est_valide)
 <class 'bool'>
 
-nom_couche = 'oui'
+nom_couche = 'communes'
 type(nom_couche)
 <class 'str'>
 
-nom_couche = "non"
+nom_couche = "communes"
 type(nom_couche)
+<class 'str'>
+
+texte = 'Bonjour je m\'appelle "Olivier"'
+type(texte)
 <class 'str'>
 
 densite = 3.5
 type(densite)
 <class 'float'>
 
-unknown = None
-type(unknown)
+nom_couche = None
+type(nom_couche)
 <class 'NoneType'>
 
 ```
@@ -111,6 +116,10 @@ Il existe quatre types de structure de données :
 * les variables simples (ci-dessus)
 
 * les listes (modifiables)
+
+!!! tip
+	[Documentation Python sur les listes](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
+
 ```python
 # Créer une liste vide
 nombres = []
@@ -128,22 +137,28 @@ mois.extend(['mai', 'juin'])
 # Nombre de mois
 len(mois)
 
+# Supprimer un élément
+del mois[1]
+
 # On peut accéder à un élément avec un "index" à l'aide de []
 mois[2]
 
 # Attention à l'index maximum
 mois[12]
 Traceback (most recent call last):
-  File "/usr/lib/python3.7/code.py", line 90, in runcode
+  File "/usr/lib/python3.12/code.py", line 90, in runcode
     exec(code, self.locals)
   File "<input>", line 1, in <module>
 IndexError: tuple index out of range
 ```
 
-* les tuples (non modifiables)
+* les tuples, comme des listes, mais non modifiables
+
+!!! tip
+	[Documentation Python sur les tuples](https://docs.python.org/3/tutorial/datastructures.html#more-on-lists)
 
 ```python
-liste = ('oui', 'non')
+liste = ('route double sens', 'route sens unique')
 type(liste)
 <class 'tuple'>
 len(liste)
@@ -152,7 +167,7 @@ liste[0]
 
 liste[5]
 Traceback (most recent call last):
-  File "/usr/lib/python3.7/code.py", line 90, in runcode
+  File "/usr/lib/python3.12/code.py", line 90, in runcode
     exec(code, self.locals)
   File "<input>", line 1, in <module>
 IndexError: tuple index out of range
@@ -173,6 +188,9 @@ type(commune)
 commune['nom'] = 'Besançon'
 commune['code_insee'] = 25056
 commune['est_prefecture'] = True
+
+# Ou directement lors de la création de la variable :
+commune = {'nom': 'Besançon', 'code_insee': 25056, 'est_prefecture': True}
 ```
 
 ## Les commentaires
@@ -190,16 +208,23 @@ Pour commenter le code dans un script, pas dans la console :
 
 ```python
 a = 10
-a += 1 # Augmenter de 1 à la variable a
-# équivalent à
-a = a + 1
-a -= 1 # Diminuer de 1
-a += 5 # Incrémenter de 5
-
+# Opérateurs de base
 b = a + 1
 c = a - 1
 d = a * 2
 e = a / 2
+
+# Les espaces ne sont pas importants
+# 1+2 ou 1 + 2 sont équivalents
+
+# Il est souvent utile de faire de l'incrémentation ou décrémentation d'une variable :
+a = a + 1
+# mais on écrit plus souvent
+a += 1
+# On peut changer le pas d'incrémentation ou alors faire de la décrémentation
+a -= 1 # Diminuer de 1
+a += 5 # Incrémenter de 5
+
 
 a = 10
 f = a % 3  # Fonction "modulo", résultat 1
@@ -239,6 +264,9 @@ bienvenue = 'Bonjour {}, nous sommes le {} novembre'.format(prenom, numero_jour)
 bienvenue = 'Bonjour {prenom}, nous sommes le {jour} novembre'.format(prenom=prenom, jour=numero_jour)
 ```
 
+!!! warning
+    Attention à la **portée des variables**.
+
 Encore plus moderne avec `fstring`
 ```python
 prenom = 'Pierre'
@@ -256,10 +284,11 @@ a < b
 a <= b
 a == b
 a != b
+0 < a < 10
+# Pour les objets
 a is b
 a is not b
 a in b
-0 < a < 10
 ```
 
 ## Condition
@@ -292,7 +321,7 @@ for x in range(10):
     
 countries = ['Allemagne', 'Espagne', 'France']
 for country in countries:
-    print('Pays : {}'.format(country))
+    print(f'Pays : {country}')
 
 regions = {
     'Auvergne-Rhône-Alpes': 'Lyon',
@@ -311,7 +340,7 @@ for city in regions.values():
     print(city)
 
 for region, city in regions.items():
-    print('Région {} dont le chef lieu est {}'.format(region, city))
+    print(f'Région {region} dont le chef lieu est {city}')
 
 # Non recommandé, mais on peut le rencontrer
 for region in regions:
@@ -348,7 +377,7 @@ for country in countries:
 else:
     print('Non présent')
 
-# Encore plus pythonique avec une list-comprehension
+# Encore plus pythonique avec une list-comprehension, voir plus bas
 ```
 
 ## Boucle while
@@ -359,6 +388,9 @@ while x < 10:
     print(x)
     x += 1
 ```
+
+!!! error
+    Attention à ne pas faire une **boucle infinie** !
 
 * En Python, il n'y a pas de boucle `do ... while`, à la place, on peut faire ainsi :
 
@@ -377,27 +409,59 @@ numero_jour = 2
 
 match numero_jour:
   case 1:
-    return 'Lundi'
+    print('Lundi')
   case 2:
-    return 'Mardi'
+    print('Mardi')
   case 3:
-    return 'Mercredi'
+    print('Mercredi')
   case 4:
-    return 'Jeudi'
+    print('Jeudi')
   case 5:
-    return 'Vendredi'
+    print('Vendredi')
   case 6:
-    return 'Samedi'
+    print('Samedi')
   case 7:
-    return 'Dimanche'
+    print('Dimanche')
   case _:
-    return 'Pas un jour de la semaine'
+    print('Pas un jour de la semaine')
 
+```
+
+??? "Avant Python 3.10 avec un `if elif`"
+    ```python
+	numero_jour = 2
+
+	if numero_jour == 1:
+		print('Lundi')
+	elif numero_jour == 2:
+		print('Mardi')
+	elif numero_jour == 3:
+		print('Mercredi')
+	elif numero_jour == 4:
+		print('Jeudi')
+    elif numero_jour == 5:
+		print('Vendredi')
+    elif numero_jour == 6:
+		print('Samedi')
+	elif numero_jour == 7:
+		print('Dimanche')
+	else:
+		print('Pas un jour de la semaine')
 ```
 
 ## List Comprehensions
 
 C'est une façon très pythonique et très utilisée de créer des listes.
+
+### Pour transformer une liste existante, en la remplaçant :
+
+```python
+countries = ['Allemagne', 'Espagne', 'France']
+countries = [c.upper() for c in countries]
+```
+
+<!-- La même solution sans la liste de compréhension : -->
+
 Par exemple, créer une liste des nombres impairs entre 1 et 9 :
 
 ```python
@@ -413,10 +477,7 @@ impair = [x for x in range(10) if x % 2]
 
 Autre exemple en transformant une liste :
 
-```python
-countries = ['Allemagne', 'Espagne', 'France']
-countries = [c.upper() for c in countries]
-```
+
 
 * Il existe aussi les Dict Comprehensions (moins utilisé)
 
@@ -522,8 +583,6 @@ La librairie `Path` est installé de base avec Python.
 
 La programmation orientée objet permet de **créer** un objet (on parle plus précisément d'instancier) puis on
 peut **appeler des méthodes** sur cet objet.
-
-Imaginons que l'on crée un objet **voiture**
 
 Dans une console QGIS :
 

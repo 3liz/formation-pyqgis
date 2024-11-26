@@ -33,6 +33,7 @@ Voici une liste non exhaustive de blog-post utiles pour manipuler PyQGIS, tous e
 
 Autre lien pour l'apprentissage de Python (sans QGIS) en français :
 
+* [Docteur Python](https://python.doctor/) avec son propre mémo, très complet
 * [https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python](https://openclassrooms.com/fr/courses/235344-apprenez-a-programmer-en-python)
 
 !!! tip
