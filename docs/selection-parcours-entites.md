@@ -435,7 +435,7 @@ for feature in layer.getFeatures(request):
     feature['densite'] = densite
 
     # Uniquement l'appel à "changeAttributeValue" fonctionne
-    # Pour information, il existe changeGeometry"
+    # Pour information, il existe "changeGeometry" pour la même raison
     layer.changeAttributeValue(feature.id(), index, densite)
     # print('{commune} : {densite} habitants/km²'.format(commune=feature['NOM'], densite=round(population/area,2)))
 

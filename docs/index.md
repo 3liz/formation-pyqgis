@@ -39,10 +39,11 @@ Si nécessaire, il peut être utile d'avoir en plus :
     * [Sélection & Parcours](selection-parcours-entites.md)
 * Utilisation simple
     * [Action](action.md)
-    * [Formulaire](formulaire.md)
     * [Expression](expression.md)
+    * [Formulaire](formulaire.md)
     <!-- * [Manipuler la légende et une jointure](legende.md) -->
 * Utilisation avancée
+    * [Écriture de notre classe en POO](./ecriture-classe-poo.md)
     * [Script Processing](script-processing.md)
     * [Extension générique](extension-generique.md)
     * [Extension graphique](extension-graphique.md)
