@@ -732,9 +732,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#calculer-un-champ" class="md-nav__link">
+  <a href="#calculer-un-champ-densite" class="md-nav__link">
     <span class="md-ellipsis">
-      Calculer un champ
+      Calculer un champ "densite"
     </span>
   </a>
   
@@ -777,6 +777,15 @@
   <a href="#retour-a-lexercice" class="md-nav__link">
     <span class="md-ellipsis">
       Retour à l'exercice
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#calculer-deux-champs-en-utilisant-la-geometrie-et-une-reprojection-a-la-volee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calculer deux champs en utilisant la géométrie et une reprojection à la volée
     </span>
   </a>
   
@@ -1332,9 +1341,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#calculer-un-champ" class="md-nav__link">
+  <a href="#calculer-un-champ-densite" class="md-nav__link">
     <span class="md-ellipsis">
-      Calculer un champ
+      Calculer un champ "densite"
     </span>
   </a>
   
@@ -1382,6 +1391,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#calculer-deux-champs-en-utilisant-la-geometrie-et-une-reprojection-a-la-volee" class="md-nav__link">
+    <span class="md-ellipsis">
+      Calculer deux champs en utilisant la géométrie et une reprojection à la volée
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1406,7 +1424,11 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">])</span>
@@ -1419,7 +1441,7 @@
 </ul>
 <h2 id="selection-dentite">Sélection d'entité<a class="headerlink" href="#selection-dentite" title="Permanent link">#</a></h2>
 <p>Nous souhaitons sélectionner les entités dont le code INSEE commence par <code>77</code>.
-Commençons par faire cela graphiquement dans QGIS Desktop. À l'aide d'une expression QGIS, sélectionner
+Commençons par faire cela graphiquement dans QGIS Bureautique. À l'aide d'une expression QGIS, sélectionner
 les codes INSEE qui commencent par <code>77</code> (à choisir un code INSEE propre au jeu de données).</p>
 <p><img alt="Sélectionner par expression" src="../media/selection_expression.png" /></p>
 <p>Solution en mode graphique :</p>
@@ -1430,9 +1452,13 @@ les codes INSEE qui commencent par <code>77</code> (à choisir un code INSEE pro
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
-<span class="n">layer</span><span class="o">.</span><span class="n">selectByExpression</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">CODE_INSEE</span><span class="se">\&quot;</span><span class="s2"> LIKE &#39;</span><span class="si">{}</span><span class="s2">%&#39;&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="mi">77</span><span class="p">))</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">selectByExpression</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">CODE_INSEE</span><span class="se">\&quot;</span><span class="s2"> LIKE &#39;77%&#39;&quot;</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">invertSelection</span><span class="p">()</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -1440,28 +1466,49 @@ les codes INSEE qui commencent par <code>77</code> (à choisir un code INSEE pro
 sont déjà dans la légende. Il existe dans <code>QgsProject</code> plusieurs méthodes pour récupérer des couches dans la légende :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">projet</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+
+<span class="n">projet</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
 <span class="n">communes</span> <span class="o">=</span> <span class="n">projet</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s1">&#39;communes&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">insee</span> <span class="o">=</span> <span class="n">projet</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s1">&#39;tableau INSEE&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Notons le <strong>s</strong> dans <code>mapLayersByName</code>. Il peut y avoir plusieurs couches avec ce même nom de couche. La fonction retourne
 donc une liste de couches. Il convient alors de regarder si la liste est vide ou si elle contient plusieurs couches avec
 <code>len(communes)</code> par exemple.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">communes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><code>mapLayersByName</code> fait uniquement une recherche stricte, sensible à la casse. Il faut passer par du
+code Python "pure" en itérant sur l'ensemble des couches, indépendamment de leur nom si l'on souhaite faire une
+recherche plus fine. Si vraiment on a besoin, on peut utiliser le module <a href="https://docs.python.org/3/library/re.html">re</a>
+(lien du <a href="https://python.doctor/page-expressions-regulieres-regular-python">Docteur Python</a>).</p>
+</div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+
+<span class="n">projet</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="n">communes</span> <span class="o">=</span> <span class="n">projet</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s1">&#39;communes&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">communes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pas de couches dans la légende qui se nomme &#39;communes&#39;&quot;</span><span class="p">)</span>
     <span class="n">layer</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="k">else</span> <span class="nb">len</span><span class="p">(</span><span class="n">communes</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
-    <span class="c1"># TODO FIX ME</span>
+<span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">communes</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># TODO FIX ME, pas forcément la bonne couche &#39;communes&#39;</span>
     <span class="n">layer</span> <span class="o">=</span> <span class="n">communes</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="exemple-dune-selection-avec-un-export">Exemple d'une sélection avec un export<a class="headerlink" href="#exemple-dune-selection-avec-un-export" title="Permanent link">#</a></h3>
 <p>On souhaite pouvoir exporter les communes par département.
-On peut créer une variable <code>depts = ['34', '30']</code> puis boucler dessus pour exporter les entités sélectionnées dans
+On peut créer une variable <code>depts = ('34', '30')</code> puis boucler dessus pour exporter les entités sélectionnées dans
 un nouveau fichier.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1484,7 +1531,11 @@ un nouveau fichier.</p>
 <span class="normal">19</span>
 <span class="normal">20</span>
 <span class="normal">21</span>
-<span class="normal">22</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span><span class="p">,</span> <span class="n">QgsVectorFileWriter</span>
+<span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
@@ -1493,7 +1544,7 @@ un nouveau fichier.</p>
 <span class="n">options</span><span class="o">.</span><span class="n">fileEncoding</span> <span class="o">=</span> <span class="s1">&#39;UTF-8&#39;</span>
 <span class="n">options</span><span class="o">.</span><span class="n">onlySelectedFeatures</span> <span class="o">=</span> <span class="kc">True</span>  <span class="c1"># Nouvelle option pour la sélection</span>
 
-<span class="n">depts</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;34&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">]</span>
+<span class="n">depts</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;34&#39;</span><span class="p">,</span> <span class="s1">&#39;30&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">dept</span> <span class="ow">in</span> <span class="n">depts</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dept </span><span class="si">{</span><span class="n">dept</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="n">layer</span><span class="o">.</span><span class="n">selectByExpression</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">INSEE_DEP</span><span class="se">\&quot;</span><span class="s2">  =  &#39;</span><span class="si">{</span><span class="n">dept</span><span class="si">}</span><span class="s2">&#39;&quot;</span><span class="p">)</span>
@@ -1507,12 +1558,15 @@ un nouveau fichier.</p>
     <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">QgsVectorFileWriter</span><span class="o">.</span><span class="n">NoError</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; → OK&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<div class="admonition tip">
+<p class="admonition-title">Bonus</p>
 <p>Si l'on souhaite parcourir automatiquement les départements existants, on peut récupérer les valeurs uniques. Pour cela,
 il faut modifier deux lignes :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">index</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">indexFromName</span><span class="p">(</span><span class="s2">&quot;INSEE_DEP&quot;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">dept</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">uniqueValues</span><span class="p">(</span><span class="n">index</span><span class="p">):</span>
 </code></pre></div></td></tr></table></div>
+</div>
 <h2 id="boucler-sur-les-entites-a-laide-dune-expression">Boucler sur les entités à l'aide d'une expression<a class="headerlink" href="#boucler-sur-les-entites-a-laide-dune-expression" title="Permanent link">#</a></h2>
 <p>L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas <code>NC</code>.</p>
 <div class="admonition info">
@@ -1520,18 +1574,28 @@ il faut modifier deux lignes :</p>
 <p>Avec PyQGIS, on peut accéder aux attributs d'une <code>QgsFeature</code> simplement avec l'opérateur <code>[]</code> sur
 l'objet courant comme s'il s'agissait d'un dictionnaire Python :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Pour accéder au champ &quot;NOM_COM&quot; de l&#39;entité &quot;feature&quot; :</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM_COM&#39;</span><span class="p">])</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Pour accéder au champ &quot;NOM&quot; de l&#39;entité &quot;feature&quot; :</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
+<p>On peut le voir dans les exemples <code>attribute</code> de QgsFeature : <a href="https://qgis.org/pyqgis/3.34/core/QgsFeature.html#qgis.core.QgsFeature.attribute">https://qgis.org/pyqgis/3.34/core/QgsFeature.html#qgis.core.QgsFeature.attribute</a></p>
 </div>
 <p>L'exemple à <strong>ne pas</strong> faire, même si cela fonctionne (car on peut l'optimiser très facilement) :</p>
+<ol>
+<li>Imaginons une couche PostgreSQL</li>
+<li>On demande à QGIS de récupérer l'ensemble de la table distante, équivalent à <code>SELECT * FROM ma_table</code></li>
+<li><strong>Puis</strong>, on filtre dans QGIS (toute la données est présente dans QGIS Bureautique désormais)</li>
+</ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPUL&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;NC&#39;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM_COM&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPULATION&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;NC&#39;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
@@ -1542,11 +1606,27 @@ Un simple print ralenti l'exécution d'un script.</p>
 <h3 id="optimisation-de-la-requete">Optimisation de la requête<a class="headerlink" href="#optimisation-de-la-requete" title="Permanent link">#</a></h3>
 <p>Dans la documentation, observez bien la signature de la fonction <code>getFeatures</code>. Que remarquez-vous ?
 Utilisons donc une expression pour limiter les résultats.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">(</span><span class="n">QgsExpression</span><span class="p">(</span><span class="s1">&#39;&quot;POPUL&quot; != </span><span class="se">\&#39;</span><span class="s1">NC</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">))</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeatureRequest</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+
+<span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
+<span class="c1"># Équivalent à SELECT * FROM ma_table WHERE &quot;POPULATION&quot; != &#39;NC&#39;</span>
+<span class="n">request</span><span class="o">.</span><span class="n">setFilterExpression</span><span class="p">(</span><span class="s1">&#39;&quot;POPULATION&quot; != </span><span class="se">\&#39;</span><span class="s1">NC</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{commune}</span><span class="s1"> : </span><span class="si">{nombre}</span><span class="s1"> habitants pour&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">commune</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">],</span> <span class="n">nombre</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPUL&#39;</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{commune}</span><span class="s1"> : </span><span class="si">{nombre}</span><span class="s1"> habitants pour&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">commune</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">],</span> <span class="n">nombre</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPULATION&#39;</span><span class="p">]))</span>
 </code></pre></div></td></tr></table></div>
 <p>Nous pouvons accessoirement ordonner les résultats et surtout encore optimiser la requête en :</p>
 <ul>
@@ -1562,25 +1642,20 @@ Utilisons donc une expression pour limiter les résultats.</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
-<span class="n">request</span><span class="o">.</span><span class="n">setFilterExpression</span><span class="p">(</span><span class="s1">&#39;&quot;POPUL&quot; != </span><span class="se">\&#39;</span><span class="s1">NC</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="normal">8</span>
+<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
+<span class="n">request</span><span class="o">.</span><span class="n">setFilterExpression</span><span class="p">(</span><span class="s1">&#39;&quot;POPULATION&quot; != </span><span class="se">\&#39;</span><span class="s1">NC</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
 <span class="n">request</span><span class="o">.</span><span class="n">addOrderBy</span><span class="p">(</span><span class="s1">&#39;NOM&#39;</span><span class="p">)</span>
 <span class="n">request</span><span class="o">.</span><span class="n">setFlags</span><span class="p">(</span><span class="n">QgsFeatureRequest</span><span class="o">.</span><span class="n">NoGeometry</span><span class="p">)</span>
 <span class="c1"># request.setSubsetOfAttributes([1, 4]) autre manière moins pratique, historique</span>
-<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="s1">&#39;NOM&#39;</span><span class="p">,</span> <span class="s1">&#39;POPUL&#39;</span><span class="p">],</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
+<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="s1">&#39;NOM&#39;</span><span class="p">,</span> <span class="s1">&#39;POPULATION&#39;</span><span class="p">],</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
+<span class="c1"># # Équivalent à SELECT NOM, POPULATION FROM ma_table WHERE &quot;POPULATION&quot; != &#39;NC&#39; ORDER BY NOM</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{commune}</span><span class="s1"> : </span><span class="si">{nombre}</span><span class="s1"> habitants&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">commune</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">],</span> <span class="n">nombre</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPUL&#39;</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{commune}</span><span class="s1"> : </span><span class="si">{nombre}</span><span class="s1"> habitants&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">commune</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">],</span> <span class="n">nombre</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPULATION&#39;</span><span class="p">]))</span>
 </code></pre></div></td></tr></table></div>
 <ul>
-<li>
-<p>Faire le test en affichant un champ qui n'est pas dans la requête.</p>
-</li>
-<li>
-<p>Rajoutons une intersection spatiale avec l'emprise suivante :</p>
-</li>
+<li>Faire le test en affichant un champ qui n'est pas dans la requête.</li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">request</span><span class="o">.</span><span class="n">setFilterRect</span><span class="p">(</span><span class="n">QgsRectangle</span><span class="p">(</span><span class="mi">662737</span><span class="p">,</span> <span class="mi">6807733</span><span class="p">,</span> <span class="mi">717144</span><span class="p">,</span> <span class="mi">6853979</span><span class="p">))</span>
-</code></pre></div></td></tr></table></div>
 </details>
 <p>Si l'on souhaite "enregistrer" le résultat de cette expression QGIS, on peut la <em>matérialiser</em> dans une
 nouvelle couche :</p>
@@ -1613,8 +1688,8 @@ il faut <strong>supprimer</strong> la ligne <code>NoGeometry</code> si vous l'av
     <span class="c1"># Continuer</span>
     <span class="k">pass</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="calculer-un-champ">Calculer un champ<a class="headerlink" href="#calculer-un-champ" title="Permanent link">#</a></h2>
-<p>Avant-dernier exercice, afficher une liste des communes en incluant la densité de population.</p>
+<h2 id="calculer-un-champ-densite">Calculer un champ "densite"<a class="headerlink" href="#calculer-un-champ-densite" title="Permanent link">#</a></h2>
+<p>Nous souhaitons avoir une colonne <code>densite</code> dans notre table attributaire, avec la densité de population.</p>
 <p>Mais regardons avant la gestion des erreurs lors d'un traitement. En effet, nous allons
 vouloir "caster" (transformer le type) de la variable <code>population</code> en entier, mais attention,
 il y a des valeurs <code>NC</code> dans les valeurs.</p>
@@ -1780,126 +1855,27 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeatureRequest</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
 <span class="c1"># request.setLimit(5)  # Pour aller plus vite si-besoin</span>
 <span class="n">request</span><span class="o">.</span><span class="n">addOrderBy</span><span class="p">(</span><span class="s1">&#39;NOM&#39;</span><span class="p">)</span>
-<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="s1">&#39;NOM&#39;</span><span class="p">,</span> <span class="s1">&#39;POPUL&#39;</span><span class="p">],</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
+<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="s1">&#39;NOM&#39;</span><span class="p">,</span> <span class="s1">&#39;POPULATION&#39;</span><span class="p">],</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
     <span class="n">area</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">area</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
     <span class="k">try</span><span class="p">:</span>
-        <span class="n">population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPUL&#39;</span><span class="p">])</span>
+        <span class="n">population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPULATION&#39;</span><span class="p">])</span>
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
         <span class="n">population</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{commune}</span><span class="s1"> : </span><span class="si">{densite}</span><span class="s1"> habitants/km²&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">commune</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">],</span> <span class="n">densite</span><span class="o">=</span><span class="n">population</span><span class="o">/</span><span class="n">area</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 <p>Nous souhaitons enregistrer ces informations dans une vraie table avec un nouveau champ <code>densite_population</code>.</p>
 <p>Solution plus simple :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
-
-<span class="k">if</span> <span class="s1">&#39;densite&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">names</span><span class="p">():</span>
-    <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
-        <span class="n">field</span> <span class="o">=</span> <span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;densite&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Double</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-        <span class="n">layer</span><span class="o">.</span><span class="n">addAttribute</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
-
-<span class="n">index</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">indexFromName</span><span class="p">(</span><span class="s1">&#39;densite&#39;</span><span class="p">)</span>
-<span class="n">layer</span><span class="o">.</span><span class="n">startEditing</span><span class="p">()</span>
-<span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
-<span class="c1"># request.setLimit(5)  # Pour aller plus vite si-besoin</span>
-<span class="n">request</span><span class="o">.</span><span class="n">addOrderBy</span><span class="p">(</span><span class="s1">&#39;NOM_COM&#39;</span><span class="p">)</span>
-<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="s1">&#39;NOM_COM&#39;</span><span class="p">,</span> <span class="s1">&#39;POPUL&#39;</span><span class="p">],</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
-<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="n">area</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">area</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
-    <span class="k">try</span><span class="p">:</span>
-        <span class="n">population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPUL&#39;</span><span class="p">])</span>
-    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
-        <span class="n">population</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="n">densite</span> <span class="o">=</span> <span class="n">population</span><span class="o">/</span><span class="n">area</span>
-    <span class="n">layer</span><span class="o">.</span><span class="n">changeAttributeValue</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">index</span><span class="p">,</span> <span class="n">densite</span><span class="p">)</span>
-    <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;densite&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">densite</span>
-    <span class="c1"># print(&#39;{commune} : {densite} habitants/km²&#39;.format(commune=feature[&#39;NOM_COM&#39;], densite=round(population/area,2)))</span>
-
-<span class="n">layer</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-<p>Solution un peu plus complexe :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
-
-<span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
-<span class="n">request</span><span class="o">.</span><span class="n">setFilterExpression</span><span class="p">(</span><span class="s1">&#39;to_int( &quot;POPUL&quot; ) &lt; 1000&#39;</span><span class="p">)</span>
-<span class="n">petites_communes</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">materialize</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
-
-<span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">petites_communes</span><span class="p">):</span>
-    <span class="n">field</span> <span class="o">=</span> <span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;densite_population&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Double</span><span class="p">)</span>
-    <span class="n">petites_communes</span><span class="o">.</span><span class="n">addAttribute</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
-
-<span class="c1"># On utilise les indes des champs automatiquement en récupérant ces valeurs.</span>
-<span class="n">index_population</span> <span class="o">=</span> <span class="n">petites_communes</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">indexFromName</span><span class="p">(</span><span class="s1">&#39;POPUL&#39;</span><span class="p">)</span>
-<span class="n">index_densite</span> <span class="o">=</span> <span class="n">petites_communes</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">indexFromName</span><span class="p">(</span><span class="s1">&#39;densite_population&#39;</span><span class="p">)</span>
-
-<span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
-<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="n">index_population</span><span class="p">])</span>
-
-<span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">petites_communes</span><span class="p">):</span>
-    <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">petites_communes</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-        <span class="n">area</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">area</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
-        <span class="n">population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPUL&#39;</span><span class="p">])</span>
-        <span class="n">densite</span><span class="o">=</span><span class="n">population</span><span class="o">/</span><span class="n">area</span>
-        <span class="n">petites_communes</span><span class="o">.</span><span class="n">changeAttributeValue</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">index_densite</span><span class="p">,</span> <span class="n">densite</span><span class="p">)</span>
-
-<span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">petites_communes</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<p>Manipulons désormais la géométrie en ajoutant le centroïde de la commune dans une colonne <code>latitude</code> et
-<code>longitude</code> en degrées.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1935,10 +1911,95 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span><span class="p">,</span> <span class="n">edit</span>
+<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeatureRequest</span><span class="p">,</span> <span class="n">QgsField</span>
+
+<span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">QVariant</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="s1">&#39;densite&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">names</span><span class="p">():</span>
+    <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
+        <span class="n">field</span> <span class="o">=</span> <span class="n">QgsField</span><span class="p">(</span><span class="s1">&#39;densite&#39;</span><span class="p">,</span> <span class="n">QVariant</span><span class="o">.</span><span class="n">Double</span><span class="p">,</span> <span class="n">prec</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="nb">len</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">layer</span><span class="o">.</span><span class="n">addAttribute</span><span class="p">(</span><span class="n">field</span><span class="p">)</span>
+
+<span class="n">index</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">()</span><span class="o">.</span><span class="n">indexFromName</span><span class="p">(</span><span class="s1">&#39;densite&#39;</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">startEditing</span><span class="p">()</span>
+<span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
+<span class="c1"># request.setLimit(5)  # Pour aller plus vite si-besoin</span>
+<span class="n">request</span><span class="o">.</span><span class="n">addOrderBy</span><span class="p">(</span><span class="s1">&#39;NOM&#39;</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">setSubsetOfAttributes</span><span class="p">([</span><span class="s1">&#39;NOM&#39;</span><span class="p">,</span> <span class="s1">&#39;POPULATION&#39;</span><span class="p">],</span> <span class="n">layer</span><span class="o">.</span><span class="n">fields</span><span class="p">())</span>
+<span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">area</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">area</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPULATION&#39;</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
+        <span class="n">population</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">densite</span> <span class="o">=</span> <span class="n">population</span><span class="o">/</span><span class="n">area</span>
+
+    <span class="c1"># Cette ligne n&#39;aura aucun effet</span>
+    <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;densite&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">densite</span>
+
+    <span class="c1"># Uniquement l&#39;appel à &quot;changeAttributeValue&quot; fonctionne</span>
+    <span class="c1"># Pour information, il existe changeGeometry&quot;</span>
+    <span class="n">layer</span><span class="o">.</span><span class="n">changeAttributeValue</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">index</span><span class="p">,</span> <span class="n">densite</span><span class="p">)</span>
+    <span class="c1"># print(&#39;{commune} : {densite} habitants/km²&#39;.format(commune=feature[&#39;NOM&#39;], densite=round(population/area,2)))</span>
+
+<span class="n">layer</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="calculer-deux-champs-en-utilisant-la-geometrie-et-une-reprojection-a-la-volee">Calculer deux champs en utilisant la géométrie et une reprojection à la volée<a class="headerlink" href="#calculer-deux-champs-en-utilisant-la-geometrie-et-une-reprojection-a-la-volee" title="Permanent link">#</a></h2>
+<p>Manipulons désormais la géométrie en ajoutant le centroïde de la commune dans une colonne <code>latitude</code> et
+<code>longitude</code> en degrées.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>TODO, en cours de correction, suppression de la variable <code>petite_communes</code></p>
+</div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span><span class="p">,</span> <span class="n">edit</span>
+<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeatureRequest</span><span class="p">,</span> <span class="n">QgsField</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
 <span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
-<span class="n">request</span><span class="o">.</span><span class="n">setFilterExpression</span><span class="p">(</span><span class="s1">&#39;to_int( &quot;POPUL&quot; ) &lt; 1000&#39;</span><span class="p">)</span>
+<span class="n">request</span><span class="o">.</span><span class="n">setFilterExpression</span><span class="p">(</span><span class="s1">&#39;to_int( &quot;POPULATION&quot; ) &lt; 1000&#39;</span><span class="p">)</span>
 <span class="n">petites_communes</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">materialize</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
 
 <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">petites_communes</span><span class="p">):</span>
@@ -1958,7 +2019,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">petites_communes</span><span class="p">):</span>
     <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">petites_communes</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
         <span class="n">area</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">area</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
-        <span class="n">population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPUL&#39;</span><span class="p">])</span>
+        <span class="n">population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPULATION&#39;</span><span class="p">])</span>
         <span class="n">densite</span><span class="o">=</span><span class="n">population</span><span class="o">/</span><span class="n">area</span>
         <span class="n">petites_communes</span><span class="o">.</span><span class="n">changeAttributeValue</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="mi">5</span><span class="p">,</span> <span class="n">densite</span><span class="p">)</span>
 

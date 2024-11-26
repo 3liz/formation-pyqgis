@@ -1726,7 +1726,7 @@ du programme.</p>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Pour créer une variable, on déclare juste le nom de la variable ainsi que sa valeur :</span>
 <span class="n">compteur</span> <span class="o">=</span> <span class="mi">0</span>
 </code></pre></div></td></tr></table></div>
-<p>Nous allons par la suite utiliser <code>type(variable</code> pour vérifier le <strong>type</strong> de la variable.</p>
+<p>Nous allons par la suite utiliser <code>type(variable)</code> pour vérifier le <strong>type</strong> de la variable.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -2026,13 +2026,23 @@ On peut concaténer des variables entre elles ou du texte.</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">&gt;</span> <span class="n">b</span>
 <span class="n">a</span> <span class="o">&gt;=</span> <span class="n">b</span>
 <span class="n">a</span> <span class="o">&lt;</span> <span class="n">b</span>
 <span class="n">a</span> <span class="o">&lt;=</span> <span class="n">b</span>
 <span class="n">a</span> <span class="o">==</span> <span class="n">b</span>
 <span class="n">a</span> <span class="o">!=</span> <span class="n">b</span>
+
+<span class="c1"># Dans plusieurs langages, pour vérifier si &quot;a&quot; est entre deux bornes :</span>
+<span class="mi">0</span> <span class="o">&lt;</span> <span class="n">a</span> <span class="ow">and</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">10</span>
+<span class="c1"># En Python, on peut faire</span>
 <span class="mi">0</span> <span class="o">&lt;</span> <span class="n">a</span> <span class="o">&lt;</span> <span class="mi">10</span>
+
 <span class="c1"># Pour les objets</span>
 <span class="n">a</span> <span class="ow">is</span> <span class="n">b</span>
 <span class="n">a</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">b</span>
@@ -2094,12 +2104,12 @@ On peut concaténer des variables entre elles ou du texte.</p>
 <span class="normal">26</span>
 <span class="normal">27</span>
 <span class="normal">28</span>
-<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-
-<span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Allemagne&#39;</span><span class="p">,</span> <span class="s1">&#39;Espagne&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">]</span>
+<span class="normal">29</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">countries</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Allemagne&#39;</span><span class="p">,</span> <span class="s1">&#39;Espagne&#39;</span><span class="p">,</span> <span class="s1">&#39;France&#39;</span><span class="p">]</span>
 <span class="k">for</span> <span class="n">country</span> <span class="ow">in</span> <span class="n">countries</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Pays : </span><span class="si">{</span><span class="n">country</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 
 <span class="n">regions</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;Auvergne-Rhône-Alpes&#39;</span><span class="p">:</span> <span class="s1">&#39;Lyon&#39;</span><span class="p">,</span>
@@ -2121,7 +2131,7 @@ On peut concaténer des variables entre elles ou du texte.</p>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Région </span><span class="si">{</span><span class="n">region</span><span class="si">}</span><span class="s1"> dont le chef lieu est </span><span class="si">{</span><span class="n">city</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="c1"># Non recommandé, mais on peut le rencontrer</span>
-<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">regions</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">region</span> <span class="ow">in</span> <span class="n">regions</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Région </span><span class="si">{</span><span class="n">region</span><span class="si">}</span><span class="s2"> dont le chef lieu est </span><span class="si">{</span><span class="n">regions</span><span class="p">[</span><span class="n">region</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="recherche-dun-element">Recherche d'un élément<a class="headerlink" href="#recherche-dun-element" title="Permanent link">#</a></h2>
@@ -2182,6 +2192,8 @@ On peut concaténer des variables entre elles ou du texte.</p>
 <span class="c1"># Encore plus pythonique avec une list-comprehension, voir plus bas</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="boucle-while">Boucle while<a class="headerlink" href="#boucle-while" title="Permanent link">#</a></h2>
+<p>Contrairement à la boucle <code>for</code>, on ne connait pas forcément le nombre d'exécution de la boucle en lisant uniquement
+la ligne <code>while</code>.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -2245,26 +2257,43 @@ On peut concaténer des variables entre elles ou du texte.</p>
 </code></pre></div></td></tr></table></div>
 <details>
 <summary>Avant Python 3.10 avec un <code>if elif</code></summary>
-<p>```python
-numero_jour = 2</p>
-<p>if numero_jour == 1:
-    print('Lundi')
-elif numero_jour == 2:
-    print('Mardi')
-elif numero_jour == 3:
-    print('Mercredi')
-elif numero_jour == 4:
-    print('Jeudi')
-elif numero_jour == 5:
-    print('Vendredi')
-elif numero_jour == 6:
-    print('Samedi')
-elif numero_jour == 7:
-    print('Dimanche')
-else:
-    print('Pas un jour de la semaine')</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">numero_jour</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="k">if</span> <span class="n">numero_jour</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Lundi&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">numero_jour</span> <span class="o">==</span> <span class="mi">2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mardi&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">numero_jour</span> <span class="o">==</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Mercredi&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">numero_jour</span> <span class="o">==</span> <span class="mi">4</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Jeudi&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">numero_jour</span> <span class="o">==</span> <span class="mi">5</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Vendredi&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">numero_jour</span> <span class="o">==</span> <span class="mi">6</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Samedi&#39;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">numero_jour</span> <span class="o">==</span> <span class="mi">7</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dimanche&#39;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Pas un jour de la semaine&#39;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 </details>
-<p>```</p>
 <h2 id="list-comprehensions">List Comprehensions<a class="headerlink" href="#list-comprehensions" title="Permanent link">#</a></h2>
 <p>C'est une façon très pythonique et très utilisée de créer des listes.</p>
 <h3 id="pour-transformer-une-liste-existante-en-la-remplacant">Pour transformer une liste existante, en la remplaçant :<a class="headerlink" href="#pour-transformer-une-liste-existante-en-la-remplacant" title="Permanent link">#</a></h3>
@@ -2291,34 +2320,10 @@ else:
 <span class="c1"># Pythonique</span>
 <span class="n">impair</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
-<p>Autre exemple en transformant une liste :</p>
 <ul>
 <li>Il existe aussi les Dict Comprehensions (moins utilisé)</li>
 </ul>
 <h2 id="manipulation-sur-les-chaines-de-caracteres">Manipulation sur les chaînes de caractères<a class="headerlink" href="#manipulation-sur-les-chaines-de-caracteres" title="Permanent link">#</a></h2>
-<ul>
-<li>Pour information, les chaînes de caractères sont des listes et on peut faire du <strong>slicing</strong> sur des listes :</li>
-</ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">alphabet</span> <span class="o">=</span> <span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
-<span class="nb">len</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
-<span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
-<span class="n">alphabet</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
-<span class="n">alphabet</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
-<span class="n">alphabet</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># B</span>
-<span class="n">alphabet</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># BC</span>
-<span class="n">alphabet</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Z</span>
-<span class="n">alphabet</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>  <span class="c1"># XYZ</span>
-<span class="n">alphabet</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>  <span class="c1"># ABCDEF</span>
-</code></pre></div></td></tr></table></div>
 <p>Slicing sur les mois de l'année :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -2346,7 +2351,32 @@ else:
 <span class="n">mois</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>
 <span class="p">[</span><span class="s1">&#39;Novembre&#39;</span><span class="p">,</span> <span class="s1">&#39;Décembre&#39;</span><span class="p">]</span>
 </code></pre></div></td></tr></table></div>
+<ul>
+<li>Pour information, les chaînes de caractères sont des listes et on peut faire du <strong>slicing</strong> sur des listes :</li>
+</ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">alphabet</span> <span class="o">=</span> <span class="s1">&#39;ABCDEFGHIJKLMNOPQRSTUVWXYZ&#39;</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
+<span class="s1">&#39;,&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">alphabet</span><span class="p">)</span>
+<span class="n">alphabet</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="n">alphabet</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+<span class="n">alphabet</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># B</span>
+<span class="n">alphabet</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># BC</span>
+<span class="n">alphabet</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Z</span>
+<span class="n">alphabet</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:]</span>  <span class="c1"># XYZ</span>
+<span class="n">alphabet</span><span class="p">[:</span><span class="mi">6</span><span class="p">]</span>  <span class="c1"># ABCDEF</span>
+</code></pre></div></td></tr></table></div>
 <h2 id="fonctions">Fonctions<a class="headerlink" href="#fonctions" title="Permanent link">#</a></h2>
+<!-- REVOIR -->
+
 <p>Une fonction permet de factoriser son code. Elle peut :</p>
 <ul>
 <li>ne pas prendre de paramètre en <strong>entrée</strong></li>
