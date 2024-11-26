@@ -12,13 +12,13 @@
         <meta name="author" content="3Liz">
       
       
-        <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/extension-graphique/">
+        <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/ecriture-classe-poo/">
       
       
-        <link rel="prev" href="../extension-generique/">
+        <link rel="prev" href="../formulaire/">
       
       
-        <link rel="next" href="../extension-processing/">
+        <link rel="next" href="../script-processing/">
       
       
       <link rel="icon" href="../media/logo-qgis.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Extension Graphique - Formation PyQGIS</title>
+        <title>Écriture de notre classe en POO - Formation PyQGIS</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#creer-une-extension-qgis-avec-une-interface-graphique" class="md-skip">
+        <a href="#notion-sur-la-poo-en-python" class="md-skip">
           Aller au contenu
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extension Graphique
+              Écriture de notre classe en POO
             
           </span>
         </div>
@@ -274,7 +274,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../ecriture-classe-poo/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
   Utilisation avancé
@@ -782,10 +782,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../ecriture-classe-poo/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Écriture de notre classe en POO
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -794,6 +812,75 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#notion-sur-la-poo-en-python" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notion sur la POO en Python
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notion sur la POO en Python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilisation-de-notre-classe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utilisation de notre classe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajouter-dautres-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ajouter d'autres méthodes
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#solution" class="md-nav__link">
+    <span class="md-ellipsis">
+      Solution
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -845,30 +932,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Extension Graphique
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../extension-graphique/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -877,95 +944,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#qtdesigner" class="md-nav__link">
-    <span class="md-ellipsis">
-      QtDesigner
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="QtDesigner">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#astuces" class="md-nav__link">
-    <span class="md-ellipsis">
-      Astuces
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#la-classe-qui-accompagne" class="md-nav__link">
-    <span class="md-ellipsis">
-      La classe qui accompagne
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#les-signaux-et-les-slots" class="md-nav__link">
-    <span class="md-ellipsis">
-      Les signaux et les slots
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    <span class="md-ellipsis">
-      Solution
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#organisation-du-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Organisation du code
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#un-dossier-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Un dossier resources
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1211,8 +1189,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1221,19 +1197,37 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#qtdesigner" class="md-nav__link">
+  <a href="#notion-sur-la-poo-en-python" class="md-nav__link">
     <span class="md-ellipsis">
-      QtDesigner
+      Notion sur la POO en Python
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="QtDesigner">
+    <nav class="md-nav" aria-label="Notion sur la POO en Python">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#astuces" class="md-nav__link">
+  <a href="#exemple" class="md-nav__link">
     <span class="md-ellipsis">
-      Astuces
+      Exemple
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#utilisation-de-notre-classe" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utilisation de notre classe
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajouter-dautres-methodes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ajouter d'autres méthodes
     </span>
   </a>
   
@@ -1245,45 +1239,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#la-classe-qui-accompagne" class="md-nav__link">
-    <span class="md-ellipsis">
-      La classe qui accompagne
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#les-signaux-et-les-slots" class="md-nav__link">
-    <span class="md-ellipsis">
-      Les signaux et les slots
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       Solution
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#organisation-du-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Organisation du code
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#un-dossier-resources" class="md-nav__link">
-    <span class="md-ellipsis">
-      Un dossier resources
     </span>
   </a>
   
@@ -1307,128 +1265,32 @@
   
 
 
-<h1 id="creer-une-extension-qgis-avec-une-interface-graphique">Créer une extension QGIS avec une interface graphique<a class="headerlink" href="#creer-une-extension-qgis-avec-une-interface-graphique" title="Permanent link">#</a></h1>
-<p>Pour faire ce chapitre, il faut d'abord avoir une extension de base, à l'aide du chapitre précédent.</p>
-<h2 id="qtdesigner">QtDesigner<a class="headerlink" href="#qtdesigner" title="Permanent link">#</a></h2>
-<p>Créons un fichier QtDesigner comme-ceci : </p>
-<p><img alt="QtDesigner" src="../media/qt_designer_0.png" /></p>
-<p>et y ajouter des "widgets" :</p>
-<p><img alt="QtDesigner" src="../media/qt_designer_1.jpg" /></p>
-<h3 id="astuces">Astuces<a class="headerlink" href="#astuces" title="Permanent link">#</a></h3>
-<ul>
-<li>
-<p>Ouvrir la page des "slots/signaux" depuis la barre d'outils et supprimer ceux qui existent.</p>
-</li>
-<li>
-<p>Faire un clic droit sur "QDialog" à droite et faire une mise en page "vertical".</p>
-</li>
-</ul>
+  <h1>Écriture de notre classe en POO</h1>
+
+<h2 id="notion-sur-la-poo-en-python">Notion sur la POO en Python<a class="headerlink" href="#notion-sur-la-poo-en-python" title="Permanent link">#</a></h2>
+<p>Le framework Processing utilise le concept de la <strong>P</strong>rogrammation <strong>O</strong>rientée <strong>O</strong>bjet. Il existe un
+<a href="https://openclassrooms.com/fr/courses/4302126-decouvrez-la-programmation-orientee-objet-avec-python">tutoriel</a>
+sur le site d'OpenClassRooms sur le sujet.</p>
+<p>Mais depuis le début de la formation, nous l'utilisons sans trop le savoir. Les objets <code>Qgs*</code>, comme
+<code>QgsVectorLayer</code> utilisent le principe de la POO.</p>
+<p>On a pu créer des objets QgsVectorLayer en appelant son <strong>constructeur</strong> :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsVectorLayer</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;C:/chemin/vers/un/fichier.gpkg|layername=communes&quot;</span><span class="p">,</span> <span class="s2">&quot;communes&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>et ensuite, on a pu appeler des <strong>méthodes</strong> sur cet objet, comme :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Communes&quot;</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>  <span class="c1"># Retourne &quot;Communes&quot;</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Ne pas changer la propriété <code>objectName</code> pour le moment.</p>
+<p>Vous pouvez relire le passage sur la POO en début de <a href="../console/#rappel-sur-la-poo">formation</a>.</p>
 </div>
-<p>On peut <a href="../solution/dialog.ui">télécharger</a> la solution si besoin.</p>
-<ul>
-<li>Enregistrer le fichier en <code>dialog.ui</code></li>
-</ul>
-<h2 id="la-classe-qui-accompagne">La classe qui accompagne<a class="headerlink" href="#la-classe-qui-accompagne" title="Permanent link">#</a></h2>
-<p>Créons un fichier <code>dialog.py</code> avec le contenu suivant :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
-<span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt</span> <span class="kn">import</span> <span class="n">uic</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-
-<span class="n">folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
-<span class="n">ui_file</span> <span class="o">=</span> <span class="n">folder</span> <span class="o">/</span> <span class="s1">&#39;dialog.ui&#39;</span>
-<span class="n">ui_class</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">uic</span><span class="o">.</span><span class="n">loadUiType</span><span class="p">(</span><span class="n">ui_file</span><span class="p">)</span>
-
-
-<span class="k">class</span> <span class="nc">MonDialog</span><span class="p">(</span><span class="n">ui_class</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">):</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>  <span class="c1"># Appel du constructeur parent</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># Fichier de QtDesigner</span>
-</code></pre></div></td></tr></table></div>
-<p>Modifions la méthode <code>run</code> du fichier <code>__init__.py</code> en</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="kn">from</span> <span class="nn">.dialog</span> <span class="kn">import</span> <span class="n">MonDialog</span>
-        <span class="n">dialog</span> <span class="o">=</span> <span class="n">MonDialog</span><span class="p">()</span>
-        <span class="n">dialog</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
-</code></pre></div></td></tr></table></div>
-<p>Relançons l'extension à l'aide du "plugin reloader" et cliquons sur le bouton.</p>
-<h2 id="les-signaux-et-les-slots">Les signaux et les slots<a class="headerlink" href="#les-signaux-et-les-slots" title="Permanent link">#</a></h2>
-<p>Connectons le signal <code>clicked</code> du bouton "Annuler" dans le constructeur <code>__init__</code> : </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Cancel</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<p>On dit que <code>clicked</code> est un <strong>signal</strong>, auquel on connecte le <strong>slot</strong> <code>close</code>. </p>
-<p>Connectons-le <strong>signal</strong> <code>clicked</code> du bouton "Accepter" à notre propre <strong>slot</strong> (qui est une fonction) :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_ok</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<p>et ajoutons notre propre fonction <code>click_ok</code> pour quitter la fenêtre et en affichant la saisie de
-l'utilisateur dans la QgsMessageBar de QGIS.</p>
-<p>Le widget de saisie est un QLineEdit : <a href="https://doc.qt.io/qt-5/qlineedit.html">documentation</a></p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
-    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre plugin&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<p>Faire le test dans QGIS avec une saisie de l'utilisateur et fermer la fenêtre.</p>
-<p>Continuons en rendant en lecture seule le gros bloc de texte et affichons à l'intérieur la description de
-la couche qui est sélectionnée dans le menu déroulant.</p>
-<p>Documentation :</p>
-<ul>
-<li><a href="https://doc.qt.io/qt-5/qplaintextedit.html">QPlainTextEdit</a></li>
-<li><a href="https://qgis.org/api/classQgsMapLayerComboBox.html">QgsMapLayerComboBox</a></li>
-</ul>
-<p>Dans la fonction <code>__init__</code> du fichier <code>dialog.py</code> :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">setReadOnly</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">mMapLayerComboBox</span><span class="o">.</span><span class="n">layerChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_changed</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<p>Et la nouvelle fonction qui va se charger de mettre à jour le texte :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">layer_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-    <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mMapLayerComboBox</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">layer</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="s2">&quot;Pas de couche&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<p>On peut donc désormais cumuler l'ensemble des chapitres précédents pour lancer des algorithmes, manipuler les
-données, etc.</p>
-<div class="admonition tip">
-<p class="admonition-title">Bonus</p>
-<p>Ajouter un nouveau bouton pour ouvrir une fenêtre d'un dialogue Processing 🚀</p>
-</div>
-<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
-<details class="afficher">
-<summary>Afficher</summary>
+<h3 id="exemple">Exemple<a class="headerlink" href="#exemple" title="Permanent link">#</a></h3>
+<p>Nous allons faire un "très" petit exemple rapide. Écrivons notre premier jeu vidéo en console ! 🎮</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1465,71 +1327,175 @@ données, etc.</p>
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
-<span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt</span> <span class="kn">import</span> <span class="n">uic</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span>
+<span class="normal">52</span>
+<span class="normal">53</span>
+<span class="normal">54</span>
+<span class="normal">55</span>
+<span class="normal">56</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
 
-<span class="n">folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
-<span class="n">ui_file</span> <span class="o">=</span> <span class="n">folder</span> <span class="o">/</span> <span class="s1">&#39;dialog.ui&#39;</span>
-<span class="n">ui_class</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">uic</span><span class="o">.</span><span class="n">loadUiType</span><span class="p">(</span><span class="n">ui_file</span><span class="p">)</span>
+<span class="n">MAX_ENERGIE</span> <span class="o">=</span> <span class="mi">20</span>
 
 
-<span class="k">class</span> <span class="nc">MonDialog</span><span class="p">(</span><span class="n">ui_class</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">):</span>
+<span class="k">class</span> <span class="nc">Personnage</span><span class="p">:</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-        <span class="n">_</span> <span class="o">=</span> <span class="n">parent</span>
-        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># Fichier de QtDesigner</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Classe représentant un personnage du jeu vidéo. &quot;&quot;&quot;</span>
 
-        <span class="c1"># Connectons les signaux</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_ok</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Cancel</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
+    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_nom</span><span class="p">,</span> <span class="n">energie</span><span class="o">=</span><span class="n">MAX_ENERGIE</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Constructeur. &quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">un_nom</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">energie</span>
 
-        <span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">setReadOnly</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">mMapLayerComboBox</span><span class="o">.</span><span class="n">layerChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_changed</span><span class="p">)</span>
+    <span class="k">def</span> <span class="nf">marcher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de marcher.</span>
 
-    <span class="k">def</span> <span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
-        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre plugin&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">layer_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
-        <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mMapLayerComboBox</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">layer</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="sd">        Cela dépense de l&#39;énergie.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cout</span> <span class="o">=</span> <span class="mi">5</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&gt;=</span> <span class="n">cout</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> marche.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">-=</span> <span class="n">cout</span>
         <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="s2">&quot;Pas de couche&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas marcher car il n&#39;a pas assez d&#39;énergie.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">courir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de courir.</span>
+
+<span class="sd">        Cela dépense de l&#39;énergie.</span>
+<span class="sd">        &quot;&quot;&quot;</span>
+        <span class="n">cout</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&gt;=</span> <span class="n">cout</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> court.&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">-=</span> <span class="n">cout</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas courir car il n</span><span class="se">\&#39;</span><span class="s2">a pas assez d</span><span class="se">\&#39;</span><span class="s2">énergie.&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span> <span class="nf">dormir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de dormir et restaurer le niveau maximum d&#39;énergie.&quot;&quot;&quot;</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dort et fait le plein d&#39;énergie.&quot;</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
+            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">MAX_ENERGIE</span>
+
+    <span class="k">def</span> <span class="nf">manger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de manger et d&#39;augmenter de 10 points le niveau d&#39;énergie.&quot;&quot;&quot;</span>
+        <span class="n">energie</span> <span class="o">=</span> <span class="mi">10</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> mange et récupère </span><span class="si">{</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie.&quot;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&lt;=</span> <span class="n">MAX_ENERGIE</span> <span class="o">-</span> <span class="n">energie</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">+=</span> <span class="n">energie</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">MAX_ENERGIE</span>
+
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Je suis </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et j&#39;ai </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie&quot;</span>
 </code></pre></div></td></tr></table></div>
-</details>
-<h2 id="organisation-du-code">Organisation du code<a class="headerlink" href="#organisation-du-code" title="Permanent link">#</a></h2>
-<p>Il ne faut pas hésiter à créer des fichiers afin de séparer le code.</p>
-<p>On peut aussi créer des dossiers afin d'y mettre plusieurs fichiers Pythons. Un dossier en Python se nomme un
-<strong>module</strong>. Pour faire un module compatible, il faut ajouter un fichier <code>__init__.py</code> même s’il n'y a rien
-dedans.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Il ne faut vraiment pas oublier le fichier <code>__init__.py</code>. Cela peut empêcher Python de fonctionner
-correctement. Un bon <a href="../ide-git/#utilisation-dun-ide">IDE</a> peut signaler ce genre d'erreur.</p>
-</div>
-<p>Dans l'exemple ci-dessus, on peut diviser le code du fichier <code>__init__.py</code> :</p>
+<h3 id="utilisation-de-notre-classe">Utilisation de notre classe<a class="headerlink" href="#utilisation-de-notre-classe" title="Permanent link">#</a></h3>
+<p><code>dir</code> est une méthode qui prend une variable en paramètre et qui indique les propriétés/méthodes de notre variable.
+On peut aussi utiliser <code>help</code> qui est plus présentable.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">classFactory</span><span class="p">(</span><span class="n">iface</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">minimal.plugin</span> <span class="kn">import</span> <span class="n">MinimalPlugin</span>
-    <span class="k">return</span> <span class="n">MinimalPlugin</span><span class="p">(</span><span class="n">iface</span><span class="p">)</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Dark Vador&#39;</span><span class="p">)</span>
+<span class="nb">dir</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="n">help</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>En faisant un couper/coller, enlever la classe <code>MinimalPlugin</code> du fichier <code>__init__.py</code>.</p>
+<p>Que remarquons-nous ?</p>
+<details>
+<summary>Solution</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Dark Vador&#39;</span><span class="p">)</span>
+<span class="n">a</span><span class="o">.</span><span class="n">courir</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">dormir</span><span class="p">()</span>
+<span class="n">a</span><span class="o">.</span><span class="n">manger</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<p>Afficher le nom du personnage (et juste son nom, pas la phrase de présentation)</p>
+<h3 id="ajouter-dautres-methodes">Ajouter d'autres méthodes<a class="headerlink" href="#ajouter-dautres-methodes" title="Permanent link">#</a></h3>
+<p>Ajoutons une méthode <code>dialoguer</code> pour discuter avec un <strong>autre</strong> personnage.</p>
+<div class="admonition tip exemple de la définition de la fonction">
+<p class="admonition-title">Tip</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dialoguer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Permet de dialoguer avec un autre personnage. &quot;&quot;&quot;</span>
+    <span class="k">pass</span>
+</code></pre></div></td></tr></table></div>
+</div>
+<ol>
+<li>Écrire le code la fonction à l'aide d'un <code>print</code> pour commencer disant que <code>X dialogue avec Y</code>.</li>
+<li>Vérifier le niveau d'énergie, on ne peut pas parler si on est décédé !</li>
+<li>Garder son code à gauche, on peut utiliser une instruction <code>return</code></li>
+</ol>
+<p>Nous pouvons désormais utiliser le constructeur afin de créer deux <strong>instances</strong> de notre <strong>classe</strong>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
+<span class="n">b</span><span class="o">.</span><span class="n">dialoguer</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<details>
+<summary>Solution pour la méthode <code>dialoguer()</code></summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dialoguer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas dialoguer car il n&#39;a pas assez d&#39;énergie.&quot;</span><span class="p">)</span>
+        <span class="k">return</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dialogue avec </span><span class="si">{</span><span class="n">autre_personnage</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et ils échangent des informations secrètes&quot;</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+</details>
+<p>Continuons notre classe pour la gestion de son inventaire. Admettons que notre personnage puisse ramasser des objets
+afin de les mettre dans son sac à dos.</p>
+<ol>
+<li>Il va falloir ajouter une nouvelle <strong>propriété</strong> à notre classe de type <code>list</code> que l'on peut nommer <code>inventaire</code>. Par
+   défaut, son inventaire sera vide.</li>
+<li>Ajoutons 3 méthodes : <code>ramasser</code>, <code>deposer</code> et <code>utiliser</code>. Pour le moment, pour faciliter l'exercice, utilisons une
+   chaîne de caractère pour désigner l'objet. Ces méthodes vont interagir avec notre <code>inventaire</code> à l'aide des méthodes
+   <code>remove()</code>, <code>append()</code> que l'on trouve sur une liste.</li>
+<li>Pour les méthodes <code>deposer</code> et <code>utiliser</code>, nous pouvons avoir à créer une autre méthode <strong>privée</strong> afin de vérifier
+   l'existence de l'objet dans l'inventaire. Par convention, nous préfixons la méthode par <code>_</code> comme <code>_est_dans_inventaire</code>
+   afin de signaler que c'est une méthode dite <strong>privée</strong>. L'utilisation de cette méthode privée est uniquement à titre
+   pédagogique, on peut vouloir exposer la méthode <code>est_dans_inventaire</code>. Cette méthode doit renvoyer un <strong>booléen</strong>.</li>
+<li>Ajoutons des <strong>commentaires</strong> et/ou des <strong>docstrings</strong>, CF mémo Python. On peut utiliser la méthode <code>help</code>.</li>
+<li>Pensons aussi <strong>annotations Python</strong></li>
+</ol>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Il est important de comprendre que la POO permet de construire une sorte de boîte opaque du point de vue de
+l'utilisateur de la classe. Un peu comme une voiture, elles ont toutes un capot et une pédale d'accélération.
+L'appui sur l'accélérateur déclenche plusieurs mécanismes à l'intérieur de la voiture, mais du point de vue
+utilisateur, c'est plutôt simple.</p>
+</div>
+<p><em>Il y a des corrections sur les dernières méthodes <a href="../script-processing/#solution">en bas de ce TP</a></em></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>On essaie souvent d'avoir une classe par fichier en Python.</p>
+<p>On peut vite imaginer d'autres classes, comme <code>Arme</code>, car ramasser un bout de bois ou un sabre laser n'a pas le même
+impact lors de son utilisation dans un combat. Le dégât qu'inflige une arme sur le niveau d'énergie de l'autre
+personnage est une propriété de l'arme en question <strong>et</strong> du niveau du personnage.</p>
 </div>
-<p>Créer un fichier <code>plugin.py</code> et ajouter le contenu en collant. Il est bien de vérifier les imports dans les
-deux fichiers.</p>
-<h2 id="un-dossier-resources">Un dossier resources<a class="headerlink" href="#un-dossier-resources" title="Permanent link">#</a></h2>
-<p>On peut créer un fichier <code>qgis_plugin_tools.py</code> à la racine de notre extension afin d'y ajouter des <strong>outils</strong> :</p>
+<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
+<p>Sur la classe Personnage ci-dessus :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1549,63 +1515,32 @@ deux fichiers.</p>
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="sd">&quot;&quot;&quot;Tools to work with resources files.&quot;&quot;&quot;</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_est_dans_inventaire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">un_objet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span>
 
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="k">def</span> <span class="nf">ramasser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ramasse </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2"> et le met dans son inventaire.&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
 
+<span class="k">def</span> <span class="nf">utiliser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> utilise </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne possède pas </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">plugin_path</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the path to the plugin root folder.&quot;&quot;&quot;</span>
-    <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
-    <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
-        <span class="n">path</span> <span class="o">=</span> <span class="n">path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">item</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">deposer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dépose </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
 
-    <span class="k">return</span> <span class="n">path</span>
-
-
-<span class="k">def</span> <span class="nf">resources_path</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the path to the plugin resources folder.&quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">plugin_path</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
-
-<span class="c1"># On peut ajouter ici une méthode qui charge un fichier UI qui se trouve dans le dossier &quot;UI&quot;</span>
-<span class="c1"># et retourne la classe directement</span>
-</code></pre></div></td></tr></table></div>
-<p>On peut ensuite créer un dossier <code>resources</code> puis <code>icons</code> afin d'y déplacer un fichier PNG, JPG, SVG.</p>
-<div class="admonition warning">
-<p class="admonition-title">Warning</p>
-<p>Attention à la taille de vos fichiers pour une petite icône</p>
-</div>
-<p>Dans une extension graphique pour les icônes :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># En haut du fichier</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="n">QIcon</span>
-<span class="kn">from</span> <span class="nn">.qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
-
-<span class="c1"># Quand nécessaire, à remplacer la QAction existante. Il s&#39;agit du premier paramètre avec QIcon</span>
-<span class="bp">self</span><span class="o">.</span><span class="n">action</span> <span class="o">=</span> <span class="n">QAction</span><span class="p">(</span>
-    <span class="n">QIcon</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">resources_path</span><span class="p">(</span><span class="s1">&#39;icons&#39;</span><span class="p">,</span> <span class="s1">&#39;icon.svg&#39;</span><span class="p">))),</span>
-    <span class="s1">&#39;Go!&#39;</span><span class="p">,</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">())</span>
-</code></pre></div></td></tr></table></div>
-<p>Dans une extension Processing, dans le <strong>provider</strong> et les <strong>algorithmes</strong> :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># En haut du fichier</span>
-<span class="kn">from</span> <span class="nn">..qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
-
-<span class="c1"># Dans la classe</span>
-<span class="k">def</span> <span class="nf">icon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-    <span class="k">return</span> <span class="n">QIcon</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">resources_path</span><span class="p">(</span><span class="s2">&quot;icons&quot;</span><span class="p">,</span> <span class="s2">&quot;icon.png&quot;</span><span class="p">)))</span>
+<span class="k">def</span> <span class="nf">donner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
+    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+        <span class="n">autre_personnage</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">autre_personnage</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> reçoit </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2"> de la part de </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et le remercie 👍&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 
 
