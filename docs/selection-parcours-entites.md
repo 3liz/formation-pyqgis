@@ -30,7 +30,7 @@ les codes INSEE qui commencent par `77` (à choisir un code INSEE propre au jeu 
 Solution en mode graphique :
 
 ```sql
-"CODE_INSEE" LIKE '77%'
+"INSEE_COM" LIKE '77%'
 ```
 
 Nous allons faire la même chose, mais en utilisant Python. Pensez à **désélectionner** les entités.
@@ -40,7 +40,7 @@ from qgis.utils import iface
 
 layer = iface.activeLayer()
 layer.removeSelection()
-layer.selectByExpression(f"\"CODE_INSEE\" LIKE '77%'")
+layer.selectByExpression(f"\"INSEE_COM\" LIKE '77%'")
 layer.invertSelection()
 layer.removeSelection()
 ```
@@ -176,7 +176,7 @@ request = QgsFeatureRequest()
 request.setFilterExpression('"POPULATION" != \'NC\'')
 
 for feature in layer.getFeatures(request):
-    print('{commune} : {nombre} habitants pour'.format(commune=feature['NOM'], nombre=feature['POPULATION']))
+    print(f'{feature['NOM']} : {feature['POPULATION']} habitants pour')
 ```
 
 Nous pouvons accessoirement ordonner les résultats et surtout encore optimiser la requête en :
