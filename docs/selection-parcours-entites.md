@@ -404,8 +404,8 @@ Nous souhaitons enregistrer ces informations dans une vraie table avec un nouvea
 Solution plus simple :
 
 ```python
-from qgis.utils import iface, edit
-from qgis.core import QgsFeatureRequest, QgsField
+from qgis.utils import iface
+from qgis.core import QgsFeatureRequest, QgsField, edit
 
 from qgis.PyQt.QtCore import QVariant
 
@@ -451,8 +451,8 @@ Manipulons désormais la géométrie en ajoutant le centroïde de la commune dan
     TODO, en cours de correction, suppression de la variable `petite_communes`
 
 ```python
-from qgis.utils import iface, edit
-from qgis.core import QgsFeatureRequest, QgsField
+from qgis.utils import iface
+from qgis.core import QgsFeatureRequest, QgsField, edit
 
 layer = iface.activeLayer()
 
