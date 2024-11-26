@@ -1466,7 +1466,7 @@ Commençons par faire cela graphiquement dans QGIS Bureautique. À l'aide d'une 
 les codes INSEE qui commencent par <code>77</code> (à choisir un code INSEE propre au jeu de données).</p>
 <p><img alt="Sélectionner par expression" src="../media/selection_expression.png" /></p>
 <p>Solution en mode graphique :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ss">&quot;CODE_INSEE&quot;</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;77%&#39;</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="ss">&quot;INSEE_COM&quot;</span><span class="w"> </span><span class="k">LIKE</span><span class="w"> </span><span class="s1">&#39;77%&#39;</span>
 </code></pre></div></td></tr></table></div>
 <p>Nous allons faire la même chose, mais en utilisant Python. Pensez à <strong>désélectionner</strong> les entités.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1479,7 +1479,7 @@ les codes INSEE qui commencent par <code>77</code> (à choisir un code INSEE pro
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
-<span class="n">layer</span><span class="o">.</span><span class="n">selectByExpression</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">CODE_INSEE</span><span class="se">\&quot;</span><span class="s2"> LIKE &#39;77%&#39;&quot;</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">selectByExpression</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">INSEE_COM</span><span class="se">\&quot;</span><span class="s2"> LIKE &#39;77%&#39;&quot;</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">invertSelection</span><span class="p">()</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -1647,7 +1647,7 @@ Utilisons donc une expression pour limiter les résultats.</p>
 <span class="n">request</span><span class="o">.</span><span class="n">setFilterExpression</span><span class="p">(</span><span class="s1">&#39;&quot;POPULATION&quot; != </span><span class="se">\&#39;</span><span class="s1">NC</span><span class="se">\&#39;</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{commune}</span><span class="s1"> : </span><span class="si">{nombre}</span><span class="s1"> habitants pour&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">commune</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">],</span> <span class="n">nombre</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPULATION&#39;</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">]</span><span class="si">}</span><span class="s1"> : </span><span class="si">{</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPULATION&#39;</span><span class="p">]</span><span class="si">}</span><span class="s1"> habitants pour&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Nous pouvons accessoirement ordonner les résultats et surtout encore optimiser la requête en :</p>
 <ul>
