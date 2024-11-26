@@ -5,6 +5,8 @@
 On peut parcourir les entités d'une couche `QgsVectorLayer` à l'aide de `getFeatures()` :
 
 ```python
+from qgis.utils import iface
+
 layer = iface.activeLayer()
 for feature in layer.getFeatures():
     print(feature)
@@ -20,7 +22,7 @@ for feature in layer.getFeatures():
 ## Sélection d'entité
 
 Nous souhaitons sélectionner les entités dont le code INSEE commence par `77`.
-Commençons par faire cela graphiquement dans QGIS Desktop. À l'aide d'une expression QGIS, sélectionner
+Commençons par faire cela graphiquement dans QGIS Bureautique. À l'aide d'une expression QGIS, sélectionner
 les codes INSEE qui commencent par `77` (à choisir un code INSEE propre au jeu de données).
 
 ![Sélectionner par expression](./media/selection_expression.png)
@@ -34,9 +36,11 @@ Solution en mode graphique :
 Nous allons faire la même chose, mais en utilisant Python. Pensez à **désélectionner** les entités.
 
 ```python
+from qgis.utils import iface
+
 layer = iface.activeLayer()
 layer.removeSelection()
-layer.selectByExpression("\"CODE_INSEE\" LIKE '{}%'".format(77))
+layer.selectByExpression(f"\"CODE_INSEE\" LIKE '77%'")
 layer.invertSelection()
 layer.removeSelection()
 ```
@@ -45,33 +49,50 @@ Le raccourci `iface.activeLayer()` est très pratique, mais de temps en temps, o
 sont déjà dans la légende. Il existe dans `QgsProject` plusieurs méthodes pour récupérer des couches dans la légende :
 
 ```python
+from qgis.core import QgsProject
+
 projet = QgsProject.instance()
 communes = projet.mapLayersByName('communes')[0]
 insee = projet.mapLayersByName('tableau INSEE')
 ```
 
+
+
 Notons le **s** dans `mapLayersByName`. Il peut y avoir plusieurs couches avec ce même nom de couche. La fonction retourne
 donc une liste de couches. Il convient alors de regarder si la liste est vide ou si elle contient plusieurs couches avec
 `len(communes)` par exemple.
 
+!!! warning
+    `mapLayersByName` fait uniquement une recherche stricte, sensible à la casse. Il faut passer par du
+    code Python "pure" en itérant sur l'ensemble des couches, indépendamment de leur nom si l'on souhaite faire une
+    recherche plus fine. Si vraiment on a besoin, on peut utiliser le module [re](https://docs.python.org/3/library/re.html)
+    (lien du [Docteur Python](https://python.doctor/page-expressions-regulieres-regular-python)).
+
 ```python
+from qgis.core import QgsProject
+
+projet = QgsProject.instance()
+communes = projet.mapLayersByName('communes')[0]
+
 if len(communes) == 0:
     print("Pas de couches dans la légende qui se nomme 'communes'")
     layer = None
-else len(communes) >= 1:
-    # TODO FIX ME
+elif len(communes) >= 1:
+    # TODO FIX ME, pas forcément la bonne couche 'communes'
     layer = communes[0]
 ```
 
 ### Exemple d'une sélection avec un export
 
 On souhaite pouvoir exporter les communes par département.
-On peut créer une variable `depts = ['34', '30']` puis boucler dessus pour exporter les entités sélectionnées dans
+On peut créer une variable `depts = ('34', '30')` puis boucler dessus pour exporter les entités sélectionnées dans
 un nouveau fichier.
 
 
 ```python
 from pathlib import Path
+from qgis.core import QgsProject, QgsVectorFileWriter
+from qgis.utils import iface
 
 layer = iface.activeLayer()
 
@@ -80,7 +101,7 @@ options.driverName = 'ESRI Shapefile'
 options.fileEncoding = 'UTF-8'
 options.onlySelectedFeatures = True  # Nouvelle option pour la sélection
 
-depts = ['34', '30']
+depts = ('34', '30')
 for dept in depts:
     print(f"Dept {dept}")
     layer.selectByExpression(f"\"INSEE_DEP\"  =  '{dept}'")
@@ -95,13 +116,14 @@ for dept in depts:
         print(" → OK")
 ```
 
-Si l'on souhaite parcourir automatiquement les départements existants, on peut récupérer les valeurs uniques. Pour cela,
-il faut modifier deux lignes :
+!!! tip "Bonus"
+    Si l'on souhaite parcourir automatiquement les départements existants, on peut récupérer les valeurs uniques. Pour cela,
+    il faut modifier deux lignes :
 
-```python
-index = layer.fields().indexFromName("INSEE_DEP")
-for dept in layer.uniqueValues(index):
-```
+    ```python
+    index = layer.fields().indexFromName("INSEE_DEP")
+    for dept in layer.uniqueValues(index):
+    ```
 
 ## Boucler sur les entités à l'aide d'une expression
 
@@ -112,17 +134,25 @@ L'objectif est d'afficher dans la console le nom des communes dont la population
     l'objet courant comme s'il s'agissait d'un dictionnaire Python :
 
     ```python
-    # Pour accéder au champ "NOM_COM" de l'entité "feature" :
-    print(feature['NOM_COM'])
+    # Pour accéder au champ "NOM" de l'entité "feature" :
+    print(feature['NOM'])
     ```
+
+    On peut le voir dans les exemples `attribute` de QgsFeature : https://qgis.org/pyqgis/3.34/core/QgsFeature.html#qgis.core.QgsFeature.attribute
 
 L'exemple à **ne pas** faire, même si cela fonctionne (car on peut l'optimiser très facilement) :
 
+1. Imaginons une couche PostgreSQL
+2. On demande à QGIS de récupérer l'ensemble de la table distante, équivalent à `SELECT * FROM ma_table`
+3. **Puis**, on filtre dans QGIS (toute la données est présente dans QGIS Bureautique désormais)
+
 ```python
+from qgis.utils import iface
+
 layer = iface.activeLayer()
 for feature in layer.getFeatures():
-    if feature['POPUL'] != 'NC':
-        print(feature['NOM_COM'])
+    if feature['POPULATION'] != 'NC':
+        print(feature['NOM'])
 ```
 
 !!! tip
@@ -136,9 +166,17 @@ Dans la documentation, observez bien la signature de la fonction `getFeatures`. 
 Utilisons donc une expression pour limiter les résultats.
 
 ```python
-request = QgsFeatureRequest(QgsExpression('"POPUL" != \'NC\''))
+from qgis.utils import iface
+from qgis.core import QgsFeatureRequest
+
+layer = iface.activeLayer()
+
+request = QgsFeatureRequest()
+# Équivalent à SELECT * FROM ma_table WHERE "POPULATION" != 'NC'
+request.setFilterExpression('"POPULATION" != \'NC\'')
+
 for feature in layer.getFeatures(request):
-    print('{commune} : {nombre} habitants pour'.format(commune=feature['NOM'], nombre=feature['POPUL']))
+    print('{commune} : {nombre} habitants pour'.format(commune=feature['NOM'], nombre=feature['POPULATION']))
 ```
 
 Nous pouvons accessoirement ordonner les résultats et surtout encore optimiser la requête en :
@@ -149,22 +187,17 @@ Nous pouvons accessoirement ordonner les résultats et surtout encore optimiser 
 ??? "La solution pour les experts"
     ```python
     request = QgsFeatureRequest()
-    request.setFilterExpression('"POPUL" != \'NC\'')
+    request.setFilterExpression('"POPULATION" != \'NC\'')
     request.addOrderBy('NOM')
     request.setFlags(QgsFeatureRequest.NoGeometry)
     # request.setSubsetOfAttributes([1, 4]) autre manière moins pratique, historique
-    request.setSubsetOfAttributes(['NOM', 'POPUL'], layer.fields())
+    request.setSubsetOfAttributes(['NOM', 'POPULATION'], layer.fields())
+    # # Équivalent à SELECT NOM, POPULATION FROM ma_table WHERE "POPULATION" != 'NC' ORDER BY NOM
     for feature in layer.getFeatures(request):
-        print('{commune} : {nombre} habitants'.format(commune=feature['NOM'], nombre=feature['POPUL']))
+        print('{commune} : {nombre} habitants'.format(commune=feature['NOM'], nombre=feature['POPULATION']))
     ```
 
     * Faire le test en affichant un champ qui n'est pas dans la requête.
-
-    * Rajoutons une intersection spatiale avec l'emprise suivante :
-
-    ```python
-    request.setFilterRect(QgsRectangle(662737, 6807733, 717144, 6853979))
-    ```
 
 Si l'on souhaite "enregistrer" le résultat de cette expression QGIS, on peut la *matérialiser* dans une
 nouvelle couche :
@@ -196,9 +229,9 @@ else:
     pass
 ```
 
-## Calculer un champ
+## Calculer un champ "densite"
 
-Avant-dernier exercice, afficher une liste des communes en incluant la densité de population.
+Nous souhaitons avoir une colonne `densite` dans notre table attributaire, avec la densité de population.
 
 Mais regardons avant la gestion des erreurs lors d'un traitement. En effet, nous allons
 vouloir "caster" (transformer le type) de la variable `population` en entier, mais attention,
@@ -349,15 +382,18 @@ int('NC')
 Correction possible de l'exercice :
 
 ```python
+from qgis.utils import iface
+from qgis.core import QgsFeatureRequest
+
 layer = iface.activeLayer()
 request = QgsFeatureRequest()
 # request.setLimit(5)  # Pour aller plus vite si-besoin
 request.addOrderBy('NOM')
-request.setSubsetOfAttributes(['NOM', 'POPUL'], layer.fields())
+request.setSubsetOfAttributes(['NOM', 'POPULATION'], layer.fields())
 for feature in layer.getFeatures(request):
     area = feature.geometry().area() / 1000000
     try:
-        population = int(feature['POPUL'])
+        population = int(feature['POPULATION'])
     except ValueError:
         population = 0
     print('{commune} : {densite} habitants/km²'.format(commune=feature['NOM'], densite=population/area))
@@ -368,6 +404,11 @@ Nous souhaitons enregistrer ces informations dans une vraie table avec un nouvea
 Solution plus simple :
 
 ```python
+from qgis.utils import iface, edit
+from qgis.core import QgsFeatureRequest, QgsField
+
+from qgis.PyQt.QtCore import QVariant
+
 layer = iface.activeLayer()
 
 if 'densite' not in layer.fields().names():
@@ -379,61 +420,44 @@ index = layer.fields().indexFromName('densite')
 layer.startEditing()
 request = QgsFeatureRequest()
 # request.setLimit(5)  # Pour aller plus vite si-besoin
-request.addOrderBy('NOM_COM')
-request.setSubsetOfAttributes(['NOM_COM', 'POPUL'], layer.fields())
+request.addOrderBy('NOM')
+request.setSubsetOfAttributes(['NOM', 'POPULATION'], layer.fields())
 for feature in layer.getFeatures(request):
     area = feature.geometry().area() / 1000000
     try:
-        population = int(feature['POPUL'])
+        population = int(feature['POPULATION'])
     except ValueError:
         population = 0
     
     densite = population/area
-    layer.changeAttributeValue(feature.id(), index, densite)
+
+    # Cette ligne n'aura aucun effet
     feature['densite'] = densite
-    # print('{commune} : {densite} habitants/km²'.format(commune=feature['NOM_COM'], densite=round(population/area,2)))
+
+    # Uniquement l'appel à "changeAttributeValue" fonctionne
+    # Pour information, il existe changeGeometry"
+    layer.changeAttributeValue(feature.id(), index, densite)
+    # print('{commune} : {densite} habitants/km²'.format(commune=feature['NOM'], densite=round(population/area,2)))
 
 layer.commitChanges()
 ```
 
-Solution un peu plus complexe :
-
-```python
-layer = iface.activeLayer()
-
-request = QgsFeatureRequest()
-request.setFilterExpression('to_int( "POPUL" ) < 1000')
-petites_communes = layer.materialize(request)
-
-with edit(petites_communes):
-    field = QgsField('densite_population', QVariant.Double)
-    petites_communes.addAttribute(field)
-
-# On utilise les indes des champs automatiquement en récupérant ces valeurs.
-index_population = petites_communes.fields().indexFromName('POPUL')
-index_densite = petites_communes.fields().indexFromName('densite_population')
-
-request = QgsFeatureRequest()
-request.setSubsetOfAttributes([index_population])
-
-with edit(petites_communes):
-    for feature in petites_communes.getFeatures(request):
-        area = feature.geometry().area() / 1000000
-        population = int(feature['POPUL'])
-        densite=population/area
-        petites_communes.changeAttributeValue(feature.id(), index_densite, densite)
-
-QgsProject.instance().addMapLayer(petites_communes)
-```
+## Calculer deux champs en utilisant la géométrie et une reprojection à la volée
 
 Manipulons désormais la géométrie en ajoutant le centroïde de la commune dans une colonne `latitude` et
 `longitude` en degrées.
 
+!!! warning
+    TODO, en cours de correction, suppression de la variable `petite_communes`
+
 ```python
+from qgis.utils import iface, edit
+from qgis.core import QgsFeatureRequest, QgsField
+
 layer = iface.activeLayer()
 
 request = QgsFeatureRequest()
-request.setFilterExpression('to_int( "POPUL" ) < 1000')
+request.setFilterExpression('to_int( "POPULATION" ) < 1000')
 petites_communes = layer.materialize(request)
 
 with edit(petites_communes):
@@ -453,7 +477,7 @@ transform = QgsCoordinateTransform(
 with edit(petites_communes):
     for feature in petites_communes.getFeatures(request):
         area = feature.geometry().area() / 1000000
-        population = int(feature['POPUL'])
+        population = int(feature['POPULATION'])
         densite=population/area
         petites_communes.changeAttributeValue(feature.id(), 5, densite)
         

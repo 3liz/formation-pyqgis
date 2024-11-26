@@ -76,7 +76,7 @@ du programme.
 compteur = 0
 ```
 
-Nous allons par la suite utiliser `type(variable` pour vérifier le **type** de la variable.
+Nous allons par la suite utiliser `type(variable)` pour vérifier le **type** de la variable.
 
 ```python
 mon_compteur = 0
@@ -284,7 +284,12 @@ a < b
 a <= b
 a == b
 a != b
+
+# Dans plusieurs langages, pour vérifier si "a" est entre deux bornes :
+0 < a and a < 10
+# En Python, on peut faire
 0 < a < 10
+
 # Pour les objets
 a is b
 a is not b
@@ -316,12 +321,12 @@ else:
 Utile lors que l'on connait le nombre de répétitions avant l'exécution de la boucle.
 
 ```python
-for x in range(10):
-    print(x)
-    
 countries = ['Allemagne', 'Espagne', 'France']
 for country in countries:
     print(f'Pays : {country}')
+
+for x in range(10):
+    print(x)
 
 regions = {
     'Auvergne-Rhône-Alpes': 'Lyon',
@@ -343,7 +348,7 @@ for region, city in regions.items():
     print(f'Région {region} dont le chef lieu est {city}')
 
 # Non recommandé, mais on peut le rencontrer
-for region in regions:
+for region in regions.keys():
   print(f"Région {region} dont le chef lieu est {regions[region]}")
 ```
 
@@ -381,6 +386,9 @@ else:
 ```
 
 ## Boucle while
+
+Contrairement à la boucle `for`, on ne connait pas forcément le nombre d'exécution de la boucle en lisant uniquement
+la ligne `while`.
 
 ```python
 x = 0
@@ -428,9 +436,9 @@ match numero_jour:
 ```
 
 ??? "Avant Python 3.10 avec un `if elif`"
-    ```python
+	```python
 	numero_jour = 2
-
+	
 	if numero_jour == 1:
 		print('Lundi')
 	elif numero_jour == 2:
@@ -439,15 +447,15 @@ match numero_jour:
 		print('Mercredi')
 	elif numero_jour == 4:
 		print('Jeudi')
-    elif numero_jour == 5:
+	elif numero_jour == 5:
 		print('Vendredi')
-    elif numero_jour == 6:
+	elif numero_jour == 6:
 		print('Samedi')
 	elif numero_jour == 7:
 		print('Dimanche')
 	else:
 		print('Pas un jour de la semaine')
-```
+	```
 
 ## List Comprehensions
 
@@ -475,28 +483,9 @@ for x in range(10):
 impair = [x for x in range(10) if x % 2]
 ```
 
-Autre exemple en transformant une liste :
-
-
-
 * Il existe aussi les Dict Comprehensions (moins utilisé)
 
 ## Manipulation sur les chaînes de caractères
-
-* Pour information, les chaînes de caractères sont des listes et on peut faire du **slicing** sur des listes :
-
-```python
-alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-len(alphabet)
-','.join(alphabet)
-alphabet.lower()
-alphabet.upper()
-alphabet[1]  # B
-alphabet[1:3]  # BC
-alphabet[-1]  # Z
-alphabet[-3:]  # XYZ
-alphabet[:6]  # ABCDEF
-```
 
 Slicing sur les mois de l'année :
 
@@ -516,7 +505,24 @@ mois[-2:]
 ['Novembre', 'Décembre']
 ```
 
+* Pour information, les chaînes de caractères sont des listes et on peut faire du **slicing** sur des listes :
+
+```python
+alphabet = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+len(alphabet)
+','.join(alphabet)
+alphabet.lower()
+alphabet.upper()
+alphabet[1]  # B
+alphabet[1:3]  # BC
+alphabet[-1]  # Z
+alphabet[-3:]  # XYZ
+alphabet[:6]  # ABCDEF
+```
+
 ## Fonctions
+
+<!-- REVOIR -->
 
 Une fonction permet de factoriser son code. Elle peut :
 
