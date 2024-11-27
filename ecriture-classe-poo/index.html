@@ -1402,12 +1402,15 @@ sur le site d'OpenClassRooms sur le sujet.</p>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">MAX_ENERGIE</span>
 
-    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Je suis </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et j&#39;ai </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie&quot;</span>
+    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;Personnage: &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">&#39; avec </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie&gt;&quot;</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="utilisation-de-notre-classe">Utilisation de notre classe<a class="headerlink" href="#utilisation-de-notre-classe" title="Permanent link">#</a></h3>
-<p><code>dir</code> est une méthode qui prend une variable en paramètre et qui indique les propriétés/méthodes de notre variable.
-On peut aussi utiliser <code>help</code> qui est plus présentable.</p>
+<ul>
+<li><code>dir()</code> est une fonction qui prend une variable en paramètre et qui indique les propriétés/méthodes de notre variable.</li>
+<li><code>help()</code> affiche la documentation de notre classe</li>
+<li><code>__dict__</code> est une propriété qui donne les valeurs des attributs de l'instance.</li>
+</ul>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Dark Vador&#39;</span><span class="p">)</span>
@@ -1442,7 +1445,7 @@ On peut aussi utiliser <code>help</code> qui est plus présentable.</p>
 </div>
 <ol>
 <li>Écrire le code la fonction à l'aide d'un <code>print</code> pour commencer disant que <code>X dialogue avec Y</code>.</li>
-<li>Vérifier le niveau d'énergie, on ne peut pas parler si on est décédé !</li>
+<li>Vérifier le niveau d'énergie avant de dialoguer ! Difficile de discuter si on n'a plus d'énergie 😉</li>
 <li>Garder son code à gauche, on peut utiliser une instruction <code>return</code></li>
 </ol>
 <p>Nous pouvons désormais utiliser le constructeur afin de créer deux <strong>instances</strong> de notre <strong>classe</strong>.</p>
@@ -1487,7 +1490,6 @@ l'utilisateur de la classe. Un peu comme une voiture, elles ont toutes un capot 
 L'appui sur l'accélérateur déclenche plusieurs mécanismes à l'intérieur de la voiture, mais du point de vue
 utilisateur, c'est plutôt simple.</p>
 </div>
-<p><em>Il y a des corrections sur les dernières méthodes <a href="../script-processing/#solution">en bas de ce TP</a></em></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>On peut vite imaginer d'autres classes, comme <code>Arme</code>, car ramasser un bout de bois ou un sabre laser n'a pas le même
