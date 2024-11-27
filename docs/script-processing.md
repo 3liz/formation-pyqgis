@@ -44,6 +44,12 @@ processing.run(
 
 Lien vers la documentation : https://docs.qgis.org/latest/fr/docs/user_manual/processing/console.html
 
+```python
+QgsProject.instance().addMapLayer(result['OUTPUT'])
+```
+
+<!-- Montrer GOBS -->
+
 Pour obtenir la description d'un algorithme :
 ```python
 processing.algorithmHelp("native:buffer")

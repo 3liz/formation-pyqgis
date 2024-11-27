@@ -333,6 +333,8 @@ try:
     print(10 / 0)
 except ZeroDivisionError:
     print('Erreur, division par 0')
+except TypeError:
+    print("Erreur, il n'y a avait pas que des chiffres.")
 except Exception:
     print('Erreur inconnue')
 ```

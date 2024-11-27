@@ -85,15 +85,16 @@ class Personnage:
         else:
             self.energie = MAX_ENERGIE
      
-    def __str__(self):
-        return f"Je suis {self.nom} et j'ai {self.energie} points d'énergie"
+    def __repr__(self):
+        return f"<Personnage: '{self.nom}' avec {self.energie} points d'énergie>"
 
 ```
 
 ### Utilisation de notre classe
 
-`dir` est une méthode qui prend une variable en paramètre et qui indique les propriétés/méthodes de notre variable.
-On peut aussi utiliser `help` qui est plus présentable.
+* `dir()` est une fonction qui prend une variable en paramètre et qui indique les propriétés/méthodes de notre variable.
+* `help()` affiche la documentation de notre classe
+* ` __dict__ ` est une propriété qui donne les valeurs des attributs de l'instance.
 
 ```python    
 a = Personnage('Dark Vador')
@@ -126,7 +127,7 @@ Ajoutons une méthode `dialoguer` pour discuter avec un **autre** personnage.
     ```
 
 1. Écrire le code la fonction à l'aide d'un `print` pour commencer disant que `X dialogue avec Y`.
-2. Vérifier le niveau d'énergie, on ne peut pas parler si on est décédé !
+2. Vérifier le niveau d'énergie avant de dialoguer ! Difficile de discuter si on n'a plus d'énergie 😉
 3. Garder son code à gauche, on peut utiliser une instruction `return`
 
 Nous pouvons désormais utiliser le constructeur afin de créer deux **instances** de notre **classe**.
@@ -167,8 +168,6 @@ afin de les mettre dans son sac à dos.
     l'utilisateur de la classe. Un peu comme une voiture, elles ont toutes un capot et une pédale d'accélération.
     L'appui sur l'accélérateur déclenche plusieurs mécanismes à l'intérieur de la voiture, mais du point de vue
     utilisateur, c'est plutôt simple.
-
-*Il y a des corrections sur les dernières méthodes [en bas de ce TP](./script-processing.md#solution)*
 
 !!! tip
     On peut vite imaginer d'autres classes, comme `Arme`, car ramasser un bout de bois ou un sabre laser n'a pas le même
