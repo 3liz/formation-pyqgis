@@ -55,7 +55,9 @@ On peut donc modifier ensuite ce fichier Python afin de rajouter de la logique s
 ou sinon ils peuvent être installés par un dossier ZIP.
 * Afin de développer une extension :
     * Utilisation du Plugin Builder
-    * ou squelette minimum : https://github.com/wonder-sk/qgis-minimal-plugin
+    * ou squelette minimum :
+        * L'original https://github.com/wonder-sk/qgis-minimal-plugin
+        * Le "fork" de la formation https://github.com/Gustry/qgis_minimal_plugin
 * Plugin Reloader permet de simplifier le développement en évitant de recharger QGIS
 * Documentation plugin QGIS Serveur : https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/server.html
 
@@ -133,6 +135,8 @@ Pour la création :
 Pour l'utilisation côté utilisateur :
 
 ![Action sur une couche](media/action-canvas.png)
+
+![Action RAEPA](media/action-raepa.png)
 
 ## Application/script indépendant
 

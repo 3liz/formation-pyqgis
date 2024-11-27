@@ -1,5 +1,12 @@
 # Introduction à la console Python
 
+## Données
+
+Nous allons utiliser un département de la [BDTopo](https://geoservices.ign.fr/bdtopo).
+
+!!! tip
+    Les DROM-COM ou le Territoire de Belfort (90) sont assez légers.
+
 ## Configurer le projet
 
 * Commencer un nouveau projet et enregistrer le.
@@ -24,7 +31,7 @@ Sur cette instance, on a des "propriétés" comme :
 * le nombre de chevaux
 * le nombre de portes
 * la marque
-* le propriétaire (qui peut-être un autre objet "Personne")
+* le propriétaire (qui peut être un autre objet "Personne")
 
 Sur cette instance, on a des "méthodes" :
 

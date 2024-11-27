@@ -13,7 +13,9 @@ Pour créer une extension dans QGIS, il existe deux façons de démarrer :
         * Des tests unitaires
         * Les traductions (multilingue)
     * Très historique, moins mis à jour ces dernières années
-* QGIS Minimal plugin : https://github.com/wonder-sk/qgis-minimal-plugin
+* QGIS Minimal plugin :
+    * Idée originale https://github.com/wonder-sk/qgis-minimal-plugin
+    * "Fork" de la formation https://github.com/Gustry/qgis_minimal_plugin
     * ZIP à télécharger et à extraire
     * Très léger
     * Besoin de **tout** refaire depuis zéro
