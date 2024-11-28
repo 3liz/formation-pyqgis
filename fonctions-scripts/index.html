@@ -696,6 +696,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pour-les-curieux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pour les curieux 🤭
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1386,6 +1395,15 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#pour-les-curieux" class="md-nav__link">
+    <span class="md-ellipsis">
+      Pour les curieux 🤭
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1851,6 +1869,46 @@ pour comprendre le fonctionnement de cette classe.</p>
 <p class="admonition-title">Success</p>
 <p>On a terminé avec ces deux fonctions, c'était pour manipuler les fonctions 😎</p>
 </div>
+<h3 id="pour-les-curieux">Pour les curieux 🤭<a class="headerlink" href="#pour-les-curieux" title="Permanent link">#</a></h3>
+<p>Zoomer sur l'emprise d'une couche, sans la charger dans la légende</p>
+<details class="example">
+<summary>Example</summary>
+<ol>
+<li>Modifions la signature de la fonction, en ajoutant un booléen si on souhaite la couche dans la légende :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">,</span> <span class="n">ajouter_dans_legende</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+</code></pre></div></td></tr></table></div>
+Puis dans cette même fonction, utilisons cette variable :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">if</span> <span class="n">ajouter_dans_legende</span><span class="p">:</span>
+    <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Bravo&#39;</span><span class="p">,</span><span class="s1">&#39;Well done! 👍&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+<span class="c1"># return True</span>
+<span class="k">return</span> <span class="n">layer</span>
+</code></pre></div></td></tr></table></div></li>
+</ol>
+<p>Puis on peut ordonner au <code>QgsMapCanvas</code> de zoomer sur une emprise :
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">hydro</span> <span class="o">=</span> <span class="n">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">,</span> <span class="s1">&#39;ZONES_REGLEMENTEES&#39;</span><span class="p">,</span> <span class="s1">&#39;PARC_OU_RESERVE&#39;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">setExtent</span><span class="p">(</span><span class="n">hydro</span><span class="o">.</span><span class="n">extent</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div></p>
+<p>Ne pas oublier de tenir compte d'une projection différente entre le canevas et la couche.</p>
+<p><em>TODO, à adapter, mais le code est la pour faire une reprojection entre 2 CRS</em>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">extent</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span><span class="o">.</span><span class="n">extent</span><span class="p">()</span>
+<span class="n">crs_layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span>
+<span class="n">crs</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">mapSettings</span><span class="p">()</span><span class="o">.</span><span class="n">destinationCrs</span><span class="p">()</span>
+<span class="n">transformer</span> <span class="o">=</span> <span class="n">QgsCoordinateTransform</span><span class="p">(</span><span class="n">crs_layer</span><span class="p">,</span> <span class="n">crs</span><span class="p">,</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">())</span>
+<span class="n">new_extent</span> <span class="o">=</span> <span class="n">transformer</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">extent</span><span class="p">)</span>
+<span class="n">iface</span><span class="o">.</span><span class="n">mapCanvas</span><span class="p">()</span><span class="o">.</span><span class="n">setExtent</span><span class="p">(</span><span class="n">new_extent</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div></p>
+</details>
 <h2 id="extraction-des-informations-sous-forme-dun-fichier-csv">Extraction des informations sous forme d'un fichier CSV.<a class="headerlink" href="#extraction-des-informations-sous-forme-dun-fichier-csv" title="Permanent link">#</a></h2>
 <h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">#</a></h3>
 <p>On souhaite désormais réaliser une fonction d'export des métadonnées de nos couches au format CSV, avec des tabulations
