@@ -23,19 +23,20 @@ une page sur la
 On peut appeler un traitement en ligne de commande Python :
 
 ```python
-processing.run(
+result = processing.run(
     "native:buffer", 
     {
-        'INPUT':'/chemin/vers/HYDROGRAPHIE/CANALISATION_EAU.shp',
-        'DISTANCE':10,
-        'SEGMENTS':5,
-        'END_CAP_STYLE':0,
-        'JOIN_STYLE':0,
-        'MITER_LIMIT':2,
-        'DISSOLVE':False,
-        'OUTPUT':'TEMPORARY_OUTPUT'
+        'INPUT': '/chemin/vers/HYDROGRAPHIE/CANALISATION_EAU.shp',
+        'DISTANCE': 10,
+        'SEGMENTS': 5,
+        'END_CAP_STYLE': 0,
+        'JOIN_STYLE': 0,
+        'MITER_LIMIT': 2,
+        'DISSOLVE': False,
+        'OUTPUT': 'TEMPORARY_OUTPUT',
     }
 )
+# print(result)
 ```
 
 !!! tip

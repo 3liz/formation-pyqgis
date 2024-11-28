@@ -4,37 +4,62 @@ Pour faire ce chapitre, il faut d'abord avoir une extension de base, à l'aide d
 
 ## QtDesigner
 
+### Mise en page
+
 Créons un fichier QtDesigner comme-ceci : 
 
 ![QtDesigner](media/qt_designer_0.png)
 
 et y ajouter des "widgets" :
 
-!!!important
+!!! important
     Ne tenez pas compte de l'alignement des widgets pour le moment. On fait juste un placement "rapide"
-    verticalement.
+    vertical des widgets.
+
+Dans l'ordre vertical, ce sont ces classes :
+
+| Classe                |
+|-----------------------|
+| `QLabel`              |
+| `QLineEdit`           |
+| `QgsMapLayerComboBox` |
+| `QPlainTextEdit`      |
+| Vertical spacer       |
+| `QDialogButtonBox`    |
 
 ![QtDesigner](media/qt_designer_1.jpg)
 
 Une fois que l'ensemble des "widgets" sont présents, on peut faire un clic droit à droite sur notre `QDialog`,
 puis `Mise en page` et enfin `Verticalement` 🚀
 
+### Ajout d'un bouton dans notre "ButtonBox" en bas
+
+Ajoutons le bouton d'**aide**, dans les propriétés de notre widget `QDialogButtonBox`.
+
+#### Nommage de nos "widgets"
+
+Pour chacun de nos widgets, changeons le nom par défaut de l'objet, propriété `objectName` tout en haut :
+
+| Classe                | Nom par défaut de `objectName` | Nouveau nom pour `objectName` |
+|-----------------------|--------------------------------|-------------------------------|
+| `QLineEdit`           | `lineEdit`                     | `texte_prenom`                |
+| `QgsMapLayerComboBox` | `mMapLayerComboBox`            | `couche`                      |
+| `QPlainTextEdit`      | `plainTextEdit`                | `metadata`                    |
+| `QDialogButtonBox`    | `buttonBox`                    | `button_box`                  |
+
+Cette propriété `objectName` est très importante, car elle détermine l'appellation de notre **propriété** dans
+l'objet `self` pour la suite du TP.
+
 ### Astuces
 
 * Ouvrir la page des "slots/signaux" depuis la barre d'outils et supprimer ceux qui existent.
 
-!!!tip "Pourquoi supprimer les signaux de QtDesigner ?"
+!!! tip "Pourquoi supprimer les signaux de QtDesigner ?"
     Un fichier **QtDesigner** est "gros" fichier XML. Il est difficile, dans le temps, de suivre ces modifications,
     changement…
 
-    Il est, à mon avis, plus simple de garder le fichier XML le plus légr possible, et de garder la logique dans le code
-    Python.
-
-* Faire un clic droit sur "QDialog" à droite et faire une mise en page "vertical".
-
-!!! tip
-    Ne pas changer la propriété `objectName` pour le moment. Nous laissons ceux par défaut. Mais plus tard, vous pourrez
-    faire ce que vous souhaitez 😉
+    Il est, à mon avis, plus simple de garder le fichier XML le plus léger possible, et de garder la logique dans le code
+    Python. Un signal en XML, c'est plusieurs lignes dans le fichier UI, alors que en Python, c'est une seule ligne.
 
 On peut [télécharger](./solution/dialog.ui) la solution si besoin.
 
@@ -53,7 +78,7 @@ from qgis.PyQt import uic
 from pathlib import Path
 
 folder = Path(__file__).resolve().parent
-ui_file = folder / 'dialog.ui'
+ui_file = folder.joinpath('dialog.ui')
 ui_class, _ = uic.loadUiType(ui_file)
 
 
@@ -61,11 +86,15 @@ class MonDialog(ui_class, QDialog):
 
     """ Classe qui représente le dialogue de l'extension. """
     
-    def __init__(self):
+    def __init__(self, parent: QDialog):
         """ Constructeur. """
-        super().__init__()  # Appel du constructeur parent
+        super().__init__(parent)  # Appel du constructeur parent
+        self.parent = parent  # Stockage du parent dans self, on va l'utiliser plus tard, si besoin
         self.setupUi(self)  # Fichier de QtDesigner
 
+        # Quelques propriétés facultatives
+        self.setWindowTitle("Notre super machine à café")
+        # self.setModal(False)  # Utile plus bas si on souhaite ouvrir une autre fenêtre par-dessus
 ```
 
 Modifions la méthode `run` du fichier `__init__.py` en
@@ -74,77 +103,109 @@ Modifions la méthode `run` du fichier `__init__.py` en
     def run(self):
         """ Lors du clic sur le bouton pour lancer la fenêtre de l'extension. """
         from .dialog import MonDialog
-        dialog = MonDialog()
-        dialog.exec()
+        dialog = MonDialog(self.iface.mainWindow())
+        dialog.show()
 ```
 
 Relançons l'extension à l'aide du "plugin reloader" et cliquons sur le bouton.
 
 ## Les signaux et les slots
 
+### Signaux des boutons de la fenêtre
+
+!!! tip
+    N'hésitez pas à relire le chapitre sur les [signaux](./signal-slot.md).
+
 Connectons le signal `clicked` du bouton "Annuler" dans le constructeur `__init__` : 
 
 ```python
-self.buttonBox.button(QDialogButtonBox.StandardButton.Cancel).clicked.connect(self.close)
+self.button_box.button(QDialogButtonBox.StandardButton.Cancel).clicked.connect(self.close)
 ```
 
-On dit que `clicked` est un **signal**, auquel on connecte le **slot** `close`. 
+On dit que `clicked` est un **signal**, auquel on connecte le **slot** `close`.
 
 Connectons-le **signal** `clicked` du bouton "Accepter" à notre propre **slot** (qui est une fonction) :
 
 ```python
-self.buttonBox.button(QDialogButtonBox.StandardButton.Ok).clicked.connect(self.click_ok)
+self.button_box.button(QDialogButtonBox.StandardButton.Ok).clicked.connect(self.click_ok)
 ```
 
-et ajoutons notre propre fonction `click_ok` pour quitter la fenêtre et en affichant la saisie de
+Ensuite, ajoutons notre propre fonction `click_ok` pour quitter la fenêtre et en affichant la saisie de
 l'utilisateur dans la QgsMessageBar de QGIS.
 
-Le widget de saisie est un QLineEdit : [documentation](https://doc.qt.io/qt-5/qlineedit.html)
+Le widget de saisie est un QLineEdit : [documentation Qt](https://doc.qt.io/qt-5/qlineedit.html)
 
 ```python
 def click_ok(self):
     """ Clic sur le bouton OK afin de fermer la fenêtre. """
-    message = self.lineEdit.text()
-    iface.messageBar().pushMessage('Notre plugin', message, Qgis.Success)
+    message = self.texte_prenom.text()
+    iface.messageBar().pushMessage('Notre extension', message, Qgis.Success)
+    self.accept()
 ```
 
 Faire le test dans QGIS avec une saisie de l'utilisateur et fermer la fenêtre.
+
+#### Clic sur le bouton d'aide
+
+```python
+# Dans le constructeur :
+self.button_box.button(QDialogButtonBox.StandardButton.Help).clicked.connect(self.open_help)
+
+# Puis la fonction :
+def open_help(self):
+    """ Open the online help. """
+    from qgis.PyQt.QtGui import QDesktopServices
+    from qgis.PyQt.QtCore import QUrl
+    QDesktopServices.openUrl(QUrl('https://www.youtube.com/watch?v=AdQ3JDLlmPI'))
+```
+
+### Signaux et propriétés du formulaire de saisie
 
 Continuons en rendant en lecture seule le gros bloc de texte et affichons à l'intérieur la description de
 la couche qui est sélectionnée dans le menu déroulant.
 
 Documentation :
 
-* [QPlainTextEdit](https://doc.qt.io/qt-5/qplaintextedit.html)
-* [QgsMapLayerComboBox](https://qgis.org/api/classQgsMapLayerComboBox.html)
+* [QPlainTextEdit](https://doc.qt.io/qt-5/qplaintextedit.html), on va utiliser `appendPlainText` et `clear`.
+* [QgsMapLayerComboBox](https://qgis.org/api/classQgsMapLayerComboBox.html), on va utiliser `currentLayer`.
 
 Dans la fonction `__init__` du fichier `dialog.py` :
 
 ```python
-self.plainTextEdit.setReadOnly(True)
-self.mMapLayerComboBox.layerChanged.connect(self.layer_changed)
+self.metadata.setReadOnly(True)
+self.couche.layerChanged.connect(self.layer_changed)
 ```
 
 Et la nouvelle fonction qui va se charger de mettre à jour le texte :
 
 ```python
-
 def layer_changed(self):
     """ Permet de mettre à jour l'UI selon la couche dans le menu déroulant. """
-    self.plainTextEdit.clear()
-    layer = self.mMapLayerComboBox.currentLayer()
-    if layer:
-        self.plainTextEdit.appendPlainText(f"{layer.name()} : {layer.crs().authid()}")
-    else:
-        self.plainTextEdit.appendPlainText("Pas de couche")
-
+    self.metadata.clear()
+    layer = self.couche.currentLayer()
+    self.metadata.appendPlainText(f"{layer.name()} : {layer.crs().authid()}")
 ```
+
+??? "La solution plus complète"
+    ```python
+    layer = self.couche.currentLayer()
+    if layer:
+        self.metadata.appendPlainText(f"{layer.name()} : {layer.crs().authid()}")
+    else:
+        self.metadata.appendPlainText("Pas de couche")
+    ```
 
 On peut donc désormais cumuler l'ensemble des chapitres précédents pour lancer des algorithmes, manipuler les
 données, etc.
 
 !!! tip "Bonus"
-    Ajouter un nouveau bouton pour ouvrir une fenêtre d'un dialogue Processing 🚀
+    Le texte actuel concernant les métadonnées est "limité". N'hésitez pas à compléter, un peu comme lors de l'exercice
+    avec le fichier CSV, [pour rappel](./fonctions-scripts.md#extraction-des-informations-sous-forme-dun-fichier-csv) :
+
+    * La source de la couche
+    * Le nombre d'entité
+    * Des informations que l'on retrouve dans le panneau "Informations" des propriétés d'une couche
+    * …
 
 ## Solution
 
@@ -158,7 +219,7 @@ données, etc.
     from pathlib import Path
     
     folder = Path(__file__).resolve().parent
-    ui_file = folder / 'dialog.ui'
+    ui_file = folder.joinpath('dialog.ui')
     ui_class, _ = uic.loadUiType(ui_file)
     
     
@@ -173,26 +234,26 @@ données, etc.
             self.setupUi(self)  # Fichier de QtDesigner
     
             # Connectons les signaux
-            self.buttonBox.button(QDialogButtonBox.StandardButton.Ok).clicked.connect(self.click_ok)
-            self.buttonBox.button(QDialogButtonBox.StandardButton.Cancel).clicked.connect(self.close)
+            self.button_box.button(QDialogButtonBox.StandardButton.Ok).clicked.connect(self.click_ok)
+            self.button_box.button(QDialogButtonBox.StandardButton.Cancel).clicked.connect(self.close)
     
-            self.plainTextEdit.setReadOnly(True)
-            self.mMapLayerComboBox.layerChanged.connect(self.layer_changed)
+            self.metadata.setReadOnly(True)
+            self.couche.layerChanged.connect(self.layer_changed)
     
         def click_ok(self):
             """ Clic sur le bouton OK afin de fermer la fenêtre. """
             self.close()
-            message = self.lineEdit.text()
-            iface.messageBar().pushMessage('Notre plugin', message, Qgis.Success)
+            message = self.texte_prenom.text()
+            iface.messageBar().pushMessage('Notre extension', message, Qgis.Success)
     
         def layer_changed(self):
             """ Permet de mettre à jour l'UI selon la couche dans le menu déroulant. """
-            self.plainTextEdit.clear()
-            layer = self.mMapLayerComboBox.currentLayer()
+            self.metadata.clear()
+            layer = self.couche.currentLayer()
             if layer:
-                self.plainTextEdit.appendPlainText(f"{layer.name()} : {layer.crs().authid()}")
+                self.metadata.appendPlainText(f"{layer.name()} : {layer.crs().authid()}")
             else:
-                self.plainTextEdit.appendPlainText("Pas de couche")
+                self.metadata.appendPlainText("Pas de couche")
     
     ```
 
@@ -256,13 +317,14 @@ On peut ensuite créer un dossier `resources` puis `icons` afin d'y déplacer un
 !!! warning
     Attention à la taille de vos fichiers pour une petite icône 😉
 
-Dans une extension graphique pour les icônes :
+### Dans une extension graphique pour les icônes
 
 ```python
-# En haut du fichier
+# En haut du fichier, on ajoute les imports nécessaires
 from qgis.PyQt.QtGui import QIcon
 from .qgis_plugin_tools import resources_path
 
+# Plus bas dans le code
 # Quand nécessaire, à remplacer la QAction existante. Il s'agit du premier paramètre avec QIcon
 self.action = QAction(
     QIcon(str(resources_path('icons', 'icon.svg'))),
@@ -270,19 +332,104 @@ self.action = QAction(
     self.iface.mainWindow())
 ```
 
-Dans une extension Processing, dans le **provider** et les **algorithmes** :
+!!! tip
+    Ce qu'il faut retenir, c'est l'usage de `QIcon(str(resources_path('icons', 'icon.svg')))` si l'on souhaite utiliser
+    une icône dans autre endroit de l'extension.
+
+### Dans une extension "Processing"
+
+Dans le **provider** et les **algorithmes** :
 
 ```python
 # En haut du fichier
 from ..qgis_plugin_tools import resources_path
 
-# Dans la classe
-def icon(self):
+# Dans la classe, on ajoute/modifie la méthode 'icon'
+def icon(self) -> QIcon:
     return QIcon(str(resources_path("icons", "icon.png")))
 ```
 
-## Ajout d'un panneau
+## Utilisation d'une icône provenant de QGIS
 
-Un fichier QtDesigner [dock.ui](./solution/dock.ui) est déjà prêt pour le téléchargement.
+À l'aide de l'extension "PyQGIS Resource Browser", rechercher une icône concordant avec bouton :
 
-Créons un fichier `dock.py`
+* `new` pour trouver les icônes ayant la petite étoile jaune
+* `select` pour trouver les icônes ayant la notion de sélection, avec le fond jaune
+* `delete` ou `remove` pour la suppression
+* …
+
+On peut ensuite faire un clic-droit, puis coller son **chemin**.
+
+Ensuite, quand on souhaite utiliser l'icône :
+
+```python
+# En haut
+from qgis.PyQt.QtGui import QIcon
+
+# Ensuite
+icon = QIcon(":/images/themes/default/algorithms/mAlgorithmBuffer.svg")
+
+# Par exemple sur un bouton QPushButton
+self.un_bouton.setIcon(QIcon(":/images/themes/default/algorithms/mAlgorithmBuffer.svg"))
+```
+
+## Ajouter un bouton pour lancer Processing
+
+Nous souhaitons ajouter 2 boutons :
+
+![Les deux nouveaux boutons](./media/qt_designer_2.jpg)
+
+| Classe        | `objectName`       |
+|---------------|--------------------|
+| `QPushButton` | `btn_traitement_1` |
+| `QPushButton` | `btn_traitement_2` |
+
+On peut faire la mise en page vertical dans le `QGroupBox`.
+
+Ajoutons les icônes et infobulles si nécessaires, dans le constructeur :
+
+```python
+self.btn_traitement_1.setToolTip("Permet de lancer l'algorithme des tampons sur la couche ci-dessus avec un buffer de 2km")
+self.btn_traitement_1.setIcon(QIcon(":/images/themes/default/algorithms/mAlgorithmBuffer.svg"))
+self.btn_traitement_1.clicked.connect(self.traitement_1_clicked)
+```
+
+### Lancer le dialogue de Processing
+
+Pour les imports :
+
+```python
+from qgis.core import QgsVectorLayer
+from qgis import processing
+```
+
+Pour le code dans la fonction :
+
+```python
+def traitement_1_clicked(self):
+    """ Lancement de la fenêtre de QGIS Processing. """
+    layer = self.couche.currentLayer()
+
+    # Les pré-requis pour continuer
+    # On sort de la fonction si on ne peut pas continuer
+    if not isinstance(layer, QgsVectorLayer):
+        return
+
+    if not layer.isSpatial():
+        return
+
+    dialog = processing.createAlgorithmDialog(
+        "native:buffer",
+        {
+            'INPUT': layer,
+            'DISTANCE': 2000,
+            'OUTPUT': 'TEMPORARY_OUTPUT'
+        }
+    )
+    dialog.show()
+```
+
+Pour rappel, nous ne sommes pas obligé d'ouvrir la fenêtre de Processing, on peut directement faire `processing.run`,
+lire le [chapitre précédent](./script-processing.md#utiliser-processing-en-python-avec-un-algorithme-existant). Il ne
+faut pas oublier de donner la variable `layer` à notre `INPUT` si vous copiez/coller le code de `processing.run` du
+chapitre précédent.
