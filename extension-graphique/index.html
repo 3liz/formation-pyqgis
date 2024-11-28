@@ -292,10 +292,10 @@
     
     
       <li class="md-tabs__item">
-        <a href="../postgis/" class="md-tabs__link">
+        <a href="../migration-majeure/" class="md-tabs__link">
           
   
-  Sujet PyGIS thématique
+  Sujets PyQGIS thématiques
 
         </a>
       </li>
@@ -956,7 +956,16 @@
         <li class="md-nav__item">
   <a href="#un-dossier-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      Un dossier resources
+      Un dossier "resources"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ajout-dun-panneau" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ajout d'un panneau
     </span>
   </a>
   
@@ -1044,7 +1053,7 @@
             
   
   <span class="md-ellipsis">
-    Sujet PyGIS thématique
+    Sujets PyQGIS thématiques
   </span>
   
 
@@ -1054,7 +1063,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
-            Sujet PyGIS thématique
+            Sujets PyQGIS thématiques
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1065,11 +1074,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../postgis/" class="md-nav__link">
+      <a href="../migration-majeure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    PostGIS
+    Migration majeur
   </span>
   
 
@@ -1086,11 +1095,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../migration-majeure/" class="md-nav__link">
+      <a href="../postgis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Migration majeur
+    PostGIS
   </span>
   
 
@@ -1283,7 +1292,16 @@
         <li class="md-nav__item">
   <a href="#un-dossier-resources" class="md-nav__link">
     <span class="md-ellipsis">
-      Un dossier resources
+      Un dossier "resources"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ajout-dun-panneau" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ajout d'un panneau
     </span>
   </a>
   
@@ -1313,23 +1331,36 @@
 <p>Créons un fichier QtDesigner comme-ceci : </p>
 <p><img alt="QtDesigner" src="../media/qt_designer_0.png" /></p>
 <p>et y ajouter des "widgets" :</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Ne tenez pas compte de l'alignement des widgets pour le moment. On fait juste un placement "rapide"
+verticalement.</p>
+</div>
 <p><img alt="QtDesigner" src="../media/qt_designer_1.jpg" /></p>
+<p>Une fois que l'ensemble des "widgets" sont présents, on peut faire un clic droit à droite sur notre <code>QDialog</code>,
+puis <code>Mise en page</code> et enfin <code>Verticalement</code> 🚀</p>
 <h3 id="astuces">Astuces<a class="headerlink" href="#astuces" title="Permanent link">#</a></h3>
 <ul>
-<li>
-<p>Ouvrir la page des "slots/signaux" depuis la barre d'outils et supprimer ceux qui existent.</p>
-</li>
-<li>
-<p>Faire un clic droit sur "QDialog" à droite et faire une mise en page "vertical".</p>
-</li>
+<li>Ouvrir la page des "slots/signaux" depuis la barre d'outils et supprimer ceux qui existent.</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Pourquoi supprimer les signaux de QtDesigner ?</p>
+<p>Un fichier <strong>QtDesigner</strong> est "gros" fichier XML. Il est difficile, dans le temps, de suivre ces modifications,
+changement…</p>
+<p>Il est, à mon avis, plus simple de garder le fichier XML le plus légr possible, et de garder la logique dans le code
+Python.</p>
+</div>
+<ul>
+<li>Faire un clic droit sur "QDialog" à droite et faire une mise en page "vertical".</li>
 </ul>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Ne pas changer la propriété <code>objectName</code> pour le moment.</p>
+<p>Ne pas changer la propriété <code>objectName</code> pour le moment. Nous laissons ceux par défaut. Mais plus tard, vous pourrez
+faire ce que vous souhaitez 😉</p>
 </div>
 <p>On peut <a href="../solution/dialog.ui">télécharger</a> la solution si besoin.</p>
 <ul>
-<li>Enregistrer le fichier en <code>dialog.ui</code></li>
+<li>Enregistrer le fichier en <code>dialog.ui</code> dans votre dossier contenant l'ensemble des fichiers.</li>
 </ul>
 <h2 id="la-classe-qui-accompagne">La classe qui accompagne<a class="headerlink" href="#la-classe-qui-accompagne" title="Permanent link">#</a></h2>
 <p>Créons un fichier <code>dialog.py</code> avec le contenu suivant :</p>
@@ -1348,7 +1379,10 @@
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
 <span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
 <span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
 <span class="kn">from</span> <span class="nn">qgis.PyQt</span> <span class="kn">import</span> <span class="n">uic</span>
@@ -1361,7 +1395,10 @@
 
 <span class="k">class</span> <span class="nc">MonDialog</span><span class="p">(</span><span class="n">ui_class</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">):</span>
 
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Classe qui représente le dialogue de l&#39;extension. &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Constructeur. &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>  <span class="c1"># Appel du constructeur parent</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># Fichier de QtDesigner</span>
 </code></pre></div></td></tr></table></div>
@@ -1369,7 +1406,9 @@
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Lors du clic sur le bouton pour lancer la fenêtre de l&#39;extension. &quot;&quot;&quot;</span>
         <span class="kn">from</span> <span class="nn">.dialog</span> <span class="kn">import</span> <span class="n">MonDialog</span>
         <span class="n">dialog</span> <span class="o">=</span> <span class="n">MonDialog</span><span class="p">()</span>
         <span class="n">dialog</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
@@ -1377,18 +1416,20 @@
 <p>Relançons l'extension à l'aide du "plugin reloader" et cliquons sur le bouton.</p>
 <h2 id="les-signaux-et-les-slots">Les signaux et les slots<a class="headerlink" href="#les-signaux-et-les-slots" title="Permanent link">#</a></h2>
 <p>Connectons le signal <code>clicked</code> du bouton "Annuler" dans le constructeur <code>__init__</code> : </p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Cancel</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Cancel</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>On dit que <code>clicked</code> est un <strong>signal</strong>, auquel on connecte le <strong>slot</strong> <code>close</code>. </p>
 <p>Connectons-le <strong>signal</strong> <code>clicked</code> du bouton "Accepter" à notre propre <strong>slot</strong> (qui est une fonction) :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_ok</span><span class="p">)</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_ok</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>et ajoutons notre propre fonction <code>click_ok</code> pour quitter la fenêtre et en affichant la saisie de
 l'utilisateur dans la QgsMessageBar de QGIS.</p>
 <p>Le widget de saisie est un QLineEdit : <a href="https://doc.qt.io/qt-5/qlineedit.html">documentation</a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Clic sur le bouton OK afin de fermer la fenêtre. &quot;&quot;&quot;</span>
     <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
     <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre plugin&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1412,7 +1453,9 @@ la couche qui est sélectionnée dans le menu déroulant.</p>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">layer_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">layer_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Permet de mettre à jour l&#39;UI selon la couche dans le menu déroulant. &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
     <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mMapLayerComboBox</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
     <span class="k">if</span> <span class="n">layer</span><span class="p">:</span>
@@ -1465,7 +1508,12 @@ données, etc.</p>
 <span class="normal">34</span>
 <span class="normal">35</span>
 <span class="normal">36</span>
-<span class="normal">37</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
 <span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
 <span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
 <span class="kn">from</span> <span class="nn">qgis.PyQt</span> <span class="kn">import</span> <span class="n">uic</span>
@@ -1478,24 +1526,29 @@ données, etc.</p>
 
 <span class="k">class</span> <span class="nc">MonDialog</span><span class="p">(</span><span class="n">ui_class</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">):</span>
 
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Classe qui représente le dialogue de l&#39;extension. &quot;&quot;&quot;</span>
+
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Constructeur. &quot;&quot;&quot;</span>
         <span class="n">_</span> <span class="o">=</span> <span class="n">parent</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># Fichier de QtDesigner</span>
 
         <span class="c1"># Connectons les signaux</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_ok</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Cancel</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">click_ok</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">buttonBox</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Cancel</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">)</span>
 
         <span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">setReadOnly</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">mMapLayerComboBox</span><span class="o">.</span><span class="n">layerChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_changed</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Clic sur le bouton OK afin de fermer la fenêtre. &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">lineEdit</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
         <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre plugin&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">layer_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet de mettre à jour l&#39;UI selon la couche dans le menu déroulant. &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">plainTextEdit</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mMapLayerComboBox</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">layer</span><span class="p">:</span>
@@ -1506,7 +1559,7 @@ données, etc.</p>
 </details>
 <h2 id="organisation-du-code">Organisation du code<a class="headerlink" href="#organisation-du-code" title="Permanent link">#</a></h2>
 <p>Il ne faut pas hésiter à créer des fichiers afin de séparer le code.</p>
-<p>On peut aussi créer des dossiers afin d'y mettre plusieurs fichiers Pythons. Un dossier en Python se nomme un
+<p>On peut aussi créer des dossiers afin d'y mettre plusieurs fichiers Python. Un dossier en Python se nomme un
 <strong>module</strong>. Pour faire un module compatible, il faut ajouter un fichier <code>__init__.py</code> même s’il n'y a rien
 dedans.</p>
 <div class="admonition warning">
@@ -1528,7 +1581,7 @@ correctement. Un bon <a href="../ide-git/#utilisation-dun-ide">IDE</a> peut sign
 </div>
 <p>Créer un fichier <code>plugin.py</code> et ajouter le contenu en collant. Il est bien de vérifier les imports dans les
 deux fichiers.</p>
-<h2 id="un-dossier-resources">Un dossier resources<a class="headerlink" href="#un-dossier-resources" title="Permanent link">#</a></h2>
+<h2 id="un-dossier-resources">Un dossier "resources"<a class="headerlink" href="#un-dossier-resources" title="Permanent link">#</a></h2>
 <p>On peut créer un fichier <code>qgis_plugin_tools.py</code> à la racine de notre extension afin d'y ajouter des <strong>outils</strong> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1568,12 +1621,12 @@ deux fichiers.</p>
     <span class="k">return</span> <span class="n">plugin_path</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
 
 <span class="c1"># On peut ajouter ici une méthode qui charge un fichier UI qui se trouve dans le dossier &quot;UI&quot;</span>
-<span class="c1"># et retourne la classe directement</span>
+<span class="c1"># et retourne la classe directement.</span>
 </code></pre></div></td></tr></table></div>
 <p>On peut ensuite créer un dossier <code>resources</code> puis <code>icons</code> afin d'y déplacer un fichier PNG, JPG, SVG.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>Attention à la taille de vos fichiers pour une petite icône</p>
+<p>Attention à la taille de vos fichiers pour une petite icône 😉</p>
 </div>
 <p>Dans une extension graphique pour les icônes :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1607,6 +1660,9 @@ deux fichiers.</p>
 <span class="k">def</span> <span class="nf">icon</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">QIcon</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">resources_path</span><span class="p">(</span><span class="s2">&quot;icons&quot;</span><span class="p">,</span> <span class="s2">&quot;icon.png&quot;</span><span class="p">)))</span>
 </code></pre></div></td></tr></table></div>
+<h2 id="ajout-dun-panneau">Ajout d'un panneau<a class="headerlink" href="#ajout-dun-panneau" title="Permanent link">#</a></h2>
+<p>Un fichier QtDesigner <a href="./solution/dock.ui">dock.ui</a> est déjà prêt pour le téléchargement.</p>
+<p>Créons un fichier <code>dock.py</code></p>
 
 
 

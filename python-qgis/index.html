@@ -292,10 +292,10 @@
     
     
       <li class="md-tabs__item">
-        <a href="../postgis/" class="md-tabs__link">
+        <a href="../migration-majeure/" class="md-tabs__link">
           
   
-  Sujet PyGIS thématique
+  Sujets PyQGIS thématiques
 
         </a>
       </li>
@@ -1083,7 +1083,7 @@
             
   
   <span class="md-ellipsis">
-    Sujet PyGIS thématique
+    Sujets PyQGIS thématiques
   </span>
   
 
@@ -1093,7 +1093,7 @@
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
-            Sujet PyGIS thématique
+            Sujets PyQGIS thématiques
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -1104,11 +1104,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../postgis/" class="md-nav__link">
+      <a href="../migration-majeure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    PostGIS
+    Migration majeur
   </span>
   
 
@@ -1125,11 +1125,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../migration-majeure/" class="md-nav__link">
+      <a href="../postgis/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Migration majeur
+    PostGIS
   </span>
   
 
@@ -1425,8 +1425,12 @@ On peut donc modifier ensuite ce fichier Python afin de rajouter de la logique s
   téléchargement, 
 ou sinon ils peuvent être installés par un dossier ZIP.</li>
 <li>Afin de développer une extension :<ul>
-<li>Utilisation du Plugin Builder</li>
-<li>ou squelette minimum : <a href="https://github.com/wonder-sk/qgis-minimal-plugin">https://github.com/wonder-sk/qgis-minimal-plugin</a></li>
+<li>Utilisation du Plugin Builder <a href="https://github.com/g-sherman/Qgis-Plugin-Builder/">https://github.com/g-sherman/Qgis-Plugin-Builder/</a></li>
+<li>ou squelette minimum :<ul>
+<li>L'original <a href="https://github.com/wonder-sk/qgis-minimal-plugin">https://github.com/wonder-sk/qgis-minimal-plugin</a></li>
+<li>Le "fork" de la formation <a href="https://github.com/Gustry/qgis_minimal_plugin">https://github.com/Gustry/qgis_minimal_plugin</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li>Plugin Reloader permet de simplifier le développement en évitant de recharger QGIS</li>
@@ -1438,7 +1442,7 @@ ou sinon ils peuvent être installés par un dossier ZIP.</li>
 <p>On peut remarquer les plugins <code>DataPlotly</code>, <code>QuickOSM</code> etc.</p>
 <p>Ajout de Processing à un plugin QGIS :</p>
 <ul>
-<li>soit lors du plugin builder</li>
+<li>soit lors du plugin builder <a href="https://github.com/g-sherman/Qgis-Plugin-Builder/">https://github.com/g-sherman/Qgis-Plugin-Builder/</a></li>
 <li>ou manuellement en suivant la documentation pour l'ajout à un plugin existant :
   <a href="https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/processing.html">https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/processing.html</a> </li>
 </ul>
@@ -1490,6 +1494,7 @@ d'écrire les actions en Python.</p>
 <p><img alt="Action sur une couche" src="../media/action.png" /></p>
 <p>Pour l'utilisation côté utilisateur :</p>
 <p><img alt="Action sur une couche" src="../media/action-canvas.png" /></p>
+<p><img alt="Action RAEPA" src="../media/action-raepa.png" /></p>
 <h2 id="applicationscript-independant">Application/script indépendant<a class="headerlink" href="#applicationscript-independant" title="Permanent link">#</a></h2>
 <p>Sans lancer QGIS graphiquement, on peut utiliser la librairie QGIS dans nos scripts Python. On peut donc créer
 notre propre application graphique ou notre propre exécutable et ainsi utiliser les fonctions de QGIS.
