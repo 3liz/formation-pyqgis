@@ -563,7 +563,7 @@ def decomposer(entier, diviser_par):
 ```
 
 * Il se peut que l'on ne connaisse pas à l'avance le nombre précis d'arguments dans une fonction.
-	* `args` est utilisé pour passer un nombre indéterminé d'argument à la fonction
+	* `args` est utilisé pour passer un nombre indéterminé d'arguments à la fonction
 	* `kwargs` est utilisé pour un nombre indéterminé d'arguments nommés
 
 ```python
@@ -580,7 +580,7 @@ une_fonction(1,2,3, text='Ma phrase')
 
 ## POO : Programmation Orientée Objet
 
-Pour l'explication théorique, lire l'introduction dans le chapitre de [la console](console.md##rappel-sur-la-poo).
+Pour l'explication théorique, lire l'introduction dans le chapitre de [la console](console.md#rappel-sur-la-poo).
 
 On peut introduire l'utilisation de la POO à l'aide de l'objet `Path`. La documentation de cette classe se trouve
 [en ligne](https://docs.python.org/3/library/pathlib.html).
@@ -662,7 +662,7 @@ possibilités.
 
 ## "Signal" et "slot"
 
-Lire le passage dans [Fonction et scripts](./fonctions-scripts.md#connection-dun-signal-à-une-fonction).
+Lire le passage dans [Signaux et slots](./signal-slot.md).
 
 ## Terminologie
 

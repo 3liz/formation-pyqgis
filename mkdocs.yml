@@ -25,6 +25,7 @@ nav:
       - Formulaire: formulaire.md
     - Utilisation avancé:
       - Écriture de notre classe en POO: ecriture-classe-poo.md
+      - Les signaux et slots: signal-slot.md
       - Script Processing: script-processing.md
       - Extension Générique: extension-generique.md
       - Extension Graphique: extension-graphique.md

@@ -511,18 +511,3 @@ iface.messageBar().pushSuccess(
     ).format(output_file.parent, output_file)
 )
 ```
-
-## Connection d'un signal à une fonction
-
-Nous avons pu voir que dans la documentation des librairies **Qt** et **QGIS**, il y a une section **Signals**.
-
-Cela sert à déclencher du code Python lorsqu'un signal est émis.
-
-Par exemple, dans la classe `QgsMapLayer`, cherchons un signal qui est émis **après** (before) que la session d'édition
-commence.
-
-```python
-variable_de_lobjet.nom_du_signal.connect(nom_de_la_fonction)
-```
-
-Note, il ne faut pas écrire `nom_de_la_fonction()` car on ne souhaite pas **appeler** la fonction, juste **connecter**.
