@@ -16,7 +16,7 @@ Pour créer une extension dans QGIS, il existe deux façons de démarrer :
     * https://github.com/g-sherman/Qgis-Plugin-Builder/
 * QGIS Minimal plugin :
     * Idée originale https://github.com/wonder-sk/qgis-minimal-plugin
-    * "Fork" de la formation https://github.com/Gustry/qgis_minimal_plugin
+    * "Fork" pour la formation https://github.com/Gustry/qgis_minimal_plugin
     * ZIP à télécharger et à extraire
     * Très léger
     * Besoin de **tout** refaire depuis zéro
@@ -34,6 +34,11 @@ Dans les deux cas, le résultat doit être dans le dossier `python/plugins` du p
 Exemple d'utilisation d'un panneau qui présentent les algorithmes "Processing" :
 
 ![RAEPA](./media/gobs.png)
+
+### Le fichier `metadata.txt`
+
+[Liste des valeurs possibles](https://docs.qgis.org/3.34/en/docs/pyqgis_developer_cookbook/plugins/plugins.html#metadata-txt)
+dans un fichier `metadata.txt`
 
 ## Extensions utiles
 
