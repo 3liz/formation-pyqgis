@@ -260,6 +260,42 @@ for shape in shapes:
 !!! success
     On a terminé avec ces deux fonctions, c'était pour manipuler les fonctions 😎
 
+### Pour les curieux 🤭
+
+Zoomer sur l'emprise d'une couche, sans la charger dans la légende
+
+??? example
+    1. Modifions la signature de la fonction, en ajoutant un booléen si on souhaite la couche dans la légende :
+    ```python
+    def charger_couche(bd_topo, thematique, couche, ajouter_dans_legende = True):
+    ```
+    Puis dans cette même fonction, utilisons cette variable :
+    ```python
+    if ajouter_dans_legende:
+        QgsProject.instance().addMapLayer(layer)
+        iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.Success)
+    # return True
+    return layer
+    ```
+
+    Puis on peut ordonner au `QgsMapCanvas` de zoomer sur une emprise :
+    ```python
+    hydro = charger_couche(bd_topo, 'ZONES_REGLEMENTEES', 'PARC_OU_RESERVE', False)
+    iface.mapCanvas().setExtent(hydro.extent())
+    ```
+
+    Ne pas oublier de tenir compte d'une projection différente entre le canevas et la couche.
+
+    _TODO, à adapter, mais le code est la pour faire une reprojection entre 2 CRS_
+    ```python
+    extent = iface.activeLayer().extent()
+    crs_layer = iface.activeLayer().crs()
+    crs = iface.mapCanvas().mapSettings().destinationCrs()
+    transformer = QgsCoordinateTransform(crs_layer, crs, QgsProject.instance())
+    new_extent = transformer.transform(extent)
+    iface.mapCanvas().setExtent(new_extent)
+    ```
+
 ## Extraction des informations sous forme d'un fichier CSV.
 
 ### Introduction
