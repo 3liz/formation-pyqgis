@@ -924,6 +924,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../signal-slot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Les signaux et slots
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../script-processing/" class="md-nav__link">
         
   
@@ -2057,14 +2078,6 @@ retournent systématiquement un tuple avec un code d'erreur et un message si né
     <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_file</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<h2 id="connection-dun-signal-a-une-fonction">Connection d'un signal à une fonction<a class="headerlink" href="#connection-dun-signal-a-une-fonction" title="Permanent link">#</a></h2>
-<p>Nous avons pu voir que dans la documentation des librairies <strong>Qt</strong> et <strong>QGIS</strong>, il y a une section <strong>Signals</strong>.</p>
-<p>Cela sert à déclencher du code Python lorsqu'un signal est émis.</p>
-<p>Par exemple, dans la classe <code>QgsMapLayer</code>, cherchons un signal qui est émis <strong>après</strong> (before) que la session d'édition
-commence.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">variable_de_lobjet</span><span class="o">.</span><span class="n">nom_du_signal</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">nom_de_la_fonction</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<p>Note, il ne faut pas écrire <code>nom_de_la_fonction()</code> car on ne souhaite pas <strong>appeler</strong> la fonction, juste <strong>connecter</strong>.</p>
 
 
 

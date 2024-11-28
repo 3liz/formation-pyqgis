@@ -12,13 +12,13 @@
         <meta name="author" content="3Liz">
       
       
-        <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/ecriture-classe-poo/">
+        <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/signal-slot/">
       
       
-        <link rel="prev" href="../formulaire/">
+        <link rel="prev" href="../ecriture-classe-poo/">
       
       
-        <link rel="next" href="../signal-slot/">
+        <link rel="next" href="../script-processing/">
       
       
       <link rel="icon" href="../media/logo-qgis.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Écriture de notre classe en POO - Formation PyQGIS</title>
+        <title>Les signaux et slots - Formation PyQGIS</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#notion-sur-la-poo-en-python" class="md-skip">
+        <a href="#les-signaux-et-les-slots" class="md-skip">
           Aller au contenu
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Écriture de notre classe en POO
+              Les signaux et slots
             
           </span>
         </div>
@@ -274,7 +274,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="./" class="md-tabs__link">
+        <a href="../ecriture-classe-poo/" class="md-tabs__link">
           
   
   Utilisation avancé
@@ -782,6 +782,27 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../ecriture-classe-poo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Écriture de notre classe en POO
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -791,12 +812,14 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
   
   <span class="md-ellipsis">
-    Écriture de notre classe en POO
+    Les signaux et slots
   </span>
   
 
@@ -807,7 +830,7 @@
         
   
   <span class="md-ellipsis">
-    Écriture de notre classe en POO
+    Les signaux et slots
   </span>
   
 
@@ -819,6 +842,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -827,51 +852,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#notion-sur-la-poo-en-python" class="md-nav__link">
+  <a href="#definition" class="md-nav__link">
     <span class="md-ellipsis">
-      Notion sur la POO en Python
+      Définition
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Notion sur la POO en Python">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#exemple" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exemple
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utilisation-de-notre-classe" class="md-nav__link">
-    <span class="md-ellipsis">
-      Utilisation de notre classe
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ajouter-dautres-methodes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ajouter d'autres méthodes
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#syntaxe" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
     </span>
   </a>
   
@@ -881,27 +882,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../signal-slot/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Les signaux et slots
-  </span>
-  
-
-      </a>
     </li>
   
 
@@ -1210,6 +1190,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1218,51 +1200,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#notion-sur-la-poo-en-python" class="md-nav__link">
+  <a href="#definition" class="md-nav__link">
     <span class="md-ellipsis">
-      Notion sur la POO en Python
+      Définition
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="Notion sur la POO en Python">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#exemple" class="md-nav__link">
-    <span class="md-ellipsis">
-      Exemple
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utilisation-de-notre-classe" class="md-nav__link">
-    <span class="md-ellipsis">
-      Utilisation de notre classe
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#ajouter-dautres-methodes" class="md-nav__link">
-    <span class="md-ellipsis">
-      Ajouter d'autres méthodes
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
+  <a href="#syntaxe" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution
+      Syntaxe
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#exemple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exemple
     </span>
   </a>
   
@@ -1286,32 +1244,37 @@
   
 
 
-  <h1>Écriture de notre classe en POO</h1>
-
-<h2 id="notion-sur-la-poo-en-python">Notion sur la POO en Python<a class="headerlink" href="#notion-sur-la-poo-en-python" title="Permanent link">#</a></h2>
-<p>Le framework Processing utilise le concept de la <strong>P</strong>rogrammation <strong>O</strong>rientée <strong>O</strong>bjet. Il existe un
-<a href="https://openclassrooms.com/fr/courses/4302126-decouvrez-la-programmation-orientee-objet-avec-python">tutoriel</a>
-sur le site d'OpenClassRooms sur le sujet.</p>
-<p>Mais depuis le début de la formation, nous l'utilisons sans trop le savoir. Les objets <code>Qgs*</code>, comme
-<code>QgsVectorLayer</code> utilisent le principe de la POO.</p>
-<p>On a pu créer des objets QgsVectorLayer en appelant son <strong>constructeur</strong> :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsVectorLayer</span>
-
-<span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;C:/chemin/vers/un/fichier.gpkg|layername=communes&quot;</span><span class="p">,</span> <span class="s2">&quot;communes&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
+<h1 id="les-signaux-et-les-slots">Les signaux et les slots<a class="headerlink" href="#les-signaux-et-les-slots" title="Permanent link">#</a></h1>
+<h2 id="definition">Définition<a class="headerlink" href="#definition" title="Permanent link">#</a></h2>
+<p>Nous avons pu voir dans la documentation des librairies <strong>Qt</strong> et <strong>QGIS</strong>, il y a une section <strong>Signals</strong>.</p>
+<p>Chaque <strong>objet</strong> émet très souvent un <strong>signal</strong> dès qu'une action est faite sur l'objet. Cela sert à déclencher du code
+Python lorsqu'un signal précis est émis.</p>
+<p>Par exemple sur la documentation de <a href="https://qgis.org/pyqgis/3.34/core/QgsMapLayer.html">QgsMapLayer</a>, on peut chercher
+le tableau <code>signals</code>.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Comme on peut le voir dans la <a href="https://api.qgis.org/api/classQgsMapLayer.html#a30359eca2431a62016cc30d390d811bb">documentation CPP</a>,
+c'est désormais dans la classe <code>QgsMapLayer</code> et non <code>QgsVectorLayer</code> depuis QGIS 3.22. 🧐</p>
+</div>
+<p>La plupart des signaux sont aux <strong>passés</strong>, par exemple <code>crsChanged</code>, <code>nameChanged</code>. Cependant, certaines sont dans un
+"futur" proche comme <code>willBeDeleted</code>.</p>
+<h2 id="syntaxe">Syntaxe<a class="headerlink" href="#syntaxe" title="Permanent link">#</a></h2>
+<p>On dit que l'on souhaite <strong>connecter</strong> un signal à une fonction/slot :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">variable_de_lobjet</span><span class="o">.</span><span class="n">nom_du_signal</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">nom_de_la_fonction</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
-<p>et ensuite, on a pu appeler des <strong>méthodes</strong> sur cet objet, comme :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span><span class="o">.</span><span class="n">setName</span><span class="p">(</span><span class="s2">&quot;Communes&quot;</span><span class="p">)</span>
-<span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span>  <span class="c1"># Retourne &quot;Communes&quot;</span>
-</code></pre></div></td></tr></table></div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Il ne faut pas écrire <code>nom_de_la_fonction()</code> car on ne souhaite pas <strong>appeler</strong> la fonction, juste <strong>connecter</strong>.</p>
+</div>
+<p>Cela sera Python, <strong>plus tard</strong>, quand le signal sera émis, que la fonction sera réellement appelée.</p>
+<h2 id="exemple">Exemple<a class="headerlink" href="#exemple" title="Permanent link">#</a></h2>
+<p>Par exemple, dans la classe <code>QgsMapLayer</code>, cherchons un signal qui est émis <strong>après</strong> (before) que la session d'édition
+commence. Il s'agit de <code>editingStarted</code>.</p>
+<p>Affichons un message à l'utilisateur lors du début et de la fin d'une session d'édition.</p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
-<p>Vous pouvez relire le passage sur la POO en début de <a href="../console/#rappel-sur-la-poo">formation</a>.</p>
+<p>On profite de cet exemple pour voir comment évaluer une expression QGIS à l'aide des différents contextes.</p>
 </div>
-<h3 id="exemple">Exemple<a class="headerlink" href="#exemple" title="Permanent link">#</a></h3>
-<p>Nous allons faire un "très" petit exemple rapide. Écrivons notre premier jeu vidéo en console ! 🎮</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1345,225 +1308,40 @@ sur le site d'OpenClassRooms sur le sujet.</p>
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span>
-<span class="normal">35</span>
-<span class="normal">36</span>
-<span class="normal">37</span>
-<span class="normal">38</span>
-<span class="normal">39</span>
-<span class="normal">40</span>
-<span class="normal">41</span>
-<span class="normal">42</span>
-<span class="normal">43</span>
-<span class="normal">44</span>
-<span class="normal">45</span>
-<span class="normal">46</span>
-<span class="normal">47</span>
-<span class="normal">48</span>
-<span class="normal">49</span>
-<span class="normal">50</span>
-<span class="normal">51</span>
-<span class="normal">52</span>
-<span class="normal">53</span>
-<span class="normal">54</span>
-<span class="normal">55</span>
-<span class="normal">56</span>
-<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">user_from_qgis</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; À l&#39;aide d&#39;une expression QGIS, récupération du nom d&#39;utilisateur.&quot;&quot;&quot;</span>
+    <span class="n">context</span> <span class="o">=</span> <span class="n">QgsExpressionContext</span><span class="p">()</span>
+    <span class="n">context</span><span class="o">.</span><span class="n">appendScope</span><span class="p">(</span><span class="n">QgsExpressionContextUtils</span><span class="o">.</span><span class="n">globalScope</span><span class="p">())</span>
+    <span class="c1"># On peut théoriquement s&#39;arrêter à ce niveau la concernant l&#39;ajout des &quot;scopes&quot; avec le GlobalScope</span>
+    <span class="c1"># Mais on peut ajouter d&#39;autre &quot;scope&quot;, comme ajouter celui du projet :</span>
+    <span class="c1"># context.appendScope(QgsExpressionContextUtils.projectScope(project))</span>
+    <span class="c1"># context.appendScope(QgsExpressionContextUtils.layerScope(layer))</span>
 
-<span class="n">MAX_ENERGIE</span> <span class="o">=</span> <span class="mi">20</span>
+    <span class="c1"># On peut ensuite évaluer l&#39;expression QGIS</span>
+    <span class="c1"># &quot;@user_account_name&quot; ou encore &quot;@user_full_name&quot;</span>
+    <span class="n">expression</span> <span class="o">=</span> <span class="n">QgsExpression</span><span class="p">(</span><span class="s2">&quot;@user_full_name&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">expression</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">user_from_os</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; À l&#39;aide de l&#39;OS, retourne le nom d&#39;utilisateur.&quot;&quot;&quot;</span>
+    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">getlogin</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">we_are_watching_you</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Just warn the user about the editing session.&quot;&quot;&quot;</span>
+    <span class="n">current_user</span> <span class="o">=</span> <span class="n">user_from_qgis</span><span class="p">()</span>
+    <span class="c1"># Attention aux effets si on lance le code plusieurs fois !</span>
+    <span class="c1"># print(&quot;Hello 😉&quot;)</span>
+    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Hey&#39;</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;Be careful &lt;strong&gt;</span><span class="si">{</span><span class="n">current_user</span><span class="si">}</span><span class="s1">&lt;/strong&gt; while you are editing 🧐&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Warning</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">thanks</span><span class="p">():</span>
+    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Hey&#39;</span><span class="p">,</span> <span class="s2">&quot;Thanks 😉&quot;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">Personnage</span><span class="p">:</span>
+<span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Classe représentant un personnage du jeu vidéo. &quot;&quot;&quot;</span>
-
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_nom</span><span class="p">,</span> <span class="n">energie</span><span class="o">=</span><span class="n">MAX_ENERGIE</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Constructeur. &quot;&quot;&quot;</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">un_nom</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">energie</span>
-
-    <span class="k">def</span> <span class="nf">marcher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de marcher.</span>
-
-<span class="sd">        Cela dépense de l&#39;énergie.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">cout</span> <span class="o">=</span> <span class="mi">5</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&gt;=</span> <span class="n">cout</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> marche.&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">-=</span> <span class="n">cout</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas marcher car il n&#39;a pas assez d&#39;énergie.&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">courir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de courir.</span>
-
-<span class="sd">        Cela dépense de l&#39;énergie.</span>
-<span class="sd">        &quot;&quot;&quot;</span>
-        <span class="n">cout</span> <span class="o">=</span> <span class="mi">10</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&gt;=</span> <span class="n">cout</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> court.&quot;</span><span class="p">)</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">-=</span> <span class="n">cout</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas courir car il n</span><span class="se">\&#39;</span><span class="s2">a pas assez d</span><span class="se">\&#39;</span><span class="s2">énergie.&quot;</span><span class="p">)</span>
-
-    <span class="k">def</span> <span class="nf">dormir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de dormir et restaurer le niveau maximum d&#39;énergie.&quot;&quot;&quot;</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dort et fait le plein d&#39;énergie.&quot;</span><span class="p">)</span>
-        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
-            <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;...&#39;</span><span class="p">)</span>
-            <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">MAX_ENERGIE</span>
-
-    <span class="k">def</span> <span class="nf">manger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de manger et d&#39;augmenter de 10 points le niveau d&#39;énergie.&quot;&quot;&quot;</span>
-        <span class="n">energie</span> <span class="o">=</span> <span class="mi">10</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> mange et récupère </span><span class="si">{</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie.&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&lt;=</span> <span class="n">MAX_ENERGIE</span> <span class="o">-</span> <span class="n">energie</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">+=</span> <span class="n">energie</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">MAX_ENERGIE</span>
-
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-        <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;Personnage: &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">&#39; avec </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie&gt;&quot;</span>
-</code></pre></div></td></tr></table></div>
-<h3 id="utilisation-de-notre-classe">Utilisation de notre classe<a class="headerlink" href="#utilisation-de-notre-classe" title="Permanent link">#</a></h3>
-<ul>
-<li><code>dir()</code> est une fonction qui prend une variable en paramètre et qui indique les propriétés/méthodes de notre variable.</li>
-<li><code>help()</code> affiche la documentation de notre classe</li>
-<li><code>__dict__</code> est une propriété qui donne les valeurs des attributs de l'instance.</li>
-</ul>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Dark Vador&#39;</span><span class="p">)</span>
-<span class="nb">dir</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-<span class="n">help</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<p>Que remarquons-nous ?</p>
-<details>
-<summary>Solution</summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Dark Vador&#39;</span><span class="p">)</span>
-<span class="n">a</span><span class="o">.</span><span class="n">courir</span><span class="p">()</span>
-<span class="n">a</span><span class="o">.</span><span class="n">dormir</span><span class="p">()</span>
-<span class="n">a</span><span class="o">.</span><span class="n">manger</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-</details>
-<p>Afficher le nom du personnage (et juste son nom, pas la phrase de présentation)</p>
-<h3 id="ajouter-dautres-methodes">Ajouter d'autres méthodes<a class="headerlink" href="#ajouter-dautres-methodes" title="Permanent link">#</a></h3>
-<p>Ajoutons une méthode <code>dialoguer</code> pour discuter avec un <strong>autre</strong> personnage.</p>
-<div class="admonition tip exemple de la définition de la fonction">
-<p class="admonition-title">Tip</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dialoguer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot; Permet de dialoguer avec un autre personnage. &quot;&quot;&quot;</span>
-    <span class="k">pass</span>
-</code></pre></div></td></tr></table></div>
-</div>
-<ol>
-<li>Écrire le code la fonction à l'aide d'un <code>print</code> pour commencer disant que <code>X dialogue avec Y</code>.</li>
-<li>Vérifier le niveau d'énergie avant de dialoguer ! Difficile de discuter si on n'a plus d'énergie 😉</li>
-<li>Garder son code à gauche, on peut utiliser une instruction <code>return</code></li>
-</ol>
-<p>Nous pouvons désormais utiliser le constructeur afin de créer deux <strong>instances</strong> de notre <strong>classe</strong>.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">b</span> <span class="o">=</span> <span class="n">Personnage</span><span class="p">(</span><span class="s1">&#39;Luke&#39;</span><span class="p">)</span>
-<span class="n">b</span><span class="o">.</span><span class="n">dialoguer</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-<details>
-<summary>Solution pour la méthode <code>dialoguer()</code></summary>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dialoguer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">):</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas dialoguer car il n&#39;a pas assez d&#39;énergie.&quot;</span><span class="p">)</span>
-        <span class="k">return</span>
-
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dialogue avec </span><span class="si">{</span><span class="n">autre_personnage</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et ils échangent des informations secrètes&quot;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-</details>
-<p>Continuons notre classe pour la gestion de son inventaire. Admettons que notre personnage puisse ramasser des objets
-afin de les mettre dans son sac à dos.</p>
-<ol>
-<li>Il va falloir ajouter une nouvelle <strong>propriété</strong> à notre classe de type <code>list</code> que l'on peut nommer <code>inventaire</code>. Par
-   défaut, son inventaire sera vide.</li>
-<li>Ajoutons 3 méthodes : <code>ramasser</code>, <code>deposer</code> et <code>utiliser</code>. Pour le moment, pour faciliter l'exercice, utilisons une
-   chaîne de caractère pour désigner l'objet. Ces méthodes vont interagir avec notre <code>inventaire</code> à l'aide des méthodes
-   <code>remove()</code>, <code>append()</code> que l'on trouve sur une liste.</li>
-<li>Pour les méthodes <code>deposer</code> et <code>utiliser</code>, nous pouvons avoir à créer une autre méthode <strong>privée</strong> afin de vérifier
-   l'existence de l'objet dans l'inventaire. Par convention, nous préfixons la méthode par <code>_</code> comme <code>_est_dans_inventaire</code>
-   afin de signaler que c'est une méthode dite <strong>privée</strong>. L'utilisation de cette méthode privée est uniquement à titre
-   pédagogique, on peut vouloir exposer la méthode <code>est_dans_inventaire</code>. Cette méthode doit renvoyer un <strong>booléen</strong>.</li>
-<li>Ajoutons des <strong>commentaires</strong> et/ou des <strong>docstrings</strong>, CF mémo Python. On peut utiliser la méthode <code>help</code>.</li>
-<li>Pensons aussi <strong>annotations Python</strong></li>
-</ol>
-<div class="admonition info">
-<p class="admonition-title">Info</p>
-<p>Il est important de comprendre que la POO permet de construire une sorte de boîte opaque du point de vue de
-l'utilisateur de la classe. Un peu comme une voiture, elles ont toutes un capot et une pédale d'accélération.
-L'appui sur l'accélérateur déclenche plusieurs mécanismes à l'intérieur de la voiture, mais du point de vue
-utilisateur, c'est plutôt simple.</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>On peut vite imaginer d'autres classes, comme <code>Arme</code>, car ramasser un bout de bois ou un sabre laser n'a pas le même
-impact lors de son utilisation dans un combat. Le dégât qu'inflige une arme sur le niveau d'énergie de l'autre
-personnage est une propriété de l'arme en question <strong>et</strong> du niveau du personnage.</p>
-</div>
-<h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
-<p>Sur la classe Personnage ci-dessus :</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_est_dans_inventaire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
-    <span class="k">return</span> <span class="n">un_objet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span>
-
-<span class="k">def</span> <span class="nf">ramasser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ramasse </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2"> et le met dans son inventaire.&quot;</span><span class="p">)</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">utiliser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> utilise </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne possède pas </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">deposer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dépose </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">donner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
-        <span class="n">autre_personnage</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">autre_personnage</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> reçoit </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2"> de la part de </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et le remercie 👍&quot;</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">beforeEditingStarted</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">we_are_watching_you</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">editingStopped</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">thanks</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 
 
