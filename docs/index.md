@@ -49,9 +49,9 @@ Si nécessaire, il peut être utile d'avoir en plus :
     * [Extension graphique](extension-graphique.md)
     * [Extension Processing](extension-processing.md)
     * [Application standalone](standalone.md)
-* Sujet PyGIS thématique
+* Sujets PyQGIS thématiques
+    * [Migration majeure au sein d'un code Python](migration-majeure.md)
     * [Interroger une base PostGIS](postgis.md)
 * Outils annexes
     * [Déploiement d'une extension](extension-deploiement.md)
     * [IDE Python & Git](ide-git.md)
-    * [Migration majeure au sein d'un code Python](migration-majeure.md)

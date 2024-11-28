@@ -12,7 +12,8 @@ Pour créer une extension dans QGIS, il existe deux façons de démarrer :
         * Générer de la documentation Sphinx
         * Des tests unitaires
         * Les traductions (multilingue)
-    * Très historique, moins mis à jour ces dernières années
+    * Très historique, moins mis à jour ces dernières années, [dernière version de 2019](https://plugins.qgis.org/plugins/pluginbuilder3/#plugin-versions)
+    * https://github.com/g-sherman/Qgis-Plugin-Builder/
 * QGIS Minimal plugin :
     * Idée originale https://github.com/wonder-sk/qgis-minimal-plugin
     * "Fork" de la formation https://github.com/Gustry/qgis_minimal_plugin
@@ -29,6 +30,10 @@ Dans les deux cas, le résultat doit être dans le dossier `python/plugins` du p
 !!! tip
     Pour installer le Minimal Plugin, vous pouvez utiliser le gestionnaire des extensions pour installer
     depuis un zip.
+
+Exemple d'utilisation d'un panneau qui présentent les algorithmes "Processing" :
+
+![RAEPA](./media/gobs.png)
 
 ## Extensions utiles
 

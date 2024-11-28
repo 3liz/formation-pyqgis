@@ -660,6 +660,10 @@ def decomposer(entier: int, diviser_par: int) -> Tuple[int, int]:
 Il faut lire la documentation des [annotations](https://docs.python.org/3/library/typing.html) pour voir les différentes
 possibilités.
 
+## "Signal" et "slot"
+
+Lire le passage dans [Fonction et scripts](./fonctions-scripts.md#connection-dun-signal-à-une-fonction).
+
 ## Terminologie
 
 * Package

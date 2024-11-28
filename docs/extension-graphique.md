@@ -10,20 +10,35 @@ Créons un fichier QtDesigner comme-ceci :
 
 et y ajouter des "widgets" :
 
+!!!important
+    Ne tenez pas compte de l'alignement des widgets pour le moment. On fait juste un placement "rapide"
+    verticalement.
+
 ![QtDesigner](media/qt_designer_1.jpg)
+
+Une fois que l'ensemble des "widgets" sont présents, on peut faire un clic droit à droite sur notre `QDialog`,
+puis `Mise en page` et enfin `Verticalement` 🚀
 
 ### Astuces
 
 * Ouvrir la page des "slots/signaux" depuis la barre d'outils et supprimer ceux qui existent.
 
+!!!tip "Pourquoi supprimer les signaux de QtDesigner ?"
+    Un fichier **QtDesigner** est "gros" fichier XML. Il est difficile, dans le temps, de suivre ces modifications,
+    changement…
+
+    Il est, à mon avis, plus simple de garder le fichier XML le plus légr possible, et de garder la logique dans le code
+    Python.
+
 * Faire un clic droit sur "QDialog" à droite et faire une mise en page "vertical".
 
 !!! tip
-    Ne pas changer la propriété `objectName` pour le moment.
+    Ne pas changer la propriété `objectName` pour le moment. Nous laissons ceux par défaut. Mais plus tard, vous pourrez
+    faire ce que vous souhaitez 😉
 
 On peut [télécharger](./solution/dialog.ui) la solution si besoin.
 
-* Enregistrer le fichier en `dialog.ui`
+* Enregistrer le fichier en `dialog.ui` dans votre dossier contenant l'ensemble des fichiers.
 
 ## La classe qui accompagne
 
@@ -44,7 +59,10 @@ ui_class, _ = uic.loadUiType(ui_file)
 
 class MonDialog(ui_class, QDialog):
 
+    """ Classe qui représente le dialogue de l'extension. """
+    
     def __init__(self):
+        """ Constructeur. """
         super().__init__()  # Appel du constructeur parent
         self.setupUi(self)  # Fichier de QtDesigner
 
@@ -54,6 +72,7 @@ Modifions la méthode `run` du fichier `__init__.py` en
 
 ```python
     def run(self):
+        """ Lors du clic sur le bouton pour lancer la fenêtre de l'extension. """
         from .dialog import MonDialog
         dialog = MonDialog()
         dialog.exec()
@@ -66,7 +85,7 @@ Relançons l'extension à l'aide du "plugin reloader" et cliquons sur le bouton.
 Connectons le signal `clicked` du bouton "Annuler" dans le constructeur `__init__` : 
 
 ```python
-self.buttonBox.button(QDialogButtonBox.Cancel).clicked.connect(self.close)
+self.buttonBox.button(QDialogButtonBox.StandardButton.Cancel).clicked.connect(self.close)
 ```
 
 On dit que `clicked` est un **signal**, auquel on connecte le **slot** `close`. 
@@ -74,7 +93,7 @@ On dit que `clicked` est un **signal**, auquel on connecte le **slot** `close`.
 Connectons-le **signal** `clicked` du bouton "Accepter" à notre propre **slot** (qui est une fonction) :
 
 ```python
-self.buttonBox.button(QDialogButtonBox.Ok).clicked.connect(self.click_ok)
+self.buttonBox.button(QDialogButtonBox.StandardButton.Ok).clicked.connect(self.click_ok)
 ```
 
 et ajoutons notre propre fonction `click_ok` pour quitter la fenêtre et en affichant la saisie de
@@ -84,6 +103,7 @@ Le widget de saisie est un QLineEdit : [documentation](https://doc.qt.io/qt-5/ql
 
 ```python
 def click_ok(self):
+    """ Clic sur le bouton OK afin de fermer la fenêtre. """
     message = self.lineEdit.text()
     iface.messageBar().pushMessage('Notre plugin', message, Qgis.Success)
 ```
@@ -110,6 +130,7 @@ Et la nouvelle fonction qui va se charger de mettre à jour le texte :
 ```python
 
 def layer_changed(self):
+    """ Permet de mettre à jour l'UI selon la couche dans le menu déroulant. """
     self.plainTextEdit.clear()
     layer = self.mMapLayerComboBox.currentLayer()
     if layer:
@@ -143,24 +164,29 @@ données, etc.
     
     class MonDialog(ui_class, QDialog):
     
+        """ Classe qui représente le dialogue de l'extension. """
+
         def __init__(self, parent=None):
+            """ Constructeur. """
             _ = parent
             super().__init__()
             self.setupUi(self)  # Fichier de QtDesigner
     
             # Connectons les signaux
-            self.buttonBox.button(QDialogButtonBox.Ok).clicked.connect(self.click_ok)
-            self.buttonBox.button(QDialogButtonBox.Cancel).clicked.connect(self.close)
+            self.buttonBox.button(QDialogButtonBox.StandardButton.Ok).clicked.connect(self.click_ok)
+            self.buttonBox.button(QDialogButtonBox.StandardButton.Cancel).clicked.connect(self.close)
     
             self.plainTextEdit.setReadOnly(True)
             self.mMapLayerComboBox.layerChanged.connect(self.layer_changed)
     
         def click_ok(self):
+            """ Clic sur le bouton OK afin de fermer la fenêtre. """
             self.close()
             message = self.lineEdit.text()
             iface.messageBar().pushMessage('Notre plugin', message, Qgis.Success)
     
         def layer_changed(self):
+            """ Permet de mettre à jour l'UI selon la couche dans le menu déroulant. """
             self.plainTextEdit.clear()
             layer = self.mMapLayerComboBox.currentLayer()
             if layer:
@@ -174,7 +200,7 @@ données, etc.
 
 Il ne faut pas hésiter à créer des fichiers afin de séparer le code.
 
-On peut aussi créer des dossiers afin d'y mettre plusieurs fichiers Pythons. Un dossier en Python se nomme un
+On peut aussi créer des dossiers afin d'y mettre plusieurs fichiers Python. Un dossier en Python se nomme un
 **module**. Pour faire un module compatible, il faut ajouter un fichier `__init__.py` même s’il n'y a rien
 dedans.
 
@@ -198,7 +224,7 @@ En faisant un couper/coller, enlever la classe `MinimalPlugin` du fichier `__ini
 Créer un fichier `plugin.py` et ajouter le contenu en collant. Il est bien de vérifier les imports dans les
 deux fichiers.
 
-## Un dossier resources
+## Un dossier "resources"
 
 On peut créer un fichier `qgis_plugin_tools.py` à la racine de notre extension afin d'y ajouter des **outils** :
 
@@ -222,13 +248,13 @@ def resources_path(*args) -> Path:
     return plugin_path("resources", *args)
 
 # On peut ajouter ici une méthode qui charge un fichier UI qui se trouve dans le dossier "UI"
-# et retourne la classe directement
+# et retourne la classe directement.
 ```
 
 On peut ensuite créer un dossier `resources` puis `icons` afin d'y déplacer un fichier PNG, JPG, SVG.
 
 !!! warning
-    Attention à la taille de vos fichiers pour une petite icône
+    Attention à la taille de vos fichiers pour une petite icône 😉
 
 Dans une extension graphique pour les icônes :
 
@@ -254,3 +280,9 @@ from ..qgis_plugin_tools import resources_path
 def icon(self):
     return QIcon(str(resources_path("icons", "icon.png")))
 ```
+
+## Ajout d'un panneau
+
+Un fichier QtDesigner [dock.ui](./solution/dock.ui) est déjà prêt pour le téléchargement.
+
+Créons un fichier `dock.py`

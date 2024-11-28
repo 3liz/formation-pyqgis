@@ -30,9 +30,9 @@ nav:
       - Extension Graphique: extension-graphique.md
       - Extension Processing: extension-processing.md
       - Application standalone: standalone.md
-    - Sujet PyGIS thématique:
-      - PostGIS: postgis.md
+    - Sujets PyQGIS thématiques:
       - Migration majeur: migration-majeure.md
+      - PostGIS: postgis.md
     - Outils annexes:
       - Déploiement d'une extension: extension-deploiement.md
       - IDE & Git: ide-git.md

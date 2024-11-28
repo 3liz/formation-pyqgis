@@ -54,7 +54,7 @@ On peut donc modifier ensuite ce fichier Python afin de rajouter de la logique s
   téléchargement, 
 ou sinon ils peuvent être installés par un dossier ZIP.
 * Afin de développer une extension :
-    * Utilisation du Plugin Builder
+    * Utilisation du Plugin Builder https://github.com/g-sherman/Qgis-Plugin-Builder/
     * ou squelette minimum :
         * L'original https://github.com/wonder-sk/qgis-minimal-plugin
         * Le "fork" de la formation https://github.com/Gustry/qgis_minimal_plugin
@@ -71,7 +71,7 @@ On peut remarquer les plugins `DataPlotly`, `QuickOSM` etc.
 
 Ajout de Processing à un plugin QGIS :
 
-* soit lors du plugin builder
+* soit lors du plugin builder https://github.com/g-sherman/Qgis-Plugin-Builder/
 * ou manuellement en suivant la documentation pour l'ajout à un plugin existant :
   https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/processing.html 
 
