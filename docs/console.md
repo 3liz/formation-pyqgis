@@ -9,8 +9,23 @@ Nous allons utiliser un département de la [BDTopo](https://geoservices.ign.fr/b
 
 ## Configurer le projet
 
-* Commencer un nouveau projet et enregistrer le.
-* À côté du projet, ajouter le dossier provenant de la BDTopo, par exemple `BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD`.
+* Commencer un nouveau projet et enregistrer le dans un dossier.
+* À côté du projet `qgs` ou `qgz`, ajouter le dossier provenant de la BDTopo, le dossier `BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD`.
+
+```bash
+.
+├── BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD
+│   ├── ADMINISTRATIF
+│   ├── ADRESSES
+│   ├── BATI
+│   ├── HYDROGRAPHIE
+│   ├── LIEUX_NOMMES
+│   ├── OCCUPATION_DU_SOL
+│   ├── SERVICES_ET_ACTIVITES
+│   ├── TRANSPORT
+│   └── ZONES_REGLEMENTEES
+└── formation.qgs
+```
 
 ## Manipulation dans la console
 
@@ -67,7 +82,9 @@ class Personne{
 }
 ```
 
-### Pratique
+## Pratique
+
+### Documentation
 
 * Dans QGIS, `Plugins` -> `Console Python`
 * QGIS nous donne accès au projet actuel via la classe `QgsProject`
@@ -82,24 +99,25 @@ class Personne{
 	* Static Public Member Functions
 * Nous verrons progressivement ces différentes sections.
 * En haut de la documentation, il y a une explication sur le cas particulier de `QgsProject.instance()`.
-* Recherchons `filename`.
+* Afin de trouver le chemin de notre projet, recherchons `filepath`, afin de trouver une méthode `absoluteFilePath`:
 ```python
 project = QgsProject.instance()
-project.fileName()
+project.absoluteFilePath()
 ```
 * Ajoutons un titre à notre projet. Dans l'interface graphique, cela se passe dans les propriétés de notre projet.
   Il y a donc des chances que cela soit aussi dans la classe **QgsProject**
 * Recherchons donc `title` dans la page : `setTitle` dans la classe
-  [QgsProject](https://qgis.org/api/classQgsProject.html).
+  [QgsProject](hhttps://qgis.org/pyqgis/3.34/core/QgsProject.html).
 
 !!! warning
-    Il est important de bien pouvoir lire la signature des **méthodes**.
-    La méthode `title` retourne une **QString** et **ne prend pas** de paramètre.
-    La méthode `setTitle` retourne **rien**, (**void**) mais elle prend un paramètre, une **QString**.
+    Il est important de bien pouvoir lire la signature des **méthodes** :
+
+    * La méthode `title` retourne une **QString** (`str` en Python) et **ne prend pas** de paramètre.
+    * La méthode `setTitle` retourne **rien**, (`void`, en CPP et `None` en Python) mais elle prend un paramètre, une **str**.
 
 * Nous souhaitons désormais changer la couleur de fond du projet.
     * Recherchons `background`
-    * Nous allons devoir utiliser aussi la classe [QColor](https://doc.qt.io/qt-5/qcolor.html)
+    * Nous allons devoir utiliser aussi la classe [QColor CPP](https://doc.qt.io/qt-5/qcolor.html), [QColor PySide2](https://doc.qt.io/qtforpython-5/PySide2/QtGui/QColor.html).
 
 ??? "Afficher la solution"
     ```python
@@ -107,47 +125,73 @@ project.fileName()
     QgsProject.instance().setBackgroundColor(color)
     ```
 
-* Objectif, ajouter une couche vecteur contenu dans un dossier fils :
-    * Recherchons dans l'API le dossier racine du projet. *Indice*, en informatique, on appelle souvent cela le `home`.
-    * Nous allons utiliser le module `os.path` pour manipuler les dossiers.
-    * [https://docs.python.org/3/library/os.path.html](https://docs.python.org/3/library/os.path.html)
-    * `join`, `isfile`, `isdir`
+### Manipulation en console pour ajouter une couche Shapefile
 
+* Objectif, ajouter une couche vecteur contenu dans un dossier fils :
+    * Exemple `BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD/ADMINISTRATIF/COMMUNE.shp` :
+    * Recherchons dans l'API de `QgsProject` le fichier actuel du projet, à l'aide `filepath`.
+    * L'utilisation de `home` est un peu différente, dans QGIS on peut définir un répertoire différent pour la racine des données.
+    * Nous allons utiliser l'objet `Path` pour manipuler les fichiers/dossiers.
+    * [Objet Path](https://docs.python.org/3/library/pathlib.html)
+
+!!! note
+    L'utilisation de l'objet `Path` est très habituelle, mais on rencontre aussi l'utilisation des fonctions du module
+    `os.path` comme `os.path.join`... On rencontre son utilisation dans plusieurs tutoriels/solutions/forums.
+
+#### Solution étape par étape
+
+Pour récupérer le projet en cours
 ```python
-from os.path import join, isfile, isdir
-racine = QgsProject.instance().homePath()
-join(racine, 'nexiste_pas')
-'/home/etienne/Documents/3liz/formation/nexiste_pas'
-isfile(join(racine,'nexiste_pas'))
-False
-isdir(join(racine,'nexiste_pas'))
-False
-chemin = join(racine, 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD', 'ADMINISTRATIF')
-fichier_shape = join(chemin, 'COMMUNE.shp')
-isfile(fichier_shape)
-True
+project = QgsProject.instance()
 ```
 
-* Charger la couche vecteur à l'aide de `iface` [QgisInterface](https://qgis.org/api/classQgisInterface.html)
-  (et non pas **Qgs**Interface !)
+Pour passer du chemin `str` de QGIS à un objet `Path` et directement appeler la propriété `parent` pour obtenir le dossier :
+```python
+racine = Path(project.absoluteFilePath()).parent
+```
+
+On peut joindre notre BDTopo, en donnant plusieurs paramètres à `joinpath` :
+```python
+chemin = racine.joinpath('BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD', 'ADMINISTRATIF')
+fichier_shape = chemin.joinpath('COMMUNE.shp')
+```
+
+Il ne faut pas hésiter à vérifier au fur et à mesure avec des `print` :
 
 ```python
-communes = iface.addVectorLayer(fichier_shape, 'communes', 'ogr')
+print(racine)
+print(racine.is_dir())
+print(racine.is_file())
+print(fichier_shape.exists())
+print(fichier_shape.is_file())
+```
+
+!!! tip
+    Tant que l'on est en console, on n'a pas besoin de faire `print`, la console le fait pour nous automatiquement.
+    On peut se contenter de `fichier_shape.exists()`.
+
+Si tout est bon pour le chemin, charger la couche vecteur à l'aide de `iface`
+[QgisInterface](https://qgis.org/api/classQgisInterface.html) (et non pas **Qgs**Interface), en utilisant la méthode `addVectorLayer` :
+
+Attention, QGIS, étant écrit en C++, ne connait pas l'usage de `Path`, il faut repasser par une chaîne de caractère avec l'aide de `str` :
+
+```python
+communes = iface.addVectorLayer(str(fichier_shape), 'communes', 'ogr')
 print(communes)
 ```
 
-* Charger la couche autrement (conseillé)
-```python
-communes = QgsVectorLayer(fichier_shape, 'communes', 'ogr')
-communes.isValid()
-QgsProject.instance().addMapLayer(communes)
-```
+!!! tip "Charger la couche autrement à l'aide du constructeur `QgsVectorLayer` (conseillé)"
+    ```python
+    communes = QgsVectorLayer(str(fichier_shape), 'communes', 'ogr')
+    # communes.isValid()
+    QgsProject.instance().addMapLayer(communes)
+    ```
 
 ??? "Afficher la solution complète avec `pathlib`"
     ```python
     from pathlib import Path
     project = QgsProject.instance()
-    racine = Path(project.homePath())
+    racine = Path(project.absoluteFilePath()).parent
     chemin = racine.joinpath('BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD', 'ADMINISTRATIF')
     fichier_shape = chemin.joinpath('COMMUNE.shp')
     # fichier_shape.is_file()
@@ -156,7 +200,7 @@ QgsProject.instance().addMapLayer(communes)
     QgsProject.instance().addMapLayer(communes)
     ```
 
-??? "Afficher la solution complète avec `os.path`"
+??? "Afficher "l'ancienne" solution complète avec `os.path`"
 	```python
 	from os.path import join, isfile, isdir
 
@@ -170,38 +214,67 @@ QgsProject.instance().addMapLayer(communes)
 	QgsProject.instance().addMapLayer(communes)
 	```
 
-* Explorer l'objet `communes` qui est un `QgsVectorLayer` à l'aide de la documentation pour chercher sa
-  géométrie, le nombre d'entités.
-  [API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.34/core/QgsVectorLayer.html)
-* Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre
+!!! success
+    Bien joué si vous avez votre couche des communes !
 
-```python
-communes.geometryType() == QgsWkbTypes.PolygonGeometry
-communes.geometryType() == QgsWkbTypes.PointGeometry
-```
+### Découverte des méthodes sur notre objet `communes`
 
-* Essayer d'ouvrir et de clore une session d'édition
-* Essayer désormais de chercher son nom, la projection ou encore les seuils de visibilité de la couche.
+Notre **variable** `communes` est une instance de `QgsVectorLayer`.
+
+[API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.34/core/QgsVectorLayer.html)
+
+À l'aide de la documentation, recherchons :
+
+* le nombre d'entités, (indice : `count`, `feature`, `featureCount`)
+* comment ouvrir et fermer une session d'édition (indice : `editing`, `start` et ne pas hésiter à lire la docstring)
+* le type de géométrie, mot clé `geometry`, `type`, `geometryType`
+
+!!! info
+    L'API est en train de changer depuis QGIS 3.30 environ, concernant l'usage et l'affichage des énumérations.
+    Par exemple pour `geometryType`.
+
+    ```python
+    communes.geometryType() == QgsWkbTypes.PolygonGeometry
+    communes.geometryType() == QgsWkbTypes.PointGeometry
+    ```
+
+    Pour la géométrie, toujours utiliser l'énumération et non pas le chiffre, ce n'est pas compréhensible (QGIS < 3.30)
+
+* Essayons désormais de chercher :
+    * son nom : `name`
+    * les seuils de visibilité de la couche min et max (`scale`, `minimum`, `maximum`)
+
 On ne les trouve pas dans la page `QgsVectorLayer` !
 Pour cela, il faut faire référence à la notion d'héritage en Programmation Orientée Objet.
+
+### Héritage
+
+Il faut bien regarder les diagrammes en haut de la documentation :
+
+[API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.34/core/QgsVectorLayer.html)
 
 ```mermaid
 classDiagram
 class QgsMapLayer{
     +name() str
+    +id() str
     +crs() QgsCoordinateReferenceSystem
-    +autreFonctions()
+    +maximumScale() double
+    +minimumScale() double
+    +autreFonctionsPourToutesLesCouches()
 }
 
 class QgsVectorLayer{
+    +featureCount() int
     +startEditing() bool
     +commitChanges() bool
     +autreFonctionsPourUneCoucheVecteur()
 }
 
 class QgsRasterLayer{
-    +int largeur
-    +int hauteur
+    +bandCount() int
+    +largeur int
+    +hauteur int
     +autreFonctionsPourUneCoucheRaster()
 }
 
@@ -226,12 +299,20 @@ True
 
 * Objectif, ne pas afficher la couche commune pour une échelle plus petite que le `1:2 000 000`.
 
+!!! important
+    Un raccourci à savoir, dans la console :
+    ```python
+    iface.activeLayer()
+    ```
+
+    Cela retourne la couche `QgsMapLayer` active dans la légende !
+
 ## Code
 
 Petit récapitulatif à tester pour voir si cela fonctionne correctement !
 
 ```python
-from os.path import join
+from pathlib import Path
 dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
 thematique = 'ADMINISTRATIF'
 couche = 'COMMUNE'
@@ -251,15 +332,9 @@ layer.setMinimumScale(2000000)
 layer.triggerRepaint()
 ```
 
-* Ajouter également la couche `ARRONDISSEMENT` et sélectionner là.
+## Transition vers le script, avec le parcourir des entités
 
-## Parcourir les entités
-
-Un raccourci a savoir, dans la console :
-```python
-iface.activeLayer()
-```
-Cela retourne la couche `QgsMapLayer` active dans la légende !
+Ajouter également la couche `ARRONDISSEMENT` et sélectionner là.
 
 On souhaite désormais itérer sur les polygones et les faire clignoter depuis la console.
 Nous allons donc avoir besoin de la méthode `getFeatures()` qui fait partie de `QgsVectorLayer`.

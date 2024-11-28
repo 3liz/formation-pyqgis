@@ -5,6 +5,8 @@
 Avant de commencer à vraiment écrire un script avec des fonctions, regardons comment communiquer des 
 informations à l'utilisateur.
 
+### La barre de message
+
 On peut envoyer des messages vers l'utilisateur avec l'utilisation de la `messageBar` de la classe
 [QgisInterface](https://qgis.org/api/classQgisInterface.html) :
 
@@ -21,6 +23,11 @@ Cette fonction prend 3 paramètres :
 - un message
 - un niveau d'alerte
 
+On peut voir dans la classe de [QgsMessageBar](https://qgis.org/pyqgis/master/gui/QgsMessageBar.html#qgis.gui.QgsMessageBar.pushSuccess)
+qu'il existe aussi `pushSuccess` qui est une alternative par exemple.
+
+### Journal des logs
+
 On peut aussi écrire des logs comme ceci (plus discret, mais plus verbeux) :
 ```Python
 QgsMessageLog.logMessage('Une erreur est survenue','Notre outil', Qgis.Critical)
@@ -35,237 +42,238 @@ Cette fonction prend 3 paramètres :
 - une catégorie, souvent le nom de l'extension ou de l'outil en question
 - un niveau d'alerte
 
-## Charger automatiquement plusieurs couches à l'aide d'un script
+## Des fonctions pour simplifier le code
+
+### Une fonction pour charger UNE couche
 
 La console, c'est bien, mais c'est très limitant. Passons à l'écriture d'un script qui va nous faciliter 
 l'organisation du code.
 
-Ci-dessous, voici le dernier script du chapitre précédent, mais avec la gestion des erreurs ci-dessus :
-
-* Redémarrer QGIS
-* N'ouvrez pas le projet précédent
-* Ouvrer la console, puis cliquer sur `Afficher l'éditeur`
-* Copier/coller le script ci-dessous
-* Exécuter le
+1. Redémarrer QGIS (afin de vider l'ensemble des variables que l'on a dans notre console)
+1. N'ouvrez pas le projet précédent !
+1. Ouvrer la console, puis cliquer sur `Afficher l'éditeur`
+1. Copier/coller le script ci-dessous
+1. Exécuter le
 
 ```python
-from os.path import join, isfile, isdir
-dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
+# En haut du script, ce souvent des variables à modifier
+bd_topo = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
 thematique = 'ADMINISTRATIF'
 couche = 'COMMUNE'
 
-racine = QgsProject.instance().homePath()
-if not racine:
+# Puis place au script
+# En théorie, pas besoin de modification, en dessous pour un "utilisateur final" du script
+
+from pathlib import Path
+
+projet_qgis = QgsProject.instance().absoluteFilePath()
+if not projet_qgis:
     iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
 else:
-    fichier_shape = join(racine, dossier, thematique, '{}.shp'.format(couche))
-    if not isfile(fichier_shape):
-        iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{}"'.format(fichier_shape), Qgis.Critical)
+    racine = Path(projet_qgis).parent
+    fichier_shape = racine.joinpath(bd_topo, thematique, f'{couche}.shp')
+    if not fichier_shape.exists():
+        iface.messageBar().pushMessage('Erreur de chargement', f'Le chemin n\'existe pas: "{fichier_shape}"', Qgis.Critical)
     else:
-        layer = QgsVectorLayer(fichier_shape, couche, 'ogr')
+        layer = QgsVectorLayer(str(fichier_shape), couche, 'ogr')
         if not layer.isValid():
             iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
         else:
             QgsProject.instance().addMapLayer(layer)
-            iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
-
+            iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.Success)
+    print('Fin du script si on a un projet')
 ```
 
 * À l'aide du mémo Python :
-  * Essayons de faire une fonction qui prend 2 paramètres
-    * la thématique (le dossier)
-    * le nom du shapefile
-  * La fonction se chargera de faire le nécessaire, par exemple: `charger_couche('ADMINISTRATIF', 'COMMUNE')`
-  * La fonction peut également retourner `False` si la couche n'est pas chargée (une erreur) ou sinon l'objet couche.
+  * Essayons de faire une fonction qui prend 3 paramètres :
+    * la `bd_topo`
+    * la `thematique`
+    * le nom du shapefile `couche`
+  * La fonction se chargera de faire le nécessaire, par exemple: `charger_couche(bd_topo, 'ADMINISTRATIF', 'COMMUNE')`
+  * La fonction peut également retourner `False` si la couche n'est pas chargée (une erreur) ou sinon `True`
+
+!!! tip
+    Pour désindenter le code, `MAJ` + `TAB`.
 
 ```python
-def charger_couche(thematique, couche):
-    pass
+# Avec annotations Python
+def charger_couche(bd_topo: str, thematique: str, couche: str):
+    ...
+
+# Sans annotations Python
+def charger_couche(bd_topo, thematique, couche):
+    ...
 ```
 
 !!! tip
-    Le mot-clé `pass` ne sert à rien. C'est un mot-clé Python pour rendre un bloc valide mais ne faisant rien.
+    Le mot-clé `pass` (ou encore `...` qui est synonyme) ne sert à rien.
+    C'est un mot-clé Python pour rendre un bloc valide mais ne faisant rien.
     On peut le supprimer le bloc n'est pas vide.
+
+On peut ajouter une **docstring** à notre fonction, juste en dessous du `def`, avec des indentations :
+```python
+""" Fonction qui charge une couche de la BD TOPO, selon une thématique. """
+```
 
 ??? "Afficher la solution intermédiaire"
     ```python
-    from os.path import join, isfile, isdir
-    dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
+    # En haut du script, ce souvent des variables à modifier
+    bd_topo = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
+    thematique = 'ADMINISTRATIF'
+    couche = 'COMMUNE'
     
+    # Puis place au script
+    # En théorie, pas besoin de modification, en dessous pour un "utilisateur final" du script
     
-    def charger_couche(thematique, couche):
-        """Fonction qui charge une couche shapefile dans une thématique."""
-        racine = QgsProject.instance().homePath()
-        if not racine:
+    from pathlib import Path
+
+    def charger_couche(bd_topo, thematique, couche):
+        """ Fonction qui charge une couche de la BD TOPO, selon une thématique. """
+        projet_qgis = QgsProject.instance().absoluteFilePath()
+        if not projet_qgis:
             iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
         else:
-            fichier_shape = join(racine, dossier, thematique, '{}.shp'.format(couche))
-            if not isfile(fichier_shape):
-                iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{}"'.format(fichier_shape), Qgis.Critical)
+            racine = Path(projet_qgis).parent
+            fichier_shape = racine.joinpath(bd_topo, thematique, f'{couche}.shp')
+            if not fichier_shape.exists():
+                iface.messageBar().pushMessage('Erreur de chargement', f'Le chemin n\'existe pas: "{fichier_shape}"', Qgis.Critical)
             else:
-                layer = QgsVectorLayer(fichier_shape, couche, 'ogr')
+                layer = QgsVectorLayer(str(fichier_shape), couche, 'ogr')
                 if not layer.isValid():
                     iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
                 else:
                     QgsProject.instance().addMapLayer(layer)
-                    iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
+                    iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.Success)
+            print('Fin du script si on a un projet')
     
-    thematique = 'ADMINISTRATIF'
-    couche = 'COMMUNE'
-    charger_couche(thematique, couche)
+    # Appel de notre fonction
+    charger_couche(bd_topo, thematique, couche)
     ```
 
-Améliorons encore cette solution intermédiaire avec la gestion des erreurs et aussi en gardant le code le
-plus à gauche possible grâce à l'instruction `return` qui ordonne la sortie de la fonction.
+Améliorons encore cette solution intermédiaire avec la gestion des erreurs avec l'instruction `return`
+
+On peut garder le code le plus à gauche possible grâce à `return` qui ordonne la sortie de la fonction.
 
 ??? "Afficher une des solutions finales"
     ```python
-    from os.path import join, isfile, isdir
+    # En haut du script, ce souvent des variables à modifier
+    bd_topo = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
+
+    # Puis place au script
+    # En théorie, pas besoin de modification, en dessous pour un "utilisateur final" du script
     
-    def charger_couche(thematique, couche):
-        """Fonction qui charge une couche shapefile dans une thématique."""
-        dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
+    from pathlib import Path
     
-        racine = QgsProject.instance().homePath()
-        if not racine:
+    def charger_couche(bd_topo, thematique, couche):
+        """ Fonction qui charge une couche de la BD TOPO, selon une thématique. """
+        projet_qgis = QgsProject.instance().absoluteFilePath()
+        if not projet_qgis:
             iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
             return False
-            
-        fichier_shape = join(racine, dossier, thematique, '{}.shp'.format(couche))
-        if not isfile(fichier_shape):
-            iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{}"'.format(fichier_shape), Qgis.Critical)
+
+        racine = Path(projet_qgis).parent
+        fichier_shape = racine.joinpath(bd_topo, thematique, f'{couche}.shp')
+        if not fichier_shape.exists():
+            iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{fichier_shape}"', Qgis.Critical)
             return False
             
-        layer = QgsVectorLayer(fichier_shape, couche, 'ogr')
+        layer = QgsVectorLayer(str(fichier_shape), couche, 'ogr')
         if not layer.isValid():
             iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
             return False
-    
+
         QgsProject.instance().addMapLayer(layer)
-        iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
+        iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.Success)
+        # return True
         return layer
     
-    charger_couche('ADMINISTRATIF', 'COMMUNE')
-    charger_couche('ADMINISTRATIF', 'ARRONDISSEMENT')
+    # Appel de notre fonction
+    charger_couche(bd_topo, 'ADMINISTRATIF', 'COMMUNE')
+    charger_couche(bd_topo, 'ADMINISTRATIF', 'ARRONDISSEMENT')
     ```
 
-* Essayons de faire une fonction qui liste les shapefiles d'une certaine thématique.
+### Une fonction pour lister LES couches d'UNE thématique
 
-On peut utiliser la méthode [os.walk(path)](https://docs.python.org/3/library/os.html#os.walk) permet de
-parcourir un chemin et de lister les répertoires et les fichiers.
+Essayons de faire une fonction qui liste les shapefiles d'une certaine thématique 🚀
 
-Ou alors on peut utiliser une autre méthode, un peu plus à la mode en utilisant le mode
-[pathlib](https://docs.python.org/3/library/pathlib.html#module-pathlib) qui comporte également les fonctions
-`isfile`, `isdir` etc.
+Plus précisément, on souhaite une liste de chaînes de caractères : `['COMMUNE', 'EPCI']`.
 
-En utilisant le module `os.walk`, un peu historique :
-
-```python
-import os
-
-def liste_shapefiles(thematique):
-    """Liste les shapefiles d'une thématique."""
-    dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
-    racine = QgsProject.instance().homePath()
-    shapes = []
-    for root, directories, files in os.walk(os.path.join(racine, dossier, thematique)):
-        for file in files:
-            if file.lower().endswith('.shp'):
-                shapes.append(file.replace('.shp', ''))
-    return shapes
-
-shapes = liste_shapefiles('ADMINISTRATIF')
-print(shapes)
-```
-
-En utilisant le "nouveau" module `pathlib`:
+Dans l'objet `Path`, il existe une méthode `iterdir()`. Par exemple, pour itérer sur le dossier **courant**
+de l'utilisateur :
 
 ```python
 from pathlib import Path
 
-def liste_shapefiles(thematique):
-    """Liste les shapefiles d'une thématique."""
-    racine = QgsProject.instance().homePath()
-    dossier = Path(racine).joinpath('BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD', thematique)
-    shapes = []
-    for file in dossier.iterdir():
-        if file.suffix.lower() == '.shp':
-            shapes.append(file.stem)
-    return shapes
-
-shapes = liste_shapefiles('ADMINISTRATIF')
-print(shapes)
+dossier = Path.home()
+for fichier in dossier.iterdir():
+    print(fichier)
 ```
 
 !!! tip
     Il faut se référer à la documentation du module [pathlib](https://docs.python.org/3/library/pathlib.html)
     pour comprendre le fonctionnement de cette classe.
 
-* Permettre le chargement automatique de toute une thématique.
+Voici la signature de la fonction que l'on souhaite :
 
-??? "Afficher la solution complète"
+```python
+def liste_shapefiles(bd_topo: str, thematique: str):
+    """ Lister les shapefiles d'une thématique dans la BDTopo. """
+    ...
+```
+
+Petit mémo pour cet exercice :
+
+* L'extension d'un fichier de type `Path` : `fichier.suffix`
+* Obtenir le nom du fichier d'un objet `Path` : `fichier.stem`
+* Passer une chaîne de caractère en minuscule : `"bONjouR".lower()`, pratique pour vérifier la casse 😉
+* Créer une liste vide `shapes = []`
+* Ajouter un élément dans une liste `shapes.append("Bonjour")`
+* À la fin, on peut retourner la liste `return shapes`
+
+??? "Correction"
     ```python
-    import os
-    from os.path import join, isfile, isdir
-    dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
-    # couche = 'COMMUNE'
-    
-    def liste_shapesfiles(thematique):
-        """Liste les shapes d'une thématique"""
-        racine = QgsProject.instance().homePath()
-        if not racine:
-            iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
-            return False
-        
+    def liste_shapefiles(bd_topo: str, thematique: str):
+        """ Lister les shapefiles d'une thématique dans la BDTopo. """
+        racine = Path(QgsProject.instance().absoluteFilePath()).parent
+        dossier = racine.joinpath(bd_topo, thematique)
         shapes = []
-        for root, directories, files in os.walk(os.path.join(racine, dossier, thematique)):
-            # print(files)
-            for file in files:
-                # print(file)
-                if file.lower().endswith('.shp'):
-                    # print(file)
-                    shapes.append(file.replace(".shp", ""))
-        
+        for file in dossier.iterdir():
+            if file.suffix.lower() == '.shp':
+                shapes.append(file.stem)
         return shapes
     
-    def charger_couche(thematique, couche):
-        
-        """Fonction qui charge des couches suivant une thématique."""
-        racine = QgsProject.instance().homePath()
-        if not racine:
-            iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
-            return False
-    
-        fichier_shape = join(racine, dossier, thematique, '{}.shp'.format(couche))
-        if not isfile(fichier_shape):
-            iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{}"'.format(fichier_shape), Qgis.Critical)
-            return False
-    
-        layer = QgsVectorLayer(fichier_shape, couche, 'ogr')
-        if not layer.isValid():
-            iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
-            return False
-            
-        QgsProject.instance().addMapLayer(layer)
-        iface.messageBar().pushMessage('Bravo','Well done!', Qgis.Success)
-        return layer
-    
-    
-    thematique = 'ADMINISTRATIF'
-    shapes = liste_shapesfiles(thematique)
-    for shape in shapes:
-        charger_couche(thematique, shape)
+    shapes = liste_shapefiles(bd_topo, 'ADMINISTRATIF')
+    print(shapes)
     ```
+
+On a désormais **deux** fonctions : `liste_shapefiles` et `charger_couche`.
+
+Il est désormais simple de charger **toutes** une thématique de notre BDTopo :
+
+```python
+thematique = 'ADMINISTRATIF'
+shapes = liste_shapesfiles(bd_topo, thematique)
+for shape in shapes:
+    charger_couche(bd_topo, thematique, shape)
+```
+
+!!! success
+    On a terminé avec ces deux fonctions, c'était pour manipuler les fonctions 😎
 
 ## Extraction des informations sous forme d'un fichier CSV.
 
-On souhaite désormais réaliser une fonction d'export des métadonnées de nos couches au format CSV, avec son
-CSVT.
+### Introduction
+
+On souhaite désormais réaliser une fonction d'export des métadonnées de nos couches au format CSV, avec des tabulations
+comme séparateur et son CSVT.
+
 Il existe déjà un module CSV dans Python pour nous aider à écrire un fichier de type CSV, mais nous n'allons
 pas l'utiliser.
-Nous allons plutôt utiliser l'API QGIS pour créer une nouvelle couche en mémoire comportant les différentes
-informations que l'on souhaite exporter.
-Puis, nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de
+
+Nous allons plutôt utiliser l'API QGIS pour :
+
+1. Créer une nouvelle couche en mémoire comportant les différentes informations que l'on souhaite exporter
+2. Puis, nous allons utiliser l'API pour exporter cette couche mémoire au format CSV (l'équivalent dans QGIS de
 l'action `Exporter la couche`).
 
 Les différents champs qui devront être exportés sont :
@@ -303,10 +311,16 @@ feature = QgsFeature(objet_qgsvectorlayer.fields())
 feature['nom'] = "NOM"
 ```
 
-Obtenir le dossier du project actuel :
+Obtenir le dossier du projet actuel :
 ```python
 projet_qgis = Path(QgsProject.instance().fileName())
 dossier_qgis = projet_qgis.parent
+```
+
+Afficher la géométrie, sous sa forme "humaine", en chaîne de caractère, avec l'aide de
+[`QgsWkbTypes`](https://qgis.org/pyqgis/3.34/core/QgsWkbTypes.html#qgis.core.QgsWkbTypes.geometryDisplayString) :
+```python
+QgsWkbTypes.geometryDisplayString(vector_layer.geometryType())
 ```
 
 Pour utiliser une session d'édition, on peut faire :
@@ -381,7 +395,6 @@ Pour le type de champ, on va avoir besoin de l'API Qt également :
 * Par exemple :
     * Pour créer un nouveau champ de type string : `QgsField('nom', QVariant.String)`
     * Pour créer un nouveau champ de type entier : `QgsField('nombre_entité', QVariant.Int)`
-* 
 
 !!! note
     Note perso, je pense qu'avec la migration vers [Qt6](./migration-majeure.md), cela va pouvoir se simplifier un peu
@@ -400,89 +413,76 @@ Il va y avoir plusieurs étapes dans ce script :
 !!! tip
     Pour déboguer, on peut afficher la couche mémoire en question avec `QgsProject.instance().addMapLayer(layer_info)`
 
-
-# QgsvectorLayer pyqgis ne cntient pas Addfeature
-
-AJouter indice QgsWkbTypês
-V4 fileName
-
-### Solution
+### Solution possible
 
 ```python
-from os.path import join
+from qgis.core import edit
+
+# Création de la couche mémoire
+layer_info = QgsVectorLayer('None', 'info', 'memory')
+# QgsProject.instance().addMapLayer(layer_info)
+
+# Ajout des champs
+with edit(layer_info):
+    layer_info.addAttribute(QgsField('nom', QVariant.String))
+    layer_info.addAttribute(QgsField('type', QVariant.String))
+    layer_info.addAttribute(QgsField('projection', QVariant.String))
+    layer_info.addAttribute(QgsField('nombre_entité', QVariant.Int))
+    layer_info.addAttribute(QgsField('encodage', QVariant.String))
+    layer_info.addAttribute(QgsField('seuil', QVariant.Bool))
+    layer_info.addAttribute(QgsField('source', QVariant.String))
 
 layers = QgsProject.instance().mapLayers()
 if not layers:
-    iface.messageBar().pushMessage('Pas de couche','Attention, il n\'a pas de couche', Qgis.Warning)
+    iface.messageBar().pushMessage('Pas de couche', "Attention, il n'a pas de couche", Qgis.Warning)
 
-layers = [layer for layer in layers.values()]
+# Itération sur l'ensemble des couches du projet
+for layer in layers.values():
+    feature = QgsFeature(layer_info.fields())
+    feature['nom'] = layer.name()
+    feature['type'] = QgsWkbTypes.geometryDisplayString(layer.geometryType())
+    feature['nombre_entité'] = layer.featureCount()
+    feature['encodage'] = layer.dataProvider().encoding()
+    feature['projection'] = layer.crs().authid()
+    feature['seuil'] = layer.hasScaleBasedVisibility()
+    feature['source'] = layer.publicSource()
 
-layer_info = QgsVectorLayer('None', 'info', 'memory')
-
-fields = []
-fields.append(QgsField('nom', QVariant.String))
-fields.append(QgsField('type', QVariant.String))
-fields.append(QgsField('projection', QVariant.String))
-fields.append(QgsField('nombre_entite', QVariant.Int))
-fields.append(QgsField('encodage', QVariant.String))
-fields.append(QgsField('source', QVariant.String))
-fields.append(QgsField('seuil_de_visibilite', QVariant.String))
-
-with edit(layer_info):
-    for field in fields:
-        layer_info.addAttribute(field)
-
-QgsProject.instance().addMapLayer(layer_info)
-
-with edit(layer_info):
-    for layer in layers:
-        feature = QgsFeature(layer_info.fields())
-        feature.setAttribute("nom", layer.name())
-        feature.setAttribute("projection", layer.crs().authid())
-        feature.setAttribute("nombre_entite", layer.featureCount())
-        feature.setAttribute("encodage", layer.dataProvider().encoding())
-        feature.setAttribute("source", layer.source())
-        feature.setAttribute("type", QgsWkbTypes.geometryDisplayString(layer.geometryType()))
-        feature.setAttribute("seuil_visibilite", layer.hasScaleBasedVisibility())
+    with edit(layer_info):
         layer_info.addFeature(feature)
 
-base_name = QgsProject.instance().baseName()
-QgsVectorFileWriter.writeAsVectorFormat(
-    layer_info,
-    join(QgsProject.instance().homePath(), f'{base_name}.csv'),
-    'utf-8',
-    QgsCoordinateReferenceSystem(),
-    'CSV',
-    layerOptions=['CREATE_CSVT=YES']
-)
+# Export de la couche mémoire au format CSV
+options = QgsVectorFileWriter.SaveVectorOptions()
+options.driverName = 'CSV'
+options.fileEncoding = 'UTF-8'
+options.layerOptions = ['CREATE_CSVT=YES', 'SEPARATOR=TAB']
 
-# Afficher une messageBar pour confirmer que c'est OK, en vert ;-)
+base_name = QgsProject.instance().baseName()
+racine = Path(QgsProject.instance().absoluteFilePath()).parent
+output_file = racine.joinpath(f'{base_name}.csv')
+
+QgsVectorFileWriter.writeAsVectorFormatV3(
+    layer_info,
+    str(output_file),
+    QgsProject.instance().transformContext(),
+    options,
+)
 
 ```
 
-??? "Pour la version avec `writeAsVectorFormatV3`"
-    Il faut désormais donner le contexte pour une éventuelle reprojection que l'on trouve dans la classe
-    **QgsProject** : `QgsProject.instance().transformContext()`.
-
-    L'ensemble des options se donne via une nouvelle variable `QgsVectorFileWriter.SaveVectorOptions()`.
-
-    ```python
-    options = QgsVectorFileWriter.SaveVectorOptions()
-    options.driverName = 'CSV'
-    options.fileEncoding = 'UTF-8'
-    options.layerOptions = ['CREATE_CSVT=YES', 'SEPARATOR=TAB']
-
-    base_name = QgsProject.instance().baseName()
-    QgsVectorFileWriter.writeAsVectorFormatV3(
-        layer_info,
-        join(QgsProject.instance().homePath(), f'{base_name}.csv'),
-        QgsProject.instance().transformContext(),
-        options,
-    )
-    ```
-
 !!! warning
     Ajouter une couche raster et retester le script ... surprise 🎁
+
+??? note "Pour les experts, ajouter un alias ou un commentaire sur un champ"
+    ```python
+    field = QgsField(
+        'seuil_visibilite',
+        QVariant.Bool,
+        comment="Champ contenant le seuil de visibilité")
+    field.setAlias("Seuil de visibilité")
+    layer_info.addAttribute(field)
+    ```
+    Ceci dit, cela dépend dans quel format on exporte la couche, dans l'exercice, on fait du CSV, donc on perd ces
+    informations.
 
 !!! tip
     Pour obtenir en Python la liste des fournisseurs GDAL/OGR :
@@ -498,11 +498,13 @@ Idéalement, il faut vérifier le résultat de l'enregistrement du fichier. Les 
 retournent systématiquement un tuple avec un code d'erreur et un message si nécessaire, voir la
 [documentation](https://api.qgis.org/api/classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade).
 
-En cas de succès, il est pratique d'avertir l'utilisateur. On peut aussi fournir un lien pour ouvrir l'explorateur de fichier :
+Pour s'en rendre compte, on peut inclure un `print()` autour du `QgsVectorFileWriter.writeAsVectorFormatV3()`.
+
+**De plus**, en cas de succès, il est pratique d'avertir l'utilisateur. On peut aussi fournir un lien pour ouvrir
+l'explorateur de fichier :
 
 ```python
-base_name = QgsProject.instance().baseName()
-output_file = Path(QgsProject.instance().homePath()).joinpath(f'{base_name}.csv')
+# Affichage d'un message à l'utilisateur
 iface.messageBar().pushSuccess(
     "Export OK des couches 👍",
     (
