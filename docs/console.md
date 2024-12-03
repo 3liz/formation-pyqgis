@@ -170,8 +170,9 @@ print(fichier_shape.is_file())
     Tant que l'on est en console, on n'a pas besoin de faire `print`, la console le fait pour nous automatiquement.
     On peut se contenter de `fichier_shape.exists()`.
 
-Si tout est bon pour le chemin, charger la couche vecteur à l'aide de `iface`
-[QgisInterface](https://qgis.org/api/classQgisInterface.html) (et non pas **Qgs**Interface), en utilisant la méthode `addVectorLayer` :
+Si tout est bon pour le chemin, charger la couche vecteur à l'aide de `iface` qui est une instance de
+`QgisInterface` [CPP](https://qgis.org/api/classQgisInterface.html)/[PyQGIS](https://qgis.org/pyqgis/3.34/gui/QgisInterface.html)
+(et non pas **Qgs**Interface), en utilisant la méthode `addVectorLayer`.
 
 Attention, QGIS, étant écrit en C++, ne connait pas l'usage de `Path`, il faut repasser par une chaîne de caractère avec l'aide de `str` :
 

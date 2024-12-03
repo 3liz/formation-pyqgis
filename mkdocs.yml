@@ -12,13 +12,13 @@ nav:
     - docs.3liz.org: '../'
     - Accueil: index.md
     - Présentation:
-      - Python dans QGIS: python-qgis.md
-      - Documentation: documentation.md
-      - Mémo Python: memo-python.md
+      - Python dans QGIS 🐍: python-qgis.md
+      - Documentation 📖: documentation.md
+      - Mémo Python 🎒: memo-python.md
     - Premier pas:
-      - Console: console.md
-      - Fonctions & Scripts: fonctions-scripts.md
-      - Sélection & Parcours: selection-parcours-entites.md
+      - Console 🖥️: console.md
+      - Fonctions & Scripts ♻️: fonctions-scripts.md
+      - Sélection & Parcours 🏘️: selection-parcours-entites.md
     - Utilisation simple:
       - Action: action.md
       - Expression: expression.md
@@ -32,9 +32,9 @@ nav:
       - Extension Processing: extension-processing.md
       - Application standalone: standalone.md
     - Sujets PyQGIS thématiques:
-      - Migration majeur: migration-majeure.md
-      - PostGIS: postgis.md
-      - Symbologie: symbologie.md
+      - Migration majeure 🔀: migration-majeure.md
+      - PostGIS 🐘: postgis.md
+      - Symbologie 🎨: symbologie.md
     - Outils annexes:
       - Déploiement d'une extension: extension-deploiement.md
       - IDE & Git: ide-git.md

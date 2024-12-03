@@ -1,5 +1,15 @@
 # La base pour créer une extension
 
+## Une extension n'est qu'un ZIP pour fournir du code Python
+
+Comme vu dans [Le Python dans QGIS](./python-qgis.md), une extension peut être sous différente forme :
+
+* fournir une interface graphique (voir ci-dessous)
+* être un fournisseur d'algorithme Processing (voir ci-dessous)
+* fournir une expression, comme dans le [TP Wikipédia](./expression.md)
+* fournir un outil de recherche dans le "locator" (taper pour trouver)
+* ...
+
 ## Modèle de base
 
 Pour créer une extension dans QGIS, il existe deux façons de démarrer : 
