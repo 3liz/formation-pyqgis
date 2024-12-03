@@ -27,17 +27,17 @@ et son fichier
 
 Il est possible de protéger son dépôt avec un login/mot de passe.
 
+### Tutoriel pour installer un dépôt
+
+Notre [tutoriel](https://docs.3liz.org/tutorial/qgis-repository-fr/) pour l'installation d'un dépôt, avec ou sans
+mot de passe.
+
 ## plugins.qgis.org
 
-Plus simple pour le déploiement car le dépôt [plugins.qgis.org](https://plugins.qgis.org) est par défaut dans
+Plus simple pour le déploiement, car le dépôt [plugins.qgis.org](https://plugins.qgis.org) est par défaut dans
 les installations de QGIS. Il faut cependant que le code source soit disponible sur internet.
 
 Lire [les recommandations](https://plugins.qgis.org/publish/) pour la publication sur ce dépôt :
 
 * Code source disponible
 * `metadata.txt` avec les bonnes informations et des liens HTTP valides
-
-## Tutoriel pour installer un dépôt
-
-Notre [tutoriel](https://docs.3liz.org/tutorial/qgis-repository-fr/) pour l'installation d'un dépôt, avec ou sans
-mot de passe.

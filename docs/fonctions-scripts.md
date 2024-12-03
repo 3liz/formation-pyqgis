@@ -5,10 +5,14 @@
 Avant de commencer à vraiment écrire un script avec des fonctions, regardons comment communiquer des 
 informations à l'utilisateur.
 
+!!! tip "Cookbook"
+    Lien vers le [Python cookbook](https://docs.qgis.org/3.34/fr/docs/pyqgis_developer_cookbook/communicating.html)
+    qui présente cette partie plus précisément.
+
 ### La barre de message
 
 On peut envoyer des messages vers l'utilisateur avec l'utilisation de la `messageBar` de la classe
-[QgisInterface](https://qgis.org/api/classQgisInterface.html) :
+`QgisInterface` [CPP](https://qgis.org/api/classQgisInterface.html)/[PyQGIS](https://qgis.org/pyqgis/3.34/gui/QgisInterface.html) :
 
 ```Python
 iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.Critical)
@@ -19,9 +23,9 @@ iface.messageBar().pushMessage('Succès','ou un succès', Qgis.Success)
 
 Cette fonction prend 3 paramètres :
 
-- un titre
-- un message
-- un niveau d'alerte
+1. un titre
+1. un message
+1. un niveau d'alerte
 
 On peut voir dans la classe de [QgsMessageBar](https://qgis.org/pyqgis/master/gui/QgsMessageBar.html#qgis.gui.QgsMessageBar.pushSuccess)
 qu'il existe aussi `pushSuccess` qui est une alternative par exemple.
@@ -56,8 +60,8 @@ l'organisation du code.
 1. Exécuter le
 
 ```python
-# En haut du script, ce souvent des variables à modifier
-bd_topo = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
+# En haut du script, ce sont souvent des variables à modifier
+bd_topo = 'BD_TOPO'
 thematique = 'ADMINISTRATIF'
 couche = 'COMMUNE'
 
@@ -118,7 +122,7 @@ On peut ajouter une **docstring** à notre fonction, juste en dessous du `def`, 
 ??? "Afficher la solution intermédiaire"
     ```python
     # En haut du script, ce souvent des variables à modifier
-    bd_topo = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
+    bd_topo = 'BD_TOPO'
     thematique = 'ADMINISTRATIF'
     couche = 'COMMUNE'
     
@@ -157,7 +161,7 @@ On peut garder le code le plus à gauche possible grâce à `return` qui ordonne
 ??? "Afficher une des solutions finales"
     ```python
     # En haut du script, ce souvent des variables à modifier
-    bd_topo = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
+    bd_topo = 'BD_TOPO'
 
     # Puis place au script
     # En théorie, pas besoin de modification, en dessous pour un "utilisateur final" du script
@@ -388,10 +392,11 @@ with edit(layer):
     layer = iface.activeLayer()
 
     layer.startEditing()
-
+    print("Début de la session")
     # Code inutile, mais qui va volontairement faire une exception Python
     a = 10 / 0
 
+    print("Fin de la session")
     layer.commitChanges()
     print("Fin du script")
     ```
@@ -402,6 +407,7 @@ with edit(layer):
     layer = iface.activeLayer()
 
     with edit(layer):
+        print("Début de la session")
         # Code inutile, mais qui va volontairement faire une exception Python
         a = 10 / 0
 
@@ -416,13 +422,13 @@ Nous allons avoir besoin de plusieurs classes dans l'API QGIS :
 
 * `QgsProject` : [PyQGIS](https://qgis.org/pyqgis/master/core/QgsProject.html) / [CPP](https://api.qgis.org/api/classQgsProject.html)
 * `QgsVectorLayer` : [PyQGIS](https://qgis.org/pyqgis/master/core/QgsVectorLayer.html) / [CPP](https://api.qgis.org/api/classQgsVectorLayer.html)
-* Enregistrer un fichier avec `QgsVectorFileWriter` : [PyQGIS](https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html) / [CPP](https://api.qgis.org/api/classQgsVectorFileWriter.html)
+* Enregistrer un fichier avec `QgsVectorFileWriter` : [PyQGIS](https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html) / [CPP](https://api.qgis.org/api/classQgsVectorFileWriter.html), lire la correction pour voir son usage.
 * Un champ dans une couche vecteur : `QgsField` ([PyQGIS](https://qgis.org/pyqgis/master/core/QgsField.html) / [CPP](https://api.qgis.org/api/classQgsField.html)),
   attention à ne pas confondre avec `QgsFields` ([PyQGIS](https://qgis.org/pyqgis/master/core/QgsFields.html) / [CPP](https://api.qgis.org/api/classQgsFields.html))
   qui lui représente un ensemble de champs.
 * Une entité `QgsFeature` [PyQGIS](https://qgis.org/pyqgis/master/core/QgsFeature.html) / [CPP](https://api.qgis.org/api/classQgsFeature.html)
 * Pour le type de géométrie : Utiliser `QgsVectorLayer` `geometryType()` et également la méthode `QgsWkbTypes.geometryDisplayString()` pour sa conversion en chaîne "lisible"
-   * [PyQGIS](https://qgis.org/pyqgis/master/core/QgsWkbTypes.html) / [CPP](https://api.qgis.org/api/classQgsWkbTypes.html)
+     * [PyQGIS](https://qgis.org/pyqgis/master/core/QgsWkbTypes.html) / [CPP](https://api.qgis.org/api/classQgsWkbTypes.html)
 
 Pour le type de champ, on va avoir besoin de l'API Qt également :
 

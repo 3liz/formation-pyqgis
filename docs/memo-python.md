@@ -191,6 +191,11 @@ commune['est_prefecture'] = True
 
 # Ou directement lors de la création de la variable :
 commune = {'nom': 'Besançon', 'code_insee': 25056, 'est_prefecture': True}
+
+# Lire le contenu d'une clé :
+print(commune['nom'])
+print(commune['population'])  # Leve une erreur IndexError
+print(commune.get('population'))  # Imprime None
 ```
 
 ## Les commentaires

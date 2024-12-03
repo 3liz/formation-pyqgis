@@ -7,14 +7,16 @@ Nous allons utiliser un département de la [BDTopo](https://geoservices.ign.fr/b
 !!! tip
     Les DROM-COM ou le Territoire de Belfort (90) sont assez légers.
 
+1. Renommer le dossier `BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD` en `BD_TOPO` afin de simplifier les corrections.
+
 ## Configurer le projet
 
 * Commencer un nouveau projet et enregistrer le dans un dossier.
-* À côté du projet `qgs` ou `qgz`, ajouter le dossier provenant de la BDTopo, le dossier `BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD`.
+* À côté du projet `qgs` ou `qgz`, ajouter le dossier provenant de la BDTopo, le dossier `BD_TOPO` ci-dessus.
 
 ```bash
 .
-├── BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD
+├── BD_TOPO
 │   ├── ADMINISTRATIF
 │   ├── ADRESSES
 │   ├── BATI
@@ -128,7 +130,7 @@ project.absoluteFilePath()
 ### Manipulation en console pour ajouter une couche Shapefile
 
 * Objectif, ajouter une couche vecteur contenu dans un dossier fils :
-    * Exemple `BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD/ADMINISTRATIF/COMMUNE.shp` :
+    * Exemple `BD_TOPO/ADMINISTRATIF/COMMUNE.shp` :
     * Recherchons dans l'API de `QgsProject` le fichier actuel du projet, à l'aide `filepath`.
     * L'utilisation de `home` est un peu différente, dans QGIS on peut définir un répertoire différent pour la racine des données.
     * Nous allons utiliser l'objet `Path` pour manipuler les fichiers/dossiers.
@@ -152,7 +154,7 @@ racine = Path(project.absoluteFilePath()).parent
 
 On peut joindre notre BDTopo, en donnant plusieurs paramètres à `joinpath` :
 ```python
-chemin = racine.joinpath('BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD', 'ADMINISTRATIF')
+chemin = racine.joinpath('BD_TOPO', 'ADMINISTRATIF')
 fichier_shape = chemin.joinpath('COMMUNE.shp')
 ```
 
@@ -193,7 +195,7 @@ print(communes)
     from pathlib import Path
     project = QgsProject.instance()
     racine = Path(project.absoluteFilePath()).parent
-    chemin = racine.joinpath('BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD', 'ADMINISTRATIF')
+    chemin = racine.joinpath('BD_TOPO', 'ADMINISTRATIF')
     fichier_shape = chemin.joinpath('COMMUNE.shp')
     # fichier_shape.is_file()
     communes = QgsVectorLayer(str(fichier_shape), 'communes', 'ogr')
@@ -208,7 +210,7 @@ print(communes)
 	project = QgsProject.instance()
 
 	racine = project.homePath()
-	chemin = join(racine, 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD', 'ADMINISTRATIF')
+	chemin = join(racine, 'BD_TOPO', 'ADMINISTRATIF')
 	fichier_shape = join(chemin, 'COMMUNE.shp')
 	communes = QgsVectorLayer(fichier_shape, 'communes', 'ogr')
 	communes.isValid()
@@ -326,7 +328,7 @@ Petit récapitulatif à tester pour voir si cela fonctionne correctement !
 
 ```python
 from pathlib import Path
-dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
+dossier = 'BD_TOPO'
 thematique = 'ADMINISTRATIF'
 couche = 'COMMUNE'
 
