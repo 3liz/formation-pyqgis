@@ -34,6 +34,7 @@ nav:
     - Sujets PyQGIS thématiques:
       - Migration majeur: migration-majeure.md
       - PostGIS: postgis.md
+      - Symbologie: symbologie.md
     - Outils annexes:
       - Déploiement d'une extension: extension-deploiement.md
       - IDE & Git: ide-git.md

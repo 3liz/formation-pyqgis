@@ -282,9 +282,14 @@ QgsMapLayer <-- QgsVectorLayer
 QgsMapLayer <-- QgsRasterLayer
 ```
 
-L'objet `QgsVectorLayer` hérite de `QgsMapLayer` qui est une classe commune avec `QgsMapLayer`.
+L'objet `QgsVectorLayer` hérite de `QgsMapLayer` qui est une classe commune avec `QgsRasterLayer`.
 
 [API QgsMapLayer C++](https://qgis.org/api/classQgsMapLayer.html), [API QgsMapLayer Python](https://qgis.org/pyqgis/3.34/core/QgsMapLayer.html)
+
+!!! tip
+    On peut désormais regarder la documentation CPP de QGIS et Qt pour voir l'ensemble des membres,
+    **y compris les membres hérités**.
+    [QgsVectorLayer CPP](https://api.qgis.org/api/classQgsVectorLayer.html) ou [QComboBox](https://doc.qt.io/qt-6/qcombobox.html)
 
 Regardons la fonction `isinstance` qui permet de tester si un objet est une instance d'une classe :
 
@@ -298,6 +303,13 @@ True
 ```
 
 * Objectif, ne pas afficher la couche commune pour une échelle plus petite que le `1:2 000 000`.
+
+```python
+communes.setMinimumScale(2000000)
+communes.setMaximumScale(500000)
+communes.setScaleBasedVisibility(True)
+# communes.triggerRepaint()
+```
 
 !!! important
     Un raccourci à savoir, dans la console :
@@ -317,17 +329,17 @@ dossier = 'BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD'
 thematique = 'ADMINISTRATIF'
 couche = 'COMMUNE'
 
-racine = QgsProject.instance().homePath()
-fichier_shape = join(racine, dossier, thematique, '{}.shp'.format(couche))
-layer = QgsVectorLayer(fichier_shape, couche, 'ogr')
-result = QgsProject.instance().addMapLayer(layer)
+project = QgsProject.instance()
+racine = Path(project.absoluteFilePath()).parent
+chemin = racine.joinpath(dossier, thematique)
+fichier_shape = chemin.joinpath(f'{couche}.shp')
 
 print(layer.featureCount())
 print(layer.crs().authid())
 print('Est en mètre : {}'.format(layer.crs().mapUnits() ==  QgsUnitTypes.DistanceMeters))
 print(layer.name())
 layer.setScaleBasedVisibility(True)
-layer.setMaximumScale(1)
+layer.setMaximumScale(500000)
 layer.setMinimumScale(2000000)
 layer.triggerRepaint()
 ```

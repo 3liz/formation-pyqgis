@@ -52,6 +52,7 @@ Si nécessaire, il peut être utile d'avoir en plus :
 * Sujets PyQGIS thématiques
     * [Migration majeure au sein d'un code Python](migration-majeure.md)
     * [Interroger une base PostGIS](postgis.md)
+    * [Symbologie](symbologie.md)
 * Outils annexes
     * [Déploiement d'une extension](extension-deploiement.md)
     * [IDE Python & Git](ide-git.md)
