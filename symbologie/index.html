@@ -12,13 +12,13 @@
         <meta name="author" content="3Liz">
       
       
-        <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/extension-generique/">
+        <link rel="canonical" href="https://docs.3liz.org/formation-pyqgis/symbologie/">
       
       
-        <link rel="prev" href="../script-processing/">
+        <link rel="prev" href="../postgis/">
       
       
-        <link rel="next" href="../extension-graphique/">
+        <link rel="next" href="../extension-deploiement/">
       
       
       <link rel="icon" href="../media/logo-qgis.png">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Extension Générique - Formation PyQGIS</title>
+        <title>Symbologie 🎨 - Formation PyQGIS</title>
       
     
     
@@ -72,7 +72,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#la-base-pour-creer-une-extension" class="md-skip">
+        <a href="#symbologie" class="md-skip">
           Aller au contenu
         </a>
       
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Extension Générique
+              Symbologie 🎨
             
           </span>
         </div>
@@ -268,12 +268,10 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../ecriture-classe-poo/" class="md-tabs__link">
           
   
@@ -288,10 +286,12 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../migration-majeure/" class="md-tabs__link">
           
   
@@ -739,28 +739,23 @@
       
   
   
-    
   
   
-  
     
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -771,7 +766,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Utilisation avancé
@@ -845,30 +840,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Extension Générique
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../extension-generique/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -877,110 +852,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table des matières
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#une-extension-nest-quun-zip-pour-fournir-du-code-python" class="md-nav__link">
-    <span class="md-ellipsis">
-      Une extension n'est qu'un ZIP pour fournir du code Python
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#modele-de-base" class="md-nav__link">
-    <span class="md-ellipsis">
-      Modèle de base
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Modèle de base">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#le-fichier-metadatatxt" class="md-nav__link">
-    <span class="md-ellipsis">
-      Le fichier metadata.txt
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extensions-utiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Extensions utiles
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Extensions utiles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#plugin-reloader" class="md-nav__link">
-    <span class="md-ellipsis">
-      Plugin reloader
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyqgis-resource-browser" class="md-nav__link">
-    <span class="md-ellipsis">
-      PyQGIS Resource Browser
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#first-aid" class="md-nav__link">
-    <span class="md-ellipsis">
-      First aid
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apprendre-dune-autre-extension" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apprendre d'une autre extension
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1060,23 +931,28 @@
       
   
   
+    
   
   
+  
     
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
             
   
   <span class="md-ellipsis">
@@ -1087,7 +963,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Sujets PyQGIS thématiques
@@ -1140,10 +1016,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../symbologie/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Symbologie 🎨
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -1152,6 +1048,86 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table des matières">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table des matières
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#utilisation-dun-qml-au-lieu-de-pyqgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Utilisation d'un QML au lieu de PyQGIS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#classes-utiles-en-pyqgis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Classes utiles en PyQGIS
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#afficher-les-infos-de-la-symbologie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Afficher les infos de la symbologie
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#affecter-une-symbologie-a-une-couche" class="md-nav__link">
+    <span class="md-ellipsis">
+      Affecter une symbologie à une couche
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Affecter une symbologie à une couche">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#un-symbole-ponctuel-unique-simple" class="md-nav__link">
+    <span class="md-ellipsis">
+      Un symbole ponctuel unique simple
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#un-symbole-lineaire-unique-sous-forme-de-fleche" class="md-nav__link">
+    <span class="md-ellipsis">
+      Un symbole linéaire unique sous forme de flèche
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1278,28 +1254,55 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#une-extension-nest-quun-zip-pour-fournir-du-code-python" class="md-nav__link">
+  <a href="#utilisation-dun-qml-au-lieu-de-pyqgis" class="md-nav__link">
     <span class="md-ellipsis">
-      Une extension n'est qu'un ZIP pour fournir du code Python
+      Utilisation d'un QML au lieu de PyQGIS
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#modele-de-base" class="md-nav__link">
+  <a href="#classes-utiles-en-pyqgis" class="md-nav__link">
     <span class="md-ellipsis">
-      Modèle de base
+      Classes utiles en PyQGIS
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Modèle de base">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#afficher-les-infos-de-la-symbologie" class="md-nav__link">
+    <span class="md-ellipsis">
+      Afficher les infos de la symbologie
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#affecter-une-symbologie-a-une-couche" class="md-nav__link">
+    <span class="md-ellipsis">
+      Affecter une symbologie à une couche
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Affecter une symbologie à une couche">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#le-fichier-metadatatxt" class="md-nav__link">
+  <a href="#un-symbole-ponctuel-unique-simple" class="md-nav__link">
     <span class="md-ellipsis">
-      Le fichier metadata.txt
+      Un symbole ponctuel unique simple
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#un-symbole-lineaire-unique-sous-forme-de-fleche" class="md-nav__link">
+    <span class="md-ellipsis">
+      Un symbole linéaire unique sous forme de flèche
     </span>
   </a>
   
@@ -1307,57 +1310,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#extensions-utiles" class="md-nav__link">
-    <span class="md-ellipsis">
-      Extensions utiles
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Extensions utiles">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#plugin-reloader" class="md-nav__link">
-    <span class="md-ellipsis">
-      Plugin reloader
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#pyqgis-resource-browser" class="md-nav__link">
-    <span class="md-ellipsis">
-      PyQGIS Resource Browser
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#first-aid" class="md-nav__link">
-    <span class="md-ellipsis">
-      First aid
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apprendre-dune-autre-extension" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apprendre d'une autre extension
-    </span>
-  </a>
   
 </li>
       
@@ -1379,73 +1331,139 @@
   
 
 
-<h1 id="la-base-pour-creer-une-extension">La base pour créer une extension<a class="headerlink" href="#la-base-pour-creer-une-extension" title="Permanent link">#</a></h1>
-<h2 id="une-extension-nest-quun-zip-pour-fournir-du-code-python">Une extension n'est qu'un ZIP pour fournir du code Python<a class="headerlink" href="#une-extension-nest-quun-zip-pour-fournir-du-code-python" title="Permanent link">#</a></h2>
-<p>Comme vu dans <a href="../python-qgis/">Le Python dans QGIS</a>, une extension peut être sous différente forme :</p>
+<h1 id="symbologie">Symbologie<a class="headerlink" href="#symbologie" title="Permanent link">#</a></h1>
+<p>Étant donné que la symbologie pouvant être complexe dans QGIS Bureautique, avec les différents types de symbologie,
+les différents niveaux de symbole, les ensembles de règles avec des filtres etc, il n'est pas forcément simple de
+s'y retrouver dans l'API PyQGIS également.</p>
+<h2 id="utilisation-dun-qml-au-lieu-de-pyqgis">Utilisation d'un QML au lieu de PyQGIS<a class="headerlink" href="#utilisation-dun-qml-au-lieu-de-pyqgis" title="Permanent link">#</a></h2>
+<p>On peut se passer de PyQGIS pour fournir une symbologie à l'aide d'un fichier <strong>QML</strong>, si on ne souhaite pas faire ça en
+Python entièrement.</p>
+<p>Regarder les méthodes <code>loadNamedStyle</code> de la classe <code>QgsMapLayer</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+
+<span class="n">qml</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;path_to_qml&quot;</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">qml</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="n">layer</span><span class="o">.</span><span class="n">loadNamedStyle</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">qml</span><span class="p">))</span>
+    <span class="n">iface</span><span class="o">.</span><span class="n">legendInterface</span><span class="p">()</span><span class="o">.</span><span class="n">refreshLayerSymbology</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="classes-utiles-en-pyqgis">Classes utiles en PyQGIS<a class="headerlink" href="#classes-utiles-en-pyqgis" title="Permanent link">#</a></h2>
+<p>Voir les graphiques d'héritage sur :</p>
 <ul>
-<li>fournir une interface graphique (voir ci-dessous)</li>
-<li>être un fournisseur d'algorithme Processing (voir ci-dessous)</li>
-<li>fournir une expression, comme dans le <a href="../expression/">TP Wikipédia</a></li>
-<li>fournir un outil de recherche dans le "locator" (taper pour trouver)</li>
-<li>...</li>
+<li><a href="https://api.qgis.org/api/classQgsFeatureRenderer.html">QgsFeatureRenderer</a> pour le moteur de rendu.</li>
+<li><a href="https://api.qgis.org/api/classQgsSymbol.html">QgsSymbol</a> pour un symbole, selon le type de géométrie.</li>
 </ul>
-<h2 id="modele-de-base">Modèle de base<a class="headerlink" href="#modele-de-base" title="Permanent link">#</a></h2>
-<p>Pour créer une extension dans QGIS, il existe deux façons de démarrer : </p>
+<h2 id="afficher-les-infos-de-la-symbologie">Afficher les infos de la symbologie<a class="headerlink" href="#afficher-les-infos-de-la-symbologie" title="Permanent link">#</a></h2>
 <ul>
-<li>Utilisation de l'extension "Plugin Builder" :<ul>
-<li>Disponible depuis le gestionnaire des extensions de QGIS</li>
-<li>Assistant de création</li>
-<li>Très (trop) complet, il y a squelette pour :<ul>
-<li>Du code avec des actions, ...</li>
-<li>Générer de la documentation Sphinx</li>
-<li>Des tests unitaires</li>
-<li>Les traductions (multilingue)</li>
+<li>Affichage sous forme textuelle</li>
 </ul>
-</li>
-<li>Très historique, moins mis à jour ces dernières années, <a href="https://plugins.qgis.org/plugins/pluginbuilder3/#plugin-versions">dernière version de 2019</a></li>
-<li><a href="https://github.com/g-sherman/Qgis-Plugin-Builder/">https://github.com/g-sherman/Qgis-Plugin-Builder/</a></li>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="n">renderer</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">renderer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">renderer</span><span class="o">.</span><span class="n">dump</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>SINGLE: FILL SYMBOL (1 layers) color 125,139,143,255</p>
+</blockquote>
+<ul>
+<li>Affichage du "dictionnaire" contenant l'ensemble des informations pour un niveau de symbole :</li>
 </ul>
-</li>
-<li>QGIS Minimal plugin :<ul>
-<li>Idée originale <a href="https://github.com/wonder-sk/qgis-minimal-plugin">https://github.com/wonder-sk/qgis-minimal-plugin</a></li>
-<li>"Fork" pour la formation <a href="https://github.com/Gustry/qgis_minimal_plugin">https://github.com/Gustry/qgis_minimal_plugin</a></li>
-<li>ZIP à télécharger et à extraire</li>
-<li>Très léger</li>
-<li>Besoin de <strong>tout</strong> refaire depuis zéro</li>
-</ul>
-</li>
-</ul>
-<p>Nous pouvons suivre une des deux méthodes, mais dans le cadre de la formation, faisons la méthode minimale.
-Dans les deux cas, le résultat doit être dans le dossier <code>python/plugins</code> du profil courant.</p>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Pour trouver le profil courant, dans QGIS, <code>Préférences</code> -&gt; <code>Profils Utilisateurs</code> -&gt; <code>Ouvrir le dossier du profil actif</code>.</p>
-</div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>Pour installer le Minimal Plugin, vous pouvez utiliser le gestionnaire des extensions pour installer
-depuis un zip.</p>
-</div>
-<p>Exemple d'utilisation d'un panneau qui présentent les algorithmes "Processing" :</p>
-<p><img alt="RAEPA" src="../media/gobs.png" /></p>
-<h3 id="le-fichier-metadatatxt">Le fichier <code>metadata.txt</code><a class="headerlink" href="#le-fichier-metadatatxt" title="Permanent link">#</a></h3>
-<p><a href="https://docs.qgis.org/3.34/en/docs/pyqgis_developer_cookbook/plugins/plugins.html#metadata-txt">Liste des valeurs possibles</a>
-dans un fichier <code>metadata.txt</code></p>
-<h2 id="extensions-utiles">Extensions utiles<a class="headerlink" href="#extensions-utiles" title="Permanent link">#</a></h2>
-<h3 id="plugin-reloader">Plugin reloader<a class="headerlink" href="#plugin-reloader" title="Permanent link">#</a></h3>
-<p><strong>Indispensable</strong></p>
-<p>Le "Plugin Reloader" est une extension indispensable pour développer une extension pour recharger son 
-extension. Elle est disponible dans le gestionnaire des extensions.</p>
-<h3 id="pyqgis-resource-browser">PyQGIS Resource Browser<a class="headerlink" href="#pyqgis-resource-browser" title="Permanent link">#</a></h3>
-<p><strong>Utile pour l'ergonomie</strong></p>
-<p>Permet d'aller chercher des icônes déjà existantes dans la libraire QGIS et Qt</p>
-<h3 id="first-aid">First aid<a class="headerlink" href="#first-aid" title="Permanent link">#</a></h3>
-<p><strong>Utile pour aller plus loin</strong></p>
-<p>Extension pour débugger en cas d'une erreur Python</p>
-<h2 id="apprendre-dune-autre-extension">Apprendre d'une autre extension<a class="headerlink" href="#apprendre-dune-autre-extension" title="Permanent link">#</a></h2>
-<p>Comme les extensions sur qgis.org sont disponibles sur internet, on peut regarder le code source pour
-comprendre.</p>
-<p>Pensez à ouvrir le dossier de votre profil QGIS en suivant l'astuce ci-dessus puis dans <code>python/plugins</code>.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="n">renderer</span> <span class="o">=</span> <span class="n">layer</span><span class="o">.</span><span class="n">renderer</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">renderer</span><span class="o">.</span><span class="n">symbol</span><span class="p">()</span><span class="o">.</span><span class="n">symbolLayers</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">properties</span><span class="p">())</span>
+</code></pre></div></td></tr></table></div>
+<blockquote>
+<p>{'border_width_map_unit_scale': '3x:0,0,0,0,0,0', 'color': '125,139,143,255', 'joinstyle': 'bevel', 'offset': '0,0', 'offset_map_unit_scale': '3x:0,0,0,0,0,0', 'offset_unit': 'MM', 'outline_color': '35,35,35,255', 'outline_style': 'solid', 'outline_width': '0.26', 'outline_width_unit': 'MM', 'style': 'solid'}</p>
+</blockquote>
+<h2 id="affecter-une-symbologie-a-une-couche">Affecter une symbologie à une couche<a class="headerlink" href="#affecter-une-symbologie-a-une-couche" title="Permanent link">#</a></h2>
+<p><strong>Il peut être très pratique de partir d'une symbologie existante, faite via l'interface graphique, puis de l'exporter pour voir les propriétés.</strong></p>
+<h3 id="un-symbole-ponctuel-unique-simple">Un symbole ponctuel unique simple<a class="headerlink" href="#un-symbole-ponctuel-unique-simple" title="Permanent link">#</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsMarkerSymbol</span><span class="p">,</span> <span class="n">QgsSingleSymbolRenderer</span>
+
+<span class="n">symbol</span> <span class="o">=</span> <span class="n">QgsMarkerSymbol</span><span class="o">.</span><span class="n">createSimple</span><span class="p">(</span>
+    <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;circle&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="s2">&quot;yellow&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;size&quot;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+    <span class="p">}</span>
+<span class="p">)</span>
+<span class="n">renderer</span> <span class="o">=</span> <span class="n">QgsSingleSymbolRenderer</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+<span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">setRenderer</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+<span class="c1"># layer.triggerRepaint()  # If necessary</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="un-symbole-lineaire-unique-sous-forme-de-fleche">Un symbole linéaire unique sous forme de flèche<a class="headerlink" href="#un-symbole-lineaire-unique-sous-forme-de-fleche" title="Permanent link">#</a></h3>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span>
+<span class="normal">21</span>
+<span class="normal">22</span>
+<span class="normal">23</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsApplication</span><span class="p">,</span> <span class="n">QgsSymbol</span><span class="p">,</span> <span class="n">Qgis</span><span class="p">,</span> <span class="n">QgsSingleSymbolRenderer</span>
+<span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="n">QColor</span>
+
+<span class="c1"># Quelques propriétés d&#39;une flèche si besoin de surcharger. Utiliser le code PyQGIS pour récupérer la liste des propriétés.</span>
+<span class="n">ARROW</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;arrow_start_width&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;arrow_start_width_unit&#39;</span><span class="p">:</span> <span class="s1">&#39;MM&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;arrow_start_width_unit_scale&#39;</span><span class="p">:</span> <span class="s1">&#39;3x:0,0,0,0,0,0&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;arrow_type&#39;</span><span class="p">:</span> <span class="s1">&#39;0&#39;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="n">registry</span> <span class="o">=</span> <span class="n">QgsApplication</span><span class="o">.</span><span class="n">symbolLayerRegistry</span><span class="p">()</span>
+<span class="n">line_metadata</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">symbolLayerMetadata</span><span class="p">(</span><span class="s1">&#39;ArrowLine&#39;</span><span class="p">)</span>
+<span class="n">line_layer</span> <span class="o">=</span> <span class="n">line_metadata</span><span class="o">.</span><span class="n">createSymbolLayer</span><span class="p">(</span><span class="n">ARROW</span><span class="p">)</span>
+<span class="n">line_layer</span><span class="o">.</span><span class="n">setColor</span><span class="p">(</span><span class="n">QColor</span><span class="p">(</span><span class="s1">&#39;#33a02c&#39;</span><span class="p">))</span>
+
+<span class="n">symbol</span> <span class="o">=</span> <span class="n">QgsSymbol</span><span class="o">.</span><span class="n">defaultSymbol</span><span class="p">(</span><span class="n">Qgis</span><span class="o">.</span><span class="n">GeometryType</span><span class="o">.</span><span class="n">LineGeometry</span><span class="p">)</span>
+<span class="n">symbol</span><span class="o">.</span><span class="n">deleteSymbolLayer</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">symbol</span><span class="o">.</span><span class="n">appendSymbolLayer</span><span class="p">(</span><span class="n">line_layer</span><span class="p">)</span>
+
+
+<span class="n">renderer</span> <span class="o">=</span> <span class="n">QgsSingleSymbolRenderer</span><span class="p">(</span><span class="n">symbol</span><span class="p">)</span>
+<span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">setRenderer</span><span class="p">(</span><span class="n">renderer</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 
 
 

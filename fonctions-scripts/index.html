@@ -22,11 +22,11 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
     
     
       
-        <title>Fonctions & Scripts - Formation PyQGIS</title>
+        <title>Fonctions & Scripts ♻️ - Formation PyQGIS</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Fonctions & Scripts
+              Fonctions & Scripts ♻️
             
           </span>
         </div>
@@ -460,7 +460,7 @@
         
   
   <span class="md-ellipsis">
-    Python dans QGIS
+    Python dans QGIS 🐍
   </span>
   
 
@@ -481,7 +481,7 @@
         
   
   <span class="md-ellipsis">
-    Documentation
+    Documentation 📖
   </span>
   
 
@@ -502,7 +502,7 @@
         
   
   <span class="md-ellipsis">
-    Mémo Python
+    Mémo Python 🎒
   </span>
   
 
@@ -573,7 +573,7 @@
         
   
   <span class="md-ellipsis">
-    Console
+    Console 🖥️
   </span>
   
 
@@ -603,7 +603,7 @@
           
   
   <span class="md-ellipsis">
-    Fonctions & Scripts
+    Fonctions & Scripts ♻️
   </span>
   
 
@@ -614,7 +614,7 @@
         
   
   <span class="md-ellipsis">
-    Fonctions & Scripts
+    Fonctions & Scripts ♻️
   </span>
   
 
@@ -817,7 +817,7 @@
         
   
   <span class="md-ellipsis">
-    Sélection & Parcours
+    Sélection & Parcours 🏘️
   </span>
   
 
@@ -1183,7 +1183,7 @@
         
   
   <span class="md-ellipsis">
-    Migration majeur
+    Migration majeure 🔀
   </span>
   
 
@@ -1204,7 +1204,28 @@
         
   
   <span class="md-ellipsis">
-    PostGIS
+    PostGIS 🐘
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../symbologie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Symbologie 🎨
   </span>
   
 
@@ -1518,9 +1539,14 @@
 <h2 id="communication-avec-lutilisateur-des-erreurs-et-des-logs">Communication avec l'utilisateur des erreurs et des logs<a class="headerlink" href="#communication-avec-lutilisateur-des-erreurs-et-des-logs" title="Permanent link">#</a></h2>
 <p>Avant de commencer à vraiment écrire un script avec des fonctions, regardons comment communiquer des 
 informations à l'utilisateur.</p>
+<div class="admonition tip">
+<p class="admonition-title">Cookbook</p>
+<p>Lien vers le <a href="https://docs.qgis.org/3.34/fr/docs/pyqgis_developer_cookbook/communicating.html">Python cookbook</a>
+qui présente cette partie plus précisément.</p>
+</div>
 <h3 id="la-barre-de-message">La barre de message<a class="headerlink" href="#la-barre-de-message" title="Permanent link">#</a></h3>
 <p>On peut envoyer des messages vers l'utilisateur avec l'utilisation de la <code>messageBar</code> de la classe
-<a href="https://qgis.org/api/classQgisInterface.html">QgisInterface</a> :</p>
+<code>QgisInterface</code> <a href="https://qgis.org/api/classQgisInterface.html">CPP</a>/<a href="https://qgis.org/pyqgis/3.34/gui/QgisInterface.html">PyQGIS</a> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1530,11 +1556,11 @@ informations à l'utilisateur.</p>
 <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Succès&#39;</span><span class="p">,</span><span class="s1">&#39;ou un succès&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Cette fonction prend 3 paramètres :</p>
-<ul>
+<ol>
 <li>un titre</li>
 <li>un message</li>
 <li>un niveau d'alerte</li>
-</ul>
+</ol>
 <p>On peut voir dans la classe de <a href="https://qgis.org/pyqgis/master/gui/QgsMessageBar.html#qgis.gui.QgsMessageBar.pushSuccess">QgsMessageBar</a>
 qu'il existe aussi <code>pushSuccess</code> qui est une alternative par exemple.</p>
 <h3 id="journal-des-logs">Journal des logs<a class="headerlink" href="#journal-des-logs" title="Permanent link">#</a></h3>
@@ -1589,8 +1615,8 @@ l'organisation du code.</p>
 <span class="normal">23</span>
 <span class="normal">24</span>
 <span class="normal">25</span>
-<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># En haut du script, ce souvent des variables à modifier</span>
-<span class="n">bd_topo</span> <span class="o">=</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># En haut du script, ce sont souvent des variables à modifier</span>
+<span class="n">bd_topo</span> <span class="o">=</span> <span class="s1">&#39;BD_TOPO&#39;</span>
 <span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span>
 <span class="n">couche</span> <span class="o">=</span> <span class="s1">&#39;COMMUNE&#39;</span>
 
@@ -1687,7 +1713,7 @@ On peut le supprimer le bloc n'est pas vide.</p>
 <span class="normal">29</span>
 <span class="normal">30</span>
 <span class="normal">31</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># En haut du script, ce souvent des variables à modifier</span>
-<span class="n">bd_topo</span> <span class="o">=</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span>
+<span class="n">bd_topo</span> <span class="o">=</span> <span class="s1">&#39;BD_TOPO&#39;</span>
 <span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span>
 <span class="n">couche</span> <span class="o">=</span> <span class="s1">&#39;COMMUNE&#39;</span>
 
@@ -1757,7 +1783,7 @@ On peut le supprimer le bloc n'est pas vide.</p>
 <span class="normal">32</span>
 <span class="normal">33</span>
 <span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># En haut du script, ce souvent des variables à modifier</span>
-<span class="n">bd_topo</span> <span class="o">=</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span>
+<span class="n">bd_topo</span> <span class="o">=</span> <span class="s1">&#39;BD_TOPO&#39;</span>
 
 <span class="c1"># Puis place au script</span>
 <span class="c1"># En théorie, pas besoin de modification, en dessous pour un &quot;utilisateur final&quot; du script</span>
@@ -2013,21 +2039,23 @@ l'action <code>Exporter la couche</code>).</li>
 <details>
 <summary>Exemple de l'utilisation d'un contexte Python avec la session d'édition</summary>
 <p>Sans contexte, la couche reste en mode édition en cas d'erreur fatale Python</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
 <span class="n">layer</span><span class="o">.</span><span class="n">startEditing</span><span class="p">()</span>
-
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Début de la session&quot;</span><span class="p">)</span>
 <span class="c1"># Code inutile, mais qui va volontairement faire une exception Python</span>
 <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
 
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin de la session&quot;</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">commitChanges</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin du script&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2038,9 +2066,11 @@ l'action <code>Exporter la couche</code>).</li>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
 <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Début de la session&quot;</span><span class="p">)</span>
     <span class="c1"># Code inutile, mais qui va volontairement faire une exception Python</span>
     <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span>
 
@@ -2053,13 +2083,15 @@ l'action <code>Exporter la couche</code>).</li>
 <ul>
 <li><code>QgsProject</code> : <a href="https://qgis.org/pyqgis/master/core/QgsProject.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsProject.html">CPP</a></li>
 <li><code>QgsVectorLayer</code> : <a href="https://qgis.org/pyqgis/master/core/QgsVectorLayer.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsVectorLayer.html">CPP</a></li>
-<li>Enregistrer un fichier avec <code>QgsVectorFileWriter</code> : <a href="https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsVectorFileWriter.html">CPP</a></li>
+<li>Enregistrer un fichier avec <code>QgsVectorFileWriter</code> : <a href="https://qgis.org/pyqgis/master/core/QgsVectorFileWriter.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsVectorFileWriter.html">CPP</a>, lire la correction pour voir son usage.</li>
 <li>Un champ dans une couche vecteur : <code>QgsField</code> (<a href="https://qgis.org/pyqgis/master/core/QgsField.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsField.html">CPP</a>),
   attention à ne pas confondre avec <code>QgsFields</code> (<a href="https://qgis.org/pyqgis/master/core/QgsFields.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsFields.html">CPP</a>)
   qui lui représente un ensemble de champs.</li>
 <li>Une entité <code>QgsFeature</code> <a href="https://qgis.org/pyqgis/master/core/QgsFeature.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsFeature.html">CPP</a></li>
-<li>Pour le type de géométrie : Utiliser <code>QgsVectorLayer</code> <code>geometryType()</code> et également la méthode <code>QgsWkbTypes.geometryDisplayString()</code> pour sa conversion en chaîne "lisible"</li>
+<li>Pour le type de géométrie : Utiliser <code>QgsVectorLayer</code> <code>geometryType()</code> et également la méthode <code>QgsWkbTypes.geometryDisplayString()</code> pour sa conversion en chaîne "lisible"<ul>
 <li><a href="https://qgis.org/pyqgis/master/core/QgsWkbTypes.html">PyQGIS</a> / <a href="https://api.qgis.org/api/classQgsWkbTypes.html">CPP</a></li>
+</ul>
+</li>
 </ul>
 <p>Pour le type de champ, on va avoir besoin de l'API Qt également :</p>
 <ul>

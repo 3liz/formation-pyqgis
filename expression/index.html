@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
     
     
       
@@ -460,7 +460,7 @@
         
   
   <span class="md-ellipsis">
-    Python dans QGIS
+    Python dans QGIS 🐍
   </span>
   
 
@@ -481,7 +481,7 @@
         
   
   <span class="md-ellipsis">
-    Documentation
+    Documentation 📖
   </span>
   
 
@@ -502,7 +502,7 @@
         
   
   <span class="md-ellipsis">
-    Mémo Python
+    Mémo Python 🎒
   </span>
   
 
@@ -568,7 +568,7 @@
         
   
   <span class="md-ellipsis">
-    Console
+    Console 🖥️
   </span>
   
 
@@ -589,7 +589,7 @@
         
   
   <span class="md-ellipsis">
-    Fonctions & Scripts
+    Fonctions & Scripts ♻️
   </span>
   
 
@@ -610,7 +610,7 @@
         
   
   <span class="md-ellipsis">
-    Sélection & Parcours
+    Sélection & Parcours 🏘️
   </span>
   
 
@@ -747,6 +747,24 @@
   <a href="#exemple" class="md-nav__link">
     <span class="md-ellipsis">
       Exemple
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#memo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mémo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fournir-une-expression-depuis-une-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fournir une expression depuis une extension
     </span>
   </a>
   
@@ -1030,7 +1048,7 @@
         
   
   <span class="md-ellipsis">
-    Migration majeur
+    Migration majeure 🔀
   </span>
   
 
@@ -1051,7 +1069,28 @@
         
   
   <span class="md-ellipsis">
-    PostGIS
+    PostGIS 🐘
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../symbologie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Symbologie 🎨
   </span>
   
 
@@ -1190,6 +1229,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#memo" class="md-nav__link">
+    <span class="md-ellipsis">
+      Mémo
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fournir-une-expression-depuis-une-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Fournir une expression depuis une extension
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1249,27 +1306,41 @@ avec l'algorithme "Téléchargeur de fichier" (graphiquement, il n'est disponibl
 <p>On peut afficher le panneau de débogage et développement de QGIS afin de voir les requêtes HTTP.
 Il se trouve dans le menu <strong>Vue</strong> ▶ <strong>Panneau</strong>  ▶ <strong>Débogage et développement</strong></p>
 </div>
-<p>On va désormais <strong>parser</strong> le fichier JSON que l'on obtient avec la libraire <code>json</code> afin de récupérer la <code>description</code> :</p>
+<p>On va désormais <strong>parser</strong> le fichier JSON que l'on obtient avec la libraire <code>json</code> afin de récupérer la <code>description</code>.</p>
+<h2 id="memo">Mémo<a class="headerlink" href="#memo" title="Permanent link">#</a></h2>
+<p>Pour lire un fichier à l'aide d'un "contexte Python" qui va ouvrir et ferme le fichier :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;/mon/fichier.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-
-<span class="n">pages</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">][</span><span class="s1">&#39;pages&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>Une méthode pour récupérer la bonne clé, dynamiquement :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">pages</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">][</span><span class="s1">&#39;pages&#39;</span><span class="p">]</span>
 <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">description</span> <span class="o">=</span> <span class="n">pages</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<p>Peut-être surement plus simple à comprendre, avec l'usage d'une boucle <code>for</code></p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">description</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">pages</span><span class="o">.</span><span class="n">values</span><span class="p">():</span>
+    <span class="n">description</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">description</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 <details>
-<summary>Solution complète pour l'expression QGIS</summary>
+<summary>Une solution complète pour l'expression QGIS</summary>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
@@ -1293,7 +1364,16 @@ Il se trouve dans le menu <strong>Vue</strong> ▶ <strong>Panneau</strong>  ▶
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">processing</span>
 
 <span class="nd">@qgsfunction</span><span class="p">(</span><span class="n">args</span><span class="o">=</span><span class="s1">&#39;auto&#39;</span><span class="p">,</span> <span class="n">group</span><span class="o">=</span><span class="s1">&#39;Formation PyQGIS&#39;</span><span class="p">)</span>
@@ -1314,11 +1394,25 @@ Il se trouve dans le menu <strong>Vue</strong> ▶ <strong>Panneau</strong>  ▶
         <span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 
     <span class="n">pages</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">][</span><span class="s1">&#39;pages&#39;</span><span class="p">]</span>
-    <span class="n">key</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">pages</span><span class="o">.</span><span class="n">keys</span><span class="p">())[</span><span class="mi">0</span><span class="p">]</span>
-    <span class="n">description</span> <span class="o">=</span> <span class="n">pages</span><span class="p">[</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;description&#39;</span><span class="p">]</span>
-    <span class="k">return</span> <span class="n">description</span>
+    <span class="c1"># Only the first page will be used</span>
+    <span class="k">for</span> <span class="n">page_id</span><span class="p">,</span> <span class="n">page</span> <span class="ow">in</span> <span class="n">pages</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">description</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;description&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">page_id</span> <span class="o">==</span> <span class="s2">&quot;-1&quot;</span><span class="p">:</span>
+            <span class="n">error</span> <span class="o">=</span> <span class="n">page</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;invalidReason&#39;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">description</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s1">&#39;Pas de page, </span><span class="si">{</span><span class="n">description</span><span class="si">}</span><span class="s1">&#39;</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">error</span><span class="p">:</span>
+                <span class="k">return</span> <span class="s1">&#39;Pas de page&#39;</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;Pas de page, erreur </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="k">return</span> <span class="n">description</span>
 </code></pre></div></td></tr></table></div>
 </details>
+<h2 id="fournir-une-expression-depuis-une-extension">Fournir une expression depuis une extension<a class="headerlink" href="#fournir-une-expression-depuis-une-extension" title="Permanent link">#</a></h2>
+<p>Pour le moment, cette expression est dans le dossier de l'utilisateur, dans <code>python → expressions</code>.</p>
+<p>Mais une fois que nous avons une <a href="../extension-generique/">extension générique</a>, nous pouvons l'intégrer dans un
+fichier Python de l'extension.</p>
+<p>Exemple sur <a href="https://gis.stackexchange.com/questions/355319/register-custom-python-function-in-qgis-server-3-10">StackExchange</a></p>
 
 
 

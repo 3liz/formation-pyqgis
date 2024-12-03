@@ -22,11 +22,11 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
     
     
       
-        <title>Mémo Python - Formation PyQGIS</title>
+        <title>Mémo Python 🎒 - Formation PyQGIS</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Mémo Python
+              Mémo Python 🎒
             
           </span>
         </div>
@@ -465,7 +465,7 @@
         
   
   <span class="md-ellipsis">
-    Python dans QGIS
+    Python dans QGIS 🐍
   </span>
   
 
@@ -486,7 +486,7 @@
         
   
   <span class="md-ellipsis">
-    Documentation
+    Documentation 📖
   </span>
   
 
@@ -516,7 +516,7 @@
           
   
   <span class="md-ellipsis">
-    Mémo Python
+    Mémo Python 🎒
   </span>
   
 
@@ -527,7 +527,7 @@
         
   
   <span class="md-ellipsis">
-    Mémo Python
+    Mémo Python 🎒
   </span>
   
 
@@ -868,7 +868,7 @@
         
   
   <span class="md-ellipsis">
-    Console
+    Console 🖥️
   </span>
   
 
@@ -889,7 +889,7 @@
         
   
   <span class="md-ellipsis">
-    Fonctions & Scripts
+    Fonctions & Scripts ♻️
   </span>
   
 
@@ -910,7 +910,7 @@
         
   
   <span class="md-ellipsis">
-    Sélection & Parcours
+    Sélection & Parcours 🏘️
   </span>
   
 
@@ -1276,7 +1276,7 @@
         
   
   <span class="md-ellipsis">
-    Migration majeur
+    Migration majeure 🔀
   </span>
   
 
@@ -1297,7 +1297,28 @@
         
   
   <span class="md-ellipsis">
-    PostGIS
+    PostGIS 🐘
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../symbologie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Symbologie 🎨
   </span>
   
 
@@ -1953,15 +1974,20 @@ du programme.</p>
 Si vraiment, il y a besoin, il existe une classe <a href="https://docs.python.org/3/library/collections.html">OrderedDict</a>,
 mais ce n'est pas une structure de données native dans Python.
 C'est un objet qu'il faut importer.</p>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span>
-<span class="normal">6</span>
-<span class="normal">7</span>
-<span class="normal">8</span>
-<span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">commune</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">commune</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">commune</span><span class="p">)</span>
 <span class="c1"># &lt;class &#39;dict&#39;&gt;</span>
 <span class="n">commune</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Besançon&#39;</span>
@@ -1970,6 +1996,11 @@ C'est un objet qu'il faut importer.</p>
 
 <span class="c1"># Ou directement lors de la création de la variable :</span>
 <span class="n">commune</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;nom&#39;</span><span class="p">:</span> <span class="s1">&#39;Besançon&#39;</span><span class="p">,</span> <span class="s1">&#39;code_insee&#39;</span><span class="p">:</span> <span class="mi">25056</span><span class="p">,</span> <span class="s1">&#39;est_prefecture&#39;</span><span class="p">:</span> <span class="kc">True</span><span class="p">}</span>
+
+<span class="c1"># Lire le contenu d&#39;une clé :</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">commune</span><span class="p">[</span><span class="s1">&#39;nom&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">commune</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">])</span>  <span class="c1"># Leve une erreur IndexError</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">commune</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;population&#39;</span><span class="p">))</span>  <span class="c1"># Imprime None</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="les-commentaires">Les commentaires<a class="headerlink" href="#les-commentaires" title="Permanent link">#</a></h2>
 <p>Pour commenter le code dans un script, pas dans la console : </p>

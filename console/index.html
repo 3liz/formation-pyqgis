@@ -22,11 +22,11 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.46">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
     
     
       
-        <title>Console - Formation PyQGIS</title>
+        <title>Console 🖥️ - Formation PyQGIS</title>
       
     
     
@@ -107,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Console
+              Console 🖥️
             
           </span>
         </div>
@@ -460,7 +460,7 @@
         
   
   <span class="md-ellipsis">
-    Python dans QGIS
+    Python dans QGIS 🐍
   </span>
   
 
@@ -481,7 +481,7 @@
         
   
   <span class="md-ellipsis">
-    Documentation
+    Documentation 📖
   </span>
   
 
@@ -502,7 +502,7 @@
         
   
   <span class="md-ellipsis">
-    Mémo Python
+    Mémo Python 🎒
   </span>
   
 
@@ -582,7 +582,7 @@
           
   
   <span class="md-ellipsis">
-    Console
+    Console 🖥️
   </span>
   
 
@@ -593,7 +593,7 @@
         
   
   <span class="md-ellipsis">
-    Console
+    Console 🖥️
   </span>
   
 
@@ -760,7 +760,7 @@
         
   
   <span class="md-ellipsis">
-    Fonctions & Scripts
+    Fonctions & Scripts ♻️
   </span>
   
 
@@ -781,7 +781,7 @@
         
   
   <span class="md-ellipsis">
-    Sélection & Parcours
+    Sélection & Parcours 🏘️
   </span>
   
 
@@ -1147,7 +1147,7 @@
         
   
   <span class="md-ellipsis">
-    Migration majeur
+    Migration majeure 🔀
   </span>
   
 
@@ -1168,7 +1168,28 @@
         
   
   <span class="md-ellipsis">
-    PostGIS
+    PostGIS 🐘
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../symbologie/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Symbologie 🎨
   </span>
   
 
@@ -1449,10 +1470,13 @@
 <p class="admonition-title">Tip</p>
 <p>Les DROM-COM ou le Territoire de Belfort (90) sont assez légers.</p>
 </div>
+<ol>
+<li>Renommer le dossier <code>BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD</code> en <code>BD_TOPO</code> afin de simplifier les corrections.</li>
+</ol>
 <h2 id="configurer-le-projet">Configurer le projet<a class="headerlink" href="#configurer-le-projet" title="Permanent link">#</a></h2>
 <ul>
 <li>Commencer un nouveau projet et enregistrer le dans un dossier.</li>
-<li>À côté du projet <code>qgs</code> ou <code>qgz</code>, ajouter le dossier provenant de la BDTopo, le dossier <code>BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD</code>.</li>
+<li>À côté du projet <code>qgs</code> ou <code>qgz</code>, ajouter le dossier provenant de la BDTopo, le dossier <code>BD_TOPO</code> ci-dessus.</li>
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1466,7 +1490,7 @@
 <span class="normal">10</span>
 <span class="normal">11</span>
 <span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code>.
-├──<span class="w"> </span>BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD
+├──<span class="w"> </span>BD_TOPO
 │<span class="w">   </span>├──<span class="w"> </span>ADMINISTRATIF
 │<span class="w">   </span>├──<span class="w"> </span>ADRESSES
 │<span class="w">   </span>├──<span class="w"> </span>BATI
@@ -1581,7 +1605,7 @@ class Personne{
 <h3 id="manipulation-en-console-pour-ajouter-une-couche-shapefile">Manipulation en console pour ajouter une couche Shapefile<a class="headerlink" href="#manipulation-en-console-pour-ajouter-une-couche-shapefile" title="Permanent link">#</a></h3>
 <ul>
 <li>Objectif, ajouter une couche vecteur contenu dans un dossier fils :<ul>
-<li>Exemple <code>BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD/ADMINISTRATIF/COMMUNE.shp</code> :</li>
+<li>Exemple <code>BD_TOPO/ADMINISTRATIF/COMMUNE.shp</code> :</li>
 <li>Recherchons dans l'API de <code>QgsProject</code> le fichier actuel du projet, à l'aide <code>filepath</code>.</li>
 <li>L'utilisation de <code>home</code> est un peu différente, dans QGIS on peut définir un répertoire différent pour la racine des données.</li>
 <li>Nous allons utiliser l'objet <code>Path</code> pour manipuler les fichiers/dossiers.</li>
@@ -1603,7 +1627,7 @@ class Personne{
 </code></pre></div></td></tr></table></div></p>
 <p>On peut joindre notre BDTopo, en donnant plusieurs paramètres à <code>joinpath</code> :
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">chemin</span> <span class="o">=</span> <span class="n">racine</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span><span class="p">,</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">)</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">chemin</span> <span class="o">=</span> <span class="n">racine</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;BD_TOPO&#39;</span><span class="p">,</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">)</span>
 <span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">chemin</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;COMMUNE.shp&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div></p>
 <p>Il ne faut pas hésiter à vérifier au fur et à mesure avec des <code>print</code> :</p>
@@ -1622,8 +1646,9 @@ class Personne{
 <p>Tant que l'on est en console, on n'a pas besoin de faire <code>print</code>, la console le fait pour nous automatiquement.
 On peut se contenter de <code>fichier_shape.exists()</code>.</p>
 </div>
-<p>Si tout est bon pour le chemin, charger la couche vecteur à l'aide de <code>iface</code>
-<a href="https://qgis.org/api/classQgisInterface.html">QgisInterface</a> (et non pas <strong>Qgs</strong>Interface), en utilisant la méthode <code>addVectorLayer</code> :</p>
+<p>Si tout est bon pour le chemin, charger la couche vecteur à l'aide de <code>iface</code> qui est une instance de
+<code>QgisInterface</code> <a href="https://qgis.org/api/classQgisInterface.html">CPP</a>/<a href="https://qgis.org/pyqgis/3.34/gui/QgisInterface.html">PyQGIS</a>
+(et non pas <strong>Qgs</strong>Interface), en utilisant la méthode <code>addVectorLayer</code>.</p>
 <p>Attention, QGIS, étant écrit en C++, ne connait pas l'usage de <code>Path</code>, il faut repasser par une chaîne de caractère avec l'aide de <code>str</code> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">communes</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">addVectorLayer</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">),</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
@@ -1651,7 +1676,7 @@ On peut se contenter de <code>fichier_shape.exists()</code>.</p>
 <span class="normal">9</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 <span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
 <span class="n">racine</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">absoluteFilePath</span><span class="p">())</span><span class="o">.</span><span class="n">parent</span>
-<span class="n">chemin</span> <span class="o">=</span> <span class="n">racine</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span><span class="p">,</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">)</span>
+<span class="n">chemin</span> <span class="o">=</span> <span class="n">racine</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;BD_TOPO&#39;</span><span class="p">,</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">)</span>
 <span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">chemin</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;COMMUNE.shp&#39;</span><span class="p">)</span>
 <span class="c1"># fichier_shape.is_file()</span>
 <span class="n">communes</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">),</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
@@ -1675,7 +1700,7 @@ On peut se contenter de <code>fichier_shape.exists()</code>.</p>
 <span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
 
 <span class="n">racine</span> <span class="o">=</span> <span class="n">project</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
-<span class="n">chemin</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span><span class="p">,</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">)</span>
+<span class="n">chemin</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="s1">&#39;BD_TOPO&#39;</span><span class="p">,</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span><span class="p">)</span>
 <span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">chemin</span><span class="p">,</span> <span class="s1">&#39;COMMUNE.shp&#39;</span><span class="p">)</span>
 <span class="n">communes</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="s1">&#39;communes&#39;</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
 <span class="n">communes</span><span class="o">.</span><span class="n">isValid</span><span class="p">()</span>
@@ -1743,8 +1768,14 @@ class QgsRasterLayer{
 
 QgsMapLayer &lt;-- QgsVectorLayer
 QgsMapLayer &lt;-- QgsRasterLayer</div>
-<p>L'objet <code>QgsVectorLayer</code> hérite de <code>QgsMapLayer</code> qui est une classe commune avec <code>QgsMapLayer</code>.</p>
+<p>L'objet <code>QgsVectorLayer</code> hérite de <code>QgsMapLayer</code> qui est une classe commune avec <code>QgsRasterLayer</code>.</p>
 <p><a href="https://qgis.org/api/classQgsMapLayer.html">API QgsMapLayer C++</a>, <a href="https://qgis.org/pyqgis/3.34/core/QgsMapLayer.html">API QgsMapLayer Python</a></p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>On peut désormais regarder la documentation CPP de QGIS et Qt pour voir l'ensemble des membres,
+<strong>y compris les membres hérités</strong>.
+<a href="https://api.qgis.org/api/classQgsVectorLayer.html">QgsVectorLayer CPP</a> ou <a href="https://doc.qt.io/qt-6/qcombobox.html">QComboBox</a></p>
+</div>
 <p>Regardons la fonction <code>isinstance</code> qui permet de tester si un objet est une instance d'une classe :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
@@ -1761,6 +1792,14 @@ QgsMapLayer &lt;-- QgsRasterLayer</div>
 <ul>
 <li>Objectif, ne pas afficher la couche commune pour une échelle plus petite que le <code>1:2 000 000</code>.</li>
 </ul>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">communes</span><span class="o">.</span><span class="n">setMinimumScale</span><span class="p">(</span><span class="mi">2000000</span><span class="p">)</span>
+<span class="n">communes</span><span class="o">.</span><span class="n">setMaximumScale</span><span class="p">(</span><span class="mi">500000</span><span class="p">)</span>
+<span class="n">communes</span><span class="o">.</span><span class="n">setScaleBasedVisibility</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># communes.triggerRepaint()</span>
+</code></pre></div></td></tr></table></div>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Un raccourci à savoir, dans la console :
@@ -1788,21 +1827,21 @@ QgsMapLayer &lt;-- QgsRasterLayer</div>
 <span class="normal">16</span>
 <span class="normal">17</span>
 <span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;BDT_3-3_SHP_LAMB93_D0ZZ-EDYYYY-MM-DD&#39;</span>
+<span class="n">dossier</span> <span class="o">=</span> <span class="s1">&#39;BD_TOPO&#39;</span>
 <span class="n">thematique</span> <span class="o">=</span> <span class="s1">&#39;ADMINISTRATIF&#39;</span>
 <span class="n">couche</span> <span class="o">=</span> <span class="s1">&#39;COMMUNE&#39;</span>
 
-<span class="n">racine</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">homePath</span><span class="p">()</span>
-<span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">join</span><span class="p">(</span><span class="n">racine</span><span class="p">,</span> <span class="n">dossier</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="s1">&#39;</span><span class="si">{}</span><span class="s1">.shp&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">couche</span><span class="p">))</span>
-<span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="n">fichier_shape</span><span class="p">,</span> <span class="n">couche</span><span class="p">,</span> <span class="s1">&#39;ogr&#39;</span><span class="p">)</span>
-<span class="n">result</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+<span class="n">project</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
+<span class="n">racine</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">project</span><span class="o">.</span><span class="n">absoluteFilePath</span><span class="p">())</span><span class="o">.</span><span class="n">parent</span>
+<span class="n">chemin</span> <span class="o">=</span> <span class="n">racine</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">dossier</span><span class="p">,</span> <span class="n">thematique</span><span class="p">)</span>
+<span class="n">fichier_shape</span> <span class="o">=</span> <span class="n">chemin</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">couche</span><span class="si">}</span><span class="s1">.shp&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">featureCount</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Est en mètre : </span><span class="si">{}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">mapUnits</span><span class="p">()</span> <span class="o">==</span>  <span class="n">QgsUnitTypes</span><span class="o">.</span><span class="n">DistanceMeters</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">())</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">setScaleBasedVisibility</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">layer</span><span class="o">.</span><span class="n">setMaximumScale</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">layer</span><span class="o">.</span><span class="n">setMaximumScale</span><span class="p">(</span><span class="mi">500000</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">setMinimumScale</span><span class="p">(</span><span class="mi">2000000</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">triggerRepaint</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
