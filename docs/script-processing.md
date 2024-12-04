@@ -120,12 +120,73 @@ processing.execAlgorithmDialog(
 )
 ```
 
-### Introduction aux décorateurs
+## Convertir un modèle Processing en python
+
+Il est possible de convertir un modèle Processing en script Python.
+On peut alors le modifier avec plus de finesse.
+
+**On ne peut pas reconvertir un script Python en modèle**.
+
+* Depuis un modèle, cliquer sur le bouton "Convertir en script Processing".
+
+
+## Utiliser un script Processing dans une action
+
+On peut utiliser `processing.run()` dans le code d'une action, pour faire une zone tampon sur un point en particulier
+par exemple.
+
+On peut lancer, graphiquement depuis la boîte à outil Processing, une zone tampon, **avec** une **sélection**.
+Regardons ensuite dans l'historique Processing pour voir comment QGIS a pu spécifier la sélection dans son appel PyQGIS.
+
+On note l'usage d'une nouvelle classe `QgsProcessingFeatureSourceDefinition`.
+
+On souhaite donc pouvoir faire une zone tampon personnalisée en cliquant sur un point à l'aide d'une action.
+
+Il faut donc revoir le code dans le chapitre [actions](./action.md) pour voir comment créer une action.
+Pour utiliser la sélection, nous allons faire dans l'action :
+
+```python
+from qgis.core import QgsProject, QgsVectorLayer
+
+layer: QgsVectorLayer = QgsProject.instance().mapLayer('[% @layer_id %]')
+layer.selectByIds([int('[% $id %]')])
+# Ajouter ici le code processing.run avec une sélection
+layer.removeSelection()
+```
+
+On peut compléter l'action avec un `processing.run` en utilisant uniquement l'entité en sélection.
+
+??? "Solution"
+    ```python
+    import processing
+
+    layer = QgsProject.instance().mapLayer('[% @layer_id %]')
+    layer.selectByIds([int('[% $id %]')])
+
+    result = processing.run(
+        "native:buffer",
+        {
+            'INPUT':QgsProcessingFeatureSourceDefinition(layer.source(), selectedFeaturesOnly=True),
+            'DISTANCE':1000,
+            'SEGMENTS':5,
+            'END_CAP_STYLE':0,
+            'JOIN_STYLE':0,
+            'MITER_LIMIT':2,
+            'DISSOLVE':False,
+            'OUTPUT':'TEMPORARY_OUTPUT'
+        }
+    )
+    QgsProject.instance().addMapLayer(result['OUTPUT'])
+
+    layer.removeSelection()
+    ```
+
+## Introduction aux décorateurs
 
 Comme mentionné au début de ce chapitre, il est possible de ne pas utiliser la POO pour écrire un Script
 Processing mais plutôt les décorateurs. Reprenons l'exemple de la documentation.
 
-Le code suivant utilise le décorateur @alg pour :
+Le code suivant utilise le décorateur `@alg` pour :
 
 * utiliser une couche vectorielle comme entrée
 * compter le nombre d'entités
@@ -217,64 +278,3 @@ def bufferrasteralg(instance, parameters, context, feedback, inputs):
    return results
 
 ```
-
-## Convertir un modèle Processing en python
-
-Il est possible de convertir un modèle Processing en script Python.
-On peut alors le modifier avec plus de finesse.
-
-**On ne peut pas reconvertir un script Python en modèle**.
-
-* Depuis un modèle, cliquer sur le bouton "Convertir en script Processing".
-
-
-## Utiliser un script Processing dans une action
-
-On peut utiliser `processing.run()` dans le code d'une action, pour faire une zone tampon sur un point en particulier
-par exemple.
-
-On peut lancer, graphiquement depuis la boîte à outil Processing, une zone tampon, **avec** une **sélection**.
-Regardons ensuite dans l'historique Processing pour voir comment QGIS a pu spécifier la sélection dans son appel PyQGIS.
-
-On note l'usage d'une nouvelle classe `QgsProcessingFeatureSourceDefinition`.
-
-On souhaite donc pouvoir faire une zone tampon personnalisée en cliquant sur un point à l'aide d'une action.
-
-Il faut donc revoir le code dans le chapitre [actions](./action.md) pour voir comment créer une action.
-Pour utiliser la sélection, nous allons faire dans l'action :
-
-```python
-from qgis.core import QgsProject, QgsVectorLayer
-
-layer: QgsVectorLayer = QgsProject.instance().mapLayer('[% @layer_id %]')
-layer.selectByIds([int('[% $id %]')])
-# Ajouter ici le code processing.run avec une sélection
-layer.removeSelection()
-```
-
-On peut compléter l'action avec un `processing.run` en utilisant uniquement l'entité en sélection.
-
-??? "Solution"
-    ```python
-    import processing
-    
-    layer = QgsProject.instance().mapLayer('[% @layer_id %]')
-    layer.selectByIds([int('[% $id %]')])
-    
-    result = processing.run(
-        "native:buffer",
-        {
-            'INPUT':QgsProcessingFeatureSourceDefinition(layer.source(), selectedFeaturesOnly=True),
-            'DISTANCE':1000,
-            'SEGMENTS':5,
-            'END_CAP_STYLE':0,
-            'JOIN_STYLE':0,
-            'MITER_LIMIT':2,
-            'DISSOLVE':False,
-            'OUTPUT':'TEMPORARY_OUTPUT'
-        }
-    )
-    QgsProject.instance().addMapLayer(result['OUTPUT'])
-    
-    layer.removeSelection()
-    ```

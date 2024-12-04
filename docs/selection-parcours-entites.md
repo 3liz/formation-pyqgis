@@ -323,6 +323,11 @@ def function_1():
 function_1()
 ```
 
+    try:
+        function_2()
+    except ZeroDivisionError:
+        print("Fin de l'exception")
+
 On voit que Python, quand il peut, nous indique la "stacktrace" ou encore "traceback",
 c'est-à-dire une sorte de fil d'ariane.
 
@@ -348,7 +353,7 @@ try:
     print(10 / int(a))
 except ZeroDivisionError:
     print('Erreur, division par 0')
-except TypeError:
+except ValueError:
     print("Erreur, il n'y a avait pas que des chiffres.")
 except Exception:
     print('Erreur inconnue')
@@ -423,10 +428,13 @@ for feature in layer.getFeatures(request):
     densite = population/area
 
     # Cette ligne n'aura aucun effet
+    # La variable "feature" est une copie, comme un peu le résultat du SELECT * FROM ma_table LIMIT 5
+    # un SELECT est en lecture seul. Pour expliquer rapidement
     feature['densite'] = densite
 
     # Uniquement l'appel à "changeAttributeValue" fonctionne
     # Pour information, il existe "changeGeometry" pour la même raison
+    # Un peu comme la commande SQL UPDATE, sur une entité existante, bien qu'il ne faut pas oublier la session d'édition.
     layer.changeAttributeValue(feature.id(), index, densite)
     # print('{commune} : {densite} habitants/km²'.format(commune=feature['NOM'], densite=round(population/area,2)))
 
