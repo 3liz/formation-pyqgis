@@ -1867,6 +1867,14 @@ et de traiter l'erreur si besoin.</p>
 
 <span class="n">function_1</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>try:
+    function_2()
+except ZeroDivisionError:
+    print(&quot;Fin de l&#39;exception&quot;)
+</code></pre></div></td></tr></table></div>
 <p>On voit que Python, quand il peut, nous indique la "stacktrace" ou encore "traceback",
 c'est-à-dire une sorte de fil d'ariane.</p>
 <h3 id="heritage-des-exceptions">Héritage des exceptions<a class="headerlink" href="#heritage-des-exceptions" title="Permanent link">#</a></h3>
@@ -1898,7 +1906,7 @@ recommandé, car il masque d'autres erreurs :</p>
     <span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
 <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erreur, division par 0&#39;</span><span class="p">)</span>
-<span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Erreur, il n&#39;y a avait pas que des chiffres.&quot;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erreur inconnue&#39;</span><span class="p">)</span>
@@ -1982,7 +1990,10 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="normal">33</span>
 <span class="normal">34</span>
 <span class="normal">35</span>
-<span class="normal">36</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
 <span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeatureRequest</span><span class="p">,</span> <span class="n">QgsField</span><span class="p">,</span> <span class="n">edit</span>
 
 <span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">QVariant</span>
@@ -2010,10 +2021,13 @@ population (s'il y a <code>NC</code> par exemple) :</p>
     <span class="n">densite</span> <span class="o">=</span> <span class="n">population</span><span class="o">/</span><span class="n">area</span>
 
     <span class="c1"># Cette ligne n&#39;aura aucun effet</span>
+    <span class="c1"># La variable &quot;feature&quot; est une copie, comme un peu le résultat du SELECT * FROM ma_table LIMIT 5</span>
+    <span class="c1"># un SELECT est en lecture seul. Pour expliquer rapidement</span>
     <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;densite&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">densite</span>
 
     <span class="c1"># Uniquement l&#39;appel à &quot;changeAttributeValue&quot; fonctionne</span>
     <span class="c1"># Pour information, il existe &quot;changeGeometry&quot; pour la même raison</span>
+    <span class="c1"># Un peu comme la commande SQL UPDATE, sur une entité existante, bien qu&#39;il ne faut pas oublier la session d&#39;édition.</span>
     <span class="n">layer</span><span class="o">.</span><span class="n">changeAttributeValue</span><span class="p">(</span><span class="n">feature</span><span class="o">.</span><span class="n">id</span><span class="p">(),</span> <span class="n">index</span><span class="p">,</span> <span class="n">densite</span><span class="p">)</span>
     <span class="c1"># print(&#39;{commune} : {densite} habitants/km²&#39;.format(commune=feature[&#39;NOM&#39;], densite=round(population/area,2)))</span>
 
