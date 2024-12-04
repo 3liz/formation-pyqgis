@@ -1,23 +1,13 @@
 # Fonctions sur une couche vecteur
 
-## Boucler sur les entités d'une couche sans expression
-
-On peut parcourir les entités d'une couche `QgsVectorLayer` à l'aide de `getFeatures()` :
-
-```python
-from qgis.utils import iface
-
-layer = iface.activeLayer()
-for feature in layer.getFeatures():
-    print(feature)
-    print(feature['NOM'])
-```
-
 ## Utilisation des expressions QGIS
 
 * Les expressions sont très présentes dans QGIS, tant dans l'interface graphique que dans l'utilisation en
   Python.
 * Nous partons de la couche des `COMMUNES` uniquement chargé dans QGIS.
+
+!!! tip
+    Adapter le numéro des codes INSEE ou des départements selon votre BDTOPO 😉
 
 ## Sélection d'entité
 
@@ -34,6 +24,8 @@ Solution en mode graphique :
 ```
 
 Nous allons faire la même chose, mais en utilisant Python. Pensez à **désélectionner** les entités.
+
+Il va falloir "échapper" un caractère à l'aide de `\`. [Voir la page Wikipédia](https://fr.wikipedia.org/wiki/Caract%C3%A8re_d%27%C3%A9chappement).
 
 ```python
 from qgis.utils import iface
@@ -56,8 +48,6 @@ communes = projet.mapLayersByName('communes')[0]
 insee = projet.mapLayersByName('tableau INSEE')
 ```
 
-
-
 Notons le **s** dans `mapLayersByName`. Il peut y avoir plusieurs couches avec ce même nom de couche. La fonction retourne
 donc une liste de couches. Il convient alors de regarder si la liste est vide ou si elle contient plusieurs couches avec
 `len(communes)` par exemple.
@@ -65,7 +55,7 @@ donc une liste de couches. Il convient alors de regarder si la liste est vide ou
 !!! warning
     `mapLayersByName` fait uniquement une recherche stricte, sensible à la casse. Il faut passer par du
     code Python "pure" en itérant sur l'ensemble des couches, indépendamment de leur nom si l'on souhaite faire une
-    recherche plus fine. Si vraiment on a besoin, on peut utiliser le module [re](https://docs.python.org/3/library/re.html)
+    recherche plus fine. Si vraiment, on a besoin, on peut utiliser le module [re](https://docs.python.org/3/library/re.html)
     (lien du [Docteur Python](https://python.doctor/page-expressions-regulieres-regular-python)).
 
 ```python
@@ -87,7 +77,6 @@ elif len(communes) >= 1:
 On souhaite pouvoir exporter les communes par département.
 On peut créer une variable `depts = ('34', '30')` puis boucler dessus pour exporter les entités sélectionnées dans
 un nouveau fichier.
-
 
 ```python
 from pathlib import Path
@@ -125,9 +114,11 @@ for dept in depts:
     for dept in layer.uniqueValues(index):
     ```
 
-## Boucler sur les entités à l'aide d'une expression
+## Boucler sur les entités d'une couche sans expression
 
-L'objectif est d'afficher dans la console le nom des communes dont la population ne contient pas `NC`.
+_Si besoin, pour que la suite de l'exercice soit plus rapide, on peut utiliser une couche `ARRONDISSEMENT` par exemple._
+
+On peut parcourir les entités d'une couche `QgsVectorLayer` à l'aide de `getFeatures()`.
 
 !!! info
     Avec PyQGIS, on peut accéder aux attributs d'une `QgsFeature` simplement avec l'opérateur `[]` sur
@@ -140,20 +131,35 @@ L'objectif est d'afficher dans la console le nom des communes dont la population
 
     On peut le voir dans les exemples `attribute` de QgsFeature : https://qgis.org/pyqgis/3.34/core/QgsFeature.html#qgis.core.QgsFeature.attribute
 
-L'exemple à **ne pas** faire, même si cela fonctionne (car on peut l'optimiser très facilement) :
+```python
+from qgis.utils import iface
 
-1. Imaginons une couche PostgreSQL
-2. On demande à QGIS de récupérer l'ensemble de la table distante, équivalent à `SELECT * FROM ma_table`
-3. **Puis**, on filtre dans QGIS (toute la données est présente dans QGIS Bureautique désormais)
+layer = iface.activeLayer()
+for feature in layer.getFeatures():
+    print(feature)
+    print(feature['NOM'])
+    print(feature.attribute('NOM'))
+```
+
+## Boucler sur les entités à l'aide d'une expression
+
+L'objectif est d'afficher dans la console le nom des communes dont la code département `INSEE_DEP` correspond uniquement
+à un seul département arbitraire.
+
+L'exemple à **ne pas** faire, même si cela fonctionne (car on peut l'optimiser très facilement) :
 
 ```python
 from qgis.utils import iface
 
 layer = iface.activeLayer()
 for feature in layer.getFeatures():
-    if feature['POPULATION'] != 'NC':
-        print(feature['NOM'])
+    if feature['INSEE_DEP'] == '84':
+        print(f'{feature['NOM']} : département {feature['INSEE_DEP']}')
 ```
+
+1. Imaginons qu'il s'agisse d'une couche PostgreSQL, sur un serveur distant
+2. On demande à QGIS de récupérer l'ensemble de la table distante, équivalent à `SELECT * FROM ma_table`
+3. **Puis**, on filtre dans QGIS (toute la donnée est présente dans QGIS Bureautique désormais)
 
 !!! tip
     Ce qui prend du temps lors de l'exécution, c'est surtout le `print` en lui-même.
@@ -172,32 +178,35 @@ from qgis.core import QgsFeatureRequest
 layer = iface.activeLayer()
 
 request = QgsFeatureRequest()
-# Équivalent à SELECT * FROM ma_table WHERE "POPULATION" != 'NC'
-request.setFilterExpression('"POPULATION" != \'NC\'')
+# Équivalent à SELECT * FROM ma_table WHERE "INSEE_DEP" = '84'
+request.setFilterExpression('"INSEE_DEP" = \'84\'')
 
 for feature in layer.getFeatures(request):
-    print(f'{feature['NOM']} : {feature['POPULATION']} habitants pour')
+    print(f'{feature['NOM']} : département {feature['INSEE_DEP']}')
 ```
 
 Nous pouvons accessoirement ordonner les résultats et surtout encore optimiser la requête en :
 
   * Ne demandant pas de charger la géométrie
-  * Ne demandant pas de charger tous les attributs
+  * Ne demandant pas de charger tous les attributs, par exemple, on souhaite afficher que le nom de la commune et sa
+    population.
 
 ??? "La solution pour les experts"
     ```python
     request = QgsFeatureRequest()
-    request.setFilterExpression('"POPULATION" != \'NC\'')
+    request.setFilterExpression('"INSEE_DEP" = \'84\'')
     request.addOrderBy('NOM')
     request.setFlags(QgsFeatureRequest.NoGeometry)
     # request.setSubsetOfAttributes([1, 4]) autre manière moins pratique, historique
     request.setSubsetOfAttributes(['NOM', 'POPULATION'], layer.fields())
-    # # Équivalent à SELECT NOM, POPULATION FROM ma_table WHERE "POPULATION" != 'NC' ORDER BY NOM
+    # # Équivalent à SELECT NOM, POPULATION FROM ma_table WHERE "INSEE_DEP" = '84' ORDER BY NOM
     for feature in layer.getFeatures(request):
         print('{commune} : {nombre} habitants'.format(commune=feature['NOM'], nombre=feature['POPULATION']))
     ```
 
     * Faire le test en affichant un champ qui n'est pas dans la requête.
+
+### Enregistrement d'une requête dans une couche en mémoire
 
 Si l'on souhaite "enregistrer" le résultat de cette expression QGIS, on peut la *matérialiser* dans une
 nouvelle couche :
@@ -236,6 +245,9 @@ Nous souhaitons avoir une colonne `densite` dans notre table attributaire, avec 
 Mais regardons avant la gestion des erreurs lors d'un traitement. En effet, nous allons
 vouloir "caster" (transformer le type) de la variable `population` en entier, mais attention,
 il y a des valeurs `NC` dans les valeurs.
+
+_Note, il n'y a désormais plus de valeur `NC` dans le champ `POPULATION` dans la donnée, mais imaginons. Il peut s'agir
+d'une autre couche dont on ne connait pas la provenance et le contenu.
 
 ## Les exceptions en Python
 
@@ -330,7 +342,10 @@ On peut par contre "enchaîner" les exceptions, afin de filtrer progressivement 
 
 ```python
 try:
-    print(10 / 0)
+    a = "0"
+    print(10 / int(a))
+    a = "Bonjour"
+    print(10 / int(a))
 except ZeroDivisionError:
     print('Erreur, division par 0')
 except TypeError:
@@ -341,32 +356,6 @@ except Exception:
 
 Il existe d'autres mots-clés en Python pour les exceptions comme `finally:` et `else:`.
 Voir [un autre tutoriel](https://fr.python-3.com/?p=3141).
-
-On peut imaginer faire une fonction qui divise deux nombres et affiche le résultat 
-dans la `QgsMessageBar` de QGIS, sans tenir compte de la division par zéro :
-
-```python
-def diviser(a: int, b: int):
-    """ Divise 2 nombres et affiche le résultat dans la "message bar" de QGIS. """
-    result = a / b
-    iface.messageBar().pushMessage('Résultat', f'{a} / {b} = {result}', Qgis.Success)
-    
-diviser(10, 0)
-```
-
-En tenant compte d'une possible erreur lors de l'opération mathématique :
-
-```python
-def diviser(a: int, b: int):
-    try:
-        result = a / b
-    except ZeroDivisionError:
-        iface.messageBar().pushMessage('Division par 0', f'{a} / {b} est impossible', Qgis.Warning)
-    else:
-        iface.messageBar().pushMessage('Résultat', f'{a} / {b} = {result}', Qgis.Success)
-    
-diviser(10, 2)
-```
 
 Évidement, on peut vérifier la valeur de `b` en amont si c'est égal à 0. Mais ceci est pour présenter le
 concept des exceptions en Python.
@@ -403,7 +392,7 @@ for feature in layer.getFeatures(request):
 
 Nous souhaitons enregistrer ces informations dans une vraie table avec un nouveau champ `densite_population`.
 
-Solution plus simple :
+Solution possible :
 
 ```python
 from qgis.utils import iface
