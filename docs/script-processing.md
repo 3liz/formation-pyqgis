@@ -183,20 +183,17 @@ On peut compléter l'action avec un `processing.run` en utilisant uniquement l'e
 
 ## Introduction aux décorateurs
 
-Comme mentionné au début de ce chapitre, il est possible de ne pas utiliser la POO pour écrire un Script
-Processing mais plutôt les décorateurs. Reprenons l'exemple de la documentation.
+Comme mentionné au début de ce chapitre, il est possible de ne pas utiliser la [POO](./ecriture-classe-poo.md) pour
+écrire un "Script Processing" mais plutôt l'écriture à l'aide des **décorateurs**.
 
-Le code suivant utilise le décorateur `@alg` pour :
+Dans la documentation QGIS, on trouve :
 
-* utiliser une couche vectorielle comme entrée
-* compter le nombre d'entités
-* faire une opération buffer
-* créer une couche raster à partir du résultat de l’opération de tampon
-* renvoyer la couche tampon, la couche raster et le nombre d’entités
-
-Dans la documentation QGIS, on trouve
+* le [tableau de correspondance](https://docs.qgis.org/3.34/fr/docs/user_manual/processing/parameters.html#processing-algs-input-output)
+  entre la notation dans le décorateur et pour les types des paramètres
+* un [exemple avec décorateur](https://docs.qgis.org/3.34/fr/docs/user_manual/processing/scripts.html#the-alg-decorator)
 [la correspondance](https://docs.qgis.org/latest/fr/docs/user_manual/processing/scripts.html#input-types)
-des décorateurs avec la classe Processing.
+
+Le code suivant utilise le décorateur `@alg` :
 
 ```python
 

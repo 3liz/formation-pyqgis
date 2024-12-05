@@ -540,7 +540,10 @@ Idéalement, il faut vérifier le résultat de l'enregistrement du fichier. Les 
 retournent systématiquement un tuple avec un code d'erreur et un message si nécessaire, voir la
 [documentation](https://api.qgis.org/api/classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade).
 
-Pour s'en rendre compte, on peut inclure un `print()` autour du `QgsVectorFileWriter.writeAsVectorFormatV3()`.
+Pour s'en rendre compte, on peut ajouter une variable `result = QgsVectorFileWriter.writeAsVectorFormatV3(...)`.
+Puis de faire un `print(result)` pour s'en rendre compte. On peut tenir compte donc ce tuple :
+
+* `QgsVectorFileWriter.WriterError.NoError` → `0`
 
 **De plus**, en cas de succès, il est pratique d'avertir l'utilisateur. On peut aussi fournir un lien pour ouvrir
 l'explorateur de fichier :
@@ -555,3 +558,18 @@ iface.messageBar().pushSuccess(
     ).format(output_file.parent, output_file)
 )
 ```
+
+??? note "Pour ajouter le support du message d'erreur"
+    ```þython
+    if result[0] != QgsVectorFileWriter.WriterError.NoError:
+        print(f"Erreur : {result[1]}")
+    else:
+        # Affichage d'un message à l'utilisateur
+        iface.messageBar().pushSuccess(
+            "Export OK des couches 👍",
+            (
+                "Le fichier CSV a été enregistré dans "
+                "<a href=\"{}\">{}</a>"
+            ).format(output_file.parent, output_file)
+        )
+    ```

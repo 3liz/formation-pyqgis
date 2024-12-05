@@ -46,7 +46,7 @@ On va désormais **parser** le fichier JSON que l'on obtient avec la libraire `j
 
 ## Mémo
 
-Pour lire un fichier à l'aide d'un "contexte Python" qui va ouvrir et ferme le fichier :
+Pour lire un fichier à l'aide d'un "contexte Python" qui va ouvrir et fermer le fichier :
 
 ```python
 import json

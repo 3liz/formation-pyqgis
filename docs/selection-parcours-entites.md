@@ -33,6 +33,7 @@ from qgis.utils import iface
 layer = iface.activeLayer()
 layer.removeSelection()
 layer.selectByExpression(f"\"INSEE_COM\" LIKE '77%'")
+# layer.selectByExpression(f'"INSEE_COM" LIKE \'77%\'')  # Résultat identique
 layer.invertSelection()
 layer.removeSelection()
 ```
@@ -62,7 +63,7 @@ donc une liste de couches. Il convient alors de regarder si la liste est vide ou
 from qgis.core import QgsProject
 
 projet = QgsProject.instance()
-communes = projet.mapLayersByName('communes')[0]
+communes = projet.mapLayersByName('communes')
 
 if len(communes) == 0:
     print("Pas de couches dans la légende qui se nomme 'communes'")
@@ -101,7 +102,7 @@ for dept in depts:
         options
     )
     print(result)
-    if result[0] == QgsVectorFileWriter.NoError:
+    if result[0] == QgsVectorFileWriter.WriterError.NoError:
         print(" → OK")
 ```
 
@@ -259,8 +260,8 @@ dans beaucoup de languages.
 
 Dans le langage informatique, une exception peut-être :
 
-* levée ("raise" en anglais) pour déclencher une erreur
-* attrapée ("catch" en anglais, ou plutôt "except" en Python) pour traiter l'erreur
+* levée ("`raise`" en anglais) pour déclencher une erreur
+* attrapée ("catch" en anglais, ou plutôt "`except`" en Python) pour traiter l'erreur
 
 Essayons dans la **console** de faire une opération 10 / 2 :
 
@@ -277,7 +278,7 @@ Passons cette fois-ci dans un **script** pour que cela soit plus simple, et voir
 
 ```python
 print('Début')
-print(10 / 0)
+print(10 / 2)
 print('Fin')
 ```
 
@@ -306,7 +307,7 @@ et de traiter l'erreur si besoin.
 def function_3():
     print("Début fonction 3")
     a = 10
-    b = 0
+    b = 2
     print(f"→ {a} / {b} = {a/b}")
     print("Fin fonction 3")
 
@@ -323,10 +324,14 @@ def function_1():
 function_1()
 ```
 
-    try:
-        function_2()
-    except ZeroDivisionError:
-        print("Fin de l'exception")
+Testons désormais d'attraper l'erreur dans la fonction 1 :
+
+```python
+try:
+    function_2()
+except ZeroDivisionError:
+    print("Fin de l'exception")
+```
 
 On voit que Python, quand il peut, nous indique la "stacktrace" ou encore "traceback",
 c'est-à-dire une sorte de fil d'ariane.
@@ -338,7 +343,11 @@ recommandé, car il masque d'autres erreurs :
 
 ```python
 try:
-    print(10 / 2)
+    a = 10 / 5
+
+    mois = ['janvier', 'février']
+    b = mois[0]
+
 except Exception:
     print('Erreur inconnue')
 ```
@@ -347,10 +356,10 @@ On peut par contre "enchaîner" les exceptions, afin de filtrer progressivement 
 
 ```python
 try:
-    a = "0"
-    print(10 / int(a))
-    a = "Bonjour"
-    print(10 / int(a))
+    a = 10 / 5
+    # a = 10 / 0
+    # a = 10 / int("NC")
+    # a = 10 / "NC"
 except ZeroDivisionError:
     print('Erreur, division par 0')
 except ValueError:
@@ -375,6 +384,7 @@ int('10')
 int('NC')
 ```
 
+<!-- TODO AJOUTER EXEMPLE CALCUL VIA EXPRESSION -->
 Correction possible de l'exercice :
 
 ```python
@@ -390,9 +400,14 @@ for feature in layer.getFeatures(request):
     area = feature.geometry().area() / 1000000
     try:
         population = int(feature['POPULATION'])
+        # Par exemple, pour nettoyer une chaîne de caractère en Python des espaces avant/après : "  Bonjour  ".strip()
+        # "rstrip"/"lstrip" existent également
     except ValueError:
         population = 0
-    print('{commune} : {densite} habitants/km²'.format(commune=feature['NOM'], densite=population/area))
+
+    densite = population/area
+
+    print(f"{feature['NOM']} : {densite} habitants/km²")
 ```
 
 Nous souhaitons enregistrer ces informations dans une vraie table avec un nouveau champ `densite_population`.
@@ -429,7 +444,7 @@ for feature in layer.getFeatures(request):
 
     # Cette ligne n'aura aucun effet
     # La variable "feature" est une copie, comme un peu le résultat du SELECT * FROM ma_table LIMIT 5
-    # un SELECT est en lecture seul. Pour expliquer rapidement
+    # un SELECT est en lecture seule. Pour expliquer rapidement ce qu'il se passe.
     feature['densite'] = densite
 
     # Uniquement l'appel à "changeAttributeValue" fonctionne
