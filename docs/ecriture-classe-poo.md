@@ -92,8 +92,8 @@ class Personnage:
 
 ### Utilisation de notre classe
 
-* `dir()` est une fonction qui prend une variable en paramètre et qui indique les propriétés/méthodes de notre variable.
-* `help()` affiche la documentation de notre classe
+* `dir(a)` est une fonction indique les "membres" de notre variable Personnage.
+* `help(a)` affiche la documentation de notre classe
 * ` __dict__ ` est une propriété qui donne les valeurs des attributs de l'instance.
 
 ```python    
@@ -163,6 +163,8 @@ afin de les mettre dans son sac à dos.
 4. Ajoutons des **commentaires** et/ou des **docstrings**, CF mémo Python. On peut utiliser la méthode `help`.
 5. Pensons aussi **annotations Python**
 
+* Refaire la commande `help(a)` pour voir le résultat final 😉
+
 !!! info
     Il est important de comprendre que la POO permet de construire une sorte de boîte opaque du point de vue de
     l'utilisateur de la classe. Un peu comme une voiture, elles ont toutes un capot et une pédale d'accélération.
@@ -174,32 +176,72 @@ afin de les mettre dans son sac à dos.
     impact lors de son utilisation dans un combat. Le dégât qu'inflige une arme sur le niveau d'énergie de l'autre
     personnage est une propriété de l'arme en question **et** du niveau du personnage.
 
+## Des idées pour continuer plus loin
+
+Des jeux en Python dans QGIS :
+
+* Une [vidéo du jeu morpion](https://www.youtube.com/watch?v=xFNGr-uV3k8)
+* Le jeu [Snake](https://github.com/ViperMiniQ/Viper-QGIS-snake-clone/blob/main/README.md)
+
+Ou pour le fun avec des expressions :
+
+* [Faire un "dessin animé"](https://www.youtube.com/watch?v=rw-vYS6HSak)
+* [Faire un graphique animé](https://github.com/Gustry/qgis-roadmap-project/blob/master/README.md)
+
 ## Solution
 
 Sur la classe Personnage ci-dessus :
 
 ```python
 def _est_dans_inventaire(self, un_objet: str) -> bool:
+    """ Fonction "interne" pour tester si un objet est dans l'inventaire. """
+    # On ne souhaite pas qu'un autre personnage puis vérifier le contenu d'un inventaire d'un autre.
+    # Il faut plutôt lui demander :)
+    # Note cette méthode n'est pas dans le help()
     return un_objet in self.inventaire
 
-def ramasser(self, un_objet):
+def ramasser(self, un_objet: str) -> bool:
+    """ Ramasser un objet et le mettre dans l'inventaire.
+
+    Retourne True si l'action est OK
+    """
     print(f"{self.nom} ramasse {un_objet} et le met dans son inventaire.")
     self.inventaire.append(un_objet)
+    return True
 
-def utiliser(self, un_objet):
+def utiliser(self, un_objet: str) -> bool:
+    """ Utiliser un objet s'il est disponible avant dans l'inventaire.
+
+    Retourne True si l'action est OK
+    """
     if self._est_dans_inventaire(un_objet):
         print(f"{self.nom} utilise {un_objet}")
-    else:
-        print(f"{self.nom} ne possède pas {un_objet}")
+        return True
 
-def deposer(self, un_objet):
-    if self._est_dans_inventaire(un_objet):
-        print(f"{self.nom} dépose {un_objet}")
-        self.inventaire.remove(un_objet)
+    print(f"{self.nom} ne possède pas {un_objet}")
+    return False
 
-def donner(self, autre_personnage, un_objet):
-    if self._est_dans_inventaire(un_objet):
-        self.inventaire.remove(un_objet)
-        autre_personnage.inventaire.append(un_objet)
-        print(f"{autre_personnage.nom} reçoit {un_objet} de la part de {self.nom} et le remercie 👍")
+def deposer(self, un_objet: str) -> bool:
+    """ Retirer un objet de l'inventaire.
+
+    Retourne True si l'action est OK
+    """
+    if not self._est_dans_inventaire(un_objet):
+        return False
+
+    print(f"{self.nom} dépose {un_objet}")
+    self.inventaire.remove(un_objet)
+    return True
+
+def donner(self, autre_personnage, un_objet: str) -> bool:
+    """ Donner un objet à un autre personnage.
+
+    Retourne True si l'action est OK
+    """
+    if not self._est_dans_inventaire(un_objet):
+        return False
+    self.inventaire.remove(un_objet)
+    autre_personnage.inventaire.append(un_objet)
+    print(f"{autre_personnage.nom} reçoit {un_objet} de la part de {self.nom} et le remercie 👍")
+    return True
 ```

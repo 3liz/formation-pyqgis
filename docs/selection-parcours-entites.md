@@ -25,7 +25,9 @@ Solution en mode graphique :
 
 Nous allons faire la même chose, mais en utilisant Python. Pensez à **désélectionner** les entités.
 
-Il va falloir "échapper" un caractère à l'aide de `\`. [Voir la page Wikipédia](https://fr.wikipedia.org/wiki/Caract%C3%A8re_d%27%C3%A9chappement).
+Il va falloir "échapper" un caractère à l'aide de `\`.
+[Voir la page Wikipédia sur l'échappement](https://fr.wikipedia.org/wiki/Caract%C3%A8re_d%27%C3%A9chappement)
+ou ce [meme pour les devs](https://www.explainxkcd.com/wiki/index.php/1638:_Backslashes) 🫢
 
 ```python
 from qgis.utils import iface
