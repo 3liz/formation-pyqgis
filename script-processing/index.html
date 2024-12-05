@@ -1549,19 +1549,16 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
 </code></pre></div></td></tr></table></div>
 </details>
 <h2 id="introduction-aux-decorateurs">Introduction aux décorateurs<a class="headerlink" href="#introduction-aux-decorateurs" title="Permanent link">#</a></h2>
-<p>Comme mentionné au début de ce chapitre, il est possible de ne pas utiliser la POO pour écrire un Script
-Processing mais plutôt les décorateurs. Reprenons l'exemple de la documentation.</p>
-<p>Le code suivant utilise le décorateur <code>@alg</code> pour :</p>
+<p>Comme mentionné au début de ce chapitre, il est possible de ne pas utiliser la <a href="../ecriture-classe-poo/">POO</a> pour
+écrire un "Script Processing" mais plutôt l'écriture à l'aide des <strong>décorateurs</strong>.</p>
+<p>Dans la documentation QGIS, on trouve :</p>
 <ul>
-<li>utiliser une couche vectorielle comme entrée</li>
-<li>compter le nombre d'entités</li>
-<li>faire une opération buffer</li>
-<li>créer une couche raster à partir du résultat de l’opération de tampon</li>
-<li>renvoyer la couche tampon, la couche raster et le nombre d’entités</li>
+<li>le <a href="https://docs.qgis.org/3.34/fr/docs/user_manual/processing/parameters.html#processing-algs-input-output">tableau de correspondance</a>
+  entre la notation dans le décorateur et pour les types des paramètres</li>
+<li>un <a href="https://docs.qgis.org/3.34/fr/docs/user_manual/processing/scripts.html#the-alg-decorator">exemple avec décorateur</a>
+<a href="https://docs.qgis.org/latest/fr/docs/user_manual/processing/scripts.html#input-types">la correspondance</a></li>
 </ul>
-<p>Dans la documentation QGIS, on trouve
-<a href="https://docs.qgis.org/latest/fr/docs/user_manual/processing/scripts.html#input-types">la correspondance</a>
-des décorateurs avec la classe Processing.</p>
+<p>Le code suivant utilise le décorateur <code>@alg</code> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>

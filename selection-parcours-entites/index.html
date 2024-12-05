@@ -1526,11 +1526,13 @@ les codes INSEE qui commencent par <code>77</code> (à choisir un code INSEE pro
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">selectByExpression</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\&quot;</span><span class="s2">INSEE_COM</span><span class="se">\&quot;</span><span class="s2"> LIKE &#39;77%&#39;&quot;</span><span class="p">)</span>
+<span class="c1"># layer.selectByExpression(f&#39;&quot;INSEE_COM&quot; LIKE \&#39;77%\&#39;&#39;)  # Résultat identique</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">invertSelection</span><span class="p">()</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -1569,7 +1571,7 @@ recherche plus fine. Si vraiment, on a besoin, on peut utiliser le module <a hre
 <span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
 
 <span class="n">projet</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
-<span class="n">communes</span> <span class="o">=</span> <span class="n">projet</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s1">&#39;communes&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">communes</span> <span class="o">=</span> <span class="n">projet</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s1">&#39;communes&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">communes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pas de couches dans la légende qui se nomme &#39;communes&#39;&quot;</span><span class="p">)</span>
@@ -1627,7 +1629,7 @@ un nouveau fichier.</p>
         <span class="n">options</span>
     <span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">QgsVectorFileWriter</span><span class="o">.</span><span class="n">NoError</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="n">QgsVectorFileWriter</span><span class="o">.</span><span class="n">WriterError</span><span class="o">.</span><span class="n">NoError</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="s2">&quot; → OK&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition tip">
@@ -1794,8 +1796,8 @@ rouges dans la console de temps en temps. Ce sont des exceptions. C'est une noti
 dans beaucoup de languages.</p>
 <p>Dans le langage informatique, une exception peut-être :</p>
 <ul>
-<li>levée ("raise" en anglais) pour déclencher une erreur</li>
-<li>attrapée ("catch" en anglais, ou plutôt "except" en Python) pour traiter l'erreur</li>
+<li>levée ("<code>raise</code>" en anglais) pour déclencher une erreur</li>
+<li>attrapée ("catch" en anglais, ou plutôt "<code>except</code>" en Python) pour traiter l'erreur</li>
 </ul>
 <p>Essayons dans la <strong>console</strong> de faire une opération 10 / 2 :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span>
@@ -1807,7 +1809,7 @@ dans beaucoup de languages.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Début&#39;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Fin&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>On peut "attraper" cette erreur Python à l'aide d'un <code>try ... except...</code> :</p>
@@ -1851,7 +1853,7 @@ et de traiter l'erreur si besoin.</p>
 <span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">function_3</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Début fonction 3&quot;</span><span class="p">)</span>
     <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
-    <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;→ </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin fonction 3&quot;</span><span class="p">)</span>
 
@@ -1867,13 +1869,14 @@ et de traiter l'erreur si besoin.</p>
 
 <span class="n">function_1</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
+<p>Testons désormais d'attraper l'erreur dans la fonction 1 :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code>try:
-    function_2()
-except ZeroDivisionError:
-    print(&quot;Fin de l&#39;exception&quot;)
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">function_2</span><span class="p">()</span>
+<span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin de l&#39;exception&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>On voit que Python, quand il peut, nous indique la "stacktrace" ou encore "traceback",
 c'est-à-dire une sorte de fil d'ariane.</p>
@@ -1883,8 +1886,16 @@ recommandé, car il masque d'autres erreurs :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">5</span>
+
+    <span class="n">mois</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;janvier&#39;</span><span class="p">,</span> <span class="s1">&#39;février&#39;</span><span class="p">]</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="n">mois</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+
 <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erreur inconnue&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1900,10 +1911,10 @@ recommandé, car il masque d'autres erreurs :</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">try</span><span class="p">:</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;0&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
-    <span class="n">a</span> <span class="o">=</span> <span class="s2">&quot;Bonjour&quot;</span>
-    <span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="nb">int</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+    <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span> <span class="o">/</span> <span class="mi">5</span>
+    <span class="c1"># a = 10 / 0</span>
+    <span class="c1"># a = 10 / int(&quot;NC&quot;)</span>
+    <span class="c1"># a = 10 / &quot;NC&quot;</span>
 <span class="k">except</span> <span class="ne">ZeroDivisionError</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Erreur, division par 0&#39;</span><span class="p">)</span>
 <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
@@ -1922,6 +1933,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;10&#39;</span><span class="p">)</span>
 <span class="nb">int</span><span class="p">(</span><span class="s1">&#39;NC&#39;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<!-- TODO AJOUTER EXEMPLE CALCUL VIA EXPRESSION -->
 <p>Correction possible de l'exercice :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
@@ -1937,7 +1949,12 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="normal">12</span>
 <span class="normal">13</span>
 <span class="normal">14</span>
-<span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+<span class="normal">15</span>
+<span class="normal">16</span>
+<span class="normal">17</span>
+<span class="normal">18</span>
+<span class="normal">19</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
 <span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeatureRequest</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
@@ -1949,9 +1966,14 @@ population (s'il y a <code>NC</code> par exemple) :</p>
     <span class="n">area</span> <span class="o">=</span> <span class="n">feature</span><span class="o">.</span><span class="n">geometry</span><span class="p">()</span><span class="o">.</span><span class="n">area</span><span class="p">()</span> <span class="o">/</span> <span class="mi">1000000</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">population</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;POPULATION&#39;</span><span class="p">])</span>
+        <span class="c1"># Par exemple, pour nettoyer une chaîne de caractère en Python des espaces avant/après : &quot;  Bonjour  &quot;.strip()</span>
+        <span class="c1"># &quot;rstrip&quot;/&quot;lstrip&quot; existent également</span>
     <span class="k">except</span> <span class="ne">ValueError</span><span class="p">:</span>
         <span class="n">population</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="si">{commune}</span><span class="s1"> : </span><span class="si">{densite}</span><span class="s1"> habitants/km²&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">commune</span><span class="o">=</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">],</span> <span class="n">densite</span><span class="o">=</span><span class="n">population</span><span class="o">/</span><span class="n">area</span><span class="p">))</span>
+
+    <span class="n">densite</span> <span class="o">=</span> <span class="n">population</span><span class="o">/</span><span class="n">area</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">feature</span><span class="p">[</span><span class="s1">&#39;NOM&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">densite</span><span class="si">}</span><span class="s2"> habitants/km²&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Nous souhaitons enregistrer ces informations dans une vraie table avec un nouveau champ <code>densite_population</code>.</p>
 <p>Solution possible :</p>
@@ -2022,7 +2044,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 
     <span class="c1"># Cette ligne n&#39;aura aucun effet</span>
     <span class="c1"># La variable &quot;feature&quot; est une copie, comme un peu le résultat du SELECT * FROM ma_table LIMIT 5</span>
-    <span class="c1"># un SELECT est en lecture seul. Pour expliquer rapidement</span>
+    <span class="c1"># un SELECT est en lecture seule. Pour expliquer rapidement ce qu&#39;il se passe.</span>
     <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;densite&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">densite</span>
 
     <span class="c1"># Uniquement l&#39;appel à &quot;changeAttributeValue&quot; fonctionne</span>

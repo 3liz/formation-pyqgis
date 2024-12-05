@@ -2256,7 +2256,11 @@ ou dans le menu Préférences ➡ Options ➡ GDAL ➡ Pilotes vecteurs</p>
 <p>Idéalement, il faut vérifier le résultat de l'enregistrement du fichier. Les différentes méthodes <code>writeAsVectorFormat</code>
 retournent systématiquement un tuple avec un code d'erreur et un message si nécessaire, voir la
 <a href="https://api.qgis.org/api/classQgsVectorFileWriter.html#a3a4405a59d8f8ac147878cae5bd9bade">documentation</a>.</p>
-<p>Pour s'en rendre compte, on peut inclure un <code>print()</code> autour du <code>QgsVectorFileWriter.writeAsVectorFormatV3()</code>.</p>
+<p>Pour s'en rendre compte, on peut ajouter une variable <code>result = QgsVectorFileWriter.writeAsVectorFormatV3(...)</code>.
+Puis de faire un <code>print(result)</code> pour s'en rendre compte. On peut tenir compte donc ce tuple :</p>
+<ul>
+<li><code>QgsVectorFileWriter.WriterError.NoError</code> → <code>0</code></li>
+</ul>
 <p><strong>De plus</strong>, en cas de succès, il est pratique d'avertir l'utilisateur. On peut aussi fournir un lien pour ouvrir
 l'explorateur de fichier :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2275,6 +2279,31 @@ l'explorateur de fichier :</p>
     <span class="p">)</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_file</span><span class="o">.</span><span class="n">parent</span><span class="p">,</span> <span class="n">output_file</span><span class="p">)</span>
 <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<details class="note">
+<summary>Pour ajouter le support du message d'erreur</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>if result[0] != QgsVectorFileWriter.WriterError.NoError:
+    print(f&quot;Erreur : {result[1]}&quot;)
+else:
+    # Affichage d&#39;un message à l&#39;utilisateur
+    iface.messageBar().pushSuccess(
+        &quot;Export OK des couches 👍&quot;,
+        (
+            &quot;Le fichier CSV a été enregistré dans &quot;
+            &quot;&lt;a href=\&quot;{}\&quot;&gt;{}&lt;/a&gt;&quot;
+        ).format(output_file.parent, output_file)
+    )
+</code></pre></div></td></tr></table></div>
+</details>
 
 
 
