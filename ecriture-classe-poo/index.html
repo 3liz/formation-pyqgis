@@ -869,6 +869,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#des-idees-pour-continuer-plus-loin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Des idées pour continuer plus loin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       Solution
@@ -1281,6 +1290,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#des-idees-pour-continuer-plus-loin" class="md-nav__link">
+    <span class="md-ellipsis">
+      Des idées pour continuer plus loin
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#solution" class="md-nav__link">
     <span class="md-ellipsis">
       Solution
@@ -1449,8 +1467,8 @@ sur le site d'OpenClassRooms sur le sujet.</p>
 </code></pre></div></td></tr></table></div>
 <h3 id="utilisation-de-notre-classe">Utilisation de notre classe<a class="headerlink" href="#utilisation-de-notre-classe" title="Permanent link">#</a></h3>
 <ul>
-<li><code>dir()</code> est une fonction qui prend une variable en paramètre et qui indique les propriétés/méthodes de notre variable.</li>
-<li><code>help()</code> affiche la documentation de notre classe</li>
+<li><code>dir(a)</code> est une fonction indique les "membres" de notre variable Personnage.</li>
+<li><code>help(a)</code> affiche la documentation de notre classe</li>
 <li><code>__dict__</code> est une propriété qui donne les valeurs des attributs de l'instance.</li>
 </ul>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1523,7 +1541,12 @@ afin de les mettre dans son sac à dos.</p>
    afin de signaler que c'est une méthode dite <strong>privée</strong>. L'utilisation de cette méthode privée est uniquement à titre
    pédagogique, on peut vouloir exposer la méthode <code>est_dans_inventaire</code>. Cette méthode doit renvoyer un <strong>booléen</strong>.</li>
 <li>Ajoutons des <strong>commentaires</strong> et/ou des <strong>docstrings</strong>, CF mémo Python. On peut utiliser la méthode <code>help</code>.</li>
-<li>Pensons aussi <strong>annotations Python</strong></li>
+<li>
+<p>Pensons aussi <strong>annotations Python</strong></p>
+</li>
+<li>
+<p>Refaire la commande <code>help(a)</code> pour voir le résultat final 😉</p>
+</li>
 </ol>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -1538,6 +1561,17 @@ utilisateur, c'est plutôt simple.</p>
 impact lors de son utilisation dans un combat. Le dégât qu'inflige une arme sur le niveau d'énergie de l'autre
 personnage est une propriété de l'arme en question <strong>et</strong> du niveau du personnage.</p>
 </div>
+<h2 id="des-idees-pour-continuer-plus-loin">Des idées pour continuer plus loin<a class="headerlink" href="#des-idees-pour-continuer-plus-loin" title="Permanent link">#</a></h2>
+<p>Des jeux en Python dans QGIS :</p>
+<ul>
+<li>Une <a href="https://www.youtube.com/watch?v=xFNGr-uV3k8">vidéo du jeu morpion</a></li>
+<li>Le jeu <a href="https://github.com/ViperMiniQ/Viper-QGIS-snake-clone/blob/main/README.md">Snake</a></li>
+</ul>
+<p>Ou pour le fun avec des expressions :</p>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=rw-vYS6HSak">Faire un "dessin animé"</a></li>
+<li><a href="https://github.com/Gustry/qgis-roadmap-project/blob/master/README.md">Faire un graphique animé</a></li>
+</ul>
 <h2 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">#</a></h2>
 <p>Sur la classe Personnage ci-dessus :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -1562,29 +1596,85 @@ personnage est une propriété de l'arme en question <strong>et</strong> du nive
 <span class="normal">20</span>
 <span class="normal">21</span>
 <span class="normal">22</span>
-<span class="normal">23</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_est_dans_inventaire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="normal">23</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span>
+<span class="normal">27</span>
+<span class="normal">28</span>
+<span class="normal">29</span>
+<span class="normal">30</span>
+<span class="normal">31</span>
+<span class="normal">32</span>
+<span class="normal">33</span>
+<span class="normal">34</span>
+<span class="normal">35</span>
+<span class="normal">36</span>
+<span class="normal">37</span>
+<span class="normal">38</span>
+<span class="normal">39</span>
+<span class="normal">40</span>
+<span class="normal">41</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span>
+<span class="normal">45</span>
+<span class="normal">46</span>
+<span class="normal">47</span>
+<span class="normal">48</span>
+<span class="normal">49</span>
+<span class="normal">50</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_est_dans_inventaire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Fonction &quot;interne&quot; pour tester si un objet est dans l&#39;inventaire. &quot;&quot;&quot;</span>
+    <span class="c1"># On ne souhaite pas qu&#39;un autre personnage puis vérifier le contenu d&#39;un inventaire d&#39;un autre.</span>
+    <span class="c1"># Il faut plutôt lui demander :)</span>
+    <span class="c1"># Note cette méthode n&#39;est pas dans le help()</span>
     <span class="k">return</span> <span class="n">un_objet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span>
 
-<span class="k">def</span> <span class="nf">ramasser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">ramasser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Ramasser un objet et le mettre dans l&#39;inventaire.</span>
+
+<span class="sd">    Retourne True si l&#39;action est OK</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ramasse </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2"> et le met dans son inventaire.&quot;</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">utiliser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">utiliser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Utiliser un objet s&#39;il est disponible avant dans l&#39;inventaire.</span>
+
+<span class="sd">    Retourne True si l&#39;action est OK</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> utilise </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne possède pas </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">deposer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dépose </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne possède pas </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">donner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">):</span>
-    <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
-        <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
-        <span class="n">autre_personnage</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
-        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">autre_personnage</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> reçoit </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2"> de la part de </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et le remercie 👍&quot;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">deposer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Retirer un objet de l&#39;inventaire.</span>
+
+<span class="sd">    Retourne True si l&#39;action est OK</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dépose </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+<span class="k">def</span> <span class="nf">donner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot; Donner un objet à un autre personnage.</span>
+
+<span class="sd">    Retourne True si l&#39;action est OK</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_est_dans_inventaire</span><span class="p">(</span><span class="n">un_objet</span><span class="p">):</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+    <span class="n">autre_personnage</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">autre_personnage</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> reçoit </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2"> de la part de </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> et le remercie 👍&quot;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="kc">True</span>
 </code></pre></div></td></tr></table></div>
 
 
