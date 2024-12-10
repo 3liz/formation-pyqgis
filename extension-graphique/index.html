@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.47">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
     
     
       
@@ -1832,8 +1832,12 @@ la couche qui est sélectionnée dans le menu déroulant.</p>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Permet de mettre à jour l&#39;UI selon la couche dans le menu déroulant. &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
     <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">couche</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2"> : CRS → </span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>Que remarquez-vous en terme d'ergonomie, à l'ouverture de la fenêtre ?</p>
+</div>
 <details>
 <summary>La solution plus complète</summary>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1842,7 +1846,7 @@ la couche qui est sélectionnée dans le menu déroulant.</p>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">couche</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
 <span class="k">if</span> <span class="n">layer</span><span class="p">:</span>
-    <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2"> : CRS → </span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="k">else</span><span class="p">:</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="s2">&quot;Pas de couche&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1904,7 +1908,9 @@ avec le fichier CSV, <a href="../fonctions-scripts/#extraction-des-informations-
 <span class="normal">39</span>
 <span class="normal">40</span>
 <span class="normal">41</span>
-<span class="normal">42</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
+<span class="normal">42</span>
+<span class="normal">43</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
 <span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
 <span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
 <span class="kn">from</span> <span class="nn">qgis.PyQt</span> <span class="kn">import</span> <span class="n">uic</span>
@@ -1922,6 +1928,7 @@ avec le fichier CSV, <a href="../fonctions-scripts/#extraction-des-informations-
     <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Constructeur. &quot;&quot;&quot;</span>
         <span class="n">_</span> <span class="o">=</span> <span class="n">parent</span>
+        <span class="c1"># TODO CORRECTION</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">setupUi</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span>  <span class="c1"># Fichier de QtDesigner</span>
 
@@ -1931,6 +1938,7 @@ avec le fichier CSV, <a href="../fonctions-scripts/#extraction-des-informations-
 
         <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">setReadOnly</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">couche</span><span class="o">.</span><span class="n">layerChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_changed</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">layer_changed</span><span class="p">()</span>
 
     <span class="k">def</span> <span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Clic sur le bouton OK afin de fermer la fenêtre. &quot;&quot;&quot;</span>
@@ -1943,16 +1951,16 @@ avec le fichier CSV, <a href="../fonctions-scripts/#extraction-des-informations-
         <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">couche</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
         <span class="k">if</span> <span class="n">layer</span><span class="p">:</span>
-            <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2"> : </span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">name</span><span class="p">()</span><span class="si">}</span><span class="s2"> : CRS → </span><span class="si">{</span><span class="n">layer</span><span class="o">.</span><span class="n">crs</span><span class="p">()</span><span class="o">.</span><span class="n">authid</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">appendPlainText</span><span class="p">(</span><span class="s2">&quot;Pas de couche&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 </details>
 <h2 id="organisation-du-code">Organisation du code<a class="headerlink" href="#organisation-du-code" title="Permanent link">#</a></h2>
-<p>Il ne faut pas hésiter à créer des fichiers afin de séparer le code.</p>
+<p>Il ne faut pas hésiter à créer des fichiers Python afin de séparer le code.</p>
 <p>On peut aussi créer des dossiers afin d'y mettre plusieurs fichiers Python. Un dossier en Python se nomme un
-<strong>module</strong>. Pour faire un module compatible, il faut ajouter un fichier <code>__init__.py</code> même s’il n'y a rien
-dedans.</p>
+<strong>module</strong>. Pour faire un module compatible, pour Python, il faut <strong>toujours</strong> avoir un fichier
+<strong><code>__init__.py</code></strong> même s’il n'y a rien dedans.</p>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>Il ne faut vraiment pas oublier le fichier <code>__init__.py</code>. Cela peut empêcher Python de fonctionner
@@ -1961,8 +1969,10 @@ correctement. Un bon <a href="../ide-git/#utilisation-dun-ide">IDE</a> peut sign
 <p>Dans l'exemple ci-dessus, on peut diviser le code du fichier <code>__init__.py</code> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">classFactory</span><span class="p">(</span><span class="n">iface</span><span class="p">):</span>
-    <span class="kn">from</span> <span class="nn">minimal.plugin</span> <span class="kn">import</span> <span class="n">MinimalPlugin</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">classFactory</span><span class="p">(</span><span class="n">iface</span><span class="p">):</span>
+    <span class="c1"># from minimal_plugin.plugin import MinimalPlugin  # Import absolut</span>
+    <span class="kn">from</span> <span class="nn">.plugin</span> <span class="kn">import</span> <span class="n">MinimalPlugin</span>  <span class="c1"># Import relatif</span>
     <span class="k">return</span> <span class="n">MinimalPlugin</span><span class="p">(</span><span class="n">iface</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>En faisant un couper/coller, enlever la classe <code>MinimalPlugin</code> du fichier <code>__init__.py</code>.</p>
