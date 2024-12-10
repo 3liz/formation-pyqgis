@@ -183,14 +183,17 @@ def layer_changed(self):
     """ Permet de mettre à jour l'UI selon la couche dans le menu déroulant. """
     self.metadata.clear()
     layer = self.couche.currentLayer()
-    self.metadata.appendPlainText(f"{layer.name()} : {layer.crs().authid()}")
+    self.metadata.appendPlainText(f"{layer.name()} : CRS → {layer.crs().authid()}")
 ```
+
+!!! danger
+    Que remarquez-vous en terme d'ergonomie, à l'ouverture de la fenêtre ?
 
 ??? "La solution plus complète"
     ```python
     layer = self.couche.currentLayer()
     if layer:
-        self.metadata.appendPlainText(f"{layer.name()} : {layer.crs().authid()}")
+        self.metadata.appendPlainText(f"{layer.name()} : CRS → {layer.crs().authid()}")
     else:
         self.metadata.appendPlainText("Pas de couche")
     ```
@@ -230,6 +233,7 @@ données, etc.
         def __init__(self, parent=None):
             """ Constructeur. """
             _ = parent
+            # TODO CORRECTION
             super().__init__()
             self.setupUi(self)  # Fichier de QtDesigner
     
@@ -239,6 +243,7 @@ données, etc.
     
             self.metadata.setReadOnly(True)
             self.couche.layerChanged.connect(self.layer_changed)
+            self.layer_changed()
     
         def click_ok(self):
             """ Clic sur le bouton OK afin de fermer la fenêtre. """
@@ -251,7 +256,7 @@ données, etc.
             self.metadata.clear()
             layer = self.couche.currentLayer()
             if layer:
-                self.metadata.appendPlainText(f"{layer.name()} : {layer.crs().authid()}")
+                self.metadata.appendPlainText(f"{layer.name()} : CRS → {layer.crs().authid()}")
             else:
                 self.metadata.appendPlainText("Pas de couche")
     
@@ -259,11 +264,11 @@ données, etc.
 
 ## Organisation du code
 
-Il ne faut pas hésiter à créer des fichiers afin de séparer le code.
+Il ne faut pas hésiter à créer des fichiers Python afin de séparer le code.
 
 On peut aussi créer des dossiers afin d'y mettre plusieurs fichiers Python. Un dossier en Python se nomme un
-**module**. Pour faire un module compatible, il faut ajouter un fichier `__init__.py` même s’il n'y a rien
-dedans.
+**module**. Pour faire un module compatible, pour Python, il faut **toujours** avoir un fichier
+**`__init__.py`** même s’il n'y a rien dedans.
 
 !!! warning
     Il ne faut vraiment pas oublier le fichier `__init__.py`. Cela peut empêcher Python de fonctionner
@@ -273,7 +278,8 @@ Dans l'exemple ci-dessus, on peut diviser le code du fichier `__init__.py` :
 
 ```python
 def classFactory(iface):
-    from minimal.plugin import MinimalPlugin
+    # from minimal_plugin.plugin import MinimalPlugin  # Import absolut
+    from .plugin import MinimalPlugin  # Import relatif
     return MinimalPlugin(iface)
 ```
 
@@ -310,6 +316,7 @@ def resources_path(*args) -> Path:
 
 # On peut ajouter ici une méthode qui charge un fichier UI qui se trouve dans le dossier "UI"
 # et retourne la classe directement.
+
 ```
 
 On peut ensuite créer un dossier `resources` puis `icons` afin d'y déplacer un fichier PNG, JPG, SVG.
