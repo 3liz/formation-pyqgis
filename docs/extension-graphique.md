@@ -458,6 +458,26 @@ def traitement_1_clicked(self):
     dialog.show()
 ```
 
+Si on ne souhaite pas afficher la fenetre Processing : 
+
+```python
+# Imports en haut
+from qgis.PyQt.QtCore import Qt
+from qgis.utils import OverrideCursor
+from qgis import processing
+
+# Dans la fonction "traitement_1_clicked", pour lancer Processing sans l'interface graphique, mais avec un curseur "attente".
+with OverrideCursor(Qt.WaitCursor):
+    processing.runAndLoadResults(
+    "native:buffer",
+    {
+        'INPUT': layer,
+        'DISTANCE': 2000,
+        'OUTPUT': 'TEMPORARY_OUTPUT',
+    }
+)
+```
+
 Pour rappel, nous ne sommes pas obligé d'ouvrir la fenêtre de Processing, on peut directement faire `processing.run`,
 lire le [chapitre précédent](./script-processing.md#utiliser-processing-en-python-avec-un-algorithme-existant). Il ne
 faut pas oublier de donner la variable `layer` à notre `INPUT` si vous copiez/coller le code de `processing.run` du
