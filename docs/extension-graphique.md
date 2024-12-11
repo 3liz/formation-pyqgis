@@ -469,13 +469,13 @@ from qgis import processing
 # Dans la fonction "traitement_1_clicked", pour lancer Processing sans l'interface graphique, mais avec un curseur "attente".
 with OverrideCursor(Qt.WaitCursor):
     processing.runAndLoadResults(
-    "native:buffer",
-    {
-        'INPUT': layer,
-        'DISTANCE': 2000,
-        'OUTPUT': 'TEMPORARY_OUTPUT',
-    }
-)
+        "native:buffer",
+        {
+            'INPUT': layer,
+            'DISTANCE': 2000,
+            'OUTPUT': 'TEMPORARY_OUTPUT',
+        }
+    )
 ```
 
 Pour rappel, nous ne sommes pas obligé d'ouvrir la fenêtre de Processing, on peut directement faire `processing.run`,
