@@ -925,9 +925,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mise-en-page" class="md-nav__link">
+  <a href="#premier-dialogue" class="md-nav__link">
     <span class="md-ellipsis">
-      Mise en page
+      Premier dialogue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decouverte-de-linterface-qtdesigner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Découverte de l'interface QtDesigner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajoutons-les-widgets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ajoutons les "widgets"
     </span>
   </a>
   
@@ -1402,9 +1420,27 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#mise-en-page" class="md-nav__link">
+  <a href="#premier-dialogue" class="md-nav__link">
     <span class="md-ellipsis">
-      Mise en page
+      Premier dialogue
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decouverte-de-linterface-qtdesigner" class="md-nav__link">
+    <span class="md-ellipsis">
+      Découverte de l'interface QtDesigner
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ajoutons-les-widgets" class="md-nav__link">
+    <span class="md-ellipsis">
+      Ajoutons les "widgets"
     </span>
   </a>
   
@@ -1610,10 +1646,19 @@
 <h1 id="creer-une-extension-qgis-avec-une-interface-graphique">Créer une extension QGIS avec une interface graphique<a class="headerlink" href="#creer-une-extension-qgis-avec-une-interface-graphique" title="Permanent link">#</a></h1>
 <p>Pour faire ce chapitre, il faut d'abord avoir une extension de base, à l'aide du chapitre précédent.</p>
 <h2 id="qtdesigner">QtDesigner<a class="headerlink" href="#qtdesigner" title="Permanent link">#</a></h2>
-<h3 id="mise-en-page">Mise en page<a class="headerlink" href="#mise-en-page" title="Permanent link">#</a></h3>
+<h3 id="premier-dialogue">Premier dialogue<a class="headerlink" href="#premier-dialogue" title="Permanent link">#</a></h3>
 <p>Créons un fichier QtDesigner comme-ceci : </p>
 <p><img alt="QtDesigner" src="../media/qt_designer_0.png" /></p>
-<p>et y ajouter des "widgets" :</p>
+<h3 id="decouverte-de-linterface-qtdesigner">Découverte de l'interface QtDesigner<a class="headerlink" href="#decouverte-de-linterface-qtdesigner" title="Permanent link">#</a></h3>
+<ul>
+<li>Faire le tour des "widgets", de "l'object inspector" et des "property"</li>
+<li>Privilégier les "widgets QGIS" si possible</li>
+</ul>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Privilégier aussi les "Item Widgets (Item Based)" plutôt que les "Item Views (Model Based) pour débuter.</p>
+</div>
+<h3 id="ajoutons-les-widgets">Ajoutons les "widgets"<a class="headerlink" href="#ajoutons-les-widgets" title="Permanent link">#</a></h3>
 <div class="admonition important">
 <p class="admonition-title">Important</p>
 <p>Ne tenez pas compte de l'alignement des widgets pour le moment. On fait juste un placement "rapide"
@@ -1666,7 +1711,7 @@ puis <code>Mise en page</code> et enfin <code>Verticalement</code> 🚀</p>
 <tr>
 <td><code>QLineEdit</code></td>
 <td><code>lineEdit</code></td>
-<td><code>texte_prenom</code></td>
+<td><code>input_text</code></td>
 </tr>
 <tr>
 <td><code>QgsMapLayerComboBox</code></td>
@@ -1727,12 +1772,16 @@ Python. Un signal en XML, c'est plusieurs lignes dans le fichier UI, alors que e
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
+<span class="normal">24</span>
+<span class="normal">25</span>
+<span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Les imports</span>
+<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
 <span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
 <span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
 <span class="kn">from</span> <span class="nn">qgis.PyQt</span> <span class="kn">import</span> <span class="n">uic</span>
 <span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
+<span class="c1"># Permettre d&#39;aller chercher le fichier UI correspondant</span>
 <span class="n">folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
 <span class="n">ui_file</span> <span class="o">=</span> <span class="n">folder</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;dialog.ui&#39;</span><span class="p">)</span>
 <span class="n">ui_class</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">uic</span><span class="o">.</span><span class="n">loadUiType</span><span class="p">(</span><span class="n">ui_file</span><span class="p">)</span>
@@ -1786,7 +1835,7 @@ l'utilisateur dans la QgsMessageBar de QGIS.</p>
 <span class="normal">4</span>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Clic sur le bouton OK afin de fermer la fenêtre. &quot;&quot;&quot;</span>
-    <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texte_prenom</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+    <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_text</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
     <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre extension&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -1815,8 +1864,8 @@ l'utilisateur dans la QgsMessageBar de QGIS.</p>
 la couche qui est sélectionnée dans le menu déroulant.</p>
 <p>Documentation :</p>
 <ul>
-<li><a href="https://doc.qt.io/qt-5/qplaintextedit.html">QPlainTextEdit</a>, on va utiliser <code>appendPlainText</code> et <code>clear</code>.</li>
-<li><a href="https://qgis.org/api/classQgsMapLayerComboBox.html">QgsMapLayerComboBox</a>, on va utiliser <code>currentLayer</code>.</li>
+<li>QPlainTextEdit <a href="https://doc.qt.io/qt-5/qplaintextedit.html">CPP</a>, on va utiliser <code>appendPlainText</code> et <code>clear</code>.</li>
+<li>QgsMapLayerComboBox <a href="https://qgis.org/api/classQgsMapLayerComboBox.html">CPP</a> / <a href="https://qgis.org/pyqgis/3.34/gui/QgsMapLayerComboBox.html">PyQGIS</a>, on va utiliser <code>currentLayer</code>.</li>
 </ul>
 <p>Dans la fonction <code>__init__</code> du fichier <code>dialog.py</code> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1943,7 +1992,7 @@ avec le fichier CSV, <a href="../fonctions-scripts/#extraction-des-informations-
     <span class="k">def</span> <span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Clic sur le bouton OK afin de fermer la fenêtre. &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-        <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">texte_prenom</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
+        <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_text</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
         <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre extension&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 
     <span class="k">def</span> <span class="nf">layer_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
@@ -1971,7 +2020,7 @@ correctement. Un bon <a href="../ide-git/#utilisation-dun-ide">IDE</a> peut sign
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">classFactory</span><span class="p">(</span><span class="n">iface</span><span class="p">):</span>
-    <span class="c1"># from minimal_plugin.plugin import MinimalPlugin  # Import absolut</span>
+    <span class="c1"># from minimal_plugin.plugin import MinimalPlugin  # Import absolue</span>
     <span class="kn">from</span> <span class="nn">.plugin</span> <span class="kn">import</span> <span class="n">MinimalPlugin</span>  <span class="c1"># Import relatif</span>
     <span class="k">return</span> <span class="n">MinimalPlugin</span><span class="p">(</span><span class="n">iface</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -2029,7 +2078,25 @@ deux fichiers.</p>
 <p class="admonition-title">Warning</p>
 <p>Attention à la taille de vos fichiers pour une petite icône 😉</p>
 </div>
+<details>
+<summary>Pour les experts, solution pour faire une fonction qui charge un fichier UI</summary>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load_ui</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Get compiled UI file.</span>
+
+<span class="sd">    :param args List of path elements e.g. [&#39;img&#39;, &#39;logos&#39;, &#39;image.png&#39;]</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">ui_class</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">uic</span><span class="o">.</span><span class="n">loadUiType</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">resources_path</span><span class="p">(</span><span class="s2">&quot;ui&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)))</span>
+    <span class="k">return</span> <span class="n">ui_class</span>
+</code></pre></div></td></tr></table></div>
+</details>
 <h3 id="dans-une-extension-graphique-pour-les-icones">Dans une extension graphique pour les icônes<a class="headerlink" href="#dans-une-extension-graphique-pour-les-icones" title="Permanent link">#</a></h3>
+<p><a href="https://doc.qt.io/qt-6/qaction.html">Lien documentation QAction</a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>

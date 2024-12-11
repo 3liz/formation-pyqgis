@@ -906,6 +906,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Convertir un modèle Processing en python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manipulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1281,6 +1296,21 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Convertir un modèle Processing en python">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#manipulation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Manipulation
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1368,8 +1398,9 @@ une page sur la
 <p class="admonition-title">Tip</p>
 <p>Pour obtenir l'identifiant de l'algorithme, laissez la souris sur le nom de
 l'algorithme pour avoir son info-bulle dans le panneau traitement.</p>
+<p>Idem pour les identifiants des paramètres, dans la fenêtre de l'algorithme.</p>
 </div>
-<p>Lien vers la documentation : <a href="https://docs.qgis.org/latest/fr/docs/user_manual/processing/console.html">https://docs.qgis.org/latest/fr/docs/user_manual/processing/console.html</a></p>
+<p><a href="https://docs.qgis.org/latest/fr/docs/user_manual/processing/console.html">Lien vers la documentation de Processing en console</a></p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">addMapLayer</span><span class="p">(</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">])</span>
 </code></pre></div></td></tr></table></div>
 <p>Pour obtenir la description d'un algorithme :
@@ -1416,6 +1447,10 @@ l'algorithme pour avoir son info-bulle dans le panneau traitement.</p>
 <p class="admonition-title">Warning</p>
 <p>Attention si utilisation de <code>iface.activeLayer()</code> qui va être modifié si utilisation de <code>QgsProject.instance().addMapLayer()</code>.
 Il peut être nécessaire d'extraire la sélection de la couche hors de la boucle.</p>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Il existe aussi <code>processing.runandLoadResults</code> qui permet de charger directement les résultats, comme QGIS en mode graphique.</p>
 </div>
 <h2 id="lancer-linterface-graphique-de-notre-algorithme">Lancer l'interface graphique de notre algorithme<a class="headerlink" href="#lancer-linterface-graphique-de-notre-algorithme" title="Permanent link">#</a></h2>
 <p>Au lieu de <code>processing.run</code>, on peut créer <strong>uniquement</strong> le dialogue. Il faut alors l'afficher manuellement.</p>
@@ -1478,9 +1513,17 @@ Il peut être nécessaire d'extraire la sélection de la couche hors de la boucl
 <p>Il est possible de convertir un modèle Processing en script Python.
 On peut alors le modifier avec plus de finesse.</p>
 <p><strong>On ne peut pas reconvertir un script Python en modèle</strong>.</p>
-<ul>
-<li>Depuis un modèle, cliquer sur le bouton "Convertir en script Processing".</li>
-</ul>
+<h3 id="manipulation">Manipulation<a class="headerlink" href="#manipulation" title="Permanent link">#</a></h3>
+<ol>
+<li>Ouvrir en modèle, par exemple ce fichier <a href="./solution/reprojection_tampon.model3">model3</a></li>
+<li>Depuis le modèle, cliquer sur le bouton "Convertir en script Processing".</li>
+<li>Ouvrir en parallèle le script Processing Python de QGIS (Boîte à outil → Python → Créer un nouveau script depuis un modèle)</li>
+</ol>
+<div class="admonition tip">
+<p class="admonition-title">Avec QGIS &lt; 3.40.2</p>
+<p>Le modèle par défaut dans QGIS est un plus compréhensible dans QGIS &gt;= 3.40.2. On peut le récupérer
+<a href="https://raw.githubusercontent.com/qgis/QGIS/refs/heads/master/python/plugins/processing/script/ScriptTemplate.py">manuellement</a>.</p>
+</div>
 <h2 id="utiliser-un-script-processing-dans-une-action">Utiliser un script Processing dans une action<a class="headerlink" href="#utiliser-un-script-processing-dans-une-action" title="Permanent link">#</a></h2>
 <p>On peut utiliser <code>processing.run()</code> dans le code d'une action, pour faire une zone tampon sur un point en particulier
 par exemple.</p>
@@ -1551,6 +1594,12 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
 <h2 id="introduction-aux-decorateurs">Introduction aux décorateurs<a class="headerlink" href="#introduction-aux-decorateurs" title="Permanent link">#</a></h2>
 <p>Comme mentionné au début de ce chapitre, il est possible de ne pas utiliser la <a href="../ecriture-classe-poo/">POO</a> pour
 écrire un "Script Processing" mais plutôt l'écriture à l'aide des <strong>décorateurs</strong>.</p>
+<p>C'est "censé" être plus simple, pour éviter de voir l'aspect de la programmation orienté objet avec la complexité des
+classes.</p>
+<div class="admonition info">
+<p class="admonition-title">Info</p>
+<p>Cependant, cette syntaxe n'est pas compatible avec une <a href="../extension-processing/">extension Processing</a>.</p>
+</div>
 <p>Dans la documentation QGIS, on trouve :</p>
 <ul>
 <li>le <a href="https://docs.qgis.org/3.34/fr/docs/user_manual/processing/parameters.html#processing-algs-input-output">tableau de correspondance</a>
@@ -1632,17 +1681,13 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
-<span class="normal">74</span>
-<span class="normal">75</span>
-<span class="normal">76</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis</span> <span class="kn">import</span> <span class="n">processing</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis</span> <span class="kn">import</span> <span class="n">processing</span>
 <span class="kn">from</span> <span class="nn">qgis.processing</span> <span class="kn">import</span> <span class="n">alg</span>
 
 
 <span class="nd">@alg</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bufferrasteralg&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Buffer and export to raster (alg)&#39;</span><span class="p">,</span>
      <span class="n">group</span><span class="o">=</span><span class="s1">&#39;examplescripts&#39;</span><span class="p">,</span> <span class="n">group_label</span><span class="o">=</span><span class="s1">&#39;Example scripts&#39;</span><span class="p">)</span>
-<span class="c1"># &#39;INPUT&#39; is the recommended name for the main input parameter</span>
 <span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">SOURCE</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;INPUT&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Input vector layer&#39;</span><span class="p">)</span>
-<span class="c1"># &#39;OUTPUT&#39; is the recommended name for the main output parameter</span>
 <span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">RASTER_LAYER_DEST</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;OUTPUT&#39;</span><span class="p">,</span>
            <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Raster output&#39;</span><span class="p">)</span>
 <span class="nd">@alg</span><span class="o">.</span><span class="n">input</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">VECTOR_LAYER_DEST</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;BUFFER_OUTPUT&#39;</span><span class="p">,</span>
