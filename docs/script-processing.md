@@ -43,7 +43,9 @@ result = processing.run(
     Pour obtenir l'identifiant de l'algorithme, laissez la souris sur le nom de
     l'algorithme pour avoir son info-bulle dans le panneau traitement.
 
-Lien vers la documentation : https://docs.qgis.org/latest/fr/docs/user_manual/processing/console.html
+    Idem pour les identifiants des paramètres, dans la fenêtre de l'algorithme.
+
+[Lien vers la documentation de Processing en console](https://docs.qgis.org/latest/fr/docs/user_manual/processing/console.html)
 
 ```python
 QgsProject.instance().addMapLayer(result['OUTPUT'])
@@ -80,6 +82,9 @@ for x in [10, 20, 30]:
 !!! warning
     Attention si utilisation de `iface.activeLayer()` qui va être modifié si utilisation de `QgsProject.instance().addMapLayer()`.
     Il peut être nécessaire d'extraire la sélection de la couche hors de la boucle.
+
+!!! tip
+    Il existe aussi `processing.runandLoadResults` qui permet de charger directement les résultats, comme QGIS en mode graphique.
 
 ## Lancer l'interface graphique de notre algorithme
 
@@ -127,8 +132,15 @@ On peut alors le modifier avec plus de finesse.
 
 **On ne peut pas reconvertir un script Python en modèle**.
 
-* Depuis un modèle, cliquer sur le bouton "Convertir en script Processing".
+### Manipulation
 
+1. Ouvrir en modèle, par exemple ce fichier [model3](./solution/reprojection_tampon.model3)
+2. Depuis le modèle, cliquer sur le bouton "Convertir en script Processing".
+3. Ouvrir en parallèle le script Processing Python de QGIS (Boîte à outil → Python → Créer un nouveau script depuis un modèle)
+
+!!! tip "Avec QGIS < 3.40.2"
+    Le modèle par défaut dans QGIS est un plus compréhensible dans QGIS >= 3.40.2. On peut le récupérer
+    [manuellement](https://raw.githubusercontent.com/qgis/QGIS/refs/heads/master/python/plugins/processing/script/ScriptTemplate.py).
 
 ## Utiliser un script Processing dans une action
 
@@ -186,6 +198,12 @@ On peut compléter l'action avec un `processing.run` en utilisant uniquement l'e
 Comme mentionné au début de ce chapitre, il est possible de ne pas utiliser la [POO](./ecriture-classe-poo.md) pour
 écrire un "Script Processing" mais plutôt l'écriture à l'aide des **décorateurs**.
 
+C'est "censé" être plus simple, pour éviter de voir l'aspect de la programmation orienté objet avec la complexité des
+classes.
+
+!!! info
+    Cependant, cette syntaxe n'est pas compatible avec une [extension Processing](./extension-processing.md).
+
 Dans la documentation QGIS, on trouve :
 
 * le [tableau de correspondance](https://docs.qgis.org/3.34/fr/docs/user_manual/processing/parameters.html#processing-algs-input-output)
@@ -203,9 +221,7 @@ from qgis.processing import alg
 
 @alg(name='bufferrasteralg', label='Buffer and export to raster (alg)',
      group='examplescripts', group_label='Example scripts')
-# 'INPUT' is the recommended name for the main input parameter
 @alg.input(type=alg.SOURCE, name='INPUT', label='Input vector layer')
-# 'OUTPUT' is the recommended name for the main output parameter
 @alg.input(type=alg.RASTER_LAYER_DEST, name='OUTPUT',
            label='Raster output')
 @alg.input(type=alg.VECTOR_LAYER_DEST, name='BUFFER_OUTPUT',

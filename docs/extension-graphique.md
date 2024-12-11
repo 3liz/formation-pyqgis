@@ -4,13 +4,21 @@ Pour faire ce chapitre, il faut d'abord avoir une extension de base, à l'aide d
 
 ## QtDesigner
 
-### Mise en page
+### Premier dialogue
 
 Créons un fichier QtDesigner comme-ceci : 
 
 ![QtDesigner](media/qt_designer_0.png)
 
-et y ajouter des "widgets" :
+### Découverte de l'interface QtDesigner
+
+* Faire le tour des "widgets", de "l'object inspector" et des "property"
+* Privilégier les "widgets QGIS" si possible
+
+!!! tip
+    Privilégier aussi les "Item Widgets (Item Based)" plutôt que les "Item Views (Model Based) pour débuter.
+
+### Ajoutons les "widgets"
 
 !!! important
     Ne tenez pas compte de l'alignement des widgets pour le moment. On fait juste un placement "rapide"
@@ -42,7 +50,7 @@ Pour chacun de nos widgets, changeons le nom par défaut de l'objet, propriété
 
 | Classe                | Nom par défaut de `objectName` | Nouveau nom pour `objectName` |
 |-----------------------|--------------------------------|-------------------------------|
-| `QLineEdit`           | `lineEdit`                     | `texte_prenom`                |
+| `QLineEdit`           | `lineEdit`                     | `input_text`                  |
 | `QgsMapLayerComboBox` | `mMapLayerComboBox`            | `couche`                      |
 | `QPlainTextEdit`      | `plainTextEdit`                | `metadata`                    |
 | `QDialogButtonBox`    | `buttonBox`                    | `button_box`                  |
@@ -70,13 +78,14 @@ On peut [télécharger](./solution/dialog.ui) la solution si besoin.
 Créons un fichier `dialog.py` avec le contenu suivant :
 
 ```python
-
+# Les imports
 from qgis.core import Qgis
 from qgis.utils import iface
 from qgis.PyQt.QtWidgets import QDialog, QDialogButtonBox
 from qgis.PyQt import uic
 from pathlib import Path
 
+# Permettre d'aller chercher le fichier UI correspondant
 folder = Path(__file__).resolve().parent
 ui_file = folder.joinpath('dialog.ui')
 ui_class, _ = uic.loadUiType(ui_file)
@@ -138,7 +147,7 @@ Le widget de saisie est un QLineEdit : [documentation Qt](https://doc.qt.io/qt-5
 ```python
 def click_ok(self):
     """ Clic sur le bouton OK afin de fermer la fenêtre. """
-    message = self.texte_prenom.text()
+    message = self.input_text.text()
     iface.messageBar().pushMessage('Notre extension', message, Qgis.Success)
     self.accept()
 ```
@@ -166,8 +175,8 @@ la couche qui est sélectionnée dans le menu déroulant.
 
 Documentation :
 
-* [QPlainTextEdit](https://doc.qt.io/qt-5/qplaintextedit.html), on va utiliser `appendPlainText` et `clear`.
-* [QgsMapLayerComboBox](https://qgis.org/api/classQgsMapLayerComboBox.html), on va utiliser `currentLayer`.
+* QPlainTextEdit [CPP](https://doc.qt.io/qt-5/qplaintextedit.html), on va utiliser `appendPlainText` et `clear`.
+* QgsMapLayerComboBox [CPP](https://qgis.org/api/classQgsMapLayerComboBox.html) / [PyQGIS](https://qgis.org/pyqgis/3.34/gui/QgsMapLayerComboBox.html), on va utiliser `currentLayer`.
 
 Dans la fonction `__init__` du fichier `dialog.py` :
 
@@ -248,7 +257,7 @@ données, etc.
         def click_ok(self):
             """ Clic sur le bouton OK afin de fermer la fenêtre. """
             self.close()
-            message = self.texte_prenom.text()
+            message = self.input_text.text()
             iface.messageBar().pushMessage('Notre extension', message, Qgis.Success)
     
         def layer_changed(self):
@@ -278,7 +287,7 @@ Dans l'exemple ci-dessus, on peut diviser le code du fichier `__init__.py` :
 
 ```python
 def classFactory(iface):
-    # from minimal_plugin.plugin import MinimalPlugin  # Import absolut
+    # from minimal_plugin.plugin import MinimalPlugin  # Import absolue
     from .plugin import MinimalPlugin  # Import relatif
     return MinimalPlugin(iface)
 ```
@@ -324,7 +333,20 @@ On peut ensuite créer un dossier `resources` puis `icons` afin d'y déplacer un
 !!! warning
     Attention à la taille de vos fichiers pour une petite icône 😉
 
+??? "Pour les experts, solution pour faire une fonction qui charge un fichier UI"
+    ```python
+    def load_ui(*args):
+        """Get compiled UI file.
+
+        :param args List of path elements e.g. ['img', 'logos', 'image.png']
+        """
+        ui_class, _ = uic.loadUiType(str(resources_path("ui", *args)))
+        return ui_class
+    ```
+
 ### Dans une extension graphique pour les icônes
+
+[Lien documentation QAction](https://doc.qt.io/qt-6/qaction.html)
 
 ```python
 # En haut du fichier, on ajoute les imports nécessaires

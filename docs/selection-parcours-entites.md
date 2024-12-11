@@ -435,6 +435,7 @@ request = QgsFeatureRequest()
 # request.setLimit(5)  # Pour aller plus vite si-besoin
 request.addOrderBy('NOM')
 request.setSubsetOfAttributes(['NOM', 'POPULATION'], layer.fields())
+# SELECT NOM, POPULATION FROM communes
 for feature in layer.getFeatures(request):
     area = feature.geometry().area() / 1000000
     try:
@@ -444,14 +445,15 @@ for feature in layer.getFeatures(request):
     
     densite = population/area
 
-    # Cette ligne n'aura aucun effet
+    # Cette ligne n'aura aucun effet, contrairement à l'exercice d'export au format CSV précédent.
+    # https://docs.3liz.org/formation-pyqgis/fonctions-scripts/#solution-possible
     # La variable "feature" est une copie, comme un peu le résultat du SELECT * FROM ma_table LIMIT 5
-    # un SELECT est en lecture seule. Pour expliquer rapidement ce qu'il se passe.
+    # Un SELECT est en lecture seule. Ce n'est pas comme ça que cela se passe, c'est pour imager.
     feature['densite'] = densite
 
     # Uniquement l'appel à "changeAttributeValue" fonctionne
     # Pour information, il existe "changeGeometry" pour la même raison
-    # Un peu comme la commande SQL UPDATE, sur une entité existante, bien qu'il ne faut pas oublier la session d'édition.
+    # Un peu comme la commande SQL UPDATE, sur une entité existante, bien qu'il ne faille pas oublier la session d'édition.
     layer.changeAttributeValue(feature.id(), index, densite)
     # print('{commune} : {densite} habitants/km²'.format(commune=feature['NOM'], densite=round(population/area,2)))
 
