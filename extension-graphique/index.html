@@ -2275,6 +2275,28 @@ une icône dans autre endroit de l'extension.</p>
 lire le <a href="../script-processing/#utiliser-processing-en-python-avec-un-algorithme-existant">chapitre précédent</a>. Il ne
 faut pas oublier de donner la variable <code>layer</code> à notre <code>INPUT</code> si vous copiez/coller le code de <code>processing.run</code> du
 chapitre précédent.</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">traitement_2_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">couche</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
+
+        <span class="n">dialog</span> <span class="o">=</span> <span class="n">QgsExpressionBuilderDialog</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
+        <span class="n">result</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">exec</span><span class="p">()</span>
+
+        <span class="k">if</span> <span class="n">result</span> <span class="o">!=</span> <span class="n">QDialog</span><span class="o">.</span><span class="n">DialogCode</span><span class="o">.</span><span class="n">Accepted</span><span class="p">:</span>
+            <span class="k">return</span>
+
+        <span class="n">content</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">expressionText</span><span class="p">()</span>
+        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Expression&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
 
 
 
