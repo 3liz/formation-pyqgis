@@ -420,7 +420,7 @@ Ajoutons les icônes et infobulles si nécessaires, dans le constructeur :
 ```python
 self.btn_traitement_1.setToolTip("Permet de lancer l'algorithme des tampons sur la couche ci-dessus avec un buffer de 2km")
 self.btn_traitement_1.setIcon(QIcon(":/images/themes/default/algorithms/mAlgorithmBuffer.svg"))
-self.btn_traitement_1.clicked.connect(self.traitement_1_clicked)
+# self.btn_traitement_1.clicked.connect(self.traitement_1_clicked)
 ```
 
 ### Lancer le dialogue de Processing
