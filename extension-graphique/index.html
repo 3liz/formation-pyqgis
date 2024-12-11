@@ -2263,13 +2263,13 @@ une icône dans autre endroit de l'extension.</p>
 <span class="c1"># Dans la fonction &quot;traitement_1_clicked&quot;, pour lancer Processing sans l&#39;interface graphique, mais avec un curseur &quot;attente&quot;.</span>
 <span class="k">with</span> <span class="n">OverrideCursor</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">WaitCursor</span><span class="p">):</span>
     <span class="n">processing</span><span class="o">.</span><span class="n">runAndLoadResults</span><span class="p">(</span>
-    <span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span>
-    <span class="p">{</span>
-        <span class="s1">&#39;INPUT&#39;</span><span class="p">:</span> <span class="n">layer</span><span class="p">,</span>
-        <span class="s1">&#39;DISTANCE&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
-        <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="s1">&#39;TEMPORARY_OUTPUT&#39;</span><span class="p">,</span>
-    <span class="p">}</span>
-<span class="p">)</span>
+        <span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s1">&#39;INPUT&#39;</span><span class="p">:</span> <span class="n">layer</span><span class="p">,</span>
+            <span class="s1">&#39;DISTANCE&#39;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">,</span>
+            <span class="s1">&#39;OUTPUT&#39;</span><span class="p">:</span> <span class="s1">&#39;TEMPORARY_OUTPUT&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Pour rappel, nous ne sommes pas obligé d'ouvrir la fenêtre de Processing, on peut directement faire <code>processing.run</code>,
 lire le <a href="../script-processing/#utiliser-processing-en-python-avec-un-algorithme-existant">chapitre précédent</a>. Il ne
