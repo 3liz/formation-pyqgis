@@ -482,3 +482,18 @@ Pour rappel, nous ne sommes pas obligé d'ouvrir la fenêtre de Processing, on p
 lire le [chapitre précédent](./script-processing.md#utiliser-processing-en-python-avec-un-algorithme-existant). Il ne
 faut pas oublier de donner la variable `layer` à notre `INPUT` si vous copiez/coller le code de `processing.run` du
 chapitre précédent.
+
+
+```python
+    def traitement_2_clicked(self):
+        layer = self.couche.currentLayer()
+
+        dialog = QgsExpressionBuilderDialog(layer)
+        result = dialog.exec()
+
+        if result != QDialog.DialogCode.Accepted:
+            return
+
+        content = dialog.expressionText()
+        iface.messageBar().pushMessage('Expression', content, Qgis.Success)
+```
