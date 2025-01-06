@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -1329,7 +1329,7 @@ commence. Il s'agit de <code>editingStarted</code>.</p>
 <span class="normal">31</span>
 <span class="normal">32</span>
 <span class="normal">33</span>
-<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">user_from_qgis</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="normal">34</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">user_from_qgis</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; À l&#39;aide d&#39;une expression QGIS, récupération du nom d&#39;utilisateur.&quot;&quot;&quot;</span>
     <span class="n">context</span> <span class="o">=</span> <span class="n">QgsExpressionContext</span><span class="p">()</span>
     <span class="n">context</span><span class="o">.</span><span class="n">appendScope</span><span class="p">(</span><span class="n">QgsExpressionContextUtils</span><span class="o">.</span><span class="n">globalScope</span><span class="p">())</span>
@@ -1343,19 +1343,19 @@ commence. Il s'agit de <code>editingStarted</code>.</p>
     <span class="n">expression</span> <span class="o">=</span> <span class="n">QgsExpression</span><span class="p">(</span><span class="s2">&quot;@user_full_name&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">expression</span><span class="o">.</span><span class="n">evaluate</span><span class="p">(</span><span class="n">context</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">user_from_os</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">user_from_os</span><span class="p">()</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; À l&#39;aide de l&#39;OS, retourne le nom d&#39;utilisateur.&quot;&quot;&quot;</span>
-    <span class="kn">import</span> <span class="nn">os</span>
+    <span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
     <span class="k">return</span> <span class="n">os</span><span class="o">.</span><span class="n">getlogin</span><span class="p">()</span>
 
-<span class="k">def</span> <span class="nf">we_are_watching_you</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">we_are_watching_you</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Just warn the user about the editing session.&quot;&quot;&quot;</span>
     <span class="n">current_user</span> <span class="o">=</span> <span class="n">user_from_qgis</span><span class="p">()</span>
     <span class="c1"># Attention aux effets si on lance le code plusieurs fois !</span>
     <span class="c1"># print(&quot;Hello 😉&quot;)</span>
     <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Hey&#39;</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;Be careful &lt;strong&gt;</span><span class="si">{</span><span class="n">current_user</span><span class="si">}</span><span class="s1">&lt;/strong&gt; while you are editing 🧐&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Warning</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">thanks</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">thanks</span><span class="p">():</span>
     <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Hey&#39;</span><span class="p">,</span> <span class="s2">&quot;Thanks 😉&quot;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 
 
@@ -1482,7 +1482,7 @@ commence. Il s'agit de <code>editingStarted</code>.</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

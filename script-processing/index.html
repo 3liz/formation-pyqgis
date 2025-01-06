@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -1424,7 +1424,7 @@ l'algorithme pour avoir son info-bulle dans le panneau traitement.</p>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">tampon</span><span class="p">(</span><span class="n">distance</span><span class="p">):</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">tampon</span><span class="p">(</span><span class="n">distance</span><span class="p">):</span>
     <span class="n">result</span> <span class="o">=</span> <span class="n">processing</span><span class="o">.</span><span class="n">run</span><span class="p">(</span>
         <span class="s2">&quot;native:buffer&quot;</span><span class="p">,</span> 
         <span class="p">{</span>
@@ -1538,7 +1538,7 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span><span class="p">,</span> <span class="n">QgsVectorLayer</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsProject</span><span class="p">,</span> <span class="n">QgsVectorLayer</span>
 
 <span class="n">layer</span><span class="p">:</span> <span class="n">QgsVectorLayer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayer</span><span class="p">(</span><span class="s1">&#39;[% @layer_id %]&#39;</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">selectByIds</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;[% $id %]&#39;</span><span class="p">)])</span>
@@ -1568,7 +1568,7 @@ Pour utiliser la sélection, nous allons faire dans l'action :</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">processing</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">processing</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">mapLayer</span><span class="p">(</span><span class="s1">&#39;[% @layer_id %]&#39;</span><span class="p">)</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">selectByIds</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="s1">&#39;[% $id %]&#39;</span><span class="p">)])</span>
@@ -1681,8 +1681,8 @@ classes.</p>
 <span class="normal">71</span>
 <span class="normal">72</span>
 <span class="normal">73</span>
-<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis</span> <span class="kn">import</span> <span class="n">processing</span>
-<span class="kn">from</span> <span class="nn">qgis.processing</span> <span class="kn">import</span> <span class="n">alg</span>
+<span class="normal">74</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis</span><span class="w"> </span><span class="kn">import</span> <span class="n">processing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.processing</span><span class="w"> </span><span class="kn">import</span> <span class="n">alg</span>
 
 
 <span class="nd">@alg</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;bufferrasteralg&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Buffer and export to raster (alg)&#39;</span><span class="p">,</span>
@@ -1698,7 +1698,7 @@ classes.</p>
            <span class="n">default</span><span class="o">=</span><span class="mf">10.0</span><span class="p">)</span>
 <span class="nd">@alg</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="n">alg</span><span class="o">.</span><span class="n">NUMBER</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s1">&#39;NUMBEROFFEATURES&#39;</span><span class="p">,</span>
             <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Number of features processed&#39;</span><span class="p">)</span>
-<span class="k">def</span> <span class="nf">bufferrasteralg</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">feedback</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">bufferrasteralg</span><span class="p">(</span><span class="n">instance</span><span class="p">,</span> <span class="n">parameters</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">feedback</span><span class="p">,</span> <span class="n">inputs</span><span class="p">):</span>
 <span class="w">   </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">   Description of the algorithm.</span>
 <span class="sd">   (If there is no comment here, you will get an error)</span>
@@ -1874,7 +1874,7 @@ classes.</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

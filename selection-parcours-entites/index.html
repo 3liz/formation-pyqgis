@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -1529,7 +1529,7 @@ ou ce <a href="https://www.explainxkcd.com/wiki/index.php/1638:_Backslashes">mem
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iface</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="n">layer</span><span class="o">.</span><span class="n">removeSelection</span><span class="p">()</span>
@@ -1544,7 +1544,7 @@ sont déjà dans la légende. Il existe dans <code>QgsProject</code> plusieurs m
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsProject</span>
 
 <span class="n">projet</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
 <span class="n">communes</span> <span class="o">=</span> <span class="n">projet</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s1">&#39;communes&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -1570,7 +1570,7 @@ recherche plus fine. Si vraiment, on a besoin, on peut utiliser le module <a hre
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsProject</span>
 
 <span class="n">projet</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span>
 <span class="n">communes</span> <span class="o">=</span> <span class="n">projet</span><span class="o">.</span><span class="n">mapLayersByName</span><span class="p">(</span><span class="s1">&#39;communes&#39;</span><span class="p">)</span>
@@ -1609,9 +1609,9 @@ un nouveau fichier.</p>
 <span class="normal">21</span>
 <span class="normal">22</span>
 <span class="normal">23</span>
-<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
-<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsProject</span><span class="p">,</span> <span class="n">QgsVectorFileWriter</span>
-<span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+<span class="normal">24</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsProject</span><span class="p">,</span> <span class="n">QgsVectorFileWriter</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iface</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
@@ -1662,7 +1662,7 @@ l'objet courant comme s'il s'agissait d'un dictionnaire Python :</p>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iface</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
@@ -1679,7 +1679,7 @@ l'objet courant comme s'il s'agissait d'un dictionnaire Python :</p>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iface</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">feature</span> <span class="ow">in</span> <span class="n">layer</span><span class="o">.</span><span class="n">getFeatures</span><span class="p">():</span>
@@ -1710,8 +1710,8 @@ Utilisons donc une expression pour limiter les résultats.</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
-<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeatureRequest</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsFeatureRequest</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
@@ -1775,7 +1775,7 @@ il faut <strong>supprimer</strong> la ligne <code>NoGeometry</code> si vous l'av
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span>
-<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">NULL</span>
+<span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">NULL</span>
 
 <span class="k">if</span> <span class="n">feature</span><span class="p">[</span><span class="s1">&#39;nom_attribut&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">NULL</span><span class="p">:</span>
     <span class="c1"># Traiter la valeur NULL</span>
@@ -1852,19 +1852,19 @@ et de traiter l'erreur si besoin.</p>
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">function_3</span><span class="p">():</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">function_3</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Début fonction 3&quot;</span><span class="p">)</span>
     <span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
     <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;→ </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2"> / </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> = </span><span class="si">{</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin fonction 3&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">function_2</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">function_2</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Début fonction 2&quot;</span><span class="p">)</span>
     <span class="n">function_3</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin fonction 2&quot;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">function_1</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">function_1</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Début fonction 1&quot;</span><span class="p">)</span>
     <span class="n">function_2</span><span class="p">()</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Fin fonction 1&quot;</span><span class="p">)</span>
@@ -1956,8 +1956,8 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="normal">17</span>
 <span class="normal">18</span>
 <span class="normal">19</span>
-<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
-<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeatureRequest</span>
+<span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsFeatureRequest</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 <span class="n">request</span> <span class="o">=</span> <span class="n">QgsFeatureRequest</span><span class="p">()</span>
@@ -2019,10 +2019,10 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="normal">38</span>
 <span class="normal">39</span>
 <span class="normal">40</span>
-<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
-<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeatureRequest</span><span class="p">,</span> <span class="n">QgsField</span><span class="p">,</span> <span class="n">edit</span>
+<span class="normal">41</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsFeatureRequest</span><span class="p">,</span> <span class="n">QgsField</span><span class="p">,</span> <span class="n">edit</span>
 
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">QVariant</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QVariant</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
@@ -2106,8 +2106,8 @@ population (s'il y a <code>NC</code> par exemple) :</p>
 <span class="normal">36</span>
 <span class="normal">37</span>
 <span class="normal">38</span>
-<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
-<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsFeatureRequest</span><span class="p">,</span> <span class="n">QgsField</span><span class="p">,</span> <span class="n">edit</span>
+<span class="normal">39</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsFeatureRequest</span><span class="p">,</span> <span class="n">QgsField</span><span class="p">,</span> <span class="n">edit</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
 
@@ -2264,7 +2264,7 @@ population (s'il y a <code>NC</code> par exemple) :</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

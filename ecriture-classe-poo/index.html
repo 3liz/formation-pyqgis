@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -1336,7 +1336,7 @@ sur le site d'OpenClassRooms sur le sujet.</p>
 <p>On a pu créer des objets QgsVectorLayer en appelant son <strong>constructeur</strong> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsVectorLayer</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsVectorLayer</span>
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s2">&quot;C:/chemin/vers/un/fichier.gpkg|layername=communes&quot;</span><span class="p">,</span> <span class="s2">&quot;communes&quot;</span><span class="p">,</span> <span class="s2">&quot;ogr&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1407,21 +1407,21 @@ sur le site d'OpenClassRooms sur le sujet.</p>
 <span class="normal">54</span>
 <span class="normal">55</span>
 <span class="normal">56</span>
-<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">time</span> <span class="kn">import</span> <span class="n">sleep</span>
+<span class="normal">57</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">time</span><span class="w"> </span><span class="kn">import</span> <span class="n">sleep</span>
 
 <span class="n">MAX_ENERGIE</span> <span class="o">=</span> <span class="mi">20</span>
 
 
-<span class="k">class</span> <span class="nc">Personnage</span><span class="p">:</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">Personnage</span><span class="p">:</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Classe représentant un personnage du jeu vidéo. &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_nom</span><span class="p">,</span> <span class="n">energie</span><span class="o">=</span><span class="n">MAX_ENERGIE</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_nom</span><span class="p">,</span> <span class="n">energie</span><span class="o">=</span><span class="n">MAX_ENERGIE</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Constructeur. &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">nom</span> <span class="o">=</span> <span class="n">un_nom</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">energie</span>
 
-    <span class="k">def</span> <span class="nf">marcher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">marcher</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de marcher.</span>
 
 <span class="sd">        Cela dépense de l&#39;énergie.</span>
@@ -1433,7 +1433,7 @@ sur le site d'OpenClassRooms sur le sujet.</p>
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas marcher car il n&#39;a pas assez d&#39;énergie.&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">courir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">courir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de courir.</span>
 
 <span class="sd">        Cela dépense de l&#39;énergie.</span>
@@ -1445,7 +1445,7 @@ sur le site d'OpenClassRooms sur le sujet.</p>
         <span class="k">else</span><span class="p">:</span>
             <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas courir car il n</span><span class="se">\&#39;</span><span class="s2">a pas assez d</span><span class="se">\&#39;</span><span class="s2">énergie.&quot;</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">dormir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">dormir</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de dormir et restaurer le niveau maximum d&#39;énergie.&quot;&quot;&quot;</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> dort et fait le plein d&#39;énergie.&quot;</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
@@ -1453,7 +1453,7 @@ sur le site d'OpenClassRooms sur le sujet.</p>
             <span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">MAX_ENERGIE</span>
 
-    <span class="k">def</span> <span class="nf">manger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">manger</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet au personnage de manger et d&#39;augmenter de 10 points le niveau d&#39;énergie.&quot;&quot;&quot;</span>
         <span class="n">energie</span> <span class="o">=</span> <span class="mi">10</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> mange et récupère </span><span class="si">{</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie.&quot;</span><span class="p">)</span>
@@ -1462,7 +1462,7 @@ sur le site d'OpenClassRooms sur le sujet.</p>
         <span class="k">else</span><span class="p">:</span>
             <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">=</span> <span class="n">MAX_ENERGIE</span>
 
-    <span class="k">def</span> <span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__repr__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;&lt;Personnage: &#39;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2">&#39; avec </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">energie</span><span class="si">}</span><span class="s2"> points d&#39;énergie&gt;&quot;</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="utilisation-de-notre-classe">Utilisation de notre classe<a class="headerlink" href="#utilisation-de-notre-classe" title="Permanent link">#</a></h3>
@@ -1498,7 +1498,7 @@ sur le site d'OpenClassRooms sur le sujet.</p>
 <p class="admonition-title">Tip</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dialoguer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">):</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">dialoguer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Permet de dialoguer avec un autre personnage. &quot;&quot;&quot;</span>
     <span class="k">pass</span>
 </code></pre></div></td></tr></table></div>
@@ -1520,7 +1520,7 @@ sur le site d'OpenClassRooms sur le sujet.</p>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">dialoguer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">dialoguer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">):</span>
     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">energie</span> <span class="o">&lt;=</span> <span class="mi">0</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne peut pas dialoguer car il n&#39;a pas assez d&#39;énergie.&quot;</span><span class="p">)</span>
         <span class="k">return</span>
@@ -1624,14 +1624,14 @@ personnage est une propriété de l'arme en question <strong>et</strong> du nive
 <span class="normal">48</span>
 <span class="normal">49</span>
 <span class="normal">50</span>
-<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">_est_dans_inventaire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="normal">51</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">_est_dans_inventaire</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Fonction &quot;interne&quot; pour tester si un objet est dans l&#39;inventaire. &quot;&quot;&quot;</span>
     <span class="c1"># On ne souhaite pas qu&#39;un autre personnage puis vérifier le contenu d&#39;un inventaire d&#39;un autre.</span>
     <span class="c1"># Il faut plutôt lui demander :)</span>
     <span class="c1"># Note cette méthode n&#39;est pas dans le help()</span>
     <span class="k">return</span> <span class="n">un_objet</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span>
 
-<span class="k">def</span> <span class="nf">ramasser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">ramasser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Ramasser un objet et le mettre dans l&#39;inventaire.</span>
 
 <span class="sd">    Retourne True si l&#39;action est OK</span>
@@ -1640,7 +1640,7 @@ personnage est une propriété de l'arme en question <strong>et</strong> du nive
     <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">utiliser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">utiliser</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Utiliser un objet s&#39;il est disponible avant dans l&#39;inventaire.</span>
 
 <span class="sd">    Retourne True si l&#39;action est OK</span>
@@ -1652,7 +1652,7 @@ personnage est une propriété de l'arme en question <strong>et</strong> du nive
     <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">nom</span><span class="si">}</span><span class="s2"> ne possède pas </span><span class="si">{</span><span class="n">un_objet</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">False</span>
 
-<span class="k">def</span> <span class="nf">deposer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">deposer</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Retirer un objet de l&#39;inventaire.</span>
 
 <span class="sd">    Retourne True si l&#39;action est OK</span>
@@ -1664,7 +1664,7 @@ personnage est une propriété de l'arme en question <strong>et</strong> du nive
     <span class="bp">self</span><span class="o">.</span><span class="n">inventaire</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">un_objet</span><span class="p">)</span>
     <span class="k">return</span> <span class="kc">True</span>
 
-<span class="k">def</span> <span class="nf">donner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">donner</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">autre_personnage</span><span class="p">,</span> <span class="n">un_objet</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Donner un objet à un autre personnage.</span>
 
 <span class="sd">    Retourne True si l&#39;action est OK</span>
@@ -1794,7 +1794,7 @@ personnage est une propriété de l'arme en question <strong>et</strong> du nive
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

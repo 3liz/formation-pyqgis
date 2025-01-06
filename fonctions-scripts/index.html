@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -1623,7 +1623,7 @@ l'organisation du code.</p>
 <span class="c1"># Puis place au script</span>
 <span class="c1"># En théorie, pas besoin de modification, en dessous pour un &quot;utilisateur final&quot; du script</span>
 
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">projet_qgis</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">absoluteFilePath</span><span class="p">()</span>
 <span class="k">if</span> <span class="ow">not</span> <span class="n">projet_qgis</span><span class="p">:</span>
@@ -1664,11 +1664,11 @@ l'organisation du code.</p>
 <span class="normal">5</span>
 <span class="normal">6</span>
 <span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Avec annotations Python</span>
-<span class="k">def</span> <span class="nf">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thematique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">couche</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thematique</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">couche</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
     <span class="o">...</span>
 
 <span class="c1"># Sans annotations Python</span>
-<span class="k">def</span> <span class="nf">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">):</span>
     <span class="o">...</span>
 </code></pre></div></td></tr></table></div>
 <div class="admonition tip">
@@ -1720,9 +1720,9 @@ On peut le supprimer le bloc n'est pas vide.</p>
 <span class="c1"># Puis place au script</span>
 <span class="c1"># En théorie, pas besoin de modification, en dessous pour un &quot;utilisateur final&quot; du script</span>
 
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="k">def</span> <span class="nf">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Fonction qui charge une couche de la BD TOPO, selon une thématique. &quot;&quot;&quot;</span>
     <span class="n">projet_qgis</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">absoluteFilePath</span><span class="p">()</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">projet_qgis</span><span class="p">:</span>
@@ -1788,9 +1788,9 @@ On peut le supprimer le bloc n'est pas vide.</p>
 <span class="c1"># Puis place au script</span>
 <span class="c1"># En théorie, pas besoin de modification, en dessous pour un &quot;utilisateur final&quot; du script</span>
 
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
-<span class="k">def</span> <span class="nf">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Fonction qui charge une couche de la BD TOPO, selon une thématique. &quot;&quot;&quot;</span>
     <span class="n">projet_qgis</span> <span class="o">=</span> <span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">absoluteFilePath</span><span class="p">()</span>
     <span class="k">if</span> <span class="ow">not</span> <span class="n">projet_qgis</span><span class="p">:</span>
@@ -1827,7 +1827,7 @@ de l'utilisateur :</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">dossier</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">home</span><span class="p">()</span>
 <span class="k">for</span> <span class="n">fichier</span> <span class="ow">in</span> <span class="n">dossier</span><span class="o">.</span><span class="n">iterdir</span><span class="p">():</span>
@@ -1841,7 +1841,7 @@ pour comprendre le fonctionnement de cette classe.</p>
 <p>Voici la signature de la fonction que l'on souhaite :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">liste_shapefiles</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thematique</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">liste_shapefiles</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thematique</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Lister les shapefiles d&#39;une thématique dans la BDTopo. &quot;&quot;&quot;</span>
     <span class="o">...</span>
 </code></pre></div></td></tr></table></div>
@@ -1867,7 +1867,7 @@ pour comprendre le fonctionnement de cette classe.</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">liste_shapefiles</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thematique</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">liste_shapefiles</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">thematique</span><span class="p">:</span> <span class="nb">str</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Lister les shapefiles d&#39;une thématique dans la BDTopo. &quot;&quot;&quot;</span>
     <span class="n">racine</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">QgsProject</span><span class="o">.</span><span class="n">instance</span><span class="p">()</span><span class="o">.</span><span class="n">absoluteFilePath</span><span class="p">())</span><span class="o">.</span><span class="n">parent</span>
     <span class="n">dossier</span> <span class="o">=</span> <span class="n">racine</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">,</span> <span class="n">thematique</span><span class="p">)</span>
@@ -1901,7 +1901,7 @@ pour comprendre le fonctionnement de cette classe.</p>
 <summary>Example</summary>
 <ol>
 <li>Modifions la signature de la fonction, en ajoutant un booléen si on souhaite la couche dans la légende :
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">,</span> <span class="n">ajouter_dans_legende</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">charger_couche</span><span class="p">(</span><span class="n">bd_topo</span><span class="p">,</span> <span class="n">thematique</span><span class="p">,</span> <span class="n">couche</span><span class="p">,</span> <span class="n">ajouter_dans_legende</span> <span class="o">=</span> <span class="kc">True</span><span class="p">):</span>
 </code></pre></div></td></tr></table></div>
 Puis dans cette même fonction, utilisons cette variable :
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2028,7 +2028,7 @@ l'action <code>Exporter la couche</code>).</li>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">edit</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">edit</span>
 
 <span class="k">with</span> <span class="n">edit</span><span class="p">(</span><span class="n">layer</span><span class="p">):</span>
     <span class="c1"># Faire une édition sur la couche</span>
@@ -2171,7 +2171,7 @@ pour les <code>QVariant</code>...</p>
 <span class="normal">47</span>
 <span class="normal">48</span>
 <span class="normal">49</span>
-<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">edit</span>
+<span class="normal">50</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">edit</span>
 
 <span class="c1"># Création de la couche mémoire</span>
 <span class="n">layer_info</span> <span class="o">=</span> <span class="n">QgsVectorLayer</span><span class="p">(</span><span class="s1">&#39;None&#39;</span><span class="p">,</span> <span class="s1">&#39;info&#39;</span><span class="p">,</span> <span class="s1">&#39;memory&#39;</span><span class="p">)</span>
@@ -2247,7 +2247,7 @@ informations.</p>
 <p class="admonition-title">Tip</p>
 <p>Pour obtenir en Python la liste des fournisseurs GDAL/OGR :
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">osgeo</span> <span class="kn">import</span> <span class="n">ogr</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">osgeo</span><span class="w"> </span><span class="kn">import</span> <span class="n">ogr</span>
 <span class="p">[</span><span class="n">ogr</span><span class="o">.</span><span class="n">GetDriver</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="o">.</span><span class="n">GetDescription</span><span class="p">()</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">ogr</span><span class="o">.</span><span class="n">GetDriverCount</span><span class="p">())]</span>    
 </code></pre></div></td></tr></table></div>
 ou dans le menu Préférences ➡ Options ➡ GDAL ➡ Pilotes vecteurs</p>
@@ -2422,7 +2422,7 @@ else:
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

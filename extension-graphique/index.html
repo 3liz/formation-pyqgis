@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -1775,11 +1775,11 @@ Python. Un signal en XML, c'est plusieurs lignes dans le fichier UI, alors que e
 <span class="normal">24</span>
 <span class="normal">25</span>
 <span class="normal">26</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Les imports</span>
-<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
-<span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt</span> <span class="kn">import</span> <span class="n">uic</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Qgis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt</span><span class="w"> </span><span class="kn">import</span> <span class="n">uic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="c1"># Permettre d&#39;aller chercher le fichier UI correspondant</span>
 <span class="n">folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
@@ -1787,11 +1787,11 @@ Python. Un signal en XML, c'est plusieurs lignes dans le fichier UI, alors que e
 <span class="n">ui_class</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">uic</span><span class="o">.</span><span class="n">loadUiType</span><span class="p">(</span><span class="n">ui_file</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">MonDialog</span><span class="p">(</span><span class="n">ui_class</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MonDialog</span><span class="p">(</span><span class="n">ui_class</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Classe qui représente le dialogue de l&#39;extension. &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">QDialog</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="p">:</span> <span class="n">QDialog</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Constructeur. &quot;&quot;&quot;</span>
         <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span><span class="n">parent</span><span class="p">)</span>  <span class="c1"># Appel du constructeur parent</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">parent</span> <span class="o">=</span> <span class="n">parent</span>  <span class="c1"># Stockage du parent dans self, on va l&#39;utiliser plus tard, si besoin</span>
@@ -1806,9 +1806,9 @@ Python. Un signal en XML, c'est plusieurs lignes dans le fichier UI, alors que e
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">run</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Lors du clic sur le bouton pour lancer la fenêtre de l&#39;extension. &quot;&quot;&quot;</span>
-        <span class="kn">from</span> <span class="nn">.dialog</span> <span class="kn">import</span> <span class="n">MonDialog</span>
+        <span class="kn">from</span><span class="w"> </span><span class="nn">.dialog</span><span class="w"> </span><span class="kn">import</span> <span class="n">MonDialog</span>
         <span class="n">dialog</span> <span class="o">=</span> <span class="n">MonDialog</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">iface</span><span class="o">.</span><span class="n">mainWindow</span><span class="p">())</span>
         <span class="n">dialog</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
@@ -1833,7 +1833,7 @@ l'utilisateur dans la QgsMessageBar de QGIS.</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Clic sur le bouton OK afin de fermer la fenêtre. &quot;&quot;&quot;</span>
     <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_text</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
     <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre extension&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
@@ -1853,10 +1853,10 @@ l'utilisateur dans la QgsMessageBar de QGIS.</p>
 <span class="bp">self</span><span class="o">.</span><span class="n">button_box</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">StandardButton</span><span class="o">.</span><span class="n">Help</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">open_help</span><span class="p">)</span>
 
 <span class="c1"># Puis la fonction :</span>
-<span class="k">def</span> <span class="nf">open_help</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">open_help</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Open the online help. &quot;&quot;&quot;</span>
-    <span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="n">QDesktopServices</span>
-    <span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">QUrl</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtGui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QDesktopServices</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QUrl</span>
     <span class="n">QDesktopServices</span><span class="o">.</span><span class="n">openUrl</span><span class="p">(</span><span class="n">QUrl</span><span class="p">(</span><span class="s1">&#39;https://www.youtube.com/watch?v=AdQ3JDLlmPI&#39;</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 <h3 id="signaux-et-proprietes-du-formulaire-de-saisie">Signaux et propriétés du formulaire de saisie<a class="headerlink" href="#signaux-et-proprietes-du-formulaire-de-saisie" title="Permanent link">#</a></h3>
@@ -1877,7 +1877,7 @@ la couche qui est sélectionnée dans le menu déroulant.</p>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">layer_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">layer_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Permet de mettre à jour l&#39;UI selon la couche dans le menu déroulant. &quot;&quot;&quot;</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
     <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">couche</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
@@ -1959,22 +1959,22 @@ avec le fichier CSV, <a href="../fonctions-scripts/#extraction-des-informations-
 <span class="normal">41</span>
 <span class="normal">42</span>
 <span class="normal">43</span>
-<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">Qgis</span>
-<span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt</span> <span class="kn">import</span> <span class="n">uic</span>
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="normal">44</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">Qgis</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iface</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QDialog</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt</span><span class="w"> </span><span class="kn">import</span> <span class="n">uic</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 <span class="n">folder</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
 <span class="n">ui_file</span> <span class="o">=</span> <span class="n">folder</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span><span class="s1">&#39;dialog.ui&#39;</span><span class="p">)</span>
 <span class="n">ui_class</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">uic</span><span class="o">.</span><span class="n">loadUiType</span><span class="p">(</span><span class="n">ui_file</span><span class="p">)</span>
 
 
-<span class="k">class</span> <span class="nc">MonDialog</span><span class="p">(</span><span class="n">ui_class</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">):</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">MonDialog</span><span class="p">(</span><span class="n">ui_class</span><span class="p">,</span> <span class="n">QDialog</span><span class="p">):</span>
 
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Classe qui représente le dialogue de l&#39;extension. &quot;&quot;&quot;</span>
 
-    <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">parent</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Constructeur. &quot;&quot;&quot;</span>
         <span class="n">_</span> <span class="o">=</span> <span class="n">parent</span>
         <span class="c1"># TODO CORRECTION</span>
@@ -1989,13 +1989,13 @@ avec le fichier CSV, <a href="../fonctions-scripts/#extraction-des-informations-
         <span class="bp">self</span><span class="o">.</span><span class="n">couche</span><span class="o">.</span><span class="n">layerChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">layer_changed</span><span class="p">)</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">layer_changed</span><span class="p">()</span>
 
-    <span class="k">def</span> <span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Clic sur le bouton OK afin de fermer la fenêtre. &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_text</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
         <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre extension&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 
-    <span class="k">def</span> <span class="nf">layer_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">layer_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet de mettre à jour l&#39;UI selon la couche dans le menu déroulant. &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
         <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">couche</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
@@ -2019,9 +2019,9 @@ correctement. Un bon <a href="../ide-git/#utilisation-dun-ide">IDE</a> peut sign
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
-<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">classFactory</span><span class="p">(</span><span class="n">iface</span><span class="p">):</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">classFactory</span><span class="p">(</span><span class="n">iface</span><span class="p">):</span>
     <span class="c1"># from minimal_plugin.plugin import MinimalPlugin  # Import absolue</span>
-    <span class="kn">from</span> <span class="nn">.plugin</span> <span class="kn">import</span> <span class="n">MinimalPlugin</span>  <span class="c1"># Import relatif</span>
+    <span class="kn">from</span><span class="w"> </span><span class="nn">.plugin</span><span class="w"> </span><span class="kn">import</span> <span class="n">MinimalPlugin</span>  <span class="c1"># Import relatif</span>
     <span class="k">return</span> <span class="n">MinimalPlugin</span><span class="p">(</span><span class="n">iface</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>En faisant un couper/coller, enlever la classe <code>MinimalPlugin</code> du fichier <code>__init__.py</code>.</p>
@@ -2054,10 +2054,10 @@ deux fichiers.</p>
 <span class="normal">19</span>
 <span class="normal">20</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="sd">&quot;&quot;&quot;Tools to work with resources files.&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
 
 
-<span class="k">def</span> <span class="nf">plugin_path</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">plugin_path</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the path to the plugin root folder.&quot;&quot;&quot;</span>
     <span class="n">path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span>
     <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">args</span><span class="p">:</span>
@@ -2066,7 +2066,7 @@ deux fichiers.</p>
     <span class="k">return</span> <span class="n">path</span>
 
 
-<span class="k">def</span> <span class="nf">resources_path</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">resources_path</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Path</span><span class="p">:</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Return the path to the plugin resources folder.&quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">plugin_path</span><span class="p">(</span><span class="s2">&quot;resources&quot;</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
 
@@ -2086,7 +2086,7 @@ deux fichiers.</p>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">load_ui</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">load_ui</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot;Get compiled UI file.</span>
 
 <span class="sd">    :param args List of path elements e.g. [&#39;img&#39;, &#39;logos&#39;, &#39;image.png&#39;]</span>
@@ -2107,8 +2107,8 @@ deux fichiers.</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># En haut du fichier, on ajoute les imports nécessaires</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="n">QIcon</span>
-<span class="kn">from</span> <span class="nn">.qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtGui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QIcon</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">.qgis_plugin_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">resources_path</span>
 
 <span class="c1"># Plus bas dans le code</span>
 <span class="c1"># Quand nécessaire, à remplacer la QAction existante. Il s&#39;agit du premier paramètre avec QIcon</span>
@@ -2130,10 +2130,10 @@ une icône dans autre endroit de l'extension.</p>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># En haut du fichier</span>
-<span class="kn">from</span> <span class="nn">..qgis_plugin_tools</span> <span class="kn">import</span> <span class="n">resources_path</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">..qgis_plugin_tools</span><span class="w"> </span><span class="kn">import</span> <span class="n">resources_path</span>
 
 <span class="c1"># Dans la classe, on ajoute/modifie la méthode &#39;icon&#39;</span>
-<span class="k">def</span> <span class="nf">icon</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QIcon</span><span class="p">:</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">icon</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">QIcon</span><span class="p">:</span>
     <span class="k">return</span> <span class="n">QIcon</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">resources_path</span><span class="p">(</span><span class="s2">&quot;icons&quot;</span><span class="p">,</span> <span class="s2">&quot;icon.png&quot;</span><span class="p">)))</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="utilisation-dune-icone-provenant-de-qgis">Utilisation d'une icône provenant de QGIS<a class="headerlink" href="#utilisation-dune-icone-provenant-de-qgis" title="Permanent link">#</a></h2>
@@ -2154,7 +2154,7 @@ une icône dans autre endroit de l'extension.</p>
 <span class="normal">6</span>
 <span class="normal">7</span>
 <span class="normal">8</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># En haut</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="n">QIcon</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtGui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QIcon</span>
 
 <span class="c1"># Ensuite</span>
 <span class="n">icon</span> <span class="o">=</span> <span class="n">QIcon</span><span class="p">(</span><span class="s2">&quot;:/images/themes/default/algorithms/mAlgorithmBuffer.svg&quot;</span><span class="p">)</span>
@@ -2194,8 +2194,8 @@ une icône dans autre endroit de l'extension.</p>
 <h3 id="lancer-le-dialogue-de-processing">Lancer le dialogue de Processing<a class="headerlink" href="#lancer-le-dialogue-de-processing" title="Permanent link">#</a></h3>
 <p>Pour les imports :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="n">QgsVectorLayer</span>
-<span class="kn">from</span> <span class="nn">qgis</span> <span class="kn">import</span> <span class="n">processing</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsVectorLayer</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis</span><span class="w"> </span><span class="kn">import</span> <span class="n">processing</span>
 </code></pre></div></td></tr></table></div>
 <p>Pour le code dans la fonction :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
@@ -2218,7 +2218,7 @@ une icône dans autre endroit de l'extension.</p>
 <span class="normal">18</span>
 <span class="normal">19</span>
 <span class="normal">20</span>
-<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">traitement_1_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">21</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">traitement_1_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Lancement de la fenêtre de QGIS Processing. &quot;&quot;&quot;</span>
     <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">couche</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
 
@@ -2256,9 +2256,9 @@ une icône dans autre endroit de l'extension.</p>
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Imports en haut</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span>
-<span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">OverrideCursor</span>
-<span class="kn">from</span> <span class="nn">qgis</span> <span class="kn">import</span> <span class="n">processing</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">Qt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">OverrideCursor</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis</span><span class="w"> </span><span class="kn">import</span> <span class="n">processing</span>
 
 <span class="c1"># Dans la fonction &quot;traitement_1_clicked&quot;, pour lancer Processing sans l&#39;interface graphique, mais avec un curseur &quot;attente&quot;.</span>
 <span class="k">with</span> <span class="n">OverrideCursor</span><span class="p">(</span><span class="n">Qt</span><span class="o">.</span><span class="n">WaitCursor</span><span class="p">):</span>
@@ -2285,7 +2285,7 @@ chapitre précédent.</p>
 <span class="normal"> 8</span>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
-<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span> <span class="nf">traitement_2_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code>    <span class="k">def</span><span class="w"> </span><span class="nf">traitement_2_clicked</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
         <span class="n">layer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">couche</span><span class="o">.</span><span class="n">currentLayer</span><span class="p">()</span>
 
         <span class="n">dialog</span> <span class="o">=</span> <span class="n">QgsExpressionBuilderDialog</span><span class="p">(</span><span class="n">layer</span><span class="p">)</span>
@@ -2415,7 +2415,7 @@ chapitre précédent.</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

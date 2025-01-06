@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -1388,7 +1388,7 @@ ce cas par défaut dans la suite de ce tutoriel.</p>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
-<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">:</span> <span class="n">QgsVectorLayer</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">:</span> <span class="n">QgsVectorLayer</span><span class="p">,</span> <span class="n">ids</span><span class="p">:</span> <span class="nb">int</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Inverser le sens des différentes entités dans la couche layer.</span>
 
 <span class="sd">    ids est l&#39;identifiant d&#39;une entité qu&#39;il faut inverser.</span>
@@ -1434,7 +1434,7 @@ une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer d
 <span class="normal">15</span>
 <span class="normal">16</span>
 <span class="normal">17</span>
-<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
+<span class="normal">18</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Inverser le sens d&#39;une entité dans la couche layer.</span>
 
 <span class="sd">    ids est une liste comportant les IDs des entités à inverser.</span>
@@ -1471,7 +1471,7 @@ une ligne de code valide en respectant l'indentation. Vous pouvez la supprimer d
 <span class="normal">13</span>
 <span class="normal">14</span>
 <span class="normal">15</span>
-<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">reverse_geom</span><span class="p">(</span><span class="n">layer</span><span class="p">,</span> <span class="n">ids</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Inverser le sens d&#39;une entité dans la couche layer.</span>
 
 <span class="sd">    ids est une liste comportant les IDs des entités à inverser.</span>
@@ -1495,7 +1495,7 @@ d'autres utilisateurs qui ne connaissent pas Python.</p>
 <p>Si on souhaite informer l'utilisateur que cela s'est bien passé, on peut utiliser la "message bar" :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
-<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">iface</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">iface</span>
 
 <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Inversion&#39;</span><span class="p">,</span> <span class="s1">&#39;La rivière est inversée&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
@@ -1513,12 +1513,12 @@ de lancer son exécution.</p>
 <p>Exemple du code d'une action dans l'extension QuickOSM lors de l'exécution
 d'une requête rapide :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">QuickOSM.core.actions</span> <span class="kn">import</span> <span class="n">Actions</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">QuickOSM.core.actions</span><span class="w"> </span><span class="kn">import</span> <span class="n">Actions</span>
 <span class="n">Actions</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="s2">&quot;josm&quot;</span><span class="p">,</span><span class="s2">&quot;[% &quot;</span><span class="n">full_id</span><span class="s2">&quot; %]&quot;</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <p>Ou alors l'extension RAEPA :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.utils</span> <span class="kn">import</span> <span class="n">plugins</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">plugins</span>
 <span class="n">plugins</span><span class="p">[</span><span class="s1">&#39;raepa&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">run_action</span><span class="p">(</span><span class="s2">&quot;nom_de_laction&quot;</span><span class="p">,</span> <span class="n">params</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 <h2 id="avec-processing">Avec Processing<a class="headerlink" href="#avec-processing" title="Permanent link">#</a></h2>
@@ -1642,7 +1642,7 @@ d'une requête rapide :</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

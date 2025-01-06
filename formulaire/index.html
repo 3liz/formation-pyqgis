@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -1228,17 +1228,17 @@ y a trois paramètres qui sont donnés :</p>
 <span class="normal"> 9</span>
 <span class="normal">10</span>
 <span class="normal">11</span>
-<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">QUrl</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtWidgets</span> <span class="kn">import</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtGui</span> <span class="kn">import</span> <span class="n">QDesktopServices</span>
+<span class="normal">12</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">QUrl</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtWidgets</span><span class="w"> </span><span class="kn">import</span> <span class="n">QWidget</span><span class="p">,</span> <span class="n">QDialogButtonBox</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtGui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QDesktopServices</span>
 
-<span class="k">def</span> <span class="nf">my_form_open</span><span class="p">(</span><span class="n">dialog</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">my_form_open</span><span class="p">(</span><span class="n">dialog</span><span class="p">,</span> <span class="n">layer</span><span class="p">,</span> <span class="n">feature</span><span class="p">):</span>
     <span class="n">button_box</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">findChild</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="p">)</span>
     <span class="n">button_box</span><span class="o">.</span><span class="n">setStandardButtons</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Cancel</span><span class="o">|</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Help</span><span class="o">|</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Ok</span><span class="p">)</span>
 
     <span class="n">button_box</span><span class="o">.</span><span class="n">button</span><span class="p">(</span><span class="n">QDialogButtonBox</span><span class="o">.</span><span class="n">Help</span><span class="p">)</span><span class="o">.</span><span class="n">clicked</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">open_help</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">open_help</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">open_help</span><span class="p">():</span>
     <span class="n">QDesktopServices</span><span class="o">.</span><span class="n">openUrl</span><span class="p">(</span><span class="n">QUrl</span><span class="p">(</span><span class="s1">&#39;https://docs.3liz.org/&#39;</span><span class="p">))</span>
 </code></pre></div></td></tr></table></div>
 </details>
@@ -1263,7 +1263,7 @@ y a trois paramètres qui sont donnés :</p>
 <span class="normal">11</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">type_field</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">findChild</span><span class="p">(</span><span class="n">QLineEdit</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">)</span>
 <span class="n">type_field</span><span class="o">.</span><span class="n">textChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">type_field_changed</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">type_field_changed</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">type_field_changed</span><span class="p">():</span>
     <span class="n">type_field</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">findChild</span><span class="p">(</span><span class="n">QLineEdit</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">)</span>
     <span class="k">if</span> <span class="n">type_field</span><span class="o">.</span><span class="n">text</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;studio&#39;</span><span class="p">,</span> <span class="s1">&#39;appartement&#39;</span><span class="p">,</span> <span class="s1">&#39;maison&#39;</span><span class="p">):</span>
         <span class="n">type_field</span><span class="o">.</span><span class="n">setStyleSheet</span><span class="p">(</span><span class="s2">&quot;background-color: rgba(255, 107, 107, 150);&quot;</span><span class="p">)</span>
@@ -1398,7 +1398,7 @@ l'aide des expressions QGIS ou simplement en changeant le type de widget pour un
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

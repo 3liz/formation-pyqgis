@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -1374,18 +1374,18 @@ d'utiliser <code>qgis_process</code>.</p>
 <span class="normal">82</span>
 <span class="normal">83</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Code borrowed from https://subscription.packtpub.com/book/application_development/9781783984985/1/ch01lvl1sec18/creating-a-standalone-application</span>
 <span class="c1"># and upgraded for QGIS 3.0</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="kn">import</span> <span class="nn">sys</span>
-<span class="kn">import</span> <span class="nn">shutil</span>
-<span class="kn">import</span> <span class="nn">tempfile</span>
-<span class="kn">import</span> <span class="nn">urllib.request</span>
-<span class="kn">from</span> <span class="nn">zipfile</span> <span class="kn">import</span> <span class="n">ZipFile</span>
-<span class="kn">from</span> <span class="nn">glob</span> <span class="kn">import</span> <span class="n">glob</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">shutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">urllib.request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">zipfile</span><span class="w"> </span><span class="kn">import</span> <span class="n">ZipFile</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">glob</span><span class="w"> </span><span class="kn">import</span> <span class="n">glob</span>
 
-<span class="kn">from</span> <span class="nn">qgis.core</span> <span class="kn">import</span> <span class="p">(</span><span class="n">QgsApplication</span><span class="p">,</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">,</span> <span class="n">QgsFeature</span><span class="p">,</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.core</span><span class="w"> </span><span class="kn">import</span> <span class="p">(</span><span class="n">QgsApplication</span><span class="p">,</span> <span class="n">QgsCoordinateReferenceSystem</span><span class="p">,</span> <span class="n">QgsFeature</span><span class="p">,</span>
                    <span class="n">QgsGeometry</span><span class="p">,</span> <span class="n">QgsProject</span><span class="p">,</span> <span class="n">QgsRasterLayer</span><span class="p">,</span> <span class="n">QgsVectorLayer</span><span class="p">)</span>
-<span class="kn">from</span> <span class="nn">qgis.gui</span> <span class="kn">import</span> <span class="n">QgsLayerTreeMapCanvasBridge</span><span class="p">,</span> <span class="n">QgsMapCanvas</span>
-<span class="kn">from</span> <span class="nn">qgis.PyQt.QtCore</span> <span class="kn">import</span> <span class="n">Qt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.gui</span><span class="w"> </span><span class="kn">import</span> <span class="n">QgsLayerTreeMapCanvasBridge</span><span class="p">,</span> <span class="n">QgsMapCanvas</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">qgis.PyQt.QtCore</span><span class="w"> </span><span class="kn">import</span> <span class="n">Qt</span>
 <span class="c1"># Unused so commented</span>
 <span class="c1"># from qgis.PyQt.QtGui import *</span>
 
@@ -1440,14 +1440,14 @@ d'utiliser <code>qgis_process</code>.</p>
     <span class="n">canvas</span>
 <span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">run_when_project_saved</span><span class="p">():</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_when_project_saved</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Saved&#39;</span><span class="p">)</span>
 
 <span class="n">project</span><span class="o">.</span><span class="n">projectSaved</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">run_when_project_saved</span><span class="p">)</span>
 
 <span class="n">project</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;my_new_qgis_project.qgz&#39;</span><span class="p">)</span>
 
-<span class="k">def</span> <span class="nf">run_when_application_state_changed</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">run_when_application_state_changed</span><span class="p">(</span><span class="n">state</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;State changed&#39;</span><span class="p">,</span> <span class="n">state</span><span class="p">)</span>
 
 <span class="n">app</span><span class="o">.</span><span class="n">applicationStateChanged</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">run_when_application_state_changed</span><span class="p">)</span>
@@ -1574,7 +1574,7 @@ d'utiliser <code>qgis_process</code>.</p>
     <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}}</script>
     
     
-      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       
