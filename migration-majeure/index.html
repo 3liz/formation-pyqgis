@@ -1342,16 +1342,24 @@
 </ul>
 <p><a href="https://github.com/qgis/QGIS/wiki/Plugin-migration-to-QGIS-3">Petit guide</a> sur une migration vers QGIS 3.</p>
 <h2 id="qt-5-qt-6">Qt 5 → Qt 6<a class="headerlink" href="#qt-5-qt-6" title="Permanent link">#</a></h2>
-<p>QGIS tente de passer de la version Qt 5 vers Qt 6, sans passer par la case QGIS 4.0 (et donc non "cassage" de l'API
-QGIS 3.X).</p>
-<p>Le travail de migration a commencé depuis QGIS 3.34. Mais à l'heure actuelle, fin 2024, il n'existe qu'un binaire de
-QGIS pour tester Qt 6. C'est pour le moment, "sous le capot" de QGIS que cela se passe. </p>
+<p>QGIS va passer de la version Qt 5 vers Qt 6, en passant par la case QGIS 4.0. Même si il y a un changement de la version
+"majeure" de la 3 vers la 4, il n'y a pas de réel "cassage" de l'API.</p>
+<p>Le travail de migration a commencé depuis QGIS 3.34. Mais à l'heure actuelle, début 2025, il n'existe aucun binaire de
+QGIS pour tester Qt 6. C'est pour le moment, "sous le capot" de QGIS que cela se passe.</p>
 <p>Contrairement au passage Qt 4 vers Qt 5, il est possible de rendre une extension compatible pour les deux versions à
 l'aide d'un script que l'on peut trouver dans
 l'<a href="https://github.com/qgis/QGIS/wiki/Plugin-migration-to-be-compatible-with-Qt5-and-Qt6">autre petit guide</a> pour une
 migration vers Qt 6.</p>
 <p>Par exemple, l'extension Lizmap avec le
 <a href="https://github.com/3liz/lizmap-plugin/commit/4b886ba1b90c86485049b5908dd1b045817c0695">commit qui ajoute la compatibilité Qt 6</a>.</p>
+<p>Lire l'<a href="https://blog.qgis.org/2025/04/17/qgis-is-moving-to-qt6-and-launching-qgis-4-0/">article de blog sur QGIS 4.0</a>.</p>
+<p>Using <a href="https://github.com/qgis/pyqgis4-checker">PyQGIS4-Checker</a> :</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Temporary hack 96aebf2d720a to have a working image</span>
+<span class="c1"># docker pull ghcr.io/qgis/pyqgis4-checker:main</span>
+docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-v<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">:/home/pyqgisdev/&quot;</span><span class="w"> </span>96aebf2d720a<span class="w"> </span>pyqt5_to_pyqt6.py<span class="w"> </span>--logfile<span class="w"> </span>/home/pyqgisdev/pyqt6_checker.log<span class="w"> </span>.
+</code></pre></div></td></tr></table></div>
 
 
 
