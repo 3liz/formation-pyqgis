@@ -41,6 +41,7 @@ if x > 5:
         * Python 3.6 minimum for QGIS 3.18
         * Python 3.7 minimum for QGIS 3.20
         * Python 3.9 minimum for QGIS 3.40
+        * Python 3.11 minimum for QGIS 4.0
 	* Version de Python souvent supérieure à la version minimum, sauf sur MacOS… 😑
     * [Python release cycle](https://devguide.python.org/versions/#versions)
 
