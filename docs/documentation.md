@@ -8,7 +8,7 @@ documentation et comment rechercher des informations.
 * Toutes les classes QGIS commencent par `Qgs` et toutes les classes Qt commencent par `Q`.
 
 !!! tip
-    QGIS est en train de migrer vers la librairie Qt version 6. QGIS 3.42 va _certainement_ avoir un support pour Qt6
+    QGIS est en train de migrer vers la librairie Qt version 6. QGIS 4.0 va avoir un support pour Qt6
     et pouvoir faire des premiers tests PyQGIS. Lire le
     [chapitre sur les migrations majeures de PyQGIS](./migration-majeure.md).
 
@@ -16,8 +16,9 @@ Voici une liste de liens pour la documentation, tous en anglais, sauf le cookboo
 
 * [https://docs.qgis.org](https://docs.qgis.org) qui regroupe :
     * [Le Python Cookbook https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook](https://docs.qgis.org/latest/fr/docs/pyqgis_developer_cookbook/) (recette de cuisine)
-    * [L'API C++ https://qgis.org/api/3.34/](https://qgis.org/api/3.34/)
-    * [L'API Python https://qgis.org/pyqgis/3.34/](https://qgis.org/pyqgis/3.34/)
+    * [L'API C++ https://qgis.org/api/](https://qgis.org/api/)
+        * [API Break](https://api.qgis.org/api/api_break.html)
+    * [L'API Python https://qgis.org/pyqgis/3.40/](https://qgis.org/pyqgis/3.40/)
 * [Documentation de l'API Qt](https://doc.qt.io/qt-5/classes.html)
 * [Documentation de Python](https://docs.python.org/3/library/)
     * [Le module Pathlib](https://docs.python.org/3/library/pathlib.html#module-pathlib), "nouveau" module pour manipuler des chemins

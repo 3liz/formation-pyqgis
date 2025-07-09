@@ -91,7 +91,7 @@ class Personne{
 * Dans QGIS, `Plugins` -> `Console Python`
 * QGIS nous donne accès au projet actuel via la classe `QgsProject`
 	* [https://qgis.org/api/classQgsProject.html](https://qgis.org/api/classQgsProject.html)
-	* [https://qgis.org/pyqgis/3.34/core/QgsProject.html](https://qgis.org/pyqgis/3.34/core/QgsProject.html)
+	* [https://qgis.org/pyqgis/3.40/core/QgsProject.html](https://qgis.org/pyqgis/3.40/core/QgsProject.html)
 
 * Dans la documentation (en C++ surtout), on remarque plusieurs sections :
 	* Public types
@@ -109,7 +109,7 @@ project.absoluteFilePath()
 * Ajoutons un titre à notre projet. Dans l'interface graphique, cela se passe dans les propriétés de notre projet.
   Il y a donc des chances que cela soit aussi dans la classe **QgsProject**
 * Recherchons donc `title` dans la page : `setTitle` dans la classe
-  [QgsProject](hhttps://qgis.org/pyqgis/3.34/core/QgsProject.html).
+  [QgsProject](hhttps://qgis.org/pyqgis/3.40/core/QgsProject.html).
 
 !!! warning
     Il est important de bien pouvoir lire la signature des **méthodes** :
@@ -173,7 +173,7 @@ print(fichier_shape.is_file())
     On peut se contenter de `fichier_shape.exists()`.
 
 Si tout est bon pour le chemin, charger la couche vecteur à l'aide de `iface` qui est une instance de
-`QgisInterface` [CPP](https://qgis.org/api/classQgisInterface.html)/[PyQGIS](https://qgis.org/pyqgis/3.34/gui/QgisInterface.html)
+`QgisInterface` [CPP](https://qgis.org/api/classQgisInterface.html)/[PyQGIS](https://qgis.org/pyqgis/3.40/gui/QgisInterface.html)
 (et non pas **Qgs**Interface), en utilisant la méthode `addVectorLayer`.
 
 Attention, QGIS, étant écrit en C++, ne connait pas l'usage de `Path`, il faut repasser par une chaîne de caractère avec l'aide de `str` :
@@ -224,7 +224,7 @@ print(communes)
 
 Notre **variable** `communes` est une instance de `QgsVectorLayer`.
 
-[API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.34/core/QgsVectorLayer.html)
+[API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.40/core/QgsVectorLayer.html)
 
 À l'aide de la documentation, recherchons :
 
@@ -254,7 +254,7 @@ Pour cela, il faut faire référence à la notion d'héritage en Programmation O
 
 Il faut bien regarder les diagrammes en haut de la documentation :
 
-[API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.34/core/QgsVectorLayer.html)
+[API QgsVectorLayer C++](https://qgis.org/api/classQgsVectorLayer.html), [API QgsVectorLayer Python](https://qgis.org/pyqgis/3.40/core/QgsVectorLayer.html)
 
 ```mermaid
 classDiagram
@@ -287,7 +287,7 @@ QgsMapLayer <-- QgsRasterLayer
 
 L'objet `QgsVectorLayer` hérite de `QgsMapLayer` qui est une classe commune avec `QgsRasterLayer`.
 
-[API QgsMapLayer C++](https://qgis.org/api/classQgsMapLayer.html), [API QgsMapLayer Python](https://qgis.org/pyqgis/3.34/core/QgsMapLayer.html)
+[API QgsMapLayer C++](https://qgis.org/api/classQgsMapLayer.html), [API QgsMapLayer Python](https://qgis.org/pyqgis/3.40/core/QgsMapLayer.html)
 
 !!! tip
     On peut désormais regarder la documentation CPP de QGIS et Qt pour voir l'ensemble des membres,

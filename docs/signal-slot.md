@@ -7,7 +7,7 @@ Nous avons pu voir dans la documentation des librairies **Qt** et **QGIS**, il y
 Chaque **objet** émet très souvent un **signal** dès qu'une action est faite sur l'objet. Cela sert à déclencher du code
 Python lorsqu'un signal précis est émis.
 
-Par exemple sur la documentation de [QgsMapLayer](https://qgis.org/pyqgis/3.34/core/QgsMapLayer.html), on peut chercher
+Par exemple sur la documentation de [QgsMapLayer](https://qgis.org/pyqgis/3.40/core/QgsMapLayer.html), on peut chercher
 le tableau `signals`.
 
 !!! info
@@ -65,10 +65,10 @@ def we_are_watching_you():
     current_user = user_from_qgis()
     # Attention aux effets si on lance le code plusieurs fois !
     # print("Hello 😉")
-    iface.messageBar().pushMessage('Hey',f'Be careful <strong>{current_user}</strong> while you are editing 🧐', Qgis.Warning)
+    iface.messageBar().pushMessage('Hey',f'Be careful <strong>{current_user}</strong> while you are editing 🧐', Qgis.MessageLevel.Warning)
 
 def thanks():
-    iface.messageBar().pushMessage('Hey', "Thanks 😉", Qgis.Success)
+    iface.messageBar().pushMessage('Hey', "Thanks 😉", Qgis.MessageLevel.Success)
 
 
 layer = iface.activeLayer()

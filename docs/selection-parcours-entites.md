@@ -132,7 +132,7 @@ On peut parcourir les entités d'une couche `QgsVectorLayer` à l'aide de `getFe
     print(feature['NOM'])
     ```
 
-    On peut le voir dans les exemples `attribute` de QgsFeature : https://qgis.org/pyqgis/3.34/core/QgsFeature.html#qgis.core.QgsFeature.attribute
+    On peut le voir dans les exemples `attribute` de QgsFeature : https://qgis.org/pyqgis/3.40/core/QgsFeature.html#qgis.core.QgsFeature.attribute
 
 ```python
 from qgis.utils import iface
@@ -239,6 +239,10 @@ if feature['nom_attribut'] == NULL:
 else:
     # Continuer
     pass
+```
+
+```python
+QgsApplication.nullRepresentation()
 ```
 
 ## Calculer un champ "densite"

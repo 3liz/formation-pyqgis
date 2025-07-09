@@ -148,7 +148,7 @@ Le widget de saisie est un QLineEdit : [documentation Qt](https://doc.qt.io/qt-5
 def click_ok(self):
     """ Clic sur le bouton OK afin de fermer la fenêtre. """
     message = self.input_text.text()
-    iface.messageBar().pushMessage('Notre extension', message, Qgis.Success)
+    iface.messageBar().pushMessage('Notre extension', message, Qgis.MessageLevel.Success)
     self.accept()
 ```
 
@@ -176,7 +176,7 @@ la couche qui est sélectionnée dans le menu déroulant.
 Documentation :
 
 * QPlainTextEdit [CPP](https://doc.qt.io/qt-5/qplaintextedit.html), on va utiliser `appendPlainText` et `clear`.
-* QgsMapLayerComboBox [CPP](https://qgis.org/api/classQgsMapLayerComboBox.html) / [PyQGIS](https://qgis.org/pyqgis/3.34/gui/QgsMapLayerComboBox.html), on va utiliser `currentLayer`.
+* QgsMapLayerComboBox [CPP](https://qgis.org/api/classQgsMapLayerComboBox.html) / [PyQGIS](https://qgis.org/pyqgis/3.40/gui/QgsMapLayerComboBox.html), on va utiliser `currentLayer`.
 
 Dans la fonction `__init__` du fichier `dialog.py` :
 
@@ -258,7 +258,7 @@ données, etc.
             """ Clic sur le bouton OK afin de fermer la fenêtre. """
             self.close()
             message = self.input_text.text()
-            iface.messageBar().pushMessage('Notre extension', message, Qgis.Success)
+            iface.messageBar().pushMessage('Notre extension', message, Qgis.MessageLevel.Success)
     
         def layer_changed(self):
             """ Permet de mettre à jour l'UI selon la couche dans le menu déroulant. """
@@ -495,5 +495,5 @@ chapitre précédent.
             return
 
         content = dialog.expressionText()
-        iface.messageBar().pushMessage('Expression', content, Qgis.Success)
+        iface.messageBar().pushMessage('Expression', content, Qgis.MessageLevel.Success)
 ```

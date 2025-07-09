@@ -12,13 +12,13 @@ informations à l'utilisateur.
 ### La barre de message
 
 On peut envoyer des messages vers l'utilisateur avec l'utilisation de la `messageBar` de la classe
-`QgisInterface` [CPP](https://qgis.org/api/classQgisInterface.html)/[PyQGIS](https://qgis.org/pyqgis/3.34/gui/QgisInterface.html) :
+`QgisInterface` [CPP](https://qgis.org/api/classQgisInterface.html)/[PyQGIS](https://qgis.org/pyqgis/3.40/gui/QgisInterface.html) :
 
 ```Python
-iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.Critical)
-iface.messageBar().pushMessage('Avertissement','ou un avertissement', Qgis.Warning)
-iface.messageBar().pushMessage('Information','ou une information', Qgis.Info)
-iface.messageBar().pushMessage('Succès','ou un succès', Qgis.Success)
+iface.messageBar().pushMessage('Erreur','On peut afficher une erreur', Qgis.MessageLevel.Critical)
+iface.messageBar().pushMessage('Avertissement','ou un avertissement', Qgis.MessageLevel.Warning)
+iface.messageBar().pushMessage('Information','ou une information', Qgis.MessageLevel.Info)
+iface.messageBar().pushMessage('Succès','ou un succès', Qgis.MessageLevel.Success)
 ```
 
 Cette fonction prend 3 paramètres :
@@ -34,10 +34,10 @@ qu'il existe aussi `pushSuccess` qui est une alternative par exemple.
 
 On peut aussi écrire des logs comme ceci (plus discret, mais plus verbeux) :
 ```Python
-QgsMessageLog.logMessage('Une erreur est survenue','Notre outil', Qgis.Critical)
-QgsMessageLog.logMessage('Un avertissement','Notre outil', Qgis.Warning)
-QgsMessageLog.logMessage('Une information','Notre outil', Qgis.Info)
-QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.Success)
+QgsMessageLog.logMessage('Une erreur est survenue','Notre outil', Qgis.MessageLevel.Critical)
+QgsMessageLog.logMessage('Un avertissement','Notre outil', Qgis.MessageLevel.Warning)
+QgsMessageLog.logMessage('Une information','Notre outil', Qgis.MessageLevel.Info)
+QgsMessageLog.logMessage('Un succès','Notre outil', Qgis.MessageLevel.Success)
 ```
 
 Cette fonction prend 3 paramètres :
@@ -72,19 +72,19 @@ from pathlib import Path
 
 projet_qgis = QgsProject.instance().absoluteFilePath()
 if not projet_qgis:
-    iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
+    iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.MessageLevel.Critical)
 else:
     racine = Path(projet_qgis).parent
     fichier_shape = racine.joinpath(bd_topo, thematique, f'{couche}.shp')
     if not fichier_shape.exists():
-        iface.messageBar().pushMessage('Erreur de chargement', f'Le chemin n\'existe pas: "{fichier_shape}"', Qgis.Critical)
+        iface.messageBar().pushMessage('Erreur de chargement', f'Le chemin n\'existe pas: "{fichier_shape}"', Qgis.MessageLevel.Critical)
     else:
         layer = QgsVectorLayer(str(fichier_shape), couche, 'ogr')
         if not layer.isValid():
-            iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
+            iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.MessageLevel.Critical)
         else:
             QgsProject.instance().addMapLayer(layer)
-            iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.Success)
+            iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.MessageLevel.Success)
     print('Fin du script si on a un projet')
 ```
 
@@ -135,19 +135,19 @@ On peut ajouter une **docstring** à notre fonction, juste en dessous du `def`, 
         """ Fonction qui charge une couche de la BD TOPO, selon une thématique. """
         projet_qgis = QgsProject.instance().absoluteFilePath()
         if not projet_qgis:
-            iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
+            iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.MessageLevel.Critical)
         else:
             racine = Path(projet_qgis).parent
             fichier_shape = racine.joinpath(bd_topo, thematique, f'{couche}.shp')
             if not fichier_shape.exists():
-                iface.messageBar().pushMessage('Erreur de chargement', f'Le chemin n\'existe pas: "{fichier_shape}"', Qgis.Critical)
+                iface.messageBar().pushMessage('Erreur de chargement', f'Le chemin n\'existe pas: "{fichier_shape}"', Qgis.MessageLevel.Critical)
             else:
                 layer = QgsVectorLayer(str(fichier_shape), couche, 'ogr')
                 if not layer.isValid():
-                    iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
+                    iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.MessageLevel.Critical)
                 else:
                     QgsProject.instance().addMapLayer(layer)
-                    iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.Success)
+                    iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.MessageLevel.Success)
             print('Fin du script si on a un projet')
     
     # Appel de notre fonction
@@ -172,22 +172,22 @@ On peut garder le code le plus à gauche possible grâce à `return` qui ordonne
         """ Fonction qui charge une couche de la BD TOPO, selon une thématique. """
         projet_qgis = QgsProject.instance().absoluteFilePath()
         if not projet_qgis:
-            iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.Critical)
+            iface.messageBar().pushMessage('Erreur de chargement','Le projet n\'est pas enregistré', Qgis.MessageLevel.Critical)
             return False
 
         racine = Path(projet_qgis).parent
         fichier_shape = racine.joinpath(bd_topo, thematique, f'{couche}.shp')
         if not fichier_shape.exists():
-            iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{fichier_shape}"', Qgis.Critical)
+            iface.messageBar().pushMessage('Erreur de chargement','Le chemin n\'existe pas: "{fichier_shape}"', Qgis.MessageLevel.Critical)
             return False
             
         layer = QgsVectorLayer(str(fichier_shape), couche, 'ogr')
         if not layer.isValid():
-            iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.Critical)
+            iface.messageBar().pushMessage('Erreur de chargement','La couche n\'est pas valide', Qgis.MessageLevel.Critical)
             return False
 
         QgsProject.instance().addMapLayer(layer)
-        iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.Success)
+        iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.MessageLevel.Success)
         # return True
         return layer
     
@@ -277,7 +277,7 @@ Zoomer sur l'emprise d'une couche, sans la charger dans la légende
     ```python
     if ajouter_dans_legende:
         QgsProject.instance().addMapLayer(layer)
-        iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.Success)
+        iface.messageBar().pushMessage('Bravo','Well done! 👍', Qgis.MessageLevel.Success)
     # return True
     return layer
     ```
@@ -358,7 +358,7 @@ dossier_qgis = projet_qgis.parent
 ```
 
 Afficher la géométrie, sous sa forme "humaine", en chaîne de caractère, avec l'aide de
-[`QgsWkbTypes`](https://qgis.org/pyqgis/3.34/core/QgsWkbTypes.html#qgis.core.QgsWkbTypes.geometryDisplayString) :
+[`QgsWkbTypes`](https://qgis.org/pyqgis/3.40/core/QgsWkbTypes.html#qgis.core.QgsWkbTypes.geometryDisplayString) :
 ```python
 QgsWkbTypes.geometryDisplayString(vector_layer.geometryType())
 ```
@@ -476,7 +476,7 @@ with edit(layer_info):
 
 layers = QgsProject.instance().mapLayers()
 if not layers:
-    iface.messageBar().pushMessage('Pas de couche', "Attention, il n'a pas de couche", Qgis.Warning)
+    iface.messageBar().pushMessage('Pas de couche', "Attention, il n'a pas de couche", Qgis.MessageLevel.Warning)
 
 # Itération sur l'ensemble des couches du projet
 for layer in layers.values():

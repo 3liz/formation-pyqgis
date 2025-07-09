@@ -144,7 +144,7 @@ Si on souhaite informer l'utilisateur que cela s'est bien passé, on peut utilis
 ```python
 from qgis.utils import iface
 
-iface.messageBar().pushMessage('Inversion', 'La rivière est inversée', Qgis.Success)
+iface.messageBar().pushMessage('Inversion', 'La rivière est inversée', Qgis.MessageLevel.Success)
 ```
 
 _Note_, contrairement à la console où QGIS importait pour nous directement la variable `iface`, dans ce contexte, il
