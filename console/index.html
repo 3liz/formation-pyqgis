@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -1641,7 +1641,7 @@ class Personne{
 <p>QGIS nous donne accès au projet actuel via la classe <code>QgsProject</code></p>
 <ul>
 <li><a href="https://qgis.org/api/classQgsProject.html">https://qgis.org/api/classQgsProject.html</a></li>
-<li><a href="https://qgis.org/pyqgis/3.34/core/QgsProject.html">https://qgis.org/pyqgis/3.34/core/QgsProject.html</a></li>
+<li><a href="https://qgis.org/pyqgis/3.40/core/QgsProject.html">https://qgis.org/pyqgis/3.40/core/QgsProject.html</a></li>
 </ul>
 </li>
 <li>
@@ -1664,7 +1664,7 @@ class Personne{
 <li>Ajoutons un titre à notre projet. Dans l'interface graphique, cela se passe dans les propriétés de notre projet.
   Il y a donc des chances que cela soit aussi dans la classe <strong>QgsProject</strong></li>
 <li>Recherchons donc <code>title</code> dans la page : <code>setTitle</code> dans la classe
-  <a href="hhttps://qgis.org/pyqgis/3.34/core/QgsProject.html">QgsProject</a>.</li>
+  <a href="hhttps://qgis.org/pyqgis/3.40/core/QgsProject.html">QgsProject</a>.</li>
 </ul>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
@@ -1733,7 +1733,7 @@ class Personne{
 On peut se contenter de <code>fichier_shape.exists()</code>.</p>
 </div>
 <p>Si tout est bon pour le chemin, charger la couche vecteur à l'aide de <code>iface</code> qui est une instance de
-<code>QgisInterface</code> <a href="https://qgis.org/api/classQgisInterface.html">CPP</a>/<a href="https://qgis.org/pyqgis/3.34/gui/QgisInterface.html">PyQGIS</a>
+<code>QgisInterface</code> <a href="https://qgis.org/api/classQgisInterface.html">CPP</a>/<a href="https://qgis.org/pyqgis/3.40/gui/QgisInterface.html">PyQGIS</a>
 (et non pas <strong>Qgs</strong>Interface), en utilisant la méthode <code>addVectorLayer</code>.</p>
 <p>Attention, QGIS, étant écrit en C++, ne connait pas l'usage de <code>Path</code>, il faut repasser par une chaîne de caractère avec l'aide de <code>str</code> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -1799,7 +1799,7 @@ On peut se contenter de <code>fichier_shape.exists()</code>.</p>
 </div>
 <h3 id="decouverte-des-methodes-sur-notre-objet-communes">Découverte des méthodes sur notre objet <code>communes</code><a class="headerlink" href="#decouverte-des-methodes-sur-notre-objet-communes" title="Permanent link">#</a></h3>
 <p>Notre <strong>variable</strong> <code>communes</code> est une instance de <code>QgsVectorLayer</code>.</p>
-<p><a href="https://qgis.org/api/classQgsVectorLayer.html">API QgsVectorLayer C++</a>, <a href="https://qgis.org/pyqgis/3.34/core/QgsVectorLayer.html">API QgsVectorLayer Python</a></p>
+<p><a href="https://qgis.org/api/classQgsVectorLayer.html">API QgsVectorLayer C++</a>, <a href="https://qgis.org/pyqgis/3.40/core/QgsVectorLayer.html">API QgsVectorLayer Python</a></p>
 <p>À l'aide de la documentation, recherchons :</p>
 <ul>
 <li>le nombre d'entités, (indice : <code>count</code>, <code>feature</code>, <code>featureCount</code>)</li>
@@ -1827,7 +1827,7 @@ Par exemple pour <code>geometryType</code>.</p>
 Pour cela, il faut faire référence à la notion d'héritage en Programmation Orientée Objet.</p>
 <h3 id="heritage">Héritage<a class="headerlink" href="#heritage" title="Permanent link">#</a></h3>
 <p>Il faut bien regarder les diagrammes en haut de la documentation :</p>
-<p><a href="https://qgis.org/api/classQgsVectorLayer.html">API QgsVectorLayer C++</a>, <a href="https://qgis.org/pyqgis/3.34/core/QgsVectorLayer.html">API QgsVectorLayer Python</a></p>
+<p><a href="https://qgis.org/api/classQgsVectorLayer.html">API QgsVectorLayer C++</a>, <a href="https://qgis.org/pyqgis/3.40/core/QgsVectorLayer.html">API QgsVectorLayer Python</a></p>
 <div class="mermaid">classDiagram
 class QgsMapLayer{
     +name() str
@@ -1855,7 +1855,7 @@ class QgsRasterLayer{
 QgsMapLayer &lt;-- QgsVectorLayer
 QgsMapLayer &lt;-- QgsRasterLayer</div>
 <p>L'objet <code>QgsVectorLayer</code> hérite de <code>QgsMapLayer</code> qui est une classe commune avec <code>QgsRasterLayer</code>.</p>
-<p><a href="https://qgis.org/api/classQgsMapLayer.html">API QgsMapLayer C++</a>, <a href="https://qgis.org/pyqgis/3.34/core/QgsMapLayer.html">API QgsMapLayer Python</a></p>
+<p><a href="https://qgis.org/api/classQgsMapLayer.html">API QgsMapLayer C++</a>, <a href="https://qgis.org/pyqgis/3.40/core/QgsMapLayer.html">API QgsMapLayer Python</a></p>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p>On peut désormais regarder la documentation CPP de QGIS et Qt pour voir l'ensemble des membres,
@@ -2087,7 +2087,7 @@ Il faut faire une indentation obligatoire !</p>
       <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

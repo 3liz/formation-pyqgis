@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -1922,7 +1922,7 @@ l'utilisateur dans la QgsMessageBar de QGIS.</p>
 <span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">click_ok</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&quot;&quot;&quot; Clic sur le bouton OK afin de fermer la fenêtre. &quot;&quot;&quot;</span>
     <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_text</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
-    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre extension&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre extension&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">MessageLevel</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
     <span class="bp">self</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
 </code></pre></div></td></tr></table></div>
 <p>Faire le test dans QGIS avec une saisie de l'utilisateur et fermer la fenêtre.</p>
@@ -1951,7 +1951,7 @@ la couche qui est sélectionnée dans le menu déroulant.</p>
 <p>Documentation :</p>
 <ul>
 <li>QPlainTextEdit <a href="https://doc.qt.io/qt-5/qplaintextedit.html">CPP</a>, on va utiliser <code>appendPlainText</code> et <code>clear</code>.</li>
-<li>QgsMapLayerComboBox <a href="https://qgis.org/api/classQgsMapLayerComboBox.html">CPP</a> / <a href="https://qgis.org/pyqgis/3.34/gui/QgsMapLayerComboBox.html">PyQGIS</a>, on va utiliser <code>currentLayer</code>.</li>
+<li>QgsMapLayerComboBox <a href="https://qgis.org/api/classQgsMapLayerComboBox.html">CPP</a> / <a href="https://qgis.org/pyqgis/3.40/gui/QgsMapLayerComboBox.html">PyQGIS</a>, on va utiliser <code>currentLayer</code>.</li>
 </ul>
 <p>Dans la fonction <code>__init__</code> du fichier <code>dialog.py</code> :</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
@@ -2079,7 +2079,7 @@ avec le fichier CSV, <a href="../fonctions-scripts/#extraction-des-informations-
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Clic sur le bouton OK afin de fermer la fenêtre. &quot;&quot;&quot;</span>
         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
         <span class="n">message</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">input_text</span><span class="o">.</span><span class="n">text</span><span class="p">()</span>
-        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre extension&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Notre extension&#39;</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">MessageLevel</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 
     <span class="k">def</span><span class="w"> </span><span class="nf">layer_changed</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
 <span class="w">        </span><span class="sd">&quot;&quot;&quot; Permet de mettre à jour l&#39;UI selon la couche dans le menu déroulant. &quot;&quot;&quot;</span>
@@ -2381,7 +2381,7 @@ chapitre précédent.</p>
             <span class="k">return</span>
 
         <span class="n">content</span> <span class="o">=</span> <span class="n">dialog</span><span class="o">.</span><span class="n">expressionText</span><span class="p">()</span>
-        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Expression&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+        <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Expression&#39;</span><span class="p">,</span> <span class="n">content</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">MessageLevel</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 </code></pre></div></td></tr></table></div>
 
 
@@ -2503,7 +2503,7 @@ chapitre précédent.</p>
       <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       

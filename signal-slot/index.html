@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../media/logo-qgis.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.14">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.15">
     
     
       
@@ -1356,7 +1356,7 @@
 <p>Nous avons pu voir dans la documentation des librairies <strong>Qt</strong> et <strong>QGIS</strong>, il y a une section <strong>Signals</strong>.</p>
 <p>Chaque <strong>objet</strong> émet très souvent un <strong>signal</strong> dès qu'une action est faite sur l'objet. Cela sert à déclencher du code
 Python lorsqu'un signal précis est émis.</p>
-<p>Par exemple sur la documentation de <a href="https://qgis.org/pyqgis/3.34/core/QgsMapLayer.html">QgsMapLayer</a>, on peut chercher
+<p>Par exemple sur la documentation de <a href="https://qgis.org/pyqgis/3.40/core/QgsMapLayer.html">QgsMapLayer</a>, on peut chercher
 le tableau <code>signals</code>.</p>
 <div class="admonition info">
 <p class="admonition-title">Info</p>
@@ -1439,10 +1439,10 @@ commence. Il s'agit de <code>editingStarted</code>.</p>
     <span class="n">current_user</span> <span class="o">=</span> <span class="n">user_from_qgis</span><span class="p">()</span>
     <span class="c1"># Attention aux effets si on lance le code plusieurs fois !</span>
     <span class="c1"># print(&quot;Hello 😉&quot;)</span>
-    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Hey&#39;</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;Be careful &lt;strong&gt;</span><span class="si">{</span><span class="n">current_user</span><span class="si">}</span><span class="s1">&lt;/strong&gt; while you are editing 🧐&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Warning</span><span class="p">)</span>
+    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Hey&#39;</span><span class="p">,</span><span class="sa">f</span><span class="s1">&#39;Be careful &lt;strong&gt;</span><span class="si">{</span><span class="n">current_user</span><span class="si">}</span><span class="s1">&lt;/strong&gt; while you are editing 🧐&#39;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">MessageLevel</span><span class="o">.</span><span class="n">Warning</span><span class="p">)</span>
 
 <span class="k">def</span><span class="w"> </span><span class="nf">thanks</span><span class="p">():</span>
-    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Hey&#39;</span><span class="p">,</span> <span class="s2">&quot;Thanks 😉&quot;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
+    <span class="n">iface</span><span class="o">.</span><span class="n">messageBar</span><span class="p">()</span><span class="o">.</span><span class="n">pushMessage</span><span class="p">(</span><span class="s1">&#39;Hey&#39;</span><span class="p">,</span> <span class="s2">&quot;Thanks 😉&quot;</span><span class="p">,</span> <span class="n">Qgis</span><span class="o">.</span><span class="n">MessageLevel</span><span class="o">.</span><span class="n">Success</span><span class="p">)</span>
 
 
 <span class="n">layer</span> <span class="o">=</span> <span class="n">iface</span><span class="o">.</span><span class="n">activeLayer</span><span class="p">()</span>
@@ -1570,7 +1570,7 @@ commence. Il s'agit de <code>editingStarted</code>.</p>
       <script id="__config" type="application/json">{"base": "..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.top", "content.code.copy"], "search": "../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "Copi\u00e9 dans le presse-papier", "clipboard.copy": "Copier dans le presse-papier", "search.result.more.one": "1 de plus sur cette page", "search.result.more.other": "# de plus sur cette page", "search.result.none": "Aucun document trouv\u00e9", "search.result.one": "1 document trouv\u00e9", "search.result.other": "# documents trouv\u00e9s", "search.result.placeholder": "Taper pour d\u00e9marrer la recherche", "search.result.term.missing": "Non trouv\u00e9", "select.version": "S\u00e9lectionner la version"}, "version": null}</script>
     
     
-      <script src="../assets/javascripts/bundle.13a4f30d.min.js"></script>
+      <script src="../assets/javascripts/bundle.56ea9cef.min.js"></script>
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js"></script>
       
